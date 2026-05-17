@@ -54,7 +54,6 @@
       {
         "type": "action",
         "id": "act-insert",
-        "name": "Insert Bread",
         "layout": {
           "x": 250,
           "y": 70,
@@ -77,7 +76,6 @@
       {
         "type": "action",
         "id": "act-press",
-        "name": "Press Lever Down",
         "layout": {
           "x": 250,
           "y": 165,
@@ -114,7 +112,6 @@
       {
         "type": "action",
         "id": "act-timer",
-        "name": "Start Timer",
         "layout": {
           "x": 80,
           "y": 310,
@@ -137,7 +134,6 @@
       {
         "type": "action",
         "id": "act-heat",
-        "name": "Heat Element",
         "layout": {
           "x": 450,
           "y": 310,
@@ -174,7 +170,6 @@
       {
         "type": "action",
         "id": "act-pop",
-        "name": "Pop Carriage",
         "layout": {
           "x": 250,
           "y": 460,
@@ -234,10 +229,7 @@
         }
       },
       {
-        "type": "control_flow",
         "id": "f2",
-        "source": "act-insert",
-        "target": "act-press",
         "waypoints": [
           {
             "x": 350,
@@ -253,7 +245,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-toaster.f2"
       },
       {
         "type": "control_flow",
@@ -451,5 +444,6 @@
         "activity"
       ]
     }
-  }
+  },
+  "model_file": "toaster-model.msml"
 }

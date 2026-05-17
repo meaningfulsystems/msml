@@ -40,7 +40,6 @@
       {
         "type": "model",
         "id": "pkg-root",
-        "name": "ToasterModel",
         "layout": {
           "x": 20,
           "y": 20,
@@ -63,7 +62,6 @@
       {
         "type": "package",
         "id": "pkg-structural",
-        "name": "Structural",
         "layout": {
           "x": 50,
           "y": 80,
@@ -85,7 +83,6 @@
       {
         "type": "class",
         "id": "cls-toaster",
-        "name": "Toaster",
         "layout": {
           "x": 70,
           "y": 130,
@@ -101,12 +98,13 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster",
+        "display_name": "Toaster"
       },
       {
         "type": "class",
         "id": "cls-element",
-        "name": "HeatingElement",
         "layout": {
           "x": 70,
           "y": 195,
@@ -122,12 +120,13 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.HeatingElement",
+        "display_name": "HeatingElement"
       },
       {
         "type": "package",
         "id": "pkg-behavioral",
-        "name": "Behavioral",
         "layout": {
           "x": 300,
           "y": 80,
@@ -149,7 +148,6 @@
       {
         "type": "class",
         "id": "cls-stm",
-        "name": "ToasterSTM",
         "layout": {
           "x": 320,
           "y": 130,
@@ -165,12 +163,13 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.STM",
+        "display_name": "ToasterSTM"
       },
       {
         "type": "class",
         "id": "cls-act",
-        "name": "ToastingActivity",
         "layout": {
           "x": 320,
           "y": 195,
@@ -186,12 +185,13 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.ToastingActivity",
+        "display_name": "ToastingActivity"
       },
       {
         "type": "package",
         "id": "pkg-control",
-        "name": "Control",
         "layout": {
           "x": 550,
           "y": 80,
@@ -213,7 +213,6 @@
       {
         "type": "class",
         "id": "cls-req",
-        "name": "Requirements",
         "layout": {
           "x": 570,
           "y": 130,
@@ -229,12 +228,13 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.Requirements",
+        "display_name": "Requirements"
       },
       {
         "type": "class",
         "id": "cls-par",
-        "name": "Parametric",
         "layout": {
           "x": 570,
           "y": 195,
@@ -250,15 +250,14 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.Parametric",
+        "display_name": "Parametric"
       }
     ],
     "relationships": [
       {
-        "type": "dependency",
         "id": "d1",
-        "source": "pkg-behavioral",
-        "target": "pkg-structural",
         "waypoints": [
           {
             "x": 300,
@@ -276,13 +275,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "pkg-toaster.d1"
       },
       {
-        "type": "dependency",
         "id": "d2",
-        "source": "pkg-control",
-        "target": "pkg-behavioral",
         "waypoints": [
           {
             "x": 550,
@@ -300,7 +297,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "pkg-toaster.d2"
       }
     ],
     "metadata": {
@@ -312,5 +310,6 @@
         "package"
       ]
     }
-  }
+  },
+  "model_file": "toaster-model.msml"
 }

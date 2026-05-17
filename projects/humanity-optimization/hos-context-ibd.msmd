@@ -1,0 +1,581 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-hos-system-context",
+    "name": "Humanity Optimization System Context",
+    "context": "HOS",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1120,
+      "height": 660,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-hos",
+        "layout": {
+          "x": 405,
+          "y": 250,
+          "width": 310,
+          "height": 120,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EAF2F8",
+          "border_color": "#2E5E87",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.HumanityOptimizationSystem",
+        "role_name": "hos"
+      },
+      {
+        "type": "port",
+        "id": "port-hos-values",
+        "name": "valuesIn",
+        "owner_ref": "part-hos",
+        "layout": {
+          "x": 399,
+          "y": 282,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#9A6418",
+          "font": {
+            "size": 9,
+            "color": "#9A6418"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-hos-world",
+        "name": "worldSignals",
+        "owner_ref": "part-hos",
+        "layout": {
+          "x": 399,
+          "y": 342,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#207567",
+          "font": {
+            "size": 9,
+            "color": "#207567"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-hos-future",
+        "name": "futureInterest",
+        "owner_ref": "part-hos",
+        "layout": {
+          "x": 554,
+          "y": 244,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "font": {
+            "size": 9,
+            "color": "#2E7D32"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-hos-brief",
+        "name": "briefOut",
+        "owner_ref": "part-hos",
+        "layout": {
+          "x": 709,
+          "y": 282,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6D4C9A",
+          "font": {
+            "size": 9,
+            "color": "#6D4C9A"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-hos-pathways",
+        "name": "pathwayQuery",
+        "owner_ref": "part-hos",
+        "layout": {
+          "x": 709,
+          "y": 342,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#B5522C",
+          "font": {
+            "size": 9,
+            "color": "#B5522C"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-humanity",
+        "layout": {
+          "x": 55,
+          "y": 95,
+          "width": 250,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF7E6",
+          "border_color": "#9A6418",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.Humanity",
+        "role_name": "humanity"
+      },
+      {
+        "type": "port",
+        "id": "port-humanity-values",
+        "name": "needsValues",
+        "owner_ref": "part-humanity",
+        "layout": {
+          "x": 299,
+          "y": 132,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#9A6418",
+          "font": {
+            "size": 9,
+            "color": "#9A6418"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-earth",
+        "layout": {
+          "x": 55,
+          "y": 455,
+          "width": 250,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E7F4EF",
+          "border_color": "#207567",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.EarthBiosphere",
+        "role_name": "earthBiosphere"
+      },
+      {
+        "type": "port",
+        "id": "port-earth-signals",
+        "name": "conditions",
+        "owner_ref": "part-earth",
+        "layout": {
+          "x": 299,
+          "y": 492,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#207567",
+          "font": {
+            "size": 9,
+            "color": "#207567"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-future",
+        "layout": {
+          "x": 435,
+          "y": 55,
+          "width": 250,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.FutureGenerations",
+        "role_name": "futureGenerations"
+      },
+      {
+        "type": "port",
+        "id": "port-future-interest",
+        "name": "protectedInterest",
+        "owner_ref": "part-future",
+        "layout": {
+          "x": 554,
+          "y": 139,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "font": {
+            "size": 9,
+            "color": "#2E7D32"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-decision-makers",
+        "layout": {
+          "x": 815,
+          "y": 95,
+          "width": 250,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F2ECF8",
+          "border_color": "#6D4C9A",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.DecisionMakers",
+        "role_name": "decisionMakers"
+      },
+      {
+        "type": "port",
+        "id": "port-decision-brief",
+        "name": "decisionBrief",
+        "owner_ref": "part-decision-makers",
+        "layout": {
+          "x": 809,
+          "y": 132,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6D4C9A",
+          "font": {
+            "size": 9,
+            "color": "#6D4C9A"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-tech",
+        "layout": {
+          "x": 815,
+          "y": 455,
+          "width": 250,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FCEDE8",
+          "border_color": "#B5522C",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.TechnologyResources",
+        "role_name": "technologyResources"
+      },
+      {
+        "type": "port",
+        "id": "port-tech-pathways",
+        "name": "pathways",
+        "owner_ref": "part-tech",
+        "layout": {
+          "x": 809,
+          "y": 492,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#B5522C",
+          "font": {
+            "size": 9,
+            "color": "#B5522C"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "connector",
+        "id": "conn-humanity-hos",
+        "name": "needs, values, lived experience",
+        "source": "port-humanity-values",
+        "target": "port-hos-values",
+        "waypoints": [
+          {
+            "x": 311,
+            "y": 138
+          },
+          {
+            "x": 355,
+            "y": 138
+          },
+          {
+            "x": 355,
+            "y": 288
+          },
+          {
+            "x": 399,
+            "y": 288
+          }
+        ],
+        "style": {
+          "line_color": "#9A6418",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 10,
+          "label_offset": {
+            "x": -15,
+            "y": -8
+          }
+        }
+      },
+      {
+        "type": "connector",
+        "id": "conn-earth-hos",
+        "name": "conditions and warning signals",
+        "source": "port-earth-signals",
+        "target": "port-hos-world",
+        "waypoints": [
+          {
+            "x": 311,
+            "y": 498
+          },
+          {
+            "x": 355,
+            "y": 498
+          },
+          {
+            "x": 355,
+            "y": 348
+          },
+          {
+            "x": 399,
+            "y": 348
+          }
+        ],
+        "style": {
+          "line_color": "#207567",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 10,
+          "label_offset": {
+            "x": -20,
+            "y": -8
+          }
+        }
+      },
+      {
+        "type": "connector",
+        "id": "conn-future-hos",
+        "name": "future interest model",
+        "source": "port-future-interest",
+        "target": "port-hos-future",
+        "waypoints": [
+          {
+            "x": 560,
+            "y": 151
+          },
+          {
+            "x": 560,
+            "y": 244
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 0,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        }
+      },
+      {
+        "type": "connector",
+        "id": "conn-hos-decision",
+        "name": "decision brief",
+        "source": "port-hos-brief",
+        "target": "port-decision-brief",
+        "waypoints": [
+          {
+            "x": 721,
+            "y": 288
+          },
+          {
+            "x": 765,
+            "y": 288
+          },
+          {
+            "x": 765,
+            "y": 138
+          },
+          {
+            "x": 809,
+            "y": 138
+          }
+        ],
+        "style": {
+          "line_color": "#6D4C9A",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 10,
+          "label_offset": {
+            "x": 0,
+            "y": -8
+          }
+        }
+      },
+      {
+        "type": "connector",
+        "id": "conn-tech-hos",
+        "name": "pathways, resources, constraints",
+        "source": "port-tech-pathways",
+        "target": "port-hos-pathways",
+        "waypoints": [
+          {
+            "x": 809,
+            "y": 498
+          },
+          {
+            "x": 765,
+            "y": 498
+          },
+          {
+            "x": 765,
+            "y": 348
+          },
+          {
+            "x": 721,
+            "y": 348
+          }
+        ],
+        "style": {
+          "line_color": "#B5522C",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 10,
+          "label_offset": {
+            "x": -10,
+            "y": -8
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Codex",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "humanity-optimization",
+        "ibd",
+        "system-context",
+        "operational-concept"
+      ]
+    }
+  },
+  "model_file": "hos-model.msml"
+}

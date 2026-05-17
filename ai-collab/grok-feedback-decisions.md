@@ -4,6 +4,8 @@ Source: `ai-collab/grok-feedback.md`
 Date: 2026-05-17  
 Reviewer: Claude (Anthropic)
 
+Status note: Andrew adopted the `.msml` model / `.msmd` diagram split for v1.0 in this repository. This review is kept as decision context.
+
 ---
 
 ## Summary of Grok's Proposal
@@ -27,7 +29,7 @@ Grok also called out the HOS (`projects/humanity-optimization/`) as the most int
 
 ### 1. Semantic drift is the right long-term concern
 
-The toaster model already shows it: `HeatingElement` in `toaster-bdd.msml`, `element:HeatingElement` in the IBD, `:HeatingElement` in the sequence diagram. We addressed this in the Codex round with `model_ref` strings, but those strings are opaque — no tooling can enforce that they refer to the same underlying definition.
+The toaster model already shows it: `HeatingElement` in `toaster-bdd.msmd`, `element:HeatingElement` in the IBD, `:HeatingElement` in the sequence diagram. We addressed this in the Codex round with `model_ref` strings, but those strings are opaque — no tooling can enforce that they refer to the same underlying definition.
 
 As a model grows past ~5 diagrams, the risk of drift compounds. The HOS project — with diagrams spanning diet, energy, land use, economic systems, and governance — is exactly the use case where this matters most.
 

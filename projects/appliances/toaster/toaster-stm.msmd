@@ -56,7 +56,6 @@
       {
         "type": "state",
         "id": "state-idle",
-        "name": "Idle",
         "layout": {
           "x": 320,
           "y": 65,
@@ -82,10 +81,6 @@
       {
         "type": "state",
         "id": "state-toasting",
-        "name": "Toasting",
-        "entry": "start_timer()",
-        "do": "heat_element()",
-        "exit": "stop_timer()",
         "layout": {
           "x": 320,
           "y": 205,
@@ -111,8 +106,6 @@
       {
         "type": "state",
         "id": "state-done",
-        "name": "Done",
-        "entry": "pop_carriage()",
         "layout": {
           "x": 630,
           "y": 220,
@@ -138,8 +131,6 @@
       {
         "type": "state",
         "id": "state-error",
-        "name": "Error",
-        "entry": "deactivate_element(); release_latch(); sound_alarm()",
         "layout": {
           "x": 70,
           "y": 220,
@@ -191,11 +182,7 @@
         }
       },
       {
-        "type": "transition",
         "id": "t-idle-toasting",
-        "source": "state-idle",
-        "target": "state-toasting",
-        "trigger": "lever_down",
         "waypoints": [
           {
             "x": 450,
@@ -215,14 +202,11 @@
             "x": 8,
             "y": 0
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-idle-toasting"
       },
       {
-        "type": "transition",
         "id": "t-toasting-idle",
-        "source": "state-toasting",
-        "target": "state-idle",
-        "trigger": "lever_up",
         "waypoints": [
           {
             "x": 372,
@@ -242,14 +226,11 @@
             "x": 8,
             "y": 0
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-toasting-idle"
       },
       {
-        "type": "transition",
         "id": "t-toasting-done",
-        "source": "state-toasting",
-        "target": "state-done",
-        "trigger": "timer_expired",
         "waypoints": [
           {
             "x": 580,
@@ -269,14 +250,11 @@
             "x": 0,
             "y": -18
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-toasting-done"
       },
       {
-        "type": "transition",
         "id": "t-toasting-error",
-        "source": "state-toasting",
-        "target": "state-error",
-        "trigger": "overheat_detected",
         "waypoints": [
           {
             "x": 320,
@@ -296,14 +274,11 @@
             "x": 0,
             "y": -18
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-toasting-error"
       },
       {
-        "type": "transition",
         "id": "t-error-idle",
-        "source": "state-error",
-        "target": "state-idle",
-        "trigger": "reset",
         "waypoints": [
           {
             "x": 170,
@@ -331,14 +306,11 @@
             "x": 0,
             "y": 0
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-error-idle"
       },
       {
-        "type": "transition",
         "id": "t-done-idle",
-        "source": "state-done",
-        "target": "state-idle",
-        "trigger": "toast_removed",
         "waypoints": [
           {
             "x": 730,
@@ -366,7 +338,8 @@
             "x": 0,
             "y": 0
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-done-idle"
       }
     ],
     "metadata": {
@@ -379,5 +352,6 @@
         "appliance"
       ]
     }
-  }
+  },
+  "model_file": "toaster-model.msml"
 }

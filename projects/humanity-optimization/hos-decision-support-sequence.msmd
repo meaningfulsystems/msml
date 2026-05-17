@@ -1,0 +1,258 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "sequence",
+    "id": "sd-hos-decision-support",
+    "name": "Decision Support Interaction",
+    "context": "HOS",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 980,
+      "height": 500,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "lifeline",
+        "id": "ll-decision-makers",
+        "layout": {
+          "x": 40,
+          "y": 30,
+          "width": 170,
+          "height": 430,
+          "head_height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF7E6",
+          "border_color": "#9A6418",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.DecisionMakers",
+        "display_name": ":Human Decision Makers"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-hos",
+        "layout": {
+          "x": 285,
+          "y": 30,
+          "width": 130,
+          "height": 430,
+          "head_height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EAF2F8",
+          "border_color": "#2E5E87",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.HumanityOptimizationSystem",
+        "display_name": ":HOS"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-evidence",
+        "layout": {
+          "x": 500,
+          "y": 30,
+          "width": 170,
+          "height": 430,
+          "head_height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E7F4EF",
+          "border_color": "#207567",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.EvidenceAndModels",
+        "display_name": ":Evidence and Models"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-governance",
+        "layout": {
+          "x": 755,
+          "y": 30,
+          "width": 170,
+          "height": 430,
+          "head_height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F2ECF8",
+          "border_color": "#6D4C9A",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "HOS.GovernanceSystem",
+        "display_name": ":Governance System"
+      },
+      {
+        "type": "execution_occurrence",
+        "id": "exec-hos",
+        "layout": {
+          "x": 346,
+          "y": 105,
+          "width": 10,
+          "height": 270,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#CFE1F1",
+          "border_color": "#2E5E87"
+        }
+      },
+      {
+        "type": "execution_occurrence",
+        "id": "exec-evidence",
+        "layout": {
+          "x": 580,
+          "y": 160,
+          "width": 10,
+          "height": 115,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#CFEAE2",
+          "border_color": "#207567"
+        }
+      },
+      {
+        "type": "execution_occurrence",
+        "id": "exec-governance",
+        "layout": {
+          "x": 835,
+          "y": 350,
+          "width": 10,
+          "height": 75,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#E1D8EE",
+          "border_color": "#6D4C9A"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "m1",
+        "layout": {
+          "y": 110
+        },
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5
+        },
+        "relationship_ref": "sd-hos-decision-support.m1"
+      },
+      {
+        "id": "m2",
+        "layout": {
+          "y": 165
+        },
+        "style": {
+          "line_color": "#207567",
+          "line_width": 1.5
+        },
+        "relationship_ref": "sd-hos-decision-support.m2"
+      },
+      {
+        "id": "m3",
+        "layout": {
+          "y": 260
+        },
+        "style": {
+          "line_color": "#207567",
+          "line_width": 1.5
+        },
+        "relationship_ref": "sd-hos-decision-support.m3"
+      },
+      {
+        "id": "m4",
+        "layout": {
+          "y": 330
+        },
+        "style": {
+          "line_color": "#2E5E87",
+          "line_width": 1.5
+        },
+        "relationship_ref": "sd-hos-decision-support.m4"
+      },
+      {
+        "id": "m5",
+        "layout": {
+          "y": 365
+        },
+        "style": {
+          "line_color": "#6D4C9A",
+          "line_width": 1.5
+        },
+        "relationship_ref": "sd-hos-decision-support.m5"
+      },
+      {
+        "id": "m6",
+        "layout": {
+          "y": 430
+        },
+        "style": {
+          "line_color": "#777777",
+          "line_width": 1.5
+        },
+        "relationship_ref": "sd-hos-decision-support.m6"
+      }
+    ],
+    "metadata": {
+      "author": "Codex",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "humanity-optimization",
+        "sequence",
+        "operational-concept"
+      ]
+    }
+  },
+  "model_file": "hos-model.msml"
+}

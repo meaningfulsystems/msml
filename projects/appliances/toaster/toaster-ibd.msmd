@@ -40,8 +40,6 @@
       {
         "type": "part",
         "id": "part-lever",
-        "name": "lever",
-        "type_ref": "Lever",
         "layout": {
           "x": 50,
           "y": 170,
@@ -59,7 +57,8 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.Lever"
+        "model_ref": "Toaster.Lever",
+        "role_name": "lever"
       },
       {
         "type": "port",
@@ -81,8 +80,6 @@
       {
         "type": "part",
         "id": "part-timer",
-        "name": "timer",
-        "type_ref": "Timer",
         "layout": {
           "x": 310,
           "y": 170,
@@ -100,7 +97,8 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.Timer"
+        "model_ref": "Toaster.Timer",
+        "role_name": "timer"
       },
       {
         "type": "port",
@@ -139,8 +137,6 @@
       {
         "type": "part",
         "id": "part-element",
-        "name": "element",
-        "type_ref": "HeatingElement",
         "layout": {
           "x": 590,
           "y": 100,
@@ -158,7 +154,8 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.HeatingElement"
+        "model_ref": "Toaster.HeatingElement",
+        "role_name": "element"
       },
       {
         "type": "port",
@@ -197,8 +194,6 @@
       {
         "type": "part",
         "id": "part-carriage",
-        "name": "carriage",
-        "type_ref": "Carriage",
         "layout": {
           "x": 590,
           "y": 290,
@@ -216,7 +211,8 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.Carriage"
+        "model_ref": "Toaster.Carriage",
+        "role_name": "carriage"
       },
       {
         "type": "port",
@@ -327,5 +323,6 @@
         "ibd"
       ]
     }
-  }
+  },
+  "model_file": "toaster-model.msml"
 }

@@ -4,14 +4,14 @@ MSML is a scriptable graphical modeling language for systems modeling. It is ins
 
 This repository contains:
 
-- the MSML v1 requirements/specification draft
-- a Python PNG renderer for MSML files
-- example MSML models and rendered diagrams
+- the MSML v1.0 specification
+- a Python PNG renderer for MSML diagram files
+- example MSML models, diagram views, and rendered diagrams
 - early project models for appliances and humanity-scale systems
 
 ## Why MSML Exists
 
-MSML is designed for human and AI collaboration on complex system models. The format is JSON, one diagram per file, with explicit visual layout. That makes diagrams deterministic, easy to diff, easy to regenerate, and suitable for publication alongside prose.
+MSML is designed for human and AI collaboration on complex system models. The format is JSON. Semantic model content lives in `.msml` files, while graphical diagram views live in `.msmd` files with explicit visual layout. That makes diagrams deterministic, easy to diff, easy to regenerate, and suitable for publication alongside prose.
 
 The current renderer supports the nine SysML 1.x diagram families represented in this repository:
 
@@ -29,21 +29,23 @@ The current renderer supports the nine SysML 1.x diagram families represented in
 
 ```text
 .
-├── msml-requirements.md
+├── msml-specification.md
 ├── render_msml.py
 ├── render_all.py
 ├── requirements.txt
-├── decisions/
-│   └── codex-feedback-decisions.md
+├── ai-collab/
+│   └── ...
 └── projects/
     ├── appliances/
     │   └── toaster/
-    │       ├── toaster-*.msml
+    │       ├── toaster-model.msml
+    │       ├── toaster-*.msmd
     │       └── toaster-*.png
     └── humanity-optimization/
         ├── Humanity_Optimization_System_Brief.md
         ├── Humanity_Optimization_Operational_Concept.md
-        ├── hos-*.msml
+        ├── hos-model.msml
+        ├── hos-*.msmd
         └── hos-*.png
 ```
 
@@ -57,30 +59,31 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Render one MSML file:
+Render one MSML diagram file:
 
 ```bash
-python3 render_msml.py projects/humanity-optimization/hos-context.msml
+python3 render_msml.py projects/humanity-optimization/hos-context.msmd
 ```
 
-Render all MSML files under a folder:
+Render all MSML diagram files under a folder:
 
 ```bash
 python3 render_all.py projects/humanity-optimization
 python3 render_all.py projects/appliances/toaster
 ```
 
-The renderer writes PNG files next to their `.msml` sources.
+The renderer writes PNG files next to their `.msmd` sources. `.msml` model files are loaded by the diagram files and are not rendered directly.
 
 ## Example: Humanity Optimization System
 
 The Humanity Optimization System operational concept is a blog-post-style example of using MSML to model a civilization-scale decision-support system.
 
 - [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
-- [HOS definition BDD source](projects/humanity-optimization/hos-context.msml)
-- [HOS context IBD source](projects/humanity-optimization/hos-context-ibd.msml)
-- [Operating loop source](projects/humanity-optimization/hos-operating-loop.msml)
-- [Decision-support sequence source](projects/humanity-optimization/hos-decision-support-sequence.msml)
+- [HOS model source](projects/humanity-optimization/hos-model.msml)
+- [HOS definition BDD diagram source](projects/humanity-optimization/hos-context.msmd)
+- [HOS context IBD diagram source](projects/humanity-optimization/hos-context-ibd.msmd)
+- [Operating loop diagram source](projects/humanity-optimization/hos-operating-loop.msmd)
+- [Decision-support sequence diagram source](projects/humanity-optimization/hos-decision-support-sequence.msmd)
 
 ## Example: Toaster Model
 
@@ -91,7 +94,7 @@ The toaster project is a compact example set that exercises all nine supported S
 
 ## Current Status
 
-MSML is an early prototype. The renderer is intentionally lightweight and currently targets PNG output through Pillow. The specification is still evolving, especially around validation, semantic linting, cross-diagram references, and model/package structure.
+MSML is an early prototype. The renderer is intentionally lightweight and currently targets PNG output through Pillow. The v1.0 direction is model/view separation: `.msml` for semantic models, `.msmd` for diagram views, and PNGs rendered from those views.
 
 ## License
 

@@ -1,0 +1,746 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "toaster-model",
+    "name": "Toaster Model",
+    "namespace": "Toaster",
+    "imports": [],
+    "definitions": [
+      {
+        "type": "block",
+        "id": "Toaster",
+        "name": "Toaster",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "voltage",
+              "type": "V",
+              "multiplicity": "1"
+            },
+            {
+              "name": "maxPower",
+              "type": "W",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "toast",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "cancel",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "actor",
+        "id": "Toaster.Actor.PowerGrid",
+        "name": "Power Grid"
+      },
+      {
+        "type": "actor",
+        "id": "Toaster.Actor.User",
+        "name": "User"
+      },
+      {
+        "type": "block",
+        "id": "Toaster.BrowningControl",
+        "name": "BrowningControl",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "level",
+              "type": "Integer",
+              "multiplicity": "1"
+            },
+            {
+              "name": "targetEnergy",
+              "type": "J",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "setLevel",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "computeDuration",
+              "parameters": [],
+              "return_type": "s"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "Toaster.Carriage",
+        "name": "Carriage",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "position",
+              "type": "mm",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "lower",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "pop",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "Toaster.HeatingElement",
+        "name": "HeatingElement",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "resistance",
+              "type": "Ohm",
+              "multiplicity": "1"
+            },
+            {
+              "name": "power",
+              "type": "W",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "activate",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "deactivate",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "Toaster.HeatingElement.power",
+        "name": "power: W",
+        "value_type": "Real"
+      },
+      {
+        "type": "value_property",
+        "id": "Toaster.HeatingElement.resistance",
+        "name": "resistance: Ohm",
+        "value_type": "Real"
+      },
+      {
+        "type": "block",
+        "id": "Toaster.Lever",
+        "name": "Lever",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "position",
+              "type": "String",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "model",
+        "id": "Toaster.Model",
+        "name": "ToasterModel"
+      },
+      {
+        "type": "package",
+        "id": "Toaster.Model.Behavioral",
+        "name": "Behavioral"
+      },
+      {
+        "type": "package",
+        "id": "Toaster.Model.Control",
+        "name": "Control"
+      },
+      {
+        "type": "package",
+        "id": "Toaster.Model.Structural",
+        "name": "Structural"
+      },
+      {
+        "type": "class",
+        "id": "Toaster.Parametric",
+        "name": "Parametric"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-001",
+        "name": "Toasting Capability",
+        "req_id": "REQ-001",
+        "text": "System shall toast bread\nto user-selected browning.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-001.1",
+        "name": "Heat Control",
+        "req_id": "REQ-001.1",
+        "text": "Heating element shall reach\ntarget temp within 30s.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-001.2",
+        "name": "Timer Function",
+        "req_id": "REQ-001.2",
+        "text": "Timer shall support 1\u20135 min\nbrowning settings.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-001.3",
+        "name": "Carriage Mechanism",
+        "req_id": "REQ-001.3",
+        "text": "Carriage shall pop toast\nupon timer completion.",
+        "kind": "functional",
+        "priority": "medium",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-001.4",
+        "name": "Browning Repeatability",
+        "req_id": "REQ-001.4",
+        "text": "Same browning level shall\nproduce \u00b15% energy variance.",
+        "kind": "performance",
+        "priority": "medium",
+        "status": "proposed"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-002",
+        "name": "Safety",
+        "req_id": "REQ-002",
+        "text": "System shall detect overheat\nand shut down automatically.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-002.1",
+        "name": "Overheat Detection",
+        "req_id": "REQ-002.1",
+        "text": "ThermalCutoff shall trip\nbelow 300\u00b0C surface temp.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-002.2",
+        "name": "Auto Shutoff",
+        "req_id": "REQ-002.2",
+        "text": "On trip: deactivate element\nand release carriage latch.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-003",
+        "name": "User Controls",
+        "req_id": "REQ-003",
+        "text": "User shall control browning\nlevel and cancel toasting.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.REQ-003.1",
+        "name": "Cancel / Eject",
+        "req_id": "REQ-003.1",
+        "text": "Lever-up during toasting\nshall cancel and eject.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "class",
+        "id": "Toaster.Requirements",
+        "name": "Requirements"
+      },
+      {
+        "type": "class",
+        "id": "Toaster.STM",
+        "name": "ToasterSTM"
+      },
+      {
+        "type": "state",
+        "id": "Toaster.STM.Done",
+        "name": "Done",
+        "entry": "pop_carriage()"
+      },
+      {
+        "type": "state",
+        "id": "Toaster.STM.Error",
+        "name": "Error",
+        "entry": "deactivate_element(); release_latch(); sound_alarm()"
+      },
+      {
+        "type": "state",
+        "id": "Toaster.STM.Idle",
+        "name": "Idle"
+      },
+      {
+        "type": "state",
+        "id": "Toaster.STM.Toasting",
+        "name": "Toasting",
+        "entry": "start_timer()",
+        "do": "heat_element()",
+        "exit": "stop_timer()"
+      },
+      {
+        "type": "block",
+        "id": "Toaster.ThermalCutoff",
+        "name": "ThermalCutoff",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "cutoffTemp",
+              "type": "degC",
+              "multiplicity": "1"
+            },
+            {
+              "name": "tripped",
+              "type": "Boolean",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "monitor",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "trip",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "Toaster.ThermalCutoff.cutoffTemp",
+        "name": "cutoffTemp: \u00b0C",
+        "value_type": "Real"
+      },
+      {
+        "type": "block",
+        "id": "Toaster.Timer",
+        "name": "Timer",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "duration",
+              "type": "s",
+              "multiplicity": "1"
+            },
+            {
+              "name": "browning",
+              "type": "Integer",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "start",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "stop",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "Toaster.Timer.duration",
+        "name": "time: s",
+        "value_type": "Real"
+      },
+      {
+        "type": "class",
+        "id": "Toaster.ToastingActivity",
+        "name": "ToastingActivity"
+      },
+      {
+        "type": "action",
+        "id": "Toaster.ToastingActivity.HeatElement",
+        "name": "Heat Element"
+      },
+      {
+        "type": "action",
+        "id": "Toaster.ToastingActivity.InsertBread",
+        "name": "Insert Bread"
+      },
+      {
+        "type": "action",
+        "id": "Toaster.ToastingActivity.PopCarriage",
+        "name": "Pop Carriage"
+      },
+      {
+        "type": "action",
+        "id": "Toaster.ToastingActivity.PressLever",
+        "name": "Press Lever Down"
+      },
+      {
+        "type": "action",
+        "id": "Toaster.ToastingActivity.StartTimer",
+        "name": "Start Timer"
+      },
+      {
+        "type": "use_case",
+        "id": "Toaster.UC.ActivateHeating",
+        "name": "Activate Heating"
+      },
+      {
+        "type": "use_case",
+        "id": "Toaster.UC.AdjustBrowning",
+        "name": "Adjust Browning"
+      },
+      {
+        "type": "use_case",
+        "id": "Toaster.UC.CancelToast",
+        "name": "Cancel Toast"
+      },
+      {
+        "type": "use_case",
+        "id": "Toaster.UC.ResetError",
+        "name": "Reset Error"
+      },
+      {
+        "type": "use_case",
+        "id": "Toaster.UC.ToastBread",
+        "name": "Toast Bread"
+      },
+      {
+        "type": "block",
+        "id": "Toaster.User",
+        "name": "User",
+        "stereotype": "block"
+      },
+      {
+        "type": "value_property",
+        "id": "Toaster.voltage",
+        "name": "voltage: V",
+        "value_type": "Real"
+      }
+    ],
+    "relationships": [
+      {
+        "type": "control_flow",
+        "id": "act-toaster.f2",
+        "source": "Toaster.ToastingActivity.InsertBread",
+        "target": "Toaster.ToastingActivity.PressLever"
+      },
+      {
+        "type": "association",
+        "id": "bdd-toaster.a-browning-timer",
+        "source": "Toaster.BrowningControl",
+        "target": "Toaster.Timer",
+        "name": "configures"
+      },
+      {
+        "type": "association",
+        "id": "bdd-toaster.a-thermal-element",
+        "source": "Toaster.ThermalCutoff",
+        "target": "Toaster.HeatingElement",
+        "name": "monitors"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-browning",
+        "source": "Toaster",
+        "target": "Toaster.BrowningControl",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-carriage",
+        "source": "Toaster",
+        "target": "Toaster.Carriage",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-element",
+        "source": "Toaster",
+        "target": "Toaster.HeatingElement",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-lever",
+        "source": "Toaster",
+        "target": "Toaster.Lever",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-thermal",
+        "source": "Toaster",
+        "target": "Toaster.ThermalCutoff",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-timer",
+        "source": "Toaster",
+        "target": "Toaster.Timer",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "dependency",
+        "id": "pkg-toaster.d1",
+        "source": "Toaster.Model.Behavioral",
+        "target": "Toaster.Model.Structural"
+      },
+      {
+        "type": "dependency",
+        "id": "pkg-toaster.d2",
+        "source": "Toaster.Model.Control",
+        "target": "Toaster.Model.Behavioral"
+      },
+      {
+        "type": "derive",
+        "id": "req-toaster.d1",
+        "source": "Toaster.REQ-002",
+        "target": "Toaster.REQ-001"
+      },
+      {
+        "type": "derive",
+        "id": "req-toaster.d2",
+        "source": "Toaster.REQ-003",
+        "target": "Toaster.REQ-001"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r1",
+        "source": "Toaster.REQ-001",
+        "target": "Toaster.REQ-001.1"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r2",
+        "source": "Toaster.REQ-001",
+        "target": "Toaster.REQ-001.2"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r3",
+        "source": "Toaster.REQ-001",
+        "target": "Toaster.REQ-001.3"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r4",
+        "source": "Toaster.REQ-001",
+        "target": "Toaster.REQ-001.4"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r5",
+        "source": "Toaster.REQ-002",
+        "target": "Toaster.REQ-002.1"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r6",
+        "source": "Toaster.REQ-002",
+        "target": "Toaster.REQ-002.2"
+      },
+      {
+        "type": "containment",
+        "id": "req-toaster.r7",
+        "source": "Toaster.REQ-003",
+        "target": "Toaster.REQ-003.1"
+      },
+      {
+        "type": "message",
+        "id": "sd-toaster.m1",
+        "name": "pressLever()",
+        "source_lifeline": "Toaster.User",
+        "target_lifeline": "Toaster",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-toaster.m2",
+        "name": "start(90s)",
+        "source_lifeline": "Toaster",
+        "target_lifeline": "Toaster.Timer",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-toaster.m3",
+        "name": "activate()",
+        "source_lifeline": "Toaster",
+        "target_lifeline": "Toaster.HeatingElement",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-toaster.m4",
+        "name": "timerExpired",
+        "source_lifeline": "Toaster.Timer",
+        "target_lifeline": "Toaster",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-toaster.m5",
+        "name": "deactivate()",
+        "source_lifeline": "Toaster",
+        "target_lifeline": "Toaster.HeatingElement",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-toaster.m6",
+        "name": ":ready",
+        "source_lifeline": "Toaster",
+        "target_lifeline": "Toaster.User",
+        "message_sort": "reply"
+      },
+      {
+        "type": "transition",
+        "id": "stm-toaster.t-done-idle",
+        "source": "Toaster.STM.Done",
+        "target": "Toaster.STM.Idle",
+        "trigger": "toast_removed"
+      },
+      {
+        "type": "transition",
+        "id": "stm-toaster.t-error-idle",
+        "source": "Toaster.STM.Error",
+        "target": "Toaster.STM.Idle",
+        "trigger": "reset"
+      },
+      {
+        "type": "transition",
+        "id": "stm-toaster.t-idle-toasting",
+        "source": "Toaster.STM.Idle",
+        "target": "Toaster.STM.Toasting",
+        "trigger": "lever_down"
+      },
+      {
+        "type": "transition",
+        "id": "stm-toaster.t-toasting-done",
+        "source": "Toaster.STM.Toasting",
+        "target": "Toaster.STM.Done",
+        "trigger": "timer_expired"
+      },
+      {
+        "type": "transition",
+        "id": "stm-toaster.t-toasting-error",
+        "source": "Toaster.STM.Toasting",
+        "target": "Toaster.STM.Error",
+        "trigger": "overheat_detected"
+      },
+      {
+        "type": "transition",
+        "id": "stm-toaster.t-toasting-idle",
+        "source": "Toaster.STM.Toasting",
+        "target": "Toaster.STM.Idle",
+        "trigger": "lever_up"
+      },
+      {
+        "type": "association",
+        "id": "uc-toaster.a1",
+        "source": "Toaster.Actor.User",
+        "target": "Toaster.UC.ToastBread"
+      },
+      {
+        "type": "association",
+        "id": "uc-toaster.a2",
+        "source": "Toaster.Actor.User",
+        "target": "Toaster.UC.AdjustBrowning"
+      },
+      {
+        "type": "association",
+        "id": "uc-toaster.a3",
+        "source": "Toaster.Actor.User",
+        "target": "Toaster.UC.CancelToast"
+      },
+      {
+        "type": "association",
+        "id": "uc-toaster.a4",
+        "source": "Toaster.Actor.User",
+        "target": "Toaster.UC.ResetError"
+      },
+      {
+        "type": "association",
+        "id": "uc-toaster.a5",
+        "source": "Toaster.Actor.PowerGrid",
+        "target": "Toaster.UC.ToastBread"
+      },
+      {
+        "type": "include",
+        "id": "uc-toaster.i1",
+        "source": "Toaster.UC.ToastBread",
+        "target": "Toaster.UC.ActivateHeating"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "model"
+      ]
+    }
+  }
+}

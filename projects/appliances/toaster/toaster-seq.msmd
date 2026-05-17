@@ -40,7 +40,6 @@
       {
         "type": "lifeline",
         "id": "ll-user",
-        "name": ":User",
         "layout": {
           "x": 50,
           "y": 20,
@@ -58,12 +57,12 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.User"
+        "model_ref": "Toaster.User",
+        "display_name": ":User"
       },
       {
         "type": "lifeline",
         "id": "ll-toaster",
-        "name": ":Toaster",
         "layout": {
           "x": 240,
           "y": 20,
@@ -81,12 +80,12 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster"
+        "model_ref": "Toaster",
+        "display_name": ":Toaster"
       },
       {
         "type": "lifeline",
         "id": "ll-timer",
-        "name": ":Timer",
         "layout": {
           "x": 440,
           "y": 20,
@@ -104,12 +103,12 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.Timer"
+        "model_ref": "Toaster.Timer",
+        "display_name": ":Timer"
       },
       {
         "type": "lifeline",
         "id": "ll-element",
-        "name": ":HeatingElement",
         "layout": {
           "x": 640,
           "y": 20,
@@ -127,7 +126,8 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.HeatingElement"
+        "model_ref": "Toaster.HeatingElement",
+        "display_name": ":HeatingElement"
       },
       {
         "type": "execution_occurrence",
@@ -177,94 +177,70 @@
     ],
     "relationships": [
       {
-        "type": "message",
         "id": "m1",
-        "name": "pressLever()",
-        "source_lifeline": "ll-user",
-        "target_lifeline": "ll-toaster",
-        "message_sort": "synch_call",
         "layout": {
           "y": 90
         },
         "style": {
           "line_color": "#333333",
           "line_width": 1.5
-        }
+        },
+        "relationship_ref": "sd-toaster.m1"
       },
       {
-        "type": "message",
         "id": "m2",
-        "name": "start(90s)",
-        "source_lifeline": "ll-toaster",
-        "target_lifeline": "ll-timer",
-        "message_sort": "asynch_signal",
         "layout": {
           "y": 130
         },
         "style": {
           "line_color": "#333333",
           "line_width": 1.5
-        }
+        },
+        "relationship_ref": "sd-toaster.m2"
       },
       {
-        "type": "message",
         "id": "m3",
-        "name": "activate()",
-        "source_lifeline": "ll-toaster",
-        "target_lifeline": "ll-element",
-        "message_sort": "asynch_signal",
         "layout": {
           "y": 160
         },
         "style": {
           "line_color": "#CC4400",
           "line_width": 1.5
-        }
+        },
+        "relationship_ref": "sd-toaster.m3"
       },
       {
-        "type": "message",
         "id": "m4",
-        "name": "timerExpired",
-        "source_lifeline": "ll-timer",
-        "target_lifeline": "ll-toaster",
-        "message_sort": "asynch_signal",
         "layout": {
           "y": 260
         },
         "style": {
           "line_color": "#333333",
           "line_width": 1.5
-        }
+        },
+        "relationship_ref": "sd-toaster.m4"
       },
       {
-        "type": "message",
         "id": "m5",
-        "name": "deactivate()",
-        "source_lifeline": "ll-toaster",
-        "target_lifeline": "ll-element",
-        "message_sort": "synch_call",
         "layout": {
           "y": 290
         },
         "style": {
           "line_color": "#CC4400",
           "line_width": 1.5
-        }
+        },
+        "relationship_ref": "sd-toaster.m5"
       },
       {
-        "type": "message",
         "id": "m6",
-        "name": ":ready",
-        "source_lifeline": "ll-toaster",
-        "target_lifeline": "ll-user",
-        "message_sort": "reply",
         "layout": {
           "y": 350
         },
         "style": {
           "line_color": "#555555",
           "line_width": 1.5
-        }
+        },
+        "relationship_ref": "sd-toaster.m6"
       }
     ],
     "metadata": {
@@ -276,5 +252,6 @@
         "sequence"
       ]
     }
-  }
+  },
+  "model_file": "toaster-model.msml"
 }

@@ -1,0 +1,409 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "hos-model",
+    "name": "Humanity Optimization System",
+    "namespace": "HOS",
+    "imports": [],
+    "definitions": [
+      {
+        "type": "action",
+        "id": "HOS.Activity.CheckEthics",
+        "name": "Check Ethical Constraints"
+      },
+      {
+        "type": "action",
+        "id": "HOS.Activity.EvaluatePortfolios",
+        "name": "Evaluate Intervention Portfolios"
+      },
+      {
+        "type": "action",
+        "id": "HOS.Activity.IdentifyRisks",
+        "name": "Identify Risks, Opportunities, Tradeons"
+      },
+      {
+        "type": "action",
+        "id": "HOS.Activity.InformDecisions",
+        "name": "Inform Human Decisions"
+      },
+      {
+        "type": "action",
+        "id": "HOS.Activity.ModelFutures",
+        "name": "Model Possible Futures"
+      },
+      {
+        "type": "action",
+        "id": "HOS.Activity.ObserveWorld",
+        "name": "Observe Humanity, Earth, Risks"
+      },
+      {
+        "type": "block",
+        "id": "HOS.DecisionBriefingInterface",
+        "name": "DecisionBriefingInterface",
+        "stereotype": "interface block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "brief",
+              "type": "DecisionBrief",
+              "multiplicity": "*"
+            },
+            {
+              "name": "explanation",
+              "type": "TraceableRationale",
+              "multiplicity": "*"
+            }
+          ],
+          "operations": [
+            {
+              "name": "publishBriefing",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "HOS.DecisionMakers",
+        "name": "decisionMakers",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "HOS.EarthBiosphere",
+        "name": "earthBiosphere",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "HOS.EthicalConstraintGuard",
+        "name": "EthicalConstraintGuard",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "constraints",
+              "type": "AgencyTransparencyJusticeRule",
+              "multiplicity": "*"
+            },
+            {
+              "name": "protectedInterests",
+              "type": "StakeholderInterest",
+              "multiplicity": "*"
+            }
+          ],
+          "operations": [
+            {
+              "name": "screenOptions",
+              "parameters": [],
+              "return_type": "EthicsAssessment"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "HOS.EvidenceAndModels",
+        "name": "Evidence and Models",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "HOS.EvidenceRepository",
+        "name": "EvidenceRepository",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "observations",
+              "type": "WorldSignal",
+              "multiplicity": "*"
+            },
+            {
+              "name": "assumptions",
+              "type": "Assumption",
+              "multiplicity": "*"
+            }
+          ],
+          "operations": [
+            {
+              "name": "ingestSignals",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "publishEvidence",
+              "parameters": [],
+              "return_type": "EvidenceSet"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "HOS.FutureGenerations",
+        "name": "futureGenerations",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "HOS.GovernanceSystem",
+        "name": "Governance System",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "HOS.Humanity",
+        "name": "humanity",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "HOS.HumanityOptimizationSystem",
+        "name": "HumanityOptimizationSystem",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "mission",
+              "type": "CivilizationDecisionSupport",
+              "multiplicity": "1"
+            },
+            {
+              "name": "agencyConstraint",
+              "type": "HumanAgencyPreservation",
+              "multiplicity": "1"
+            },
+            {
+              "name": "objectiveSet",
+              "type": "PluralHumanAndEcologicalGoals",
+              "multiplicity": "*"
+            }
+          ],
+          "operations": [
+            {
+              "name": "observeWorld",
+              "parameters": [],
+              "return_type": "EvidenceSet"
+            },
+            {
+              "name": "modelFutures",
+              "parameters": [],
+              "return_type": "ScenarioSet"
+            },
+            {
+              "name": "evaluateInterventions",
+              "parameters": [],
+              "return_type": "OptionPortfolio"
+            },
+            {
+              "name": "briefDecisionMakers",
+              "parameters": [],
+              "return_type": "DecisionBrief"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "HOS.InterventionEvaluator",
+        "name": "InterventionEvaluator",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "portfolios",
+              "type": "InterventionPortfolio",
+              "multiplicity": "*"
+            },
+            {
+              "name": "tradeons",
+              "type": "MultiObjectiveGain",
+              "multiplicity": "*"
+            }
+          ],
+          "operations": [
+            {
+              "name": "rankOptions",
+              "parameters": [],
+              "return_type": "OptionPortfolio"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "HOS.ScenarioModel",
+        "name": "ScenarioModel",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "futures",
+              "type": "PossibleFuture",
+              "multiplicity": "*"
+            },
+            {
+              "name": "uncertainty",
+              "type": "ConfidenceRange",
+              "multiplicity": "*"
+            }
+          ],
+          "operations": [
+            {
+              "name": "simulatePathways",
+              "parameters": [],
+              "return_type": "ScenarioSet"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "HOS.TechnologyResources",
+        "name": "technologyResources",
+        "stereotype": "block"
+      }
+    ],
+    "relationships": [
+      {
+        "type": "control_flow",
+        "id": "act-hos-operating-loop.f10",
+        "source": "HOS.Activity.InformDecisions",
+        "target": "HOS.Activity.ObserveWorld",
+        "name": "monitor outcomes and update assumptions"
+      },
+      {
+        "type": "control_flow",
+        "id": "act-hos-operating-loop.f2",
+        "source": "HOS.Activity.ObserveWorld",
+        "target": "HOS.Activity.ModelFutures"
+      },
+      {
+        "type": "control_flow",
+        "id": "act-hos-operating-loop.f3",
+        "source": "HOS.Activity.ModelFutures",
+        "target": "HOS.Activity.IdentifyRisks"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-hos-definition.comp-hos-briefing",
+        "source": "HOS.HumanityOptimizationSystem",
+        "target": "HOS.DecisionBriefingInterface",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-hos-definition.comp-hos-ethics",
+        "source": "HOS.HumanityOptimizationSystem",
+        "target": "HOS.EthicalConstraintGuard",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-hos-definition.comp-hos-evaluator",
+        "source": "HOS.HumanityOptimizationSystem",
+        "target": "HOS.InterventionEvaluator",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-hos-definition.comp-hos-evidence",
+        "source": "HOS.HumanityOptimizationSystem",
+        "target": "HOS.EvidenceRepository",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-hos-definition.comp-hos-scenarios",
+        "source": "HOS.HumanityOptimizationSystem",
+        "target": "HOS.ScenarioModel",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "dependency",
+        "id": "bdd-hos-definition.dep-ethics-evaluator",
+        "name": "options",
+        "source": "HOS.EthicalConstraintGuard",
+        "target": "HOS.InterventionEvaluator"
+      },
+      {
+        "type": "dependency",
+        "id": "bdd-hos-definition.dep-evaluator-scenario",
+        "name": "scenarios",
+        "source": "HOS.InterventionEvaluator",
+        "target": "HOS.ScenarioModel"
+      },
+      {
+        "type": "dependency",
+        "id": "bdd-hos-definition.dep-evidence-scenario",
+        "name": "evidence",
+        "source": "HOS.ScenarioModel",
+        "target": "HOS.EvidenceRepository"
+      },
+      {
+        "type": "message",
+        "id": "sd-hos-decision-support.m1",
+        "name": "request support",
+        "source_lifeline": "HOS.DecisionMakers",
+        "target_lifeline": "HOS.HumanityOptimizationSystem",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-hos-decision-support.m2",
+        "name": "collect evidence",
+        "source_lifeline": "HOS.HumanityOptimizationSystem",
+        "target_lifeline": "HOS.EvidenceAndModels",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-hos-decision-support.m3",
+        "name": "risk and tradeon analysis",
+        "source_lifeline": "HOS.EvidenceAndModels",
+        "target_lifeline": "HOS.HumanityOptimizationSystem",
+        "message_sort": "reply"
+      },
+      {
+        "type": "message",
+        "id": "sd-hos-decision-support.m4",
+        "name": "brief options",
+        "source_lifeline": "HOS.HumanityOptimizationSystem",
+        "target_lifeline": "HOS.DecisionMakers",
+        "message_sort": "reply"
+      },
+      {
+        "type": "message",
+        "id": "sd-hos-decision-support.m5",
+        "name": "choose and implement",
+        "source_lifeline": "HOS.DecisionMakers",
+        "target_lifeline": "HOS.GovernanceSystem",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-hos-decision-support.m6",
+        "name": "outcome signals",
+        "source_lifeline": "HOS.GovernanceSystem",
+        "target_lifeline": "HOS.HumanityOptimizationSystem",
+        "message_sort": "asynch_signal"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "hos",
+        "model"
+      ]
+    }
+  }
+}

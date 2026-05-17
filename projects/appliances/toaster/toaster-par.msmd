@@ -1,0 +1,666 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "parametric",
+    "id": "par-toaster",
+    "name": "Toaster Power & Heat Model",
+    "context": "Toaster",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1100,
+      "height": 560,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "value_property",
+        "id": "vp-voltage",
+        "model_ref": "Toaster.voltage",
+        "layout": {
+          "x": 20,
+          "y": 80,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#555555",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-resistance",
+        "model_ref": "Toaster.HeatingElement.resistance",
+        "layout": {
+          "x": 20,
+          "y": 155,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-ohms",
+        "name": "P = V\u00b2 / R",
+        "parameters": [
+          {
+            "id": "o-v",
+            "name": "V",
+            "type": "Real",
+            "bound_to": "vp-voltage"
+          },
+          {
+            "id": "o-r",
+            "name": "R",
+            "type": "Real",
+            "bound_to": "vp-resistance"
+          },
+          {
+            "id": "o-p",
+            "name": "P",
+            "type": "Real",
+            "bound_to": "vp-power"
+          }
+        ],
+        "layout": {
+          "x": 220,
+          "y": 60,
+          "width": 210,
+          "height": 140,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-power",
+        "model_ref": "Toaster.HeatingElement.power",
+        "layout": {
+          "x": 500,
+          "y": 110,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#555555",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-time",
+        "model_ref": "Toaster.Timer.duration",
+        "layout": {
+          "x": 500,
+          "y": 185,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-energy",
+        "name": "Q = P \u00d7 t",
+        "parameters": [
+          {
+            "id": "e-p",
+            "name": "P",
+            "type": "Real",
+            "bound_to": "vp-power"
+          },
+          {
+            "id": "e-t",
+            "name": "t",
+            "type": "Real",
+            "bound_to": "vp-time"
+          },
+          {
+            "id": "e-q",
+            "name": "Q",
+            "type": "Real",
+            "bound_to": "vp-heat-total"
+          }
+        ],
+        "layout": {
+          "x": 700,
+          "y": 60,
+          "width": 210,
+          "height": 140,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-heat-total",
+        "name": "totalHeat: J",
+        "layout": {
+          "x": 980,
+          "y": 80,
+          "width": 100,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-efficiency",
+        "name": "efficiency: \u03b7",
+        "layout": {
+          "x": 700,
+          "y": 250,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#555555",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-bread-heat",
+        "name": "Q_b = \u03b7 \u00d7 Q",
+        "parameters": [
+          {
+            "id": "b-eta",
+            "name": "\u03b7",
+            "type": "Real",
+            "bound_to": "vp-efficiency"
+          },
+          {
+            "id": "b-q",
+            "name": "Q",
+            "type": "Real",
+            "bound_to": "vp-heat-total"
+          },
+          {
+            "id": "b-qb",
+            "name": "Q_b",
+            "type": "Real",
+            "bound_to": "vp-heat-bread"
+          }
+        ],
+        "layout": {
+          "x": 700,
+          "y": 340,
+          "width": 210,
+          "height": 140,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-heat-bread",
+        "name": "breadHeat: J",
+        "layout": {
+          "x": 980,
+          "y": 390,
+          "width": 100,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-cutoff",
+        "model_ref": "Toaster.ThermalCutoff.cutoffTemp",
+        "layout": {
+          "x": 20,
+          "y": 380,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-safety",
+        "name": "T_elem < T_cutoff",
+        "parameters": [
+          {
+            "id": "s-t",
+            "name": "T_elem",
+            "type": "Real",
+            "bound_to": "vp-elem-temp"
+          },
+          {
+            "id": "s-tc",
+            "name": "T_cutoff",
+            "type": "Real",
+            "bound_to": "vp-cutoff"
+          }
+        ],
+        "layout": {
+          "x": 220,
+          "y": 360,
+          "width": 210,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-elem-temp",
+        "name": "elemTemp: \u00b0C",
+        "layout": {
+          "x": 20,
+          "y": 460,
+          "width": 130,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "binding_connector",
+        "id": "b1",
+        "source": "vp-voltage",
+        "target": "cp-ohms",
+        "waypoints": [
+          {
+            "x": 150,
+            "y": 102
+          },
+          {
+            "x": 220,
+            "y": 102
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b2",
+        "source": "vp-resistance",
+        "target": "cp-ohms",
+        "waypoints": [
+          {
+            "x": 150,
+            "y": 177
+          },
+          {
+            "x": 190,
+            "y": 177
+          },
+          {
+            "x": 190,
+            "y": 160
+          },
+          {
+            "x": 220,
+            "y": 160
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b3",
+        "source": "cp-ohms",
+        "target": "vp-power",
+        "waypoints": [
+          {
+            "x": 430,
+            "y": 130
+          },
+          {
+            "x": 500,
+            "y": 130
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b4",
+        "source": "vp-power",
+        "target": "cp-energy",
+        "waypoints": [
+          {
+            "x": 630,
+            "y": 132
+          },
+          {
+            "x": 700,
+            "y": 132
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b5",
+        "source": "vp-time",
+        "target": "cp-energy",
+        "waypoints": [
+          {
+            "x": 630,
+            "y": 207
+          },
+          {
+            "x": 665,
+            "y": 207
+          },
+          {
+            "x": 665,
+            "y": 165
+          },
+          {
+            "x": 700,
+            "y": 165
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b6",
+        "source": "cp-energy",
+        "target": "vp-heat-total",
+        "waypoints": [
+          {
+            "x": 910,
+            "y": 100
+          },
+          {
+            "x": 980,
+            "y": 100
+          }
+        ],
+        "style": {
+          "line_color": "#CC4400",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b7",
+        "source": "vp-heat-total",
+        "target": "cp-bread-heat",
+        "waypoints": [
+          {
+            "x": 1030,
+            "y": 124
+          },
+          {
+            "x": 1030,
+            "y": 410
+          },
+          {
+            "x": 910,
+            "y": 410
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b8",
+        "source": "vp-efficiency",
+        "target": "cp-bread-heat",
+        "waypoints": [
+          {
+            "x": 830,
+            "y": 294
+          },
+          {
+            "x": 830,
+            "y": 340
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b9",
+        "source": "cp-bread-heat",
+        "target": "vp-heat-bread",
+        "waypoints": [
+          {
+            "x": 910,
+            "y": 412
+          },
+          {
+            "x": 980,
+            "y": 412
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b10",
+        "source": "vp-cutoff",
+        "target": "cp-safety",
+        "waypoints": [
+          {
+            "x": 150,
+            "y": 402
+          },
+          {
+            "x": 220,
+            "y": 402
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "binding_connector",
+        "id": "b11",
+        "source": "vp-elem-temp",
+        "target": "cp-safety",
+        "waypoints": [
+          {
+            "x": 150,
+            "y": 482
+          },
+          {
+            "x": 185,
+            "y": 482
+          },
+          {
+            "x": 185,
+            "y": 432
+          },
+          {
+            "x": 220,
+            "y": 432
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-16",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "parametric"
+      ]
+    }
+  },
+  "model_file": "toaster-model.msml"
+}

@@ -1,8 +1,10 @@
 # Decisions: Codex Feedback on Toaster MSML Model
 
-Source: `appliances/toaster/codex-feedback-toaster.md`  
+Source: `projects/appliances/toaster/codex-feedback-toaster.md`  
 Date: 2026-05-17  
-Scope: msml-requirements.md and all nine toaster diagrams
+Scope: `msml-specification.md` and all nine toaster diagrams
+
+Status note: this decision log predates the v1.0 model/view split implementation. File references below have been updated to current extensions where they describe active files: `.msml` for semantic models and `.msmd` for diagram views.
 
 Each item is marked **Accept**, **Accept (Defer)**, **Accept (Modified)**, or **Reject**, followed by rationale and any action.
 
@@ -15,14 +17,14 @@ Each item is marked **Accept**, **Accept (Defer)**, **Accept (Modified)**, or **
 
 The requirements doc still has leftover YAML references in the Python module table and serializer section. JSON is the correct and intended format. This is a documentation error, not a design question.
 
-**Action:** Audit `msml-requirements.md` and replace all remaining YAML references with JSON. Remove `PyYAML`/`ruamel.yaml` from module descriptions. Make `msml.serializer` write JSON.
+**Action:** Audit `msml-specification.md` and replace all remaining YAML references with JSON. Remove `PyYAML`/`ruamel.yaml` from module descriptions. Make `msml.serializer` write JSON.
 
 ---
 
 ### L2 — Diagram type names: long vs. abbreviation
 **ACCEPT (MODIFIED)**
 
-Codex is right that the spec conflates the canonical `type` enum with frame abbreviations. The current file `type` field correctly uses long canonical names (`activity`, `state_machine`, etc.). The file naming convention (`toaster-act.msml`, `toaster-seq.msml`) rightly uses abbreviations. These are different concerns and should not share a namespace.
+Codex is right that the spec conflates the canonical `type` enum with frame abbreviations. The current file `type` field correctly uses long canonical names (`activity`, `state_machine`, etc.). The file naming convention (`toaster-act.msmd`, `toaster-seq.msmd`) rightly uses abbreviations. These are different concerns and should not share a namespace.
 
 **Decision:**
 - `diagram.type` field: always the canonical long name (`activity`, `sequence`, `state_machine`, `use_case`, `requirement`, `parametric`, `package`, `bdd`, `ibd`). `bdd` and `ibd` are already accepted abbreviations in SysML and remain unchanged.
@@ -67,7 +69,7 @@ IBD ports are currently owned by proximity, which is valid for rendering but bre
 
 **Decision:** Add optional `owner_ref: "<element_id>"` to port elements. Strict-mode validator requires it. Renderer continues to use explicit coordinates; `owner_ref` is used for semantic checks only (e.g., "port must lie on or adjacent to owner boundary").
 
-**Action:** Add `owner_ref` to IBD port schema in requirements. Update `toaster-ibd.msml` to include it on all ports. Add validator rule.
+**Action:** Add `owner_ref` to IBD port schema in the specification. Update `toaster-ibd.msmd` to include it on all ports. Add validator rule.
 
 ---
 
@@ -80,7 +82,7 @@ The need is real and well-stated: there is currently no machine-checkable link b
 - `model_ref: "<namespace>.<path>"` — a stable logical identifier independent of file or diagram (e.g., `"Toaster.HeatingElement"`). String, no resolution in v1.0; reserved for tooling.
 - `type_ref: "<element_id>"` — reference to a block/classifier within the same file. Already partially in use in IBD parts (`"type_ref": "HeatingElement"`).
 
-**Decision (v1.1):** File-relative `type_ref` in the form `"toaster-bdd.msml#block-element"`. Validator resolves cross-file references when `--strict` is active.
+**Decision (v1.1):** File-relative `type_ref` in the form `"toaster-bdd.msmd#block-element"`. Validator resolves cross-file references when `--strict` is active.
 
 **Action:** Document `model_ref` as a string metadata field on all elements. Expand `type_ref` definition. Update toaster IBD parts to use `type_ref` pointing to BDD block IDs. Defer cross-file resolution.
 
@@ -120,12 +122,12 @@ Lint warnings do not block rendering.
 
 Five requirements are demonstrably insufficient for a real appliance. The feedback is correct. However, expanding to a full requirements model for a toaster is a scope decision for the next toaster model iteration, not a language change.
 
-**Decision:** Keep the current five requirements as a minimal working example. Create `toaster-req-v2.msml` in a follow-up that adds:
+**Decision:** Keep the current five requirements as a minimal working example. Create `toaster-req-v2.msmd` in a follow-up that adds:
 - Safety group (electrical insulation, surface temperature, crumb tray, regulatory reference)
 - User controls group (cancel, browning repeatability, indicator feedback)
 - Verification links: `satisfy` from BDD blocks, `verify` from test cases
 
-**Action:** Add `toaster-req-v2.msml` to the backlog. No change to current files.
+**Action:** Add `toaster-req-v2.msmd` to the backlog. No change to current files.
 
 ---
 
@@ -135,12 +137,12 @@ Five requirements are demonstrably insufficient for a real appliance. The feedba
 This is the most substantive modeling critique. `REQ-002` claims automatic shutdown, but the `Error` state only sounds an alarm and has no explicit deactivation or latch release. The activity and sequence diagrams have no overheat path.
 
 **Decision:**
-- Add `deactivate_element(); release_latch()` to the `Error` state entry action in `toaster-stm.msml`.
+- Add `deactivate_element(); release_latch()` to the `Error` state entry action in `toaster-stm.msmd`.
 - Add a `ThermalCutoff` component to BDD and IBD (minimum: new block, connection from `HeatingElement` to `ThermalCutoff`, connection from `ThermalCutoff` to `Toaster` controller).
 - Add an overheat alternative fragment to the sequence diagram in a v2 pass.
 - Activity diagram: add an interrupt edge from `Heat Element` to a `Shutdown` action.
 
-**Action:** Update `toaster-stm.msml` entry action now. Flag BDD/IBD/sequence/activity toaster model updates for next iteration.
+**Action:** Update `toaster-stm.msmd` entry action now. Flag BDD/IBD/sequence/activity toaster model updates for next iteration.
 
 ---
 
@@ -198,7 +200,7 @@ Specific decisions:
 
 `P = V×I` and `Q = P×t` are minimal but correct starting points. The full thermal model (resistance, efficiency, heat capacity, cutoff temperature) is the right next step but is a content expansion, not a language fix.
 
-**Decision:** Add `toaster-par-v2.msml` to the backlog with:
+**Decision:** Add `toaster-par-v2.msmd` to the backlog with:
 - `P = V² / R` constraint (introduces resistance value property)
 - `Q_bread = η × Q_total` (efficiency factor)
 - `ΔT = Q / (m × c)` (temperature rise of bread)
@@ -214,7 +216,7 @@ Some are renderer bugs, some are layout issues in the `.msml` files, and some ar
 
 | Issue | Type | Decision |
 |---|---|---|
-| Derive line overlaps center req | Layout in `.msml` | Move derive line waypoints to avoid overlap |
+| Derive line overlaps center req | Layout in `.msmd` | Move derive line waypoints to avoid overlap |
 | BDD diamonds stack tightly | Renderer | Reduce diamond size; increase spacing in BDD layout |
 | Multiplicity labels not visible | Renderer | Add multiplicity label rendering to `_draw_relationship` |
 | Sequence labels small/cramped | Layout | Increase canvas width; spread lifelines |
@@ -232,7 +234,7 @@ Some are renderer bugs, some are layout issues in the `.msml` files, and some ar
 
 | Item | Status | Notes |
 |---|---|---|
-| L1 — JSON/YAML spec fix | ✅ Done | Module table, serializer section updated |
+| L1 — JSON/YAML spec fix | ✅ Done | Specification updated |
 | L2 — Type naming doc | ✅ Done | Section 2.7 added to requirements |
 | L3 — Arrowhead normalization | ✅ Done | Sequence message and STM transition schemas fixed |
 | L4 — Layout helpers | ✅ Deferred v1.1 | Note in requirements section 10 |
@@ -251,7 +253,7 @@ Some are renderer bugs, some are layout issues in the `.msml` files, and some ar
 ## Open Questions for Human Decision
 
 ### OQ-1: Activity diagram fork/join semantics
-The current `toaster-act.msml` uses a fork/join to show `Start Timer` and `Heat Element` running concurrently, then joining before `Pop Carriage`. This is semantically misleading — heating is controlled until timer expiration, not a fixed-duration parallel branch.
+The current `toaster-act.msmd` uses a fork/join to show `Start Timer` and `Heat Element` running concurrently, then joining before `Pop Carriage`. This is semantically misleading — heating is controlled until timer expiration, not a fixed-duration parallel branch.
 
 **Options:**
 - **A)** Replace fork/join with an `interruptible_region` element wrapping `Heat Element`, interrupted by a timer-expired event — correct SysML construct, requires new renderer element type
@@ -262,11 +264,11 @@ The current `toaster-act.msml` uses a fork/join to show `Start Timer` and `Heat 
 **Recommendation:** A if the activity diagram should be semantically correct; C if it is a renderer exercise only.
 
 ### OQ-2: Sequence diagram — cancel and overheat alternate flows
-The current `toaster-seq.msml` shows only the happy path. Codex recommends adding cancel and overheat alternates.
+The current `toaster-seq.msmd` shows only the happy path. Codex recommends adding cancel and overheat alternates.
 
 **Options:**
 - **A)** Add a `combined_fragment` of kind `alt` to the existing file — requires implementing `combined_fragment` rendering in `SequenceRenderer`
-- **B)** Create a second file `toaster-seq-safety.msml` for the overheat/cancel path — no renderer changes needed, just a new diagram
+- **B)** Create a second file `toaster-seq-safety.msmd` for the overheat/cancel path — no renderer changes needed, just a new diagram
 - **C)** Leave as-is; safety behavior is fully covered by the STM
 
 **Recommendation:** B — a second sequence file for the safety scenario is the cleanest split and avoids scope-creeping the renderer now.

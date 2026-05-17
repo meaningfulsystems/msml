@@ -2,8 +2,8 @@
 
 **For:** Human review before implementation  
 **Date:** 2026-05-17  
-**Status:** Draft with decision points  
-**Scope:** `projects/`, `render_msml.py`, `render_all.py`, `README.md`, `msml-requirements.md`
+**Status:** Approved for implementation with Andrew's decisions recorded  
+**Scope:** `projects/`, `render_msml.py`, `render_all.py`, `README.md`, `msml-specification.md`
 
 This is intentionally scoped as a v1.0 weekend-scale upgrade. The goal is not to design a perfect modeling platform. The goal is to split semantic model content from diagram layout while keeping the renderer simple and keeping the existing examples publishable.
 
@@ -15,7 +15,7 @@ MSML v1.0 will use two JSON file types:
 
 | Extension | Role | Contains |
 |---|---|---|
-| `.msml` | Model file | Semantic definitions and selected semantic relationships. No layout, coordinates, canvas, frame, or visual style. |
+| `.msml` | Model file | Semantic definitions and semantic relationships. No layout, coordinates, canvas, frame, or visual style. |
 | `.msmd` | Diagram file | A visual diagram view: canvas, frame, positioned elements, ports, rendered relationships, waypoints, style, and references to `.msml` model definitions. |
 
 The practical outcome:
@@ -38,7 +38,7 @@ __Andrew's Decision__:yes.  msml is the model file, and there can be multiple mo
 3. Keep diagram files self-contained for layout and styling.
 4. Move reusable semantic definitions into model files.
 5. Fail loudly when a diagram references a missing model definition.
-6. Do not over-model every SysML semantic on the first pass.
+6. Keep this as a v1.0 weekend pass, but make the core direction clean: no compatibility mode for old diagram-style `.msml` files.
 
 This split should make the examples better without turning the project into a full SysML repository implementation.
 
@@ -133,7 +133,7 @@ Example block:
 
 ### 4.2 Model Relationships
 
-Some relationships are semantic and should be available across diagrams. Put these in `model.relationships`:
+Semantic relationships should be available across diagrams. Put these in `model.relationships`:
 
 - BDD structural relationships: `composition`, `aggregation`, `generalization`, `association`, `dependency`
 - requirement relationships: `containment`, `derive`, `satisfy`, `verify`, `refine`, `trace`
@@ -154,9 +154,9 @@ Example:
 }
 ```
 
-Diagram files may still define visual relationships directly when the relationship is purely notational or when this is faster for v1.0.
+Diagram files should normally reference semantic relationships with `relationship_ref`. They may carry diagram-only routing, label placement, or rendering overrides, but the relationship meaning belongs in the model.
 
-**Human decision point 2:** Decide how much to move into `model.relationships` in this pass. Minimum recommended v1.0: move BDD composition/dependency and requirement hierarchy; leave sequence messages, activity flows, parametric bindings, and IBD connectors in `.msmd` for now.
+**Human decision point 2:** Decide how much to move into `model.relationships` in this pass. Initial recommendation was to move only BDD composition/dependency and requirement hierarchy, but this was superseded by Andrew's decision below.
 
 __Andrew's Decision__: no, i want all the sysml v1.x modeling capabilities in the .msml file.  All the relationship types should be possible.  the full msml-specification.md should include all this.  Diagrams should just be views of the model with certain layouts.  
 
@@ -206,7 +206,7 @@ Some diagram elements need labels that are not the same as the model definition 
 
 - `role_name`: instance/part/lifeline role, such as `hos`
 - `display_name`: diagram-specific label override
-- `type_ref`: allowed for v1.0 IBD part labels if needed for current renderer compatibility
+- `type_ref`: allowed for v1.0 IBD part labels when a diagram needs an explicit displayed type name
 
 Example IBD part:
 
@@ -308,25 +308,19 @@ At minimum:
 
 __Andrew's Decision__: what is your recommendation?  
 
+__Codex Recommendation__: update renderer draw methods now. `role_name` and `display_name` keep diagram labels honest without duplicating semantic names in the diagram view.
+
 ---
 
 ## 7. `render_all.py` Changes
 
-Change it to render diagram files:
+Change it to render diagram files only:
 
 ```python
 files = sorted(root.rglob("*.msmd"))
 ```
 
-Optional v1.0 compatibility:
-
-```python
-files = sorted(root.rglob("*.msmd"))
-if not files:
-    files = sorted(root.rglob("*.msml"))
-```
-
-Recommended weekend approach: support both for now, prefer `.msmd`.
+There is no `.msml` diagram fallback. `.msml` is model-only.
 
 ---
 
@@ -383,7 +377,7 @@ Create `.msmd` diagram files:
 - `toaster-par.msmd`
 - `toaster-pkg.msmd`
 
-**Human decision point 5:** Decide whether to delete old diagram `.msml` files immediately or keep them for one commit as compatibility/reference. Recommended: keep them until the `.msmd` render outputs are confirmed, then delete in a second commit.
+**Human decision point 5:** Decide whether to delete old diagram `.msml` files immediately or keep them for one commit as reference. Initial recommendation was to keep them temporarily, but this was superseded by Andrew's decision below.
 
 __Andrew's Decision__: go ahead and rename them to msmd then edit them to msmd according to the new specification.  
 
@@ -393,7 +387,7 @@ __Andrew's Decision__: go ahead and rename them to msmd then edit them to msmd a
 
 Update:
 
-- `msml-requirements.md`
+- `msml-specification.md`
 - `README.md`
 - `projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md`
 
@@ -414,29 +408,30 @@ __Andrew's Decision__: yes.  1.0.
 
 After implementation:
 
-- [ ] `python3 render_all.py projects/humanity-optimization` renders 4 HOS PNGs.
-- [ ] `python3 render_all.py projects/appliances/toaster` renders 9 toaster PNGs.
-- [ ] HOS BDD names and compartments render from `hos-model.msml`.
-- [ ] HOS IBD part labels remain readable.
-- [ ] Toaster requirements text renders from `toaster-model.msml`.
-- [ ] Toaster state entry/do/exit text renders from `toaster-model.msml`.
-- [ ] Rendering a `.msmd` with a missing `model_file` fails loudly.
-- [ ] Rendering a `.msmd` with an unknown `model_ref` fails loudly.
-- [ ] Model files contain no `layout`, `style`, `canvas`, `frame`, or `waypoints`.
-- [ ] No generated/cache files are staged.
+- [x] `python3 render_all.py projects/humanity-optimization` renders 4 HOS PNGs.
+- [x] `python3 render_all.py projects/appliances/toaster` renders 9 toaster PNGs.
+- [x] HOS BDD names and compartments render from `hos-model.msml`.
+- [x] HOS IBD part labels remain readable.
+- [x] Toaster requirements text renders from `toaster-model.msml`.
+- [x] Toaster state entry/do/exit text renders from `toaster-model.msml`.
+- [x] Rendering a `.msmd` with a missing `model_file` fails loudly.
+- [x] Rendering a `.msmd` with an unknown `model_ref` fails loudly.
+- [x] Rendering a `.msml` model file directly fails loudly.
+- [x] Model files contain no `layout`, `style`, `canvas`, `frame`, or `waypoints`.
+- [x] No generated/cache files are staged.
 
 ---
 
 ## 11. Implementation Order
 
 1. Update renderer to load model files and resolve `model_ref`.
-2. Update `render_all.py` to prefer `.msmd`.
+2. Update `render_all.py` to render `.msmd` only.
 3. Create `hos-model.msml` and migrate HOS diagrams.
 4. Render and compare HOS PNGs.
 5. Create `toaster-model.msml` and migrate toaster diagrams.
 6. Render and compare toaster PNGs.
 7. Update docs and blog links.
-8. Decide whether to delete old diagram `.msml` files.
+8. Delete old diagram `.msml` files after successful `.msmd` render verification.
 9. Commit.
 
 ---

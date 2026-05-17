@@ -1,6 +1,8 @@
 # Codex Feedback: Toaster MSML Model
 
-Review scope: `msml-requirements.md` and all nine toaster diagrams in `appliances/toaster`: package, requirements, block definition, internal block, activity, sequence, state machine, use case, and parametric.
+Review scope: `msml-specification.md` and all nine toaster diagrams in `projects/appliances/toaster`: package, requirements, block definition, internal block, activity, sequence, state machine, use case, and parametric.
+
+Status note: this review was written before the v1.0 model/view split was implemented. The current repository uses `.msml` for semantic model files and `.msmd` for diagram view files.
 
 ## Executive Summary
 
@@ -102,7 +104,7 @@ Recommendation: add validator or linter checks for label overlap, very small fon
 
 ### 1. The requirements document contradicts itself on JSON vs YAML
 
-The file format section correctly says `.msml` is JSON parsed by Python stdlib `json`. Later, the Python module table says `msml.parser` loads YAML and `msml.serializer` writes YAML. Serializer requirements also say output YAML.
+The file format section correctly says MSML uses JSON parsed by Python stdlib `json`. Earlier drafts had leftover YAML language in module descriptions.
 
 Recommendation: make JSON the single v1 serialization everywhere, or explicitly define a separate YAML import/export format. For v1, keeping JSON-only is better aligned with the stated AI-generation goals.
 
@@ -152,7 +154,7 @@ Recommendation: add a common `model_ref` field to elements and relationships. Ex
   "id": "part-element",
   "type": "part",
   "name": "element",
-  "type_ref": "toaster-bdd.msml#block-element",
+  "type_ref": "toaster-bdd.msmd#block-element",
   "model_ref": "model:Toaster.HeatingElement"
 }
 ```

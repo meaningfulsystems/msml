@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""MSML renderer — all 9 SysML diagram types. Modular, one class per diagram type."""
+"""MSML diagram renderer — renders .msmd diagram views backed by .msml models."""
 
 import json, math, sys
 from pathlib import Path
+from typing import Optional, Set, Tuple
 
 try:
     from PIL import Image, ImageDraw, ImageFont
@@ -89,11 +90,23 @@ class MSMLRenderer:
     FRAME_BORDER = 2
     TAB_HEIGHT   = 30
 
-    def __init__(self, data: dict):
+    def __init__(self, data: dict, model: Optional[dict] = None):
         d = data["diagram"]
         self.d = d
         self.elements = {e["id"]: e for e in d.get("elements", [])}
         self.relationships = d.get("relationships", [])
+        self.model = model or {"definitions": {}, "relationships": []}
+        self.definitions = self.model.get("definitions", {})
+        self.model_relationships = {
+            r["id"]: r
+            for r in self.model.get("relationships", [])
+            if isinstance(r, dict) and "id" in r
+        }
+        self.model_ref_to_element_ids = {}
+        for e in d.get("elements", []):
+            ref = e.get("model_ref")
+            if ref:
+                self.model_ref_to_element_ids.setdefault(ref, []).append(e["id"])
         c = d["canvas"]
         self.cw, self.ch = c["width"], c["height"]
         self.ox = self.FRAME_BORDER
@@ -154,9 +167,39 @@ class MSMLRenderer:
     # ------------------------------------------------------------ elements
 
     def _draw_element(self, draw, el):
+        el = self._resolve_element(el)
         handler = getattr(self, f"_draw_{el['type']}", None)
         if handler:
             handler(draw, el)
+
+    def _resolve_element(self, el: dict) -> dict:
+        model_ref = el.get("model_ref")
+        if not model_ref:
+            return el
+        if model_ref not in self.definitions:
+            raise KeyError(f"Unresolved model_ref {model_ref!r} in element {el.get('id')!r}")
+        return {**self.definitions[model_ref], **el}
+
+    def _resolve_relationship(self, rel: dict) -> dict:
+        relationship_ref = rel.get("relationship_ref")
+        if not relationship_ref:
+            return rel
+        if relationship_ref not in self.model_relationships:
+            raise KeyError(
+                f"Unresolved relationship_ref {relationship_ref!r} in relationship {rel.get('id')!r}"
+            )
+        return {**self.model_relationships[relationship_ref], **rel}
+
+    def _element_id_for_ref(self, ref: str) -> str:
+        if ref in self.elements:
+            return ref
+        ids = self.model_ref_to_element_ids.get(ref)
+        if ids:
+            return ids[0]
+        raise KeyError(f"Cannot find diagram element for reference {ref!r}")
+
+    def _label(self, el: dict) -> str:
+        return el.get("display_name") or el.get("role_name") or el.get("name", "")
 
     # Shared element types used across multiple diagram types
 
@@ -206,8 +249,11 @@ class MSMLRenderer:
     # --------------------------------------------------------- relationships
 
     def _draw_relationship(self, draw, rel):
-        src_el = self.elements.get(rel.get("source",""))
-        tgt_el = self.elements.get(rel.get("target",""))
+        rel = self._resolve_relationship(rel)
+        src_ref = rel.get("source", "")
+        tgt_ref = rel.get("target", "")
+        src_el = self.elements.get(self._element_id_for_ref(src_ref)) if src_ref else None
+        tgt_el = self.elements.get(self._element_id_for_ref(tgt_ref)) if tgt_ref else None
         if not src_el or not tgt_el:
             return
         rtype  = rel.get("type","")
@@ -416,7 +462,7 @@ class BDDRenderer(MSMLRenderer):
         if ops:   comps.append(ops)
         self._stereotype_block(draw, x,y,w,h,
                                el.get("stereotype","block"),
-                               el.get("name",""), comps,
+                               self._label(el), comps,
                                fill, border, bw, r=4,
                                font_size=int(st.get("font",{}).get("size",12)))
 
@@ -425,7 +471,7 @@ class BDDRenderer(MSMLRenderer):
         x,y,w,h = self.cx(lo["x"]), self.cy(lo["y"]), lo["width"], lo["height"]
         fill   = parse_color(st.get("fill_color","#FFF8DC"))
         border = parse_color(st.get("border_color","#8B6914"))
-        self._stereotype_block(draw, x,y,w,h, "value type", el.get("name",""), [],
+        self._stereotype_block(draw, x,y,w,h, "value type", self._label(el), [],
                                fill, border, r=4,
                                font_size=int(st.get("font",{}).get("size",12)))
 
@@ -434,7 +480,7 @@ class BDDRenderer(MSMLRenderer):
         x,y,w,h = self.cx(lo["x"]), self.cy(lo["y"]), lo["width"], lo["height"]
         fill   = parse_color(st.get("fill_color","#E8F4FD"))
         border = parse_color(st.get("border_color","#2E86AB"))
-        self._stereotype_block(draw, x,y,w,h, "interface block", el.get("name",""), [],
+        self._stereotype_block(draw, x,y,w,h, "interface block", self._label(el), [],
                                fill, border, r=4,
                                font_size=int(st.get("font",{}).get("size",12)))
 
@@ -455,9 +501,9 @@ class IBDRenderer(MSMLRenderer):
         self._box(draw, x,y,w,h, fill, border, bw, r)
         font = load_font(int(st.get("font",{}).get("size",11)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        label = el.get("name","")
-        if el.get("type_ref"):
-            label = f"{label}:{el['type_ref']}"
+        role = el.get("role_name")
+        type_name = el.get("name", el.get("type_ref", ""))
+        label = el.get("display_name") or (f"{role}:{type_name}" if role and type_name else self._label(el))
         center_text(draw, x, y, w, 34, label, font, fc)
         draw.line([(x+bw, y+34),(x+w-bw, y+34)], fill=border, width=1)
 
@@ -480,7 +526,7 @@ class IBDRenderer(MSMLRenderer):
         self._dashed_poly(draw,
             [(x,y),(x+w,y),(x+w,y+h),(x,y+h),(x,y)], border, 1)
         font = load_font(11)
-        center_text(draw, x, y, w, h, el.get("name",""), font, border)
+        center_text(draw, x, y, w, h, self._label(el), font, border)
 
 
 # ---------------------------------------------------------------------------
@@ -499,7 +545,7 @@ class ActivityRenderer(MSMLRenderer):
         self._box(draw, x,y,w,h, fill, border, bw, r)
         font = load_font(int(st.get("font",{}).get("size",11)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        center_text(draw, x, y, w, h, el.get("name",""), font, fc)
+        center_text(draw, x, y, w, h, self._label(el), font, fc)
 
     def _draw_call_behavior_action(self, draw, el):
         self._draw_action(draw, el)
@@ -518,10 +564,11 @@ class ActivityRenderer(MSMLRenderer):
         fill   = parse_color(st.get("fill_color","#FFFFFF"))
         border = parse_color(st.get("border_color","#333333"))
         draw.polygon(pts, fill=fill, outline=border)
-        if el.get("name"):
+        label = self._label(el)
+        if label:
             font = load_font(9)
-            tw, th = tbbox(draw, el["name"], font)
-            draw.text((cx2-tw/2, cy2-th/2), el["name"],
+            tw, th = tbbox(draw, label, font)
+            draw.text((cx2-tw/2, cy2-th/2), label,
                       fill=parse_color(st.get("font",{}).get("color","#000000")), font=font)
 
     def _draw_fork_node(self, draw, el):
@@ -543,8 +590,9 @@ class ActivityRenderer(MSMLRenderer):
         border = parse_color(st.get("border_color","#999999"))
         draw.rectangle([x,y,x+w,y+h], fill=fill, outline=border, width=1)
         font = load_font(11)
-        tw, _ = tbbox(draw, el.get("name",""), font)
-        draw.text((x+6, y+4), el.get("name",""),
+        label = self._label(el)
+        tw, _ = tbbox(draw, label, font)
+        draw.text((x+6, y+4), label,
                   fill=parse_color(st.get("font",{}).get("color","#555555")), font=font)
 
 
@@ -594,7 +642,7 @@ class SequenceRenderer(MSMLRenderer):
         draw.rectangle([x,y,x+w,y+head_h], fill=fill, outline=border, width=2)
         font = load_font(int(st.get("font",{}).get("size",11)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        center_text(draw, x, y, w, head_h, el.get("name",""), font, fc)
+        center_text(draw, x, y, w, head_h, self._label(el), font, fc)
 
     def _draw_execution_occurrence(self, draw, el):
         lo, st = el["layout"], el.get("style",{})
@@ -604,11 +652,14 @@ class SequenceRenderer(MSMLRenderer):
         draw.rectangle([x,y,x+w,y+h], fill=fill, outline=border, width=1)
 
     def _draw_relationship(self, draw, rel):
+        rel = self._resolve_relationship(rel)
         if rel.get("type") != "message":
             super()._draw_relationship(draw, rel)
             return
-        src = self.elements.get(rel["source_lifeline"])
-        tgt = self.elements.get(rel["target_lifeline"])
+        src_ref = rel.get("source_lifeline") or rel.get("source")
+        tgt_ref = rel.get("target_lifeline") or rel.get("target")
+        src = self.elements.get(self._element_id_for_ref(src_ref))
+        tgt = self.elements.get(self._element_id_for_ref(tgt_ref))
         if not src or not tgt:
             return
         msg_y = self.cy(rel.get("layout",{}).get("y", 100))
@@ -659,8 +710,9 @@ class StateMachineRenderer(MSMLRenderer):
         name_font = load_font(int(font_cfg.get("size",12)))
         fc = parse_color(font_cfg.get("color","#000000"))
         name_h = 34
-        nw,nh = tbbox(draw, el.get("name",""), name_font)
-        draw.text((x+(w-nw)/2, y+(name_h-nh)/2), el.get("name",""), fill=fc, font=name_font)
+        label = self._label(el)
+        nw,nh = tbbox(draw, label, name_font)
+        draw.text((x+(w-nw)/2, y+(name_h-nh)/2), label, fill=fc, font=name_font)
         div_y = int(y+name_h)
         draw.line([(x+bw,div_y),(x+w-bw,div_y)], fill=border, width=1)
         items = []
@@ -696,7 +748,7 @@ class UseCaseRenderer(MSMLRenderer):
         draw.line([(cx2-16,body_top+8),(cx2+16,body_top+8)], fill=fc, width=2)
         draw.line([(cx2,body_bot),(cx2-12,body_bot+14)], fill=fc, width=2)
         draw.line([(cx2,body_bot),(cx2+12,body_bot+14)], fill=fc, width=2)
-        name = el.get("name","")
+        name = self._label(el)
         font = load_font(int(st.get("font",{}).get("size",11)))
         tw,_ = tbbox(draw, name, font)
         draw.text((cx2-tw/2, y+h-18), name, fill=fc, font=font)
@@ -709,7 +761,7 @@ class UseCaseRenderer(MSMLRenderer):
         draw.ellipse([x,y,x+w,y+h], fill=fill, outline=border, width=2)
         font = load_font(int(st.get("font",{}).get("size",11)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        center_text(draw, x, y, w, h, el.get("name",""), font, fc)
+        center_text(draw, x, y, w, h, self._label(el), font, fc)
 
     def _draw_system_boundary(self, draw, el):
         lo, st = el["layout"], el.get("style",{})
@@ -717,7 +769,7 @@ class UseCaseRenderer(MSMLRenderer):
         border = parse_color(st.get("border_color","#555555"))
         draw.rectangle([x,y,x+w,y+h], outline=border, width=2)
         font = load_font(11)
-        draw.text((x+6, y+4), el.get("name",""), fill=border, font=font)
+        draw.text((x+6, y+4), self._label(el), fill=border, font=font)
 
 
 # ---------------------------------------------------------------------------
@@ -743,8 +795,9 @@ class RequirementRenderer(MSMLRenderer):
         div1 = y+20
         draw.line([(x+bw,div1),(x+w-bw,div1)], fill=border, width=1)
         # name
-        nw,nh = tbbox(draw, el.get("name",""), bf)
-        draw.text((x+(w-nw)/2, div1+4), el.get("name",""), fill=fc, font=bf)
+        label = self._label(el)
+        nw,nh = tbbox(draw, label, bf)
+        draw.text((x+(w-nw)/2, div1+4), label, fill=fc, font=bf)
         div2 = div1+nh+10
         draw.line([(x+bw,div2),(x+w-bw,div2)], fill=border, width=1)
         # text
@@ -756,7 +809,7 @@ class RequirementRenderer(MSMLRenderer):
         x,y,w,h = self.cx(lo["x"]), self.cy(lo["y"]), lo["width"], lo["height"]
         fill   = parse_color(st.get("fill_color","#E8F5E9"))
         border = parse_color(st.get("border_color","#2E7D32"))
-        self._stereotype_block(draw, x,y,w,h, "testCase", el.get("name",""), [],
+        self._stereotype_block(draw, x,y,w,h, "testCase", self._label(el), [],
                                fill, border, r=4, font_size=11)
 
 
@@ -781,8 +834,9 @@ class ParametricRenderer(MSMLRenderer):
         header_h = 20
         div = y+header_h
         draw.line([(x+bw,div),(x+w-bw,div)], fill=border, width=1)
-        nw,nh = tbbox(draw, el.get("name",""), bf)
-        draw.text((x+(w-nw)/2, div+3), el.get("name",""), fill=fc, font=bf)
+        label = self._label(el)
+        nw,nh = tbbox(draw, label, bf)
+        draw.text((x+(w-nw)/2, div+3), label, fill=fc, font=bf)
         # parameters
         params = el.get("parameters",[])
         if params:
@@ -804,7 +858,7 @@ class ParametricRenderer(MSMLRenderer):
         draw.rectangle([x,y,x+w,y+h], fill=fill, outline=border, width=1)
         font = load_font(int(st.get("font",{}).get("size",10)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        center_text(draw, x, y, w, h, el.get("name",""), font, fc)
+        center_text(draw, x, y, w, h, self._label(el), font, fc)
 
 
 # ---------------------------------------------------------------------------
@@ -835,7 +889,7 @@ class PackageRenderer(MSMLRenderer):
         draw.rectangle([x,y+tab_h,x+w,y+h], fill=fill, outline=border, width=bw)
         font = load_font(int(st.get("font",{}).get("size",12)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        name = el.get("name","")
+        name = self._label(el)
         if stereotype:
             sf = load_font(9)
             draw.text((x+4, y+1), f"«{stereotype}»", fill=border, font=sf)
@@ -852,7 +906,7 @@ class PackageRenderer(MSMLRenderer):
         draw.rectangle([x,y,x+w,y+h], fill=fill, outline=border, width=bw)
         font = load_font(int(st.get("font",{}).get("size",11)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
-        center_text(draw, x, y, w, 30, el.get("name",""), font, fc)
+        center_text(draw, x, y, w, 30, self._label(el), font, fc)
         draw.line([(x+bw,y+30),(x+w-bw,y+30)], fill=border, width=1)
 
 
@@ -873,18 +927,69 @@ RENDERER_MAP = {
 }
 
 
-def render(msml_path, output_path=None):
-    src = Path(msml_path)
-    dst = Path(output_path) if output_path else src.with_suffix(".png")
-    with open(src) as f:
+def load_model(model_path: Path, seen: Optional[Set[Path]] = None) -> dict:
+    seen = seen or set()
+    model_path = model_path.resolve()
+    if model_path in seen:
+        return {"definitions": {}, "relationships": []}
+    seen.add(model_path)
+    with open(model_path) as f:
         data = json.load(f)
+    if "model" not in data:
+        raise ValueError(f"{model_path} is not an MSML model file")
+    model = data["model"]
+    definitions = {}
+    relationships = []
+
+    imports = model.get("imports", [])
+    if isinstance(imports, str):
+        imports = [imports]
+    for import_path in imports:
+        imported = load_model(model_path.parent / import_path, seen)
+        definitions.update(imported["definitions"])
+        relationships.extend(imported["relationships"])
+
+    for definition in model.get("definitions", []):
+        if "id" not in definition:
+            raise ValueError(f"Definition without id in {model_path}")
+        definitions[definition["id"]] = definition
+    relationships.extend(model.get("relationships", []))
+    return {"definitions": definitions, "relationships": relationships}
+
+
+def load_diagram(diagram_path: Path) -> Tuple[dict, dict]:
+    with open(diagram_path) as f:
+        data = json.load(f)
+    if "diagram" not in data:
+        raise ValueError(f"{diagram_path} is not an MSMD diagram file")
+
+    model_files = data.get("model_files", data.get("model_file"))
+    if not model_files:
+        raise ValueError(f"{diagram_path} must declare model_file or model_files")
+    if isinstance(model_files, str):
+        model_files = [model_files]
+
+    model = {"definitions": {}, "relationships": []}
+    for model_file in model_files:
+        loaded = load_model(diagram_path.parent / model_file)
+        model["definitions"].update(loaded["definitions"])
+        model["relationships"].extend(loaded["relationships"])
+    return data, model
+
+
+def render(diagram_path, output_path=None):
+    src = Path(diagram_path)
+    if src.suffix != ".msmd":
+        raise ValueError("render_msml.py renders .msmd diagram files only")
+    dst = Path(output_path) if output_path else src.with_suffix(".png")
+    data, model = load_diagram(src)
     dtype = data["diagram"]["type"]
-    RENDERER_MAP.get(dtype, MSMLRenderer)(data).render(dst)
+    RENDERER_MAP.get(dtype, MSMLRenderer)(data, model=model).render(dst)
 
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python render_msml.py <file.msml> [output.png]")
+        print("Usage: python render_msml.py <file.msmd> [output.png]")
         sys.exit(1)
     render(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
 

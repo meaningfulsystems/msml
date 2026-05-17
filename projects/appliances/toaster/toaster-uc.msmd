@@ -57,7 +57,6 @@
       {
         "type": "actor",
         "id": "actor-user",
-        "name": "User",
         "layout": {
           "x": 30,
           "y": 180,
@@ -77,7 +76,6 @@
       {
         "type": "actor",
         "id": "actor-power",
-        "name": "Power Grid",
         "layout": {
           "x": 720,
           "y": 180,
@@ -97,7 +95,6 @@
       {
         "type": "use_case",
         "id": "uc-toast",
-        "name": "Toast Bread",
         "layout": {
           "x": 240,
           "y": 70,
@@ -119,7 +116,6 @@
       {
         "type": "use_case",
         "id": "uc-browning",
-        "name": "Adjust Browning",
         "layout": {
           "x": 240,
           "y": 175,
@@ -141,7 +137,6 @@
       {
         "type": "use_case",
         "id": "uc-cancel",
-        "name": "Cancel Toast",
         "layout": {
           "x": 240,
           "y": 280,
@@ -163,7 +158,6 @@
       {
         "type": "use_case",
         "id": "uc-reset",
-        "name": "Reset Error",
         "layout": {
           "x": 240,
           "y": 375,
@@ -185,7 +179,6 @@
       {
         "type": "use_case",
         "id": "uc-heat",
-        "name": "Activate Heating",
         "layout": {
           "x": 460,
           "y": 70,
@@ -207,10 +200,7 @@
     ],
     "relationships": [
       {
-        "type": "association",
         "id": "a1",
-        "source": "actor-user",
-        "target": "uc-toast",
         "waypoints": [
           {
             "x": 90,
@@ -227,13 +217,11 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "uc-toaster.a1"
       },
       {
-        "type": "association",
         "id": "a2",
-        "source": "actor-user",
-        "target": "uc-browning",
         "waypoints": [
           {
             "x": 90,
@@ -250,13 +238,11 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "uc-toaster.a2"
       },
       {
-        "type": "association",
         "id": "a3",
-        "source": "actor-user",
-        "target": "uc-cancel",
         "waypoints": [
           {
             "x": 90,
@@ -273,13 +259,11 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "uc-toaster.a3"
       },
       {
-        "type": "association",
         "id": "a4",
-        "source": "actor-user",
-        "target": "uc-reset",
         "waypoints": [
           {
             "x": 90,
@@ -296,13 +280,11 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "uc-toaster.a4"
       },
       {
-        "type": "association",
         "id": "a5",
-        "source": "actor-power",
-        "target": "uc-toast",
         "waypoints": [
           {
             "x": 720,
@@ -319,13 +301,11 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "uc-toaster.a5"
       },
       {
-        "type": "include",
         "id": "i1",
-        "source": "uc-toast",
-        "target": "uc-heat",
         "waypoints": [
           {
             "x": 420,
@@ -346,7 +326,8 @@
             "x": 0,
             "y": -16
           }
-        }
+        },
+        "relationship_ref": "uc-toaster.i1"
       }
     ],
     "metadata": {
@@ -358,5 +339,6 @@
         "use-case"
       ]
     }
-  }
+  },
+  "model_file": "toaster-model.msml"
 }
