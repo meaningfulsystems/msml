@@ -2,8 +2,8 @@
   "msml_version": "1.0",
   "diagram": {
     "type": "bdd",
-    "id": "bdd-hos-context",
-    "name": "Humanity Optimization System Context",
+    "id": "bdd-hos-definition",
+    "name": "Humanity Optimization System Definition",
     "context": "HOS",
     "frame": {
       "visible": true,
@@ -22,29 +22,31 @@
       }
     },
     "canvas": {
-      "width": 1040,
-      "height": 620,
+      "width": 1100,
+      "height": 660,
       "background_color": "#FAFAFA",
       "grid": { "enabled": true, "size": 10, "snap": true }
     },
     "elements": [
       {
         "type": "block",
-        "id": "hos",
-        "name": "Humanity Optimization System",
-        "stereotype": "socio-technical system",
+        "id": "block-hos",
+        "name": "HumanityOptimizationSystem",
+        "stereotype": "block",
         "compartments": {
           "properties": [
-            { "name": "purpose", "type": "decision support", "multiplicity": "1" },
-            { "name": "constraint", "type": "preserve human agency", "multiplicity": "1" }
+            { "name": "mission", "type": "CivilizationDecisionSupport", "multiplicity": "1" },
+            { "name": "agencyConstraint", "type": "HumanAgencyPreservation", "multiplicity": "1" },
+            { "name": "objectiveSet", "type": "PluralHumanAndEcologicalGoals", "multiplicity": "*" }
           ],
           "operations": [
-            { "name": "understand_context", "parameters": [], "return_type": "insight" },
-            { "name": "evaluate_interventions", "parameters": [], "return_type": "options" },
-            { "name": "communicate_recommendations", "parameters": [], "return_type": "briefing" }
+            { "name": "observeWorld", "parameters": [], "return_type": "EvidenceSet" },
+            { "name": "modelFutures", "parameters": [], "return_type": "ScenarioSet" },
+            { "name": "evaluateInterventions", "parameters": [], "return_type": "OptionPortfolio" },
+            { "name": "briefDecisionMakers", "parameters": [], "return_type": "DecisionBrief" }
           ]
         },
-        "layout": { "x": 370, "y": 235, "width": 300, "height": 150, "z_index": 1 },
+        "layout": { "x": 375, "y": 40, "width": 350, "height": 190, "z_index": 1 },
         "style": {
           "fill_color": "#EAF2F8",
           "border_color": "#2E5E87",
@@ -55,127 +57,175 @@
       },
       {
         "type": "block",
-        "id": "humanity",
-        "name": "Humanity",
-        "stereotype": "stakeholder",
+        "id": "block-evidence",
+        "name": "EvidenceRepository",
+        "stereotype": "block",
         "compartments": {
           "properties": [
-            { "name": "values", "type": "plural", "multiplicity": "*" },
-            { "name": "needs", "type": "present and future", "multiplicity": "*" }
+            { "name": "observations", "type": "WorldSignal", "multiplicity": "*" },
+            { "name": "assumptions", "type": "Assumption", "multiplicity": "*" }
+          ],
+          "operations": [
+            { "name": "ingestSignals", "parameters": [], "return_type": "void" },
+            { "name": "publishEvidence", "parameters": [], "return_type": "EvidenceSet" }
           ]
         },
-        "layout": { "x": 70, "y": 70, "width": 210, "height": 110, "z_index": 1 },
-        "style": { "fill_color": "#FFF7E6", "border_color": "#9A6418", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+        "layout": { "x": 40, "y": 330, "width": 220, "height": 135, "z_index": 1 },
+        "style": { "fill_color": "#E7F4EF", "border_color": "#207567", "border_width": 2, "font": { "family": "Arial", "size": 11, "color": "#000000" } }
       },
       {
         "type": "block",
-        "id": "future-generations",
-        "name": "Future Generations",
-        "stereotype": "protected interest",
+        "id": "block-scenarios",
+        "name": "ScenarioModel",
+        "stereotype": "block",
         "compartments": {
           "properties": [
-            { "name": "voice", "type": "indirect", "multiplicity": "1" },
-            { "name": "horizon", "type": "long term", "multiplicity": "1" }
+            { "name": "futures", "type": "PossibleFuture", "multiplicity": "*" },
+            { "name": "uncertainty", "type": "ConfidenceRange", "multiplicity": "*" }
+          ],
+          "operations": [
+            { "name": "simulatePathways", "parameters": [], "return_type": "ScenarioSet" }
           ]
         },
-        "layout": { "x": 760, "y": 70, "width": 220, "height": 110, "z_index": 1 },
-        "style": { "fill_color": "#E8F5E9", "border_color": "#2E7D32", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+        "layout": { "x": 310, "y": 330, "width": 220, "height": 135, "z_index": 1 },
+        "style": { "fill_color": "#F2ECF8", "border_color": "#6D4C9A", "border_width": 2, "font": { "family": "Arial", "size": 11, "color": "#000000" } }
       },
       {
         "type": "block",
-        "id": "earth-biosphere",
-        "name": "Earth and Biosphere",
-        "stereotype": "life-support context",
+        "id": "block-evaluator",
+        "name": "InterventionEvaluator",
+        "stereotype": "block",
         "compartments": {
           "properties": [
-            { "name": "signals", "type": "ecological conditions", "multiplicity": "*" },
-            { "name": "limits", "type": "planetary boundaries", "multiplicity": "*" }
+            { "name": "portfolios", "type": "InterventionPortfolio", "multiplicity": "*" },
+            { "name": "tradeons", "type": "MultiObjectiveGain", "multiplicity": "*" }
+          ],
+          "operations": [
+            { "name": "rankOptions", "parameters": [], "return_type": "OptionPortfolio" }
           ]
         },
-        "layout": { "x": 70, "y": 420, "width": 240, "height": 110, "z_index": 1 },
-        "style": { "fill_color": "#E7F4EF", "border_color": "#207567", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+        "layout": { "x": 580, "y": 330, "width": 220, "height": 135, "z_index": 1 },
+        "style": { "fill_color": "#FFF7E6", "border_color": "#9A6418", "border_width": 2, "font": { "family": "Arial", "size": 11, "color": "#000000" } }
       },
       {
         "type": "block",
-        "id": "technology-resources",
-        "name": "Technology and Resources",
-        "stereotype": "external system",
+        "id": "block-ethics",
+        "name": "EthicalConstraintGuard",
+        "stereotype": "block",
         "compartments": {
           "properties": [
-            { "name": "pathways", "type": "energy, AI, space, food", "multiplicity": "*" },
-            { "name": "constraints", "type": "scarcity and capacity", "multiplicity": "*" }
+            { "name": "constraints", "type": "AgencyTransparencyJusticeRule", "multiplicity": "*" },
+            { "name": "protectedInterests", "type": "StakeholderInterest", "multiplicity": "*" }
+          ],
+          "operations": [
+            { "name": "screenOptions", "parameters": [], "return_type": "EthicsAssessment" }
           ]
         },
-        "layout": { "x": 730, "y": 420, "width": 250, "height": 110, "z_index": 1 },
-        "style": { "fill_color": "#FCEDE8", "border_color": "#B5522C", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+        "layout": { "x": 840, "y": 330, "width": 230, "height": 135, "z_index": 1 },
+        "style": { "fill_color": "#E8F5E9", "border_color": "#2E7D32", "border_width": 2, "font": { "family": "Arial", "size": 11, "color": "#000000" } }
       },
       {
         "type": "block",
-        "id": "decision-makers",
-        "name": "Human Decision Makers",
-        "stereotype": "actor",
+        "id": "block-briefing",
+        "name": "DecisionBriefingInterface",
+        "stereotype": "interface block",
         "compartments": {
           "properties": [
-            { "name": "role", "type": "choose and act", "multiplicity": "*" },
-            { "name": "authority", "type": "human institutions", "multiplicity": "*" }
+            { "name": "brief", "type": "DecisionBrief", "multiplicity": "*" },
+            { "name": "explanation", "type": "TraceableRationale", "multiplicity": "*" }
+          ],
+          "operations": [
+            { "name": "publishBriefing", "parameters": [], "return_type": "void" }
           ]
         },
-        "layout": { "x": 390, "y": 40, "width": 260, "height": 110, "z_index": 1 },
-        "style": { "fill_color": "#F2ECF8", "border_color": "#6D4C9A", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+        "layout": { "x": 435, "y": 535, "width": 230, "height": 100, "z_index": 1 },
+        "style": { "fill_color": "#FCEDE8", "border_color": "#B5522C", "border_width": 2, "font": { "family": "Arial", "size": 11, "color": "#000000" } }
       }
     ],
     "relationships": [
       {
-        "type": "association",
-        "id": "rel-humanity-hos",
-        "name": "needs, values, lived experience",
-        "source": "humanity",
-        "target": "hos",
-        "waypoints": [{ "x": 280, "y": 125 }, { "x": 370, "y": 270 }],
-        "style": { "line_color": "#6E5632", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -45, "y": 15 } }
+        "type": "composition",
+        "id": "comp-hos-evidence",
+        "source": "block-hos",
+        "target": "block-evidence",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1",
+        "waypoints": [{ "x": 420, "y": 230 }, { "x": 420, "y": 280 }, { "x": 150, "y": 280 }, { "x": 150, "y": 330 }],
+        "style": { "line_color": "#2E5E87", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 8 }
       },
       {
-        "type": "association",
-        "id": "rel-earth-hos",
-        "name": "conditions and warning signals",
-        "source": "earth-biosphere",
-        "target": "hos",
-        "waypoints": [{ "x": 310, "y": 475 }, { "x": 370, "y": 350 }],
-        "style": { "line_color": "#207567", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -60, "y": -10 } }
+        "type": "composition",
+        "id": "comp-hos-scenarios",
+        "source": "block-hos",
+        "target": "block-scenarios",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1",
+        "waypoints": [{ "x": 500, "y": 230 }, { "x": 500, "y": 330 }],
+        "style": { "line_color": "#2E5E87", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 0 }
       },
       {
-        "type": "association",
-        "id": "rel-hos-future",
-        "name": "protects long-term interests",
-        "source": "hos",
-        "target": "future-generations",
-        "waypoints": [{ "x": 670, "y": 270 }, { "x": 760, "y": 125 }],
-        "style": { "line_color": "#2E7D32", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -20, "y": 15 } }
+        "type": "composition",
+        "id": "comp-hos-evaluator",
+        "source": "block-hos",
+        "target": "block-evaluator",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1",
+        "waypoints": [{ "x": 600, "y": 230 }, { "x": 600, "y": 330 }],
+        "style": { "line_color": "#2E5E87", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 0 }
       },
       {
-        "type": "association",
-        "id": "rel-hos-tech",
-        "name": "evaluates pathways and tradeoffs",
-        "source": "hos",
-        "target": "technology-resources",
-        "waypoints": [{ "x": 670, "y": 350 }, { "x": 730, "y": 475 }],
-        "style": { "line_color": "#B5522C", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -30, "y": -10 } }
+        "type": "composition",
+        "id": "comp-hos-ethics",
+        "source": "block-hos",
+        "target": "block-ethics",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1",
+        "waypoints": [{ "x": 680, "y": 230 }, { "x": 680, "y": 280 }, { "x": 955, "y": 280 }, { "x": 955, "y": 330 }],
+        "style": { "line_color": "#2E5E87", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 8 }
       },
       {
-        "type": "association",
-        "id": "rel-hos-decision",
-        "name": "supports judgment, not control",
-        "source": "hos",
-        "target": "decision-makers",
-        "waypoints": [{ "x": 520, "y": 235 }, { "x": 520, "y": 150 }],
-        "style": { "line_color": "#6D4C9A", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": 10, "y": 0 } }
+        "type": "composition",
+        "id": "comp-hos-briefing",
+        "source": "block-hos",
+        "target": "block-briefing",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1",
+        "waypoints": [{ "x": 550, "y": 230 }, { "x": 550, "y": 535 }],
+        "style": { "line_color": "#2E5E87", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 0 }
+      },
+      {
+        "type": "dependency",
+        "id": "dep-evidence-scenario",
+        "name": "evidence",
+        "source": "block-scenarios",
+        "target": "block-evidence",
+        "waypoints": [{ "x": 310, "y": 420 }, { "x": 260, "y": 420 }],
+        "style": { "line_color": "#555555", "line_width": 1.5, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 0, "label_offset": { "x": -12, "y": -12 } }
+      },
+      {
+        "type": "dependency",
+        "id": "dep-evaluator-scenario",
+        "name": "scenarios",
+        "source": "block-evaluator",
+        "target": "block-scenarios",
+        "waypoints": [{ "x": 580, "y": 420 }, { "x": 530, "y": 420 }],
+        "style": { "line_color": "#555555", "line_width": 1.5, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 0, "label_offset": { "x": -15, "y": -12 } }
+      },
+      {
+        "type": "dependency",
+        "id": "dep-ethics-evaluator",
+        "name": "options",
+        "source": "block-ethics",
+        "target": "block-evaluator",
+        "waypoints": [{ "x": 840, "y": 420 }, { "x": 800, "y": 420 }],
+        "style": { "line_color": "#555555", "line_width": 1.5, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 0, "label_offset": { "x": -12, "y": -12 } }
       }
     ],
     "metadata": {
       "author": "Codex",
       "created": "2026-05-17",
       "modified": "2026-05-17",
-      "tags": ["humanity-optimization", "context", "operational-concept"]
+      "tags": ["humanity-optimization", "bdd", "operational-concept"]
     }
   }
 }

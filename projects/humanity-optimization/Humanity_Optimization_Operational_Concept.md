@@ -32,7 +32,13 @@ For the Humanity Optimization System, that matters because the subject is too la
 
 At the highest level, HOS sits between human decision makers and the large systems they are trying to understand: humanity, Earth, the biosphere, technology, resources, institutions, and the long future.
 
-![Humanity Optimization System context](hos-context.png)
+The block definition view defines HOS as a system made of evidence, scenarios, intervention evaluation, ethical constraint checking, and decision briefing.
+
+![Humanity Optimization System definition](hos-context.png)
+
+The internal block view then treats that system as part of a larger context. Humanity, Earth and the biosphere, future generations, human decision makers, and technology/resource systems exchange information with HOS through explicit ports.
+
+![Humanity Optimization System context](hos-context-ibd.png)
 
 The system listens to human needs, values, and lived experience. It watches ecological and technological signals. It evaluates possible futures. It looks for risks, opportunities, tradeoffs, and tradeons.
 
@@ -124,6 +130,7 @@ That means a blog post like this can also be the beginning of a model.
 The diagrams above were rendered from MSML source files:
 
 - [`hos-context.msml`](https://github.com/meaningfulsystems/msml/blob/main/projects/humanity-optimization/hos-context.msml)
+- [`hos-context-ibd.msml`](https://github.com/meaningfulsystems/msml/blob/main/projects/humanity-optimization/hos-context-ibd.msml)
 - [`hos-operating-loop.msml`](https://github.com/meaningfulsystems/msml/blob/main/projects/humanity-optimization/hos-operating-loop.msml)
 - [`hos-decision-support-sequence.msml`](https://github.com/meaningfulsystems/msml/blob/main/projects/humanity-optimization/hos-decision-support-sequence.msml)
 

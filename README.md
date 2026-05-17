@@ -77,7 +77,8 @@ The renderer writes PNG files next to their `.msml` sources.
 The Humanity Optimization System operational concept is a blog-post-style example of using MSML to model a civilization-scale decision-support system.
 
 - [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
-- [Context diagram source](projects/humanity-optimization/hos-context.msml)
+- [HOS definition BDD source](projects/humanity-optimization/hos-context.msml)
+- [HOS context IBD source](projects/humanity-optimization/hos-context-ibd.msml)
 - [Operating loop source](projects/humanity-optimization/hos-operating-loop.msml)
 - [Decision-support sequence source](projects/humanity-optimization/hos-decision-support-sequence.msml)
 
