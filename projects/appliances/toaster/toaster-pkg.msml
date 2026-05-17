@@ -1,0 +1,316 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "package",
+    "id": "pkg-toaster",
+    "name": "Toaster Model",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 800,
+      "height": 480,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "model",
+        "id": "pkg-root",
+        "name": "ToasterModel",
+        "layout": {
+          "x": 20,
+          "y": 20,
+          "width": 760,
+          "height": 440,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F5F5FF",
+          "border_color": "#445588",
+          "border_width": 2,
+          "font": {
+            "size": 13,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Model"
+      },
+      {
+        "type": "package",
+        "id": "pkg-structural",
+        "name": "Structural",
+        "layout": {
+          "x": 50,
+          "y": 80,
+          "width": 200,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#DDEEFF",
+          "border_color": "#336699",
+          "border_width": 1,
+          "font": {
+            "size": 12,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Model.Structural"
+      },
+      {
+        "type": "class",
+        "id": "cls-toaster",
+        "name": "Toaster",
+        "layout": {
+          "x": 70,
+          "y": 130,
+          "width": 160,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#336699",
+          "border_width": 1,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "class",
+        "id": "cls-element",
+        "name": "HeatingElement",
+        "layout": {
+          "x": 70,
+          "y": 195,
+          "width": 160,
+          "height": 35,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#336699",
+          "border_width": 1,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-behavioral",
+        "name": "Behavioral",
+        "layout": {
+          "x": 300,
+          "y": 80,
+          "width": 200,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "size": 12,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Model.Behavioral"
+      },
+      {
+        "type": "class",
+        "id": "cls-stm",
+        "name": "ToasterSTM",
+        "layout": {
+          "x": 320,
+          "y": 130,
+          "width": 160,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "class",
+        "id": "cls-act",
+        "name": "ToastingActivity",
+        "layout": {
+          "x": 320,
+          "y": 195,
+          "width": 160,
+          "height": 35,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-control",
+        "name": "Control",
+        "layout": {
+          "x": 550,
+          "y": 80,
+          "width": 200,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "size": 12,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Model.Control"
+      },
+      {
+        "type": "class",
+        "id": "cls-req",
+        "name": "Requirements",
+        "layout": {
+          "x": 570,
+          "y": 130,
+          "width": 160,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "class",
+        "id": "cls-par",
+        "name": "Parametric",
+        "layout": {
+          "x": 570,
+          "y": 195,
+          "width": 160,
+          "height": 35,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "dependency",
+        "id": "d1",
+        "source": "pkg-behavioral",
+        "target": "pkg-structural",
+        "waypoints": [
+          {
+            "x": 300,
+            "y": 160
+          },
+          {
+            "x": 250,
+            "y": 160
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 0
+        }
+      },
+      {
+        "type": "dependency",
+        "id": "d2",
+        "source": "pkg-control",
+        "target": "pkg-behavioral",
+        "waypoints": [
+          {
+            "x": 550,
+            "y": 160
+          },
+          {
+            "x": 500,
+            "y": 160
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 0
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "package"
+      ]
+    }
+  }
+}

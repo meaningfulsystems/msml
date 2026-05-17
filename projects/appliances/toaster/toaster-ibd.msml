@@ -1,0 +1,331 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-toaster",
+    "name": "Toaster Internal Structure",
+    "context": "Toaster",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 880,
+      "height": 460,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-lever",
+        "name": "lever",
+        "type_ref": "Lever",
+        "layout": {
+          "x": 50,
+          "y": 170,
+          "width": 160,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Lever"
+      },
+      {
+        "type": "port",
+        "id": "port-lever-ctrl",
+        "name": "ctrl",
+        "layout": {
+          "x": 204,
+          "y": 202,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A"
+        },
+        "owner_ref": "part-lever"
+      },
+      {
+        "type": "part",
+        "id": "part-timer",
+        "name": "timer",
+        "type_ref": "Timer",
+        "layout": {
+          "x": 310,
+          "y": 170,
+          "width": 180,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Timer"
+      },
+      {
+        "type": "port",
+        "id": "port-timer-in",
+        "name": "in",
+        "layout": {
+          "x": 304,
+          "y": 202,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914"
+        },
+        "owner_ref": "part-timer"
+      },
+      {
+        "type": "port",
+        "id": "port-timer-out",
+        "name": "signal",
+        "layout": {
+          "x": 484,
+          "y": 202,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914"
+        },
+        "owner_ref": "part-timer"
+      },
+      {
+        "type": "part",
+        "id": "part-element",
+        "name": "element",
+        "type_ref": "HeatingElement",
+        "layout": {
+          "x": 590,
+          "y": 100,
+          "width": 200,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.HeatingElement"
+      },
+      {
+        "type": "port",
+        "id": "port-element-ctrl",
+        "name": "ctrl",
+        "layout": {
+          "x": 584,
+          "y": 132,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#CC4400"
+        },
+        "owner_ref": "part-element"
+      },
+      {
+        "type": "port",
+        "id": "port-element-heat",
+        "name": "heatSignal",
+        "layout": {
+          "x": 685,
+          "y": 174,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#CC4400"
+        },
+        "owner_ref": "part-element"
+      },
+      {
+        "type": "part",
+        "id": "part-carriage",
+        "name": "carriage",
+        "type_ref": "Carriage",
+        "layout": {
+          "x": 590,
+          "y": 290,
+          "width": 200,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Carriage"
+      },
+      {
+        "type": "port",
+        "id": "port-carriage-heat",
+        "name": "heatSignal",
+        "layout": {
+          "x": 685,
+          "y": 284,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32"
+        },
+        "owner_ref": "part-carriage"
+      }
+    ],
+    "relationships": [
+      {
+        "type": "connector",
+        "id": "conn-lever-timer",
+        "source": "port-lever-ctrl",
+        "target": "port-timer-in",
+        "waypoints": [
+          {
+            "x": 216,
+            "y": 208
+          },
+          {
+            "x": 304,
+            "y": 208
+          }
+        ],
+        "style": {
+          "line_color": "#444444",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 0
+        }
+      },
+      {
+        "type": "connector",
+        "id": "conn-timer-element",
+        "source": "port-timer-out",
+        "target": "port-element-ctrl",
+        "waypoints": [
+          {
+            "x": 496,
+            "y": 208
+          },
+          {
+            "x": 545,
+            "y": 208
+          },
+          {
+            "x": 545,
+            "y": 138
+          },
+          {
+            "x": 584,
+            "y": 138
+          }
+        ],
+        "style": {
+          "line_color": "#444444",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "connector",
+        "id": "conn-element-carriage",
+        "source": "port-element-heat",
+        "target": "port-carriage-heat",
+        "waypoints": [
+          {
+            "x": 691,
+            "y": 186
+          },
+          {
+            "x": 691,
+            "y": 284
+          }
+        ],
+        "style": {
+          "line_color": "#444444",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 0
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "ibd"
+      ]
+    }
+  }
+}

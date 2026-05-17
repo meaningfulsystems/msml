@@ -1,0 +1,280 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "sequence",
+    "id": "sd-toaster",
+    "name": "Toast Bread",
+    "context": "Toaster",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 820,
+      "height": 440,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "lifeline",
+        "id": "ll-user",
+        "name": ":User",
+        "layout": {
+          "x": 50,
+          "y": 20,
+          "width": 110,
+          "height": 390,
+          "head_height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F4FD",
+          "border_color": "#2E86AB",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.User"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-toaster",
+        "name": ":Toaster",
+        "layout": {
+          "x": 240,
+          "y": 20,
+          "width": 110,
+          "height": 390,
+          "head_height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-timer",
+        "name": ":Timer",
+        "layout": {
+          "x": 440,
+          "y": 20,
+          "width": 110,
+          "height": 390,
+          "head_height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Timer"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-element",
+        "name": ":HeatingElement",
+        "layout": {
+          "x": 640,
+          "y": 20,
+          "width": 140,
+          "height": 390,
+          "head_height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.HeatingElement"
+      },
+      {
+        "type": "execution_occurrence",
+        "id": "exec-toaster",
+        "layout": {
+          "x": 291,
+          "y": 84,
+          "width": 8,
+          "height": 290,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFD0AA",
+          "border_color": "#E65100"
+        }
+      },
+      {
+        "type": "execution_occurrence",
+        "id": "exec-timer",
+        "layout": {
+          "x": 491,
+          "y": 124,
+          "width": 8,
+          "height": 140,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFE082",
+          "border_color": "#8B6914"
+        }
+      },
+      {
+        "type": "execution_occurrence",
+        "id": "exec-element",
+        "layout": {
+          "x": 706,
+          "y": 154,
+          "width": 8,
+          "height": 140,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFCDD2",
+          "border_color": "#CC4400"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "message",
+        "id": "m1",
+        "name": "pressLever()",
+        "source_lifeline": "ll-user",
+        "target_lifeline": "ll-toaster",
+        "message_sort": "synch_call",
+        "layout": {
+          "y": 90
+        },
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5
+        }
+      },
+      {
+        "type": "message",
+        "id": "m2",
+        "name": "start(90s)",
+        "source_lifeline": "ll-toaster",
+        "target_lifeline": "ll-timer",
+        "message_sort": "asynch_signal",
+        "layout": {
+          "y": 130
+        },
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5
+        }
+      },
+      {
+        "type": "message",
+        "id": "m3",
+        "name": "activate()",
+        "source_lifeline": "ll-toaster",
+        "target_lifeline": "ll-element",
+        "message_sort": "asynch_signal",
+        "layout": {
+          "y": 160
+        },
+        "style": {
+          "line_color": "#CC4400",
+          "line_width": 1.5
+        }
+      },
+      {
+        "type": "message",
+        "id": "m4",
+        "name": "timerExpired",
+        "source_lifeline": "ll-timer",
+        "target_lifeline": "ll-toaster",
+        "message_sort": "asynch_signal",
+        "layout": {
+          "y": 260
+        },
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5
+        }
+      },
+      {
+        "type": "message",
+        "id": "m5",
+        "name": "deactivate()",
+        "source_lifeline": "ll-toaster",
+        "target_lifeline": "ll-element",
+        "message_sort": "synch_call",
+        "layout": {
+          "y": 290
+        },
+        "style": {
+          "line_color": "#CC4400",
+          "line_width": 1.5
+        }
+      },
+      {
+        "type": "message",
+        "id": "m6",
+        "name": ":ready",
+        "source_lifeline": "ll-toaster",
+        "target_lifeline": "ll-user",
+        "message_sort": "reply",
+        "layout": {
+          "y": 350
+        },
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "sequence"
+      ]
+    }
+  }
+}

@@ -1,0 +1,362 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "use_case",
+    "id": "uc-toaster",
+    "name": "Toaster Use Cases",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 820,
+      "height": 500,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "system_boundary",
+        "id": "sys-toaster",
+        "name": "Toaster",
+        "layout": {
+          "x": 160,
+          "y": 30,
+          "width": 480,
+          "height": 440,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F8F8FF",
+          "border_color": "#555588",
+          "border_width": 2
+        }
+      },
+      {
+        "type": "actor",
+        "id": "actor-user",
+        "name": "User",
+        "layout": {
+          "x": 30,
+          "y": 180,
+          "width": 60,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "border_color": "#333333",
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Actor.User"
+      },
+      {
+        "type": "actor",
+        "id": "actor-power",
+        "name": "Power Grid",
+        "layout": {
+          "x": 720,
+          "y": 180,
+          "width": 60,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "border_color": "#336699",
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.Actor.PowerGrid"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-toast",
+        "name": "Toast Bread",
+        "layout": {
+          "x": 240,
+          "y": 70,
+          "width": 180,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.UC.ToastBread"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-browning",
+        "name": "Adjust Browning",
+        "layout": {
+          "x": 240,
+          "y": 175,
+          "width": 180,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.UC.AdjustBrowning"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-cancel",
+        "name": "Cancel Toast",
+        "layout": {
+          "x": 240,
+          "y": 280,
+          "width": 180,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.UC.CancelToast"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-reset",
+        "name": "Reset Error",
+        "layout": {
+          "x": 240,
+          "y": 375,
+          "width": 180,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.UC.ResetError"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-heat",
+        "name": "Activate Heating",
+        "layout": {
+          "x": 460,
+          "y": 70,
+          "width": 160,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.UC.ActivateHeating"
+      }
+    ],
+    "relationships": [
+      {
+        "type": "association",
+        "id": "a1",
+        "source": "actor-user",
+        "target": "uc-toast",
+        "waypoints": [
+          {
+            "x": 90,
+            "y": 228
+          },
+          {
+            "x": 240,
+            "y": 100
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "association",
+        "id": "a2",
+        "source": "actor-user",
+        "target": "uc-browning",
+        "waypoints": [
+          {
+            "x": 90,
+            "y": 228
+          },
+          {
+            "x": 240,
+            "y": 205
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "association",
+        "id": "a3",
+        "source": "actor-user",
+        "target": "uc-cancel",
+        "waypoints": [
+          {
+            "x": 90,
+            "y": 228
+          },
+          {
+            "x": 240,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "association",
+        "id": "a4",
+        "source": "actor-user",
+        "target": "uc-reset",
+        "waypoints": [
+          {
+            "x": 90,
+            "y": 228
+          },
+          {
+            "x": 240,
+            "y": 405
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "association",
+        "id": "a5",
+        "source": "actor-power",
+        "target": "uc-toast",
+        "waypoints": [
+          {
+            "x": 720,
+            "y": 228
+          },
+          {
+            "x": 620,
+            "y": 100
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none"
+        }
+      },
+      {
+        "type": "include",
+        "id": "i1",
+        "source": "uc-toast",
+        "target": "uc-heat",
+        "waypoints": [
+          {
+            "x": 420,
+            "y": 100
+          },
+          {
+            "x": 460,
+            "y": 100
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "use-case"
+      ]
+    }
+  }
+}

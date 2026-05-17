@@ -1,0 +1,455 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "activity",
+    "id": "act-toaster",
+    "name": "Toasting Process",
+    "context": "Toaster",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 700,
+      "height": 580,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "initial_node",
+        "id": "init",
+        "layout": {
+          "x": 340,
+          "y": 20,
+          "width": 20,
+          "height": 20,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-insert",
+        "name": "Insert Bread",
+        "layout": {
+          "x": 250,
+          "y": 70,
+          "width": 200,
+          "height": 50,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.ToastingActivity.InsertBread"
+      },
+      {
+        "type": "action",
+        "id": "act-press",
+        "name": "Press Lever Down",
+        "layout": {
+          "x": 250,
+          "y": 165,
+          "width": 200,
+          "height": 50,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.ToastingActivity.PressLever"
+      },
+      {
+        "type": "fork_node",
+        "id": "fork1",
+        "layout": {
+          "x": 315,
+          "y": 260,
+          "width": 70,
+          "height": 8,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-timer",
+        "name": "Start Timer",
+        "layout": {
+          "x": 80,
+          "y": 310,
+          "width": 170,
+          "height": 50,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.ToastingActivity.StartTimer"
+      },
+      {
+        "type": "action",
+        "id": "act-heat",
+        "name": "Heat Element",
+        "layout": {
+          "x": 450,
+          "y": 310,
+          "width": 170,
+          "height": 50,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.ToastingActivity.HeatElement"
+      },
+      {
+        "type": "join_node",
+        "id": "join1",
+        "layout": {
+          "x": 315,
+          "y": 415,
+          "width": 70,
+          "height": 8,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-pop",
+        "name": "Pop Carriage",
+        "layout": {
+          "x": 250,
+          "y": 460,
+          "width": 200,
+          "height": 50,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        },
+        "model_ref": "Toaster.ToastingActivity.PopCarriage"
+      },
+      {
+        "type": "activity_final_node",
+        "id": "final",
+        "layout": {
+          "x": 340,
+          "y": 550,
+          "width": 20,
+          "height": 20,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000",
+          "border_color": "#000000"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "control_flow",
+        "id": "f1",
+        "source": "init",
+        "target": "act-insert",
+        "waypoints": [
+          {
+            "x": 350,
+            "y": 40
+          },
+          {
+            "x": 350,
+            "y": 70
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 0
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f2",
+        "source": "act-insert",
+        "target": "act-press",
+        "waypoints": [
+          {
+            "x": 350,
+            "y": 120
+          },
+          {
+            "x": 350,
+            "y": 165
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 0
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f3",
+        "source": "act-press",
+        "target": "fork1",
+        "waypoints": [
+          {
+            "x": 350,
+            "y": 215
+          },
+          {
+            "x": 350,
+            "y": 260
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 0
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f4",
+        "source": "fork1",
+        "target": "act-timer",
+        "waypoints": [
+          {
+            "x": 330,
+            "y": 268
+          },
+          {
+            "x": 330,
+            "y": 290
+          },
+          {
+            "x": 165,
+            "y": 290
+          },
+          {
+            "x": 165,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f5",
+        "source": "fork1",
+        "target": "act-heat",
+        "waypoints": [
+          {
+            "x": 370,
+            "y": 268
+          },
+          {
+            "x": 370,
+            "y": 290
+          },
+          {
+            "x": 535,
+            "y": 290
+          },
+          {
+            "x": 535,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f6",
+        "source": "act-timer",
+        "target": "join1",
+        "waypoints": [
+          {
+            "x": 165,
+            "y": 360
+          },
+          {
+            "x": 165,
+            "y": 390
+          },
+          {
+            "x": 330,
+            "y": 390
+          },
+          {
+            "x": 330,
+            "y": 415
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f7",
+        "source": "act-heat",
+        "target": "join1",
+        "waypoints": [
+          {
+            "x": 535,
+            "y": 360
+          },
+          {
+            "x": 535,
+            "y": 390
+          },
+          {
+            "x": 370,
+            "y": 390
+          },
+          {
+            "x": 370,
+            "y": 415
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f8",
+        "source": "join1",
+        "target": "act-pop",
+        "waypoints": [
+          {
+            "x": 350,
+            "y": 423
+          },
+          {
+            "x": 350,
+            "y": 460
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 0
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f9",
+        "source": "act-pop",
+        "target": "final",
+        "waypoints": [
+          {
+            "x": 350,
+            "y": 510
+          },
+          {
+            "x": 350,
+            "y": 550
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "corner_radius": 0
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": [
+        "toaster",
+        "activity"
+      ]
+    }
+  }
+}

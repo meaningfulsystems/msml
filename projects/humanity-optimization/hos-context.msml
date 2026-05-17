@@ -1,0 +1,181 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "bdd",
+    "id": "bdd-hos-context",
+    "name": "Humanity Optimization System Context",
+    "context": "HOS",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1040,
+      "height": 620,
+      "background_color": "#FAFAFA",
+      "grid": { "enabled": true, "size": 10, "snap": true }
+    },
+    "elements": [
+      {
+        "type": "block",
+        "id": "hos",
+        "name": "Humanity Optimization System",
+        "stereotype": "socio-technical system",
+        "compartments": {
+          "properties": [
+            { "name": "purpose", "type": "decision support", "multiplicity": "1" },
+            { "name": "constraint", "type": "preserve human agency", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "understand_context", "parameters": [], "return_type": "insight" },
+            { "name": "evaluate_interventions", "parameters": [], "return_type": "options" },
+            { "name": "communicate_recommendations", "parameters": [], "return_type": "briefing" }
+          ]
+        },
+        "layout": { "x": 370, "y": 235, "width": 300, "height": 150, "z_index": 1 },
+        "style": {
+          "fill_color": "#EAF2F8",
+          "border_color": "#2E5E87",
+          "border_width": 2,
+          "border_style": "solid",
+          "font": { "family": "Arial", "size": 12, "bold": true, "color": "#111111" }
+        }
+      },
+      {
+        "type": "block",
+        "id": "humanity",
+        "name": "Humanity",
+        "stereotype": "stakeholder",
+        "compartments": {
+          "properties": [
+            { "name": "values", "type": "plural", "multiplicity": "*" },
+            { "name": "needs", "type": "present and future", "multiplicity": "*" }
+          ]
+        },
+        "layout": { "x": 70, "y": 70, "width": 210, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFF7E6", "border_color": "#9A6418", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "block",
+        "id": "future-generations",
+        "name": "Future Generations",
+        "stereotype": "protected interest",
+        "compartments": {
+          "properties": [
+            { "name": "voice", "type": "indirect", "multiplicity": "1" },
+            { "name": "horizon", "type": "long term", "multiplicity": "1" }
+          ]
+        },
+        "layout": { "x": 760, "y": 70, "width": 220, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#E8F5E9", "border_color": "#2E7D32", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "block",
+        "id": "earth-biosphere",
+        "name": "Earth and Biosphere",
+        "stereotype": "life-support context",
+        "compartments": {
+          "properties": [
+            { "name": "signals", "type": "ecological conditions", "multiplicity": "*" },
+            { "name": "limits", "type": "planetary boundaries", "multiplicity": "*" }
+          ]
+        },
+        "layout": { "x": 70, "y": 420, "width": 240, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#E7F4EF", "border_color": "#207567", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "block",
+        "id": "technology-resources",
+        "name": "Technology and Resources",
+        "stereotype": "external system",
+        "compartments": {
+          "properties": [
+            { "name": "pathways", "type": "energy, AI, space, food", "multiplicity": "*" },
+            { "name": "constraints", "type": "scarcity and capacity", "multiplicity": "*" }
+          ]
+        },
+        "layout": { "x": 730, "y": 420, "width": 250, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FCEDE8", "border_color": "#B5522C", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "block",
+        "id": "decision-makers",
+        "name": "Human Decision Makers",
+        "stereotype": "actor",
+        "compartments": {
+          "properties": [
+            { "name": "role", "type": "choose and act", "multiplicity": "*" },
+            { "name": "authority", "type": "human institutions", "multiplicity": "*" }
+          ]
+        },
+        "layout": { "x": 390, "y": 40, "width": 260, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#F2ECF8", "border_color": "#6D4C9A", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "association",
+        "id": "rel-humanity-hos",
+        "name": "needs, values, lived experience",
+        "source": "humanity",
+        "target": "hos",
+        "waypoints": [{ "x": 280, "y": 125 }, { "x": 370, "y": 270 }],
+        "style": { "line_color": "#6E5632", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -45, "y": 15 } }
+      },
+      {
+        "type": "association",
+        "id": "rel-earth-hos",
+        "name": "conditions and warning signals",
+        "source": "earth-biosphere",
+        "target": "hos",
+        "waypoints": [{ "x": 310, "y": 475 }, { "x": 370, "y": 350 }],
+        "style": { "line_color": "#207567", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -60, "y": -10 } }
+      },
+      {
+        "type": "association",
+        "id": "rel-hos-future",
+        "name": "protects long-term interests",
+        "source": "hos",
+        "target": "future-generations",
+        "waypoints": [{ "x": 670, "y": 270 }, { "x": 760, "y": 125 }],
+        "style": { "line_color": "#2E7D32", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -20, "y": 15 } }
+      },
+      {
+        "type": "association",
+        "id": "rel-hos-tech",
+        "name": "evaluates pathways and tradeoffs",
+        "source": "hos",
+        "target": "technology-resources",
+        "waypoints": [{ "x": 670, "y": 350 }, { "x": 730, "y": 475 }],
+        "style": { "line_color": "#B5522C", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": -30, "y": -10 } }
+      },
+      {
+        "type": "association",
+        "id": "rel-hos-decision",
+        "name": "supports judgment, not control",
+        "source": "hos",
+        "target": "decision-makers",
+        "waypoints": [{ "x": 520, "y": 235 }, { "x": 520, "y": 150 }],
+        "style": { "line_color": "#6D4C9A", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "open", "label_offset": { "x": 10, "y": 0 } }
+      }
+    ],
+    "metadata": {
+      "author": "Codex",
+      "created": "2026-05-17",
+      "modified": "2026-05-17",
+      "tags": ["humanity-optimization", "context", "operational-concept"]
+    }
+  }
+}

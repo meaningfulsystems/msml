@@ -1,0 +1,115 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "requirement",
+    "id": "req-toaster",
+    "name": "Toaster Requirements",
+    "context": "Appliance",
+    "frame": { "visible": true, "style": { "border_color": "#333333", "border_width": 1.5, "border_style": "solid", "fill_color": "#FFFFFF", "tab": { "fill_color": "#FFFFFF", "border_color": "#333333", "padding_x": 8, "padding_y": 4, "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } } } },
+    "canvas": { "width": 1200, "height": 760, "background_color": "#FAFAFA", "grid": { "enabled": true, "size": 10, "snap": true } },
+    "elements": [
+      {
+        "type": "requirement", "id": "req-001",
+        "name": "Toasting Capability", "req_id": "REQ-001",
+        "text": "System shall toast bread\nto user-selected browning.",
+        "kind": "functional", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-001",
+        "layout": { "x": 460, "y": 30, "width": 260, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#EEF2FF", "border_color": "#3949AB", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-001-1",
+        "name": "Heat Control", "req_id": "REQ-001.1",
+        "text": "Heating element shall reach\ntarget temp within 30s.",
+        "kind": "performance", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-001.1",
+        "layout": { "x": 20, "y": 220, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFEDE0", "border_color": "#CC4400", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-001-2",
+        "name": "Timer Function", "req_id": "REQ-001.2",
+        "text": "Timer shall support 1–5 min\nbrowning settings.",
+        "kind": "functional", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-001.2",
+        "layout": { "x": 270, "y": 220, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFF8DC", "border_color": "#8B6914", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-001-3",
+        "name": "Carriage Mechanism", "req_id": "REQ-001.3",
+        "text": "Carriage shall pop toast\nupon timer completion.",
+        "kind": "functional", "priority": "medium", "status": "approved",
+        "model_ref": "Toaster.REQ-001.3",
+        "layout": { "x": 520, "y": 220, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#E8F5E9", "border_color": "#2E7D32", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-001-4",
+        "name": "Browning Repeatability", "req_id": "REQ-001.4",
+        "text": "Same browning level shall\nproduce ±5% energy variance.",
+        "kind": "performance", "priority": "medium", "status": "proposed",
+        "model_ref": "Toaster.REQ-001.4",
+        "layout": { "x": 770, "y": 220, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFF3E0", "border_color": "#E65100", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-002",
+        "name": "Safety", "req_id": "REQ-002",
+        "text": "System shall detect overheat\nand shut down automatically.",
+        "kind": "design_constraint", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-002",
+        "layout": { "x": 460, "y": 420, "width": 260, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFEBEE", "border_color": "#C62828", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-002-1",
+        "name": "Overheat Detection", "req_id": "REQ-002.1",
+        "text": "ThermalCutoff shall trip\nbelow 300°C surface temp.",
+        "kind": "functional", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-002.1",
+        "layout": { "x": 270, "y": 610, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFEBEE", "border_color": "#C62828", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-002-2",
+        "name": "Auto Shutoff", "req_id": "REQ-002.2",
+        "text": "On trip: deactivate element\nand release carriage latch.",
+        "kind": "functional", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-002.2",
+        "layout": { "x": 520, "y": 610, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#FFEBEE", "border_color": "#C62828", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-003",
+        "name": "User Controls", "req_id": "REQ-003",
+        "text": "User shall control browning\nlevel and cancel toasting.",
+        "kind": "functional", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-003",
+        "layout": { "x": 900, "y": 420, "width": 260, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#F3E5F5", "border_color": "#6A1B9A", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      },
+      {
+        "type": "requirement", "id": "req-003-1",
+        "name": "Cancel / Eject", "req_id": "REQ-003.1",
+        "text": "Lever-up during toasting\nshall cancel and eject.",
+        "kind": "functional", "priority": "high", "status": "approved",
+        "model_ref": "Toaster.REQ-003.1",
+        "layout": { "x": 820, "y": 610, "width": 230, "height": 110, "z_index": 1 },
+        "style": { "fill_color": "#F3E5F5", "border_color": "#6A1B9A", "border_width": 2, "font": { "size": 11, "color": "#000000" } }
+      }
+    ],
+    "relationships": [
+      { "type": "containment", "id": "r1", "source": "req-001", "target": "req-001-1", "waypoints": [{ "x": 510, "y": 140 }, { "x": 510, "y": 180 }, { "x": 135, "y": 180 }, { "x": 135, "y": 220 }], "style": { "line_color": "#3949AB", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "containment", "id": "r2", "source": "req-001", "target": "req-001-2", "waypoints": [{ "x": 540, "y": 140 }, { "x": 540, "y": 180 }, { "x": 385, "y": 180 }, { "x": 385, "y": 220 }], "style": { "line_color": "#3949AB", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "containment", "id": "r3", "source": "req-001", "target": "req-001-3", "waypoints": [{ "x": 590, "y": 140 }, { "x": 590, "y": 180 }, { "x": 635, "y": 180 }, { "x": 635, "y": 220 }], "style": { "line_color": "#3949AB", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "containment", "id": "r4", "source": "req-001", "target": "req-001-4", "waypoints": [{ "x": 660, "y": 140 }, { "x": 660, "y": 180 }, { "x": 885, "y": 180 }, { "x": 885, "y": 220 }], "style": { "line_color": "#3949AB", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "containment", "id": "r5", "source": "req-002", "target": "req-002-1", "waypoints": [{ "x": 530, "y": 530 }, { "x": 530, "y": 570 }, { "x": 385, "y": 570 }, { "x": 385, "y": 610 }], "style": { "line_color": "#C62828", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "containment", "id": "r6", "source": "req-002", "target": "req-002-2", "waypoints": [{ "x": 590, "y": 530 }, { "x": 590, "y": 570 }, { "x": 635, "y": 570 }, { "x": 635, "y": 610 }], "style": { "line_color": "#C62828", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "containment", "id": "r7", "source": "req-003", "target": "req-003-1", "waypoints": [{ "x": 1000, "y": 530 }, { "x": 1000, "y": 570 }, { "x": 935, "y": 570 }, { "x": 935, "y": 610 }], "style": { "line_color": "#6A1B9A", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "none", "target_arrowhead": "filled", "corner_radius": 8 } },
+      { "type": "derive", "id": "d1", "source": "req-002", "target": "req-001", "waypoints": [{ "x": 460, "y": 475 }, { "x": 400, "y": 475 }, { "x": 400, "y": 100 }, { "x": 460, "y": 100 }], "style": { "line_color": "#C62828", "line_width": 1.5, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 8, "label_offset": { "x": -60, "y": 0 } } },
+      { "type": "derive", "id": "d2", "source": "req-003", "target": "req-001", "waypoints": [{ "x": 900, "y": 475 }, { "x": 850, "y": 475 }, { "x": 850, "y": 100 }, { "x": 720, "y": 100 }], "style": { "line_color": "#6A1B9A", "line_width": 1.5, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 8, "label_offset": { "x": 5, "y": 0 } } }
+    ],
+    "metadata": { "author": "Andrew Fried", "created": "2026-05-16", "modified": "2026-05-17", "tags": ["toaster","requirements"] }
+  }
+}

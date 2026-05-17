@@ -1,0 +1,179 @@
+{
+  "msml_version": "1.0",
+  "diagram": {
+    "type": "bdd",
+    "id": "bdd-toaster",
+    "name": "Toaster Block Definitions",
+    "context": "Appliance",
+    "frame": { "visible": true, "style": { "border_color": "#333333", "border_width": 1.5, "border_style": "solid", "fill_color": "#FFFFFF", "tab": { "fill_color": "#FFFFFF", "border_color": "#333333", "padding_x": 8, "padding_y": 4, "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } } } },
+    "canvas": { "width": 1100, "height": 660, "background_color": "#FAFAFA", "grid": { "enabled": true, "size": 10, "snap": true } },
+    "elements": [
+      {
+        "type": "block", "id": "block-toaster", "name": "Toaster", "stereotype": "block",
+        "model_ref": "Toaster",
+        "compartments": {
+          "properties": [
+            { "name": "voltage", "type": "V", "multiplicity": "1" },
+            { "name": "maxPower", "type": "W", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "toast", "parameters": [], "return_type": "void" },
+            { "name": "cancel", "parameters": [], "return_type": "void" }
+          ]
+        },
+        "layout": { "x": 430, "y": 30, "width": 240, "height": 140, "z_index": 1 },
+        "style": { "fill_color": "#DDEEFF", "border_color": "#336699", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 12, "bold": true, "color": "#000000" } }
+      },
+      {
+        "type": "block", "id": "block-element", "name": "HeatingElement", "stereotype": "block",
+        "model_ref": "Toaster.HeatingElement",
+        "compartments": {
+          "properties": [
+            { "name": "resistance", "type": "Ohm", "multiplicity": "1" },
+            { "name": "power", "type": "W", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "activate", "parameters": [], "return_type": "void" },
+            { "name": "deactivate", "parameters": [], "return_type": "void" }
+          ]
+        },
+        "layout": { "x": 20, "y": 260, "width": 200, "height": 130, "z_index": 1 },
+        "style": { "fill_color": "#FFEDE0", "border_color": "#CC4400", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } }
+      },
+      {
+        "type": "block", "id": "block-timer", "name": "Timer", "stereotype": "block",
+        "model_ref": "Toaster.Timer",
+        "compartments": {
+          "properties": [
+            { "name": "duration", "type": "s", "multiplicity": "1" },
+            { "name": "browning", "type": "Integer", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "start", "parameters": [], "return_type": "void" },
+            { "name": "stop", "parameters": [], "return_type": "void" }
+          ]
+        },
+        "layout": { "x": 250, "y": 260, "width": 200, "height": 130, "z_index": 1 },
+        "style": { "fill_color": "#FFF8DC", "border_color": "#8B6914", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } }
+      },
+      {
+        "type": "block", "id": "block-carriage", "name": "Carriage", "stereotype": "block",
+        "model_ref": "Toaster.Carriage",
+        "compartments": {
+          "properties": [
+            { "name": "position", "type": "mm", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "lower", "parameters": [], "return_type": "void" },
+            { "name": "pop", "parameters": [], "return_type": "void" }
+          ]
+        },
+        "layout": { "x": 480, "y": 260, "width": 200, "height": 120, "z_index": 1 },
+        "style": { "fill_color": "#E8F5E9", "border_color": "#2E7D32", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } }
+      },
+      {
+        "type": "block", "id": "block-lever", "name": "Lever", "stereotype": "block",
+        "model_ref": "Toaster.Lever",
+        "compartments": {
+          "properties": [
+            { "name": "position", "type": "String", "multiplicity": "1" }
+          ],
+          "operations": []
+        },
+        "layout": { "x": 720, "y": 260, "width": 190, "height": 100, "z_index": 1 },
+        "style": { "fill_color": "#F3E5F5", "border_color": "#6A1B9A", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } }
+      },
+      {
+        "type": "block", "id": "block-thermal", "name": "ThermalCutoff", "stereotype": "block",
+        "model_ref": "Toaster.ThermalCutoff",
+        "compartments": {
+          "properties": [
+            { "name": "cutoffTemp", "type": "degC", "multiplicity": "1" },
+            { "name": "tripped", "type": "Boolean", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "monitor", "parameters": [], "return_type": "void" },
+            { "name": "trip", "parameters": [], "return_type": "void" }
+          ]
+        },
+        "layout": { "x": 250, "y": 490, "width": 220, "height": 130, "z_index": 1 },
+        "style": { "fill_color": "#FFEBEE", "border_color": "#C62828", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } }
+      },
+      {
+        "type": "block", "id": "block-browning", "name": "BrowningControl", "stereotype": "block",
+        "model_ref": "Toaster.BrowningControl",
+        "compartments": {
+          "properties": [
+            { "name": "level", "type": "Integer", "multiplicity": "1" },
+            { "name": "targetEnergy", "type": "J", "multiplicity": "1" }
+          ],
+          "operations": [
+            { "name": "setLevel", "parameters": [], "return_type": "void" },
+            { "name": "computeDuration", "parameters": [], "return_type": "s" }
+          ]
+        },
+        "layout": { "x": 510, "y": 490, "width": 220, "height": 130, "z_index": 1 },
+        "style": { "fill_color": "#FFF3E0", "border_color": "#E65100", "border_width": 2, "border_style": "solid", "font": { "family": "Arial", "size": 11, "bold": false, "color": "#000000" } }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "composition", "id": "c-toaster-element",
+        "source": "block-toaster", "target": "block-element",
+        "multiplicity_source": "1", "multiplicity_target": "1",
+        "waypoints": [{ "x": 460, "y": 170 }, { "x": 460, "y": 210 }, { "x": 120, "y": 210 }, { "x": 120, "y": 260 }],
+        "style": { "line_color": "#336699", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 10 }
+      },
+      {
+        "type": "composition", "id": "c-toaster-timer",
+        "source": "block-toaster", "target": "block-timer",
+        "multiplicity_source": "1", "multiplicity_target": "1",
+        "waypoints": [{ "x": 500, "y": 170 }, { "x": 500, "y": 210 }, { "x": 350, "y": 210 }, { "x": 350, "y": 260 }],
+        "style": { "line_color": "#336699", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 10 }
+      },
+      {
+        "type": "composition", "id": "c-toaster-carriage",
+        "source": "block-toaster", "target": "block-carriage",
+        "multiplicity_source": "1", "multiplicity_target": "1",
+        "waypoints": [{ "x": 550, "y": 170 }, { "x": 550, "y": 210 }, { "x": 580, "y": 210 }, { "x": 580, "y": 260 }],
+        "style": { "line_color": "#336699", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 10 }
+      },
+      {
+        "type": "composition", "id": "c-toaster-lever",
+        "source": "block-toaster", "target": "block-lever",
+        "multiplicity_source": "1", "multiplicity_target": "1",
+        "waypoints": [{ "x": 610, "y": 170 }, { "x": 610, "y": 210 }, { "x": 815, "y": 210 }, { "x": 815, "y": 260 }],
+        "style": { "line_color": "#336699", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 10 }
+      },
+      {
+        "type": "composition", "id": "c-toaster-thermal",
+        "source": "block-toaster", "target": "block-thermal",
+        "multiplicity_source": "1", "multiplicity_target": "1",
+        "waypoints": [{ "x": 480, "y": 170 }, { "x": 480, "y": 440 }, { "x": 360, "y": 440 }, { "x": 360, "y": 490 }],
+        "style": { "line_color": "#C62828", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 10 }
+      },
+      {
+        "type": "composition", "id": "c-toaster-browning",
+        "source": "block-toaster", "target": "block-browning",
+        "multiplicity_source": "1", "multiplicity_target": "1",
+        "waypoints": [{ "x": 570, "y": 170 }, { "x": 570, "y": 440 }, { "x": 620, "y": 440 }, { "x": 620, "y": 490 }],
+        "style": { "line_color": "#E65100", "line_width": 1.5, "line_style": "solid", "source_arrowhead": "composition", "target_arrowhead": "none", "corner_radius": 10 }
+      },
+      {
+        "type": "association", "id": "a-thermal-element",
+        "source": "block-thermal", "target": "block-element",
+        "waypoints": [{ "x": 280, "y": 490 }, { "x": 280, "y": 390 }, { "x": 120, "y": 390 }],
+        "style": { "line_color": "#C62828", "line_width": 1, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 8, "label_offset": { "x": 5, "y": -14 } },
+        "name": "monitors"
+      },
+      {
+        "type": "association", "id": "a-browning-timer",
+        "source": "block-browning", "target": "block-timer",
+        "waypoints": [{ "x": 530, "y": 490 }, { "x": 530, "y": 390 }, { "x": 350, "y": 390 }],
+        "style": { "line_color": "#E65100", "line_width": 1, "line_style": "dashed", "source_arrowhead": "none", "target_arrowhead": "open", "corner_radius": 8, "label_offset": { "x": 5, "y": -14 } },
+        "name": "configures"
+      }
+    ],
+    "metadata": { "author": "Andrew Fried", "created": "2026-05-16", "modified": "2026-05-17", "tags": ["toaster","bdd"] }
+  }
+}
