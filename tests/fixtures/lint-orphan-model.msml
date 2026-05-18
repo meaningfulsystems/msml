@@ -1,0 +1,29 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "fixture-lint-orphan",
+    "name": "Fixture Lint Orphan Model",
+    "namespace": "Fixture",
+    "imports": [],
+    "definitions": [
+      {
+        "id": "Fixture.Used",
+        "type": "block",
+        "name": "Used"
+      },
+      {
+        "id": "Fixture.Orphan",
+        "type": "block",
+        "name": "Orphan"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "fixture.orphan-rel",
+        "type": "association",
+        "source": "Fixture.Used",
+        "target": "Fixture.Orphan"
+      }
+    ]
+  }
+}

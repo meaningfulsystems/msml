@@ -17,7 +17,7 @@
         "name": "Evaluate Intervention Portfolios"
       },
       {
-        "id": "HOS.Activity.ForkNode.Fork",
+        "id": "HOS.Activity.OperatingLoop.Fork.RiskReview",
         "type": "fork_node",
         "name": "Fork"
       },
@@ -32,12 +32,12 @@
         "name": "Inform Human Decisions"
       },
       {
-        "id": "HOS.Activity.InitialNode.Start",
+        "id": "HOS.Activity.OperatingLoop.Start",
         "type": "initial_node",
         "name": "Start"
       },
       {
-        "id": "HOS.Activity.JoinNode.Join",
+        "id": "HOS.Activity.OperatingLoop.Join.AfterEthicsAndPortfolio",
         "type": "join_node",
         "name": "Join"
       },
@@ -221,61 +221,61 @@
         }
       },
       {
-        "id": "HOS.IBD.Port.PortDecisionBrief",
+        "id": "HOS.Port.DecisionBriefInput",
         "type": "port",
         "name": "decisionBrief",
         "owner_ref": "HOS.DecisionMakers"
       },
       {
-        "id": "HOS.IBD.Port.PortEarthSignals",
+        "id": "HOS.Port.EarthSignalsOutput",
         "type": "port",
         "name": "conditions",
         "owner_ref": "HOS.EarthBiosphere"
       },
       {
-        "id": "HOS.IBD.Port.PortFutureInterest",
+        "id": "HOS.Port.FutureInterestOutput",
         "type": "port",
         "name": "protectedInterest",
         "owner_ref": "HOS.FutureGenerations"
       },
       {
-        "id": "HOS.IBD.Port.PortHosBrief",
+        "id": "HOS.Port.HosDecisionBriefOutput",
         "type": "port",
         "name": "briefOut",
         "owner_ref": "HOS.HumanityOptimizationSystem"
       },
       {
-        "id": "HOS.IBD.Port.PortHosFuture",
+        "id": "HOS.Port.HosFutureInterestInput",
         "type": "port",
         "name": "futureInterest",
         "owner_ref": "HOS.HumanityOptimizationSystem"
       },
       {
-        "id": "HOS.IBD.Port.PortHosPathways",
+        "id": "HOS.Port.HosPathwayQueryOutput",
         "type": "port",
         "name": "pathwayQuery",
         "owner_ref": "HOS.HumanityOptimizationSystem"
       },
       {
-        "id": "HOS.IBD.Port.PortHosValues",
+        "id": "HOS.Port.HosValuesInput",
         "type": "port",
         "name": "valuesIn",
         "owner_ref": "HOS.HumanityOptimizationSystem"
       },
       {
-        "id": "HOS.IBD.Port.PortHosWorld",
+        "id": "HOS.Port.HosWorldSignalsInput",
         "type": "port",
         "name": "worldSignals",
         "owner_ref": "HOS.HumanityOptimizationSystem"
       },
       {
-        "id": "HOS.IBD.Port.PortHumanityValues",
+        "id": "HOS.Port.HumanityValuesOutput",
         "type": "port",
         "name": "needsValues",
         "owner_ref": "HOS.Humanity"
       },
       {
-        "id": "HOS.IBD.Port.PortTechPathways",
+        "id": "HOS.Port.TechnologyPathwaysInput",
         "type": "port",
         "name": "pathways",
         "owner_ref": "HOS.TechnologyResources"
@@ -308,19 +308,19 @@
         }
       },
       {
-        "id": "HOS.SEQ.ExecutionOccurrence.ExecEvidence",
+        "id": "HOS.Sequence.Execution.EvidenceModeling",
         "type": "execution_occurrence",
         "name": "Exec Evidence",
         "lifeline_ref": "HOS.EvidenceAndModels"
       },
       {
-        "id": "HOS.SEQ.ExecutionOccurrence.ExecGovernance",
+        "id": "HOS.Sequence.Execution.GovernanceReview",
         "type": "execution_occurrence",
         "name": "Exec Governance",
         "lifeline_ref": "HOS.GovernanceSystem"
       },
       {
-        "id": "HOS.SEQ.ExecutionOccurrence.ExecHos",
+        "id": "HOS.Sequence.Execution.HosAnalysis",
         "type": "execution_occurrence",
         "name": "Exec Hos",
         "lifeline_ref": "HOS.HumanityOptimizationSystem"
@@ -363,7 +363,7 @@
       {
         "id": "act-hos-operating-loop.f1",
         "type": "control_flow",
-        "source": "HOS.Activity.InitialNode.Start",
+        "source": "HOS.Activity.OperatingLoop.Start",
         "target": "HOS.Activity.ObserveWorld"
       },
       {
@@ -389,36 +389,36 @@
         "id": "act-hos-operating-loop.f4",
         "type": "control_flow",
         "source": "HOS.Activity.IdentifyRisks",
-        "target": "HOS.Activity.ForkNode.Fork"
+        "target": "HOS.Activity.OperatingLoop.Fork.RiskReview"
       },
       {
         "id": "act-hos-operating-loop.f5",
         "type": "control_flow",
-        "source": "HOS.Activity.ForkNode.Fork",
+        "source": "HOS.Activity.OperatingLoop.Fork.RiskReview",
         "target": "HOS.Activity.EvaluatePortfolios"
       },
       {
         "id": "act-hos-operating-loop.f6",
         "type": "control_flow",
-        "source": "HOS.Activity.ForkNode.Fork",
+        "source": "HOS.Activity.OperatingLoop.Fork.RiskReview",
         "target": "HOS.Activity.CheckEthics"
       },
       {
         "id": "act-hos-operating-loop.f7",
         "type": "control_flow",
         "source": "HOS.Activity.EvaluatePortfolios",
-        "target": "HOS.Activity.JoinNode.Join"
+        "target": "HOS.Activity.OperatingLoop.Join.AfterEthicsAndPortfolio"
       },
       {
         "id": "act-hos-operating-loop.f8",
         "type": "control_flow",
         "source": "HOS.Activity.CheckEthics",
-        "target": "HOS.Activity.JoinNode.Join"
+        "target": "HOS.Activity.OperatingLoop.Join.AfterEthicsAndPortfolio"
       },
       {
         "id": "act-hos-operating-loop.f9",
         "type": "control_flow",
-        "source": "HOS.Activity.JoinNode.Join",
+        "source": "HOS.Activity.OperatingLoop.Join.AfterEthicsAndPortfolio",
         "target": "HOS.Activity.InformDecisions"
       },
       {
@@ -485,36 +485,36 @@
       {
         "id": "ibd-hos-system-context.conn-earth-hos",
         "type": "connector",
-        "source": "HOS.IBD.Port.PortEarthSignals",
-        "target": "HOS.IBD.Port.PortHosWorld",
+        "source": "HOS.Port.EarthSignalsOutput",
+        "target": "HOS.Port.HosWorldSignalsInput",
         "name": "conditions and warning signals"
       },
       {
         "id": "ibd-hos-system-context.conn-future-hos",
         "type": "connector",
-        "source": "HOS.IBD.Port.PortFutureInterest",
-        "target": "HOS.IBD.Port.PortHosFuture",
+        "source": "HOS.Port.FutureInterestOutput",
+        "target": "HOS.Port.HosFutureInterestInput",
         "name": "future interest model"
       },
       {
         "id": "ibd-hos-system-context.conn-hos-decision",
         "type": "connector",
-        "source": "HOS.IBD.Port.PortHosBrief",
-        "target": "HOS.IBD.Port.PortDecisionBrief",
+        "source": "HOS.Port.HosDecisionBriefOutput",
+        "target": "HOS.Port.DecisionBriefInput",
         "name": "decision brief"
       },
       {
         "id": "ibd-hos-system-context.conn-humanity-hos",
         "type": "connector",
-        "source": "HOS.IBD.Port.PortHumanityValues",
-        "target": "HOS.IBD.Port.PortHosValues",
+        "source": "HOS.Port.HumanityValuesOutput",
+        "target": "HOS.Port.HosValuesInput",
         "name": "needs, values, lived experience"
       },
       {
         "id": "ibd-hos-system-context.conn-tech-hos",
         "type": "connector",
-        "source": "HOS.IBD.Port.PortTechPathways",
-        "target": "HOS.IBD.Port.PortHosPathways",
+        "source": "HOS.Port.TechnologyPathwaysInput",
+        "target": "HOS.Port.HosPathwayQueryOutput",
         "name": "pathways, resources, constraints"
       },
       {

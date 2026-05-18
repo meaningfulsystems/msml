@@ -2,10 +2,11 @@
 """Validate MSML model and diagram files."""
 
 import argparse
-import json
 import re
 import sys
 from pathlib import Path
+
+from .io import load_model_documents, read_json_file
 
 
 HEX_COLOR = re.compile(r"^#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?$")
@@ -25,6 +26,7 @@ POSITIONED_TYPES = {
     "join_node",
     "decision_node",
     "merge_node",
+    "partition",
     "action",
     "call_behavior_action",
     "object_node",
@@ -56,6 +58,10 @@ class Reporter:
         self.warnings += 1
         print(f"WARN   {path}  {scope}  {code}: {message}")
 
+    def merge(self, other: "Reporter"):
+        self.errors += other.errors
+        self.warnings += other.warnings
+
 
 def relpath(path: Path) -> str:
     try:
@@ -66,56 +72,40 @@ def relpath(path: Path) -> str:
 
 def read_json(path: Path, reporter: Reporter):
     try:
-        with open(path) as f:
-            return json.load(f)
+        return read_json_file(path)
     except Exception as exc:
         reporter.error(relpath(path), "file", "MSML-SCHEMA-001", str(exc))
         return None
 
 
 def load_model(model_path: Path, reporter: Reporter, seen=None):
-    seen = seen or set()
-    model_path = model_path.resolve()
-    if model_path in seen:
-        return {"definitions": {}, "relationships": {}}
-    seen.add(model_path)
-
-    data = read_json(model_path, reporter)
-    if not data:
-        return {"definitions": {}, "relationships": {}}
-    if "model" not in data:
-        reporter.error(relpath(model_path), "file", "MSML-SCHEMA-002", "missing model object")
+    try:
+        documents = load_model_documents(model_path, seen)
+    except Exception as exc:
+        reporter.error(relpath(model_path), "file", "MSML-SCHEMA-001", str(exc))
         return {"definitions": {}, "relationships": {}}
 
-    model = data["model"]
     definitions = {}
     relationships = {}
+    for loaded_path, data in documents:
+        model = data["model"]
+        for definition in model.get("definitions", []):
+            did = definition.get("id")
+            if not did:
+                reporter.error(relpath(loaded_path), "model", "MSML-SCHEMA-002", "definition missing id")
+                continue
+            if did in definitions:
+                reporter.error(relpath(loaded_path), f"definition[{did}]", "MSML-SCHEMA-004", "duplicate definition id")
+            definitions[did] = definition
 
-    imports = model.get("imports", [])
-    if isinstance(imports, str):
-        imports = [imports]
-    for import_file in imports:
-        loaded = load_model(model_path.parent / import_file, reporter, seen)
-        definitions.update(loaded["definitions"])
-        relationships.update(loaded["relationships"])
-
-    for definition in model.get("definitions", []):
-        did = definition.get("id")
-        if not did:
-            reporter.error(relpath(model_path), "model", "MSML-SCHEMA-002", "definition missing id")
-            continue
-        if did in definitions:
-            reporter.error(relpath(model_path), f"definition[{did}]", "MSML-SCHEMA-004", "duplicate definition id")
-        definitions[did] = definition
-
-    for relationship in model.get("relationships", []):
-        rid = relationship.get("id")
-        if not rid:
-            reporter.error(relpath(model_path), "model", "MSML-SCHEMA-002", "relationship missing id")
-            continue
-        if rid in relationships:
-            reporter.error(relpath(model_path), f"relationship[{rid}]", "MSML-SCHEMA-004", "duplicate relationship id")
-        relationships[rid] = relationship
+        for relationship in model.get("relationships", []):
+            rid = relationship.get("id")
+            if not rid:
+                reporter.error(relpath(loaded_path), "model", "MSML-SCHEMA-002", "relationship missing id")
+                continue
+            if rid in relationships:
+                reporter.error(relpath(loaded_path), f"relationship[{rid}]", "MSML-SCHEMA-004", "duplicate relationship id")
+            relationships[rid] = relationship
 
     return {"definitions": definitions, "relationships": relationships}
 
@@ -168,8 +158,7 @@ def collect_related_diagram_usage(path: Path, model_files: list[str]):
 
     for candidate in sorted(path.parent.glob("*.msmd")):
         try:
-            with open(candidate) as f:
-                data = json.load(f)
+            data = read_json_file(candidate)
         except Exception:
             continue
         candidate_model_files = data.get("model_files")
@@ -183,6 +172,8 @@ def collect_related_diagram_usage(path: Path, model_files: list[str]):
             continue
 
         diagram = data.get("diagram", {})
+        if diagram.get("subject_ref"):
+            used_model_refs.add(diagram["subject_ref"])
         used_model_refs.update(
             element.get("model_ref")
             for element in diagram.get("elements", [])
@@ -306,6 +297,8 @@ def validate_diagram_file(path: Path, data, reporter: Reporter, strict=False, li
             used_model_refs, used_relationship_refs = collect_related_diagram_usage(path, model_files)
         else:
             used_model_refs = {e.get("model_ref") for e in diagram.get("elements", []) if e.get("model_ref")}
+            if diagram.get("subject_ref"):
+                used_model_refs.add(diagram["subject_ref"])
         for did in sorted(set(model["definitions"]) - used_model_refs):
             reporter.warn(relpath(path), f"definition[{did}]", "MSML-LINT-004", "definition has no element in related diagrams")
         for rid in sorted(set(model["relationships"]) - used_relationship_refs):
@@ -324,6 +317,23 @@ def validate(path: Path, strict=False, lint=False) -> Reporter:
         validate_diagram_file(path, data, reporter, strict=strict or lint, lint=lint)
     else:
         reporter.error(relpath(path), "file", "MSML-SCHEMA-002", "file must be .msml or .msmd")
+    return reporter
+
+
+def validate_all(root: Path, strict=False, lint=False) -> Reporter:
+    """Validate all MSML model and diagram files under a directory."""
+    reporter = Reporter()
+    files = sorted(
+        path
+        for suffix in ("*.msml", "*.msmd")
+        for path in root.rglob(suffix)
+    )
+    if not files:
+        reporter.error(relpath(root), "file", "MSML-SCHEMA-002", "no .msml or .msmd files found")
+        return reporter
+
+    for path in files:
+        reporter.merge(validate(path, strict=strict, lint=lint))
     return reporter
 
 

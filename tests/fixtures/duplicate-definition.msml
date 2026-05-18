@@ -1,0 +1,22 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "fixture-duplicate",
+    "name": "Fixture Duplicate Model",
+    "namespace": "Fixture",
+    "imports": [],
+    "definitions": [
+      {
+        "id": "Fixture.Duplicate",
+        "type": "block",
+        "name": "Duplicate"
+      },
+      {
+        "id": "Fixture.Duplicate",
+        "type": "block",
+        "name": "Duplicate Again"
+      }
+    ],
+    "relationships": []
+  }
+}

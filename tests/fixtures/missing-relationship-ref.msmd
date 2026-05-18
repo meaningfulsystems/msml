@@ -1,0 +1,46 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "import-root.msml"
+  ],
+  "diagram": {
+    "type": "bdd",
+    "id": "fixture-missing-relationship-ref",
+    "name": "Missing Relationship Ref",
+    "canvas": {
+      "width": 420,
+      "height": 220
+    },
+    "elements": [
+      {
+        "id": "imported",
+        "type": "block",
+        "model_ref": "Fixture.Imported",
+        "layout": {
+          "x": 40,
+          "y": 70,
+          "width": 130,
+          "height": 70
+        }
+      },
+      {
+        "id": "local",
+        "type": "block",
+        "model_ref": "Fixture.Local",
+        "layout": {
+          "x": 250,
+          "y": 70,
+          "width": 130,
+          "height": 70
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "missing-rel-ref",
+        "source": "imported",
+        "target": "local"
+      }
+    ]
+  }
+}

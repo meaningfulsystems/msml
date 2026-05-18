@@ -1,22 +1,35 @@
 # MSML: Meaningful Systems Modeling Language
 
-MSML is a scriptable graphical modeling language for systems modeling. It is inspired by SysML and PlantUML: SysML provides the systems-engineering diagram vocabulary, while PlantUML demonstrates the value of diagrams that can be generated, reviewed, versioned, and rendered from text.
+MSML is a scriptable graphical modeling language for systems thinking, architecture, and human/AI collaboration.
 
-This repository contains:
+The purpose of MSML is to make system models readable, versionable, reviewable, and renderable. Instead of keeping architecture diagrams as one-off drawings, MSML keeps the system meaning in model files and the diagram layout in view files. That makes the model easier to inspect in Git, revise with scripts or AI assistants, and regenerate as diagrams for communication.
 
-- the MSML v1.0 specification
-- a Python PNG renderer for MSML diagram files
-- a lightweight validator for MSML model and diagram files
-- example MSML models, diagram views, and rendered diagrams
-- early project models for appliances and humanity-scale systems
+MSML is inspired by SysML and PlantUML. SysML provides the systems-engineering vocabulary: blocks, internal structure, activities, sequences, states, requirements, parametrics, packages, and use cases. PlantUML demonstrates the value of text-based diagrams that can be regenerated reliably. MSML combines those ideas into a model-first format designed for plain-text workflows.
+
+This project is early and intentionally practical. MSML v1.0 focuses on a working core rather than complete SysML coverage.
 
 ## Why MSML Exists
 
-MSML is designed for human and AI collaboration on complex system models. The format is JSON. Complete model content lives in `.msml` files: definitions, relationships, behavior topology, ports, control nodes, sequence occurrences, and other model-backed things needed to recreate the diagram structure. Graphical diagram views live in `.msmd` files with explicit visual layout, routing, canvas, frame, and style.
+Complex systems are hard to reason about from prose alone. They need explicit structure, behavior, constraints, assumptions, and views.
 
-That split is the core v1.0 direction: `.msml` is the source of truth, and `.msmd` is a view of that truth. Diagrams are deterministic, easy to diff, easy to regenerate, and suitable for publication alongside prose.
+MSML is built around a few principles:
 
-The current renderer supports the nine SysML 1.x diagram families represented in this repository:
+- **Models should be source-controlled.** Each MSML model (`.msml`) is text.
+- **Diagrams should be reproducible.** Each MSML diagram (`.msmd`) can be rendered again from the same source.
+- **The model should be the source of truth.** MSML model (`.msml`) files contain the model graph. MSML diagram (`.msmd`) files contain layout and view information.
+- **Humans and AI should edit the same artifacts.** The format is structured enough for tools and explicit enough for people to review.
+- **The language should stay useful while it evolves.** MSML v1.0 is a small working language for real examples.
+
+## File Types
+
+MSML uses two source file types:
+
+- MSML model (`.msml`): definitions, relationships, behavior topology, ports, requirements, state nodes, sequence occurrences, and other model-backed content.
+- MSML diagram (`.msmd`): a diagram view that references one or more MSML model (`.msml`) files and provides canvas, layout, routing, frame, and style.
+
+Rendered PNG files are generated outputs. MSML model (`.msml`) files are not rendered directly; MSML diagram (`.msmd`) files are rendered.
+
+The current renderer supports these SysML-style diagram families:
 
 - Block Definition Diagram
 - Internal Block Diagram
@@ -28,23 +41,127 @@ The current renderer supports the nine SysML 1.x diagram families represented in
 - Parametric Diagram
 - Package Diagram
 
+## Install
+
+MSML is installable from this repository:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install git+https://github.com/meaningfulsystems/msml.git
+```
+
+For local development on MSML itself:
+
+```bash
+git clone https://github.com/meaningfulsystems/msml.git
+cd msml
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+```
+
+The package name is `msml`. It is not published to PyPI yet. Package version `0.1.x` implements the MSML v1.0 specification.
+
+## Use MSML in Another Project
+
+A recommended structure is to keep architecture artifacts together:
+
+```text
+my-system/
+└── architecture/
+    ├── msml-specification.md
+    ├── system-model.msml
+    ├── system-context.msmd
+    ├── system-ibd.msmd
+    └── system-sequence.msmd
+```
+
+Copy the specification into your project so humans and AI assistants have the modeling rules next to the model:
+
+```bash
+mkdir -p architecture
+msml-spec --copy architecture/
+```
+
+Validate and render one MSML diagram (`.msmd`):
+
+```bash
+msml-validate architecture/system-context.msmd --strict
+msml-render architecture/system-context.msmd
+```
+
+Validate and render a full folder:
+
+```bash
+msml-validate-all architecture --strict
+msml-render-all architecture
+```
+
+The renderer writes PNG files next to their MSML diagram (`.msmd`) sources.
+
+The full setup guide is in [quick-start.md](quick-start.md).
+
+## Python API
+
+MSML can also be used from Python:
+
+```python
+from pathlib import Path
+
+from msml import render, validate, validate_all
+
+diagram = Path("architecture/system-context.msmd")
+
+report = validate(diagram, strict=True)
+if report.errors:
+    raise SystemExit(1)
+
+render(diagram)
+
+project_report = validate_all(Path("architecture"), strict=True)
+```
+
+## Command Line Tools
+
+Installing MSML provides these commands:
+
+- `msml-spec`
+- `msml-validate`
+- `msml-validate-all`
+- `msml-render`
+- `msml-render-all`
+
+Useful examples:
+
+```bash
+msml-spec
+msml-spec --path
+msml-spec --copy architecture/
+msml-validate-all projects --strict
+msml-render-all projects
+```
+
 ## Repository Layout
 
 ```text
 .
 ├── msml-specification.md
-├── render_msml.py
-├── render_all.py
-├── msml_validate.py
-├── requirements.txt
-├── ai-collab/
-│   └── ...
+├── pyproject.toml
+├── quick-start.md
+├── src/
+│   └── msml/
+├── tests/
 └── projects/
     ├── appliances/
-    │   └── toaster/
-    │       ├── toaster-model.msml
-    │       ├── toaster-*.msmd
-    │       └── toaster-*.png
+    │   ├── toaster/
+    │   │   ├── toaster-model.msml
+    │   │   ├── toaster-*.msmd
+    │   │   └── toaster-*.png
+    │   └── blender/
+    │       ├── blender-model.msml
+    │       ├── blender-*.msmd
+    │       └── blender-*.png
     └── humanity-optimization/
         ├── Humanity_Optimization_System_Brief.md
         ├── Humanity_Optimization_Operational_Concept.md
@@ -53,82 +170,41 @@ The current renderer supports the nine SysML 1.x diagram families represented in
         └── hos-*.png
 ```
 
-## Quick Start
+## Examples
 
-Create a virtual environment and install the one runtime dependency:
+### Humanity Optimization System
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-Render one MSML diagram file:
-
-```bash
-python3 render_msml.py projects/humanity-optimization/hos-context.msmd
-```
-
-Render all MSML diagram files under a folder:
-
-```bash
-python3 render_all.py projects/humanity-optimization
-python3 render_all.py projects/appliances/toaster
-python3 render_all.py projects
-```
-
-The renderer writes PNG files next to their `.msmd` sources. `.msml` model files are loaded by the diagram files and are not rendered directly. Rendering a `.msml` file directly is an error.
-
-Validate one model or diagram file:
-
-```bash
-python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd
-python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd --strict
-python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd --lint
-```
-
-`render_all.py` does not run `msml_validate.py` first. The renderer performs the checks needed to render safely, including rejecting singular `model_file`, missing `model_files`, missing `model_ref`, and missing `relationship_ref`. Use `msml_validate.py` when you want an explicit validation pass.
-
-## File Model
-
-MSML v1.0 uses two file types:
-
-- `.msml`: complete model source. Contains model definitions and relationships. Does not contain diagram layout or visual styling.
-- `.msmd`: diagram view. References one or more `.msml` files through `model_files`; every diagram element uses `model_ref`; every diagram relationship uses `relationship_ref`.
-
-The singular `model_file` field is intentionally not supported. Use:
-
-```json
-{
-  "msml_version": "1.0",
-  "model_files": ["toaster-model.msml"],
-  "diagram": {
-    "type": "bdd"
-  }
-}
-```
-
-## Example: Humanity Optimization System
-
-The Humanity Optimization System operational concept is a blog-post-style example of using MSML to model a civilization-scale decision-support system.
+The Humanity Optimization System is a civilization-scale decision-support concept modeled with MSML.
 
 - [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
-- [HOS model source](projects/humanity-optimization/hos-model.msml)
-- [HOS definition BDD diagram source](projects/humanity-optimization/hos-context.msmd)
-- [HOS context IBD diagram source](projects/humanity-optimization/hos-context-ibd.msmd)
-- [Operating loop diagram source](projects/humanity-optimization/hos-operating-loop.msmd)
-- [Decision-support sequence diagram source](projects/humanity-optimization/hos-decision-support-sequence.msmd)
+- [HOS MSML model (`.msml`)](projects/humanity-optimization/hos-model.msml)
+- [HOS block definition diagram (`.msmd`)](projects/humanity-optimization/hos-context.msmd)
+- [HOS context internal block diagram (`.msmd`)](projects/humanity-optimization/hos-context-ibd.msmd)
+- [HOS operating loop activity diagram (`.msmd`)](projects/humanity-optimization/hos-operating-loop.msmd)
+- [HOS decision-support sequence diagram (`.msmd`)](projects/humanity-optimization/hos-decision-support-sequence.msmd)
 
-## Example: Toaster Model
+### Appliance Models
 
-The toaster project is a compact example set that exercises all nine supported SysML-style diagram families.
+The appliance examples are compact systems used to exercise the language.
 
-- [Toaster project](projects/appliances/toaster)
-- [Toaster feedback review](projects/appliances/toaster/codex-feedback-toaster.md)
+- [Toaster project](projects/appliances/toaster): all nine supported diagram families.
+- [Smart blender project](projects/appliances/blender): internal block, activity, and state machine views for a high-performance smart blender concept.
+
+## Development Checks
+
+After installing locally with `pip install -e .`, run:
+
+```bash
+python3 -m unittest
+msml-validate-all projects --strict
+msml-render-all projects
+```
 
 ## Current Status
 
-MSML is an early prototype. The renderer is intentionally lightweight and currently targets PNG output through Pillow. The v1.0 direction is complete model/view separation: `.msml` for the model graph, `.msmd` for diagram views, validation through `msml_validate.py`, and PNGs rendered from those views.
+MSML is an early prototype. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, and basic strict checks.
+
+The root [msml-specification.md](msml-specification.md) is the canonical human-facing specification. The installed package also includes a copy for `msml-spec`.
 
 ## License
 

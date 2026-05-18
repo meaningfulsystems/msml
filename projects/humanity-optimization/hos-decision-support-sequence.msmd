@@ -146,7 +146,7 @@
           "fill_color": "#CFE1F1",
           "border_color": "#2E5E87"
         },
-        "model_ref": "HOS.SEQ.ExecutionOccurrence.ExecHos"
+        "model_ref": "HOS.Sequence.Execution.HosAnalysis"
       },
       {
         "type": "execution_occurrence",
@@ -162,7 +162,7 @@
           "fill_color": "#CFEAE2",
           "border_color": "#207567"
         },
-        "model_ref": "HOS.SEQ.ExecutionOccurrence.ExecEvidence"
+        "model_ref": "HOS.Sequence.Execution.EvidenceModeling"
       },
       {
         "type": "execution_occurrence",
@@ -178,7 +178,7 @@
           "fill_color": "#E1D8EE",
           "border_color": "#6D4C9A"
         },
-        "model_ref": "HOS.SEQ.ExecutionOccurrence.ExecGovernance"
+        "model_ref": "HOS.Sequence.Execution.GovernanceReview"
       }
     ],
     "relationships": [

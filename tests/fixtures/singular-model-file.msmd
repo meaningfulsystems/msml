@@ -1,0 +1,15 @@
+{
+  "msml_version": "1.0",
+  "model_file": "import-root.msml",
+  "diagram": {
+    "type": "bdd",
+    "id": "fixture-singular-model-file",
+    "name": "Singular Model File",
+    "canvas": {
+      "width": 240,
+      "height": 160
+    },
+    "elements": [],
+    "relationships": []
+  }
+}

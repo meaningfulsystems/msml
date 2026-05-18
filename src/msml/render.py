@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """MSML diagram renderer — renders .msmd diagram views backed by .msml models."""
 
-import json, math, sys
+import math, sys
 from pathlib import Path
-from typing import Optional, Set, Tuple
+from typing import Optional
+
+from .model import load_diagram
 
 try:
     from PIL import Image, ImageDraw, ImageFont
-except ImportError:
-    print("pip install Pillow")
-    sys.exit(1)
+except ImportError as exc:
+    raise ImportError("MSML rendering requires Pillow. Install MSML from this repository.") from exc
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -934,60 +935,6 @@ RENDERER_MAP = {
 }
 
 
-def load_model(model_path: Path, seen: Optional[Set[Path]] = None) -> dict:
-    seen = seen or set()
-    model_path = model_path.resolve()
-    if model_path in seen:
-        return {"definitions": {}, "relationships": []}
-    seen.add(model_path)
-    with open(model_path) as f:
-        data = json.load(f)
-    if "model" not in data:
-        raise ValueError(f"{model_path} is not an MSML model file")
-    model = data["model"]
-    definitions = {}
-    relationships = []
-
-    imports = model.get("imports", [])
-    if isinstance(imports, str):
-        imports = [imports]
-    for import_path in imports:
-        imported = load_model(model_path.parent / import_path, seen)
-        definitions.update(imported["definitions"])
-        relationships.extend(imported["relationships"])
-
-    for definition in model.get("definitions", []):
-        if "id" not in definition:
-            raise ValueError(f"Definition without id in {model_path}")
-        definitions[definition["id"]] = definition
-    relationships.extend(model.get("relationships", []))
-    return {"definitions": definitions, "relationships": relationships}
-
-
-def load_diagram(diagram_path: Path) -> Tuple[dict, dict]:
-    with open(diagram_path) as f:
-        data = json.load(f)
-    if "diagram" not in data:
-        raise ValueError(f"{diagram_path} is not an MSMD diagram file")
-
-    if "model_file" in data:
-        raise ValueError(
-            f"MSML-SCHEMA-009: {diagram_path} uses model_file; use model_files array"
-        )
-    model_files = data.get("model_files")
-    if not isinstance(model_files, list) or not model_files:
-        raise ValueError(
-            f"MSML-SCHEMA-007: {diagram_path} must declare non-empty model_files array"
-        )
-
-    model = {"definitions": {}, "relationships": []}
-    for model_file in model_files:
-        loaded = load_model(diagram_path.parent / model_file)
-        model["definitions"].update(loaded["definitions"])
-        model["relationships"].extend(loaded["relationships"])
-    return data, model
-
-
 def render(diagram_path, output_path=None):
     src = Path(diagram_path)
     if src.suffix == ".msml":
@@ -995,7 +942,7 @@ def render(diagram_path, output_path=None):
             f"MSML-RENDER-001: {src} is a model file; render .msmd diagram files"
         )
     if src.suffix != ".msmd":
-        raise ValueError(f"MSML-RENDER-002: render_msml.py renders .msmd files only: {src}")
+        raise ValueError(f"MSML-RENDER-002: msml-render renders .msmd files only: {src}")
     dst = Path(output_path) if output_path else src.with_suffix(".png")
     data, model = load_diagram(src)
     dtype = data["diagram"]["type"]
@@ -1004,7 +951,7 @@ def render(diagram_path, output_path=None):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python render_msml.py <file.msmd> [output.png]")
+        print("Usage: msml-render <file.msmd> [output.png]")
         sys.exit(1)
     try:
         render(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)

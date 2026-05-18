@@ -1,0 +1,582 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "blender-model.msml"
+  ],
+  "diagram": {
+    "type": "activity",
+    "id": "act-blender",
+    "name": "Smoothie Program",
+    "context": "Blender",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 820,
+      "height": 680,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "partition",
+        "id": "partition-user",
+        "model_ref": "Blender.Behavior.MakeSmoothie.UserPartition",
+        "layout": {
+          "x": 30,
+          "y": 30,
+          "width": 320,
+          "height": 620,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#FFFDF5",
+          "border_color": "#B0A77A",
+          "font": {
+            "size": 11,
+            "color": "#5D5530"
+          }
+        }
+      },
+      {
+        "type": "partition",
+        "id": "partition-blender",
+        "model_ref": "Blender.Behavior.MakeSmoothie.BlenderPartition",
+        "layout": {
+          "x": 350,
+          "y": 30,
+          "width": 470,
+          "height": 620,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F6FBFF",
+          "border_color": "#87A9C6",
+          "font": {
+            "size": 11,
+            "color": "#2E5E87"
+          }
+        }
+      },
+      {
+        "type": "initial_node",
+        "id": "start",
+        "model_ref": "Blender.Behavior.MakeSmoothie.Start",
+        "layout": {
+          "x": 170,
+          "y": 70,
+          "width": 20,
+          "height": 20,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-load",
+        "model_ref": "Blender.Behavior.MakeSmoothie.LoadIngredients",
+        "layout": {
+          "x": 95,
+          "y": 130,
+          "width": 190,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-lid",
+        "model_ref": "Blender.Behavior.MakeSmoothie.SecureLid",
+        "layout": {
+          "x": 95,
+          "y": 220,
+          "width": 190,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-select",
+        "model_ref": "Blender.Behavior.MakeSmoothie.SelectSmoothieProgram",
+        "layout": {
+          "x": 95,
+          "y": 310,
+          "width": 190,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-ramp",
+        "model_ref": "Blender.Behavior.MakeSmoothie.RampMotor",
+        "layout": {
+          "x": 465,
+          "y": 130,
+          "width": 210,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-blend",
+        "model_ref": "Blender.Behavior.MakeSmoothie.BlendAndSense",
+        "layout": {
+          "x": 465,
+          "y": 220,
+          "width": 210,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "decision_node",
+        "id": "act-decision",
+        "model_ref": "Blender.Behavior.MakeSmoothie.SmoothnessDecision",
+        "layout": {
+          "x": 495,
+          "y": 315,
+          "width": 160,
+          "height": 100,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#455A64",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-stop",
+        "model_ref": "Blender.Behavior.MakeSmoothie.StopMotor",
+        "layout": {
+          "x": 470,
+          "y": 455,
+          "width": 220,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FCE4EC",
+          "border_color": "#AD1457",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-signal",
+        "model_ref": "Blender.Behavior.MakeSmoothie.SignalComplete",
+        "layout": {
+          "x": 470,
+          "y": 545,
+          "width": 220,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-serve",
+        "model_ref": "Blender.Behavior.MakeSmoothie.ServeSmoothie",
+        "layout": {
+          "x": 95,
+          "y": 545,
+          "width": 190,
+          "height": 50,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 10,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "activity_final_node",
+        "id": "final",
+        "model_ref": "Blender.Behavior.MakeSmoothie.Final",
+        "layout": {
+          "x": 180,
+          "y": 625,
+          "width": 20,
+          "height": 20,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#000000",
+          "border_color": "#000000"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "control_flow",
+        "id": "f1",
+        "relationship_ref": "act-blender.f1",
+        "source": "start",
+        "target": "act-load",
+        "waypoints": [
+          {
+            "x": 180,
+            "y": 90
+          },
+          {
+            "x": 180,
+            "y": 130
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f2",
+        "relationship_ref": "act-blender.f2",
+        "source": "act-load",
+        "target": "act-lid",
+        "waypoints": [
+          {
+            "x": 190,
+            "y": 180
+          },
+          {
+            "x": 190,
+            "y": 220
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f3",
+        "relationship_ref": "act-blender.f3",
+        "source": "act-lid",
+        "target": "act-select",
+        "waypoints": [
+          {
+            "x": 190,
+            "y": 270
+          },
+          {
+            "x": 190,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f4",
+        "relationship_ref": "act-blender.f4",
+        "source": "act-select",
+        "target": "act-ramp",
+        "waypoints": [
+          {
+            "x": 285,
+            "y": 335
+          },
+          {
+            "x": 420,
+            "y": 335
+          },
+          {
+            "x": 420,
+            "y": 155
+          },
+          {
+            "x": 465,
+            "y": 155
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f5",
+        "relationship_ref": "act-blender.f5",
+        "source": "act-ramp",
+        "target": "act-blend",
+        "waypoints": [
+          {
+            "x": 570,
+            "y": 180
+          },
+          {
+            "x": 570,
+            "y": 220
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f6",
+        "relationship_ref": "act-blender.f6",
+        "source": "act-blend",
+        "target": "act-decision",
+        "waypoints": [
+          {
+            "x": 575,
+            "y": 270
+          },
+          {
+            "x": 575,
+            "y": 315
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f7",
+        "relationship_ref": "act-blender.f7",
+        "source": "act-decision",
+        "target": "act-blend",
+        "waypoints": [
+          {
+            "x": 655,
+            "y": 365
+          },
+          {
+            "x": 720,
+            "y": 365
+          },
+          {
+            "x": 720,
+            "y": 245
+          },
+          {
+            "x": 675,
+            "y": 245
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled",
+          "label_offset": {
+            "x": -78,
+            "y": -18
+          }
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f8",
+        "relationship_ref": "act-blender.f8",
+        "source": "act-decision",
+        "target": "act-stop",
+        "waypoints": [
+          {
+            "x": 575,
+            "y": 415
+          },
+          {
+            "x": 575,
+            "y": 455
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled",
+          "label_offset": {
+            "x": -22,
+            "y": 0
+          }
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f9",
+        "relationship_ref": "act-blender.f9",
+        "source": "act-stop",
+        "target": "act-signal",
+        "waypoints": [
+          {
+            "x": 580,
+            "y": 505
+          },
+          {
+            "x": 580,
+            "y": 545
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f10",
+        "relationship_ref": "act-blender.f10",
+        "source": "act-signal",
+        "target": "act-serve",
+        "waypoints": [
+          {
+            "x": 465,
+            "y": 570
+          },
+          {
+            "x": 285,
+            "y": 570
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      },
+      {
+        "type": "control_flow",
+        "id": "f11",
+        "relationship_ref": "act-blender.f11",
+        "source": "act-serve",
+        "target": "final",
+        "waypoints": [
+          {
+            "x": 190,
+            "y": 595
+          },
+          {
+            "x": 190,
+            "y": 625
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "filled"
+        }
+      }
+    ]
+  }
+}

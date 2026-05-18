@@ -55,7 +55,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "Toaster.STM.InitialPseudostate.Init"
+        "model_ref": "Toaster.State.ToastingCycle.Start"
       },
       {
         "type": "state",
@@ -80,7 +80,7 @@
             "color": "#1A1A2E"
           }
         },
-        "model_ref": "Toaster.STM.Idle"
+        "model_ref": "Toaster.State.ToastingCycle.Idle"
       },
       {
         "type": "state",
@@ -105,7 +105,7 @@
             "color": "#1A1A2E"
           }
         },
-        "model_ref": "Toaster.STM.Toasting"
+        "model_ref": "Toaster.State.ToastingCycle.Toasting"
       },
       {
         "type": "state",
@@ -130,7 +130,7 @@
             "color": "#1A1A2E"
           }
         },
-        "model_ref": "Toaster.STM.Done"
+        "model_ref": "Toaster.State.ToastingCycle.Done"
       },
       {
         "type": "state",
@@ -155,7 +155,7 @@
             "color": "#1A1A2E"
           }
         },
-        "model_ref": "Toaster.STM.Error"
+        "model_ref": "Toaster.State.ToastingCycle.Error"
       }
     ],
     "relationships": [

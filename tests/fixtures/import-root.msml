@@ -1,0 +1,26 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "fixture-root",
+    "name": "Fixture Root Model",
+    "namespace": "Fixture",
+    "imports": [
+      "imported-model.msml"
+    ],
+    "definitions": [
+      {
+        "id": "Fixture.Local",
+        "type": "block",
+        "name": "Local"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "fixture.rel-imported-local",
+        "type": "association",
+        "source": "Fixture.Imported",
+        "target": "Fixture.Local"
+      }
+    ]
+  }
+}

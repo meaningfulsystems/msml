@@ -167,7 +167,7 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.STM",
+        "model_ref": "Toaster.StateMachine.ToastingCycle",
         "display_name": "ToasterSTM"
       },
       {

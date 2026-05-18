@@ -1,0 +1,29 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "lint-orphan-model.msml"
+  ],
+  "diagram": {
+    "type": "bdd",
+    "id": "fixture-lint-orphan",
+    "name": "Lint Orphan",
+    "canvas": {
+      "width": 240,
+      "height": 160
+    },
+    "elements": [
+      {
+        "id": "used",
+        "type": "block",
+        "model_ref": "Fixture.Used",
+        "layout": {
+          "x": 40,
+          "y": 40,
+          "width": 130,
+          "height": 70
+        }
+      }
+    ],
+    "relationships": []
+  }
+}

@@ -1,0 +1,568 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "blender-model",
+    "name": "Smart Blender Model",
+    "namespace": "Blender",
+    "imports": [],
+    "definitions": [
+      {
+        "id": "Blender",
+        "type": "block",
+        "name": "SmartBlender",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "program",
+              "type": "BlendProgram",
+              "multiplicity": "1"
+            },
+            {
+              "name": "smoothnessThreshold",
+              "type": "Real",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "runSmoothieProgram",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "stopMotor",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Blender.MotorBase",
+        "type": "block",
+        "name": "MotorBase",
+        "stereotype": "block"
+      },
+      {
+        "id": "Blender.Motor",
+        "type": "block",
+        "name": "Motor",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "speed",
+              "type": "RPM",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "rampToProgramSpeed",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "stop",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Blender.DriveCoupling",
+        "type": "block",
+        "name": "DriveCoupling",
+        "stereotype": "block"
+      },
+      {
+        "id": "Blender.Container",
+        "type": "block",
+        "name": "Container",
+        "stereotype": "block"
+      },
+      {
+        "id": "Blender.BladeAssembly",
+        "type": "block",
+        "name": "BladeAssembly",
+        "stereotype": "block"
+      },
+      {
+        "id": "Blender.Lid",
+        "type": "block",
+        "name": "Lid",
+        "stereotype": "block"
+      },
+      {
+        "id": "Blender.Tamper",
+        "type": "block",
+        "name": "Tamper",
+        "stereotype": "block"
+      },
+      {
+        "id": "Blender.ControlPanel",
+        "type": "block",
+        "name": "ControlPanel",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "variableSpeed",
+              "type": "Integer",
+              "multiplicity": "1"
+            },
+            {
+              "name": "pulse",
+              "type": "Boolean",
+              "multiplicity": "1"
+            },
+            {
+              "name": "smoothieProgram",
+              "type": "Boolean",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "selectSmoothieProgram",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Blender.SmoothieCompleteSensor",
+        "type": "block",
+        "name": "SmoothieCompleteSensor",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "loadProxy",
+              "type": "Real",
+              "multiplicity": "1"
+            },
+            {
+              "name": "vibrationProxy",
+              "type": "Real",
+              "multiplicity": "1"
+            },
+            {
+              "name": "textureEstimate",
+              "type": "Real",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "estimateSmoothness",
+              "parameters": [],
+              "return_type": "Real"
+            },
+            {
+              "name": "signalComplete",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Blender.Actor.User",
+        "type": "actor",
+        "name": "User"
+      },
+      {
+        "id": "Blender.Port.ControlPanelMotorCommandOutput",
+        "type": "port",
+        "name": "motorCommand",
+        "owner_ref": "Blender.ControlPanel",
+        "direction": "out"
+      },
+      {
+        "id": "Blender.Port.MotorCommandInput",
+        "type": "port",
+        "name": "cmd",
+        "owner_ref": "Blender.Motor",
+        "direction": "in"
+      },
+      {
+        "id": "Blender.Port.MotorDriveOutput",
+        "type": "port",
+        "name": "drive",
+        "owner_ref": "Blender.Motor",
+        "direction": "out"
+      },
+      {
+        "id": "Blender.Port.DriveCouplingInput",
+        "type": "port",
+        "name": "driveIn",
+        "owner_ref": "Blender.DriveCoupling",
+        "direction": "in"
+      },
+      {
+        "id": "Blender.Port.DriveCouplingOutput",
+        "type": "port",
+        "name": "driveOut",
+        "owner_ref": "Blender.DriveCoupling",
+        "direction": "out"
+      },
+      {
+        "id": "Blender.Port.BladeDriveInput",
+        "type": "port",
+        "name": "drive",
+        "owner_ref": "Blender.BladeAssembly",
+        "direction": "in"
+      },
+      {
+        "id": "Blender.Port.DriveCouplingVibrationProxyOutput",
+        "type": "port",
+        "name": "vibrationProxy",
+        "owner_ref": "Blender.DriveCoupling",
+        "direction": "out"
+      },
+      {
+        "id": "Blender.Port.SensorVibrationProxyInput",
+        "type": "port",
+        "name": "vibrationProxy",
+        "owner_ref": "Blender.SmoothieCompleteSensor",
+        "direction": "in"
+      },
+      {
+        "id": "Blender.Port.SensorCompletionSignalOutput",
+        "type": "port",
+        "name": "complete",
+        "owner_ref": "Blender.SmoothieCompleteSensor",
+        "direction": "out"
+      },
+      {
+        "id": "Blender.Port.ControlPanelCompletionInput",
+        "type": "port",
+        "name": "complete",
+        "owner_ref": "Blender.ControlPanel",
+        "direction": "in"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.UserPartition",
+        "type": "partition",
+        "name": "User"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.BlenderPartition",
+        "type": "partition",
+        "name": "Blender"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.Start",
+        "type": "initial_node",
+        "name": "Start"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.LoadIngredients",
+        "type": "action",
+        "name": "Load ingredients"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.SecureLid",
+        "type": "action",
+        "name": "Secure lid"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.SelectSmoothieProgram",
+        "type": "action",
+        "name": "Select smoothie program"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.RampMotor",
+        "type": "action",
+        "name": "Ramp motor"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.BlendAndSense",
+        "type": "action",
+        "name": "Blend and sense texture"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.SmoothnessDecision",
+        "type": "decision_node",
+        "name": "Smoothness reached?"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.StopMotor",
+        "type": "action",
+        "name": "Stop motor"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.SignalComplete",
+        "type": "action",
+        "name": "Signal complete"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.ServeSmoothie",
+        "type": "action",
+        "name": "Serve smoothie"
+      },
+      {
+        "id": "Blender.Behavior.MakeSmoothie.Final",
+        "type": "activity_final_node",
+        "name": "Complete"
+      },
+      {
+        "id": "Blender.State.SmoothieProgram.Start",
+        "type": "initial_pseudostate",
+        "name": "Start"
+      },
+      {
+        "id": "Blender.State.SmoothieProgram.Off",
+        "type": "state",
+        "name": "Off"
+      },
+      {
+        "id": "Blender.State.SmoothieProgram.Ready",
+        "type": "state",
+        "name": "Ready",
+        "entry": "powered; waiting for start"
+      },
+      {
+        "id": "Blender.State.SmoothieProgram.Blending",
+        "type": "state",
+        "name": "Blending",
+        "do": "run motor and estimate smoothness"
+      },
+      {
+        "id": "Blender.Port.MotorBaseMechanicalInterface",
+        "type": "port",
+        "name": "mechanical",
+        "owner_ref": "Blender.MotorBase",
+        "direction": "inout"
+      },
+      {
+        "id": "Blender.Port.ContainerMechanicalInterface",
+        "type": "port",
+        "name": "mechanical",
+        "owner_ref": "Blender.Container",
+        "direction": "inout"
+      },
+      {
+        "id": "Blender.Port.ContainerLidMechanicalInterface",
+        "type": "port",
+        "name": "lidSeat",
+        "owner_ref": "Blender.Container",
+        "direction": "inout"
+      },
+      {
+        "id": "Blender.Port.LidContainerMechanicalInterface",
+        "type": "port",
+        "name": "containerSeat",
+        "owner_ref": "Blender.Lid",
+        "direction": "inout"
+      },
+      {
+        "id": "Blender.Port.LidTamperMechanicalInterface",
+        "type": "port",
+        "name": "tamperOpening",
+        "owner_ref": "Blender.Lid",
+        "direction": "inout"
+      },
+      {
+        "id": "Blender.Port.TamperLidMechanicalInterface",
+        "type": "port",
+        "name": "lidOpening",
+        "owner_ref": "Blender.Tamper",
+        "direction": "inout"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "ibd-blender.conn-control-motor",
+        "type": "connector",
+        "source": "Blender.Port.ControlPanelMotorCommandOutput",
+        "target": "Blender.Port.MotorCommandInput"
+      },
+      {
+        "id": "ibd-blender.conn-motor-coupling",
+        "type": "connector",
+        "source": "Blender.Port.MotorDriveOutput",
+        "target": "Blender.Port.DriveCouplingInput"
+      },
+      {
+        "id": "ibd-blender.conn-coupling-blade",
+        "type": "connector",
+        "source": "Blender.Port.DriveCouplingOutput",
+        "target": "Blender.Port.BladeDriveInput"
+      },
+      {
+        "id": "ibd-blender.conn-coupling-sensor",
+        "type": "connector",
+        "source": "Blender.Port.DriveCouplingVibrationProxyOutput",
+        "target": "Blender.Port.SensorVibrationProxyInput",
+        "name": "vibration/load proxy"
+      },
+      {
+        "id": "ibd-blender.conn-sensor-control",
+        "type": "connector",
+        "source": "Blender.Port.SensorCompletionSignalOutput",
+        "target": "Blender.Port.ControlPanelCompletionInput"
+      },
+      {
+        "id": "act-blender.f1",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.Start",
+        "target": "Blender.Behavior.MakeSmoothie.LoadIngredients"
+      },
+      {
+        "id": "act-blender.f2",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.LoadIngredients",
+        "target": "Blender.Behavior.MakeSmoothie.SecureLid"
+      },
+      {
+        "id": "act-blender.f3",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.SecureLid",
+        "target": "Blender.Behavior.MakeSmoothie.SelectSmoothieProgram"
+      },
+      {
+        "id": "act-blender.f4",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.SelectSmoothieProgram",
+        "target": "Blender.Behavior.MakeSmoothie.RampMotor"
+      },
+      {
+        "id": "act-blender.f5",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.RampMotor",
+        "target": "Blender.Behavior.MakeSmoothie.BlendAndSense"
+      },
+      {
+        "id": "act-blender.f6",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.BlendAndSense",
+        "target": "Blender.Behavior.MakeSmoothie.SmoothnessDecision"
+      },
+      {
+        "id": "act-blender.f7",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.SmoothnessDecision",
+        "target": "Blender.Behavior.MakeSmoothie.BlendAndSense",
+        "guard": "not smooth"
+      },
+      {
+        "id": "act-blender.f8",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.SmoothnessDecision",
+        "target": "Blender.Behavior.MakeSmoothie.StopMotor",
+        "guard": "smoothness >= threshold"
+      },
+      {
+        "id": "act-blender.f9",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.StopMotor",
+        "target": "Blender.Behavior.MakeSmoothie.SignalComplete"
+      },
+      {
+        "id": "act-blender.f10",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.SignalComplete",
+        "target": "Blender.Behavior.MakeSmoothie.ServeSmoothie"
+      },
+      {
+        "id": "act-blender.f11",
+        "type": "control_flow",
+        "source": "Blender.Behavior.MakeSmoothie.ServeSmoothie",
+        "target": "Blender.Behavior.MakeSmoothie.Final"
+      },
+      {
+        "id": "ibd-blender.conn-base-container-mechanical",
+        "type": "connector",
+        "source": "Blender.Port.MotorBaseMechanicalInterface",
+        "target": "Blender.Port.ContainerMechanicalInterface",
+        "name": "container seated on base"
+      },
+      {
+        "id": "ibd-blender.conn-lid-container-mechanical",
+        "type": "connector",
+        "source": "Blender.Port.LidContainerMechanicalInterface",
+        "target": "Blender.Port.ContainerLidMechanicalInterface",
+        "name": "lid seats on container"
+      },
+      {
+        "id": "ibd-blender.conn-tamper-lid-mechanical",
+        "type": "connector",
+        "source": "Blender.Port.TamperLidMechanicalInterface",
+        "target": "Blender.Port.LidTamperMechanicalInterface",
+        "name": "tamper through lid"
+      },
+      {
+        "id": "ibd-blender.comp-container-blade",
+        "type": "composition",
+        "source": "Blender.Container",
+        "target": "Blender.BladeAssembly",
+        "name": "contains"
+      },
+      {
+        "id": "stm-blender.t0",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Start",
+        "target": "Blender.State.SmoothieProgram.Off"
+      },
+      {
+        "id": "stm-blender.t1",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Off",
+        "target": "Blender.State.SmoothieProgram.Ready",
+        "trigger": "on switch"
+      },
+      {
+        "id": "stm-blender.t2",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Ready",
+        "target": "Blender.State.SmoothieProgram.Blending",
+        "trigger": "start command"
+      },
+      {
+        "id": "stm-blender.t3",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Blending",
+        "target": "Blender.State.SmoothieProgram.Ready",
+        "trigger": "smoothie complete",
+        "guard": "smooth",
+        "effect": "stop motor"
+      },
+      {
+        "id": "stm-blender.t4",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Ready",
+        "target": "Blender.State.SmoothieProgram.Off",
+        "trigger": "off switch"
+      },
+      {
+        "id": "stm-blender.t5",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Blending",
+        "target": "Blender.State.SmoothieProgram.Ready",
+        "trigger": "stop command",
+        "effect": "stop motor"
+      },
+      {
+        "id": "stm-blender.t6",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Blending",
+        "target": "Blender.State.SmoothieProgram.Ready",
+        "trigger": "timeout",
+        "effect": "stop motor"
+      },
+      {
+        "id": "stm-blender.t7",
+        "type": "transition",
+        "source": "Blender.State.SmoothieProgram.Blending",
+        "target": "Blender.State.SmoothieProgram.Off",
+        "trigger": "off switch",
+        "effect": "stop motor"
+      }
+    ]
+  }
+}

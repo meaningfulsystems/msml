@@ -1,0 +1,48 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "import-root.msml"
+  ],
+  "diagram": {
+    "type": "bdd",
+    "id": "fixture-import-chain",
+    "name": "Fixture Import Chain",
+    "canvas": {
+      "width": 420,
+      "height": 220,
+      "background_color": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "id": "imported",
+        "type": "block",
+        "model_ref": "Fixture.Imported",
+        "layout": {
+          "x": 40,
+          "y": 70,
+          "width": 130,
+          "height": 70
+        }
+      },
+      {
+        "id": "local",
+        "type": "block",
+        "model_ref": "Fixture.Local",
+        "layout": {
+          "x": 250,
+          "y": 70,
+          "width": 130,
+          "height": 70
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "view-imported-local",
+        "relationship_ref": "fixture.rel-imported-local",
+        "source": "imported",
+        "target": "local"
+      }
+    ]
+  }
+}

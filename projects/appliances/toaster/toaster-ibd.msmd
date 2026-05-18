@@ -80,7 +80,7 @@
           "border_color": "#6A1B9A"
         },
         "owner_ref": "part-lever",
-        "model_ref": "Toaster.IBD.Port.PortLeverCtrl"
+        "model_ref": "Toaster.Port.LeverControlOutput"
       },
       {
         "type": "part",
@@ -121,7 +121,7 @@
           "border_color": "#8B6914"
         },
         "owner_ref": "part-timer",
-        "model_ref": "Toaster.IBD.Port.PortTimerIn"
+        "model_ref": "Toaster.Port.TimerControlInput"
       },
       {
         "type": "port",
@@ -139,7 +139,7 @@
           "border_color": "#8B6914"
         },
         "owner_ref": "part-timer",
-        "model_ref": "Toaster.IBD.Port.PortTimerOut"
+        "model_ref": "Toaster.Port.TimerSignalOutput"
       },
       {
         "type": "part",
@@ -180,7 +180,7 @@
           "border_color": "#CC4400"
         },
         "owner_ref": "part-element",
-        "model_ref": "Toaster.IBD.Port.PortElementCtrl"
+        "model_ref": "Toaster.Port.HeatingElementControlInput"
       },
       {
         "type": "port",
@@ -198,7 +198,7 @@
           "border_color": "#CC4400"
         },
         "owner_ref": "part-element",
-        "model_ref": "Toaster.IBD.Port.PortElementHeat"
+        "model_ref": "Toaster.Port.HeatingElementHeatOutput"
       },
       {
         "type": "part",
@@ -239,7 +239,7 @@
           "border_color": "#2E7D32"
         },
         "owner_ref": "part-carriage",
-        "model_ref": "Toaster.IBD.Port.PortCarriageHeat"
+        "model_ref": "Toaster.Port.CarriageHeatInput"
       }
     ],
     "relationships": [

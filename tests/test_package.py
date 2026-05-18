@@ -1,0 +1,83 @@
+import unittest
+from contextlib import redirect_stdout
+from io import StringIO
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+FIXTURES = ROOT / "tests/fixtures"
+
+from msml import render, spec_path, validate, validate_all
+from msml.render_all import render_all
+
+
+class PackageApiTests(unittest.TestCase):
+    def validate_with_output(self, path: Path, **kwargs):
+        output = StringIO()
+        with redirect_stdout(output):
+            report = validate(path, **kwargs)
+        return report, output.getvalue()
+
+    def test_spec_is_packaged(self):
+        path = spec_path()
+        self.assertTrue(path.exists())
+        self.assertIn("MSML v1.0 Specification", path.read_text())
+
+    def test_packaged_spec_matches_root_spec(self):
+        self.assertEqual(
+            (ROOT / "msml-specification.md").read_bytes(),
+            spec_path().read_bytes(),
+        )
+
+    def test_validate_example_diagram(self):
+        report = validate(ROOT / "projects/appliances/toaster/toaster-bdd.msmd", strict=True)
+        self.assertEqual(report.errors, 0)
+
+    def test_validate_hos_diagrams(self):
+        report = validate_all(ROOT / "projects/humanity-optimization", strict=True)
+        self.assertEqual(report.errors, 0)
+
+    def test_validate_all_projects(self):
+        report = validate_all(ROOT / "projects", strict=True)
+        self.assertEqual(report.errors, 0)
+
+    def test_valid_import_chain(self):
+        report, output = self.validate_with_output(FIXTURES / "import-chain.msmd", strict=True)
+        self.assertEqual(report.errors, 0, output)
+
+    def test_missing_model_ref_reports_schema_005(self):
+        report, output = self.validate_with_output(FIXTURES / "missing-model-ref.msmd")
+        self.assertGreater(report.errors, 0)
+        self.assertIn("MSML-SCHEMA-005", output)
+
+    def test_missing_relationship_ref_reports_schema_006(self):
+        report, output = self.validate_with_output(FIXTURES / "missing-relationship-ref.msmd")
+        self.assertGreater(report.errors, 0)
+        self.assertIn("MSML-SCHEMA-006", output)
+
+    def test_singular_model_file_reports_schema_009(self):
+        report, output = self.validate_with_output(FIXTURES / "singular-model-file.msmd")
+        self.assertGreater(report.errors, 0)
+        self.assertIn("MSML-SCHEMA-009", output)
+
+    def test_duplicate_definition_reports_schema_004(self):
+        report, output = self.validate_with_output(FIXTURES / "duplicate-definition.msml")
+        self.assertGreater(report.errors, 0)
+        self.assertIn("MSML-SCHEMA-004", output)
+
+    def test_lint_orphan_reports_warnings(self):
+        report, output = self.validate_with_output(FIXTURES / "lint-orphan.msmd", lint=True)
+        self.assertEqual(report.errors, 0, output)
+        self.assertGreater(report.warnings, 0)
+        self.assertIn("MSML-LINT-004", output)
+        self.assertIn("MSML-LINT-005", output)
+
+    def test_render_rejects_model_file(self):
+        with self.assertRaises(ValueError):
+            render(ROOT / "projects/appliances/toaster/toaster-model.msml")
+
+    def test_render_all_examples(self):
+        self.assertEqual(render_all(ROOT / "projects/appliances/toaster"), 0)
+
+
+if __name__ == "__main__":
+    unittest.main()

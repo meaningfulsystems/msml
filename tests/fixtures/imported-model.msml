@@ -1,0 +1,17 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "fixture-imported",
+    "name": "Fixture Imported Model",
+    "namespace": "Fixture",
+    "imports": [],
+    "definitions": [
+      {
+        "id": "Fixture.Imported",
+        "type": "block",
+        "name": "Imported"
+      }
+    ],
+    "relationships": []
+  }
+}

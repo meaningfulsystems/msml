@@ -146,7 +146,7 @@
           "fill_color": "#FFD0AA",
           "border_color": "#E65100"
         },
-        "model_ref": "Toaster.SEQ.ExecutionOccurrence.ExecToaster"
+        "model_ref": "Toaster.Sequence.Execution.ToasterActivation"
       },
       {
         "type": "execution_occurrence",
@@ -162,7 +162,7 @@
           "fill_color": "#FFE082",
           "border_color": "#8B6914"
         },
-        "model_ref": "Toaster.SEQ.ExecutionOccurrence.ExecTimer"
+        "model_ref": "Toaster.Sequence.Execution.TimerActivation"
       },
       {
         "type": "execution_occurrence",
@@ -178,7 +178,7 @@
           "fill_color": "#FFCDD2",
           "border_color": "#CC4400"
         },
-        "model_ref": "Toaster.SEQ.ExecutionOccurrence.ExecElement"
+        "model_ref": "Toaster.Sequence.Execution.HeatingElementActivation"
       }
     ],
     "relationships": [

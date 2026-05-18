@@ -39,22 +39,22 @@
         }
       },
       {
-        "id": "Toaster.ACT.ActivityFinalNode.Final",
+        "id": "Toaster.Behavior.Toasting.Final.ToastComplete",
         "type": "activity_final_node",
         "name": "Final"
       },
       {
-        "id": "Toaster.ACT.ForkNode.Fork1",
+        "id": "Toaster.Behavior.Toasting.Fork.AfterLeverPress",
         "type": "fork_node",
         "name": "Fork1"
       },
       {
-        "id": "Toaster.ACT.InitialNode.Init",
+        "id": "Toaster.Behavior.Toasting.Start",
         "type": "initial_node",
         "name": "Init"
       },
       {
-        "id": "Toaster.ACT.JoinNode.Join1",
+        "id": "Toaster.Behavior.Toasting.Join.BeforePopCarriage",
         "type": "join_node",
         "name": "Join1"
       },
@@ -172,37 +172,37 @@
         "value_type": "Real"
       },
       {
-        "id": "Toaster.IBD.Port.PortCarriageHeat",
+        "id": "Toaster.Port.CarriageHeatInput",
         "type": "port",
         "name": "heatSignal",
         "owner_ref": "Toaster.Carriage"
       },
       {
-        "id": "Toaster.IBD.Port.PortElementCtrl",
+        "id": "Toaster.Port.HeatingElementControlInput",
         "type": "port",
         "name": "ctrl",
         "owner_ref": "Toaster.HeatingElement"
       },
       {
-        "id": "Toaster.IBD.Port.PortElementHeat",
+        "id": "Toaster.Port.HeatingElementHeatOutput",
         "type": "port",
         "name": "heatSignal",
         "owner_ref": "Toaster.HeatingElement"
       },
       {
-        "id": "Toaster.IBD.Port.PortLeverCtrl",
+        "id": "Toaster.Port.LeverControlOutput",
         "type": "port",
         "name": "ctrl",
         "owner_ref": "Toaster.Lever"
       },
       {
-        "id": "Toaster.IBD.Port.PortTimerIn",
+        "id": "Toaster.Port.TimerControlInput",
         "type": "port",
         "name": "in",
         "owner_ref": "Toaster.Timer"
       },
       {
-        "id": "Toaster.IBD.Port.PortTimerOut",
+        "id": "Toaster.Port.TimerSignalOutput",
         "type": "port",
         "name": "signal",
         "owner_ref": "Toaster.Timer"
@@ -246,11 +246,11 @@
       {
         "id": "Toaster.PAR.BreadHeat",
         "type": "constraint_property",
-        "name": "Q_b = η × Q",
+        "name": "Q_b = \u03b7 \u00d7 Q",
         "expression": "Q_b = eta * Q",
         "parameters": [
           {
-            "name": "η",
+            "name": "\u03b7",
             "type": "Real"
           },
           {
@@ -266,7 +266,7 @@
       {
         "id": "Toaster.PAR.Energy",
         "type": "constraint_property",
-        "name": "Q = P × t",
+        "name": "Q = P \u00d7 t",
         "expression": "Q = P * t",
         "parameters": [
           {
@@ -286,7 +286,7 @@
       {
         "id": "Toaster.PAR.PV2R",
         "type": "constraint_property",
-        "name": "P = V² / R",
+        "name": "P = V\u00b2 / R",
         "expression": "P = V**2 / R",
         "parameters": [
           {
@@ -329,14 +329,14 @@
       {
         "id": "Toaster.PAR.efficiency",
         "type": "value_property",
-        "name": "efficiency: η",
+        "name": "efficiency: \u03b7",
         "value_type": "Real",
         "unit": "dimensionless"
       },
       {
         "id": "Toaster.PAR.elemTemp",
         "type": "value_property",
-        "name": "elemTemp: °C",
+        "name": "elemTemp: \u00b0C",
         "value_type": "Real",
         "unit": "degC"
       },
@@ -377,7 +377,7 @@
         "id": "Toaster.REQ-001.2",
         "name": "Timer Function",
         "req_id": "REQ-001.2",
-        "text": "Timer shall support 1–5 min\nbrowning settings.",
+        "text": "Timer shall support 1\u20135 min\nbrowning settings.",
         "kind": "functional",
         "priority": "high",
         "status": "approved"
@@ -397,7 +397,7 @@
         "id": "Toaster.REQ-001.4",
         "name": "Browning Repeatability",
         "req_id": "REQ-001.4",
-        "text": "Same browning level shall\nproduce ±5% energy variance.",
+        "text": "Same browning level shall\nproduce \u00b15% energy variance.",
         "kind": "performance",
         "priority": "medium",
         "status": "proposed"
@@ -417,7 +417,7 @@
         "id": "Toaster.REQ-002.1",
         "name": "Overheat Detection",
         "req_id": "REQ-002.1",
-        "text": "ThermalCutoff shall trip\nbelow 300°C surface temp.",
+        "text": "ThermalCutoff shall trip\nbelow 300\u00b0C surface temp.",
         "kind": "functional",
         "priority": "high",
         "status": "approved"
@@ -458,53 +458,53 @@
         "name": "Requirements"
       },
       {
-        "id": "Toaster.SEQ.ExecutionOccurrence.ExecElement",
+        "id": "Toaster.Sequence.Execution.HeatingElementActivation",
         "type": "execution_occurrence",
         "name": "Exec Element",
         "lifeline_ref": "Toaster.HeatingElement"
       },
       {
-        "id": "Toaster.SEQ.ExecutionOccurrence.ExecTimer",
+        "id": "Toaster.Sequence.Execution.TimerActivation",
         "type": "execution_occurrence",
         "name": "Exec Timer",
         "lifeline_ref": "Toaster.Timer"
       },
       {
-        "id": "Toaster.SEQ.ExecutionOccurrence.ExecToaster",
+        "id": "Toaster.Sequence.Execution.ToasterActivation",
         "type": "execution_occurrence",
         "name": "Exec Toaster",
         "lifeline_ref": "Toaster"
       },
       {
         "type": "class",
-        "id": "Toaster.STM",
+        "id": "Toaster.StateMachine.ToastingCycle",
         "name": "ToasterSTM"
       },
       {
         "type": "state",
-        "id": "Toaster.STM.Done",
+        "id": "Toaster.State.ToastingCycle.Done",
         "name": "Done",
         "entry": "pop_carriage()"
       },
       {
         "type": "state",
-        "id": "Toaster.STM.Error",
+        "id": "Toaster.State.ToastingCycle.Error",
         "name": "Error",
         "entry": "deactivate_element(); release_latch(); sound_alarm()"
       },
       {
         "type": "state",
-        "id": "Toaster.STM.Idle",
+        "id": "Toaster.State.ToastingCycle.Idle",
         "name": "Idle"
       },
       {
-        "id": "Toaster.STM.InitialPseudostate.Init",
+        "id": "Toaster.State.ToastingCycle.Start",
         "type": "initial_pseudostate",
         "name": "Init"
       },
       {
         "type": "state",
-        "id": "Toaster.STM.Toasting",
+        "id": "Toaster.State.ToastingCycle.Toasting",
         "name": "Toasting",
         "entry": "start_timer()",
         "do": "heat_element()",
@@ -545,7 +545,7 @@
       {
         "type": "value_property",
         "id": "Toaster.ThermalCutoff.cutoffTemp",
-        "name": "cutoffTemp: °C",
+        "name": "cutoffTemp: \u00b0C",
         "value_type": "Real"
       },
       {
@@ -657,7 +657,7 @@
       {
         "id": "act-toaster.f1",
         "type": "control_flow",
-        "source": "Toaster.ACT.InitialNode.Init",
+        "source": "Toaster.Behavior.Toasting.Start",
         "target": "Toaster.ToastingActivity.InsertBread"
       },
       {
@@ -670,43 +670,43 @@
         "id": "act-toaster.f3",
         "type": "control_flow",
         "source": "Toaster.ToastingActivity.PressLever",
-        "target": "Toaster.ACT.ForkNode.Fork1"
+        "target": "Toaster.Behavior.Toasting.Fork.AfterLeverPress"
       },
       {
         "id": "act-toaster.f4",
         "type": "control_flow",
-        "source": "Toaster.ACT.ForkNode.Fork1",
+        "source": "Toaster.Behavior.Toasting.Fork.AfterLeverPress",
         "target": "Toaster.ToastingActivity.StartTimer"
       },
       {
         "id": "act-toaster.f5",
         "type": "control_flow",
-        "source": "Toaster.ACT.ForkNode.Fork1",
+        "source": "Toaster.Behavior.Toasting.Fork.AfterLeverPress",
         "target": "Toaster.ToastingActivity.HeatElement"
       },
       {
         "id": "act-toaster.f6",
         "type": "control_flow",
         "source": "Toaster.ToastingActivity.StartTimer",
-        "target": "Toaster.ACT.JoinNode.Join1"
+        "target": "Toaster.Behavior.Toasting.Join.BeforePopCarriage"
       },
       {
         "id": "act-toaster.f7",
         "type": "control_flow",
         "source": "Toaster.ToastingActivity.HeatElement",
-        "target": "Toaster.ACT.JoinNode.Join1"
+        "target": "Toaster.Behavior.Toasting.Join.BeforePopCarriage"
       },
       {
         "id": "act-toaster.f8",
         "type": "control_flow",
-        "source": "Toaster.ACT.JoinNode.Join1",
+        "source": "Toaster.Behavior.Toasting.Join.BeforePopCarriage",
         "target": "Toaster.ToastingActivity.PopCarriage"
       },
       {
         "id": "act-toaster.f9",
         "type": "control_flow",
         "source": "Toaster.ToastingActivity.PopCarriage",
-        "target": "Toaster.ACT.ActivityFinalNode.Final"
+        "target": "Toaster.Behavior.Toasting.Final.ToastComplete"
       },
       {
         "type": "association",
@@ -773,20 +773,20 @@
       {
         "id": "ibd-toaster.conn-element-carriage",
         "type": "connector",
-        "source": "Toaster.IBD.Port.PortElementHeat",
-        "target": "Toaster.IBD.Port.PortCarriageHeat"
+        "source": "Toaster.Port.HeatingElementHeatOutput",
+        "target": "Toaster.Port.CarriageHeatInput"
       },
       {
         "id": "ibd-toaster.conn-lever-timer",
         "type": "connector",
-        "source": "Toaster.IBD.Port.PortLeverCtrl",
-        "target": "Toaster.IBD.Port.PortTimerIn"
+        "source": "Toaster.Port.LeverControlOutput",
+        "target": "Toaster.Port.TimerControlInput"
       },
       {
         "id": "ibd-toaster.conn-timer-element",
         "type": "connector",
-        "source": "Toaster.IBD.Port.PortTimerOut",
-        "target": "Toaster.IBD.Port.PortElementCtrl"
+        "source": "Toaster.Port.TimerSignalOutput",
+        "target": "Toaster.Port.HeatingElementControlInput"
       },
       {
         "id": "par-toaster.b1",
@@ -971,49 +971,49 @@
       {
         "type": "transition",
         "id": "stm-toaster.t-done-idle",
-        "source": "Toaster.STM.Done",
-        "target": "Toaster.STM.Idle",
+        "source": "Toaster.State.ToastingCycle.Done",
+        "target": "Toaster.State.ToastingCycle.Idle",
         "trigger": "toast_removed"
       },
       {
         "type": "transition",
         "id": "stm-toaster.t-error-idle",
-        "source": "Toaster.STM.Error",
-        "target": "Toaster.STM.Idle",
+        "source": "Toaster.State.ToastingCycle.Error",
+        "target": "Toaster.State.ToastingCycle.Idle",
         "trigger": "reset"
       },
       {
         "type": "transition",
         "id": "stm-toaster.t-idle-toasting",
-        "source": "Toaster.STM.Idle",
-        "target": "Toaster.STM.Toasting",
+        "source": "Toaster.State.ToastingCycle.Idle",
+        "target": "Toaster.State.ToastingCycle.Toasting",
         "trigger": "lever_down"
       },
       {
         "id": "stm-toaster.t-init-idle",
         "type": "transition",
-        "source": "Toaster.STM.InitialPseudostate.Init",
-        "target": "Toaster.STM.Idle"
+        "source": "Toaster.State.ToastingCycle.Start",
+        "target": "Toaster.State.ToastingCycle.Idle"
       },
       {
         "type": "transition",
         "id": "stm-toaster.t-toasting-done",
-        "source": "Toaster.STM.Toasting",
-        "target": "Toaster.STM.Done",
+        "source": "Toaster.State.ToastingCycle.Toasting",
+        "target": "Toaster.State.ToastingCycle.Done",
         "trigger": "timer_expired"
       },
       {
         "type": "transition",
         "id": "stm-toaster.t-toasting-error",
-        "source": "Toaster.STM.Toasting",
-        "target": "Toaster.STM.Error",
+        "source": "Toaster.State.ToastingCycle.Toasting",
+        "target": "Toaster.State.ToastingCycle.Error",
         "trigger": "overheat_detected"
       },
       {
         "type": "transition",
         "id": "stm-toaster.t-toasting-idle",
-        "source": "Toaster.STM.Toasting",
-        "target": "Toaster.STM.Idle",
+        "source": "Toaster.State.ToastingCycle.Toasting",
+        "target": "Toaster.State.ToastingCycle.Idle",
         "trigger": "lever_up"
       },
       {

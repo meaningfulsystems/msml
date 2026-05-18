@@ -53,7 +53,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "HOS.Activity.InitialNode.Start"
+        "model_ref": "HOS.Activity.OperatingLoop.Start"
       },
       {
         "type": "action",
@@ -134,7 +134,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "HOS.Activity.ForkNode.Fork"
+        "model_ref": "HOS.Activity.OperatingLoop.Fork.RiskReview"
       },
       {
         "type": "action",
@@ -193,7 +193,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "HOS.Activity.JoinNode.Join"
+        "model_ref": "HOS.Activity.OperatingLoop.Join.AfterEthicsAndPortfolio"
       },
       {
         "type": "action",

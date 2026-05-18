@@ -53,7 +53,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "Toaster.ACT.InitialNode.Init"
+        "model_ref": "Toaster.Behavior.Toasting.Start"
       },
       {
         "type": "action",
@@ -112,7 +112,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "Toaster.ACT.ForkNode.Fork1"
+        "model_ref": "Toaster.Behavior.Toasting.Fork.AfterLeverPress"
       },
       {
         "type": "action",
@@ -171,7 +171,7 @@
         "style": {
           "fill_color": "#000000"
         },
-        "model_ref": "Toaster.ACT.JoinNode.Join1"
+        "model_ref": "Toaster.Behavior.Toasting.Join.BeforePopCarriage"
       },
       {
         "type": "action",
@@ -209,7 +209,7 @@
           "fill_color": "#000000",
           "border_color": "#000000"
         },
-        "model_ref": "Toaster.ACT.ActivityFinalNode.Final"
+        "model_ref": "Toaster.Behavior.Toasting.Final.ToastComplete"
       }
     ],
     "relationships": [

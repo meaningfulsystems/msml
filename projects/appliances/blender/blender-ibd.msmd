@@ -1,0 +1,812 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "blender-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-blender",
+    "subject_ref": "Blender",
+    "name": "Smart Blender Internal Structure",
+    "context": "Blender",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1060,
+      "height": 700,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-tamper",
+        "model_ref": "Blender.Tamper",
+        "role_name": "tamper",
+        "layout": {
+          "x": 390,
+          "y": 40,
+          "width": 160,
+          "height": 72,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F5F5F5",
+          "border_color": "#616161",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "tamper:Tamper"
+      },
+      {
+        "type": "part",
+        "id": "part-lid",
+        "model_ref": "Blender.Lid",
+        "role_name": "lid",
+        "layout": {
+          "x": 360,
+          "y": 145,
+          "width": 220,
+          "height": 72,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#ECEFF1",
+          "border_color": "#455A64",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "lid:Lid"
+      },
+      {
+        "type": "part",
+        "id": "part-container",
+        "model_ref": "Blender.Container",
+        "role_name": "container",
+        "layout": {
+          "x": 315,
+          "y": 250,
+          "width": 310,
+          "height": 175,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "container:Container"
+      },
+      {
+        "type": "part",
+        "id": "part-blade",
+        "model_ref": "Blender.BladeAssembly",
+        "role_name": "blade",
+        "layout": {
+          "x": 380,
+          "y": 350,
+          "width": 180,
+          "height": 55,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FCE4EC",
+          "border_color": "#AD1457",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 9,
+            "color": "#000000"
+          }
+        },
+        "display_name": "blade:BladeAssembly"
+      },
+      {
+        "type": "part",
+        "id": "part-drive-coupling",
+        "model_ref": "Blender.DriveCoupling",
+        "role_name": "coupling",
+        "layout": {
+          "x": 385,
+          "y": 465,
+          "width": 170,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "coupling:DriveCoupling"
+      },
+      {
+        "type": "part",
+        "id": "part-sensor",
+        "model_ref": "Blender.SmoothieCompleteSensor",
+        "role_name": "sensor",
+        "layout": {
+          "x": 625,
+          "y": 465,
+          "width": 210,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#EF6C00",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 9,
+            "color": "#000000"
+          }
+        },
+        "display_name": "sensor:SmoothnessSensor"
+      },
+      {
+        "type": "part",
+        "id": "part-motor-base",
+        "model_ref": "Blender.MotorBase",
+        "role_name": "base",
+        "layout": {
+          "x": 300,
+          "y": 575,
+          "width": 340,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#5E35B1",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "base:MotorBase"
+      },
+      {
+        "type": "part",
+        "id": "part-motor",
+        "model_ref": "Blender.Motor",
+        "role_name": "motor",
+        "layout": {
+          "x": 680,
+          "y": 575,
+          "width": 150,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "motor:Motor"
+      },
+      {
+        "type": "part",
+        "id": "part-control-panel",
+        "model_ref": "Blender.ControlPanel",
+        "role_name": "panel",
+        "layout": {
+          "x": 860,
+          "y": 575,
+          "width": 165,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "corner_radius": 4,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        },
+        "display_name": "panel:ControlPanel"
+      },
+      {
+        "type": "port",
+        "id": "port-tamper-lid",
+        "name": "",
+        "model_ref": "Blender.Port.TamperLidMechanicalInterface",
+        "layout": {
+          "x": 464,
+          "y": 106,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#616161",
+          "font": {
+            "size": 8,
+            "color": "#616161"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-lid-tamper",
+        "name": "",
+        "model_ref": "Blender.Port.LidTamperMechanicalInterface",
+        "layout": {
+          "x": 464,
+          "y": 139,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#455A64",
+          "font": {
+            "size": 8,
+            "color": "#455A64"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-lid-container",
+        "name": "",
+        "model_ref": "Blender.Port.LidContainerMechanicalInterface",
+        "layout": {
+          "x": 464,
+          "y": 211,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#455A64",
+          "font": {
+            "size": 8,
+            "color": "#455A64"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-container-lid",
+        "name": "",
+        "model_ref": "Blender.Port.ContainerLidMechanicalInterface",
+        "layout": {
+          "x": 464,
+          "y": 244,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "font": {
+            "size": 8,
+            "color": "#2E7D32"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-container-mechanical",
+        "name": "",
+        "model_ref": "Blender.Port.ContainerMechanicalInterface",
+        "layout": {
+          "x": 464,
+          "y": 419,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "font": {
+            "size": 8,
+            "color": "#2E7D32"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-base-mechanical",
+        "name": "",
+        "model_ref": "Blender.Port.MotorBaseMechanicalInterface",
+        "layout": {
+          "x": 464,
+          "y": 569,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#5E35B1",
+          "font": {
+            "size": 8,
+            "color": "#5E35B1"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-blade-drive",
+        "name": "",
+        "model_ref": "Blender.Port.BladeDriveInput",
+        "layout": {
+          "x": 464,
+          "y": 399,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#AD1457",
+          "font": {
+            "size": 8,
+            "color": "#AD1457"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-coupling-out",
+        "name": "",
+        "model_ref": "Blender.Port.DriveCouplingOutput",
+        "layout": {
+          "x": 464,
+          "y": 459,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914",
+          "font": {
+            "size": 8,
+            "color": "#8B6914"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-coupling-in",
+        "name": "",
+        "model_ref": "Blender.Port.DriveCouplingInput",
+        "layout": {
+          "x": 464,
+          "y": 529,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914",
+          "font": {
+            "size": 8,
+            "color": "#8B6914"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-motor-drive",
+        "name": "",
+        "model_ref": "Blender.Port.MotorDriveOutput",
+        "layout": {
+          "x": 674,
+          "y": 610,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#CC4400",
+          "font": {
+            "size": 8,
+            "color": "#CC4400"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-coupling-sense",
+        "name": "",
+        "model_ref": "Blender.Port.DriveCouplingVibrationProxyOutput",
+        "layout": {
+          "x": 549,
+          "y": 492,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914",
+          "font": {
+            "size": 8,
+            "color": "#8B6914"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-sensor-sense",
+        "name": "",
+        "model_ref": "Blender.Port.SensorVibrationProxyInput",
+        "layout": {
+          "x": 619,
+          "y": 492,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "font": {
+            "size": 8,
+            "color": "#EF6C00"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-sensor-complete",
+        "name": "",
+        "model_ref": "Blender.Port.SensorCompletionSignalOutput",
+        "layout": {
+          "x": 730,
+          "y": 459,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "font": {
+            "size": 8,
+            "color": "#EF6C00"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-panel-complete",
+        "name": "",
+        "model_ref": "Blender.Port.ControlPanelCompletionInput",
+        "layout": {
+          "x": 938,
+          "y": 569,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "font": {
+            "size": 8,
+            "color": "#1565C0"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-panel-command",
+        "name": "",
+        "model_ref": "Blender.Port.ControlPanelMotorCommandOutput",
+        "layout": {
+          "x": 854,
+          "y": 635,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "font": {
+            "size": 8,
+            "color": "#1565C0"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "port-motor-command",
+        "name": "",
+        "model_ref": "Blender.Port.MotorCommandInput",
+        "layout": {
+          "x": 824,
+          "y": 635,
+          "width": 12,
+          "height": 12,
+          "z_index": 4
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#CC4400",
+          "font": {
+            "size": 8,
+            "color": "#CC4400"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "connector",
+        "id": "conn-tamper-lid-mechanical",
+        "relationship_ref": "ibd-blender.conn-tamper-lid-mechanical",
+        "source": "port-tamper-lid",
+        "target": "port-lid-tamper",
+        "waypoints": [
+          {
+            "x": 470,
+            "y": 112
+          },
+          {
+            "x": 470,
+            "y": 139
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-lid-container-mechanical",
+        "relationship_ref": "ibd-blender.conn-lid-container-mechanical",
+        "source": "port-lid-container",
+        "target": "port-container-lid",
+        "waypoints": [
+          {
+            "x": 470,
+            "y": 217
+          },
+          {
+            "x": 470,
+            "y": 244
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-base-container-mechanical",
+        "relationship_ref": "ibd-blender.conn-base-container-mechanical",
+        "source": "port-container-mechanical",
+        "target": "port-base-mechanical",
+        "waypoints": [
+          {
+            "x": 470,
+            "y": 425
+          },
+          {
+            "x": 470,
+            "y": 569
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-coupling-blade",
+        "relationship_ref": "ibd-blender.conn-coupling-blade",
+        "source": "port-coupling-out",
+        "target": "port-blade-drive",
+        "waypoints": [
+          {
+            "x": 470,
+            "y": 465
+          },
+          {
+            "x": 470,
+            "y": 405
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-motor-coupling",
+        "relationship_ref": "ibd-blender.conn-motor-coupling",
+        "source": "port-motor-drive",
+        "target": "port-coupling-in",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 616
+          },
+          {
+            "x": 555,
+            "y": 616
+          },
+          {
+            "x": 555,
+            "y": 535
+          },
+          {
+            "x": 470,
+            "y": 535
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-coupling-sensor",
+        "relationship_ref": "ibd-blender.conn-coupling-sensor",
+        "source": "port-coupling-sense",
+        "target": "port-sensor-sense",
+        "waypoints": [
+          {
+            "x": 555,
+            "y": 498
+          },
+          {
+            "x": 619,
+            "y": 498
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-sensor-control",
+        "relationship_ref": "ibd-blender.conn-sensor-control",
+        "source": "port-sensor-complete",
+        "target": "port-panel-complete",
+        "waypoints": [
+          {
+            "x": 736,
+            "y": 465
+          },
+          {
+            "x": 736,
+            "y": 545
+          },
+          {
+            "x": 944,
+            "y": 575
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      },
+      {
+        "type": "connector",
+        "id": "conn-control-motor",
+        "relationship_ref": "ibd-blender.conn-control-motor",
+        "source": "port-panel-command",
+        "target": "port-motor-command",
+        "waypoints": [
+          {
+            "x": 860,
+            "y": 641
+          },
+          {
+            "x": 824,
+            "y": 641
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "font": {
+            "color": "#333333"
+          }
+        },
+        "name": ""
+      }
+    ]
+  }
+}

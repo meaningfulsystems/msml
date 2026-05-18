@@ -84,7 +84,7 @@
             "color": "#9A6418"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortHosValues"
+        "model_ref": "HOS.Port.HosValuesInput"
       },
       {
         "type": "port",
@@ -106,7 +106,7 @@
             "color": "#207567"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortHosWorld"
+        "model_ref": "HOS.Port.HosWorldSignalsInput"
       },
       {
         "type": "port",
@@ -128,7 +128,7 @@
             "color": "#2E7D32"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortHosFuture"
+        "model_ref": "HOS.Port.HosFutureInterestInput"
       },
       {
         "type": "port",
@@ -150,7 +150,7 @@
             "color": "#6D4C9A"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortHosBrief"
+        "model_ref": "HOS.Port.HosDecisionBriefOutput"
       },
       {
         "type": "port",
@@ -172,7 +172,7 @@
             "color": "#B5522C"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortHosPathways"
+        "model_ref": "HOS.Port.HosPathwayQueryOutput"
       },
       {
         "type": "part",
@@ -217,7 +217,7 @@
             "color": "#9A6418"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortHumanityValues"
+        "model_ref": "HOS.Port.HumanityValuesOutput"
       },
       {
         "type": "part",
@@ -262,7 +262,7 @@
             "color": "#207567"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortEarthSignals"
+        "model_ref": "HOS.Port.EarthSignalsOutput"
       },
       {
         "type": "part",
@@ -307,7 +307,7 @@
             "color": "#2E7D32"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortFutureInterest"
+        "model_ref": "HOS.Port.FutureInterestOutput"
       },
       {
         "type": "part",
@@ -352,7 +352,7 @@
             "color": "#6D4C9A"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortDecisionBrief"
+        "model_ref": "HOS.Port.DecisionBriefInput"
       },
       {
         "type": "part",
@@ -397,7 +397,7 @@
             "color": "#B5522C"
           }
         },
-        "model_ref": "HOS.IBD.Port.PortTechPathways"
+        "model_ref": "HOS.Port.TechnologyPathwaysInput"
       }
     ],
     "relationships": [

@@ -1,0 +1,372 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "blender-model.msml"
+  ],
+  "diagram": {
+    "type": "state_machine",
+    "id": "stm-blender",
+    "name": "Smoothie Program State Machine",
+    "context": "Blender",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 900,
+      "height": 500,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "initial_pseudostate",
+        "id": "start",
+        "model_ref": "Blender.State.SmoothieProgram.Start",
+        "layout": {
+          "x": 70,
+          "y": 130,
+          "width": 20,
+          "height": 20,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-off",
+        "model_ref": "Blender.State.SmoothieProgram.Off",
+        "layout": {
+          "x": 125,
+          "y": 95,
+          "width": 180,
+          "height": 95,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F5F5F5",
+          "border_color": "#616161",
+          "border_width": 2,
+          "corner_radius": 8,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-ready",
+        "model_ref": "Blender.State.SmoothieProgram.Ready",
+        "layout": {
+          "x": 405,
+          "y": 95,
+          "width": 220,
+          "height": 95,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "corner_radius": 8,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-blending",
+        "model_ref": "Blender.State.SmoothieProgram.Blending",
+        "layout": {
+          "x": 405,
+          "y": 305,
+          "width": 220,
+          "height": 105,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "corner_radius": 8,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "type": "transition",
+        "id": "t0",
+        "relationship_ref": "stm-blender.t0",
+        "source": "start",
+        "target": "state-off",
+        "waypoints": [
+          {
+            "x": 90,
+            "y": 140
+          },
+          {
+            "x": 125,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      },
+      {
+        "type": "transition",
+        "id": "t1",
+        "relationship_ref": "stm-blender.t1",
+        "source": "state-off",
+        "target": "state-ready",
+        "waypoints": [
+          {
+            "x": 305,
+            "y": 142
+          },
+          {
+            "x": 405,
+            "y": 142
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": -28,
+            "y": 24
+          }
+        },
+        "trigger": "on switch"
+      },
+      {
+        "type": "transition",
+        "id": "t2",
+        "relationship_ref": "stm-blender.t2",
+        "source": "state-ready",
+        "target": "state-blending",
+        "waypoints": [
+          {
+            "x": 515,
+            "y": 190
+          },
+          {
+            "x": 515,
+            "y": 305
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": 10,
+            "y": 58
+          }
+        },
+        "trigger": "start command"
+      },
+      {
+        "type": "transition",
+        "id": "t3",
+        "relationship_ref": "stm-blender.t3",
+        "source": "state-blending",
+        "target": "state-ready",
+        "waypoints": [
+          {
+            "x": 625,
+            "y": 342
+          },
+          {
+            "x": 760,
+            "y": 342
+          },
+          {
+            "x": 760,
+            "y": 142
+          },
+          {
+            "x": 625,
+            "y": 142
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": 8,
+            "y": -12
+          }
+        },
+        "trigger": "complete",
+        "guard": "smooth",
+        "effect": "stop"
+      },
+      {
+        "type": "transition",
+        "id": "t4",
+        "relationship_ref": "stm-blender.t4",
+        "source": "state-ready",
+        "target": "state-off",
+        "waypoints": [
+          {
+            "x": 405,
+            "y": 108
+          },
+          {
+            "x": 352,
+            "y": 48
+          },
+          {
+            "x": 215,
+            "y": 48
+          },
+          {
+            "x": 215,
+            "y": 95
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": -6,
+            "y": 6
+          }
+        },
+        "trigger": "off switch"
+      },
+      {
+        "type": "transition",
+        "id": "t5",
+        "relationship_ref": "stm-blender.t5",
+        "source": "state-blending",
+        "target": "state-ready",
+        "waypoints": [
+          {
+            "x": 595,
+            "y": 305
+          },
+          {
+            "x": 595,
+            "y": 190
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": 8,
+            "y": 4
+          }
+        },
+        "trigger": "stop",
+        "effect": "stop motor"
+      },
+      {
+        "type": "transition",
+        "id": "t6",
+        "relationship_ref": "stm-blender.t6",
+        "source": "state-blending",
+        "target": "state-ready",
+        "waypoints": [
+          {
+            "x": 435,
+            "y": 305
+          },
+          {
+            "x": 435,
+            "y": 190
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": -104,
+            "y": 4
+          }
+        },
+        "trigger": "timeout",
+        "effect": "stop motor"
+      },
+      {
+        "type": "transition",
+        "id": "t7",
+        "relationship_ref": "stm-blender.t7",
+        "source": "state-blending",
+        "target": "state-off",
+        "waypoints": [
+          {
+            "x": 405,
+            "y": 360
+          },
+          {
+            "x": 95,
+            "y": 360
+          },
+          {
+            "x": 95,
+            "y": 142
+          },
+          {
+            "x": 125,
+            "y": 142
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "target_arrowhead": "open",
+          "label_offset": {
+            "x": 8,
+            "y": -12
+          }
+        },
+        "trigger": "off switch",
+        "effect": "stop"
+      }
+    ]
+  }
+}

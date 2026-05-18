@@ -1,0 +1,28 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "import-root.msml"
+  ],
+  "diagram": {
+    "type": "bdd",
+    "id": "fixture-missing-model-ref",
+    "name": "Missing Model Ref",
+    "canvas": {
+      "width": 240,
+      "height": 160
+    },
+    "elements": [
+      {
+        "id": "missing",
+        "type": "block",
+        "layout": {
+          "x": 40,
+          "y": 40,
+          "width": 130,
+          "height": 70
+        }
+      }
+    ],
+    "relationships": []
+  }
+}
