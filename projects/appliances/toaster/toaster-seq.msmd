@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "sequence",
     "id": "sd-toaster",
@@ -57,7 +60,7 @@
             "color": "#000000"
           }
         },
-        "model_ref": "Toaster.User",
+        "model_ref": "Toaster.Actor.User",
         "display_name": ":User"
       },
       {
@@ -142,7 +145,8 @@
         "style": {
           "fill_color": "#FFD0AA",
           "border_color": "#E65100"
-        }
+        },
+        "model_ref": "Toaster.SEQ.ExecutionOccurrence.ExecToaster"
       },
       {
         "type": "execution_occurrence",
@@ -157,7 +161,8 @@
         "style": {
           "fill_color": "#FFE082",
           "border_color": "#8B6914"
-        }
+        },
+        "model_ref": "Toaster.SEQ.ExecutionOccurrence.ExecTimer"
       },
       {
         "type": "execution_occurrence",
@@ -172,7 +177,8 @@
         "style": {
           "fill_color": "#FFCDD2",
           "border_color": "#CC4400"
-        }
+        },
+        "model_ref": "Toaster.SEQ.ExecutionOccurrence.ExecElement"
       }
     ],
     "relationships": [
@@ -252,6 +258,5 @@
         "sequence"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

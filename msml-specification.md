@@ -11,10 +11,10 @@ MSML v1.0 uses two file types:
 
 | Extension | Name | Purpose |
 |---|---|---|
-| `.msml` | MSML model file | Semantic system model: definitions and relationships. No layout or visual styling. |
-| `.msmd` | MSML diagram file | Graphical diagram view: canvas, frame, positioned view elements, ports, style, and relationship routing. |
+| `.msml` | MSML model file | Complete system model: definitions and relationships. No layout or visual styling. |
+| `.msmd` | MSML diagram file | Graphical diagram view: canvas, frame, positioned view elements, style, and relationship routing. |
 
-Model files do not reference diagrams. Diagram files reference model files.
+Model files do not reference diagrams. Diagram files reference model files. A diagram is a view of the loaded model graph; repository diagrams must not introduce model elements or relationships that are absent from `.msml`.
 
 ---
 
@@ -24,7 +24,7 @@ MSML v1.0 is designed for:
 
 1. **AI and human authoring** - JSON, explicit fields, stable IDs, and no indentation-sensitive syntax.
 2. **Scriptable graphical modeling** - diagrams are generated from text and rendered to PNG.
-3. **Model/view separation** - semantic definitions live in `.msml`; diagram layout lives in `.msmd`.
+3. **Model/view separation** - model definitions and relationships live in `.msml`; diagram layout lives in `.msmd`.
 4. **SysML 1.x coverage** - the core SysML 1.x diagram families are supported as diagram views.
 5. **Deterministic rendering** - diagram files carry explicit coordinates and styles.
 6. **Small implementation surface** - v1.0 stays practical enough to build and inspect in one repository.
@@ -39,13 +39,13 @@ MSML v1.0 is designed for:
 - Colors: hex strings only, `#RRGGBB` or `#RRGGBBAA`
 - Dates: ISO-style date strings, e.g. `2026-05-17`
 
-The renderer and parser must reject malformed JSON. Diagram rendering must fail loudly when a `.msmd` file references a missing model file, missing model definition, or missing model relationship.
+The renderer and parser must reject malformed JSON. Diagram rendering must fail loudly when a `.msmd` file references a missing model file, omits or references a missing model definition, or omits or references a missing model relationship.
 
 ---
 
 ## 3. Model Files (`.msml`)
 
-A `.msml` file is a semantic model file. It contains definitions and relationships. It does not contain diagram frames, canvases, coordinates, waypoints, z-indexes, or visual styles.
+A `.msml` file is a model file. It contains the definitions and relationships needed to recreate diagram topology and system meaning. It does not contain diagram frames, canvases, coordinates, waypoints, z-indexes, or visual styles.
 
 ### 3.1 Top-Level Structure
 
@@ -79,7 +79,9 @@ A `.msml` file is a semantic model file. It contains definitions and relationshi
 }
 ```
 
-Imports are resolved relative to the importing model file. Imported definitions are available to diagrams that load the importing model.
+Imports are resolved relative to the importing model file. Imported definitions and relationships are available to diagrams that load the importing model.
+
+Models may import parent or shared models to keep large systems modular. For example, `pacific-ocean.msml` may import `oceans.msml`, and `oceans.msml` may import `earth.msml`. Model files still do not reference diagrams.
 
 v1.0 rule: if the same definition ID appears more than once after imports are loaded, the later local definition wins.
 
@@ -124,7 +126,7 @@ Definitions must not include `layout`, `style`, `canvas`, `frame`, `waypoints`, 
 
 ## 4. Supported Definition Types
 
-MSML v1.0 supports semantic definitions needed for all SysML 1.x-style diagrams in this repository.
+MSML v1.0 supports definitions needed for all SysML 1.x-style model content and diagram topology in this repository.
 
 ### 4.1 Block
 
@@ -233,12 +235,12 @@ Allowed `status` values:
 }
 ```
 
-### 4.7 Constraint
+### 4.7 Constraint Property
 
 ```json
 {
   "id": "Toaster.PAR.PV2R",
-  "type": "constraint",
+  "type": "constraint_property",
   "name": "P = V^2 / R",
   "expression": "P = V**2 / R",
   "parameters": [
@@ -273,6 +275,58 @@ Allowed `status` values:
 
 `type` may be `model`, `package`, or `class`.
 
+### 4.10 Control and Notation Nodes
+
+Diagram control/topology nodes are model definitions in MSML v1.0. They are lightweight definitions so a diagram can be recreated from the loaded `.msml` model graph plus `.msmd` view layout.
+
+```json
+{
+  "id": "Toaster.ACT.Initial",
+  "type": "initial_node",
+  "name": "Initial"
+}
+```
+
+Supported control and notation definition types:
+
+- `initial_node`
+- `activity_final_node`
+- `flow_final_node`
+- `fork_node`
+- `join_node`
+- `decision_node`
+- `merge_node`
+- `initial_pseudostate`
+- `final_state`
+- `execution_occurrence`
+- `system_boundary`
+- `port`
+- `comment`
+- `annotation`
+
+Ports include ownership information:
+
+```json
+{
+  "id": "Toaster.IBD.Lever.ctrl",
+  "type": "port",
+  "name": "ctrl",
+  "owner_ref": "Toaster.Lever",
+  "direction": "out"
+}
+```
+
+Execution occurrences may reference the lifeline they belong to:
+
+```json
+{
+  "id": "Toaster.SEQ.Toaster.Execution",
+  "type": "execution_occurrence",
+  "name": "Toaster execution",
+  "lifeline_ref": "Toaster"
+}
+```
+
 ---
 
 ## 5. Model Relationships
@@ -294,6 +348,8 @@ Common relationship fields:
 ```
 
 Relationship IDs are stable model IDs. They do not need dot notation, but they must be unique within the loaded model graph.
+
+Recommended convention: prefix relationship IDs with the diagram ID where they were first defined, separated by a dot. Examples: `bdd-toaster.comp-heating-element`, `sd-toaster.m1`, `stm-toaster.t-idle-toasting`.
 
 ### 5.1 Supported Relationship Types
 
@@ -374,6 +430,8 @@ Allowed `message_sort` values:
 - `found`
 - `lost`
 
+`source_lifeline` and `target_lifeline` must reference model definitions of type `block` or `actor`. Referencing any other definition type is a strict validation error.
+
 ### 5.3 State Transitions
 
 ```json
@@ -399,7 +457,7 @@ A `.msmd` file is a diagram view. It references one or more `.msml` model files.
 ```json
 {
   "msml_version": "1.0",
-  "model_file": "hos-model.msml",
+  "model_files": ["hos-model.msml"],
   "diagram": {
     "type": "bdd",
     "id": "bdd-hos-definition",
@@ -414,7 +472,7 @@ A `.msmd` file is a diagram view. It references one or more `.msml` model files.
 }
 ```
 
-`model_file` may be a string. `model_files` may be used when a diagram depends on more than one model file:
+`model_files` is a JSON array of relative paths to `.msml` model files. It must always be an array, even when referencing a single model. The singular `model_file` field is not valid.
 
 ```json
 {
@@ -438,7 +496,22 @@ Canonical diagram type values:
 | Parametric Diagram | `parametric` | `par` | `*-par.msmd` |
 | Package Diagram | `package` | `pkg` | `*-pkg.msmd` |
 
-### 6.3 Diagram Frame
+### 6.3 Subject Reference
+
+IBD and parametric diagrams should declare the model element whose interior or parametric context is being shown. Use the optional `subject_ref` field at `diagram.subject_ref`:
+
+```json
+{
+  "diagram": {
+    "type": "ibd",
+    "subject_ref": "Toaster"
+  }
+}
+```
+
+`subject_ref` must resolve to a `block` definition in the loaded model. The renderer ignores it. Validators use it to confirm the diagram subject exists and, in future richer models, that parts are valid features of the subject block.
+
+### 6.4 Diagram Frame
 
 Every rendered diagram has a SysML-style frame:
 
@@ -474,7 +547,7 @@ The frame label is:
 <diagram abbreviation> [<context>] <diagram name>
 ```
 
-### 6.4 Canvas
+### 6.5 Canvas
 
 ```json
 {
@@ -497,7 +570,7 @@ Coordinates are in canvas pixels and are relative to the diagram canvas interior
 
 ## 7. Diagram Elements
 
-Diagram elements are view objects. Model-backed diagram elements use `model_ref`.
+Diagram elements are view objects. Every diagram element in repository `.msmd` files must use `model_ref`; the model definition provides the element meaning, and the diagram element provides layout and style.
 
 ### 7.1 Model-Backed Element
 
@@ -546,31 +619,17 @@ Rules:
 - Else if `role_name` exists on a lifeline, render `role_name`.
 - Else render the model definition `name`.
 
-### 7.3 Notation-Only Elements
+### 7.3 Control, Port, and Annotation Elements
 
-These elements may exist only in `.msmd` and do not require `model_ref`:
+Control nodes, pseudostates, execution occurrences, system boundaries, ports, comments, and annotations are model-backed elements in MSML v1.0. They still carry diagram layout and style in `.msmd`.
 
-- `initial_node`
-- `initial_pseudostate`
-- `activity_final_node`
-- `final_state`
-- `fork_node`
-- `join_node`
-- `decision_node`
-- `merge_node`
-- `execution_occurrence`
-- `system_boundary`
-- `port`
-- `comment`
-
-Ports are diagram-local in v1.0:
+Example port view:
 
 ```json
 {
   "type": "port",
   "id": "port-hos-values",
-  "name": "valuesIn",
-  "owner_ref": "part-hos",
+  "model_ref": "HOS.IBD.HOS.valuesIn",
   "layout": { "x": 399, "y": 282, "width": 12, "height": 12, "z_index": 2 },
   "style": { "fill_color": "#FFFFFF", "border_color": "#9A6418" }
 }
@@ -580,7 +639,7 @@ Ports are diagram-local in v1.0:
 
 ## 8. Diagram Relationships
 
-Diagram relationships are view objects for model relationships. They should usually use `relationship_ref`.
+Diagram relationships are view objects for model relationships. Every diagram relationship in repository `.msmd` files must use `relationship_ref`. A diagram relationship may carry layout/routing/style fields such as `waypoints`, `label_offset`, and visual overrides, but the relationship meaning and endpoints live in `.msml`.
 
 ```json
 {
@@ -611,7 +670,7 @@ Diagram-local fields:
 - `label_position`
 - `style`
 
-For notational relationships that are not model relationships, a diagram may include full `type`, `source`, and `target` fields directly.
+The renderer resolves `relationship_ref` against the loaded model graph. Missing or unresolved `relationship_ref` is an error.
 
 ### 8.1 Relationship Style
 
@@ -695,11 +754,11 @@ Common style fields:
 The v1.0 renderer:
 
 - renders `.msmd` files only
-- loads `model_file` or `model_files`
+- loads `model_files`
 - loads imported model files
 - resolves diagram `model_ref` values to model definitions
 - resolves diagram `relationship_ref` values to model relationships
-- fails loudly on missing model files, missing model refs, or missing relationship refs
+- fails loudly on singular `model_file`, missing model files, missing or unresolved model refs, and missing or unresolved relationship refs
 - writes PNG output next to the `.msmd` file unless an explicit output path is provided
 - does not render `.msml` files directly
 
@@ -716,25 +775,28 @@ python3 render_all.py projects/humanity-optimization
 
 ## 11. Validation Requirements
 
-A future validator should provide three levels:
+The validator provides three levels:
 
 ### 11.1 Schema
 
 - JSON is valid.
 - Top-level file shape is valid for `.msml` or `.msmd`.
 - Required fields exist.
+- `.msmd` files use `model_files`; singular `model_file` is invalid.
+- Model files declared by `.msmd` files resolve.
+- Every diagram element has `model_ref`, and every `model_ref` resolves.
+- Every diagram relationship has `relationship_ref`, and every `relationship_ref` resolves.
 - IDs are unique within their scope.
 - Colors match hex format.
 - Numeric ranges are valid.
 
 ### 11.2 Strict
 
-- Model files declared by `.msmd` files resolve.
-- Every `model_ref` resolves.
-- Every `relationship_ref` resolves.
 - Relationship endpoints resolve to model definitions.
 - Diagram relationship endpoints can be mapped to visible diagram elements.
-- Ports with `owner_ref` reference diagram elements.
+- Message lifelines reference `block` or `actor` definitions.
+- `subject_ref` on IBD and parametric diagrams resolves to a `block`.
+- Ports with `owner_ref` reference model definitions.
 
 ### 11.3 Lint
 
@@ -809,7 +871,7 @@ Diagram file:
 ```json
 {
   "msml_version": "1.0",
-  "model_file": "example-model.msml",
+  "model_files": ["example-model.msml"],
   "diagram": {
     "type": "bdd",
     "id": "bdd-example",

@@ -1,8 +1,12 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "ibd",
     "id": "ibd-toaster",
+    "subject_ref": "Toaster",
     "name": "Toaster Internal Structure",
     "context": "Toaster",
     "frame": {
@@ -75,7 +79,8 @@
           "fill_color": "#FFFFFF",
           "border_color": "#6A1B9A"
         },
-        "owner_ref": "part-lever"
+        "owner_ref": "part-lever",
+        "model_ref": "Toaster.IBD.Port.PortLeverCtrl"
       },
       {
         "type": "part",
@@ -115,7 +120,8 @@
           "fill_color": "#FFFFFF",
           "border_color": "#8B6914"
         },
-        "owner_ref": "part-timer"
+        "owner_ref": "part-timer",
+        "model_ref": "Toaster.IBD.Port.PortTimerIn"
       },
       {
         "type": "port",
@@ -132,7 +138,8 @@
           "fill_color": "#FFFFFF",
           "border_color": "#8B6914"
         },
-        "owner_ref": "part-timer"
+        "owner_ref": "part-timer",
+        "model_ref": "Toaster.IBD.Port.PortTimerOut"
       },
       {
         "type": "part",
@@ -172,7 +179,8 @@
           "fill_color": "#FFFFFF",
           "border_color": "#CC4400"
         },
-        "owner_ref": "part-element"
+        "owner_ref": "part-element",
+        "model_ref": "Toaster.IBD.Port.PortElementCtrl"
       },
       {
         "type": "port",
@@ -189,7 +197,8 @@
           "fill_color": "#FFFFFF",
           "border_color": "#CC4400"
         },
-        "owner_ref": "part-element"
+        "owner_ref": "part-element",
+        "model_ref": "Toaster.IBD.Port.PortElementHeat"
       },
       {
         "type": "part",
@@ -229,7 +238,8 @@
           "fill_color": "#FFFFFF",
           "border_color": "#2E7D32"
         },
-        "owner_ref": "part-carriage"
+        "owner_ref": "part-carriage",
+        "model_ref": "Toaster.IBD.Port.PortCarriageHeat"
       }
     ],
     "relationships": [
@@ -255,7 +265,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "ibd-toaster.conn-lever-timer"
       },
       {
         "type": "connector",
@@ -287,7 +298,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 10
-        }
+        },
+        "relationship_ref": "ibd-toaster.conn-timer-element"
       },
       {
         "type": "connector",
@@ -311,7 +323,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "ibd-toaster.conn-element-carriage"
       }
     ],
     "metadata": {
@@ -323,6 +336,5 @@
         "ibd"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "state_machine",
     "id": "stm-toaster",
@@ -51,7 +54,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "Toaster.STM.InitialPseudostate.Init"
       },
       {
         "type": "state",
@@ -179,7 +183,8 @@
             "x": 0,
             "y": 0
           }
-        }
+        },
+        "relationship_ref": "stm-toaster.t-init-idle"
       },
       {
         "id": "t-idle-toasting",
@@ -352,6 +357,5 @@
         "appliance"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

@@ -17,6 +17,11 @@
         "name": "Evaluate Intervention Portfolios"
       },
       {
+        "id": "HOS.Activity.ForkNode.Fork",
+        "type": "fork_node",
+        "name": "Fork"
+      },
+      {
         "type": "action",
         "id": "HOS.Activity.IdentifyRisks",
         "name": "Identify Risks, Opportunities, Tradeons"
@@ -25,6 +30,16 @@
         "type": "action",
         "id": "HOS.Activity.InformDecisions",
         "name": "Inform Human Decisions"
+      },
+      {
+        "id": "HOS.Activity.InitialNode.Start",
+        "type": "initial_node",
+        "name": "Start"
+      },
+      {
+        "id": "HOS.Activity.JoinNode.Join",
+        "type": "join_node",
+        "name": "Join"
       },
       {
         "type": "action",
@@ -66,13 +81,13 @@
       {
         "type": "block",
         "id": "HOS.DecisionMakers",
-        "name": "decisionMakers",
+        "name": "DecisionMakers",
         "stereotype": "block"
       },
       {
         "type": "block",
         "id": "HOS.EarthBiosphere",
-        "name": "earthBiosphere",
+        "name": "EarthBiosphere",
         "stereotype": "block"
       },
       {
@@ -143,7 +158,7 @@
       {
         "type": "block",
         "id": "HOS.FutureGenerations",
-        "name": "futureGenerations",
+        "name": "FutureGenerations",
         "stereotype": "block"
       },
       {
@@ -155,7 +170,7 @@
       {
         "type": "block",
         "id": "HOS.Humanity",
-        "name": "humanity",
+        "name": "Humanity",
         "stereotype": "block"
       },
       {
@@ -206,6 +221,66 @@
         }
       },
       {
+        "id": "HOS.IBD.Port.PortDecisionBrief",
+        "type": "port",
+        "name": "decisionBrief",
+        "owner_ref": "HOS.DecisionMakers"
+      },
+      {
+        "id": "HOS.IBD.Port.PortEarthSignals",
+        "type": "port",
+        "name": "conditions",
+        "owner_ref": "HOS.EarthBiosphere"
+      },
+      {
+        "id": "HOS.IBD.Port.PortFutureInterest",
+        "type": "port",
+        "name": "protectedInterest",
+        "owner_ref": "HOS.FutureGenerations"
+      },
+      {
+        "id": "HOS.IBD.Port.PortHosBrief",
+        "type": "port",
+        "name": "briefOut",
+        "owner_ref": "HOS.HumanityOptimizationSystem"
+      },
+      {
+        "id": "HOS.IBD.Port.PortHosFuture",
+        "type": "port",
+        "name": "futureInterest",
+        "owner_ref": "HOS.HumanityOptimizationSystem"
+      },
+      {
+        "id": "HOS.IBD.Port.PortHosPathways",
+        "type": "port",
+        "name": "pathwayQuery",
+        "owner_ref": "HOS.HumanityOptimizationSystem"
+      },
+      {
+        "id": "HOS.IBD.Port.PortHosValues",
+        "type": "port",
+        "name": "valuesIn",
+        "owner_ref": "HOS.HumanityOptimizationSystem"
+      },
+      {
+        "id": "HOS.IBD.Port.PortHosWorld",
+        "type": "port",
+        "name": "worldSignals",
+        "owner_ref": "HOS.HumanityOptimizationSystem"
+      },
+      {
+        "id": "HOS.IBD.Port.PortHumanityValues",
+        "type": "port",
+        "name": "needsValues",
+        "owner_ref": "HOS.Humanity"
+      },
+      {
+        "id": "HOS.IBD.Port.PortTechPathways",
+        "type": "port",
+        "name": "pathways",
+        "owner_ref": "HOS.TechnologyResources"
+      },
+      {
         "type": "block",
         "id": "HOS.InterventionEvaluator",
         "name": "InterventionEvaluator",
@@ -231,6 +306,24 @@
             }
           ]
         }
+      },
+      {
+        "id": "HOS.SEQ.ExecutionOccurrence.ExecEvidence",
+        "type": "execution_occurrence",
+        "name": "Exec Evidence",
+        "lifeline_ref": "HOS.EvidenceAndModels"
+      },
+      {
+        "id": "HOS.SEQ.ExecutionOccurrence.ExecGovernance",
+        "type": "execution_occurrence",
+        "name": "Exec Governance",
+        "lifeline_ref": "HOS.GovernanceSystem"
+      },
+      {
+        "id": "HOS.SEQ.ExecutionOccurrence.ExecHos",
+        "type": "execution_occurrence",
+        "name": "Exec Hos",
+        "lifeline_ref": "HOS.HumanityOptimizationSystem"
       },
       {
         "type": "block",
@@ -262,11 +355,17 @@
       {
         "type": "block",
         "id": "HOS.TechnologyResources",
-        "name": "technologyResources",
+        "name": "TechnologyResources",
         "stereotype": "block"
       }
     ],
     "relationships": [
+      {
+        "id": "act-hos-operating-loop.f1",
+        "type": "control_flow",
+        "source": "HOS.Activity.InitialNode.Start",
+        "target": "HOS.Activity.ObserveWorld"
+      },
       {
         "type": "control_flow",
         "id": "act-hos-operating-loop.f10",
@@ -285,6 +384,42 @@
         "id": "act-hos-operating-loop.f3",
         "source": "HOS.Activity.ModelFutures",
         "target": "HOS.Activity.IdentifyRisks"
+      },
+      {
+        "id": "act-hos-operating-loop.f4",
+        "type": "control_flow",
+        "source": "HOS.Activity.IdentifyRisks",
+        "target": "HOS.Activity.ForkNode.Fork"
+      },
+      {
+        "id": "act-hos-operating-loop.f5",
+        "type": "control_flow",
+        "source": "HOS.Activity.ForkNode.Fork",
+        "target": "HOS.Activity.EvaluatePortfolios"
+      },
+      {
+        "id": "act-hos-operating-loop.f6",
+        "type": "control_flow",
+        "source": "HOS.Activity.ForkNode.Fork",
+        "target": "HOS.Activity.CheckEthics"
+      },
+      {
+        "id": "act-hos-operating-loop.f7",
+        "type": "control_flow",
+        "source": "HOS.Activity.EvaluatePortfolios",
+        "target": "HOS.Activity.JoinNode.Join"
+      },
+      {
+        "id": "act-hos-operating-loop.f8",
+        "type": "control_flow",
+        "source": "HOS.Activity.CheckEthics",
+        "target": "HOS.Activity.JoinNode.Join"
+      },
+      {
+        "id": "act-hos-operating-loop.f9",
+        "type": "control_flow",
+        "source": "HOS.Activity.JoinNode.Join",
+        "target": "HOS.Activity.InformDecisions"
       },
       {
         "type": "composition",
@@ -346,6 +481,41 @@
         "name": "evidence",
         "source": "HOS.ScenarioModel",
         "target": "HOS.EvidenceRepository"
+      },
+      {
+        "id": "ibd-hos-system-context.conn-earth-hos",
+        "type": "connector",
+        "source": "HOS.IBD.Port.PortEarthSignals",
+        "target": "HOS.IBD.Port.PortHosWorld",
+        "name": "conditions and warning signals"
+      },
+      {
+        "id": "ibd-hos-system-context.conn-future-hos",
+        "type": "connector",
+        "source": "HOS.IBD.Port.PortFutureInterest",
+        "target": "HOS.IBD.Port.PortHosFuture",
+        "name": "future interest model"
+      },
+      {
+        "id": "ibd-hos-system-context.conn-hos-decision",
+        "type": "connector",
+        "source": "HOS.IBD.Port.PortHosBrief",
+        "target": "HOS.IBD.Port.PortDecisionBrief",
+        "name": "decision brief"
+      },
+      {
+        "id": "ibd-hos-system-context.conn-humanity-hos",
+        "type": "connector",
+        "source": "HOS.IBD.Port.PortHumanityValues",
+        "target": "HOS.IBD.Port.PortHosValues",
+        "name": "needs, values, lived experience"
+      },
+      {
+        "id": "ibd-hos-system-context.conn-tech-hos",
+        "type": "connector",
+        "source": "HOS.IBD.Port.PortTechPathways",
+        "target": "HOS.IBD.Port.PortHosPathways",
+        "name": "pathways, resources, constraints"
       },
       {
         "type": "message",

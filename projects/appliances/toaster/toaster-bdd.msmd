@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "bdd",
     "id": "bdd-toaster",
@@ -457,6 +460,5 @@
         "bdd"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

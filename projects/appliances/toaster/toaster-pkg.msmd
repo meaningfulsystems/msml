@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "package",
     "id": "pkg-toaster",
@@ -310,6 +313,5 @@
         "package"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

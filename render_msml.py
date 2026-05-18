@@ -175,18 +175,25 @@ class MSMLRenderer:
     def _resolve_element(self, el: dict) -> dict:
         model_ref = el.get("model_ref")
         if not model_ref:
-            return el
+            raise ValueError(
+                f"MSML-SCHEMA-005: element[{el.get('id')}] missing model_ref"
+            )
         if model_ref not in self.definitions:
-            raise KeyError(f"Unresolved model_ref {model_ref!r} in element {el.get('id')!r}")
+            raise ValueError(
+                f"MSML-SCHEMA-005: element[{el.get('id')}] model_ref={model_ref!r} not found in model"
+            )
         return {**self.definitions[model_ref], **el}
 
     def _resolve_relationship(self, rel: dict) -> dict:
         relationship_ref = rel.get("relationship_ref")
         if not relationship_ref:
-            return rel
+            raise ValueError(
+                f"MSML-SCHEMA-006: relationship[{rel.get('id')}] missing relationship_ref"
+            )
         if relationship_ref not in self.model_relationships:
-            raise KeyError(
-                f"Unresolved relationship_ref {relationship_ref!r} in relationship {rel.get('id')!r}"
+            raise ValueError(
+                f"MSML-SCHEMA-006: relationship[{rel.get('id')}] "
+                f"relationship_ref={relationship_ref!r} not found in model"
             )
         return {**self.model_relationships[relationship_ref], **rel}
 
@@ -963,11 +970,15 @@ def load_diagram(diagram_path: Path) -> Tuple[dict, dict]:
     if "diagram" not in data:
         raise ValueError(f"{diagram_path} is not an MSMD diagram file")
 
-    model_files = data.get("model_files", data.get("model_file"))
-    if not model_files:
-        raise ValueError(f"{diagram_path} must declare model_file or model_files")
-    if isinstance(model_files, str):
-        model_files = [model_files]
+    if "model_file" in data:
+        raise ValueError(
+            f"MSML-SCHEMA-009: {diagram_path} uses model_file; use model_files array"
+        )
+    model_files = data.get("model_files")
+    if not isinstance(model_files, list) or not model_files:
+        raise ValueError(
+            f"MSML-SCHEMA-007: {diagram_path} must declare non-empty model_files array"
+        )
 
     model = {"definitions": {}, "relationships": []}
     for model_file in model_files:
@@ -979,8 +990,12 @@ def load_diagram(diagram_path: Path) -> Tuple[dict, dict]:
 
 def render(diagram_path, output_path=None):
     src = Path(diagram_path)
+    if src.suffix == ".msml":
+        raise ValueError(
+            f"MSML-RENDER-001: {src} is a model file; render .msmd diagram files"
+        )
     if src.suffix != ".msmd":
-        raise ValueError("render_msml.py renders .msmd diagram files only")
+        raise ValueError(f"MSML-RENDER-002: render_msml.py renders .msmd files only: {src}")
     dst = Path(output_path) if output_path else src.with_suffix(".png")
     data, model = load_diagram(src)
     dtype = data["diagram"]["type"]
@@ -991,7 +1006,11 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python render_msml.py <file.msmd> [output.png]")
         sys.exit(1)
-    render(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
+    try:
+        render(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
+    except Exception as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

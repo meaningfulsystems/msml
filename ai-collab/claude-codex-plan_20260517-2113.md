@@ -587,20 +587,20 @@ WARN   projects/appliances/toaster/toaster-bdd.msmd  element[block-element]  MSM
 
 After implementing all phases:
 
-- [ ] `python3 render_all.py projects/` renders all 13 diagrams with exit code 0
-- [ ] Visual output of all 13 PNGs is unchanged from pre-pass (compare manually or via pixel diff)
-- [ ] `python3 render_msml.py projects/appliances/toaster/toaster-model.msml` prints a clear error and exits 1
-- [ ] `python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd` exits 0
-- [ ] `python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd --strict` exits 0
-- [ ] `python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd --lint` exits 0
-- [ ] Temporarily remove a `model_ref` from one element; confirm renderer and validator report MSML-SCHEMA-005
-- [ ] Temporarily remove a `relationship_ref` from one relationship; confirm renderer and validator report MSML-SCHEMA-006
-- [ ] Temporarily set `model_file` instead of `model_files`; confirm renderer and validator both error on MSML-SCHEMA-009
-- [ ] `toaster-ibd.png` part labels show `role_name:DefinitionName` format (confirm R1)
-- [ ] `hos-context-ibd.png` part labels are PascalCase (confirm M3 fix is reflected)
-- [ ] `toaster-par.msmd` has no elements with missing `model_ref` after the phase 3 update
-- [ ] `rg -n '"relationship_ref"' projects/**/*.msmd` count equals the total number of diagram relationships.
-- [ ] `rg -n '"model_ref"' projects/**/*.msmd` count equals the total number of diagram elements.
+- [x] `python3 render_all.py projects/` renders all 13 diagrams with exit code 0
+- [x] Visual output spot check completed. The HOS context IBD PNG changed intentionally to reflect PascalCase model names; toaster PNGs were regenerated successfully.
+- [x] `python3 render_msml.py projects/appliances/toaster/toaster-model.msml` prints a clear error and exits 1
+- [x] `python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd` exits 0
+- [x] `python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd --strict` exits 0
+- [x] `python3 msml_validate.py projects/appliances/toaster/toaster-bdd.msmd --lint` exits 0
+- [x] Temporarily remove a `model_ref` from one element; confirm renderer and validator report MSML-SCHEMA-005
+- [x] Temporarily remove a `relationship_ref` from one relationship; confirm renderer and validator report MSML-SCHEMA-006
+- [x] Temporarily set `model_file` instead of `model_files`; confirm renderer and validator both error on MSML-SCHEMA-009
+- [x] `toaster-ibd.png` part labels show `role_name:DefinitionName` format (confirm R1)
+- [x] `hos-context-ibd.png` part labels are PascalCase (confirm M3 fix is reflected)
+- [x] `toaster-par.msmd` has no elements with missing `model_ref` after the phase 3 update
+- [x] `rg -n '"relationship_ref"' projects/**/*.msmd` count equals the total number of diagram relationships.
+- [x] `rg -n '"model_ref"' projects/**/*.msmd` count equals the total number of diagram elements.
 
 ---
 

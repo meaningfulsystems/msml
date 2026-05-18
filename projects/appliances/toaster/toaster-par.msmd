@@ -1,8 +1,12 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "parametric",
     "id": "par-toaster",
+    "subject_ref": "Toaster",
     "name": "Toaster Power & Heat Model",
     "context": "Toaster",
     "frame": {
@@ -80,7 +84,7 @@
       {
         "type": "constraint_property",
         "id": "cp-ohms",
-        "name": "P = V\u00b2 / R",
+        "name": "P = V² / R",
         "parameters": [
           {
             "id": "o-v",
@@ -116,7 +120,8 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.PV2R"
       },
       {
         "type": "value_property",
@@ -161,7 +166,7 @@
       {
         "type": "constraint_property",
         "id": "cp-energy",
-        "name": "Q = P \u00d7 t",
+        "name": "Q = P × t",
         "parameters": [
           {
             "id": "e-p",
@@ -197,7 +202,8 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.Energy"
       },
       {
         "type": "value_property",
@@ -217,12 +223,13 @@
             "size": 10,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.totalHeat"
       },
       {
         "type": "value_property",
         "id": "vp-efficiency",
-        "name": "efficiency: \u03b7",
+        "name": "efficiency: η",
         "layout": {
           "x": 700,
           "y": 250,
@@ -237,16 +244,17 @@
             "size": 10,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.efficiency"
       },
       {
         "type": "constraint_property",
         "id": "cp-bread-heat",
-        "name": "Q_b = \u03b7 \u00d7 Q",
+        "name": "Q_b = η × Q",
         "parameters": [
           {
             "id": "b-eta",
-            "name": "\u03b7",
+            "name": "η",
             "type": "Real",
             "bound_to": "vp-efficiency"
           },
@@ -278,7 +286,8 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.BreadHeat"
       },
       {
         "type": "value_property",
@@ -298,7 +307,8 @@
             "size": 10,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.breadHeat"
       },
       {
         "type": "value_property",
@@ -353,12 +363,13 @@
             "size": 11,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.SafetyCheck"
       },
       {
         "type": "value_property",
         "id": "vp-elem-temp",
-        "name": "elemTemp: \u00b0C",
+        "name": "elemTemp: °C",
         "layout": {
           "x": 20,
           "y": 460,
@@ -373,7 +384,8 @@
             "size": 10,
             "color": "#000000"
           }
-        }
+        },
+        "model_ref": "Toaster.PAR.elemTemp"
       }
     ],
     "relationships": [
@@ -397,7 +409,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b1"
       },
       {
         "type": "binding_connector",
@@ -428,7 +441,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "par-toaster.b2"
       },
       {
         "type": "binding_connector",
@@ -450,7 +464,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b3"
       },
       {
         "type": "binding_connector",
@@ -472,7 +487,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b4"
       },
       {
         "type": "binding_connector",
@@ -503,7 +519,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "par-toaster.b5"
       },
       {
         "type": "binding_connector",
@@ -525,7 +542,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b6"
       },
       {
         "type": "binding_connector",
@@ -552,7 +570,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "par-toaster.b7"
       },
       {
         "type": "binding_connector",
@@ -574,7 +593,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b8"
       },
       {
         "type": "binding_connector",
@@ -596,7 +616,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b9"
       },
       {
         "type": "binding_connector",
@@ -618,7 +639,8 @@
           "line_width": 1.5,
           "source_arrowhead": "none",
           "target_arrowhead": "none"
-        }
+        },
+        "relationship_ref": "par-toaster.b10"
       },
       {
         "type": "binding_connector",
@@ -649,7 +671,8 @@
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "par-toaster.b11"
       }
     ],
     "metadata": {
@@ -661,6 +684,5 @@
         "parametric"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

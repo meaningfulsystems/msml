@@ -1,8 +1,12 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "hos-model.msml"
+  ],
   "diagram": {
     "type": "ibd",
     "id": "ibd-hos-system-context",
+    "subject_ref": "HOS.HumanityOptimizationSystem",
     "name": "Humanity Optimization System Context",
     "context": "HOS",
     "frame": {
@@ -79,7 +83,8 @@
             "size": 9,
             "color": "#9A6418"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortHosValues"
       },
       {
         "type": "port",
@@ -100,7 +105,8 @@
             "size": 9,
             "color": "#207567"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortHosWorld"
       },
       {
         "type": "port",
@@ -121,7 +127,8 @@
             "size": 9,
             "color": "#2E7D32"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortHosFuture"
       },
       {
         "type": "port",
@@ -142,7 +149,8 @@
             "size": 9,
             "color": "#6D4C9A"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortHosBrief"
       },
       {
         "type": "port",
@@ -163,7 +171,8 @@
             "size": 9,
             "color": "#B5522C"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortHosPathways"
       },
       {
         "type": "part",
@@ -207,7 +216,8 @@
             "size": 9,
             "color": "#9A6418"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortHumanityValues"
       },
       {
         "type": "part",
@@ -251,7 +261,8 @@
             "size": 9,
             "color": "#207567"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortEarthSignals"
       },
       {
         "type": "part",
@@ -295,7 +306,8 @@
             "size": 9,
             "color": "#2E7D32"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortFutureInterest"
       },
       {
         "type": "part",
@@ -339,7 +351,8 @@
             "size": 9,
             "color": "#6D4C9A"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortDecisionBrief"
       },
       {
         "type": "part",
@@ -383,7 +396,8 @@
             "size": 9,
             "color": "#B5522C"
           }
-        }
+        },
+        "model_ref": "HOS.IBD.Port.PortTechPathways"
       }
     ],
     "relationships": [
@@ -422,7 +436,8 @@
             "x": -15,
             "y": -8
           }
-        }
+        },
+        "relationship_ref": "ibd-hos-system-context.conn-humanity-hos"
       },
       {
         "type": "connector",
@@ -459,7 +474,8 @@
             "x": -20,
             "y": -8
           }
-        }
+        },
+        "relationship_ref": "ibd-hos-system-context.conn-earth-hos"
       },
       {
         "type": "connector",
@@ -488,7 +504,8 @@
             "x": 10,
             "y": 0
           }
-        }
+        },
+        "relationship_ref": "ibd-hos-system-context.conn-future-hos"
       },
       {
         "type": "connector",
@@ -525,7 +542,8 @@
             "x": 0,
             "y": -8
           }
-        }
+        },
+        "relationship_ref": "ibd-hos-system-context.conn-hos-decision"
       },
       {
         "type": "connector",
@@ -562,7 +580,8 @@
             "x": -10,
             "y": -8
           }
-        }
+        },
+        "relationship_ref": "ibd-hos-system-context.conn-tech-hos"
       }
     ],
     "metadata": {
@@ -576,6 +595,5 @@
         "operational-concept"
       ]
     }
-  },
-  "model_file": "hos-model.msml"
+  }
 }

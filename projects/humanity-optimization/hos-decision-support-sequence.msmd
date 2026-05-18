@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "hos-model.msml"
+  ],
   "diagram": {
     "type": "sequence",
     "id": "sd-hos-decision-support",
@@ -142,7 +145,8 @@
         "style": {
           "fill_color": "#CFE1F1",
           "border_color": "#2E5E87"
-        }
+        },
+        "model_ref": "HOS.SEQ.ExecutionOccurrence.ExecHos"
       },
       {
         "type": "execution_occurrence",
@@ -157,7 +161,8 @@
         "style": {
           "fill_color": "#CFEAE2",
           "border_color": "#207567"
-        }
+        },
+        "model_ref": "HOS.SEQ.ExecutionOccurrence.ExecEvidence"
       },
       {
         "type": "execution_occurrence",
@@ -172,7 +177,8 @@
         "style": {
           "fill_color": "#E1D8EE",
           "border_color": "#6D4C9A"
-        }
+        },
+        "model_ref": "HOS.SEQ.ExecutionOccurrence.ExecGovernance"
       }
     ],
     "relationships": [
@@ -253,6 +259,5 @@
         "operational-concept"
       ]
     }
-  },
-  "model_file": "hos-model.msml"
+  }
 }

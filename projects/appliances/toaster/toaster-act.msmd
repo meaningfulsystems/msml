@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "activity",
     "id": "act-toaster",
@@ -49,7 +52,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "Toaster.ACT.InitialNode.Init"
       },
       {
         "type": "action",
@@ -107,7 +111,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "Toaster.ACT.ForkNode.Fork1"
       },
       {
         "type": "action",
@@ -165,7 +170,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "Toaster.ACT.JoinNode.Join1"
       },
       {
         "type": "action",
@@ -202,7 +208,8 @@
         "style": {
           "fill_color": "#000000",
           "border_color": "#000000"
-        }
+        },
+        "model_ref": "Toaster.ACT.ActivityFinalNode.Final"
       }
     ],
     "relationships": [
@@ -226,7 +233,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-toaster.f1"
       },
       {
         "id": "f2",
@@ -268,7 +276,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-toaster.f3"
       },
       {
         "type": "control_flow",
@@ -298,7 +307,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-toaster.f4"
       },
       {
         "type": "control_flow",
@@ -328,7 +338,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-toaster.f5"
       },
       {
         "type": "control_flow",
@@ -358,7 +369,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-toaster.f6"
       },
       {
         "type": "control_flow",
@@ -388,7 +400,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-toaster.f7"
       },
       {
         "type": "control_flow",
@@ -410,7 +423,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-toaster.f8"
       },
       {
         "type": "control_flow",
@@ -432,7 +446,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-toaster.f9"
       }
     ],
     "metadata": {
@@ -444,6 +459,5 @@
         "activity"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

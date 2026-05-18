@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "use_case",
     "id": "uc-toaster",
@@ -52,7 +55,8 @@
           "fill_color": "#F8F8FF",
           "border_color": "#555588",
           "border_width": 2
-        }
+        },
+        "model_ref": "Toaster.UC.SystemBoundary.SysToaster"
       },
       {
         "type": "actor",
@@ -339,6 +343,5 @@
         "use-case"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }

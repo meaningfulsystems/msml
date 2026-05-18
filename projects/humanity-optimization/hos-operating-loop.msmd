@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "hos-model.msml"
+  ],
   "diagram": {
     "type": "activity",
     "id": "act-hos-operating-loop",
@@ -49,7 +52,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "HOS.Activity.InitialNode.Start"
       },
       {
         "type": "action",
@@ -129,7 +133,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "HOS.Activity.ForkNode.Fork"
       },
       {
         "type": "action",
@@ -187,7 +192,8 @@
         },
         "style": {
           "fill_color": "#000000"
-        }
+        },
+        "model_ref": "HOS.Activity.JoinNode.Join"
       },
       {
         "type": "action",
@@ -233,7 +239,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f1"
       },
       {
         "id": "f2",
@@ -295,7 +302,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f4"
       },
       {
         "type": "control_flow",
@@ -325,7 +333,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f5"
       },
       {
         "type": "control_flow",
@@ -355,7 +364,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f6"
       },
       {
         "type": "control_flow",
@@ -385,7 +395,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f7"
       },
       {
         "type": "control_flow",
@@ -415,7 +426,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 8
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f8"
       },
       {
         "type": "control_flow",
@@ -437,7 +449,8 @@
           "line_width": 1.5,
           "line_style": "solid",
           "corner_radius": 0
-        }
+        },
+        "relationship_ref": "act-hos-operating-loop.f9"
       },
       {
         "id": "f10",
@@ -482,6 +495,5 @@
         "operational-concept"
       ]
     }
-  },
-  "model_file": "hos-model.msml"
+  }
 }

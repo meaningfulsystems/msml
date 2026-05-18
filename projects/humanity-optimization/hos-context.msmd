@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "hos-model.msml"
+  ],
   "diagram": {
     "type": "bdd",
     "id": "bdd-hos-definition",
@@ -388,6 +391,5 @@
         "operational-concept"
       ]
     }
-  },
-  "model_file": "hos-model.msml"
+  }
 }

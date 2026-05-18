@@ -1,5 +1,8 @@
 {
   "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
   "diagram": {
     "type": "requirement",
     "id": "req-toaster",
@@ -537,6 +540,5 @@
         "requirements"
       ]
     }
-  },
-  "model_file": "toaster-model.msml"
+  }
 }
