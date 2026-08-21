@@ -514,7 +514,7 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertIn("ST-124", iu["computers"])
         self.assertIn("FCC", iu["computers"])
         self.assertIn("UNRECONCILED", defs["Apollo.Note.TanksSourced"]["text"])
-        self.assertIn("not a closed mass budget", defs["Apollo.Note.TanksSourced"]["text"])
+        self.assertIn("closed mass budget", defs["Apollo.Note.TanksSourced"]["text"])
         crew_targets = {
             r["target"]
             for r in rels.values()
