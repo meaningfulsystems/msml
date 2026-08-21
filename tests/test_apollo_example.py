@@ -202,6 +202,7 @@ FORBIDDEN_COLLAPSE = (
 class ApolloExampleTests(unittest.TestCase):
     def test_project_files_exist(self) -> None:
         self.assertTrue((APOLLO / "apollo-model.msml").exists())
+        self.assertTrue((APOLLO / "architecture-summary.md").exists())
         for stem in REQUIRED_VIEW_STEMS:
             self.assertTrue((APOLLO / f"{stem}.msmd").exists(), stem)
         self.assertFalse((APOLLO / "apollo-gnc.msmd").exists())

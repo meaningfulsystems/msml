@@ -25,7 +25,7 @@ Run this loop. The four skill slugs are locked so they match SysML2d.
 3. **[compose-views](skills/compose-views/SKILL.md)** — write `.msmd` views. The shared slug is `compose-views`; MSML’s verb is **render** (`msml-render`, `msml-render-all`).
 4. **[vision-review](skills/vision-review/SKILL.md)** — inspect every PNG with vision before commit.
 
-Hard visual rule (Andrew, via SysML2d): **connections never pass over boxes.** Hop-overs are only for line-on-line crossings. IBD is the highest visual priority.
+Hard visual rule (via SysML2d): **connections never pass over boxes.** Hop-overs are only for line-on-line crossings. IBD is the highest visual priority.
 
 Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specification.md](msml-specification.md).
 
@@ -38,7 +38,7 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 - Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety. Additional siblings: Stopping Distance (EN 15194 5 m / 2 m), Lighting (StVZO / ISO 6742), Walk Assist (≤ 6 km/h), Continuous Power (250 W). Do **not** hang walk or 250 W under Assist Limit.
 - Range 500 Wh / 60 km is a **Tour-mode** scenario via `usableWh` / `energyPerKm` (~8.3 Wh/km), not Eco / PAS-1. `energyBalance` binds usable pack Wh + `energyPerKm`; do **not** add rider watts into pack energy.
 - RideControl: off / standby / assist / walk (≤ 6 km/h, EPAC, not throttle) / charging / fault. `resetFault` is Fault→Off (not Standby). Standby —`powerOff`→ Off so a rider can power down without faulting. Charging from Off only — an EPAC choice on the do-behavior or a note; the state name is `charging`, not “Charging from Off only”. Do **not** add Standby→Charging.
-- Classification is **EPAC / EN 15194** (cadence only, 25 km/h, no throttle). Display the motor as **Rear Geared Hub** (id stays `ElectricBike.HubMotor`); regen omitted.
+- Classification is **EPAC / EN 15194** (cadence only, 25 km/h, no throttle). Display the motor as **Rear Geared Hub** (id stays `ElectricBike.HubMotor`); regen omitted. Hub properties: `continuousAssist` **250 W** (EU continuous, not peak) and `peakTorque` **40 N·m** (hub peak, not continuous).
 - Nested usage `bms : BMS` lives inside BatteryPack (`ElectricBike::BatteryPack::bms`). `allocateChargeToBms` targets that usage, not the pack.
 - Do **not** keep `lockBikeUseCase`. Empty use cases are not allowed.
 - Ride safety is not brakes-only: allocate to BrakeSystem, MotorController, `cadenceSensor`, and `bms`. Allocate Assist Limit to `wheelSpeedSensor` (cadence-only cannot enforce 25 km/h). Usages: `cadenceSensor`, `wheelSpeedSensor`. Nested `bms : BMS` is on the IBD charge path when the layout stays readable.

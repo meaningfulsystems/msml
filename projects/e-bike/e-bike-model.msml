@@ -156,12 +156,12 @@
         "compartments": {
           "properties": [
             {
-              "name": "peakPower",
+              "name": "continuousAssist",
               "type": "250 W",
               "multiplicity": "1"
             },
             {
-              "name": "wheelTorque",
+              "name": "peakTorque",
               "type": "40 N\u00b7m",
               "multiplicity": "1"
             },
@@ -1213,8 +1213,8 @@
       {
         "type": "comment",
         "id": "ElectricBike.Note.IbdCallout",
-        "name": "Tour 500 Wh \u00b7 25 km/h cutoff \u00b7 EN 15194\nDense values live on the parametric view.\nhubMotor keeps peakPower 250 W and wheelTorque 40 N\u00b7m.",
-        "text": "Tour 500 Wh \u00b7 25 km/h cutoff \u00b7 EN 15194\nDense values live on the parametric view.\nhubMotor keeps peakPower 250 W and wheelTorque 40 N\u00b7m."
+        "name": "Tour 500 Wh \u00b7 25 km/h cutoff \u00b7 EN 15194\n250 W is EU continuous assist, not peak.\n40 N\u00b7m is hub peak torque, not continuous.",
+        "text": "Tour 500 Wh \u00b7 25 km/h cutoff \u00b7 EN 15194\n250 W is EU continuous assist, not peak.\n40 N\u00b7m is hub peak torque, not continuous."
       }
     ],
     "relationships": [

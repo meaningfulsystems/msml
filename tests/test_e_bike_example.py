@@ -145,6 +145,7 @@ REQUIRED_REQ_IDS = {
 class EBikeExampleTests(unittest.TestCase):
     def test_project_files_exist(self):
         self.assertTrue((EBIKE / "e-bike-model.msml").exists())
+        self.assertTrue((EBIKE / "architecture-summary.md").exists())
         for stem in REQUIRED_VIEW_STEMS:
             self.assertTrue((EBIKE / f"{stem}.msmd").exists(), stem)
 
@@ -286,8 +287,10 @@ class EBikeExampleTests(unittest.TestCase):
         root_props = {p["name"]: p["type"] for p in defs["ElectricBike"]["compartments"]["properties"]}
         self.assertEqual(root_props["classification"], "EPAC / EN 15194")
         hub_props = {p["name"]: p["type"] for p in defs["ElectricBike.HubMotor"]["compartments"]["properties"]}
-        self.assertEqual(hub_props["peakPower"], "250 W")
-        self.assertEqual(hub_props["wheelTorque"], "40 N·m")
+        self.assertEqual(hub_props["continuousAssist"], "250 W")
+        self.assertEqual(hub_props["peakTorque"], "40 N·m")
+        self.assertNotIn("peakPower", hub_props)
+        self.assertNotIn("wheelTorque", hub_props)
         self.assertEqual(hub_props["location"], "rear geared hub")
         self.assertEqual(hub_props["regen"], "none")
         self.assertIn("StVZO / ISO 6742", defs["ElectricBike.lightingRequirement"]["text"])
@@ -313,8 +316,12 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertNotIn("charger : Charger", ibd_text)
         self.assertNotIn("road : Road", ibd_text)
         self.assertIn("ElectricBike.Port.chargerIn", ibd_text)
+        self.assertIn("continuousAssist", ibd_text)
+        self.assertIn("peakTorque", ibd_text)
         self.assertIn("250 W", ibd_text)
         self.assertIn("40 N", ibd_text)
+        self.assertIn("continuous assist", ibd_text)
+        self.assertIn("peak torque", ibd_text)
         self.assertIn("usableWh: 500 Wh Tour", defs["ElectricBike.PAR.packEnergy"]["name"])
         self.assertIn("usableWh", defs["ElectricBike.rangeRequirement"]["text"])
         self.assertIn("6 km/h", defs["ElectricBike.walkAssistRequirement"]["text"])

@@ -1,6 +1,6 @@
 # Humanity Optimization System — Concept Brief
 
-**Prepared for:** Andrew Fried / Meaningful Systems  
+**Prepared for:** Meaningful Systems  
 **Purpose:** Summarize the Humanity Optimization System as a clear concept brief for future modeling, architecture, writing, and system design work.
 
 ---

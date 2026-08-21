@@ -12,7 +12,7 @@ Open each PNG with a vision-capable read. Do not trust coordinates alone. The Fr
 - After `msml-render` or `msml-render-all`.
 - Before committing PNGs or updating a PR that embeds screenshots.
 
-## Hard rule (Andrew, via SysML2d)
+## Hard rule (via SysML2d)
 
 **Connections never pass over boxes.** A connector, association, transition, or control flow must not cut through a block, part, state, use-case oval, or requirement box.
 

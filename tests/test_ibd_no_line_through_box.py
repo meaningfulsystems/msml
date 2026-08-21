@@ -1,4 +1,4 @@
-"""Andrew / SysML2d hard rule: IBD connectors never pass over boxes.
+"""SysML2d hard rule: IBD connectors never pass over boxes.
 
 Hop-overs may jump a *line*. They must not travel through another part's
 interior. Endpoint boxes are excluded because the connector is allowed to

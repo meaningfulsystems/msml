@@ -60,7 +60,7 @@ A `.msml` file is a model file. It contains the definitions and relationships ne
     "definitions": [],
     "relationships": [],
     "metadata": {
-      "author": "Andrew Fried",
+      "author": "",
       "created": "2026-05-17",
       "modified": "2026-05-17",
       "tags": []

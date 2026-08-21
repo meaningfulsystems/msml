@@ -207,10 +207,12 @@ msml-render-all projects
     │       ├── blender-*.msmd
     │       └── blender-*.png
     ├── apollo/
+    │   ├── architecture-summary.md
     │   ├── apollo-model.msml
     │   ├── apollo-*.msmd
     │   └── apollo-*.png
     ├── e-bike/
+    │   ├── architecture-summary.md
     │   ├── e-bike-model.msml
     │   ├── e-bike-*.msmd
     │   └── e-bike-*.png
@@ -224,35 +226,36 @@ msml-render-all projects
 
 ## Examples
 
-### Humanity Optimization System
-
-The Humanity Optimization System is a civilization-scale decision-support concept modeled with MSML.
-
-- [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
-- [HOS MSML model (`.msml`)](projects/humanity-optimization/hos-model.msml)
-- [HOS block definition diagram (`.msmd`)](projects/humanity-optimization/hos-context.msmd)
-- [HOS context internal block diagram (`.msmd`)](projects/humanity-optimization/hos-context-ibd.msmd)
-- [HOS operating loop activity diagram (`.msmd`)](projects/humanity-optimization/hos-operating-loop.msmd)
-- [HOS decision-support sequence diagram (`.msmd`)](projects/humanity-optimization/hos-decision-support-sequence.msmd)
-
-### Apollo (in progress)
-
-A public NASA Apollo 11 / Block II instance on the generic Saturn V + CSM + LM stack — full system and subsystem model. Namespace `Apollo`. Views use the `apollo` file stem. Civil / historical architecture only. Apollo 7 / 8 / 10 / 13 are notes, not separate examples.
-
-- [Apollo project](projects/apollo): system context / stack BDD / CSM–LM–Saturn IBD / mission STM + abort machine / landing sequence / requirements, plus SaturnV, CSM, LM, Ground, and ECLSS subsystem views.
+Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project).
 
 ### Electric Bike
 
-A street-legal EU-class pedal-assist bike used as the Friday publish hero. The model namespace is `ElectricBike`. Views use the `e-bike` file stem.
+A street-legal EU-class pedal-assist bike used as the publish hero. Namespace `ElectricBike`. File stem `e-bike`. Continuous assist is **250 W** (EU EPAC, not peak). Hub torque is **40 N·m** peak, not continuous.
 
-- [Electric bike project](projects/e-bike): block definition, internal block, context, activity, sequence (`e-bike-int`), state machine, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
+- [Architecture summary](projects/e-bike/architecture-summary.md)
+- [Electric bike project](projects/e-bike): context, BDD, IBD, activity, sequence (`e-bike-int`), STM, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
+
+### Apollo
+
+Apollo 11 / Block II is the full-system example: generic Saturn V + CSM + LM (vehicle AS-506) with system and subsystem views — context, stack, mission STM and abort machine, CMC entry / LGC landing, ground, crew, USB, electrical, ECLSS, AGS, docking, and RCS. Namespace `Apollo`. File stem `apollo`. Public NASA architecture only; do not invent official CSM lunar Δv.
+
+- [Architecture summary](projects/apollo/architecture-summary.md)
+- [Apollo project](projects/apollo/README.md)
 
 ### Appliance Models
 
-The appliance examples are compact systems used to exercise the language.
+Compact systems used to exercise the language. Toaster is the twelve-view coverage canary.
 
-- [Toaster project](projects/appliances/toaster): all nine SysML 1.6 diagram families plus requirement table (`toaster-reqt`), allocation table (`toaster-alloc`), and allocation matrix (`toaster-amx`) views.
-- [Smart blender project](projects/appliances/blender): internal block, activity, and state machine views for a high-performance smart blender concept.
+- [Toaster architecture summary](projects/appliances/toaster/architecture-summary.md) — [toaster project](projects/appliances/toaster)
+- [Blender architecture summary](projects/appliances/blender/architecture-summary.md) — [blender project](projects/appliances/blender)
+
+### Humanity Optimization System
+
+Civilization-scale decision-support concept modeled with MSML.
+
+- [Architecture summary](projects/humanity-optimization/architecture-summary.md)
+- [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
+- [HOS project](projects/humanity-optimization)
 
 ## Development Checks
 

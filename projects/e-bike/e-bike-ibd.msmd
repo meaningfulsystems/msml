@@ -237,11 +237,11 @@
         "compartments": {
           "properties": [
             {
-              "name": "peakPower",
+              "name": "continuousAssist",
               "type": "250 W"
             },
             {
-              "name": "wheelTorque",
+              "name": "peakTorque",
               "type": "40 N\u00b7m"
             }
           ],
