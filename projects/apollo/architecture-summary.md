@@ -129,7 +129,7 @@ A11 Press Kit p.109 tank loads and launch masses unless noted. **UNRECONCILED** 
 | APS thrust | 3,500 lbf, 1.5° cant, not gimbaled (TN D-7082) |
 | Portable Life Support System (PLSS) | 4 h / 1.04 lb O2 (CDR EVA 2:48, LMP 2:40) |
 
-SPS vacuum thrust is **minutiae**, not a required thrust: cite both Press Kit **20,500 lbf** and TN D-7375 **21,500 lbf vac**. DPS has **three** sourced figures and no shall — do not pick a winner: Press Kit **9,870 / 1,050–6,300** lbf; TN D-7143 **10,500** lbf and **10:1**; LMA790 **9,870 / 1,050–6,800** lbf. A simulation under `projects/apollo/simulations/` may estimate required DPS thrust; this note does not copy that estimate and does not invent a required-thrust number. Descent O2 teaching figure is **2,800 psi** (less conservative / schematic). TN D-6724 also prints **3,000 psi**. No required pressure — not an equal dual-cite. USB and VHF stay as already on the model (section 2 and 3).
+SPS vacuum thrust is **minutiae**, not a required thrust: cite both Press Kit **20,500 lbf** and TN D-7375 **21,500 lbf vac**. DPS has **three** sourced figures and no shall — do not pick a winner: Press Kit **9,870 / 1,050–6,300** lbf; TN D-7143 **10,500** lbf and **10:1**; LMA790 **9,870 / 1,050–6,800** lbf. This note does not invent a required-thrust number. Descent O2 teaching figure is **2,800 psi** (less conservative / schematic). TN D-6724 also prints **3,000 psi**. No required pressure — not an equal dual-cite. USB and VHF stay as already on the model (section 2 and 3).
 
 The ECLSS parametric view binds the sourced CM / LM-5 / A7L (Apollo A7L pressure suit) numbers and the D-7720 food plan. A11 actual kcal and entry blackout stay UNKNOWN.
 
