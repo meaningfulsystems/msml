@@ -29,7 +29,7 @@ MSML uses two source file types:
 
 Rendered PNG files are generated outputs. MSML model (`.msml`) files are not rendered directly; MSML diagram (`.msmd`) files are rendered.
 
-The current renderer supports these SysML 1 views:
+The current renderer supports these twelve SysML 1 views:
 
 - Block Definition Diagram
 - Internal Block Diagram
@@ -43,6 +43,24 @@ The current renderer supports these SysML 1 views:
 - Requirement Table
 - Allocation Table
 - Allocation Matrix
+
+The `allocate` relationship is first-class. Tables and the allocation matrix are compact views of the same model graph.
+
+## Figures
+
+These are the pictures we would put in a public update. Every project view also has a matching PNG next to its `.msmd`.
+
+![Electric bike internal structure](projects/e-bike/e-bike-ibd.png)
+
+![Electric bike context — rider, charger, bike, road](projects/e-bike/e-bike-ctx.png)
+
+![Toaster block definitions](projects/appliances/toaster/toaster-bdd.png)
+
+![Toaster requirements table](projects/appliances/toaster/toaster-reqt.png)
+
+![Smart blender internal structure](projects/appliances/blender/blender-ibd.png)
+
+![Humanity Optimization System context](projects/humanity-optimization/hos-context-ibd.png)
 
 ## Install
 
@@ -64,7 +82,7 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-The package name is `msml`. It is not published to PyPI yet. Package version `0.1.x` implements the MSML v1.0 specification.
+The package name is `msml`. It is not published to PyPI yet. Package version `0.1.1` implements the MSML v1.0 specification.
 
 ## Use MSML in Another Project
 
@@ -215,9 +233,9 @@ msml-render-all projects
 
 ## Current Status
 
-MSML is an early prototype. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, tabular view configuration, and basic strict checks.
+MSML v1.0 is implemented by package version `0.1.1`. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, tabular view configuration, and basic strict checks.
 
-The root [msml-specification.md](msml-specification.md) is the canonical human-facing specification. The installed package also includes a copy for `msml-spec`.
+The root [msml-specification.md](msml-specification.md) is the canonical human-facing specification. The installed package also includes a copy for `msml-spec`. The public update notes are in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

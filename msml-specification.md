@@ -975,3 +975,16 @@ Diagram file:
   }
 }
 ```
+
+---
+
+## 14. Repository Examples
+
+The `projects/` tree in this repository is the working illustration of MSML v1.0:
+
+- `projects/appliances/toaster` — coverage canary for all twelve SysML 1 views, including `requirement_table`, `allocation_table`, and `allocation_matrix`.
+- `projects/appliances/blender` — compact IBD, activity, and state-machine set.
+- `projects/e-bike` — street-legal EU-class pedal-assist bike. Namespace `ElectricBike`. File stem `e-bike`. Full view set plus a rider / charger / bike / road context IBD.
+- `projects/humanity-optimization` — civilization-scale decision-support concept.
+
+Qualified names and file stems in `projects/e-bike` are frozen. Layout may change; ElectricBike ids do not.

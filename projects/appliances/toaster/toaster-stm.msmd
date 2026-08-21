@@ -252,7 +252,7 @@
           "line_style": "solid",
           "arrowhead": "open",
           "label_offset": {
-            "x": 0,
+            "x": -40,
             "y": -18
           }
         },
@@ -276,8 +276,8 @@
           "line_style": "solid",
           "arrowhead": "open",
           "label_offset": {
-            "x": -8,
-            "y": -22
+            "x": -62,
+            "y": -18
           }
         },
         "relationship_ref": "stm-toaster.t-toasting-error"
