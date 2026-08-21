@@ -6,7 +6,7 @@
   "diagram": {
     "type": "ibd",
     "id": "ibd-apollo-usb",
-    "name": "USB comms \u2014 sourced RF; antennas CREW-selected; P27 \u2260 CCATS",
+    "name": "unified S-band radios",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1320,
-      "height": 560,
+      "height": 430,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -237,79 +237,10 @@
         }
       },
       {
-        "type": "comment",
-        "id": "n-ant",
-        "model_ref": "Apollo.Note.AntennaSelect",
-        "layout": {
-          "x": 30,
-          "y": 360,
-          "width": 400,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF9C4",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-bo",
-        "model_ref": "Apollo.Note.UnknownBlackout",
-        "layout": {
-          "x": 450,
-          "y": 360,
-          "width": 420,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF9C4",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-cmd",
-        "model_ref": "Apollo.Note.CommandPaths",
-        "layout": {
-          "x": 30,
-          "y": 450,
-          "width": 840,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF9C4",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
         "type": "port",
         "id": "p-crew",
         "model_ref": "Apollo.Port.crewAntOut",
-        "name": "sel",
+        "name": "",
         "owner_ref": "crew",
         "layout": {
           "x": 224,
@@ -334,7 +265,7 @@
         "type": "port",
         "id": "p-hga-c",
         "model_ref": "Apollo.Port.hgaCrewIn",
-        "name": "crew",
+        "name": "",
         "owner_ref": "hga",
         "layout": {
           "x": 314,
@@ -359,7 +290,7 @@
         "type": "port",
         "id": "p-lm-c",
         "model_ref": "Apollo.Port.lmStCrewIn",
-        "name": "crew",
+        "name": "",
         "owner_ref": "lmst",
         "layout": {
           "x": 314,
@@ -384,7 +315,7 @@
         "type": "port",
         "id": "p-hga-u",
         "model_ref": "Apollo.Port.hgaUsbIn",
-        "name": "rf",
+        "name": "",
         "owner_ref": "hga",
         "layout": {
           "x": 594,
@@ -409,11 +340,11 @@
         "type": "port",
         "id": "p-usb-h",
         "model_ref": "Apollo.Port.usbHgaOut",
-        "name": "csm",
+        "name": "",
         "owner_ref": "usb",
         "layout": {
           "x": 674,
-          "y": 120,
+          "y": 90,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -434,7 +365,7 @@
         "type": "port",
         "id": "p-lm-u",
         "model_ref": "Apollo.Port.lmStUsbIn",
-        "name": "rf",
+        "name": "",
         "owner_ref": "lmst",
         "layout": {
           "x": 594,
@@ -459,11 +390,11 @@
         "type": "port",
         "id": "p-usb-l",
         "model_ref": "Apollo.Port.usbLmOut",
-        "name": "lm",
+        "name": "",
         "owner_ref": "usb",
         "layout": {
           "x": 674,
-          "y": 220,
+          "y": 250,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -484,7 +415,7 @@
         "type": "port",
         "id": "p-usb-6",
         "model_ref": "Apollo.Port.usb642In",
-        "name": "642",
+        "name": "",
         "owner_ref": "usb",
         "layout": {
           "x": 954,
@@ -509,11 +440,11 @@
         "type": "port",
         "id": "p-642-u",
         "model_ref": "Apollo.Port.site642UsbOut",
-        "name": "usb",
+        "name": "",
         "owner_ref": "s642",
         "layout": {
-          "x": 1040,
-          "y": 80,
+          "x": 1034,
+          "y": 140,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -534,7 +465,7 @@
         "type": "port",
         "id": "p-642-c",
         "model_ref": "Apollo.Port.site642In",
-        "name": "ccats",
+        "name": "",
         "owner_ref": "s642",
         "layout": {
           "x": 1144,
@@ -559,7 +490,7 @@
         "type": "port",
         "id": "p-cc-6",
         "model_ref": "Apollo.Port.ccats642Out",
-        "name": "642",
+        "name": "",
         "owner_ref": "ccats",
         "layout": {
           "x": 1144,
@@ -579,29 +510,6 @@
             "color": "#000000"
           }
         }
-      },
-      {
-        "type": "comment",
-        "id": "n-vhf",
-        "model_ref": "Apollo.Note.Vhf",
-        "layout": {
-          "x": 890,
-          "y": 360,
-          "width": 400,
-          "height": 90,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
       }
     ],
     "relationships": [
@@ -609,7 +517,7 @@
         "id": "crewHga",
         "type": "connector",
         "relationship_ref": "usb-apollo.crewToHga",
-        "name": "CREW select",
+        "name": "",
         "waypoints": [
           {
             "x": 236,
@@ -634,7 +542,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
             "x": 6,
             "y": -14
@@ -645,7 +553,7 @@
         "id": "crewLm",
         "type": "connector",
         "relationship_ref": "usb-apollo.crewToLmst",
-        "name": "CREW select",
+        "name": "",
         "waypoints": [
           {
             "x": 236,
@@ -670,7 +578,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
             "x": 6,
             "y": -14
@@ -689,7 +597,7 @@
           },
           {
             "x": 674,
-            "y": 126
+            "y": 96
           }
         ],
         "style": {
@@ -698,10 +606,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 6,
-            "y": -14
+            "x": 0,
+            "y": -18
           }
         }
       },
@@ -717,7 +625,7 @@
           },
           {
             "x": 674,
-            "y": 226
+            "y": 256
           }
         ],
         "style": {
@@ -726,10 +634,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 6,
-            "y": -14
+            "x": 0,
+            "y": 12
           }
         }
       },
@@ -741,10 +649,10 @@
         "waypoints": [
           {
             "x": 1040,
-            "y": 86
+            "y": 146
           },
           {
-            "x": 954,
+            "x": 966,
             "y": 146
           }
         ],
@@ -754,10 +662,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 6,
-            "y": -14
+            "x": 0,
+            "y": -18
           }
         }
       },
@@ -765,7 +673,7 @@
         "id": "ccats642",
         "type": "connector",
         "relationship_ref": "gnd-apollo.ccatsTo642",
-        "name": "path A",
+        "name": "",
         "waypoints": [
           {
             "x": 1150,
@@ -782,7 +690,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
             "x": 6,
             "y": -14

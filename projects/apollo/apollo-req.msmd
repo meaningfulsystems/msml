@@ -46,7 +46,7 @@
         "model_ref": "Apollo.crewSafetyRequirement",
         "hide_req_id": true,
         "display_name": "safety",
-        "text": "The stack shall keep an abort path available under every phase from pad through TEI.",
+        "text": "An abort path shall remain available from pad through TEI. Not LES-only.",
         "layout": {
           "x": 30,
           "y": 24,
@@ -72,7 +72,7 @@
         "model_ref": "Apollo.landingRequirement",
         "hide_req_id": true,
         "display_name": "land",
-        "text": "The Lunar Module shall land two crew on the Moon under remaining descent margin at the site.",
+        "text": "The Lunar Module shall land two crew on the Moon with remaining descent margin at the site.",
         "layout": {
           "x": 350,
           "y": 24,
@@ -98,7 +98,7 @@
         "model_ref": "Apollo.commsContinuityRequirement",
         "hide_req_id": true,
         "display_name": "talk",
-        "text": "The tracking net shall carry voice and telemetry under all phases except known lunar occultation.",
+        "text": "The tracking net shall carry voice and telemetry except during known lunar occultation.",
         "layout": {
           "x": 670,
           "y": 24,
@@ -124,7 +124,7 @@
         "model_ref": "Apollo.lesAbortRequirement",
         "hide_req_id": true,
         "display_name": "abort",
-        "text": "The launch escape system shall pull the Command Module clear of Saturn under a pad or Mode I abort.",
+        "text": "The launch escape system shall pull the Command Module clear of Saturn on a pad or Mode I abort.",
         "layout": {
           "x": 30,
           "y": 220,
@@ -150,7 +150,7 @@
         "model_ref": "Apollo.eclssRequirement",
         "hide_req_id": true,
         "display_name": "air",
-        "text": "The Command Module shall keep a livable cabin atmosphere for the crew under the crewed mission.",
+        "text": "The Command Module shall keep a livable cabin atmosphere for the crew.",
         "layout": {
           "x": 350,
           "y": 220,
@@ -176,7 +176,7 @@
         "model_ref": "Apollo.guidanceRequirement",
         "hide_req_id": true,
         "display_name": "guide",
-        "text": "The command and lunar-module computers shall provide guidance under primary control.",
+        "text": "The command and lunar-module computers shall provide guidance. Abort guidance is the lunar-module backup.",
         "layout": {
           "x": 670,
           "y": 220,

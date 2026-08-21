@@ -264,7 +264,7 @@
         "type": "port",
         "id": "p-crew",
         "model_ref": "Apollo.Port.crewOut",
-        "name": "cmd",
+        "name": "",
         "owner_ref": "part-crew",
         "layout": {
           "x": 594,
@@ -289,7 +289,7 @@
         "type": "port",
         "id": "p-vin",
         "model_ref": "Apollo.Port.vehicleCrewIn",
-        "name": "in",
+        "name": "",
         "owner_ref": "part-apollo",
         "layout": {
           "x": 594,
@@ -314,7 +314,7 @@
         "type": "port",
         "id": "p-voice",
         "model_ref": "Apollo.Port.crewVoiceOut",
-        "name": "voice",
+        "name": "",
         "owner_ref": "part-crew",
         "layout": {
           "x": 494,
@@ -339,7 +339,7 @@
         "type": "port",
         "id": "p-msfnv",
         "model_ref": "Apollo.Port.msfnVoiceIn",
-        "name": "vhf",
+        "name": "",
         "owner_ref": "part-msfn",
         "layout": {
           "x": 194,
@@ -364,7 +364,7 @@
         "type": "port",
         "id": "p-mccu",
         "model_ref": "Apollo.Port.mccOut",
-        "name": "up",
+        "name": "",
         "owner_ref": "part-mcc",
         "layout": {
           "x": 634,
@@ -389,7 +389,7 @@
         "type": "port",
         "id": "p-msfnm",
         "model_ref": "Apollo.Port.msfnMccIn",
-        "name": "mccIn",
+        "name": "",
         "owner_ref": "part-msfn",
         "layout": {
           "x": 434,
@@ -414,7 +414,7 @@
         "type": "port",
         "id": "p-msfnu",
         "model_ref": "Apollo.Port.msfnOut",
-        "name": "uplink",
+        "name": "",
         "owner_ref": "part-msfn",
         "layout": {
           "x": 300,
@@ -439,7 +439,7 @@
         "type": "port",
         "id": "p-vusbin",
         "model_ref": "Apollo.Port.vehicleUsbIn",
-        "name": "usbIn",
+        "name": "",
         "owner_ref": "part-apollo",
         "layout": {
           "x": 520,
@@ -464,7 +464,7 @@
         "type": "port",
         "id": "p-vusbout",
         "model_ref": "Apollo.Port.vehicleUsbOut",
-        "name": "usbOut",
+        "name": "",
         "owner_ref": "part-apollo",
         "layout": {
           "x": 640,
@@ -489,7 +489,7 @@
         "type": "port",
         "id": "p-msfnd",
         "model_ref": "Apollo.Port.msfnVehicleIn",
-        "name": "down",
+        "name": "",
         "owner_ref": "part-msfn",
         "layout": {
           "x": 380,
@@ -514,7 +514,7 @@
         "type": "port",
         "id": "p-msfnt",
         "model_ref": "Apollo.Port.msfnDownOut",
-        "name": "tlm",
+        "name": "",
         "owner_ref": "part-msfn",
         "layout": {
           "x": 434,
@@ -539,7 +539,7 @@
         "type": "port",
         "id": "p-mccd",
         "model_ref": "Apollo.Port.mccDownIn",
-        "name": "down",
+        "name": "",
         "owner_ref": "part-mcc",
         "layout": {
           "x": 634,
@@ -564,7 +564,7 @@
         "type": "port",
         "id": "p-mccrt",
         "model_ref": "Apollo.Port.mccRtccOut",
-        "name": "rtcc",
+        "name": "",
         "owner_ref": "part-mcc",
         "layout": {
           "x": 874,
@@ -589,7 +589,7 @@
         "type": "port",
         "id": "p-rtcc",
         "model_ref": "Apollo.Port.rtccIn",
-        "name": "mccIn",
+        "name": "",
         "owner_ref": "part-rtcc",
         "layout": {
           "x": 974,
@@ -614,7 +614,7 @@
         "type": "port",
         "id": "p-land",
         "model_ref": "Apollo.Port.vehicleMoonOut",
-        "name": "land",
+        "name": "",
         "owner_ref": "part-apollo",
         "layout": {
           "x": 734,
@@ -639,7 +639,7 @@
         "type": "port",
         "id": "p-moon",
         "model_ref": "Apollo.Port.moonIn",
-        "name": "site",
+        "name": "",
         "owner_ref": "part-moon",
         "layout": {
           "x": 1034,
@@ -664,7 +664,7 @@
         "type": "port",
         "id": "p-launch",
         "model_ref": "Apollo.Port.vehicleEarthOut",
-        "name": "launch",
+        "name": "",
         "owner_ref": "part-apollo",
         "layout": {
           "x": 454,
@@ -689,7 +689,7 @@
         "type": "port",
         "id": "p-earth",
         "model_ref": "Apollo.Port.earthIn",
-        "name": "pad",
+        "name": "",
         "owner_ref": "part-earth",
         "layout": {
           "x": 234,
@@ -733,10 +733,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 18,
+            "y": -6
           }
         }
       },
@@ -751,11 +751,15 @@
             "y": 70
           },
           {
-            "x": 20,
+            "x": 16,
             "y": 70
           },
           {
-            "x": 20,
+            "x": 16,
+            "y": 180
+          },
+          {
+            "x": 16,
             "y": 520
           },
           {
@@ -769,10 +773,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": -80,
-            "y": -20
+            "x": 24,
+            "y": -14
           }
         }
       },
@@ -797,10 +801,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 36,
-            "y": 10
+            "x": 0,
+            "y": -18
           }
         }
       },
@@ -815,8 +819,12 @@
             "y": 480
           },
           {
+            "x": 306,
+            "y": 346
+          },
+          {
             "x": 526,
-            "y": 340
+            "y": 346
           }
         ],
         "style": {
@@ -825,10 +833,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": -40,
-            "y": -22
+            "x": -50,
+            "y": -16
           }
         }
       },
@@ -843,6 +851,14 @@
             "y": 340
           },
           {
+            "x": 646,
+            "y": 400
+          },
+          {
+            "x": 386,
+            "y": 400
+          },
+          {
             "x": 386,
             "y": 480
           }
@@ -853,9 +869,9 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 0,
+            "x": 10,
             "y": -16
           }
         }
@@ -881,10 +897,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
-            "x": 20,
-            "y": -14
+            "x": 0,
+            "y": 12
           }
         }
       },
@@ -909,7 +925,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
             "x": 0,
             "y": -18
@@ -937,10 +953,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
             "x": 0,
-            "y": -16
+            "y": -22
           }
         }
       },
@@ -965,10 +981,10 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 8,
+          "corner_radius": 0,
           "label_offset": {
             "x": 0,
-            "y": -16
+            "y": -22
           }
         }
       }

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo-abort",
-    "name": "pad \u00b7 Mode I\u2013IV \u00b7 contingency TLI \u00b7 lunar \u00b7 SPS",
+    "name": "pad \u00b7 Mode I\u2013IV \u00b7 lunar abort",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1180,
-      "height": 300,
+      "width": 1320,
+      "height": 420,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -41,15 +41,29 @@
     },
     "elements": [
       {
+        "type": "initial_pseudostate",
+        "id": "init-a",
+        "model_ref": "Apollo.State.Abort.Start",
+        "layout": {
+          "x": 8,
+          "y": 56,
+          "width": 16,
+          "height": 16,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#C62828"
+        }
+      },
+      {
         "type": "state",
         "id": "a-pad",
         "model_ref": "Apollo.State.Abort.pad",
-        "display_name": "pad",
         "layout": {
           "x": 20,
           "y": 30,
-          "width": 200,
-          "height": 86,
+          "width": 180,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -62,18 +76,19 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "pad",
+        "do": ""
       },
       {
         "type": "state",
         "id": "a-I",
         "model_ref": "Apollo.State.Abort.I",
-        "display_name": "Mode I",
         "layout": {
-          "x": 250,
+          "x": 230,
           "y": 30,
-          "width": 200,
-          "height": 86,
+          "width": 180,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -86,18 +101,19 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Mode I",
+        "do": ""
       },
       {
         "type": "state",
         "id": "a-II",
         "model_ref": "Apollo.State.Abort.II",
-        "display_name": "Mode II",
         "layout": {
-          "x": 480,
+          "x": 440,
           "y": 30,
-          "width": 200,
-          "height": 86,
+          "width": 180,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -110,18 +126,19 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Mode II",
+        "do": ""
       },
       {
         "type": "state",
         "id": "a-III",
         "model_ref": "Apollo.State.Abort.III",
-        "display_name": "Mode III",
         "layout": {
-          "x": 710,
+          "x": 650,
           "y": 30,
-          "width": 200,
-          "height": 86,
+          "width": 180,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -134,18 +151,19 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Mode III",
+        "do": ""
       },
       {
         "type": "state",
         "id": "a-IV",
         "model_ref": "Apollo.State.Abort.IV",
-        "display_name": "Mode IV",
         "layout": {
-          "x": 940,
+          "x": 860,
           "y": 30,
-          "width": 200,
-          "height": 86,
+          "width": 180,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -158,42 +176,19 @@
             "bold": false,
             "color": "#000000"
           }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-tli",
-        "model_ref": "Apollo.State.Abort.contingencyTLI",
-        "display_name": "contingency TLI",
-        "layout": {
-          "x": 20,
-          "y": 180,
-          "width": 260,
-          "height": 86,
-          "z_index": 1
         },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
+        "display_name": "Mode IV",
+        "do": ""
       },
       {
         "type": "state",
         "id": "a-lunar",
         "model_ref": "Apollo.State.Abort.lunar",
-        "display_name": "lunar",
         "layout": {
-          "x": 480,
-          "y": 180,
-          "width": 200,
-          "height": 86,
+          "x": 20,
+          "y": 200,
+          "width": 240,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -206,18 +201,19 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "lunar abort",
+        "do": ""
       },
       {
         "type": "state",
-        "id": "a-sps",
-        "model_ref": "Apollo.State.Abort.SPS",
-        "display_name": "SPS",
+        "id": "a-p70",
+        "model_ref": "Apollo.State.Abort.P70",
         "layout": {
-          "x": 940,
+          "x": 340,
           "y": 180,
-          "width": 200,
-          "height": 86,
+          "width": 280,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -230,21 +226,48 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "descent propulsion abort",
+        "do": ""
+      },
+      {
+        "type": "state",
+        "id": "a-p71",
+        "model_ref": "Apollo.State.Abort.P71",
+        "layout": {
+          "x": 340,
+          "y": 300,
+          "width": 280,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "ascent propulsion abort",
+        "do": ""
       }
     ],
     "relationships": [
       {
-        "id": "ta-pad-I",
+        "id": "ta-init",
         "type": "transition",
-        "relationship_ref": "stm-abort.pad-I",
+        "relationship_ref": "stm-abort.t-init",
         "waypoints": [
           {
-            "x": 220,
-            "y": 73
+            "x": 24,
+            "y": 64
           },
           {
-            "x": 250,
+            "x": 20,
             "y": 73
           }
         ],
@@ -267,12 +290,12 @@
         "relationship_ref": "stm-abort.I-II",
         "waypoints": [
           {
-            "x": 450,
-            "y": 73
+            "x": 410,
+            "y": 75
           },
           {
-            "x": 480,
-            "y": 73
+            "x": 440,
+            "y": 75
           }
         ],
         "style": {
@@ -286,7 +309,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       },
       {
         "id": "ta-II-III",
@@ -294,12 +318,12 @@
         "relationship_ref": "stm-abort.II-III",
         "waypoints": [
           {
-            "x": 680,
-            "y": 73
+            "x": 620,
+            "y": 75
           },
           {
-            "x": 710,
-            "y": 73
+            "x": 650,
+            "y": 75
           }
         ],
         "style": {
@@ -313,7 +337,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       },
       {
         "id": "ta-III-IV",
@@ -321,12 +346,12 @@
         "relationship_ref": "stm-abort.III-IV",
         "waypoints": [
           {
-            "x": 910,
-            "y": 73
+            "x": 830,
+            "y": 75
           },
           {
-            "x": 940,
-            "y": 73
+            "x": 860,
+            "y": 75
           }
         ],
         "style": {
@@ -340,7 +365,68 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
+      },
+      {
+        "id": "ta-p70",
+        "type": "transition",
+        "relationship_ref": "stm-abort.lunar-P70",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 225
+          },
+          {
+            "x": 340,
+            "y": 225
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
+        },
+        "name": ""
+      },
+      {
+        "id": "ta-p71",
+        "type": "transition",
+        "relationship_ref": "stm-abort.lunar-P71",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 260
+          },
+          {
+            "x": 260,
+            "y": 345
+          },
+          {
+            "x": 340,
+            "y": 345
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
+        },
+        "name": ""
       }
     ],
     "metadata": {

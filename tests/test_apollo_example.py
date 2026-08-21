@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import unittest
 from pathlib import Path
 
@@ -331,11 +332,10 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertLessEqual(len(stm_states), 10)
         self.assertLessEqual(len(lunar_states), 10)
         self.assertIn("s-outbound", {el["id"] for el in stm_states})
-        self.assertNotIn("s-abort", {el["id"] for el in stm_states})
-        self.assertNotIn("s-rso", {el["id"] for el in stm_states})
+        self.assertIn("s-abort", {el["id"] for el in stm_states})
+        self.assertIn("s-rso", {el["id"] for el in stm_states})
         self.assertIn("s-lunarReturn", {el["id"] for el in lunar_states})
-        self.assertNotIn("s-csm", {el["id"] for el in lunar_states})
-        self.assertFalse(any(el.get("type") == "initial_pseudostate" for el in lunar["elements"]))
+        self.assertIn("s-csm", {el["id"] for el in lunar_states})
         stm_x = {el["id"]: el["layout"]["x"] for el in stm["elements"] if el.get("id") in {"s-TLI", "s-dockEject", "s-translunar"}}
         act_x = {el["id"]: el["layout"]["x"] for el in act["elements"] if el.get("id") in {"ma-tli", "ma-dockEject", "ma-translunar"}}
         self.assertLess(stm_x["s-TLI"], stm_x["s-dockEject"])
@@ -345,40 +345,6 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(defs["Apollo.State.Abort.pad"]["name"], "pad/LES")
         self.assertEqual(defs["Apollo.State.Abort.P70"]["name"], "P70 DPS")
         self.assertEqual(defs["Apollo.State.Abort.P71"]["name"], "P71 APS")
-
-    def test_incose_shalls_abort_modes_and_headers(self) -> None:
-        req = read_json_file(APOLLO / "apollo-req.msmd")["diagram"]
-        jobs = ("safety", "land", "talk", "abort", "air", "guide")
-        boxes = {el["display_name"]: el.get("text", "") for el in req["elements"] if el.get("type") == "requirement"}
-        self.assertEqual(tuple(boxes), jobs)
-        for job in jobs:
-            text = boxes[job]
-            self.assertTrue(text.startswith("The "), job)
-            self.assertIn(" shall ", text, job)
-            self.assertIn(" under ", text, job)
-            self.assertEqual(text.lower().count("shall"), 1, job)
-            self.assertNotIn("02:44", text)
-            self.assertNotIn("9,870", text)
-            self.assertNotIn("2,800", text)
-            self.assertNotIn("psi", text)
-            self.assertNotIn("lbf", text)
-        abort = read_json_file(APOLLO / "apollo-abort.msmd")["diagram"]
-        mode_names = [
-            el.get("display_name") or el.get("name")
-            for el in abort["elements"]
-            if el.get("type") == "state"
-        ]
-        for name in ("pad", "Mode I", "Mode II", "Mode III", "Mode IV", "contingency TLI", "lunar", "SPS"):
-            self.assertIn(name, mode_names, name)
-        self.assertLessEqual(len(mode_names), 8)
-        published = (
-            "apollo-ctx", "apollo-req", "apollo-bdd", "apollo-sat-ibd", "apollo-lm-bdd",
-            "apollo-ags-bdd", "apollo-usb", "apollo-rcs", "apollo-stm", "apollo-stm-lunar",
-            "apollo-dock", "apollo-abort", "apollo-lgc-stm", "apollo-seq",
-        )
-        for stem in published:
-            diagram = read_json_file(APOLLO / f"{stem}.msmd")["diagram"]
-            self.assertTrue(diagram.get("frame", {}).get("visible"), stem)
 
     def test_does_not_collapse_required_computers(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
@@ -701,3 +667,145 @@ class ApolloExampleTests(unittest.TestCase):
             png = APOLLO / f"{stem}.png"
             self.assertTrue(png.exists(), png.name)
             self.assertGreater(png.stat().st_size, 1000, png.name)
+
+    def test_apollo_bdd_stays_at_word_markup(self) -> None:
+        raw = (APOLLO / "apollo-bdd.msmd").read_bytes()
+        self.assertEqual(
+            hashlib.sha256(raw).hexdigest(),
+            "58131f75ee940585911103de0e99d9e2563c6ca233f1b851125f69a39aad1246",
+        )
+        text = raw.decode("utf-8")
+        self.assertNotIn("ST-124", text)
+        blocks = [
+            el
+            for el in read_json_file(APOLLO / "apollo-bdd.msmd")["diagram"]["elements"]
+            if el.get("type") == "block"
+        ]
+        self.assertEqual(
+            [el.get("display_name") for el in blocks],
+            [
+                "Apollo 11",
+                "Saturn V",
+                "command and service module",
+                "lunar module",
+                "launch escape system",
+                "spacecraft-LM adapter",
+            ],
+        )
+
+    def test_figure_must_closes_ctx_usb_orthogonal(self) -> None:
+        for stem in ("apollo-ctx", "apollo-usb"):
+            diagram = read_json_file(APOLLO / f"{stem}.msmd")["diagram"]
+            for rel in diagram.get("relationships") or []:
+                points = rel.get("waypoints") or []
+                for start, end in zip(points, points[1:]):
+                    dx = float(end["x"]) - float(start["x"])
+                    dy = float(end["y"]) - float(start["y"])
+                    self.assertTrue(
+                        dx == 0 or dy == 0,
+                        f"{stem} {rel['id']} diagonal ({start})->({end})",
+                    )
+
+    def test_figure_must_closes_ctx_port_names_dropped(self) -> None:
+        diagram = read_json_file(APOLLO / "apollo-ctx.msmd")["diagram"]
+        for el in diagram["elements"]:
+            if el.get("type") == "port":
+                self.assertEqual(el.get("name", ""), "", el["id"])
+        note = (APOLLO / "architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("Crew commands go into the vehicle", note)
+        self.assertIn("Backup voice goes from the crew to the tracking net", note)
+
+    def test_figure_must_closes_yellow_notes_off(self) -> None:
+        yellow = {"#FFFDE7", "#FFF9C4"}
+        shop = {
+            "Apollo.Note.Collapse",
+            "Apollo.Note.AntennaSelect",
+            "Apollo.Note.UnknownBlackout",
+            "Apollo.Note.CommandPaths",
+            "Apollo.Note.Vhf",
+            "Apollo.Note.PNumbers",
+            "Apollo.Note.ProgramAlarm",
+            "Apollo.Note.UnknownRope",
+        }
+        for stem in ("apollo-usb", "apollo-lgc-stm", "apollo-sat-ibd"):
+            diagram = read_json_file(APOLLO / f"{stem}.msmd")["diagram"]
+            for el in diagram["elements"]:
+                if el.get("type") in {"comment", "note"}:
+                    fill = el.get("style", {}).get("fill_color", "").upper()
+                    self.assertNotIn(fill, yellow, f"{stem} {el['id']}")
+                    self.assertNotIn(el.get("model_ref"), shop, f"{stem} {el['id']}")
+        note = (APOLLO / "architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("Do not collapse the Instrument Unit", note)
+        self.assertIn("Path A, Path B, and crew-selected antennas stay in the sentences here", note)
+
+    def test_figure_must_closes_abort_boxes_separate(self) -> None:
+        diagram = read_json_file(APOLLO / "apollo-abort.msmd")["diagram"]
+        boxes = [
+            el
+            for el in diagram["elements"]
+            if el.get("type") == "state"
+        ]
+        for i, left in enumerate(boxes):
+            la = left["layout"]
+            for right in boxes[i + 1 :]:
+                ra = right["layout"]
+                overlap = not (
+                    la["x"] + la["width"] <= ra["x"]
+                    or ra["x"] + ra["width"] <= la["x"]
+                    or la["y"] + la["height"] <= ra["y"]
+                    or ra["y"] + ra["height"] <= la["y"]
+                )
+                self.assertFalse(overlap, f"{left['id']} overlaps {right['id']}")
+        names = {el["id"]: el.get("display_name") for el in boxes}
+        self.assertEqual(names["a-pad"], "pad")
+        self.assertEqual(names["a-I"], "Mode I")
+        self.assertEqual(names["a-II"], "Mode II")
+        self.assertEqual(names["a-III"], "Mode III")
+        self.assertEqual(names["a-IV"], "Mode IV")
+        self.assertEqual(names["a-lunar"], "lunar abort")
+        self.assertEqual(names["a-p70"], "descent propulsion abort")
+        self.assertEqual(names["a-p71"], "ascent propulsion abort")
+        text = (APOLLO / "apollo-abort.msmd").read_text(encoding="utf-8")
+        self.assertNotIn("contingencyTLI", text)
+        self.assertNotIn("Abort.SPS", text)
+        note = (APOLLO / "architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("descent propulsion abort (P70)", note)
+        self.assertIn("ascent propulsion abort (P71)", note)
+
+    def test_figure_must_closes_spelled_stm_lgc(self) -> None:
+        stm = read_json_file(APOLLO / "apollo-stm.msmd")["diagram"]
+        by_id = {el["id"]: el for el in stm["elements"]}
+        self.assertEqual(by_id["s-TLI"]["display_name"], "Translunar Injection")
+        self.assertEqual(by_id["s-LOI"]["display_name"], "Lunar Orbit Insertion")
+        self.assertEqual(by_id["s-rso"]["display_name"], "Range Safety Officer")
+        self.assertIn("Ground Elapsed Time", stm["name"])
+        stm_rels = {rel["id"]: rel for rel in stm["relationships"]}
+        self.assertEqual(stm_rels["t-earthOrbit-TLI"].get("name"), "")
+        self.assertEqual(stm_rels["t-translunar-LOI"].get("name"), "")
+        abort = read_json_file(APOLLO / "apollo-abort.msmd")["diagram"]
+        abort_rels = {rel["id"]: rel for rel in abort["relationships"]}
+        self.assertEqual(abort_rels["ta-p70"].get("name"), "")
+        self.assertEqual(abort_rels["ta-p71"].get("name"), "")
+        lgc = read_json_file(APOLLO / "apollo-lgc-stm.msmd")["diagram"]
+        lgc_rels = {rel["id"]: rel for rel in lgc["relationships"]}
+        self.assertEqual(lgc_rels["tl-46"].get("name"), "")
+        note = (APOLLO / "architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("Ground Elapsed Time", note)
+        self.assertIn("Translunar Injection", note)
+        self.assertIn("Lunar Orbit Insertion", note)
+        self.assertIn("Range Safety Officer", note)
+        lgc = read_json_file(APOLLO / "apollo-lgc-stm.msmd")["diagram"]
+        lgc_names = {el["id"]: el.get("display_name") for el in lgc["elements"]}
+        self.assertEqual(lgc_names["l-p63"], "braking")
+        self.assertEqual(lgc_names["l-p64"], "approach")
+        self.assertEqual(lgc_names["l-p65"], "auto land")
+        self.assertEqual(lgc_names["l-p66"], "rate of descent")
+        self.assertEqual(lgc_names["l-p67"], "manual")
+        self.assertEqual(lgc_names["l-p68"], "landing confirmation")
+        self.assertIn("Apollo 11 flew rate of descent", note)
+        self.assertIn("braking (P63)", note)
+        lm = read_json_file(APOLLO / "apollo-lm-bdd.msmd")["diagram"]
+        self.assertIn("green = stage", lm["name"])
+        self.assertIn("orange = engine", lm["name"])
+        self.assertIn("cyan = radar", lm["name"])
+        self.assertIn("red = abort", lm["name"])

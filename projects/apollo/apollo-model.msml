@@ -6604,13 +6604,6 @@
         "target": "Apollo.State.Abort.pad"
       },
       {
-        "id": "stm-abort.pad-I",
-        "type": "transition",
-        "source": "Apollo.State.Abort.pad",
-        "target": "Apollo.State.Abort.I",
-        "name": "Mode I"
-      },
-      {
         "id": "stm-abort.I-II",
         "type": "transition",
         "source": "Apollo.State.Abort.I",

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo",
-    "name": "countdown \u2192 TLI \u2192 dock/eject \u2192 translunar \u2192 LOI",
+    "name": "Ground Elapsed Time \u00b7 countdown \u2192 Translunar Injection \u2192 dock/eject \u2192 translunar \u2192 Lunar Orbit Insertion",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1360,
-      "height": 180,
+      "width": 1540,
+      "height": 280,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -44,11 +44,20 @@
         "type": "state",
         "id": "s-outbound",
         "model_ref": "Apollo.State.Mission.outbound",
+        "orthogonal_split": {
+          "axis": "horizontal",
+          "at": 138,
+          "labels": [
+            "nominal",
+            "abort \u00b7 Range Safety Officer"
+          ],
+          "color": "#6A1B9A"
+        },
         "layout": {
           "x": 16,
-          "y": 12,
-          "width": 1324,
-          "height": 132,
+          "y": 8,
+          "width": 1508,
+          "height": 256,
           "z_index": 0
         },
         "style": {
@@ -61,7 +70,8 @@
             "bold": true,
             "color": "#4A148C"
           }
-        }
+        },
+        "do": ""
       },
       {
         "type": "initial_pseudostate",
@@ -99,7 +109,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "do": ""
       },
       {
         "type": "state",
@@ -122,7 +133,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "do": ""
       },
       {
         "type": "state",
@@ -145,7 +157,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "do": ""
       },
       {
         "type": "state",
@@ -154,7 +167,7 @@
         "layout": {
           "x": 590,
           "y": 40,
-          "width": 170,
+          "width": 210,
           "height": 80,
           "z_index": 1
         },
@@ -168,14 +181,16 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Translunar Injection",
+        "do": ""
       },
       {
         "type": "state",
         "id": "s-dockEject",
         "model_ref": "Apollo.State.Mission.dockEject",
         "layout": {
-          "x": 780,
+          "x": 820,
           "y": 40,
           "width": 170,
           "height": 80,
@@ -192,14 +207,16 @@
             "color": "#000000"
           }
         },
-        "display_name": "dock/eject"
+        "display_name": "dock/eject",
+        "do": "",
+        "entry": ""
       },
       {
         "type": "state",
         "id": "s-translunar",
         "model_ref": "Apollo.State.Mission.translunar",
         "layout": {
-          "x": 970,
+          "x": 1010,
           "y": 40,
           "width": 170,
           "height": 80,
@@ -215,16 +232,17 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "do": ""
       },
       {
         "type": "state",
         "id": "s-LOI",
         "model_ref": "Apollo.State.Mission.LOI",
         "layout": {
-          "x": 1160,
+          "x": 1200,
           "y": 40,
-          "width": 170,
+          "width": 210,
           "height": 80,
           "z_index": 1
         },
@@ -238,7 +256,58 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Lunar Orbit Insertion",
+        "do": ""
+      },
+      {
+        "type": "state",
+        "id": "s-abort",
+        "model_ref": "Apollo.State.Abort",
+        "layout": {
+          "x": 36,
+          "y": 168,
+          "width": 360,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "do": ""
+      },
+      {
+        "type": "state",
+        "id": "s-rso",
+        "model_ref": "Apollo.State.RangeSafety.destruct",
+        "layout": {
+          "x": 420,
+          "y": 168,
+          "width": 400,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "Range Safety Officer",
+        "do": ""
       }
     ],
     "relationships": [
@@ -348,7 +417,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       },
       {
         "id": "t-TLI-dock",
@@ -356,11 +426,11 @@
         "relationship_ref": "stm-apollo.TLI-dockEject",
         "waypoints": [
           {
-            "x": 760,
+            "x": 800,
             "y": 80
           },
           {
-            "x": 780,
+            "x": 820,
             "y": 80
           }
         ],
@@ -383,11 +453,11 @@
         "relationship_ref": "stm-apollo.dockEject-translunar",
         "waypoints": [
           {
-            "x": 950,
+            "x": 990,
             "y": 80
           },
           {
-            "x": 970,
+            "x": 1010,
             "y": 80
           }
         ],
@@ -410,11 +480,11 @@
         "relationship_ref": "stm-apollo.translunar-LOI",
         "waypoints": [
           {
-            "x": 1140,
+            "x": 1180,
             "y": 80
           },
           {
-            "x": 1160,
+            "x": 1200,
             "y": 80
           }
         ],
@@ -429,7 +499,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       }
     ],
     "metadata": {

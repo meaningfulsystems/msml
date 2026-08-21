@@ -239,6 +239,7 @@ class PackageApiTests(unittest.TestCase):
         self.assertIn("not S-IVB ullage", apollo)
         self.assertIn("not operations", apollo)
         self.assertIn("PGNCS", apollo)
+        self.assertNotIn("lecture", apollo.lower())
         self.assertIn("motor-assist cut-off", ebike)
         self.assertIn("4.2.13", ebike)
         self.assertNotIn("Stopping Distance", ebike)

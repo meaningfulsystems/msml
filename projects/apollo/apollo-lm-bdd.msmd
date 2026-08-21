@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-apollo-lm",
-    "name": "Lunar Module definition",
+    "name": "Lunar Module definition \u2014 green = stage \u00b7 orange = engine \u00b7 cyan = radar \u00b7 red = abort",
     "context": "Apollo",
     "subject_ref": "Apollo.LM",
     "frame": {
