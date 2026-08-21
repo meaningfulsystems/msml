@@ -18,7 +18,7 @@ Sourced numbers are on the model (USB RF kept; VHF 296.8 / 259.7 and 243.0 MHz b
 | BDD | `apollo-bdd` | Saturn V + CSM + LM + LES + SLA |
 | Context IBD | `apollo-ctx` | Vehicle / crew / MCC / RTCC / MSFN / Moon / Earth |
 | Stack IBD | `apollo-ibd` | Vehicle stack + SLA/LES (adjacent joints only; no line over boxes) |
-| STM | `apollo-stm` | countdown → earthOrbit (100 nmi) → dock/eject → … → recovery |
+| STM | `apollo-stm` | countdown → TLI → dock/eject → translunar → LOI → … → recovery |
 | Abort STM | `apollo-abort` | pad/LES · Modes I–IV · contingency TLI · SPS · P70 DPS / P71 APS |
 | Activity | `apollo-act` | Same mission phases as a start-to-recovery flow |
 | Sequence | `apollo-seq` | Landing: MCC → MSFN → USB → AGC_LM / CDR / radar / DPS |
@@ -49,6 +49,6 @@ Sourced numbers are on the model (USB RF kept; VHF 296.8 / 259.7 and 243.0 MHz b
 | Docking sequence | `apollo-dock` | Probe / drogue / soft capture / 12 latches / stow / transfer |
 | RCS package | `apollo-rcs` | SM / LM 100 lbf (A11 PK p.93 / p.106) · CM dual 6-engine 93 lbf · loaded mass UNKNOWN |
 
-Mission STM: countdown → boost → earthOrbit (100 nmi planned) → TLI → translunar → dock/eject → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. IU owns boost+TLI; RSO owns destruct until orbital safing.
+Mission STM: countdown → boost → earthOrbit (100 nmi planned) → TLI → dockEject → translunar → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. `dockEject` is its own state (CMP-owned, SM RCS, probe-drogue). Do not jump TLI → translunar or dockEject → LOI. A11 PK: TLI 02:44:15 GET → dock ~03:20 → extract ~04:09 → LOI-1 75:54:28 GET. IU owns boost+TLI; RSO owns destruct until orbital safing.
 
 Abort machine (parallel): pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS).

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "activity",
     "id": "act-apollo",
-    "name": "Mission phases \u2014 countdown through recovery (dock/eject \u00b7 100 nmi)",
+    "name": "Mission phases \u2014 TLI \u2192 dock/eject \u2192 translunar \u2192 LOI",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -148,7 +148,7 @@
         "id": "ma-translunar",
         "model_ref": "Apollo.Action.translunar",
         "layout": {
-          "x": 738,
+          "x": 910,
           "y": 24,
           "width": 150,
           "height": 44,
@@ -170,7 +170,7 @@
         "id": "ma-dockEject",
         "model_ref": "Apollo.Action.dockEject",
         "layout": {
-          "x": 910,
+          "x": 738,
           "y": 24,
           "width": 150,
           "height": 44,

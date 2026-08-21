@@ -2740,25 +2740,26 @@
         "type": "state",
         "id": "Apollo.State.Mission.TLI",
         "name": "TLI",
-        "do": "IU owns TLI"
+        "do": "IU owns TLI · 02:44:15 GET"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.translunar",
         "name": "translunar",
-        "do": "coastTLI()"
+        "do": "coast after extract; no skip to LOI"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.dockEject",
         "name": "dock/eject",
-        "do": "CSM extracts LM"
+        "do": "CMP-owned; SM RCS; probe-drogue",
+        "entry": "dock ~03:20 / extract ~04:09 GET"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.LOI",
         "name": "LOI",
-        "do": "captureLunarOrbit()"
+        "do": "LOI-1 75:54:28 GET"
       },
       {
         "type": "state",
@@ -3148,8 +3149,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Docking",
-        "name": "Probe on CM, drogue on LM. Soft capture, retract to hard dock.\n12 CM ring latches. Probe+drogue removed and stowed for transfer.",
-        "text": "Probe on CM, drogue on LM. Soft capture, retract to hard dock.\n12 CM ring latches. Probe+drogue removed and stowed for transfer."
+        "name": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 PK: TLI 02:44:15 → dock ~03:20 → extract ~04:09 → LOI-1 75:54:28.\nDo not jump TLI→translunar or dockEject→LOI.",
+        "text": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 PK: TLI 02:44:15 → dock ~03:20 → extract ~04:09 → LOI-1 75:54:28.\nDo not jump TLI→translunar or dockEject→LOI."
       },
       {
         "id": "Apollo.Port.vehicleUsbOut",
@@ -5531,6 +5532,12 @@
         "name": "2.26 lb/man/day planned",
         "value_type": "Real",
         "unit": "lb/man/day"
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.TdeTimes",
+        "name": "A11 PK: TLI 02:44:15 GET → dock ~03:20 → extract ~04:09 → translunar coast → LOI-1 75:54:28. CMP-owned, SM RCS, probe-drogue. Do not skip translunar → LOI.",
+        "text": "A11 PK: TLI 02:44:15 GET → dock ~03:20 → extract ~04:09 → translunar coast → LOI-1 75:54:28. CMP-owned, SM RCS, probe-drogue. Do not skip translunar → LOI."
       }
     ],
     "relationships": [
@@ -6371,11 +6378,11 @@
         "name": "TLI"
       },
       {
-        "id": "stm-apollo.TLI-translunar",
+        "id": "stm-apollo.TLI-dockEject",
         "type": "transition",
         "source": "Apollo.State.Mission.TLI",
-        "target": "Apollo.State.Mission.translunar",
-        "name": "coast"
+        "target": "Apollo.State.Mission.dockEject",
+        "name": "dock/eject"
       },
       {
         "id": "stm-apollo.LOI-undock",
@@ -6621,7 +6628,7 @@
         "id": "act-apollo.f4",
         "type": "control_flow",
         "source": "Apollo.Action.tli",
-        "target": "Apollo.Action.translunar"
+        "target": "Apollo.Action.dockEject"
       },
       {
         "id": "act-apollo.f6",
@@ -7735,16 +7742,16 @@
         "multiplicity_target": "1"
       },
       {
-        "id": "stm-apollo.translunar-dockEject",
-        "type": "transition",
-        "source": "Apollo.State.Mission.translunar",
-        "target": "Apollo.State.Mission.dockEject",
-        "name": "dock/eject"
-      },
-      {
-        "id": "stm-apollo.dockEject-LOI",
+        "id": "stm-apollo.dockEject-translunar",
         "type": "transition",
         "source": "Apollo.State.Mission.dockEject",
+        "target": "Apollo.State.Mission.translunar",
+        "name": "extract / coast"
+      },
+      {
+        "id": "stm-apollo.translunar-LOI",
+        "type": "transition",
+        "source": "Apollo.State.Mission.translunar",
         "target": "Apollo.State.Mission.LOI",
         "name": "LOI"
       },
@@ -7765,13 +7772,13 @@
       {
         "id": "act-apollo.f5a",
         "type": "control_flow",
-        "source": "Apollo.Action.translunar",
-        "target": "Apollo.Action.dockEject"
+        "source": "Apollo.Action.dockEject",
+        "target": "Apollo.Action.translunar"
       },
       {
         "id": "act-apollo.f5b",
         "type": "control_flow",
-        "source": "Apollo.Action.dockEject",
+        "source": "Apollo.Action.translunar",
         "target": "Apollo.Action.loi"
       },
       {

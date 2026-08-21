@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo",
-    "name": "countdown \u2192 earthOrbit (100 nmi) \u2192 dock/eject \u2192 \u2026 \u2192 recovery",
+    "name": "countdown \u2192 TLI \u2192 dock/eject \u2192 translunar \u2192 LOI \u2192 \u2026",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1440,
-      "height": 420,
+      "height": 500,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -152,7 +152,7 @@
         "id": "s-translunar",
         "model_ref": "Apollo.State.Mission.translunar",
         "layout": {
-          "x": 940,
+          "x": 1170,
           "y": 30,
           "width": 210,
           "height": 86,
@@ -174,8 +174,9 @@
         "type": "state",
         "id": "s-dockEject",
         "model_ref": "Apollo.State.Mission.dockEject",
+        "display_name": "dock/eject",
         "layout": {
-          "x": 1170,
+          "x": 940,
           "y": 30,
           "width": 210,
           "height": 86,
@@ -445,6 +446,29 @@
             "color": "#000000"
           }
         }
+      },
+      {
+        "type": "comment",
+        "id": "n-tde",
+        "model_ref": "Apollo.Note.TdeTimes",
+        "layout": {
+          "x": 960,
+          "y": 390,
+          "width": 420,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
       }
     ],
     "relationships": [
@@ -541,9 +565,9 @@
         }
       },
       {
-        "id": "t-TLI-translunar",
+        "id": "t-TLI-dock",
         "type": "transition",
-        "relationship_ref": "stm-apollo.TLI-translunar",
+        "relationship_ref": "stm-apollo.TLI-dockEject",
         "waypoints": [
           {
             "x": 920,
@@ -564,9 +588,9 @@
         }
       },
       {
-        "id": "t-translunar-dock",
+        "id": "t-dock-translunar",
         "type": "transition",
-        "relationship_ref": "stm-apollo.translunar-dockEject",
+        "relationship_ref": "stm-apollo.dockEject-translunar",
         "waypoints": [
           {
             "x": 1150,
@@ -587,9 +611,9 @@
         }
       },
       {
-        "id": "t-dock-LOI",
+        "id": "t-translunar-LOI",
         "type": "transition",
-        "relationship_ref": "stm-apollo.dockEject-LOI",
+        "relationship_ref": "stm-apollo.translunar-LOI",
         "waypoints": [
           {
             "x": 1380,
