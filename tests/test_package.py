@@ -225,7 +225,7 @@ class PackageApiTests(unittest.TestCase):
         self.assertIn("MSC-00171", apollo)
         self.assertNotIn("02:44:16.2", apollo)
         self.assertIn("plain language", apollo)
-        self.assertIn("names stay MagicGrid", apollo)
+        self.assertIn("Names stay MagicGrid", apollo)
         self.assertIn("not a midcourse correction", apollo)
         self.assertIn("not S-IVB ullage", apollo)
         self.assertIn("not operations", apollo)
