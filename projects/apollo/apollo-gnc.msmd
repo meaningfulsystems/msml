@@ -1,0 +1,646 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-apollo-gnc",
+    "subject_ref": "Apollo",
+    "name": "GNC \u2014 AGC / DSKY / IMU / Optics + LM AGS",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1280,
+      "height": 560,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-crew",
+        "model_ref": "Apollo.Crew",
+        "display_name": "crew : Crew",
+        "layout": {
+          "x": 30,
+          "y": 80,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-dsky",
+        "model_ref": "Apollo.DSKY",
+        "display_name": "dsky : DSKY",
+        "layout": {
+          "x": 280,
+          "y": 70,
+          "width": 190,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-agc",
+        "model_ref": "Apollo.AGC",
+        "display_name": "agc : AGC",
+        "layout": {
+          "x": 560,
+          "y": 50,
+          "width": 230,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-imu",
+        "model_ref": "Apollo.IMU",
+        "display_name": "imu : IMU",
+        "layout": {
+          "x": 880,
+          "y": 40,
+          "width": 180,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-opt",
+        "model_ref": "Apollo.Optics",
+        "display_name": "optics : Optics",
+        "layout": {
+          "x": 880,
+          "y": 160,
+          "width": 180,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-lgc",
+        "model_ref": "Apollo.LGC",
+        "display_name": "lgc : LGC",
+        "layout": {
+          "x": 280,
+          "y": 340,
+          "width": 230,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-ags",
+        "model_ref": "Apollo.AGS",
+        "display_name": "ags : AGS",
+        "layout": {
+          "x": 600,
+          "y": 350,
+          "width": 210,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-atypical",
+        "model_ref": "Apollo.Note.Atypical",
+        "layout": {
+          "x": 860,
+          "y": 340,
+          "width": 380,
+          "height": 180,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-crew-d",
+        "model_ref": "Apollo.Port.crewDskyOut",
+        "name": "key",
+        "owner_ref": "part-crew",
+        "layout": {
+          "x": 194,
+          "y": 118,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-dsky-c",
+        "model_ref": "Apollo.Port.dskyCrewIn",
+        "name": "in",
+        "owner_ref": "part-dsky",
+        "layout": {
+          "x": 274,
+          "y": 118,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-dsky-a",
+        "model_ref": "Apollo.Port.dskyAgcOut",
+        "name": "verb",
+        "owner_ref": "part-dsky",
+        "layout": {
+          "x": 464,
+          "y": 118,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-agc-d",
+        "model_ref": "Apollo.Port.agcDskyIn",
+        "name": "dsky",
+        "owner_ref": "part-agc",
+        "layout": {
+          "x": 554,
+          "y": 118,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-imu",
+        "model_ref": "Apollo.Port.imuOut",
+        "name": "att",
+        "owner_ref": "part-imu",
+        "layout": {
+          "x": 874,
+          "y": 74,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-agc-i",
+        "model_ref": "Apollo.Port.agcImuIn",
+        "name": "imu",
+        "owner_ref": "part-agc",
+        "layout": {
+          "x": 784,
+          "y": 74,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-opt",
+        "model_ref": "Apollo.Port.opticsOut",
+        "name": "sight",
+        "owner_ref": "part-opt",
+        "layout": {
+          "x": 874,
+          "y": 194,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-agc-o",
+        "model_ref": "Apollo.Port.agcOpticsIn",
+        "name": "opt",
+        "owner_ref": "part-agc",
+        "layout": {
+          "x": 784,
+          "y": 164,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lgc",
+        "model_ref": "Apollo.Port.lgcAgsOut",
+        "name": "handoff",
+        "owner_ref": "part-lgc",
+        "layout": {
+          "x": 504,
+          "y": 394,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ags",
+        "model_ref": "Apollo.Port.agsIn",
+        "name": "in",
+        "owner_ref": "part-ags",
+        "layout": {
+          "x": 594,
+          "y": 394,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "g1",
+        "type": "connector",
+        "relationship_ref": "gnc-apollo.crewToDsky",
+        "name": "keys",
+        "waypoints": [
+          {
+            "x": 206,
+            "y": 124
+          },
+          {
+            "x": 274,
+            "y": 124
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "g2",
+        "type": "connector",
+        "relationship_ref": "gnc-apollo.dskyToAgc",
+        "name": "verb/noun",
+        "waypoints": [
+          {
+            "x": 476,
+            "y": 124
+          },
+          {
+            "x": 554,
+            "y": 124
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "g3",
+        "type": "connector",
+        "relationship_ref": "gnc-apollo.imuToAgc",
+        "name": "attitude",
+        "waypoints": [
+          {
+            "x": 874,
+            "y": 80
+          },
+          {
+            "x": 796,
+            "y": 80
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "g4",
+        "type": "connector",
+        "relationship_ref": "gnc-apollo.opticsToAgc",
+        "name": "sighting",
+        "waypoints": [
+          {
+            "x": 874,
+            "y": 200
+          },
+          {
+            "x": 820,
+            "y": 200
+          },
+          {
+            "x": 820,
+            "y": 170
+          },
+          {
+            "x": 796,
+            "y": 170
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 20,
+            "y": 14
+          }
+        }
+      },
+      {
+        "id": "g5",
+        "type": "connector",
+        "relationship_ref": "gnc-apollo.lgcToAgs",
+        "name": "abort handoff",
+        "waypoints": [
+          {
+            "x": 516,
+            "y": 400
+          },
+          {
+            "x": 594,
+            "y": 400
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo",
+        "gnc"
+      ]
+    }
+  }
+}

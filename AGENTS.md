@@ -41,11 +41,15 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 
 ## Apollo (in progress)
 
-`projects/apollo/` is a second full-system example. Namespace `Apollo`. File stem `apollo`. Public NASA Apollo 11-class architecture only. Do not invent classified or biomedical detail. Refine when the research brief arrives.
+`projects/apollo/` is a second full-system example. Namespace `Apollo`. File stem `apollo`. Public NASA architecture only. Do not invent classified or biomedical detail. Refine when the research brief arrives.
 
-- Context is vehicle / crew / MCC / MSFN / Moon / Earth.
+- **Instance lock:** Apollo 11 / Block II. The modeled stack is the generic Saturn V + CSM + LM used by lunar-landing missions.
+- Where 11 is atypical, call it out in comments only. Do **not** stand up Apollo 7 / 8 / 10 / 13 as separate projects: 7 had no LM, 8 and 10 did not land, 13 aborted.
+- Context is vehicle / crew / MCC / RTCC / MSFN / Moon / Earth. Uplink and downlink are distinct; backup voice is VHF/HF via MSFN.
 - IBD connectors never pass through boxes. Saturn joints are adjacent only.
-- Mission phases: Launch → TLI → LOI → Landing → Ascent → TEI → Entry.
+- Mission phases: Launch → TLI → LOI → Landing → Ascent → TEI → Entry, plus an abort path (LES / pad and 13-class note).
+- GNC: crew → DSKY → AGC (P00–P67-class) with IMU and optics; LM LGC plus AGS abort backup.
+- CSM flows: electrical, propellant, RF, crew/cabin, telemetry.
 
 ## Checks
 

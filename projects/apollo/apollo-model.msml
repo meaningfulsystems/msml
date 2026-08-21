@@ -2,7 +2,7 @@
   "msml_version": "1.0",
   "model": {
     "id": "apollo-model",
-    "name": "Apollo 11-class System Model",
+    "name": "Apollo 11 / Block II System Model",
     "namespace": "Apollo",
     "imports": [],
     "definitions": [
@@ -14,8 +14,13 @@
         "compartments": {
           "properties": [
             {
-              "name": "mission",
-              "type": "Apollo 11-class",
+              "name": "instance",
+              "type": "Apollo 11 / Block II",
+              "multiplicity": "1"
+            },
+            {
+              "name": "stack",
+              "type": "generic Saturn V + CSM + LM",
               "multiplicity": "1"
             },
             {
@@ -317,6 +322,11 @@
               "name": "role",
               "type": "cabin atmosphere",
               "multiplicity": "1"
+            },
+            {
+              "name": "scope",
+              "type": "vehicle ECLSS \u2014 not biomedical",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -333,6 +343,11 @@
               "name": "host",
               "type": "CM Block II",
               "multiplicity": "1"
+            },
+            {
+              "name": "programs",
+              "type": "P00\u2013P67-class",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -348,6 +363,11 @@
             {
               "name": "host",
               "type": "LM AGC",
+              "multiplicity": "1"
+            },
+            {
+              "name": "programs",
+              "type": "P00\u2013P67-class",
               "multiplicity": "1"
             }
           ],
@@ -449,6 +469,11 @@
             {
               "name": "site",
               "type": "MCC",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "RTCC host",
               "multiplicity": "1"
             }
           ],
@@ -702,8 +727,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Public",
-        "name": "Civil / historical NASA public architecture.\nApollo 11-class stack. No classified or biomedical detail.",
-        "text": "Civil / historical NASA public architecture.\nApollo 11-class stack. No classified or biomedical detail."
+        "name": "Civil / historical NASA public architecture only.\nNo classified or biomedical human-body detail.",
+        "text": "Civil / historical NASA public architecture only.\nNo classified or biomedical human-body detail."
       },
       {
         "id": "Apollo.Port.crewOut",
@@ -896,6 +921,276 @@
         "type": "port",
         "name": "smIn",
         "owner_ref": "Apollo.USB"
+      },
+      {
+        "type": "block",
+        "id": "Apollo.RTCC",
+        "name": "RTCC",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "real-time computer complex",
+              "multiplicity": "1"
+            },
+            {
+              "name": "site",
+              "type": "MCC",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Optics",
+        "name": "Optics",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "sextant / telescope",
+              "multiplicity": "1"
+            },
+            {
+              "name": "host",
+              "type": "CM",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.BackupVoice",
+        "name": "BackupVoice",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "path",
+              "type": "VHF / HF via MSFN",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "voice if USB drops",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.FuelCell",
+        "name": "FuelCell",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "SM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "electrical power",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.abort",
+        "name": "abort",
+        "entry": "safeCrew(); jettisonIfNeeded()"
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.Instance",
+        "name": "Instance = Apollo 11 / Block II.\nThe modeled stack is the generic Saturn V + CSM + LM\nused by lunar-landing missions.",
+        "text": "Instance = Apollo 11 / Block II.\nThe modeled stack is the generic Saturn V + CSM + LM\nused by lunar-landing missions."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.Atypical",
+        "name": "Where 11 is atypical (notes only \u2014 not full examples):\n\u2022 Apollo 7 \u2014 no LM\n\u2022 Apollo 8 / Apollo 10 \u2014 no lunar landing\n\u2022 Apollo 13 \u2014 abort, not a completed landing\nDo not stand up those missions as separate projects tonight.",
+        "text": "Where 11 is atypical (notes only \u2014 not full examples):\n\u2022 Apollo 7 \u2014 no LM\n\u2022 Apollo 8 / Apollo 10 \u2014 no lunar landing\n\u2022 Apollo 13 \u2014 abort, not a completed landing\nDo not stand up those missions as separate projects tonight."
+      },
+      {
+        "id": "Apollo.Port.vehicleUsbOut",
+        "type": "port",
+        "name": "usbOut",
+        "owner_ref": "Apollo"
+      },
+      {
+        "id": "Apollo.Port.msfnVehicleIn",
+        "type": "port",
+        "name": "vehicleIn",
+        "owner_ref": "Apollo.MSFN"
+      },
+      {
+        "id": "Apollo.Port.msfnDownOut",
+        "type": "port",
+        "name": "downlinkOut",
+        "owner_ref": "Apollo.MSFN"
+      },
+      {
+        "id": "Apollo.Port.mccDownIn",
+        "type": "port",
+        "name": "downlinkIn",
+        "owner_ref": "Apollo.MCC"
+      },
+      {
+        "id": "Apollo.Port.crewVoiceOut",
+        "type": "port",
+        "name": "voiceOut",
+        "owner_ref": "Apollo.Crew"
+      },
+      {
+        "id": "Apollo.Port.msfnVoiceIn",
+        "type": "port",
+        "name": "voiceIn",
+        "owner_ref": "Apollo.MSFN"
+      },
+      {
+        "id": "Apollo.Port.mccRtccOut",
+        "type": "port",
+        "name": "computeOut",
+        "owner_ref": "Apollo.MCC"
+      },
+      {
+        "id": "Apollo.Port.rtccIn",
+        "type": "port",
+        "name": "mccIn",
+        "owner_ref": "Apollo.RTCC"
+      },
+      {
+        "id": "Apollo.Port.crewDskyOut",
+        "type": "port",
+        "name": "keyOut",
+        "owner_ref": "Apollo.Crew"
+      },
+      {
+        "id": "Apollo.Port.dskyCrewIn",
+        "type": "port",
+        "name": "crewIn",
+        "owner_ref": "Apollo.DSKY"
+      },
+      {
+        "id": "Apollo.Port.dskyAgcOut",
+        "type": "port",
+        "name": "verbOut",
+        "owner_ref": "Apollo.DSKY"
+      },
+      {
+        "id": "Apollo.Port.agcDskyIn",
+        "type": "port",
+        "name": "dskyIn",
+        "owner_ref": "Apollo.AGC"
+      },
+      {
+        "id": "Apollo.Port.imuOut",
+        "type": "port",
+        "name": "attOut",
+        "owner_ref": "Apollo.IMU"
+      },
+      {
+        "id": "Apollo.Port.agcImuIn",
+        "type": "port",
+        "name": "imuIn",
+        "owner_ref": "Apollo.AGC"
+      },
+      {
+        "id": "Apollo.Port.opticsOut",
+        "type": "port",
+        "name": "sightOut",
+        "owner_ref": "Apollo.Optics"
+      },
+      {
+        "id": "Apollo.Port.agcOpticsIn",
+        "type": "port",
+        "name": "opticsIn",
+        "owner_ref": "Apollo.AGC"
+      },
+      {
+        "id": "Apollo.Port.lgcAgsOut",
+        "type": "port",
+        "name": "handoffOut",
+        "owner_ref": "Apollo.LGC"
+      },
+      {
+        "id": "Apollo.Port.agsIn",
+        "type": "port",
+        "name": "lgcIn",
+        "owner_ref": "Apollo.AGS"
+      },
+      {
+        "id": "Apollo.Port.fuelOut",
+        "type": "port",
+        "name": "powerOut",
+        "owner_ref": "Apollo.FuelCell"
+      },
+      {
+        "id": "Apollo.Port.cmPowerIn",
+        "type": "port",
+        "name": "powerIn",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.cmTlmOut",
+        "type": "port",
+        "name": "tlmOut",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.usbTlmIn",
+        "type": "port",
+        "name": "tlmIn",
+        "owner_ref": "Apollo.USB"
+      },
+      {
+        "id": "Apollo.Port.smPropOut",
+        "type": "port",
+        "name": "spsOut",
+        "owner_ref": "Apollo.SM"
+      },
+      {
+        "id": "Apollo.Port.cmPropIn",
+        "type": "port",
+        "name": "spsIn",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.eclssOut",
+        "type": "port",
+        "name": "cabinOut",
+        "owner_ref": "Apollo.ECLSS"
+      },
+      {
+        "id": "Apollo.Port.cmEclssIn",
+        "type": "port",
+        "name": "cabinIn",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.backupOut",
+        "type": "port",
+        "name": "vhfOut",
+        "owner_ref": "Apollo.BackupVoice"
+      },
+      {
+        "id": "Apollo.Port.msfnBackupIn",
+        "type": "port",
+        "name": "vhfIn",
+        "owner_ref": "Apollo.MSFN"
       }
     ],
     "relationships": [
@@ -1470,6 +1765,157 @@
         "source": "Apollo.guidanceRequirement",
         "target": "Apollo.AGS",
         "kind": "functional"
+      },
+      {
+        "id": "bdd-apollo.c-cm-optics",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.Optics",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-sm-fuel",
+        "type": "composition",
+        "source": "Apollo.SM",
+        "target": "Apollo.FuelCell",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-rtcc",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo.RTCC",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-sm-backup",
+        "type": "composition",
+        "source": "Apollo.SM",
+        "target": "Apollo.BackupVoice",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "ctx-apollo.vehicleToMsfn",
+        "type": "connector",
+        "source": "Apollo.Port.vehicleUsbOut",
+        "target": "Apollo.Port.msfnVehicleIn",
+        "name": "downlink"
+      },
+      {
+        "id": "ctx-apollo.msfnToMcc",
+        "type": "connector",
+        "source": "Apollo.Port.msfnDownOut",
+        "target": "Apollo.Port.mccDownIn",
+        "name": "telemetry"
+      },
+      {
+        "id": "ctx-apollo.crewBackupVoice",
+        "type": "connector",
+        "source": "Apollo.Port.crewVoiceOut",
+        "target": "Apollo.Port.msfnVoiceIn",
+        "name": "backup voice"
+      },
+      {
+        "id": "ctx-apollo.mccToRtcc",
+        "type": "connector",
+        "source": "Apollo.Port.mccRtccOut",
+        "target": "Apollo.Port.rtccIn",
+        "name": "compute"
+      },
+      {
+        "id": "gnc-apollo.crewToDsky",
+        "type": "connector",
+        "source": "Apollo.Port.crewDskyOut",
+        "target": "Apollo.Port.dskyCrewIn",
+        "name": "keys"
+      },
+      {
+        "id": "gnc-apollo.dskyToAgc",
+        "type": "connector",
+        "source": "Apollo.Port.dskyAgcOut",
+        "target": "Apollo.Port.agcDskyIn",
+        "name": "verb/noun"
+      },
+      {
+        "id": "gnc-apollo.imuToAgc",
+        "type": "connector",
+        "source": "Apollo.Port.imuOut",
+        "target": "Apollo.Port.agcImuIn",
+        "name": "attitude"
+      },
+      {
+        "id": "gnc-apollo.opticsToAgc",
+        "type": "connector",
+        "source": "Apollo.Port.opticsOut",
+        "target": "Apollo.Port.agcOpticsIn",
+        "name": "sighting"
+      },
+      {
+        "id": "gnc-apollo.lgcToAgs",
+        "type": "connector",
+        "source": "Apollo.Port.lgcAgsOut",
+        "target": "Apollo.Port.agsIn",
+        "name": "abort handoff"
+      },
+      {
+        "id": "flow-apollo.fuelToCm",
+        "type": "connector",
+        "source": "Apollo.Port.fuelOut",
+        "target": "Apollo.Port.cmPowerIn",
+        "name": "electrical"
+      },
+      {
+        "id": "flow-apollo.cmToUsb",
+        "type": "connector",
+        "source": "Apollo.Port.cmTlmOut",
+        "target": "Apollo.Port.usbTlmIn",
+        "name": "telemetry"
+      },
+      {
+        "id": "flow-apollo.smToCm",
+        "type": "connector",
+        "source": "Apollo.Port.smPropOut",
+        "target": "Apollo.Port.cmPropIn",
+        "name": "SPS / RCS"
+      },
+      {
+        "id": "flow-apollo.eclssToCm",
+        "type": "connector",
+        "source": "Apollo.Port.eclssOut",
+        "target": "Apollo.Port.cmEclssIn",
+        "name": "cabin atmosphere"
+      },
+      {
+        "id": "flow-apollo.backupToMsfn",
+        "type": "connector",
+        "source": "Apollo.Port.backupOut",
+        "target": "Apollo.Port.msfnBackupIn",
+        "name": "VHF"
+      },
+      {
+        "id": "stm-apollo.abortLaunch",
+        "type": "transition",
+        "source": "Apollo.State.Mission.launch",
+        "target": "Apollo.State.Mission.abort",
+        "name": "LES / pad abort"
+      },
+      {
+        "id": "stm-apollo.abortCoast",
+        "type": "transition",
+        "source": "Apollo.State.Mission.tli",
+        "target": "Apollo.State.Mission.abort",
+        "name": "13-class abort (note only)"
+      },
+      {
+        "id": "stm-apollo.abortToEntry",
+        "type": "transition",
+        "source": "Apollo.State.Mission.abort",
+        "target": "Apollo.State.Mission.entry",
+        "name": "return"
       }
     ],
     "metadata": {
@@ -1480,7 +1926,7 @@
         "apollo",
         "skeleton"
       ],
-      "notes": "Public NASA Apollo 11-class architecture. Refine when the research brief arrives."
+      "notes": "Instance = Apollo 11 / Block II. Generic Saturn V + CSM + LM stack. A7/A8/A10/A13 called out in notes only. Refine when the research brief arrives."
     }
   }
 }
