@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo-lgc",
-    "name": "LGC LANDING — P63–P68 · A11 P66 ROD · not CMC entry",
+    "name": "LGC LANDING \u2014 P63\u2013P68 \u00b7 A11 P66 ROD \u00b7 not CMC entry",
     "context": "Apollo",
     "subject_ref": "Apollo.AGC_LM",
     "frame": {
@@ -185,29 +185,6 @@
         "style": {
           "fill_color": "#E8F5E9",
           "border_color": "#2E7D32",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "l-ags",
-        "model_ref": "Apollo.State.Guidance.AGS",
-        "layout": {
-          "x": 50,
-          "y": 260,
-          "width": 320,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
           "border_width": 2,
           "font": {
             "family": "Arial",

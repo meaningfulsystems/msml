@@ -54,11 +54,11 @@ A requirement is a shall. Crew Safety is **Not LES-only**. Food is a 1967 plan p
 
 **Figure. `apollo-req.png`.** Six jobs. Read safety first: abort is a family of doors, not one tower rocket. Food, oxygen pressure, and engine thrust stay in the sentences below. They are not shalls on this figure.
 
-An abort path shall remain available from pad through TEI. That shall is **Not LES-only**. The Lunar Module shall land two crew on the Moon with remaining descent Δv margin at the site. That land box is the lunar landing. Splash is not taught there. Margin is required; an official CSM lunar Δv table is not filled. The tracking net shall carry voice and telemetry except during known lunar occultation. The launch escape system shall pull the Command Module clear of Saturn on a pad or Mode I abort.
+The stack shall keep an abort path available from pad through TEI. That shall is **Not LES-only**. The Lunar Module shall land two crew on the Moon under remaining descent Δv margin at the site. That land box is the lunar landing. Splash is not taught there. Margin is required; an official CSM lunar Δv table is not filled. The tracking net shall carry voice and telemetry under all phases except known lunar occultation. The launch escape system shall pull the Command Module clear of Saturn under a pad or Mode I abort.
 
-The Command Module shall keep a livable cabin atmosphere. That job belongs to the Command Module Environmental Control System (ECS), also called the Environmental Control and Life Support System (ECLSS). The spec is three crew. Those three people are carried for fourteen days. Cabin pressure is 5.0 psia. The gas is 100% oxygen. Carbon dioxide stays at or below 7.6 torr. Service-module oxygen is 640 lb. The crew drinks from 36 lb of potable water. Waste water is 56 lb. Lithium hydroxide canisters last 1.5 man-day. They swap every 12 hours. Apollo 11 itself is 196 hours of flight. The spec it was sized against is 336 hours.
+The Command Module shall keep a livable cabin atmosphere for the crew under the crewed mission. That job belongs to the Command Module Environmental Control System (ECS), also called the Environmental Control and Life Support System (ECLSS). The spec is three crew. Those three people are carried for fourteen days. Cabin pressure is 5.0 psia. The gas is 100% oxygen. Carbon dioxide stays at or below 7.6 torr. Service-module oxygen is 640 lb. The crew drinks from 36 lb of potable water. Waste water is 56 lb. Lithium hydroxide canisters last 1.5 man-day. They swap every 12 hours. Apollo 11 itself is 196 hours of flight. The spec it was sized against is 336 hours.
 
-The command-module and lunar-module computers shall provide Guidance, Navigation, and Control (GNC). AGS is the lunar-module abort backup.
+The command-module and lunar-module computers shall provide guidance under primary control. Guidance, Navigation, and Control (GNC) is that job. AGS is the lunar-module abort backup.
 
 The stack shall communicate with the tracking net on unified S-band. The command module listens up at 2106.40625 MHz. It talks down at 2287.5 MHz on phase modulation. A second downlink at 2272.5 MHz uses frequency modulation. The lunar module listens up at 2101.802 MHz. It talks down at 2282.5 MHz. Telemetry can run at 51.2 kbps. It can also drop to 1.6 kbps. Digital uplink is about 2 kbps. Ranging uses a 992 kbps pseudo-random-noise code. That ranging is good to ±15 m. The same code stays unambiguous out to about 540,000 miles. Uplink verbs shall be limited to V70 through V73 into the Command Module Computer (CMC) / LM Guidance Computer (LGC). That door is Path B. Path A is the Command, Communications, and Telemetry System (CCATS) load.
 
@@ -128,15 +128,15 @@ The Portable Life Support System (PLSS) and Oxygen Purge System (OPS) ride on CD
 
 ## 4. Behavior
 
-The mission clock cannot skip a beat. Confirm `dockEject` sits between TLI and translunar. Do not draw TLI → translunar. Do not draw `dockEject` → LOI. The locked path is TLI → dockEject → translunar → LOI. The clock is split across two figures so each page stays at or under ten visible states. Fewer boxes on the page is not a flat machine. Outbound is one composite. Lunar and return is another. Descent, surface/EVA, and ascent nest under a surface composite inside lunar and return. Recovery stays in that same lunar-and-return composite even though splash is taught only in the GET sentences. Abort is an orthogonal region of that same mission machine, not a second flattened clock. After undock, the CSM with the Command Module Pilot stays in lunar orbit concurrent with the LM from DOI through ascent. Range Safety destruct is concurrent with Mission Control until it is safed after Earth orbit.
+The mission clock cannot skip a beat. Confirm `dockEject` sits between TLI and translunar. Do not draw TLI → translunar. Do not draw `dockEject` → LOI. The locked path is TLI → dockEject → translunar → LOI. The clock is split across two figures so each page stays at or under ten visible states. Fewer boxes on the page is not a flat machine. Outbound is one composite. Lunar and return is another. Descent, surface/EVA, and ascent nest under a surface composite inside lunar and return. Recovery stays in that same lunar-and-return composite even though splash is taught only in the GET sentences. Concurrency stays in the model: abort is orthogonal to the nominal clock; after undock the CSM with the Command Module Pilot stays in lunar orbit concurrent with the LM from DOI through ascent; Range Safety destruct is concurrent with Mission Control until it is safed after Earth orbit. Those facts are not a separate concurrency page.
 
 ![Outbound mission states from countdown through lunar orbit insertion.](apollo-stm.png)
 
-**Figure. `apollo-stm.png`.** The outbound composite holds countdown → boost → earthOrbit → TLI → dockEject → translunar → LOI. The dashed region is abort plus Range Safety destruct, concurrent with the nominal clock until destruct is safed after Earth orbit. The locked path is the four states in the middle of the top row.
+**Figure. `apollo-stm.png`.** The outbound composite holds countdown → boost → earthOrbit → TLI → dockEject → translunar → LOI. The locked path is the four states in the middle of that row.
 
 ![Lunar and return mission states from undock through entry.](apollo-stm-lunar.png)
 
-**Figure. `apollo-stm-lunar.png`.** After undock the page splits: CSM / CMP in lunar orbit runs concurrent with the LM from DOI through ascent. Descent, surface/EVA, and ascent still nest under the surface composite in the model. Splash and recovery live in the GET paragraph below, not on the Land box.
+**Figure. `apollo-stm-lunar.png`.** The lunar-and-return composite holds undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry. No stray initial. Splash and recovery live in the GET paragraph below, not on the Land box.
 
 `dockEject` is its own state (CMP-owned, SM RCS, probe-drogue).
 
@@ -148,17 +148,17 @@ Docking is one close-up: probe, drogue, soft capture, twelve latches, stow, tran
 
 GET: distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. TLI has **three labeled numbers** (do not collapse): Press Kit **planned** `02:44:15` (NASA, 1969); A11-FP **planned** `2:44:26` (NASA Manned Spacecraft Center, Flight Planning Branch, 1969); **flown** `02:44:16` (MSC-00171; NASA, 1969, November). Transposition, Docking, and Ejection (TDE) `~03:20–04:09` GET is **planned**, not flown. LOI-1 has **two strings only**: `75:54:28` GET is **A11-FP planned**; **flown** LOI-1 is `~075:49:50` GET (PAD/MR). Do **not** call TLI `02:44:15`, TDE, or LOI-1 `75:54:28` flown. Splash `195:18:35` is the **flown GET**. 13 nmi is from USS *Hornet*, not from the target. The weather-revised miss was ~1.7 nmi. P66 Rate of Descent (ROD) as the A11 landing program is a separate flown-program mark, not a GET clock.
 
-Abort is a family of doors, orthogonal to the nominal clock. This figure is that abort region, not a second flattened mission chart. Modes I through IV run right along the top row. Lunar abort forks right into P70 (descent propulsion) and P71 (ascent propulsion).
+Abort is a family of doors, orthogonal to the nominal clock. The page names the modes: pad, Mode I–IV, contingency Translunar Injection, lunar, and Service Propulsion System. P70 and P71 stay nested under lunar in the model.
 
-![Abort modes from the pad through lunar P70 and P71.](apollo-abort.png)
+![Abort modes named on the page.](apollo-abort.png)
 
-**Figure. `apollo-abort.png`.** The abort orthogonal region. Pad and Modes I–IV on the top row, pointing right. Lunar abort points right into P70 and P71 the same way. Crew Safety is not LES-only.
+**Figure. `apollo-abort.png`.** Eight named modes. Pad and Modes I–IV on the top row. Contingency TLI, lunar, and SPS on the second row. Crew Safety is not LES-only.
 
 CMC P61–P67 is entry only. LGC P63–P68 is landing only (A11 flew P66 ROD). Do not share one P-number picture. The CMC entry view still clips labels, so it stays out. The LGC landing programs are the readable one.
 
 ![LGC landing programs P63 through P68.](apollo-lgc-stm.png)
 
-**Figure. `apollo-lgc-stm.png`.** P63–P68 LANDING. A11 flew P66 ROD. Abort Guidance sits concurrent in operate/follow-PNGS and does not land.
+**Figure. `apollo-lgc-stm.png`.** P63–P68 LANDING. A11 flew P66 ROD. Abort Guidance operate/follow-PNGS stays concurrent in the model and does not land.
 
 Handoff is Mission Rule 1-21 at umbilical-tower clear. RSO ≠ MCC; RSO owns destruct until orbital safing.
 

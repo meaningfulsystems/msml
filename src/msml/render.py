@@ -346,9 +346,10 @@ class MSMLRenderer:
 
         tgt_head = style.get("target_arrowhead", defaults.get("tgt","none"))
         src_head = style.get("source_arrowhead", defaults.get("src","none"))
-        self._draw_head(draw, smooth[-2], smooth[-1], line_color, lw, tgt_head)
-        if src_head != "none":
-            self._draw_head(draw, smooth[1],  smooth[0],  line_color, lw, src_head)
+        if len(smooth) >= 2:
+            self._draw_head(draw, *self._shaft_ends(smooth), line_color, lw, tgt_head)
+        if src_head != "none" and len(smooth) >= 2:
+            self._draw_head(draw, *self._shaft_ends(list(reversed(smooth))), line_color, lw, src_head)
 
         lbl_font = load_font(10)
         fc = parse_color(style.get("font",{}).get("color","#222222") if isinstance(style.get("font"),dict) else "#222222")
@@ -392,6 +393,14 @@ class MSMLRenderer:
 
     # --------------------------------------------------------- arrowheads
 
+    def _shaft_ends(self, pts, min_len=6):
+        """Use the last long-enough segment so the head follows the shaft."""
+        end = pts[-1]
+        for i in range(len(pts) - 2, -1, -1):
+            if math.hypot(end[0] - pts[i][0], end[1] - pts[i][1]) >= min_len:
+                return pts[i], end
+        return pts[-2], end
+
     def _draw_head(self, draw, p1, p2, color, lw, kind):
         if kind == "none":
             return
@@ -409,7 +418,7 @@ class MSMLRenderer:
             draw.polygon([p2, L, R], fill=color)
         elif kind == "triangle":
             draw.polygon([p2, L, R], fill=(255,255,255,255), outline=color)
-        elif kind in ("composition","aggregation"):
+        elif kind in ("composition","aggregation","diamond_fill","diamond"):
             # diamond: base at p2, extends back along line
             dl = 18
             dw = 7

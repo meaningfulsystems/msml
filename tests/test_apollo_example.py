@@ -331,10 +331,11 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertLessEqual(len(stm_states), 10)
         self.assertLessEqual(len(lunar_states), 10)
         self.assertIn("s-outbound", {el["id"] for el in stm_states})
-        self.assertIn("s-abort", {el["id"] for el in stm_states})
-        self.assertIn("s-rso", {el["id"] for el in stm_states})
+        self.assertNotIn("s-abort", {el["id"] for el in stm_states})
+        self.assertNotIn("s-rso", {el["id"] for el in stm_states})
         self.assertIn("s-lunarReturn", {el["id"] for el in lunar_states})
-        self.assertIn("s-csm", {el["id"] for el in lunar_states})
+        self.assertNotIn("s-csm", {el["id"] for el in lunar_states})
+        self.assertFalse(any(el.get("type") == "initial_pseudostate" for el in lunar["elements"]))
         stm_x = {el["id"]: el["layout"]["x"] for el in stm["elements"] if el.get("id") in {"s-TLI", "s-dockEject", "s-translunar"}}
         act_x = {el["id"]: el["layout"]["x"] for el in act["elements"] if el.get("id") in {"ma-tli", "ma-dockEject", "ma-translunar"}}
         self.assertLess(stm_x["s-TLI"], stm_x["s-dockEject"])
@@ -344,6 +345,40 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(defs["Apollo.State.Abort.pad"]["name"], "pad/LES")
         self.assertEqual(defs["Apollo.State.Abort.P70"]["name"], "P70 DPS")
         self.assertEqual(defs["Apollo.State.Abort.P71"]["name"], "P71 APS")
+
+    def test_incose_shalls_abort_modes_and_headers(self) -> None:
+        req = read_json_file(APOLLO / "apollo-req.msmd")["diagram"]
+        jobs = ("safety", "land", "talk", "abort", "air", "guide")
+        boxes = {el["display_name"]: el.get("text", "") for el in req["elements"] if el.get("type") == "requirement"}
+        self.assertEqual(tuple(boxes), jobs)
+        for job in jobs:
+            text = boxes[job]
+            self.assertTrue(text.startswith("The "), job)
+            self.assertIn(" shall ", text, job)
+            self.assertIn(" under ", text, job)
+            self.assertEqual(text.lower().count("shall"), 1, job)
+            self.assertNotIn("02:44", text)
+            self.assertNotIn("9,870", text)
+            self.assertNotIn("2,800", text)
+            self.assertNotIn("psi", text)
+            self.assertNotIn("lbf", text)
+        abort = read_json_file(APOLLO / "apollo-abort.msmd")["diagram"]
+        mode_names = [
+            el.get("display_name") or el.get("name")
+            for el in abort["elements"]
+            if el.get("type") == "state"
+        ]
+        for name in ("pad", "Mode I", "Mode II", "Mode III", "Mode IV", "contingency TLI", "lunar", "SPS"):
+            self.assertIn(name, mode_names, name)
+        self.assertLessEqual(len(mode_names), 8)
+        published = (
+            "apollo-ctx", "apollo-req", "apollo-bdd", "apollo-sat-ibd", "apollo-lm-bdd",
+            "apollo-ags-bdd", "apollo-usb", "apollo-rcs", "apollo-stm", "apollo-stm-lunar",
+            "apollo-dock", "apollo-abort", "apollo-lgc-stm", "apollo-seq",
+        )
+        for stem in published:
+            diagram = read_json_file(APOLLO / f"{stem}.msmd")["diagram"]
+            self.assertTrue(diagram.get("frame", {}).get("visible"), stem)
 
     def test_does_not_collapse_required_computers(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
