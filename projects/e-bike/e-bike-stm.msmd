@@ -207,13 +207,13 @@
       },
       {
         "type": "comment",
-      "id": "note-charge-off",
-      "model_ref": "ElectricBike.Note.ChargeOffOnly",
-      "layout": {
-        "x": 20,
-        "y": 340,
-        "width": 240,
-        "height": 56,
+        "id": "note-charge-off",
+        "model_ref": "ElectricBike.Note.ChargeOffOnly",
+        "layout": {
+          "x": 20,
+          "y": 340,
+          "width": 240,
+          "height": 56,
           "z_index": 1
         },
         "style": {
@@ -226,7 +226,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "EPAC choice: Charging from Off only.\nDo not add Standby \u2192 Charging."
       }
     ],
     "relationships": [
