@@ -33,7 +33,7 @@ REQUIRED_DEF_IDS = (
     "ElectricBike.HumanInterface",
     "ElectricBike.BrakeSystem",
     "ElectricBike.BMS",
-    "ElectricBike.LockEcu",
+    "ElectricBike.BatteryPack.bms",
     "ElectricBike.CadenceSensor",
     "ElectricBike.Rider",
     "ElectricBike.Charger",
@@ -68,7 +68,6 @@ REQUIRED_DEF_IDS = (
     "ElectricBike.startRideInteraction",
     "ElectricBike.UC.rideBikeUseCase",
     "ElectricBike.UC.chargeBikeUseCase",
-    "ElectricBike.UC.lockBikeUseCase",
     "ElectricBike.UC.adjustAssistUseCase",
 )
 
@@ -80,9 +79,7 @@ REQUIRED_REL_IDS = (
     "allocateSafetyToController",
     "allocateSafetyToBms",
     "allocateSafetyToSensors",
-    "allocateLockToEcu",
     "ibd-ebike.batteryToBms",
-    "ibd-ebike.frameToLock",
     "ibd-ebike.frameToBattery",
     "ibd-ebike.frameToMotor",
     "ibd-ebike.frameToInterface",
@@ -171,11 +168,19 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertEqual(rels["req-ebike.d-override-safety"]["type"], "refine")
         self.assertNotIn("req-ebike.d-assist-range", rels)
         self.assertNotIn("req-ebike.d-display-range", rels)
-        self.assertEqual(rels["allocateChargeToBms"]["target"], "ElectricBike.BMS")
-        self.assertEqual(rels["allocateLockToEcu"]["target"], "ElectricBike.LockEcu")
+        self.assertNotIn("ElectricBike.UC.lockBikeUseCase", defs)
+        self.assertNotIn("ElectricBike.LockEcu", defs)
+        self.assertEqual(defs["ElectricBike.BatteryPack.bms"]["name"], "bms")
+        self.assertEqual(defs["ElectricBike.BatteryPack.bms"]["type_ref"], "ElectricBike.BMS")
+        self.assertEqual(
+            defs["ElectricBike.BatteryPack.bms"]["qualified_name"],
+            "ElectricBike::BatteryPack::bms",
+        )
+        self.assertEqual(rels["allocateChargeToBms"]["target"], "ElectricBike.BatteryPack.bms")
         self.assertEqual(rels["allocateSafetyToController"]["target"], "ElectricBike.MotorController")
-        self.assertEqual(rels["allocateSafetyToBms"]["target"], "ElectricBike.BMS")
+        self.assertEqual(rels["allocateSafetyToBms"]["target"], "ElectricBike.BatteryPack.bms")
         self.assertEqual(rels["allocateSafetyToSensors"]["target"], "ElectricBike.CadenceSensor")
+        self.assertIn("bms : BMS", (EBIKE / "e-bike-ibd.msmd").read_text(encoding="utf-8"))
         range_text = defs["ElectricBike.rangeRequirement"]["text"]
         self.assertIn("Tour", range_text)
         self.assertIn("Not Eco / PAS-1", range_text)

@@ -145,10 +145,6 @@
         "relationship_ref": "allocateSafetyToSensors"
       },
       {
-        "id": "row-lock",
-        "relationship_ref": "allocateLockToEcu"
-      },
-      {
         "id": "row-stop",
         "relationship_ref": "alloc-ebike.alloc-stop-brakes"
       },

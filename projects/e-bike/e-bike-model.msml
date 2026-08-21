@@ -646,11 +646,6 @@
       },
       {
         "type": "use_case",
-        "id": "ElectricBike.UC.lockBikeUseCase",
-        "name": "lockBikeUseCase"
-      },
-      {
-        "type": "use_case",
         "id": "ElectricBike.UC.adjustAssistUseCase",
         "name": "adjustAssistUseCase"
       },
@@ -1052,20 +1047,12 @@
         }
       },
       {
-        "type": "block",
-        "id": "ElectricBike.LockEcu",
-        "name": "LockEcu",
-        "stereotype": "block",
-        "compartments": {
-          "properties": [
-            {
-              "name": "role",
-              "type": "frame lock",
-              "multiplicity": "1"
-            }
-          ],
-          "operations": []
-        }
+        "type": "class",
+        "id": "ElectricBike.BatteryPack.bms",
+        "name": "bms",
+        "stereotype": "part",
+        "type_ref": "ElectricBike.BMS",
+        "qualified_name": "ElectricBike::BatteryPack::bms"
       },
       {
         "type": "block",
@@ -1131,18 +1118,6 @@
         "type": "port",
         "name": "packIn",
         "owner_ref": "ElectricBike.BMS"
-      },
-      {
-        "id": "ElectricBike.Port.frameLockMountOut",
-        "type": "port",
-        "name": "frameLockMountOut",
-        "owner_ref": "ElectricBike.Frame"
-      },
-      {
-        "id": "ElectricBike.Port.lockMountIn",
-        "type": "port",
-        "name": "lockMountIn",
-        "owner_ref": "ElectricBike.LockEcu"
       }
     ],
     "relationships": [
@@ -1569,12 +1544,6 @@
         "target": "ElectricBike.UC.adjustAssistUseCase"
       },
       {
-        "id": "uc-ebike.a-rider-lock",
-        "type": "association",
-        "source": "ElectricBike.Rider",
-        "target": "ElectricBike.UC.lockBikeUseCase"
-      },
-      {
         "id": "uc-ebike.a-rider-charge",
         "type": "association",
         "source": "ElectricBike.Rider",
@@ -1724,7 +1693,7 @@
         "kind": "functional",
         "name": "allocateChargeToBms",
         "source": "ElectricBike.chargeSafetyRequirement",
-        "target": "ElectricBike.BMS"
+        "target": "ElectricBike.BatteryPack.bms"
       },
       {
         "id": "alloc-ebike.alloc-override-brakes",
@@ -1740,7 +1709,7 @@
         "kind": "functional",
         "name": "allocation",
         "source": "ElectricBike.batteryCutoffRequirement",
-        "target": "ElectricBike.BMS"
+        "target": "ElectricBike.BatteryPack.bms"
       },
       {
         "id": "alloc-ebike.alloc-display-hmi",
@@ -1811,13 +1780,13 @@
       {
         "id": "sat-ebike.4",
         "type": "satisfy",
-        "source": "ElectricBike.BMS",
+        "source": "ElectricBike.BatteryPack.bms",
         "target": "ElectricBike.chargeSafetyRequirement"
       },
       {
         "id": "sat-ebike.5",
         "type": "satisfy",
-        "source": "ElectricBike.BMS",
+        "source": "ElectricBike.BatteryPack.bms",
         "target": "ElectricBike.batteryCutoffRequirement"
       },
       {
@@ -1866,15 +1835,7 @@
         "id": "bdd-ebike.c-pack-bms",
         "type": "composition",
         "source": "ElectricBike.BatteryPack",
-        "target": "ElectricBike.BMS",
-        "multiplicity_source": "1",
-        "multiplicity_target": "1"
-      },
-      {
-        "id": "bdd-ebike.c-bike-lock",
-        "type": "composition",
-        "source": "ElectricBike",
-        "target": "ElectricBike.LockEcu",
+        "target": "ElectricBike.BatteryPack.bms",
         "multiplicity_source": "1",
         "multiplicity_target": "1"
       },
@@ -1894,13 +1855,6 @@
         "name": "batteryToBms"
       },
       {
-        "id": "ibd-ebike.frameToLock",
-        "type": "connector",
-        "source": "ElectricBike.Port.frameLockMountOut",
-        "target": "ElectricBike.Port.lockMountIn",
-        "name": "frameToLock"
-      },
-      {
         "id": "allocateSafetyToController",
         "type": "allocate",
         "kind": "functional",
@@ -1914,7 +1868,7 @@
         "kind": "functional",
         "name": "allocateSafetyToBms",
         "source": "ElectricBike.rideSafetyRequirement",
-        "target": "ElectricBike.BMS"
+        "target": "ElectricBike.BatteryPack.bms"
       },
       {
         "id": "allocateSafetyToSensors",
@@ -1923,14 +1877,6 @@
         "name": "allocateSafetyToSensors",
         "source": "ElectricBike.rideSafetyRequirement",
         "target": "ElectricBike.CadenceSensor"
-      },
-      {
-        "id": "allocateLockToEcu",
-        "type": "allocate",
-        "kind": "functional",
-        "name": "allocateLockToEcu",
-        "source": "ElectricBike.UC.lockBikeUseCase",
-        "target": "ElectricBike.LockEcu"
       },
       {
         "id": "alloc-ebike.alloc-stop-brakes",
@@ -1957,7 +1903,7 @@
       {
         "id": "sat-ebike.10",
         "type": "satisfy",
-        "source": "ElectricBike.BMS",
+        "source": "ElectricBike.BatteryPack.bms",
         "target": "ElectricBike.rideSafetyRequirement"
       },
       {
@@ -1965,12 +1911,6 @@
         "type": "satisfy",
         "source": "ElectricBike.CadenceSensor",
         "target": "ElectricBike.rideSafetyRequirement"
-      },
-      {
-        "id": "sat-ebike.12",
-        "type": "satisfy",
-        "source": "ElectricBike.LockEcu",
-        "target": "ElectricBike.UC.lockBikeUseCase"
       }
     ],
     "metadata": {

@@ -38,9 +38,9 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 - Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety. Stopping Distance (EN 15194 5 m / 2 m) and Lighting (StVZO / ISO 6742) are additional siblings.
 - Range 500 Wh / 60 km is a **Tour-mode** scenario (~8.3 Wh/km), not Eco / PAS-1.
 - Classification is **EPAC / EN 15194** (cadence only, 25 km/h, no throttle). Hub is a rear geared hub; regen omitted.
-- BMS is a part **inside** BatteryPack. `allocateChargeToBms` targets `ElectricBike.BMS`.
-- `lockBikeUseCase` is allocated to `LockEcu`. Empty use cases are not allowed.
-- Ride safety is not brakes-only: allocate to BrakeSystem, MotorController, CadenceSensor, and BMS.
+- Nested usage `bms : BMS` lives inside BatteryPack (`ElectricBike::BatteryPack::bms`). `allocateChargeToBms` targets that usage, not the pack.
+- Do **not** keep `lockBikeUseCase`. Empty use cases are not allowed.
+- Ride safety is not brakes-only: allocate to BrakeSystem, MotorController, sensors, and `bms`.
 - Ride «include» Adjust Assist.
 - STM `resetFault` is Fault→Off. Off↔Standby is two readable paths.
 

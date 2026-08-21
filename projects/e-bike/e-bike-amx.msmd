@@ -218,7 +218,7 @@
       {
         "type": "block",
         "id": "col-bms",
-        "model_ref": "ElectricBike.BMS",
+        "model_ref": "ElectricBike.BatteryPack.bms",
         "layout": {
           "x": 800,
           "y": 20,
@@ -226,7 +226,8 @@
           "height": 68,
           "z_index": 1
         },
-        "matrix_role": "column"
+        "matrix_role": "column",
+        "display_name": "bms"
       }
     ],
     "relationships": [

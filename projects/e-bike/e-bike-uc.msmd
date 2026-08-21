@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 860,
-      "height": 560,
+      "height": 460,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -48,7 +48,7 @@
           "x": 200,
           "y": 24,
           "width": 460,
-          "height": 500,
+          "height": 400,
           "z_index": 0
         },
         "style": {
@@ -176,30 +176,6 @@
           }
         },
         "display_name": "charge bike"
-      },
-      {
-        "type": "use_case",
-        "id": "uc-lock",
-        "model_ref": "ElectricBike.UC.lockBikeUseCase",
-        "layout": {
-          "x": 320,
-          "y": 430,
-          "width": 220,
-          "height": 60,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        },
-        "display_name": "lock bike"
       }
     ],
     "relationships": [
@@ -236,28 +212,6 @@
           {
             "x": 320,
             "y": 100
-          }
-        ],
-        "style": {
-          "line_color": "#333333",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "a-lock",
-        "relationship_ref": "uc-ebike.a-rider-lock",
-        "waypoints": [
-          {
-            "x": 110,
-            "y": 250
-          },
-          {
-            "x": 320,
-            "y": 460
           }
         ],
         "style": {

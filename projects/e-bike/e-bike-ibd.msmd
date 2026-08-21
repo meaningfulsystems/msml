@@ -842,7 +842,7 @@
       {
         "type": "part",
         "id": "part-bms",
-        "model_ref": "ElectricBike.BMS",
+        "model_ref": "ElectricBike.BatteryPack.bms",
         "role_name": "bms",
         "display_name": "bms : BMS",
         "layout": {
@@ -855,31 +855,6 @@
         "style": {
           "fill_color": "#FFF8DC",
           "border_color": "#8B6914",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "part",
-        "id": "part-lock",
-        "model_ref": "ElectricBike.LockEcu",
-        "role_name": "lockEcu",
-        "display_name": "lockEcu : LockEcu",
-        "layout": {
-          "x": 1310,
-          "y": 200,
-          "width": 170,
-          "height": 90,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -930,56 +905,6 @@
         "style": {
           "fill_color": "#FFFFFF",
           "border_color": "#8B6914",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-frm-lock",
-        "model_ref": "ElectricBike.Port.frameLockMountOut",
-        "name": "lock",
-        "owner_ref": "part-frame",
-        "layout": {
-          "x": 908,
-          "y": 174,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-lock-mnt",
-        "model_ref": "ElectricBike.Port.lockMountIn",
-        "name": "mount",
-        "owner_ref": "part-lock",
-        "layout": {
-          "x": 1304,
-          "y": 240,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
           "border_width": 1,
           "font": {
             "family": "Arial",
@@ -1365,38 +1290,6 @@
         "style": {
           "line_color": "#8B6914",
           "line_width": 2.0,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 8,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "frameToLock",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.frameToLock",
-        "name": "mount",
-        "waypoints": [
-          {
-            "x": 914,
-            "y": 186
-          },
-          {
-            "x": 914,
-            "y": 245
-          },
-          {
-            "x": 1310,
-            "y": 245
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",

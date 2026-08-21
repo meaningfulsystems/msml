@@ -204,7 +204,7 @@
       {
         "type": "block",
         "id": "block-bms",
-        "model_ref": "ElectricBike.BMS",
+        "model_ref": "ElectricBike.BatteryPack.bms",
         "layout": {
           "x": 230,
           "y": 520,
@@ -222,7 +222,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "bms : BMS"
       },
       {
         "type": "block",
@@ -238,29 +239,6 @@
         "style": {
           "fill_color": "#F3E5F5",
           "border_color": "#6A1B9A",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "block-lock",
-        "model_ref": "ElectricBike.LockEcu",
-        "layout": {
-          "x": 1110,
-          "y": 520,
-          "width": 190,
-          "height": 100,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -575,40 +553,6 @@
         ],
         "style": {
           "line_color": "#6A1B9A",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "composition",
-          "target_arrowhead": "none",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c-lock",
-        "relationship_ref": "bdd-ebike.c-bike-lock",
-        "waypoints": [
-          {
-            "x": 500,
-            "y": 99
-          },
-          {
-            "x": 16,
-            "y": 99
-          },
-          {
-            "x": 16,
-            "y": 650
-          },
-          {
-            "x": 1205,
-            "y": 650
-          },
-          {
-            "x": 1205,
-            "y": 620
-          }
-        ],
-        "style": {
-          "line_color": "#336699",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "composition",
