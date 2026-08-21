@@ -1,0 +1,130 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "system-model",
+    "name": "Example System Model",
+    "namespace": "ExampleSystem",
+    "imports": [],
+    "definitions": [
+      {
+        "type": "block",
+        "id": "ExampleSystem",
+        "name": "ExampleSystem",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "purpose",
+              "type": "String",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "actor",
+        "id": "ExampleSystem.Operator",
+        "name": "Operator"
+      },
+      {
+        "type": "block",
+        "id": "ExampleSystem.Environment",
+        "name": "Environment",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "load",
+              "type": "Real",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ExampleSystem.SystemContext",
+        "name": "SystemContext",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "id": "ExampleSystem.Port.operatorOut",
+        "type": "port",
+        "name": "commandOut",
+        "owner_ref": "ExampleSystem.Operator"
+      },
+      {
+        "id": "ExampleSystem.Port.operatorIn",
+        "type": "port",
+        "name": "commandIn",
+        "owner_ref": "ExampleSystem"
+      },
+      {
+        "id": "ExampleSystem.Port.environmentOut",
+        "type": "port",
+        "name": "loadOut",
+        "owner_ref": "ExampleSystem.Environment"
+      },
+      {
+        "id": "ExampleSystem.Port.environmentIn",
+        "type": "port",
+        "name": "loadIn",
+        "owner_ref": "ExampleSystem"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "bdd-system.c-context-system",
+        "type": "composition",
+        "source": "ExampleSystem.SystemContext",
+        "target": "ExampleSystem",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-system.c-context-operator",
+        "type": "composition",
+        "source": "ExampleSystem.SystemContext",
+        "target": "ExampleSystem.Operator",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-system.c-context-environment",
+        "type": "composition",
+        "source": "ExampleSystem.SystemContext",
+        "target": "ExampleSystem.Environment",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "ctx-system.operatorToSystem",
+        "type": "connector",
+        "source": "ExampleSystem.Port.operatorOut",
+        "target": "ExampleSystem.Port.operatorIn",
+        "name": "commands"
+      },
+      {
+        "id": "ctx-system.environmentToSystem",
+        "type": "connector",
+        "source": "ExampleSystem.Port.environmentOut",
+        "target": "ExampleSystem.Port.environmentIn",
+        "name": "load"
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "template"
+      ]
+    }
+  }
+}

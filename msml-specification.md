@@ -988,3 +988,12 @@ The `projects/` tree in this repository is the working illustration of MSML v1.0
 - `projects/humanity-optimization` — civilization-scale decision-support concept.
 
 Qualified names and file stems in `projects/e-bike` are frozen. Layout may change; ElectricBike ids do not.
+
+Agent adoption uses the same four skill slugs as the sibling SysML v2 toolchain [SysML2d](https://github.com/meaningfulsystems/sysml2d). File formats differ. MSML does not replace commercial SysML 2 tools.
+
+- `AGENTS.md` — bootstrap → author → compose/render → vision-review
+- `skills/bootstrap-project/SKILL.md`
+- `skills/author-model/SKILL.md`
+- `skills/compose-views/SKILL.md`
+- `skills/vision-review/SKILL.md`
+- `templates/new-project/` — copyable starter (`architecture/system-model.msml` and one context `.msmd`)

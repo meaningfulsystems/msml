@@ -84,6 +84,21 @@ pip install -e .
 
 The package name is `msml`. It is not published to PyPI yet. Package version `0.1.1` implements the MSML v1.0 specification.
 
+## Start your own system
+
+Copy [templates/new-project/](templates/new-project/), then follow [AGENTS.md](AGENTS.md). Cursor and Claude use four skills with the same slugs as [SysML2d](https://github.com/meaningfulsystems/sysml2d):
+
+1. [skills/bootstrap-project/SKILL.md](skills/bootstrap-project/SKILL.md) — copy the template, copy the spec, first model + one view, validate and render.
+2. [skills/author-model/SKILL.md](skills/author-model/SKILL.md) — write `.msml` (blocks, parts, ports, requirements, allocate, states, activities).
+3. [skills/compose-views/SKILL.md](skills/compose-views/SKILL.md) — write `.msmd` views. The shared slug is `compose-views`; MSML’s verb is **render**.
+4. [skills/vision-review/SKILL.md](skills/vision-review/SKILL.md) — inspect every PNG with vision before commit. Connections never pass over boxes.
+
+Do not start by copying the whole e-bike or toaster tree. Those are references; the template is the starter.
+
+## MSML and SysML2d
+
+[SysML2d](https://github.com/meaningfulsystems/sysml2d) is the paired git-native SysML v2 diagram toolchain (`.sysml` · intent JSON · `.sysmld` · SVG). MSML is the SysML 1-inspired modeling language (`.msml` · `.msmd` · PNG). The ElectricBike example uses the same names in both repos. Pick one toolchain per project; the file formats are not interchangeable. MSML does not replace commercial SysML 2 tools.
+
 ## Use MSML in Another Project
 
 A recommended structure is to keep architecture artifacts together:
@@ -167,12 +182,20 @@ msml-render-all projects
 
 ```text
 .
+├── AGENTS.md
 ├── msml-specification.md
 ├── pyproject.toml
 ├── quick-start.md
+├── skills/
+│   ├── bootstrap-project/SKILL.md
+│   ├── author-model/SKILL.md
+│   ├── compose-views/SKILL.md
+│   └── vision-review/SKILL.md
+├── templates/new-project/
 ├── src/
 │   └── msml/
 ├── tests/
+├── ai-collab/          # archive — living path is AGENTS.md + skills/
 └── projects/
     ├── appliances/
     │   ├── toaster/
