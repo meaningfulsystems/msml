@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-apollo-gnc",
-    "name": "GNC \u2014 AGC_CM (2 DSKY) \u00b7 AGC_LM (1 DSKY) \u00b7 AGS \u00b7 IU LVDC \u00b7 EMS",
+    "name": "GNC — AGC ≠ LVDC digital · CMC entry ≠ LGC landing · EMS",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1420,
-      "height": 700,
+      "height": 820,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -445,6 +445,75 @@
         "style": {
           "fill_color": "#EDE7F6",
           "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-lvdc",
+        "model_ref": "Apollo.Note.AgcLvdc",
+        "layout": {
+          "x": 20,
+          "y": 630,
+          "width": 450,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-pnum",
+        "model_ref": "Apollo.Note.PNumbers",
+        "layout": {
+          "x": 490,
+          "y": 630,
+          "width": 450,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-engine",
+        "model_ref": "Apollo.Note.EngineConflict",
+        "layout": {
+          "x": 960,
+          "y": 630,
+          "width": 430,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
           "border_width": 2,
           "font": {
             "family": "Arial",

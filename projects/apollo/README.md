@@ -8,7 +8,7 @@ Namespace `Apollo`. File stem `apollo`. Layout is `projects/apollo/`.
 
 Kept distinct: two AGCs (`AGC_CM` Colossus + 2 DSKY, `AGC_LM` Luminary + 1 DSKY), `AGS` (AEA+ASA+DEDA, not a DSKY), IU `LVDC` + ST-124 + FCC, `EMS`, descent vs ascent, `LES`, SM fuel cells vs CM AgZn vs LM batteries, SM RCS quads vs CM dual 6-engine sets, `USB`, RSO vs FLIGHT, crew as three parts, P27 vs CCATS. Collapsed: ullage/retro as sets, every verb/noun, F-1 hydraulics, other MSFN ships/aircraft beyond the named 4 AIS + 8 ARIA, full loop directory, umbilical pinout. Named 30-ft only — do not merge GSFC-1968 and TN D-6723 into “the 14”.
 
-Sourced numbers are on the model (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan, A11 PK masses, F-1 / J-2 / SPS / DPS / APS thrusts, Block II AGC AGCIS 30, AEA 4096×18-bit, CM RCS 93 lbf, electrical topology). **UNKNOWN** (visible on the diagrams): RTCC MOC vs DSC on A11; 4th AIS ship; A11 actual food intake; entry blackout duration; stage tank loads; Δv table; A11 rope IDs; SM RCS per-engine thrust (do not use 100 lbf unless cited). Do not invent those.
+Sourced numbers are on the model (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan, A11 PK p.109 tank loads and launch masses, F-1 / J-2, SPS and DPS cited from both PK and TNs, Block II AGC AGCIS 30, A11 ropes Comanche 055 / LMY99 rev 001, AEA 4096×18-bit, CM RCS 93 lbf, electrical topology). **UNKNOWN** (visible on the diagrams): RTCC MOC vs DSC on A11; 4th AIS ship; A11 actual food intake; entry blackout duration; official CSM lunar Δv table; CSM-107 SPS loaded lb; A11 AGS flight-program name; SM RCS per-engine thrust (do not use 100 lbf unless cited). Do not invent those.
 
 ## System views
 
@@ -28,13 +28,15 @@ Sourced numbers are on the model (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/P
 
 | View | File | Story |
 | --- | --- | --- |
-| SaturnV BDD | `apollo-sat-bdd` | S-IC / S-II / S-IVB / IU + F-1 ×5 / J-2 thrusts · AS-506 |
+| SaturnV BDD | `apollo-sat-bdd` | A11 PK p.109 tank loads · S-IC / S-II / S-IVB / IU + engines · AS-506 |
 | SaturnV IBD | `apollo-sat-ibd` | Stack joints + IU LVDC |
-| CSM BDD | `apollo-csm-bdd` | CM/SM, AGC_CM + 2 DSKY, EMS, SPS 20,500 lbf |
+| CSM BDD | `apollo-csm-bdd` | CM/SM, Comanche 055 / Colossus 2A, EMS, SPS cite both |
 | CSM IBD | `apollo-csm` | AGC_CM, IMU, DSKY, SCS, SPS, RCS, ECLSS |
 | LM BDD | `apollo-lm-bdd` | descent/ascent, DPS/APS, AGC_LM + 1 DSKY, AGS (AEA+ASA) |
 | LM IBD | `apollo-lm` | PNGS, AGC_LM, AGS, DPS, APS, radars |
-| GNC package | `apollo-gnc-pkg` | AGC_CM (2 DSKY) vs AGC_LM (1 DSKY) vs AGS vs IU LVDC vs EMS |
+| GNC package | `apollo-gnc-pkg` | AGC ≠ LVDC digital · CMC entry ≠ LGC landing · EMS |
+| CMC entry STM | `apollo-cmc-stm` | P61–P67 ENTRY only — not LGC landing |
+| LGC landing STM | `apollo-lgc-stm` | P63–P68 LANDING · A11 P66 ROD — not CMC entry |
 | Ground BDD | `apollo-gnd-bdd` | MCC-H / GSFC / MSFN / LC-39 / Recovery + consoles, AIS, ARIA |
 | Ground IBD | `apollo-gnd` | Facility IBD; RSO/AFETR outside MCC; UNKNOWN marked |
 | Crew IBD | `apollo-crew` | CDR / CMP / LMP each A7L · bio · comm; PLSS+OPS on CDR/LMP EVA only |

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-apollo-lm",
-    "name": "LM \u2014 descent / ascent \u00b7 DPS / APS \u00b7 AGC_LM + 1 DSKY \u00b7 AGS",
+    "name": "LM — descent / ascent · DPS / APS · AGC_LM + 1 DSKY · AGS",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -162,8 +162,8 @@
         "layout": {
           "x": 620,
           "y": 150,
-          "width": 340,
-          "height": 250,
+          "width": 380,
+          "height": 300,
           "z_index": 1
         },
         "style": {
@@ -330,6 +330,29 @@
         "style": {
           "fill_color": "#EDE7F6",
           "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-engine",
+        "model_ref": "Apollo.Note.EngineConflict",
+        "layout": {
+          "x": 460,
+          "y": 620,
+          "width": 450,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
           "border_width": 2,
           "font": {
             "family": "Arial",

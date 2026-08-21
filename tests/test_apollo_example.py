@@ -41,6 +41,8 @@ REQUIRED_VIEW_STEMS = (
     "apollo-ags-bdd",
     "apollo-dock",
     "apollo-rcs",
+    "apollo-cmc-stm",
+    "apollo-lgc-stm",
 )
 
 REQUIRED_DEF_IDS = (
@@ -278,14 +280,20 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(agc_cm["fixed"], "36864 F")
         self.assertEqual(agc_cm["clock"], "1.024 MHz")
         self.assertEqual(agc_cm["mct"], "11.7 μs")
-        self.assertEqual(agc_cm["software"], "Colossus")
-        self.assertEqual(agc_cm["rope"], "UNKNOWN")
+        self.assertIn("Colossus", agc_cm["software"])
+        self.assertEqual(agc_cm["rope"], "Comanche 055")
         self.assertEqual(agc_cm["dsky"], "2")
+        self.assertEqual(agc_cm["pipa"], "5.85 cm/s/pulse")
+        self.assertIn("NOT abort", agc_cm["alarm1201"])
+        self.assertIn("no digital to LVDC", agc_cm["lvdc"])
         agc_lm = {p["name"]: p.get("type") for p in defs["Apollo.AGC_LM"]["compartments"]["properties"]}
-        self.assertEqual(agc_lm["software"], "Luminary")
-        self.assertEqual(agc_lm["rope"], "UNKNOWN")
+        self.assertIn("Luminary", agc_lm["software"])
+        self.assertEqual(agc_lm["rope"], "LMY99 rev 001")
         self.assertEqual(agc_lm["dsky"], "1")
+        self.assertEqual(agc_lm["pipa"], "1.0 cm/s/pulse")
         self.assertIn("P66 ROD", agc_lm["descent"])
+        self.assertIn("P63–P68", agc_lm["landing"])
+        self.assertNotIn("P68", agc_lm["abort"])
         ags = {p["name"]: p.get("type") for p in defs["Apollo.AGS"]["compartments"]["properties"]}
         self.assertIn("AEA + ASA + DEDA", ags["parts"])
         self.assertIn("R47", ags["init"])
@@ -319,21 +327,58 @@ class ApolloExampleTests(unittest.TestCase):
         f1 = {p["name"]: p.get("type") for p in defs["Apollo.F1"]["compartments"]["properties"]}
         self.assertEqual(f1["thrust"], "1,530,000 lbf each")
         sps = {p["name"]: p.get("type") for p in defs["Apollo.SPS"]["compartments"]["properties"]}
-        self.assertEqual(sps["thrust"], "20,500 lbf")
+        self.assertEqual(sps["thrustPk"], "20,500 lbf (PK)")
+        self.assertEqual(sps["thrustTn"], "21,500 lbf vac (TN D-7375)")
+        self.assertIn("cite both", sps["thrust"])
+        self.assertIn("UNKNOWN", sps["loaded"])
         dps = {p["name"]: p.get("type") for p in defs["Apollo.DPS"]["compartments"]["properties"]}
-        self.assertEqual(dps["thrust"], "10,500 lbf")
-        self.assertEqual(dps["throttle"], "10:1")
+        self.assertEqual(dps["thrustPk"], "9,870 lbf (PK)")
+        self.assertEqual(dps["thrustTn"], "10,500 lbf (TN D-7143)")
+        self.assertIn("cite both", dps["thrust"])
+        self.assertIn("cite both", dps["throttle"])
         aps = {p["name"]: p.get("type") for p in defs["Apollo.APS"]["compartments"]["properties"]}
         self.assertEqual(aps["thrust"], "3,500 lbf")
         sat = {p["name"]: p.get("type") for p in defs["Apollo.SaturnV"]["compartments"]["properties"]}
         self.assertEqual(sat["vehicle"], "AS-506")
         self.assertEqual(sat["ignition"], "6,484,280 lb")
         self.assertEqual(sat["firstMotion"], "6,398,535 lb")
-        self.assertEqual(sat["tankLoads"], "UNKNOWN")
-        self.assertEqual(sat["deltaV"], "UNKNOWN")
-        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownTanks"]["text"])
+        self.assertNotIn("tankLoads", sat)
+        self.assertIn("UNKNOWN", sat["deltaV"])
+        self.assertIn("lunar", sat["deltaV"])
+        sic = {p["name"]: p.get("type") for p in defs["Apollo.SIC"]["compartments"]["properties"]}
+        self.assertEqual(sic["fueled"], "5,022,674 lb")
+        self.assertEqual(sic["lox"], "3,307,855 lb")
+        self.assertEqual(sic["rp1"], "1,426,069 lb")
+        self.assertEqual(sic["liftoffThrust"], "7,653,854 lbf")
+        self.assertIn("A11 PK p.109", defs["Apollo.Note.TanksSourced"]["text"])
+        self.assertNotIn("Apollo.Note.UnknownTanks", defs)
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownDv"]["text"])
+        self.assertIn("lunar", defs["Apollo.Note.UnknownDv"]["text"])
+        self.assertIn("Comanche 055", defs["Apollo.Note.UnknownRope"]["text"])
+        self.assertIn("LMY99", defs["Apollo.Note.UnknownRope"]["text"])
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownRope"]["text"])
+        self.assertIn("does not talk digital", defs["Apollo.Note.AgcLvdc"]["text"])
+        self.assertIn("not global", defs["Apollo.Note.PNumbers"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownSpsLoad"]["text"])
+        ags_p = {p["name"]: p["type"] for p in defs["Apollo.AGS"]["compartments"]["properties"]}
+        self.assertIn("UNKNOWN", ags_p["flightProgram"])
+        cm = {p["name"]: p["type"] for p in defs["Apollo.CM"]["compartments"]["properties"]}
+        sm = {p["name"]: p["type"] for p in defs["Apollo.SM"]["compartments"]["properties"]}
+        lm = {p["name"]: p["type"] for p in defs["Apollo.LM"]["compartments"]["properties"]}
+        iu = {p["name"]: p["type"] for p in defs["Apollo.IU"]["compartments"]["properties"]}
+        lvdc = {p["name"]: p["type"] for p in defs["Apollo.LVDC"]["compartments"]["properties"]}
+        self.assertEqual(cm["launch"], "12,250 lb")
+        self.assertEqual(sm["launch"], "51,243 lb")
+        self.assertEqual(lm["launch"], "33,205 lb LM-5")
+        self.assertEqual(iu["mass"], "4,306 lb")
+        self.assertEqual(lvdc["cycle"], "82.03125 µs")
+        self.assertEqual(defs["Apollo.State.CMC.P61"]["name"], "P61")
+        self.assertEqual(defs["Apollo.State.LGC.P66"]["name"], "P66")
+        self.assertNotEqual(defs["Apollo.State.CMC.P63"]["id"], defs["Apollo.State.LGC.P63"]["id"])
+        self.assertIn("ENTRY", (APOLLO / "apollo-cmc-stm.msmd").read_text(encoding="utf-8"))
+        self.assertIn("LANDING", (APOLLO / "apollo-lgc-stm.msmd").read_text(encoding="utf-8"))
+        self.assertNotIn("Apollo.State.LGC", (APOLLO / "apollo-cmc-stm.msmd").read_text(encoding="utf-8"))
+        self.assertNotIn("Apollo.State.CMC", (APOLLO / "apollo-lgc-stm.msmd").read_text(encoding="utf-8"))
         self.assertIn("4096", defs["Apollo.Note.AgsSourced"]["text"])
         self.assertNotIn("UNKNOWN", defs["Apollo.Note.AgsSourced"]["text"])
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownSmRcs"]["text"])

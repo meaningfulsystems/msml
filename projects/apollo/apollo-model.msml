@@ -141,13 +141,18 @@
               "multiplicity": "1"
             },
             {
-              "name": "tankLoads",
-              "type": "UNKNOWN",
+              "name": "source",
+              "type": "A11 PK p.109",
               "multiplicity": "1"
             },
             {
               "name": "deltaV",
-              "type": "UNKNOWN",
+              "type": "UNKNOWN — no official CSM lunar Δv table",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lvMeas",
+              "type": "1,348 (S-IC 330 / S-II 514 / S-IVB 283 / IU 221)",
               "multiplicity": "1"
             }
           ],
@@ -163,7 +168,7 @@
           "properties": [
             {
               "name": "engines",
-              "type": "5 \u00d7 F-1",
+              "type": "5 × F-1",
               "multiplicity": "1"
             },
             {
@@ -173,7 +178,7 @@
             },
             {
               "name": "source",
-              "type": "SA-507",
+              "type": "A11 PK p.109 / SA-507 per engine",
               "multiplicity": "1"
             },
             {
@@ -182,8 +187,28 @@
               "multiplicity": "1"
             },
             {
-              "name": "tankLoad",
-              "type": "UNKNOWN",
+              "name": "fueled",
+              "type": "5,022,674 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "dry",
+              "type": "288,750 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lox",
+              "type": "3,307,855 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "rp1",
+              "type": "1,426,069 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "liftoffThrust",
+              "type": "7,653,854 lbf",
               "multiplicity": "1"
             }
           ],
@@ -199,7 +224,7 @@
           "properties": [
             {
               "name": "engines",
-              "type": "5 \u00d7 J-2",
+              "type": "5 × J-2",
               "multiplicity": "1"
             },
             {
@@ -213,8 +238,33 @@
               "multiplicity": "1"
             },
             {
-              "name": "tankLoad",
-              "type": "UNKNOWN",
+              "name": "fueled",
+              "type": "1,059,171 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "dry",
+              "type": "79,918 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lox",
+              "type": "821,022 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lh2",
+              "type": "158,221 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "tableThrust",
+              "type": "1,120,216–1,157,707 lbf",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 PK p.109",
               "multiplicity": "1"
             }
           ],
@@ -230,7 +280,7 @@
           "properties": [
             {
               "name": "engines",
-              "type": "1 \u00d7 J-2",
+              "type": "1 × J-2",
               "multiplicity": "1"
             },
             {
@@ -244,8 +294,38 @@
               "multiplicity": "1"
             },
             {
-              "name": "tankLoad",
-              "type": "UNKNOWN",
+              "name": "fueled",
+              "type": "260,523 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "dry",
+              "type": "25,000 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lox",
+              "type": "192,023 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lh2",
+              "type": "43,500 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "tableThrust",
+              "type": "178,161–203,779 lbf",
+              "multiplicity": "1"
+            },
+            {
+              "name": "proseMax",
+              "type": "230,000 lbf PK prose J-2 max",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 PK p.109 — cite table and prose",
               "multiplicity": "1"
             }
           ],
@@ -273,6 +353,26 @@
               "name": "computers",
               "type": "LVDC + ST-124 + FCC",
               "multiplicity": "1"
+            },
+            {
+              "name": "mass",
+              "type": "4,306 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "size",
+              "type": "21.7 ft × 3 ft",
+              "multiplicity": "1"
+            },
+            {
+              "name": "measurements",
+              "type": "221 of 1,348",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 PK p.109",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -297,7 +397,27 @@
             },
             {
               "name": "separateFrom",
-              "type": "AGC \u2014 do not fold",
+              "type": "AGC — do not fold",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cycle",
+              "type": "82.03125 µs",
+              "multiplicity": "1"
+            },
+            {
+              "name": "word",
+              "type": "26+2 bits",
+              "multiplicity": "1"
+            },
+            {
+              "name": "digitalToAgc",
+              "type": "none — AGC does not talk digital to LVDC",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cmcMonitor",
+              "type": "P11/P15 + analog backup steer never used",
               "multiplicity": "1"
             }
           ],
@@ -313,7 +433,7 @@
           "properties": [
             {
               "name": "count",
-              "type": "\u00d75",
+              "type": "×5",
               "multiplicity": "1"
             },
             {
@@ -349,7 +469,7 @@
             },
             {
               "name": "count",
-              "type": "\u00d75",
+              "type": "×5",
               "multiplicity": "1"
             },
             {
@@ -375,7 +495,7 @@
             },
             {
               "name": "count",
-              "type": "\u00d71",
+              "type": "×1",
               "multiplicity": "1"
             },
             {
@@ -518,6 +638,21 @@
               "name": "computers",
               "type": "1 AGC + 2 DSKY + EMS",
               "multiplicity": "1"
+            },
+            {
+              "name": "launch",
+              "type": "12,250 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "habitable",
+              "type": "210 ft³",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 PK p.109",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -607,6 +742,21 @@
               "name": "role",
               "type": "SPS / consumables",
               "multiplicity": "1"
+            },
+            {
+              "name": "launch",
+              "type": "51,243 lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "spsLoaded",
+              "type": "UNKNOWN — CSM-107 SPS loaded lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 PK p.109",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -667,7 +817,7 @@
             },
             {
               "name": "mct",
-              "type": "11.7 \u03bcs",
+              "type": "11.7 μs",
               "multiplicity": "1"
             },
             {
@@ -677,12 +827,12 @@
             },
             {
               "name": "software",
-              "type": "Colossus",
+              "type": "Colossus 2A",
               "multiplicity": "1"
             },
             {
               "name": "rope",
-              "type": "UNKNOWN",
+              "type": "Comanche 055",
               "multiplicity": "1"
             },
             {
@@ -692,7 +842,37 @@
             },
             {
               "name": "programs",
-              "type": "P00, P11, P20, P27, P40 SPS, P51/52, P61\u2013P67 entry",
+              "type": "P00, P11, P20, P27, P40 SPS, P51/52, P61–P67 ENTRY",
+              "multiplicity": "1"
+            },
+            {
+              "name": "mass",
+              "type": "65 lb / 70 W (R-700; AGCIS ~60 lb)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "pipa",
+              "type": "5.85 cm/s/pulse",
+              "multiplicity": "1"
+            },
+            {
+              "name": "downlink",
+              "type": "50 Hz × 2 words (200 words/2 s)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "verbs",
+              "type": "V37 change mode · V36 fresh start · V69 restart",
+              "multiplicity": "1"
+            },
+            {
+              "name": "alarm1201",
+              "type": "1201/1202 = exec overflow + software restart, NOT abort",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lvdc",
+              "type": "no digital to LVDC; monitor P11/P15 only",
               "multiplicity": "1"
             }
           ],
@@ -709,6 +889,11 @@
             {
               "name": "role",
               "type": "inertial reference",
+              "multiplicity": "1"
+            },
+            {
+              "name": "pipa",
+              "type": "CM 5.85 vs LM 1.0 cm/s/pulse — not the same scale",
               "multiplicity": "1"
             }
           ],
@@ -807,7 +992,7 @@
             },
             {
               "name": "role",
-              "type": "entry monitor \u2014 independent of AGC",
+              "type": "entry monitor — independent of AGC",
               "multiplicity": "1"
             },
             {
@@ -838,12 +1023,32 @@
             },
             {
               "name": "thrust",
-              "type": "20,500 lbf",
+              "type": "20,500 PK vs 21,500 vac — cite both",
               "multiplicity": "1"
             },
             {
               "name": "source",
-              "type": "PK 69-83K",
+              "type": "PK 69-83K and TN D-7375 — do not pick a winner",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrustPk",
+              "type": "20,500 lbf (PK)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrustTn",
+              "type": "21,500 lbf vac (TN D-7375)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "loaded",
+              "type": "UNKNOWN — CSM-107 SPS loaded lb",
+              "multiplicity": "1"
+            },
+            {
+              "name": "ofRatio",
+              "type": "Block II O/F 1.6",
               "multiplicity": "1"
             }
           ],
@@ -864,7 +1069,7 @@
             },
             {
               "name": "role",
-              "type": "attitude \u2014 no auto translation",
+              "type": "attitude — no auto translation",
               "multiplicity": "1"
             },
             {
@@ -910,12 +1115,12 @@
             },
             {
               "name": "which",
-              "type": "A \u2014 active in entry",
+              "type": "A — active in entry",
               "multiplicity": "1"
             },
             {
               "name": "engines",
-              "type": "6 \u00d7 93 lbf",
+              "type": "6 × 93 lbf",
               "multiplicity": "1"
             }
           ],
@@ -936,12 +1141,12 @@
             },
             {
               "name": "which",
-              "type": "B \u2014 standby in entry",
+              "type": "B — standby in entry",
               "multiplicity": "1"
             },
             {
               "name": "engines",
-              "type": "6 \u00d7 93 lbf",
+              "type": "6 × 93 lbf",
               "multiplicity": "1"
             }
           ],
@@ -962,7 +1167,7 @@
             },
             {
               "name": "quads",
-              "type": "four independent, 90\u00b0 apart",
+              "type": "four independent, 90° apart",
               "multiplicity": "1"
             },
             {
@@ -1003,7 +1208,7 @@
             },
             {
               "name": "spacing",
-              "type": "90\u00b0",
+              "type": "90°",
               "multiplicity": "1"
             },
             {
@@ -1029,7 +1234,7 @@
             },
             {
               "name": "scope",
-              "type": "vehicle ECLSS \u2014 not biomedical",
+              "type": "vehicle ECLSS — not biomedical",
               "multiplicity": "1"
             },
             {
@@ -1044,7 +1249,7 @@
             },
             {
               "name": "co2",
-              "type": "\u22647.6 torr",
+              "type": "≤7.6 torr",
               "multiplicity": "1"
             },
             {
@@ -1120,7 +1325,7 @@
             },
             {
               "name": "pcm",
-              "type": "51.2 or 1.6 kbps",
+              "type": "1.6 / 51.2 kb/s",
               "multiplicity": "1"
             },
             {
@@ -1130,7 +1335,7 @@
             },
             {
               "name": "prnRange",
-              "type": "992 kbps, \u00b115 m, ~540,000 mi unambiguous",
+              "type": "992 kbps, ±15 m, ~540,000 mi unambiguous",
               "multiplicity": "1"
             },
             {
@@ -1141,6 +1346,11 @@
             {
               "name": "simultaneousPmFm",
               "type": "LM: no simultaneous PM+FM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "agcDownlink",
+              "type": "AGC 50 Hz × 2 words; vehicle PCM still 1.6/51.2",
               "multiplicity": "1"
             }
           ],
@@ -1176,7 +1386,7 @@
             },
             {
               "name": "water",
-              "type": "~0.77 lb/kWh \u2014 already in ECLSS",
+              "type": "~0.77 lb/kWh — already in ECLSS",
               "multiplicity": "1"
             },
             {
@@ -1186,7 +1396,7 @@
             },
             {
               "name": "nasm",
-              "type": "563\u20131420 W normal / 2300 W max at 27\u201331 V \u2014 secondary",
+              "type": "563–1420 W normal / 2300 W max at 27–31 V — secondary",
               "multiplicity": "1"
             }
           ],
@@ -1464,6 +1674,16 @@
               "name": "computers",
               "type": "1 AGC + 1 DSKY; AGS separate",
               "multiplicity": "1"
+            },
+            {
+              "name": "launch",
+              "type": "33,205 lb LM-5",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 PK",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -1561,7 +1781,7 @@
             },
             {
               "name": "mct",
-              "type": "11.7 \u03bcs",
+              "type": "11.7 μs",
               "multiplicity": "1"
             },
             {
@@ -1571,12 +1791,12 @@
             },
             {
               "name": "software",
-              "type": "Luminary",
+              "type": "Luminary 1A",
               "multiplicity": "1"
             },
             {
               "name": "rope",
-              "type": "UNKNOWN",
+              "type": "LMY99 rev 001",
               "multiplicity": "1"
             },
             {
@@ -1586,17 +1806,47 @@
             },
             {
               "name": "programs",
-              "type": "P00, P12, P20, P27, P30\u2013P35, P40 DPS, P42 APS, P51/52/57",
+              "type": "P00, P12, P20, P27, P30–P35, P40 DPS, P42 APS, P51/52/57",
               "multiplicity": "1"
             },
             {
               "name": "descent",
-              "type": "P63 brake \u00b7 P64 approach \u00b7 P66 ROD (A11 flown)",
+              "type": "P63 brake · P64 approach · P66 ROD (A11 flown) · P68",
               "multiplicity": "1"
             },
             {
               "name": "abort",
-              "type": "P68 \u00b7 P70 DPS / P71 APS",
+              "type": "P70 DPS / P71 APS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "mass",
+              "type": "65 lb / 70 W (R-700; AGCIS ~60 lb)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "pipa",
+              "type": "1.0 cm/s/pulse",
+              "multiplicity": "1"
+            },
+            {
+              "name": "downlink",
+              "type": "50 Hz × 2 words (200 words/2 s)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "verbs",
+              "type": "V37 change mode · V36 fresh start · V69 restart",
+              "multiplicity": "1"
+            },
+            {
+              "name": "alarm1201",
+              "type": "1201/1202 = exec overflow + RR interrupts, NOT abort",
+              "multiplicity": "1"
+            },
+            {
+              "name": "landing",
+              "type": "P63–P68 LANDING — not CMC P61–P67",
               "multiplicity": "1"
             }
           ],
@@ -1639,6 +1889,11 @@
               "name": "source",
               "type": "TN-7990 / NTRS 19750018954",
               "multiplicity": "1"
+            },
+            {
+              "name": "flightProgram",
+              "type": "UNKNOWN — A11 AGS flight-program name",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -1663,7 +1918,7 @@
             },
             {
               "name": "memory",
-              "type": "4096 \u00d7 18-bit words",
+              "type": "4096 × 18-bit words",
               "multiplicity": "1"
             },
             {
@@ -1673,7 +1928,7 @@
             },
             {
               "name": "cycle",
-              "type": "5 \u03bcs",
+              "type": "5 μs",
               "multiplicity": "1"
             },
             {
@@ -1709,7 +1964,7 @@
             },
             {
               "name": "role",
-              "type": "abort sensor assembly \u2014 strapdown",
+              "type": "abort sensor assembly — strapdown",
               "multiplicity": "1"
             }
           ],
@@ -1730,7 +1985,7 @@
             },
             {
               "name": "role",
-              "type": "data entry \u2014 not a DSKY",
+              "type": "data entry — not a DSKY",
               "multiplicity": "1"
             },
             {
@@ -1761,17 +2016,17 @@
             },
             {
               "name": "thrust",
-              "type": "10,500 lbf",
+              "type": "9,870 PK vs 10,500 TN — cite both",
               "multiplicity": "1"
             },
             {
               "name": "throttle",
-              "type": "10:1",
+              "type": "1,050–6,300 PK vs 10:1 TN — cite both",
               "multiplicity": "1"
             },
             {
               "name": "gimbal",
-              "type": "\u00b16\u00b0",
+              "type": "±6°",
               "multiplicity": "1"
             },
             {
@@ -1781,7 +2036,27 @@
             },
             {
               "name": "source",
-              "type": "TN D-7143",
+              "type": "PK and TN D-7143 — do not pick a winner",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrustPk",
+              "type": "9,870 lbf (PK)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "throttlePk",
+              "type": "1,050–6,300 lbf (PK)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrustTn",
+              "type": "10,500 lbf (TN D-7143)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "throttleTn",
+              "type": "10:1 (TN D-7143)",
               "multiplicity": "1"
             }
           ],
@@ -2000,7 +2275,7 @@
             },
             {
               "name": "deltaP",
-              "type": "3.75\u00b10.25 psid",
+              "type": "3.75±0.25 psid",
               "multiplicity": "1"
             },
             {
@@ -2124,7 +2399,7 @@
             },
             {
               "name": "scope",
-              "type": "named stations / 4 AIS / 8 ARIA \u2014 other ships/aircraft collapsed",
+              "type": "named stations / 4 AIS / 8 ARIA — other ships/aircraft collapsed",
               "multiplicity": "1"
             },
             {
@@ -2134,7 +2409,7 @@
             },
             {
               "name": "ft30",
-              "type": "named 30-ft only \u2014 do not merge GSFC-1968 and TN D-6723 into \u201cthe 14\u201d",
+              "type": "named 30-ft only — do not merge GSFC-1968 and TN D-6723 into “the 14”",
               "multiplicity": "1"
             },
             {
@@ -2144,7 +2419,7 @@
             },
             {
               "name": "aria",
-              "type": "8 ARIA \u2014 no command/track",
+              "type": "8 ARIA — no command/track",
               "multiplicity": "1"
             },
             {
@@ -2644,7 +2919,7 @@
         "id": "Apollo.landingRequirement",
         "name": "Landing",
         "req_id": "REQ-002",
-        "text": "The LM shall land with remaining\ndescent \u0394v margin at the site.",
+        "text": "The LM shall land with remaining\ndescent Δv margin at the site.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"
@@ -2674,7 +2949,7 @@
         "id": "Apollo.eclssRequirement",
         "name": "Cabin Atmosphere",
         "req_id": "REQ-005",
-        "text": "CM ECS: 3 crew / 14 d spec; 5.0 psia 100% O2; CO2 \u22647.6 torr;\nSM O2 640 lb; potable 36 lb / waste 56 lb; LiOH 1.5 man-day, swap 12 h.\nA11 mission 196 h vs 336 h spec.",
+        "text": "CM ECS: 3 crew / 14 d spec; 5.0 psia 100% O2; CO2 ≤7.6 torr;\nSM O2 640 lb; potable 36 lb / waste 56 lb; LiOH 1.5 man-day, swap 12 h.\nA11 mission 196 h vs 336 h spec.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
@@ -2704,8 +2979,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Atypical",
-        "name": "Where 11 is atypical (notes only \u2014 not full examples):\n\u2022 Apollo 7 \u2014 no LM\n\u2022 Apollo 8 / Apollo 10 \u2014 no lunar landing\n\u2022 Apollo 13 \u2014 abort, not a completed landing\nDo not stand up those missions as separate projects.",
-        "text": "Where 11 is atypical (notes only \u2014 not full examples):\n\u2022 Apollo 7 \u2014 no LM\n\u2022 Apollo 8 / Apollo 10 \u2014 no lunar landing\n\u2022 Apollo 13 \u2014 abort, not a completed landing\nDo not stand up those missions as separate projects."
+        "name": "Where 11 is atypical (notes only — not full examples):\n• Apollo 7 — no LM\n• Apollo 8 / Apollo 10 — no lunar landing\n• Apollo 13 — abort, not a completed landing\nDo not stand up those missions as separate projects.",
+        "text": "Where 11 is atypical (notes only — not full examples):\n• Apollo 7 — no LM\n• Apollo 8 / Apollo 10 — no lunar landing\n• Apollo 13 — abort, not a completed landing\nDo not stand up those missions as separate projects."
       },
       {
         "type": "comment",
@@ -2722,38 +2997,38 @@
       {
         "type": "comment",
         "id": "Apollo.Note.AgsSourced",
-        "name": "AGS memory is sourced (TN-7990 / NTRS 19750018954).\nAEA: 4096 \u00d7 18-bit, half hardwired / half erasable, 5 \u03bcs.\nDEDA is not a DSKY. Abort-to-orbit / rendezvous only.",
-        "text": "AGS memory is sourced (TN-7990 / NTRS 19750018954).\nAEA: 4096 \u00d7 18-bit, half hardwired / half erasable, 5 \u03bcs.\nDEDA is not a DSKY. Abort-to-orbit / rendezvous only."
+        "name": "AGS memory is sourced (TN-7990 / NTRS 19750018954).\nAEA: 4096 × 18-bit, half hardwired / half erasable, 5 μs.\nDEDA is not a DSKY. Abort-to-orbit / rendezvous only.",
+        "text": "AGS memory is sourced (TN-7990 / NTRS 19750018954).\nAEA: 4096 × 18-bit, half hardwired / half erasable, 5 μs.\nDEDA is not a DSKY. Abort-to-orbit / rendezvous only."
       },
       {
         "type": "comment",
         "id": "Apollo.Note.UnknownRope",
-        "name": "UNKNOWN \u2014 Apollo 11 Colossus / Luminary rope IDs.\nSoftware family is sourced; rope revision is not.",
-        "text": "UNKNOWN \u2014 Apollo 11 Colossus / Luminary rope IDs.\nSoftware family is sourced; rope revision is not."
+        "name": "A11 ropes sourced: CMC Comanche 055 / Colossus 2A;\nLGC Luminary 1A LMY99 rev 001. AGS flight-program name UNKNOWN.",
+        "text": "A11 ropes sourced: CMC Comanche 055 / Colossus 2A;\nLGC Luminary 1A LMY99 rev 001. AGS flight-program name UNKNOWN."
       },
       {
         "type": "comment",
         "id": "Apollo.Note.UnknownDv",
-        "name": "UNKNOWN \u2014 \u0394v table is not on this model.\nDo not invent stage or SPS/DPS/APS \u0394v.",
-        "text": "UNKNOWN \u2014 \u0394v table is not on this model.\nDo not invent stage or SPS/DPS/APS \u0394v."
+        "name": "UNKNOWN — no official CSM lunar Δv table.\nDo not invent stage or SPS/DPS/APS Δv.",
+        "text": "UNKNOWN — no official CSM lunar Δv table.\nDo not invent stage or SPS/DPS/APS Δv."
       },
       {
         "type": "comment",
-        "id": "Apollo.Note.UnknownTanks",
-        "name": "UNKNOWN \u2014 stage tank loads are not on this model.\nDo not invent S-IC / S-II / S-IVB load figures.",
-        "text": "UNKNOWN \u2014 stage tank loads are not on this model.\nDo not invent S-IC / S-II / S-IVB load figures."
+        "id": "Apollo.Note.TanksSourced",
+        "name": "Tank loads sourced A11 Press Kit p.109.\nS-IC / S-II / S-IVB / IU / CM 12,250 / SM 51,243 / LM-5 33,205.",
+        "text": "Tank loads sourced A11 Press Kit p.109.\nS-IC / S-II / S-IVB / IU / CM 12,250 / SM 51,243 / LM-5 33,205."
       },
       {
         "type": "comment",
         "id": "Apollo.Note.UnknownSmRcs",
-        "name": "UNKNOWN \u2014 SM RCS per-engine thrust.\nDo not use 100 lbf unless cited.",
-        "text": "UNKNOWN \u2014 SM RCS per-engine thrust.\nDo not use 100 lbf unless cited."
+        "name": "UNKNOWN — SM RCS per-engine thrust.\nDo not use 100 lbf unless cited.",
+        "text": "UNKNOWN — SM RCS per-engine thrust.\nDo not use 100 lbf unless cited."
       },
       {
         "type": "comment",
         "id": "Apollo.Note.NasmWatts",
-        "name": "Fuel-cell watts are NASM secondary (563\u20131420 W normal /\n2300 W max at 27\u201331 V). Press kit does not state watts.",
-        "text": "Fuel-cell watts are NASM secondary (563\u20131420 W normal /\n2300 W max at 27\u201331 V). Press kit does not state watts."
+        "name": "Fuel-cell watts are NASM secondary (563–1420 W normal /\n2300 W max at 27–31 V). Press kit does not state watts.",
+        "text": "Fuel-cell watts are NASM secondary (563–1420 W normal /\n2300 W max at 27–31 V). Press kit does not state watts."
       },
       {
         "type": "comment",
@@ -3467,7 +3742,7 @@
           "properties": [
             {
               "name": "role",
-              "type": "command control \u2014 path A",
+              "type": "command control — path A",
               "multiplicity": "1"
             }
           ],
@@ -3557,7 +3832,7 @@
             },
             {
               "name": "distinctFrom",
-              "type": "P27 V70\u2013V73",
+              "type": "P27 V70–V73",
               "multiplicity": "1"
             }
           ],
@@ -3642,7 +3917,7 @@
             },
             {
               "name": "doNot",
-              "type": "do not merge GSFC-1968 and TN D-6723 into \u201cthe 14\u201d",
+              "type": "do not merge GSFC-1968 and TN D-6723 into “the 14”",
               "multiplicity": "1"
             }
           ],
@@ -3865,7 +4140,7 @@
           "properties": [
             {
               "name": "detail",
-              "type": "collapsed \u2014 no pinout",
+              "type": "collapsed — no pinout",
               "multiplicity": "1"
             }
           ],
@@ -4029,7 +4304,7 @@
           "properties": [
             {
               "name": "role",
-              "type": "crew biomedical sensor \u2014 vehicle interface only",
+              "type": "crew biomedical sensor — vehicle interface only",
               "multiplicity": "1"
             }
           ],
@@ -4102,7 +4377,7 @@
             },
             {
               "name": "select",
-              "type": "CREW-selected \u2014 not ground-commandable on Block II",
+              "type": "CREW-selected — not ground-commandable on Block II",
               "multiplicity": "1"
             }
           ],
@@ -4133,7 +4408,7 @@
             },
             {
               "name": "select",
-              "type": "CREW-selected \u2014 not ground-commandable on Block II",
+              "type": "CREW-selected — not ground-commandable on Block II",
               "multiplicity": "1"
             }
           ],
@@ -4149,7 +4424,7 @@
           "properties": [
             {
               "name": "path",
-              "type": "CCATS \u2192 site 642B \u2192 USB 70 kHz",
+              "type": "CCATS → site 642B → USB 70 kHz",
               "multiplicity": "1"
             }
           ],
@@ -4165,7 +4440,7 @@
           "properties": [
             {
               "name": "verbs",
-              "type": "V70\u2013V73 ONLY",
+              "type": "V70–V73 ONLY",
               "multiplicity": "1"
             },
             {
@@ -4212,7 +4487,7 @@
             },
             {
               "name": "ascentO2",
-              "type": "~2.4 lb \u00d72",
+              "type": "~2.4 lb ×2",
               "multiplicity": "1"
             },
             {
@@ -4222,7 +4497,7 @@
             },
             {
               "name": "ascentWater",
-              "type": "42 lb \u00d72",
+              "type": "42 lb ×2",
               "multiplicity": "1"
             },
             {
@@ -4255,8 +4530,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.UnknownFood",
-        "name": "Food plan 2200\u00b1300 kcal/d. A11 actual intake UNKNOWN.",
-        "text": "Food plan 2200\u00b1300 kcal/d. A11 actual intake UNKNOWN."
+        "name": "Food plan 2200±300 kcal/d. A11 actual intake UNKNOWN.",
+        "text": "Food plan 2200±300 kcal/d. A11 actual intake UNKNOWN."
       },
       {
         "type": "comment",
@@ -4279,21 +4554,21 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Ft30",
-        "name": "Named 30-ft only. Do not merge GSFC-1968 and TN D-6723 into \u201cthe 14\u201d.",
-        "text": "Named 30-ft only. Do not merge GSFC-1968 and TN D-6723 into \u201cthe 14\u201d."
+        "name": "Named 30-ft only. Do not merge GSFC-1968 and TN D-6723 into “the 14”.",
+        "text": "Named 30-ft only. Do not merge GSFC-1968 and TN D-6723 into “the 14”."
       },
       {
         "type": "comment",
         "id": "Apollo.Note.CommandPaths",
-        "name": "Path A: FC\u2192CCC\u2192RTCC\u2192CCATS\u2192site 642B\u2192USB 70 kHz.\nPath B: P27 V70\u2013V73 into CMC/LGC. Distinct paths.",
-        "text": "Path A: FC\u2192CCC\u2192RTCC\u2192CCATS\u2192site 642B\u2192USB 70 kHz.\nPath B: P27 V70\u2013V73 into CMC/LGC. Distinct paths."
+        "name": "Path A: FC→CCC→RTCC→CCATS→site 642B→USB 70 kHz.\nPath B: P27 V70–V73 into CMC/LGC. Distinct paths.",
+        "text": "Path A: FC→CCC→RTCC→CCATS→site 642B→USB 70 kHz.\nPath B: P27 V70–V73 into CMC/LGC. Distinct paths."
       },
       {
         "type": "requirement",
         "id": "Apollo.usbRfRequirement",
         "name": "USB RF (sourced)",
         "req_id": "REQ-007",
-        "text": "CSM 2106.40625 \u2191 / 2287.5 PM \u2193 / 2272.5 FM;\nLM 2101.802 \u2191 / 2282.5. PCM 51.2 or 1.6 kbps.\nUplink digital ~2 kbps. PRN range 992 kbps, \u00b115 m,\n~540,000 mi unambiguous.",
+        "text": "CSM 2106.40625 ↑ / 2287.5 PM ↓ / 2272.5 FM;\nLM 2101.802 ↑ / 2282.5. PCM 51.2 or 1.6 kbps.\nUplink digital ~2 kbps. PRN range 992 kbps, ±15 m,\n~540,000 mi unambiguous.",
         "kind": "interface",
         "priority": "high",
         "status": "approved"
@@ -4303,7 +4578,7 @@
         "id": "Apollo.p27Requirement",
         "name": "P27 uplink verbs",
         "req_id": "REQ-008",
-        "text": "P27 uplink verbs ONLY V70\u2013V73 into CMC/LGC.\nSeparate from the CCATS command-load path.",
+        "text": "P27 uplink verbs ONLY V70–V73 into CMC/LGC.\nSeparate from the CCATS command-load path.",
         "kind": "interface",
         "priority": "high",
         "status": "approved"
@@ -4313,7 +4588,7 @@
         "id": "Apollo.foodRequirement",
         "name": "Food plan",
         "req_id": "REQ-009",
-        "text": "Food plan 2200\u00b1300 kcal/d.\nA11 actual intake UNKNOWN.",
+        "text": "Food plan 2200±300 kcal/d.\nA11 actual intake UNKNOWN.",
         "kind": "design_constraint",
         "priority": "medium",
         "status": "approved"
@@ -4323,7 +4598,7 @@
         "id": "Apollo.lmEcsRequirement",
         "name": "LM-5 ECS (sourced)",
         "req_id": "REQ-010",
-        "text": "LM-5: descent O2 ~48 lb @ 3000 psi; ascent O2 ~2.4 lb \u00d72;\ndescent water 332 lb; ascent water 42 lb \u00d72;\nLCG 1200 Btu/man-h steady.",
+        "text": "LM-5: descent O2 ~48 lb @ 3000 psi; ascent O2 ~2.4 lb ×2;\ndescent water 332 lb; ascent water 42 lb ×2;\nLCG 1200 Btu/man-h steady.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
@@ -4338,7 +4613,7 @@
       {
         "type": "value_property",
         "id": "Apollo.PAR.co2Torr",
-        "name": "CO2 \u22647.6 torr",
+        "name": "CO2 ≤7.6 torr",
         "value_type": "Real",
         "unit": "torr"
       },
@@ -4380,7 +4655,7 @@
       {
         "type": "value_property",
         "id": "Apollo.PAR.ascO2",
-        "name": "LM-5 ascent O2 ~2.4 lb \u00d72",
+        "name": "LM-5 ascent O2 ~2.4 lb ×2",
         "value_type": "Real",
         "unit": "lb"
       },
@@ -4394,7 +4669,7 @@
       {
         "type": "value_property",
         "id": "Apollo.PAR.ascWater",
-        "name": "ascent water 42 lb \u00d72",
+        "name": "ascent water 42 lb ×2",
         "value_type": "Real",
         "unit": "lb"
       },
@@ -4415,7 +4690,7 @@
       {
         "type": "value_property",
         "id": "Apollo.PAR.foodPlan",
-        "name": "2200\u00b1300 kcal/d",
+        "name": "2200±300 kcal/d",
         "value_type": "Real",
         "unit": "kcal/d"
       },
@@ -4443,7 +4718,7 @@
       {
         "id": "Apollo.PAR.cabinAtmosphere",
         "type": "constraint_property",
-        "name": "5.0 psia 100% O2; CO2 \u22647.6 torr",
+        "name": "5.0 psia 100% O2; CO2 ≤7.6 torr",
         "expression": "cabin = 5.0 psia 100% O2 and CO2 <= 7.6 torr",
         "parameters": [
           {
@@ -4506,7 +4781,7 @@
       {
         "type": "action",
         "id": "Apollo.Action.p27Uplink",
-        "name": "P27 V70\u2013V73"
+        "name": "P27 V70–V73"
       },
       {
         "id": "Apollo.Behavior.Cmd.Final",
@@ -4926,6 +5201,134 @@
         "type": "port",
         "name": "ring",
         "owner_ref": "Apollo.Probe"
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.AgcLvdc",
+        "name": "AGC does not talk digital to LVDC.\nCMC only monitors (P11/P15); analog backup steer never used in flight.",
+        "text": "AGC does not talk digital to LVDC.\nCMC only monitors (P11/P15); analog backup steer never used in flight."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.EngineConflict",
+        "name": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375);\nDPS 9,870 / 1,050–6,300 (PK) vs 10,500 and 10:1 (TN D-7143).",
+        "text": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375);\nDPS 9,870 / 1,050–6,300 (PK) vs 10,500 and 10:1 (TN D-7143)."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.UnknownSpsLoad",
+        "name": "UNKNOWN — CSM-107 SPS loaded lb.\nBlock II O/F 1.6 is sourced; loaded mass is not.",
+        "text": "UNKNOWN — CSM-107 SPS loaded lb.\nBlock II O/F 1.6 is sourced; loaded mass is not."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.PNumbers",
+        "name": "P-numbers are not global. CMC P61–P67 = ENTRY.\nLGC P63–P68 = LANDING. Do not share one STM.",
+        "text": "P-numbers are not global. CMC P61–P67 = ENTRY.\nLGC P63–P68 = LANDING. Do not share one STM."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.ProgramAlarm",
+        "name": "V37 change mode; V36 fresh start; V69 restart.\n1201/1202 = exec overflow + software restart, NOT an abort (A11 RR).",
+        "text": "V37 change mode; V36 fresh start; V69 restart.\n1201/1202 = exec overflow + software restart, NOT an abort (A11 RR)."
+      },
+      {
+        "type": "class",
+        "id": "Apollo.CMCEntry",
+        "name": "CMCEntry"
+      },
+      {
+        "type": "class",
+        "id": "Apollo.LGCLanding",
+        "name": "LGCLanding"
+      },
+      {
+        "id": "Apollo.State.CMC.Start",
+        "type": "initial_pseudostate",
+        "name": "Start"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P61",
+        "name": "P61",
+        "do": "entry preparation"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P62",
+        "name": "P62",
+        "do": "CM/SM sep · pre-entry"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P63",
+        "name": "P63",
+        "do": "entry initialization"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P64",
+        "name": "P64",
+        "do": "post 0.05g"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P65",
+        "name": "P65",
+        "do": "up-control"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P66",
+        "name": "P66",
+        "do": "ballistic"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.CMC.P67",
+        "name": "P67",
+        "do": "final phase"
+      },
+      {
+        "id": "Apollo.State.LGC.Start",
+        "type": "initial_pseudostate",
+        "name": "Start"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.LGC.P63",
+        "name": "P63",
+        "do": "braking"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.LGC.P64",
+        "name": "P64",
+        "do": "approach"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.LGC.P65",
+        "name": "P65",
+        "do": "auto landing"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.LGC.P66",
+        "name": "P66",
+        "do": "ROD — A11 flown"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.LGC.P67",
+        "name": "P67",
+        "do": "manual landing"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.LGC.P68",
+        "name": "P68",
+        "do": "landing confirmation"
       }
     ],
     "relationships": [
@@ -5874,7 +6277,7 @@
         "type": "transition",
         "source": "Apollo.State.Mission.boost",
         "target": "Apollo.State.Abort.I",
-        "name": "Mode I\u2013IV"
+        "name": "Mode I–IV"
       },
       {
         "id": "stm-apollo.abortTLI",
@@ -6976,7 +7379,7 @@
       {
         "type": "message",
         "id": "cmd-apollo.m6",
-        "name": "P27 V70\u2013V73",
+        "name": "P27 V70–V73",
         "source_lifeline": "Apollo.P27",
         "target_lifeline": "Apollo.AGC_CM",
         "message_sort": "asynch_signal"
@@ -6984,7 +7387,7 @@
       {
         "type": "message",
         "id": "cmd-apollo.m7",
-        "name": "P27 V70\u2013V73",
+        "name": "P27 V70–V73",
         "source_lifeline": "Apollo.P27",
         "target_lifeline": "Apollo.AGC_LM",
         "message_sort": "asynch_signal"
@@ -7402,7 +7805,7 @@
       {
         "type": "message",
         "id": "sd-dock.m4",
-        "name": "hard dock \u2014 12 latches",
+        "name": "hard dock — 12 latches",
         "source_lifeline": "Apollo.CM",
         "target_lifeline": "Apollo.LM",
         "message_sort": "asynch_signal"
@@ -7430,6 +7833,123 @@
         "source_lifeline": "Apollo.Crew",
         "target_lifeline": "Apollo.LM",
         "message_sort": "asynch_signal"
+      },
+      {
+        "id": "stm-cmc.t-init",
+        "type": "transition",
+        "source": "Apollo.State.CMC.Start",
+        "target": "Apollo.State.CMC.P61"
+      },
+      {
+        "id": "stm-cmc.P61-P62",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P61",
+        "target": "Apollo.State.CMC.P62",
+        "name": "V37 P62"
+      },
+      {
+        "id": "stm-cmc.P62-P63",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P62",
+        "target": "Apollo.State.CMC.P63",
+        "name": "V37 P63"
+      },
+      {
+        "id": "stm-cmc.P63-P64",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P63",
+        "target": "Apollo.State.CMC.P64",
+        "name": "0.05g"
+      },
+      {
+        "id": "stm-cmc.P64-P65",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P64",
+        "target": "Apollo.State.CMC.P65",
+        "name": "up-control"
+      },
+      {
+        "id": "stm-cmc.P64-P66",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P64",
+        "target": "Apollo.State.CMC.P66",
+        "name": "ballistic"
+      },
+      {
+        "id": "stm-cmc.P64-P67",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P64",
+        "target": "Apollo.State.CMC.P67",
+        "name": "final"
+      },
+      {
+        "id": "stm-cmc.P65-P67",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P65",
+        "target": "Apollo.State.CMC.P67",
+        "name": "P67"
+      },
+      {
+        "id": "stm-cmc.P66-P67",
+        "type": "transition",
+        "source": "Apollo.State.CMC.P66",
+        "target": "Apollo.State.CMC.P67",
+        "name": "P67"
+      },
+      {
+        "id": "stm-lgc.t-init",
+        "type": "transition",
+        "source": "Apollo.State.LGC.Start",
+        "target": "Apollo.State.LGC.P63"
+      },
+      {
+        "id": "stm-lgc.P63-P64",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P63",
+        "target": "Apollo.State.LGC.P64",
+        "name": "approach"
+      },
+      {
+        "id": "stm-lgc.P64-P65",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P64",
+        "target": "Apollo.State.LGC.P65",
+        "name": "auto"
+      },
+      {
+        "id": "stm-lgc.P64-P66",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P64",
+        "target": "Apollo.State.LGC.P66",
+        "name": "ROD A11"
+      },
+      {
+        "id": "stm-lgc.P64-P67",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P64",
+        "target": "Apollo.State.LGC.P67",
+        "name": "manual"
+      },
+      {
+        "id": "stm-lgc.P65-P68",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P65",
+        "target": "Apollo.State.LGC.P68",
+        "name": "touchdown"
+      },
+      {
+        "id": "stm-lgc.P66-P68",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P66",
+        "target": "Apollo.State.LGC.P68",
+        "name": "touchdown"
+      },
+      {
+        "id": "stm-lgc.P67-P68",
+        "type": "transition",
+        "source": "Apollo.State.LGC.P67",
+        "target": "Apollo.State.LGC.P68",
+        "name": "touchdown"
       }
     ],
     "metadata": {

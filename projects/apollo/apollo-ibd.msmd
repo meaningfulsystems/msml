@@ -682,7 +682,7 @@
       {
         "type": "comment",
         "id": "n-tank",
-        "model_ref": "Apollo.Note.UnknownTanks",
+        "model_ref": "Apollo.Note.TanksSourced",
         "layout": {
           "x": 760,
           "y": 130,
