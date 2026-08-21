@@ -1971,6 +1971,11 @@
               "multiplicity": "1"
             },
             {
+              "name": "mode",
+              "type": "operate / follow-PNGS",
+              "multiplicity": "1"
+            },
+            {
               "name": "init",
               "type": "R47 from PNGS",
               "multiplicity": "1"
@@ -2739,6 +2744,36 @@
         "name": "Mission"
       },
       {
+        "type": "state",
+        "id": "Apollo.State.Mission",
+        "name": "mission",
+        "kind": "composite",
+        "orthogonal": true
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.outbound",
+        "name": "outbound",
+        "kind": "composite",
+        "owner_ref": "Apollo.State.Mission",
+        "region": "nominal"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.lunarReturn",
+        "name": "lunar and return",
+        "kind": "composite",
+        "owner_ref": "Apollo.State.Mission",
+        "region": "nominal"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.surface",
+        "name": "surface",
+        "kind": "composite",
+        "owner_ref": "Apollo.State.Mission.lunarReturn"
+      },
+      {
         "type": "initial_pseudostate",
         "id": "Apollo.State.Mission.Start",
         "name": "Start"
@@ -2747,98 +2782,172 @@
         "type": "state",
         "id": "Apollo.State.Mission.countdown",
         "name": "countdown",
-        "do": "hold(); pollGo()"
+        "do": "hold(); pollGo()",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.boost",
         "name": "boost",
-        "do": "IU owns boost"
+        "do": "IU owns boost",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.earthOrbit",
         "name": "earthOrbit",
-        "do": "100 nmi planned"
+        "do": "100 nmi planned",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.TLI",
         "name": "TLI",
-        "do": "IU owns TLI \u00b7 PK planned 02:44:15 \u00b7 A11-FP planned 2:44:26 \u00b7 flown 02:44:16 (MSC-00171)"
+        "do": "IU owns TLI \u00b7 PK planned 02:44:15 \u00b7 A11-FP planned 2:44:26 \u00b7 flown 02:44:16 (MSC-00171)",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.dockEject",
         "name": "dock/eject",
         "do": "CMP-owned; SM RCS; probe-drogue",
-        "entry": "dock ~03:20 / extract ~04:09 GET (planned)"
+        "entry": "dock ~03:20 / extract ~04:09 GET (planned)",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.translunar",
         "name": "translunar",
-        "do": "long coast after extract until LOI-1"
+        "do": "long coast after extract until LOI-1",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.LOI",
         "name": "LOI",
-        "do": "LOI-1 75:54:28 GET planned (A11-FP) \u00b7 flown ~075:49:50 GET (PAD/MR)"
+        "do": "LOI-1 75:54:28 GET planned (A11-FP) \u00b7 flown ~075:49:50 GET (PAD/MR)",
+        "owner_ref": "Apollo.State.Mission.outbound"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.undock",
         "name": "undock",
-        "do": "separateLM()"
+        "do": "separateLM()",
+        "owner_ref": "Apollo.State.Mission.lunarReturn"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.DOI",
         "name": "DOI",
-        "do": "descentOrbit()"
+        "do": "descentOrbit()",
+        "owner_ref": "Apollo.State.Mission.lunarReturn",
+        "region": "lm"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.descent",
         "name": "descent",
-        "do": "poweredDescent()"
+        "do": "poweredDescent()",
+        "owner_ref": "Apollo.State.Mission.surface",
+        "region": "lm"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.surfaceEVA",
         "name": "surface/EVA",
-        "do": "eva(); collect()"
+        "do": "eva(); collect()",
+        "owner_ref": "Apollo.State.Mission.surface",
+        "region": "lm"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.ascent",
         "name": "ascent",
-        "do": "leaveLunarSurface()"
+        "do": "leaveLunarSurface()",
+        "owner_ref": "Apollo.State.Mission.surface",
+        "region": "lm"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.rendezvous",
         "name": "rendezvous",
-        "do": "dockCSM()"
+        "do": "dockCSM()",
+        "owner_ref": "Apollo.State.Mission.lunarReturn"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.TEI",
         "name": "TEI",
-        "do": "injectToEarth()"
+        "do": "injectToEarth()",
+        "owner_ref": "Apollo.State.Mission.lunarReturn"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.entry",
         "name": "entry",
-        "do": "enterAtmosphere()"
+        "do": "enterAtmosphere()",
+        "owner_ref": "Apollo.State.Mission.lunarReturn"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.recovery",
         "name": "recovery",
-        "do": "splashdown()"
+        "do": "splashdown()",
+        "owner_ref": "Apollo.State.Mission.lunarReturn"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.csmLunarOrbit",
+        "name": "CSM / CMP",
+        "do": "CMP in lunar orbit",
+        "owner_ref": "Apollo.State.Mission.lunarReturn",
+        "region": "csm"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.RangeSafety",
+        "name": "range safety",
+        "kind": "composite"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.RangeSafety.destruct",
+        "name": "RSO destruct",
+        "do": "destruct until safed after Earth orbit",
+        "owner_ref": "Apollo.State.RangeSafety",
+        "region": "rangeSafety"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Guidance",
+        "name": "guidance",
+        "kind": "composite",
+        "orthogonal": true
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Guidance.PNGS",
+        "name": "primary guidance",
+        "do": "PNGS / AGC_LM",
+        "owner_ref": "Apollo.State.Guidance",
+        "region": "pngs"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Guidance.AGS",
+        "name": "abort guidance",
+        "do": "operate/follow-PNGS \u00b7 does not land",
+        "owner_ref": "Apollo.State.Guidance",
+        "region": "ags"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Abort",
+        "name": "abort",
+        "kind": "composite",
+        "do": "pad through TEI \u00b7 Not LES-only",
+        "owner_ref": "Apollo.State.Mission",
+        "region": "abort"
       },
       {
         "type": "initial_pseudostate",
@@ -2849,61 +2958,71 @@
         "type": "state",
         "id": "Apollo.State.Abort.pad",
         "name": "pad/LES",
-        "do": "LES(); towerClear()"
+        "do": "LES(); towerClear()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.I",
         "name": "I",
-        "do": "Mode I LES()"
+        "do": "Mode I LES()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.II",
         "name": "II",
-        "do": "Mode II()"
+        "do": "Mode II()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.III",
         "name": "III",
-        "do": "Mode III()"
+        "do": "Mode III()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.IV",
         "name": "IV",
-        "do": "Mode IV()"
+        "do": "Mode IV()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.contingencyTLI",
         "name": "contingencyTLI",
-        "do": "noTLI(); return()"
+        "do": "noTLI(); return()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.lunar",
         "name": "lunar",
-        "do": "P70 DPS / P71 APS"
+        "do": "P70 DPS / P71 APS",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.P70",
         "name": "P70 DPS",
-        "do": "lunar abort on DPS"
+        "do": "lunar abort on DPS",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.P71",
         "name": "P71 APS",
-        "do": "lunar abort on APS"
+        "do": "lunar abort on APS",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "state",
         "id": "Apollo.State.Abort.SPS",
         "name": "SPS",
-        "do": "SPS abort()"
+        "do": "SPS abort()",
+        "owner_ref": "Apollo.State.Abort"
       },
       {
         "type": "initial_node",
@@ -3060,7 +3179,7 @@
         "id": "Apollo.landingRequirement",
         "name": "Landing",
         "req_id": "REQ-002",
-        "text": "The LM shall land with remaining\ndescent \u0394v margin at the site.",
+        "text": "The LM shall land two crew on the Moon\nwith remaining descent \u0394v margin at the site.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"

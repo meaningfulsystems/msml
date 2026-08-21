@@ -841,7 +841,58 @@ class SequenceRenderer(MSMLRenderer):
 
 class StateMachineRenderer(MSMLRenderer):
 
+    def _draw_composite_state(self, draw, el):
+        """Draw a composite (nested) state as a frame around its children."""
+        lo, st = el["layout"], el.get("style", {})
+        x, y, w, h = self.cx(lo["x"]), self.cy(lo["y"]), lo["width"], lo["height"]
+        fill = parse_color(st.get("fill_color", "#F7F2FF"))
+        border = parse_color(st.get("border_color", "#6633AA"))
+        bw = max(1, int(st.get("border_width", 1)))
+        r = int(st.get("corner_radius", 10))
+        draw.rounded_rectangle([x, y, x + w, y + h], radius=r, fill=fill, outline=border, width=bw)
+        font_cfg = st.get("font", {})
+        name_font = load_font(int(font_cfg.get("size", 11)), bold=True)
+        fc = parse_color(font_cfg.get("color", "#4A148C"))
+        draw.text((x + 10, y + 6), self._label(el), fill=fc, font=name_font)
+        split = el.get("orthogonal_split") or {}
+        axis = split.get("axis")
+        at = split.get("at")
+        if axis and at is not None:
+            dash_color = parse_color(split.get("color", st.get("border_color", "#6633AA")))
+            lf = load_font(9, bold=True)
+            labels = split.get("labels") or []
+            if axis == "horizontal":
+                ly = y + int(at)
+                self._dashed_poly(draw, [(x + 8, ly), (x + w - 8, ly)], dash_color, 1)
+                if len(labels) >= 1:
+                    draw.text((x + 12, y + 22), labels[0], fill=fc, font=lf)
+                if len(labels) >= 2:
+                    draw.text((x + 12, ly + 4), labels[1], fill=fc, font=lf)
+            elif axis == "vertical":
+                lx = x + int(at)
+                self._dashed_poly(draw, [(lx, y + 22), (lx, y + h - 8)], dash_color, 1)
+                if len(labels) >= 1:
+                    draw.text((x + 12, y + 22), labels[0], fill=fc, font=lf)
+                if len(labels) >= 2:
+                    draw.text((lx + 6, y + 22), labels[1], fill=fc, font=lf)
+
+    def _composite_has_visible_children(self, el):
+        parent_ref = el.get("model_ref") or el.get("id")
+        for other in self.d.get("elements", []):
+            if other.get("id") == el.get("id"):
+                continue
+            resolved = other
+            ref = other.get("model_ref")
+            if ref and ref in self.definitions:
+                resolved = {**self.definitions[ref], **other}
+            if resolved.get("owner_ref") == parent_ref:
+                return True
+        return False
+
     def _draw_state(self, draw, el):
+        if el.get("kind") == "composite" and self._composite_has_visible_children(el):
+            self._draw_composite_state(draw, el)
+            return
         lo, st = el["layout"], el.get("style",{})
         x,y,w,h = self.cx(lo["x"]), self.cy(lo["y"]), lo["width"], lo["height"]
         fill   = parse_color(st.get("fill_color","#F0E6FF"))

@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1000,
-      "height": 300,
+      "height": 400,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -40,6 +40,38 @@
       }
     },
     "elements": [
+      {
+        "type": "state",
+        "id": "s-lunarReturn",
+        "model_ref": "Apollo.State.Mission.lunarReturn",
+        "layout": {
+          "x": 8,
+          "y": 8,
+          "width": 984,
+          "height": 376,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": true,
+            "color": "#4A148C"
+          }
+        },
+        "orthogonal_split": {
+          "axis": "vertical",
+          "at": 198,
+          "labels": [
+            "CSM \u00b7 CMP in lunar orbit",
+            "LM"
+          ],
+          "color": "#6A1B9A"
+        }
+      },
       {
         "type": "state",
         "id": "s-undock",
@@ -65,11 +97,34 @@
       },
       {
         "type": "state",
+        "id": "s-csm",
+        "model_ref": "Apollo.State.Mission.csmLunarOrbit",
+        "layout": {
+          "x": 20,
+          "y": 160,
+          "width": 170,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
         "id": "s-DOI",
         "model_ref": "Apollo.State.Mission.DOI",
         "layout": {
-          "x": 210,
-          "y": 40,
+          "x": 230,
+          "y": 160,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -91,8 +146,8 @@
         "id": "s-descent",
         "model_ref": "Apollo.State.Mission.descent",
         "layout": {
-          "x": 400,
-          "y": 40,
+          "x": 420,
+          "y": 160,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -114,8 +169,8 @@
         "id": "s-surfaceEVA",
         "model_ref": "Apollo.State.Mission.surfaceEVA",
         "layout": {
-          "x": 590,
-          "y": 40,
+          "x": 610,
+          "y": 160,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -137,8 +192,8 @@
         "id": "s-ascent",
         "model_ref": "Apollo.State.Mission.ascent",
         "layout": {
-          "x": 780,
-          "y": 40,
+          "x": 800,
+          "y": 160,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -160,8 +215,8 @@
         "id": "s-rendezvous",
         "model_ref": "Apollo.State.Mission.rendezvous",
         "layout": {
-          "x": 20,
-          "y": 180,
+          "x": 230,
+          "y": 280,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -183,8 +238,8 @@
         "id": "s-TEI",
         "model_ref": "Apollo.State.Mission.TEI",
         "layout": {
-          "x": 210,
-          "y": 180,
+          "x": 420,
+          "y": 280,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -206,8 +261,8 @@
         "id": "s-entry",
         "model_ref": "Apollo.State.Mission.entry",
         "layout": {
-          "x": 400,
-          "y": 180,
+          "x": 610,
+          "y": 280,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -236,8 +291,12 @@
             "y": 80
           },
           {
-            "x": 210,
-            "y": 80
+            "x": 190,
+            "y": 200
+          },
+          {
+            "x": 230,
+            "y": 200
           }
         ],
         "style": {
@@ -259,12 +318,12 @@
         "relationship_ref": "stm-apollo.DOI-descent",
         "waypoints": [
           {
-            "x": 380,
-            "y": 80
+            "x": 400,
+            "y": 200
           },
           {
-            "x": 400,
-            "y": 80
+            "x": 420,
+            "y": 200
           }
         ],
         "style": {
@@ -286,12 +345,12 @@
         "relationship_ref": "stm-apollo.descent-surfaceEVA",
         "waypoints": [
           {
-            "x": 570,
-            "y": 80
+            "x": 590,
+            "y": 200
           },
           {
-            "x": 590,
-            "y": 80
+            "x": 610,
+            "y": 200
           }
         ],
         "style": {
@@ -313,12 +372,12 @@
         "relationship_ref": "stm-apollo.surfaceEVA-ascent",
         "waypoints": [
           {
-            "x": 760,
-            "y": 80
+            "x": 780,
+            "y": 200
           },
           {
-            "x": 780,
-            "y": 80
+            "x": 800,
+            "y": 200
           }
         ],
         "style": {
@@ -340,24 +399,20 @@
         "relationship_ref": "stm-apollo.ascent-rendezvous",
         "waypoints": [
           {
-            "x": 950,
-            "y": 80
+            "x": 885,
+            "y": 240
           },
           {
-            "x": 980,
-            "y": 80
+            "x": 885,
+            "y": 260
           },
           {
-            "x": 980,
-            "y": 150
+            "x": 230,
+            "y": 260
           },
           {
-            "x": 20,
-            "y": 150
-          },
-          {
-            "x": 20,
-            "y": 220
+            "x": 230,
+            "y": 280
           }
         ],
         "style": {
@@ -379,12 +434,12 @@
         "relationship_ref": "stm-apollo.rendezvous-TEI",
         "waypoints": [
           {
-            "x": 190,
-            "y": 220
+            "x": 400,
+            "y": 320
           },
           {
-            "x": 210,
-            "y": 220
+            "x": 420,
+            "y": 320
           }
         ],
         "style": {
@@ -406,12 +461,12 @@
         "relationship_ref": "stm-apollo.TEI-entry",
         "waypoints": [
           {
-            "x": 380,
-            "y": 220
+            "x": 590,
+            "y": 320
           },
           {
-            "x": 400,
-            "y": 220
+            "x": 610,
+            "y": 320
           }
         ],
         "style": {

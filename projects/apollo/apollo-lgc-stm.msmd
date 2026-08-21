@@ -195,6 +195,29 @@
         }
       },
       {
+        "type": "state",
+        "id": "l-ags",
+        "model_ref": "Apollo.State.Guidance.AGS",
+        "layout": {
+          "x": 50,
+          "y": 260,
+          "width": 320,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
         "type": "comment",
         "id": "n-pnum",
         "model_ref": "Apollo.Note.PNumbers",

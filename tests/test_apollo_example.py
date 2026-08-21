@@ -226,6 +226,37 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(defs["Apollo.KSC_LCC"]["name"], "KSC_LCC")
         self.assertEqual(defs["Apollo.crewSafetyRequirement"]["req_id"], "REQ-001")
         self.assertEqual(defs["Apollo.landingRequirement"]["req_id"], "REQ-002")
+        land = defs["Apollo.landingRequirement"]["text"]
+        self.assertIn("Moon", land)
+        self.assertIn("two crew", land)
+        self.assertNotIn("splash", land.lower())
+        self.assertNotIn("Hornet", land)
+        self.assertEqual(defs["Apollo.State.Mission.outbound"].get("kind"), "composite")
+        self.assertEqual(defs["Apollo.State.Mission.lunarReturn"].get("kind"), "composite")
+        self.assertEqual(defs["Apollo.State.Mission.surface"].get("kind"), "composite")
+        self.assertEqual(defs["Apollo.State.Mission.surface"].get("owner_ref"), "Apollo.State.Mission.lunarReturn")
+        self.assertEqual(defs["Apollo.State.Mission.countdown"].get("owner_ref"), "Apollo.State.Mission.outbound")
+        self.assertEqual(defs["Apollo.State.Mission.LOI"].get("owner_ref"), "Apollo.State.Mission.outbound")
+        self.assertEqual(defs["Apollo.State.Mission.undock"].get("owner_ref"), "Apollo.State.Mission.lunarReturn")
+        self.assertEqual(defs["Apollo.State.Mission.recovery"].get("owner_ref"), "Apollo.State.Mission.lunarReturn")
+        self.assertEqual(defs["Apollo.State.Mission.descent"].get("owner_ref"), "Apollo.State.Mission.surface")
+        self.assertEqual(defs["Apollo.State.Mission.surfaceEVA"].get("owner_ref"), "Apollo.State.Mission.surface")
+        self.assertEqual(defs["Apollo.State.Mission.ascent"].get("owner_ref"), "Apollo.State.Mission.surface")
+        self.assertEqual(defs["Apollo.State.Abort"].get("kind"), "composite")
+        self.assertEqual(defs["Apollo.State.Abort.pad"].get("owner_ref"), "Apollo.State.Abort")
+        self.assertTrue(defs["Apollo.State.Mission"].get("orthogonal"))
+        self.assertEqual(defs["Apollo.State.Mission.outbound"].get("owner_ref"), "Apollo.State.Mission")
+        self.assertEqual(defs["Apollo.State.Abort"].get("owner_ref"), "Apollo.State.Mission")
+        self.assertEqual(defs["Apollo.State.Abort"].get("region"), "abort")
+        self.assertIn("CMP", defs["Apollo.State.Mission.csmLunarOrbit"].get("do", ""))
+        self.assertEqual(defs["Apollo.State.Mission.csmLunarOrbit"].get("region"), "csm")
+        self.assertEqual(defs["Apollo.State.Mission.DOI"].get("region"), "lm")
+        self.assertIn("safed after Earth orbit", defs["Apollo.State.RangeSafety.destruct"].get("do", ""))
+        ags_do = defs["Apollo.State.Guidance.AGS"].get("do", "")
+        self.assertIn("operate/follow-PNGS", ags_do)
+        self.assertIn("does not land", ags_do)
+        self.assertNotIn("Apollo.State.Guidance.LVDC", defs)
+        self.assertNotIn("Apollo.State.Guidance.CMC", defs)
         self.assertEqual(defs["Apollo.commsContinuityRequirement"]["req_id"], "REQ-003")
         props = {
             item["name"]: item.get("type")
@@ -294,6 +325,16 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(rels["act-apollo.f5b"]["target"], "Apollo.Action.loi")
         stm = read_json_file(APOLLO / "apollo-stm.msmd")["diagram"]
         act = read_json_file(APOLLO / "apollo-act.msmd")["diagram"]
+        lunar = read_json_file(APOLLO / "apollo-stm-lunar.msmd")["diagram"]
+        stm_states = [el for el in stm["elements"] if el.get("type") == "state"]
+        lunar_states = [el for el in lunar["elements"] if el.get("type") == "state"]
+        self.assertLessEqual(len(stm_states), 10)
+        self.assertLessEqual(len(lunar_states), 10)
+        self.assertIn("s-outbound", {el["id"] for el in stm_states})
+        self.assertIn("s-abort", {el["id"] for el in stm_states})
+        self.assertIn("s-rso", {el["id"] for el in stm_states})
+        self.assertIn("s-lunarReturn", {el["id"] for el in lunar_states})
+        self.assertIn("s-csm", {el["id"] for el in lunar_states})
         stm_x = {el["id"]: el["layout"]["x"] for el in stm["elements"] if el.get("id") in {"s-TLI", "s-dockEject", "s-translunar"}}
         act_x = {el["id"]: el["layout"]["x"] for el in act["elements"] if el.get("id") in {"ma-tli", "ma-dockEject", "ma-translunar"}}
         self.assertLess(stm_x["s-TLI"], stm_x["s-dockEject"])

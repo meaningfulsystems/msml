@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1360,
-      "height": 180,
+      "height": 280,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -40,6 +40,38 @@
       }
     },
     "elements": [
+      {
+        "type": "state",
+        "id": "s-outbound",
+        "model_ref": "Apollo.State.Mission.outbound",
+        "orthogonal_split": {
+          "axis": "horizontal",
+          "at": 138,
+          "labels": [
+            "nominal",
+            "abort \u00b7 range safety"
+          ],
+          "color": "#6A1B9A"
+        },
+        "layout": {
+          "x": 16,
+          "y": 8,
+          "width": 1324,
+          "height": 256,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F7F2FF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": true,
+            "color": "#4A148C"
+          }
+        }
+      },
       {
         "type": "initial_pseudostate",
         "id": "init-m",
@@ -208,6 +240,52 @@
         "style": {
           "fill_color": "#E8F5E9",
           "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-abort",
+        "model_ref": "Apollo.State.Abort",
+        "layout": {
+          "x": 36,
+          "y": 168,
+          "width": 360,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-rso",
+        "model_ref": "Apollo.State.RangeSafety.destruct",
+        "layout": {
+          "x": 420,
+          "y": 168,
+          "width": 360,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
           "border_width": 2,
           "font": {
             "family": "Arial",
