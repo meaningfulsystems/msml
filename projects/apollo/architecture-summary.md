@@ -216,7 +216,7 @@ The mission state machine (STM) is the plot. Confirm `dockEject` sits between TL
 
 **Figure. `apollo-dock.png`.** Soft dock then hard dock. Hardware comes out so the crew can move.
 
-GET: distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. TLI has **three labeled numbers** (do not collapse): Press Kit **planned** `02:44:15`; A11-FP **planned** `2:44:26`; **flown** `02:44:16` (MSC-00171). Transposition, Docking, and Ejection (TDE) `~03:20–04:09` GET is **planned**, not flown. LOI-1 has **two strings only**: `75:54:28` GET is **A11-FP planned**; **flown** LOI-1 is `~075:49:50` GET (PAD/MR). Do **not** call TLI `02:44:15`, TDE, or LOI-1 `75:54:28` flown. Splash `195:18:35` Mission Elapsed Time (MET) / 13 nmi sits on Recovery as a sourced MET; that block is not labeled flown. P66 Rate of Descent (ROD) as the A11 landing program is a separate flown-program mark, not a GET clock.
+GET: distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. TLI has **three labeled numbers** (do not collapse): Press Kit **planned** `02:44:15`; A11-FP **planned** `2:44:26`; **flown** `02:44:16` (MSC-00171). Transposition, Docking, and Ejection (TDE) `~03:20–04:09` GET is **planned**, not flown. LOI-1 has **two strings only**: `75:54:28` GET is **A11-FP planned**; **flown** LOI-1 is `~075:49:50` GET (PAD/MR). Do **not** call TLI `02:44:15`, TDE, or LOI-1 `75:54:28` flown. Splash `195:18:35` is the **flown GET**. 13 nmi is from USS *Hornet*, not from the target. The weather-revised miss was ~1.7 nmi. P66 Rate of Descent (ROD) as the A11 landing program is a separate flown-program mark, not a GET clock.
 
 Abort is a second machine that runs beside the first. Pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS). Crew Safety ≠ LES-only. If the tower rocket were the only way out, the later days of the mission would have no door.
 
@@ -277,7 +277,7 @@ A11 Press Kit p.109 tank loads and launch masses unless noted. **UNRECONCILED** 
 | AGC | Block II 2048 E / 36864 F, 11.7 µs, 65 lb / 70 W; AGC_CM Comanche 055 + 2 DSKY; AGC_LM Luminary 1A + 1 DSKY |
 | AEA | 4096 × 18-bit, 5 µs, 32.7 lb (TN-7990) |
 | APS thrust | 3,500 lbf, 1.5° cant, not gimbaled (TN D-7082) |
-| PLSS | 4 h / 1.04 lb O2 (CDR EVA 2:48, LMP 2:40) |
+| PLSS | 4 h / 1.04 lb O2. CDR EVA 2:48 / LMP 2:40 is **TN D-8093 Table I**. That is not the PAO hatch-to-hatch 2:31:40. |
 
 SPS vacuum thrust is **minutiae**, not a required thrust: cite both Press Kit **20,500 lbf** and TN D-7375 **21,500 lbf vac**. DPS has **three** sourced figures and no shall — do not pick a winner: Press Kit **9,870 / 1,050–6,300** lbf; TN D-7143 **10,500** lbf and **10:1**; LMA790 **9,870 / 1,050–6,800** lbf. This note does not invent a required-thrust number. Descent O2 teaching figure is **2,800 psi** (less conservative / schematic). TN D-6724 also prints **3,000 psi**. No required pressure — not an equal dual-cite. USB and VHF stay as already on the model (section 2 and 3).
 
