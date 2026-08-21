@@ -23,9 +23,9 @@ Requirements are **siblings** under the bike. Brake Override refines Ride Safety
 | Id | Name | Shall |
 | --- | --- | --- |
 | `ElectricBike.rideSafetyRequirement` | Ride Safety | Motor shall fail silent: brake inhibit, controller, cadence sensor, and BMS. Not brakes-only. |
-| `ElectricBike.rangeRequirement` | Range (≥ 60 km Tour) | Tour-scenario binding: `usableWh` **500 Wh** / `energyPerKm` **~8.3 Wh/km** for 60 km. Not Eco / PAS-1 (pedal-assist sensor level 1). **500 Wh is not a pack nameplate.** |
+| `ElectricBike.rangeRequirement` | Range (≥ 60 km Tour) | Tour-scenario binding: **500 Wh** / `energyPerKm` **~8.3 Wh/km** for 60 km. Not Eco / PAS-1 (pedal-assist sensor level 1). **500 Wh is not a pack nameplate.** The requirement text says `usableWh`; the parametric still uses `packEnergy`. |
 | `ElectricBike.assistLimitRequirement` | Assist Limit (25 km/h) | EPAC / EN 15194: cadence-only assist, cut off at **25 km/h** (wheel speed). No throttle. |
-| `ElectricBike.chargeSafetyRequirement` | Charge Safety | Stop on over-temp, over-voltage, or charger disconnect. BMS inside the pack opens the contactor. Underwriters Laboratories (UL) 2849. |
+| `ElectricBike.chargeSafetyRequirement` | Charge Safety | Stop on over-temp, over-voltage, or charger disconnect. BMS inside the pack opens the contactor. Underwriters Laboratories (UL) 2849 is **scope inspiration** for the serial charge path, not a certification shall. |
 | `ElectricBike.brakeOverrideRequirement` | Brake Override (50 ms) | Motor inhibit within **50 ms** of either brake lever. **50 ms is an electronic inhibit budget.** Do not compare it to the EN 15194 distance test. |
 | `ElectricBike.batteryCutoffRequirement` | Battery Cutoff | BMS inside the pack opens the contactor before any cell exceeds its V/T limit. |
 | `ElectricBike.displayRequirement` | Display | Rider shall see speed, assist level, and remaining range hands-on-bars. |
@@ -54,7 +54,7 @@ ElectricBike
 └── wheelSpeedSensor
 ```
 
-**Charge path (UL 2849, serial):** bike boundary `ElectricBike.Port.chargerIn` → nested BMS `chargerIn` → BMS `packOut` → pack `cellsIn`. There is no parallel pack+BMS charge feed and no `chargeInputIn` on the pack itself.
+**Charge path (serial):** bike boundary `ElectricBike.Port.chargerIn` → nested BMS `chargerIn` → BMS `packOut` → pack `cellsIn`. There is no parallel pack+BMS charge feed and no `chargeInputIn` on the pack itself. That serial topology is inspired by UL 2849. UL 2849 is not a certification shall on this model and is not allocated as one.
 
 Other IBD connectors:
 
@@ -96,13 +96,14 @@ The activity is power on → select assist → pedal → apply brake → inhibit
 | Hub torque | 40 N·m | Hub **peak** (`peakTorque`). Not continuous. |
 | Assist cutoff | 25 km/h | Wheel-speed cut; cadence PAS; no throttle. |
 | Walk assist | ≤ 6 km/h | On the walk-state do-behavior. |
-| Tour-scenario energy | 500 Wh | Binding on `usableWh` for the Tour range case. Not pack nameplate energy. |
+| Tour-scenario energy | 500 Wh | Display name on `ElectricBike.PAR.packEnergy` is `usableWh: 500 Wh Tour`. The `energyBalance` **expression still uses `packEnergy`**: `packEnergy >= energyPerKm * 60`. 500 Wh is the Tour-scenario binding, not pack nameplate. |
 | Brake inhibit | ≤ 50 ms | Electronic inhibit **budget**. Not a distance test. Constraint: `brakeLatency <= 50 ms`. |
 | Assist cut-off | 2 m / 5 m | EN 15194:2017 4.2.13 after pedaling stops. Lever switches relax 2 m → 5 m. Not vehicle brake distance. |
 | Lighting | StVZO / ISO 6742 | Not UN ECE R113. |
-| Frame yield margin | ≥ 1.5 | Aluminum frame. On the model as a typed property. |
 
-Parametric `energyBalance` is pack-only: `usableWh ≥ energyPerKm × 60 km Tour`. Do not add rider pedal watts to pack `usableWh`. Do not read 500 Wh as a nameplate.
+Parametric `energyBalance` is pack-only and still binds `packEnergy`, not a `usableWh` parameter. Do not add rider pedal watts into that expression. Do not read 500 Wh as a nameplate.
+
+Frame `yieldMargin: ≥ 1.5` is a typed property with **no cited source**. It is not a shall. The structural shall is qualitative: carry rider, cargo, and battery loads without yielding.
 
 Cell V/T chemistry numbers are unmarked. F-E06 stays unmarked.
 
@@ -123,14 +124,15 @@ Cell V/T chemistry numbers are unmarked. F-E06 stays unmarked.
 | Walk Assist (≤ 6 km/h) | MotorController |
 | Continuous Power (250 W) | HubMotor |
 
-Ride Safety is fail-silent across brakes + controller + cadence + BMS, not brakes-only. Charge safety is the nested BMS (UL 2849), not a sibling pack-level charge port. Clause 4.2.13 does not move onto BrakeSystem.
+Ride Safety is fail-silent across brakes + controller + cadence + BMS, not brakes-only. Charge safety is the nested BMS opening the contactor — not a UL 2849 certification allocate. Clause 4.2.13 does not move onto BrakeSystem.
 
 ## 7. Open risks / unmarked
 
-- One EPAC class only; no type-approval dossier.
+- One EPAC class only; no type-approval dossier. UL 2849 is not a certification shall.
 - Cell V/T limits are named (`Vmax`, `Tmax`) without filled chemistry numbers.
 - Lighting is allocated to HMI; lamp hardware is not a separate part.
 - Regen is explicitly none; do not add it.
+- Frame `yieldMargin: ≥ 1.5` is unsourced — not a shall.
 - F-E06 stays unmarked.
 
 ## Generated views
@@ -141,7 +143,7 @@ These figures illustrate the architecture above; they do not replace it.
 
 **`e-bike-bdd.png` — block definition diagram (BDD).** Bike composed of frame, pack (with nested BMS), controller, hub, HMI, brakes, and the two sensors. Hub compartment states 250 W continuous and 40 N·m peak separately.
 
-**`e-bike-ibd.png` — internal block diagram (IBD).** Child-part ports only. Charge is serial through the nested BMS. Cadence and wheel-speed feed the controller. Connections do not pass over boxes.
+**`e-bike-ibd.png` — internal block diagram (IBD).** Child-part ports only. Charge is serial through the nested BMS (view title cites UL 2849 as path inspiration, not a cert). Cadence and wheel-speed feed the controller. Connections do not pass over boxes.
 
 **`e-bike-uc.png` — use cases.** Rider on Ride and Adjust; Charger on Charge only; Ride «include» Adjust. No `lockBike`.
 
@@ -155,7 +157,7 @@ These figures illustrate the architecture above; they do not replace it.
 
 **`e-bike-int.png` — sequence.** Interaction among rider, HMI, controller, hub, and brakes for a ride-and-inhibit story.
 
-**`e-bike-par.png` — parametrics.** Pack `energyBalance` and `brakeLatencyLimit`. Tour 500 Wh is a scenario binding.
+**`e-bike-par.png` — parametrics.** Pack `energyBalance` still binds `packEnergy` (display name `usableWh: 500 Wh Tour`) and `brakeLatencyLimit`. Tour 500 Wh is a scenario binding, not nameplate.
 
 **`e-bike-alloc.png` — allocation table.** Requirement and function → part, including 4.2.13 to controller + sensors (not BrakeSystem).
 

@@ -96,7 +96,7 @@ countdown → boost → earthOrbit → TLI → dockEject → translunar → LOI 
 
 `dockEject` is its own state (CMP-owned, SM RCS, probe-drogue). Do not draw TLI → translunar or dockEject → LOI, and do not put translunar before dockEject. The locked path is TLI → dockEject → translunar → LOI.
 
-Ground Elapsed Time (GET): distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. A11 **flown**: TLI 02:44:15 GET; transposition, docking, and extraction (TDE) ~03:20–04:09 GET; LOI-1 75:54:28 GET; splash 195:18:35 Mission Elapsed Time (MET) / 13 nmi (Hornet / TF-130).
+Ground Elapsed Time (GET): distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. TLI has **three labeled numbers**: Press Kit **planned** `02:44:15`; A11-FP `2:44:26`; **flown** `02:44:16` (no `02:44:16.2`). TDE `~03:20–04:09` GET is **planned**. LOI-1 has **two strings only**: `75:54:28` GET is **A11-FP planned** (do not cite Press Kit as the LOI-1 source — the same string may appear in the Press Kit); **flown** LOI-1 is `~075:49:50` GET. Splash `195:18:35` Mission Elapsed Time (MET) / 13 nmi sits on Recovery as a sourced MET; that block is not labeled flown. P66 Rate of Descent (ROD) as the A11 landing program is a separate flown-program mark, not a GET clock.
 
 Abort machine (parallel): pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS). Crew Safety ≠ LES-only.
 

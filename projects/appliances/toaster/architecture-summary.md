@@ -61,7 +61,7 @@ IBD connectors (why they exist):
 
 - Lever `ctrl` → Timer `in` — user start latches the timed cycle
 - Timer `signal` → HeatingElement `ctrl` — timer commands heat on and off
-- HeatingElement `heatSignal` → Carriage `heatSignal` — heat reaches the bread
+- HeatingElement `heatSignal` → Carriage `heatSignal` — heat lands on the **carriage**, not on bread. Bread is not a part on this model. The carriage is the thermal sink the IBD actually connects.
 
 BrowningControl configures the Timer. ThermalCutoff monitors the HeatingElement.
 
@@ -89,7 +89,7 @@ Sourced numbers only:
 - at least **10,000** toast cycles
 - timer **±5%** of the selected setting
 
-`Energy` verifies timing accuracy. `SafetyCheck` verifies thermal cutoff without a product °C.
+`Energy` (`Q = P × t`) has a `verify` edge to timing accuracy, but **P and t are unfilled**. The constraint does not close ±5% — it is unfilled, not verified. `SafetyCheck` (`T_elem < T_cutoff`) likewise has a verify edge with an unfilled threshold — not a closed check. `BreadHeat` (`Q_b = η × Q`) is a named unfilled estimate. It is not an IBD connector to bread; heat on the IBD still lands on the carriage.
 
 ## 6. Allocations
 
@@ -126,7 +126,7 @@ These figures illustrate the architecture above; they do not replace it. Open th
 
 **`toaster-bdd.png` — block definition diagram (BDD).** Ownership tree. Composition diamonds from Toaster to the eight parts. Dashed associations: ThermalCutoff *monitors* HeatingElement; BrowningControl *configures* Timer. Types (`V`, `W`, `degC`) are unfilled.
 
-**`toaster-ibd.png` — internal block diagram (IBD).** Ports and connectors inside one toaster. Read left-to-right: lever command → timer → heater control → heat into the carriage. Lines stay off boxes.
+**`toaster-ibd.png` — internal block diagram (IBD).** Ports and connectors inside one toaster. Read left-to-right: lever command → timer → heater control → heat into the **carriage**. There is no bread part and no bread heat port. Lines stay off boxes.
 
 **`toaster-uc.png` — use cases.** User on Toast Bread, Adjust Browning, Cancel Toast, Reset Error. Power Grid on Toast Bread. Toast Bread «include» Activate Heating.
 
@@ -140,7 +140,7 @@ These figures illustrate the architecture above; they do not replace it. Open th
 
 **`toaster-seq.png` — sequence.** Lifelines User, Toaster, Timer, HeatingElement. Message names come from the model (`start()`, not a filled time).
 
-**`toaster-par.png` — parametrics.** Bindings among voltage, resistance, power, duration, heat, and the unfilled safety check.
+**`toaster-par.png` — parametrics.** Bindings among voltage, resistance, power, duration, the `breadHeat` estimate name, and the unfilled safety check. P, t, η, and cutoff stay unfilled — read the equations, do not treat them as closed verification.
 
 **`toaster-alloc.png` — allocation table.** Rows are «allocate» relationships: activity/state/use-case/requirement → part.
 

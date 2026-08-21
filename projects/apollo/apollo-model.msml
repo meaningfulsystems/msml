@@ -2770,14 +2770,14 @@
         "type": "state",
         "id": "Apollo.State.Mission.TLI",
         "name": "TLI",
-        "do": "IU owns TLI \u00b7 02:44:15 GET (A11 flown)"
+        "do": "IU owns TLI \u00b7 PK planned 02:44:15 \u00b7 A11-FP 2:44:26 \u00b7 flown 02:44:16 GET"
       },
       {
         "type": "state",
         "id": "Apollo.State.Mission.dockEject",
         "name": "dock/eject",
         "do": "CMP-owned; SM RCS; probe-drogue",
-        "entry": "dock ~03:20 / extract ~04:09 GET (A11 flown)"
+        "entry": "dock ~03:20 / extract ~04:09 GET (planned)"
       },
       {
         "type": "state",
@@ -2789,7 +2789,7 @@
         "type": "state",
         "id": "Apollo.State.Mission.LOI",
         "name": "LOI",
-        "do": "LOI-1 75:54:28 GET (A11 flown)"
+        "do": "LOI-1 75:54:28 GET planned (A11-FP) \u00b7 flown ~075:49:50 GET"
       },
       {
         "type": "state",
@@ -3179,8 +3179,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Docking",
-        "name": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 flown GET: TDE ~03:20\u201304:09, then translunar coast until LOI-1 75:54:28.\nEarth orbit 100 nmi is planned. TLI \u2192 dockEject \u2192 translunar \u2192 LOI.",
-        "text": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 flown GET: TDE ~03:20\u201304:09, then translunar coast until LOI-1 75:54:28.\nEarth orbit 100 nmi is planned. TLI \u2192 dockEject \u2192 translunar \u2192 LOI."
+        "name": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nTDE ~03:20\u201304:09 GET planned, then translunar coast until LOI-1 75:54:28 GET (A11-FP planned).\nEarth orbit 100 nmi is planned. TLI \u2192 dockEject \u2192 translunar \u2192 LOI.",
+        "text": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nTDE ~03:20\u201304:09 GET planned, then translunar coast until LOI-1 75:54:28 GET (A11-FP planned).\nEarth orbit 100 nmi is planned. TLI \u2192 dockEject \u2192 translunar \u2192 LOI."
       },
       {
         "id": "Apollo.Port.vehicleUsbOut",
@@ -5566,14 +5566,14 @@
       {
         "type": "comment",
         "id": "Apollo.Note.TdeTimes",
-        "name": "A11 PK: TLI 02:44:15 GET \u2192 TDE ~03:20\u201304:09 \u2192 translunar coast until LOI-1 75:54:28. TLI \u2192 dockEject \u2192 translunar \u2192 LOI (not translunar then dockEject).",
-        "text": "A11 PK: TLI 02:44:15 GET \u2192 TDE ~03:20\u201304:09 \u2192 translunar coast until LOI-1 75:54:28. TLI \u2192 dockEject \u2192 translunar \u2192 LOI (not translunar then dockEject)."
+        "name": "TLI PK planned 02:44:15 GET \u2192 TDE ~03:20\u201304:09 planned \u2192 translunar coast until LOI-1 75:54:28 GET (A11-FP planned). TLI \u2192 dockEject \u2192 translunar \u2192 LOI (not translunar then dockEject).",
+        "text": "TLI PK planned 02:44:15 GET \u2192 TDE ~03:20\u201304:09 planned \u2192 translunar coast until LOI-1 75:54:28 GET (A11-FP planned). TLI \u2192 dockEject \u2192 translunar \u2192 LOI (not translunar then dockEject)."
       },
       {
         "type": "comment",
         "id": "Apollo.Note.GetPlannedFlown",
-        "name": "GET: planned vs flown. Earth orbit 100 nmi is planned.\nA11 flown: TLI 02:44:15, TDE ~03:20\u201304:09, LOI-1 75:54:28, splash 195:18:35 MET.",
-        "text": "GET: planned vs flown. Earth orbit 100 nmi is planned.\nA11 flown: TLI 02:44:15, TDE ~03:20\u201304:09, LOI-1 75:54:28, splash 195:18:35 MET."
+        "name": "GET: planned vs flown. Earth orbit 100 nmi is planned.\nTLI three labels: PK planned 02:44:15; A11-FP 2:44:26; flown 02:44:16 (no 02:44:16.2). TDE ~03:20\u201304:09 GET planned. LOI-1 two strings only: 75:54:28 GET A11-FP planned (do not cite Press Kit as the LOI-1 source); flown ~075:49:50 GET. Splash 195:18:35 MET is on Recovery (sourced MET, not labeled flown).",
+        "text": "GET: planned vs flown. Earth orbit 100 nmi is planned.\nTLI three labels: PK planned 02:44:15; A11-FP 2:44:26; flown 02:44:16 (no 02:44:16.2). TDE ~03:20\u201304:09 GET planned. LOI-1 two strings only: 75:54:28 GET A11-FP planned (do not cite Press Kit as the LOI-1 source); flown ~075:49:50 GET. Splash 195:18:35 MET is on Recovery (sourced MET, not labeled flown)."
       }
     ],
     "relationships": [
