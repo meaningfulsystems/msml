@@ -1,12 +1,12 @@
 {
   "msml_version": "1.0",
   "model_files": [
-    "toaster-model.msml"
+    "blender-model.msml"
   ],
   "diagram": {
     "type": "requirement",
-    "id": "req-toaster",
-    "name": "Toaster Requirements",
+    "id": "req-blender",
+    "name": "Blender Requirements",
     "context": "Appliance",
     "frame": {
       "visible": true,
@@ -30,7 +30,7 @@
       }
     },
     "canvas": {
-      "width": 1280,
+      "width": 1300,
       "height": 720,
       "background_color": "#FAFAFA",
       "grid": {
@@ -43,11 +43,11 @@
       {
         "type": "requirement",
         "id": "req-req-001",
-        "model_ref": "Toaster.toastSafetyRequirement",
+        "model_ref": "Blender.lidInterlockRequirement",
         "layout": {
           "x": 20,
           "y": 24,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -66,11 +66,11 @@
       {
         "type": "requirement",
         "id": "req-req-002",
-        "model_ref": "Toaster.electricalSafetyRequirement",
+        "model_ref": "Blender.motorControlRequirement",
         "layout": {
-          "x": 330,
+          "x": 336,
           "y": 24,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -89,11 +89,11 @@
       {
         "type": "requirement",
         "id": "req-req-003",
-        "model_ref": "Toaster.browningRequirement",
+        "model_ref": "Blender.smoothnessDetectionRequirement",
         "layout": {
-          "x": 640,
+          "x": 652,
           "y": 24,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -112,11 +112,11 @@
       {
         "type": "requirement",
         "id": "req-req-004",
-        "model_ref": "Toaster.timingRequirement",
+        "model_ref": "Blender.powerRequirement",
         "layout": {
-          "x": 950,
+          "x": 968,
           "y": 24,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -135,11 +135,11 @@
       {
         "type": "requirement",
         "id": "req-req-005",
-        "model_ref": "Toaster.userInterfaceRequirement",
+        "model_ref": "Blender.userControlsRequirement",
         "layout": {
           "x": 20,
           "y": 190,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -158,11 +158,11 @@
       {
         "type": "requirement",
         "id": "req-req-006",
-        "model_ref": "Toaster.cleanabilityRequirement",
+        "model_ref": "Blender.cleaningRequirement",
         "layout": {
-          "x": 330,
+          "x": 336,
           "y": 190,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -181,11 +181,11 @@
       {
         "type": "requirement",
         "id": "req-req-007",
-        "model_ref": "Toaster.serviceabilityRequirement",
+        "model_ref": "Blender.serviceRequirement",
         "layout": {
-          "x": 640,
+          "x": 652,
           "y": 190,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -204,11 +204,11 @@
       {
         "type": "requirement",
         "id": "req-req-008",
-        "model_ref": "Toaster.powerRatingRequirement",
+        "model_ref": "Blender.motorSpeedRequirement",
         "layout": {
-          "x": 950,
+          "x": 968,
           "y": 190,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -227,11 +227,11 @@
       {
         "type": "requirement",
         "id": "req-req-009",
-        "model_ref": "Toaster.surfaceTemperatureRequirement",
+        "model_ref": "Blender.interlockLatencyRequirement",
         "layout": {
           "x": 20,
           "y": 356,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -250,11 +250,11 @@
       {
         "type": "requirement",
         "id": "req-req-010",
-        "model_ref": "Toaster.thermalCutoffRequirement",
+        "model_ref": "Blender.overcurrentProtectionRequirement",
         "layout": {
-          "x": 330,
+          "x": 336,
           "y": 356,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -273,11 +273,11 @@
       {
         "type": "requirement",
         "id": "req-req-011",
-        "model_ref": "Toaster.browningLevelsRequirement",
+        "model_ref": "Blender.smoothnessThresholdRequirement",
         "layout": {
-          "x": 640,
+          "x": 652,
           "y": 356,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -296,11 +296,11 @@
       {
         "type": "requirement",
         "id": "req-req-012",
-        "model_ref": "Toaster.carriageReleaseRequirement",
+        "model_ref": "Blender.noiseRequirement",
         "layout": {
-          "x": 950,
+          "x": 968,
           "y": 356,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -319,11 +319,11 @@
       {
         "type": "requirement",
         "id": "req-req-013",
-        "model_ref": "Toaster.crumbTrayForceRequirement",
+        "model_ref": "Blender.containerSeatRequirement",
         "layout": {
           "x": 20,
           "y": 522,
-          "width": 290,
+          "width": 300,
           "height": 150,
           "z_index": 1
         },
@@ -338,38 +338,15 @@
             "color": "#000000"
           }
         }
-      },
-      {
-        "type": "requirement",
-        "id": "req-req-014",
-        "model_ref": "Toaster.cycleLifeRequirement",
-        "layout": {
-          "x": 330,
-          "y": 522,
-          "width": 290,
-          "height": 150,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E0F7FA",
-          "border_color": "#00838F",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
       }
     ],
     "relationships": [],
     "metadata": {
       "author": "Andrew Fried",
-      "created": "2026-05-16",
+      "created": "2026-08-21",
       "modified": "2026-08-21",
       "tags": [
-        "toaster",
+        "blender",
         "requirements"
       ]
     }

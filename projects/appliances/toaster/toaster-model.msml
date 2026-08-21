@@ -354,101 +354,141 @@
       },
       {
         "type": "requirement",
-        "id": "Toaster.REQ-001",
-        "name": "Toasting Capability",
+        "id": "Toaster.toastSafetyRequirement",
+        "name": "toast safety",
         "req_id": "REQ-001",
-        "text": "System shall toast bread\nto user-selected browning.",
-        "kind": "functional",
+        "text": "The toaster shall not cause burns, electrical shock, or fire under normal operating conditions.",
+        "kind": "safety",
         "priority": "high",
         "status": "approved"
       },
       {
         "type": "requirement",
-        "id": "Toaster.REQ-001.1",
-        "name": "Heat Control",
-        "req_id": "REQ-001.1",
-        "text": "Heating element shall reach\ntarget temp within 30s.",
-        "kind": "performance",
-        "priority": "high",
-        "status": "approved"
-      },
-      {
-        "type": "requirement",
-        "id": "Toaster.REQ-001.2",
-        "name": "Timer Function",
-        "req_id": "REQ-001.2",
-        "text": "Timer shall support 1–5 min\nbrowning settings.",
-        "kind": "functional",
-        "priority": "high",
-        "status": "approved"
-      },
-      {
-        "type": "requirement",
-        "id": "Toaster.REQ-001.3",
-        "name": "Carriage Mechanism",
-        "req_id": "REQ-001.3",
-        "text": "Carriage shall pop toast\nupon timer completion.",
-        "kind": "functional",
-        "priority": "medium",
-        "status": "approved"
-      },
-      {
-        "type": "requirement",
-        "id": "Toaster.REQ-001.4",
-        "name": "Browning Repeatability",
-        "req_id": "REQ-001.4",
-        "text": "Same browning level shall\nproduce ±5% energy variance.",
-        "kind": "performance",
-        "priority": "medium",
-        "status": "proposed"
-      },
-      {
-        "type": "requirement",
-        "id": "Toaster.REQ-002",
-        "name": "Safety",
+        "id": "Toaster.electricalSafetyRequirement",
+        "name": "electrical safety",
         "req_id": "REQ-002",
-        "text": "System shall detect overheat\nand shut down automatically.",
+        "text": "The toaster shall comply with applicable electrical safety standards for household appliances.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
       },
       {
         "type": "requirement",
-        "id": "Toaster.REQ-002.1",
-        "name": "Overheat Detection",
-        "req_id": "REQ-002.1",
-        "text": "ThermalCutoff shall trip\nbelow 300°C surface temp.",
-        "kind": "functional",
-        "priority": "high",
-        "status": "approved"
-      },
-      {
-        "type": "requirement",
-        "id": "Toaster.REQ-002.2",
-        "name": "Auto Shutoff",
-        "req_id": "REQ-002.2",
-        "text": "On trip: deactivate element\nand release carriage latch.",
-        "kind": "functional",
-        "priority": "high",
-        "status": "approved"
-      },
-      {
-        "type": "requirement",
-        "id": "Toaster.REQ-003",
-        "name": "User Controls",
+        "id": "Toaster.browningRequirement",
+        "name": "uniform browning",
         "req_id": "REQ-003",
-        "text": "User shall control browning\nlevel and cancel toasting.",
+        "text": "The toaster shall produce uniform browning across the full bread surface area for each browning level setting.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.timingRequirement",
+        "name": "timing accuracy",
+        "req_id": "REQ-004",
+        "text": "The timer shall control heating duration within ±5% of the selected setting across all browning levels.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.userInterfaceRequirement",
+        "name": "user interface",
+        "req_id": "REQ-005",
+        "text": "The user shall be able to insert bread, select browning level, and cancel toasting without tools.",
         "kind": "functional",
         "priority": "high",
         "status": "approved"
       },
       {
         "type": "requirement",
-        "id": "Toaster.REQ-003.1",
-        "name": "Cancel / Eject",
-        "req_id": "REQ-003.1",
-        "text": "Lever-up during toasting\nshall cancel and eject.",
+        "id": "Toaster.cleanabilityRequirement",
+        "name": "cleanability",
+        "req_id": "REQ-006",
+        "text": "The crumb tray shall be removable and washable without tools.",
         "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.serviceabilityRequirement",
+        "name": "serviceability",
+        "req_id": "REQ-007",
+        "text": "The toaster shall be serviceable by a qualified technician without specialized equipment.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.powerRatingRequirement",
+        "name": "power rating",
+        "req_id": "REQ-008",
+        "text": "The toaster shall operate within its rated power consumption under all normal use conditions.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.surfaceTemperatureRequirement",
+        "name": "surface temperature",
+        "req_id": "REQ-009",
+        "text": "Exterior surfaces accessible during operation shall not exceed safe touch temperature limits.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.thermalCutoffRequirement",
+        "name": "thermal cutoff",
+        "req_id": "REQ-010",
+        "text": "The toaster shall include a thermal cutoff that disables heating if internal temperature exceeds a safe threshold.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.browningLevelsRequirement",
+        "name": "browning levels",
+        "req_id": "REQ-011",
+        "text": "The toaster shall provide at least three distinct and repeatable browning level settings.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.carriageReleaseRequirement",
+        "name": "carriage release",
+        "req_id": "REQ-012",
+        "text": "The carriage shall release automatically when the timer expires or when the user presses cancel.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.crumbTrayForceRequirement",
+        "name": "crumb tray force",
+        "req_id": "REQ-013",
+        "text": "The crumb tray shall require no more than 10 N removal force under all operating conditions.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Toaster.cycleLifeRequirement",
+        "name": "cycle life",
+        "req_id": "REQ-014",
+        "text": "The toaster shall complete at least 10,000 toast cycles before requiring maintenance.",
+        "kind": "performance",
         "priority": "high",
         "status": "approved"
       },
@@ -541,6 +581,18 @@
             }
           ]
         }
+      },
+      {
+        "type": "block",
+        "id": "Toaster.CrumbTray",
+        "name": "CrumbTray",
+        "stereotype": "block"
+      },
+      {
+        "type": "block",
+        "id": "Toaster.Chassis",
+        "name": "Chassis",
+        "stereotype": "block"
       },
       {
         "type": "value_property",
@@ -771,6 +823,22 @@
         "multiplicity_target": "1"
       },
       {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-crumb",
+        "source": "Toaster",
+        "target": "Toaster.CrumbTray",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "type": "composition",
+        "id": "bdd-toaster.c-toaster-chassis",
+        "source": "Toaster",
+        "target": "Toaster.Chassis",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
         "id": "ibd-toaster.conn-element-carriage",
         "type": "connector",
         "source": "Toaster.Port.HeatingElementHeatOutput",
@@ -867,60 +935,6 @@
         "target": "Toaster.Model.Behavioral"
       },
       {
-        "type": "derive",
-        "id": "req-toaster.d1",
-        "source": "Toaster.REQ-002",
-        "target": "Toaster.REQ-001"
-      },
-      {
-        "type": "derive",
-        "id": "req-toaster.d2",
-        "source": "Toaster.REQ-003",
-        "target": "Toaster.REQ-001"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r1",
-        "source": "Toaster.REQ-001",
-        "target": "Toaster.REQ-001.1"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r2",
-        "source": "Toaster.REQ-001",
-        "target": "Toaster.REQ-001.2"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r3",
-        "source": "Toaster.REQ-001",
-        "target": "Toaster.REQ-001.3"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r4",
-        "source": "Toaster.REQ-001",
-        "target": "Toaster.REQ-001.4"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r5",
-        "source": "Toaster.REQ-002",
-        "target": "Toaster.REQ-002.1"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r6",
-        "source": "Toaster.REQ-002",
-        "target": "Toaster.REQ-002.2"
-      },
-      {
-        "type": "containment",
-        "id": "req-toaster.r7",
-        "source": "Toaster.REQ-003",
-        "target": "Toaster.REQ-003.1"
-      },
-      {
         "type": "message",
         "id": "sd-toaster.m1",
         "name": "pressLever()",
@@ -931,7 +945,7 @@
       {
         "type": "message",
         "id": "sd-toaster.m2",
-        "name": "start(90s)",
+        "name": "start()",
         "source_lifeline": "Toaster",
         "target_lifeline": "Toaster.Timer",
         "message_sort": "asynch_signal"
@@ -1125,82 +1139,212 @@
         "target": "Toaster.HeatingElement"
       },
       {
-        "id": "sat-toaster.req-001",
+        "id": "sat-toaster.toast-safety",
         "type": "satisfy",
-        "source": "Toaster",
-        "target": "Toaster.REQ-001"
+        "source": "Toaster.ThermalCutoff",
+        "target": "Toaster.toastSafetyRequirement"
       },
       {
-        "id": "sat-toaster.req-001-1",
+        "id": "alloc-toaster.req-toast-safety",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.toastSafetyRequirement",
+        "target": "Toaster.ThermalCutoff"
+      },
+      {
+        "id": "sat-toaster.electrical",
         "type": "satisfy",
         "source": "Toaster.HeatingElement",
-        "target": "Toaster.REQ-001.1"
+        "target": "Toaster.electricalSafetyRequirement"
       },
       {
-        "id": "sat-toaster.req-001-2",
-        "type": "satisfy",
-        "source": "Toaster.Timer",
-        "target": "Toaster.REQ-001.2"
+        "id": "alloc-toaster.req-electrical",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.electricalSafetyRequirement",
+        "target": "Toaster.HeatingElement"
       },
       {
-        "id": "sat-toaster.req-001-3",
-        "type": "satisfy",
-        "source": "Toaster.Carriage",
-        "target": "Toaster.REQ-001.3"
-      },
-      {
-        "id": "sat-toaster.req-001-4",
+        "id": "sat-toaster.browning",
         "type": "satisfy",
         "source": "Toaster.BrowningControl",
-        "target": "Toaster.REQ-001.4"
+        "target": "Toaster.browningRequirement"
       },
       {
-        "id": "sat-toaster.req-002",
+        "id": "alloc-toaster.req-browning",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.browningRequirement",
+        "target": "Toaster.BrowningControl"
+      },
+      {
+        "id": "sat-toaster.timing",
         "type": "satisfy",
-        "source": "Toaster.ThermalCutoff",
-        "target": "Toaster.REQ-002"
+        "source": "Toaster.Timer",
+        "target": "Toaster.timingRequirement"
       },
       {
-        "id": "sat-toaster.req-002-1",
-        "type": "satisfy",
-        "source": "Toaster.ThermalCutoff",
-        "target": "Toaster.REQ-002.1"
+        "id": "alloc-toaster.req-timing",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.timingRequirement",
+        "target": "Toaster.Timer"
       },
       {
-        "id": "sat-toaster.req-002-2",
-        "type": "satisfy",
-        "source": "Toaster.ThermalCutoff",
-        "target": "Toaster.REQ-002.2"
-      },
-      {
-        "id": "sat-toaster.req-003",
-        "type": "satisfy",
-        "source": "Toaster",
-        "target": "Toaster.REQ-003"
-      },
-      {
-        "id": "sat-toaster.req-003-1",
+        "id": "sat-toaster.ui",
         "type": "satisfy",
         "source": "Toaster.Lever",
-        "target": "Toaster.REQ-003.1"
+        "target": "Toaster.userInterfaceRequirement"
       },
       {
-        "id": "ver-toaster.req-001-1",
-        "type": "verify",
-        "source": "Toaster.PAR.PV2R",
-        "target": "Toaster.REQ-001.1"
+        "id": "alloc-toaster.req-ui",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.userInterfaceRequirement",
+        "target": "Toaster.Lever"
       },
       {
-        "id": "ver-toaster.req-001-4",
+        "id": "sat-toaster.clean",
+        "type": "satisfy",
+        "source": "Toaster.CrumbTray",
+        "target": "Toaster.cleanabilityRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-clean",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.cleanabilityRequirement",
+        "target": "Toaster.CrumbTray"
+      },
+      {
+        "id": "sat-toaster.service",
+        "type": "satisfy",
+        "source": "Toaster",
+        "target": "Toaster.serviceabilityRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-service",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.serviceabilityRequirement",
+        "target": "Toaster"
+      },
+      {
+        "id": "sat-toaster.power",
+        "type": "satisfy",
+        "source": "Toaster.HeatingElement",
+        "target": "Toaster.powerRatingRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-power",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.powerRatingRequirement",
+        "target": "Toaster.HeatingElement"
+      },
+      {
+        "id": "sat-toaster.surface",
+        "type": "satisfy",
+        "source": "Toaster.Chassis",
+        "target": "Toaster.surfaceTemperatureRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-surface",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.surfaceTemperatureRequirement",
+        "target": "Toaster.Chassis"
+      },
+      {
+        "id": "sat-toaster.cutoff",
+        "type": "satisfy",
+        "source": "Toaster.ThermalCutoff",
+        "target": "Toaster.thermalCutoffRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-cutoff",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.thermalCutoffRequirement",
+        "target": "Toaster.ThermalCutoff"
+      },
+      {
+        "id": "sat-toaster.levels",
+        "type": "satisfy",
+        "source": "Toaster.BrowningControl",
+        "target": "Toaster.browningLevelsRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-levels",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.browningLevelsRequirement",
+        "target": "Toaster.BrowningControl"
+      },
+      {
+        "id": "sat-toaster.carriage",
+        "type": "satisfy",
+        "source": "Toaster.Carriage",
+        "target": "Toaster.carriageReleaseRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-carriage",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.carriageReleaseRequirement",
+        "target": "Toaster.Carriage"
+      },
+      {
+        "id": "sat-toaster.crumb-force",
+        "type": "satisfy",
+        "source": "Toaster.CrumbTray",
+        "target": "Toaster.crumbTrayForceRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-crumb-force",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.crumbTrayForceRequirement",
+        "target": "Toaster.CrumbTray"
+      },
+      {
+        "id": "sat-toaster.cycle",
+        "type": "satisfy",
+        "source": "Toaster",
+        "target": "Toaster.cycleLifeRequirement"
+      },
+      {
+        "id": "alloc-toaster.req-cycle",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "requirement allocation",
+        "source": "Toaster.cycleLifeRequirement",
+        "target": "Toaster"
+      },
+      {
+        "id": "ver-toaster.timing",
         "type": "verify",
         "source": "Toaster.PAR.Energy",
-        "target": "Toaster.REQ-001.4"
+        "target": "Toaster.timingRequirement"
       },
       {
-        "id": "ver-toaster.req-002-1",
+        "id": "ver-toaster.safety",
         "type": "verify",
         "source": "Toaster.PAR.SafetyCheck",
-        "target": "Toaster.REQ-002.1"
+        "target": "Toaster.thermalCutoffRequirement"
       }
     ],
     "metadata": {

@@ -2,17 +2,17 @@
 
 Two-slice pop-up toaster used as the MSML coverage canary. Namespace `Toaster`. File stem `toaster`. This note is the design argument for the model in this folder, not a catalog of pictures.
 
-The same appliance idea appears in SysML2d. The files are not interchangeable. Numbers below are only those already on `toaster-model.msml`. Unfilled types stay unfilled.
+The same appliance idea appears in SysML2d (`examples/toaster/toaster.sysml` at SHA `e0e45b2`). The files are not interchangeable. Pick one toolchain. Numbers below are only those already on `toaster-model.msml`. Unfilled types stay unfilled.
 
 ## 1. Purpose / context
 
-The toaster exists to brown bread to a user-selected level and then present it. The design problem is a short, repeatable thermal cycle with a hard safety cutoff: heat the element, time the cycle, pop the carriage, and shut down if the surface is heading for overheat.
+The toaster exists to brown bread to a user-selected level and then present it. The design problem is a short, repeatable thermal cycle with a hard safety cutoff: heat the element, time the cycle, pop the carriage, and shut down if the element exceeds a safe threshold.
 
 This is an example model for language coverage, not a certifiable appliance.
 
 ## 2. System boundary and actors
 
-**Inside:** BrowningControl, Timer, Lever, Carriage, HeatingElement, ThermalCutoff.
+**Inside:** BrowningControl, Timer, Lever, Carriage, HeatingElement, ThermalCutoff, CrumbTray, Chassis.
 
 **Outside:** User and Power Grid. Bread, toast, crumbs, and the kitchen air are implied by the toast cycle; they are not first-class actors on the MSML use-case view.
 
@@ -20,20 +20,26 @@ Use cases: Toast Bread (includes Activate Heating), Adjust Browning, Cancel Toas
 
 ## 3. Requirements
 
+Fourteen sibling shalls bound from SysML2d `toaster.sysml`. No containment or derive tree.
+
 | Id | Name | Text / numbers |
 | --- | --- | --- |
-| `Toaster.REQ-001` | Toasting Capability | Toast bread to the user-selected browning. |
-| `Toaster.REQ-001.1` | Heat Control | Heating element shall reach target temperature within **30 s**. |
-| `Toaster.REQ-001.2` | Timer Function | Timer shall support **1–5 min** browning settings. |
-| `Toaster.REQ-001.3` | Carriage Mechanism | Carriage shall pop toast when the timer completes. |
-| `Toaster.REQ-001.4` | Browning Repeatability | Same browning level shall produce **±5%** energy variance. |
-| `Toaster.REQ-002` | Safety | Detect overheat and shut down automatically. |
-| `Toaster.REQ-002.1` | Overheat Detection | ThermalCutoff shall trip **below 300 °C** surface temperature. |
-| `Toaster.REQ-002.2` | Auto Shutoff | On trip: deactivate the element and release the carriage latch. |
-| `Toaster.REQ-003` | User Controls | User shall control browning level and cancel toasting. |
-| `Toaster.REQ-003.1` | Cancel / Eject | Lever-up during toasting shall cancel and eject. |
+| `Toaster.toastSafetyRequirement` | toast safety | No burns, electrical shock, or fire under normal operating conditions. |
+| `Toaster.electricalSafetyRequirement` | electrical safety | Comply with applicable household electrical safety standards. |
+| `Toaster.browningRequirement` | uniform browning | Uniform browning across the full bread surface for each browning level. |
+| `Toaster.timingRequirement` | timing accuracy | Timer within **±5%** of the selected setting across all browning levels. |
+| `Toaster.userInterfaceRequirement` | user interface | Insert bread, select a browning level, and cancel without tools. |
+| `Toaster.cleanabilityRequirement` | cleanability | Crumb tray removable and washable without tools. |
+| `Toaster.serviceabilityRequirement` | serviceability | Serviceable by a qualified technician without specialized equipment. |
+| `Toaster.powerRatingRequirement` | power rating | Operate within rated power consumption. No filled watts. |
+| `Toaster.surfaceTemperatureRequirement` | surface temperature | Exterior surfaces stay within safe-touch limits. No filled °C. |
+| `Toaster.thermalCutoffRequirement` | thermal cutoff | Thermal cutoff disables heating above a safe threshold. Threshold is unfilled. |
+| `Toaster.browningLevelsRequirement` | browning levels | At least **three** distinct and repeatable browning level settings (**≥3**). |
+| `Toaster.carriageReleaseRequirement` | carriage release | Carriage releases automatically when the timer expires or the user cancels. |
+| `Toaster.crumbTrayForceRequirement` | crumb tray force | Crumb tray removal force **≤10 N**. |
+| `Toaster.cycleLifeRequirement` | cycle life | At least **10,000** toast cycles before maintenance. |
 
-REQ-002 and REQ-003 derive from REQ-001. Only the numbers in that table are bound.
+Only the numbers in that table are bound.
 
 ## 4. Structure and interfaces
 
@@ -46,7 +52,9 @@ Parts:
 - `Lever` — `position`
 - `Carriage` — `position`
 - `HeatingElement` — `resistance`, `power`
-- `ThermalCutoff` — `cutoffTemp`, `tripped`
+- `ThermalCutoff` — `cutoffTemp`, `tripped` (`cutoffTemp: degC` typed, unfilled)
+- `CrumbTray`
+- `Chassis`
 
 Connectors on the IBD:
 
@@ -70,36 +78,40 @@ Satisfy mappings on the model:
 
 | Requirement | Satisfied by |
 | --- | --- |
-| REQ-001 Toasting Capability | Toaster |
-| REQ-001.1 Heat Control | HeatingElement |
-| REQ-001.2 Timer Function | Timer |
-| REQ-001.3 Carriage Mechanism | Carriage |
-| REQ-001.4 Browning Repeatability | BrowningControl |
-| REQ-002 Safety | ThermalCutoff |
-| REQ-002.1 Overheat Detection | ThermalCutoff |
-| REQ-002.2 Auto Shutoff | ThermalCutoff |
-| REQ-003 User Controls | Toaster |
-| REQ-003.1 Cancel / Eject | Lever |
+| toast safety | ThermalCutoff |
+| electrical safety | HeatingElement |
+| uniform browning | BrowningControl |
+| timing accuracy | Timer |
+| user interface | Lever |
+| cleanability | CrumbTray |
+| serviceability | Toaster |
+| power rating | HeatingElement |
+| surface temperature | Chassis |
+| thermal cutoff | ThermalCutoff |
+| browning levels | BrowningControl |
+| carriage release | Carriage |
+| crumb tray force | CrumbTray |
+| cycle life | Toaster |
 
-Parametric properties on the model: `PV2R` (Heat Control), `Energy` (Browning Repeatability), `SafetyCheck` (Overheat Detection). Activity steps (insert bread, press lever, start timer, heat, pop) allocate to the same parts. There are no empty verification names.
+Parametric properties on the model: `Energy` verifies timing accuracy; `SafetyCheck` (`T_elem < T_cutoff`, unfilled) verifies thermal cutoff. Activity steps (insert bread, press lever, start timer, heat, pop) allocate to the same parts.
 
 ## 7. Sourced numbers
 
-All quantitative targets are model-local:
+Quantitative targets from SysML2d `toaster.sysml` only:
 
-- 30 s to target temperature
-- 1–5 min browning settings
-- ±5% energy variance at the same level
-- Thermal cutoff below 300 °C surface temperature
+- at least three distinct and repeatable browning levels (**≥3**)
+- crumb tray removal force **≤10 N**
+- at least **10,000** toast cycles before maintenance
+- timer within **±5%** of the selected setting across all browning levels
 
-Root `voltage` and `maxPower` are typed, not filled. Do not promote view-only values into the model.
+Root `voltage` and `maxPower` are typed, not filled. `cutoffTemp` is typed `degC`, not filled. Do not promote view-only values into the model.
 
 ## 8. Open risks / TBD
 
 - This stays an example model, not a certifiable appliance.
 - No filled mains voltage or element wattage, so electrical-load analysis cannot close.
-- No crumb-tray or chassis part.
-- Safety is the ThermalCutoff trip (`overheat_detected` → Error) and Auto Shutoff on that part. Power is typed on Toaster / HeatingElement with no filled watts.
+- Thermal cutoff threshold stays an unfilled type; `SafetyCheck` compares `T_elem` to `T_cutoff` without a product number.
+- Power is typed on Toaster / HeatingElement with no filled watts.
 - Product-line variants are out of scope.
 
 ## 9. Views in this folder

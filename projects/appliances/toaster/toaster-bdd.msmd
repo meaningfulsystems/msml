@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 960,
-      "height": 660,
+      "width": 1020,
+      "height": 720,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -166,7 +166,7 @@
         "model_ref": "Toaster.ThermalCutoff",
         "layout": {
           "x": 20,
-          "y": 490,
+          "y": 500,
           "width": 220,
           "height": 130,
           "z_index": 1
@@ -189,8 +189,8 @@
         "id": "block-browning",
         "model_ref": "Toaster.BrowningControl",
         "layout": {
-          "x": 700,
-          "y": 490,
+          "x": 760,
+          "y": 500,
           "width": 220,
           "height": 130,
           "z_index": 1
@@ -206,6 +206,54 @@
             "bold": false,
             "color": "#000000"
           }
+        }
+      },
+      {
+        "type": "block",
+        "id": "block-crumb",
+        "model_ref": "Toaster.CrumbTray",
+        "layout": {
+          "x": 270,
+          "y": 500,
+          "width": 200,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "border_width": 2,
+          "border_style": "solid",
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "fill_color": "#E0F2F1",
+          "border_color": "#00695C"
+        }
+      },
+      {
+        "type": "block",
+        "id": "block-chassis",
+        "model_ref": "Toaster.Chassis",
+        "layout": {
+          "x": 500,
+          "y": 500,
+          "width": 220,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "border_width": 2,
+          "border_style": "solid",
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "fill_color": "#ECEFF1",
+          "border_color": "#455A64"
         }
       }
     ],
@@ -343,11 +391,11 @@
           },
           {
             "x": 8,
-            "y": 555
+            "y": 560
           },
           {
             "x": 20,
-            "y": 555
+            "y": 560
           }
         ],
         "style": {
@@ -368,16 +416,16 @@
             "y": 170
           },
           {
-            "x": 948,
+            "x": 1008,
             "y": 170
           },
           {
-            "x": 948,
-            "y": 555
+            "x": 1008,
+            "y": 565
           },
           {
-            "x": 920,
-            "y": 555
+            "x": 980,
+            "y": 565
           }
         ],
         "style": {
@@ -395,7 +443,7 @@
         "waypoints": [
           {
             "x": 120,
-            "y": 490
+            "y": 500
           },
           {
             "x": 120,
@@ -420,16 +468,16 @@
         "id": "a-browning-timer",
         "waypoints": [
           {
-            "x": 810,
-            "y": 490
+            "x": 870,
+            "y": 500
           },
           {
-            "x": 810,
-            "y": 408
+            "x": 870,
+            "y": 420
           },
           {
             "x": 350,
-            "y": 408
+            "y": 420
           },
           {
             "x": 350,
@@ -449,12 +497,68 @@
           }
         },
         "relationship_ref": "bdd-toaster.a-browning-timer"
+      },
+      {
+        "id": "c-toaster-crumb",
+        "waypoints": [
+          {
+            "x": 462,
+            "y": 170
+          },
+          {
+            "x": 462,
+            "y": 200
+          },
+          {
+            "x": 462,
+            "y": 500
+          }
+        ],
+        "style": {
+          "line_color": "#00695C",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 10
+        },
+        "relationship_ref": "bdd-toaster.c-toaster-crumb"
+      },
+      {
+        "id": "c-toaster-chassis",
+        "waypoints": [
+          {
+            "x": 650,
+            "y": 170
+          },
+          {
+            "x": 650,
+            "y": 200
+          },
+          {
+            "x": 695,
+            "y": 200
+          },
+          {
+            "x": 695,
+            "y": 500
+          }
+        ],
+        "style": {
+          "line_color": "#455A64",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 10
+        },
+        "relationship_ref": "bdd-toaster.c-toaster-chassis"
       }
     ],
     "metadata": {
       "author": "Andrew Fried",
       "created": "2026-05-16",
-      "modified": "2026-05-17",
+      "modified": "2026-08-21",
       "tags": [
         "toaster",
         "bdd"
