@@ -211,7 +211,11 @@
         },
         "style": {
           "line_color": "#CC4400",
-          "line_width": 1.5
+          "line_width": 1.5,
+          "label_offset": {
+            "x": 90,
+            "y": 0
+          }
         },
         "relationship_ref": "sd-toaster.m3"
       },
@@ -233,7 +237,11 @@
         },
         "style": {
           "line_color": "#CC4400",
-          "line_width": 1.5
+          "line_width": 1.5,
+          "label_offset": {
+            "x": 90,
+            "y": 0
+          }
         },
         "relationship_ref": "sd-toaster.m5"
       },

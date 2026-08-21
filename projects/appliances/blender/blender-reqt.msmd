@@ -1,0 +1,265 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "blender-model.msml"
+  ],
+  "diagram": {
+    "type": "requirement_table",
+    "id": "reqt-blender",
+    "name": "Blender Requirements Table",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1280,
+      "height": 620,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "table": {
+      "layout": {
+        "x": 20,
+        "y": 20,
+        "width": 1240,
+        "height": 580
+      },
+      "header_height": 34,
+      "row_height": 42,
+      "header_fill": "#2E4057",
+      "header_color": "#FFFFFF",
+      "alt_fill": "#F4F7FB",
+      "row_fill": "#FFFFFF",
+      "grid_color": "#5A6570",
+      "text_color": "#1A1A1A",
+      "columns": [
+        {
+          "key": "req_id",
+          "label": "Id",
+          "width": 84
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "width": 160
+        },
+        {
+          "key": "kind",
+          "label": "Kind",
+          "width": 130
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "width": 72
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "width": 84
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "width": 380
+        },
+        {
+          "key": "satisfied_by",
+          "label": "Satisfied By",
+          "width": 180
+        },
+        {
+          "key": "verified_by",
+          "label": "Verified By",
+          "width": 150
+        }
+      ]
+    },
+    "elements": [
+      {
+        "type": "requirement",
+        "id": "row-req-001",
+        "model_ref": "Blender.lidInterlockRequirement",
+        "layout": {
+          "x": 20,
+          "y": 54,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-002",
+        "model_ref": "Blender.motorControlRequirement",
+        "layout": {
+          "x": 20,
+          "y": 96,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-003",
+        "model_ref": "Blender.smoothnessDetectionRequirement",
+        "layout": {
+          "x": 20,
+          "y": 138,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-004",
+        "model_ref": "Blender.powerRequirement",
+        "layout": {
+          "x": 20,
+          "y": 180,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-005",
+        "model_ref": "Blender.userControlsRequirement",
+        "layout": {
+          "x": 20,
+          "y": 222,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-006",
+        "model_ref": "Blender.cleaningRequirement",
+        "layout": {
+          "x": 20,
+          "y": 264,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-007",
+        "model_ref": "Blender.serviceRequirement",
+        "layout": {
+          "x": 20,
+          "y": 306,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-008",
+        "model_ref": "Blender.motorSpeedRequirement",
+        "layout": {
+          "x": 20,
+          "y": 348,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-009",
+        "model_ref": "Blender.interlockLatencyRequirement",
+        "layout": {
+          "x": 20,
+          "y": 390,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-010",
+        "model_ref": "Blender.overcurrentProtectionRequirement",
+        "layout": {
+          "x": 20,
+          "y": 432,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-011",
+        "model_ref": "Blender.smoothnessThresholdRequirement",
+        "layout": {
+          "x": 20,
+          "y": 474,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-012",
+        "model_ref": "Blender.noiseRequirement",
+        "layout": {
+          "x": 20,
+          "y": 516,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-013",
+        "model_ref": "Blender.containerSeatRequirement",
+        "layout": {
+          "x": 20,
+          "y": 558,
+          "width": 1240,
+          "height": 42,
+          "z_index": 1
+        }
+      }
+    ],
+    "relationships": [],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "blender",
+        "requirement-table"
+      ]
+    }
+  }
+}

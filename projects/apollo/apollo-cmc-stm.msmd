@@ -1,0 +1,522 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "state_machine",
+    "id": "stm-apollo-cmc",
+    "name": "CMC ENTRY — P61–P67 · not LGC landing",
+    "context": "Apollo",
+    "subject_ref": "Apollo.AGC_CM",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1440,
+      "height": 420,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "initial_pseudostate",
+        "id": "init-cmc",
+        "model_ref": "Apollo.State.CMC.Start",
+        "layout": {
+          "x": 16,
+          "y": 86,
+          "width": 16,
+          "height": 16,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#1565C0"
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p61",
+        "model_ref": "Apollo.State.CMC.P61",
+        "layout": {
+          "x": 50,
+          "y": 50,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p62",
+        "model_ref": "Apollo.State.CMC.P62",
+        "layout": {
+          "x": 260,
+          "y": 50,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p63",
+        "model_ref": "Apollo.State.CMC.P63",
+        "layout": {
+          "x": 470,
+          "y": 50,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p64",
+        "model_ref": "Apollo.State.CMC.P64",
+        "layout": {
+          "x": 680,
+          "y": 50,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p65",
+        "model_ref": "Apollo.State.CMC.P65",
+        "layout": {
+          "x": 930,
+          "y": 16,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p66",
+        "model_ref": "Apollo.State.CMC.P66",
+        "layout": {
+          "x": 930,
+          "y": 140,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "c-p67",
+        "model_ref": "Apollo.State.CMC.P67",
+        "layout": {
+          "x": 1180,
+          "y": 70,
+          "width": 170,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-pnum",
+        "model_ref": "Apollo.Note.PNumbers",
+        "layout": {
+          "x": 50,
+          "y": 280,
+          "width": 420,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-alarm",
+        "model_ref": "Apollo.Note.ProgramAlarm",
+        "layout": {
+          "x": 490,
+          "y": 280,
+          "width": 460,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-lvdc",
+        "model_ref": "Apollo.Note.AgcLvdc",
+        "layout": {
+          "x": 970,
+          "y": 280,
+          "width": 430,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "tc-init",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.t-init",
+        "waypoints": [
+          {
+            "x": 32,
+            "y": 94
+          },
+          {
+            "x": 50,
+            "y": 94
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-12",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P61-P62",
+        "waypoints": [
+          {
+            "x": 220,
+            "y": 95
+          },
+          {
+            "x": 260,
+            "y": 95
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-23",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P62-P63",
+        "waypoints": [
+          {
+            "x": 430,
+            "y": 95
+          },
+          {
+            "x": 470,
+            "y": 95
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-34",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P63-P64",
+        "waypoints": [
+          {
+            "x": 640,
+            "y": 95
+          },
+          {
+            "x": 680,
+            "y": 95
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-45",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P64-P65",
+        "waypoints": [
+          {
+            "x": 850,
+            "y": 70
+          },
+          {
+            "x": 930,
+            "y": 50
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-46",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P64-P66",
+        "waypoints": [
+          {
+            "x": 850,
+            "y": 120
+          },
+          {
+            "x": 930,
+            "y": 180
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-47",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P64-P67",
+        "waypoints": [
+          {
+            "x": 850,
+            "y": 95
+          },
+          {
+            "x": 890,
+            "y": 95
+          },
+          {
+            "x": 890,
+            "y": 250
+          },
+          {
+            "x": 1265,
+            "y": 250
+          },
+          {
+            "x": 1265,
+            "y": 160
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-57",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P65-P67",
+        "waypoints": [
+          {
+            "x": 1100,
+            "y": 61
+          },
+          {
+            "x": 1180,
+            "y": 90
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      },
+      {
+        "id": "tc-67",
+        "type": "transition",
+        "relationship_ref": "stm-cmc.P66-P67",
+        "waypoints": [
+          {
+            "x": 1100,
+            "y": 185
+          },
+          {
+            "x": 1180,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "line_color": "#1565C0"
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo",
+        "cmc",
+        "stm"
+      ]
+    }
+  }
+}

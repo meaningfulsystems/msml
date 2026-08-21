@@ -1,0 +1,354 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "blender-model.msml"
+  ],
+  "diagram": {
+    "type": "requirement",
+    "id": "req-blender",
+    "name": "Blender Requirements",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1300,
+      "height": 720,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "requirement",
+        "id": "req-req-001",
+        "model_ref": "Blender.lidInterlockRequirement",
+        "layout": {
+          "x": 20,
+          "y": 24,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-002",
+        "model_ref": "Blender.motorControlRequirement",
+        "layout": {
+          "x": 336,
+          "y": 24,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-003",
+        "model_ref": "Blender.smoothnessDetectionRequirement",
+        "layout": {
+          "x": 652,
+          "y": 24,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-004",
+        "model_ref": "Blender.powerRequirement",
+        "layout": {
+          "x": 968,
+          "y": 24,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-005",
+        "model_ref": "Blender.userControlsRequirement",
+        "layout": {
+          "x": 20,
+          "y": 190,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-006",
+        "model_ref": "Blender.cleaningRequirement",
+        "layout": {
+          "x": 336,
+          "y": 190,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-007",
+        "model_ref": "Blender.serviceRequirement",
+        "layout": {
+          "x": 652,
+          "y": 190,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-008",
+        "model_ref": "Blender.motorSpeedRequirement",
+        "layout": {
+          "x": 968,
+          "y": 190,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-009",
+        "model_ref": "Blender.interlockLatencyRequirement",
+        "layout": {
+          "x": 20,
+          "y": 356,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-010",
+        "model_ref": "Blender.overcurrentProtectionRequirement",
+        "layout": {
+          "x": 336,
+          "y": 356,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-011",
+        "model_ref": "Blender.smoothnessThresholdRequirement",
+        "layout": {
+          "x": 652,
+          "y": 356,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-012",
+        "model_ref": "Blender.noiseRequirement",
+        "layout": {
+          "x": 968,
+          "y": 356,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-req-013",
+        "model_ref": "Blender.containerSeatRequirement",
+        "layout": {
+          "x": 20,
+          "y": 522,
+          "width": 300,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "blender",
+        "requirements"
+      ]
+    }
+  }
+}

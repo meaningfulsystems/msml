@@ -1,0 +1,186 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
+  "diagram": {
+    "type": "allocation_table",
+    "id": "alloc-toaster",
+    "name": "Toaster Allocation Table",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 860,
+      "height": 810,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "table": {
+      "layout": {
+        "x": 20,
+        "y": 20,
+        "width": 820,
+        "height": 770
+      },
+      "header_height": 34,
+      "row_height": 32,
+      "header_fill": "#2E4057",
+      "header_color": "#FFFFFF",
+      "alt_fill": "#F4F7FB",
+      "row_fill": "#FFFFFF",
+      "grid_color": "#5A6570",
+      "text_color": "#1A1A1A",
+      "columns": [
+        {
+          "key": "source",
+          "label": "Allocated From",
+          "width": 210
+        },
+        {
+          "key": "source_type",
+          "label": "From Type",
+          "width": 120
+        },
+        {
+          "key": "target",
+          "label": "Allocated To",
+          "width": 210
+        },
+        {
+          "key": "target_type",
+          "label": "To Type",
+          "width": 120
+        },
+        {
+          "key": "kind",
+          "label": "Kind",
+          "width": 160
+        }
+      ]
+    },
+    "elements": [],
+    "relationships": [
+      {
+        "id": "row-insert-carriage",
+        "relationship_ref": "alloc-toaster.insert-carriage"
+      },
+      {
+        "id": "row-lever-press",
+        "relationship_ref": "alloc-toaster.lever-press"
+      },
+      {
+        "id": "row-start-timer",
+        "relationship_ref": "alloc-toaster.start-timer"
+      },
+      {
+        "id": "row-heat-element",
+        "relationship_ref": "alloc-toaster.heat-element"
+      },
+      {
+        "id": "row-pop-carriage",
+        "relationship_ref": "alloc-toaster.pop-carriage"
+      },
+      {
+        "id": "row-toasting-toaster",
+        "relationship_ref": "alloc-toaster.toasting-toaster"
+      },
+      {
+        "id": "row-error-cutoff",
+        "relationship_ref": "alloc-toaster.error-cutoff"
+      },
+      {
+        "id": "row-uc-toast",
+        "relationship_ref": "alloc-toaster.uc-toast"
+      },
+      {
+        "id": "row-uc-heat",
+        "relationship_ref": "alloc-toaster.uc-heat"
+      },
+      {
+        "id": "row-req-toast-safety",
+        "relationship_ref": "alloc-toaster.req-toast-safety"
+      },
+      {
+        "id": "row-req-electrical",
+        "relationship_ref": "alloc-toaster.req-electrical"
+      },
+      {
+        "id": "row-req-browning",
+        "relationship_ref": "alloc-toaster.req-browning"
+      },
+      {
+        "id": "row-req-timing",
+        "relationship_ref": "alloc-toaster.req-timing"
+      },
+      {
+        "id": "row-req-ui",
+        "relationship_ref": "alloc-toaster.req-ui"
+      },
+      {
+        "id": "row-req-clean",
+        "relationship_ref": "alloc-toaster.req-clean"
+      },
+      {
+        "id": "row-req-service",
+        "relationship_ref": "alloc-toaster.req-service"
+      },
+      {
+        "id": "row-req-power",
+        "relationship_ref": "alloc-toaster.req-power"
+      },
+      {
+        "id": "row-req-surface",
+        "relationship_ref": "alloc-toaster.req-surface"
+      },
+      {
+        "id": "row-req-cutoff",
+        "relationship_ref": "alloc-toaster.req-cutoff"
+      },
+      {
+        "id": "row-req-levels",
+        "relationship_ref": "alloc-toaster.req-levels"
+      },
+      {
+        "id": "row-req-carriage",
+        "relationship_ref": "alloc-toaster.req-carriage"
+      },
+      {
+        "id": "row-req-crumb-force",
+        "relationship_ref": "alloc-toaster.req-crumb-force"
+      },
+      {
+        "id": "row-req-cycle",
+        "relationship_ref": "alloc-toaster.req-cycle"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "toaster",
+        "allocation-table"
+      ]
+    }
+  }
+}

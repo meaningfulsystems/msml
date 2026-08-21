@@ -1,0 +1,484 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "activity",
+    "id": "act-ebike",
+    "name": "Start-Ride Cycle",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 560,
+      "height": 690,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "initial_node",
+        "id": "init",
+        "model_ref": "ElectricBike.Behavior.Ride.Start",
+        "layout": {
+          "x": 250,
+          "y": 16,
+          "width": 20,
+          "height": 20,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-power",
+        "model_ref": "ElectricBike.Action.powerOnBike",
+        "display_name": "Power On",
+        "layout": {
+          "x": 170,
+          "y": 60,
+          "width": 180,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-select",
+        "model_ref": "ElectricBike.Action.selectAssist",
+        "display_name": "Select Assist",
+        "layout": {
+          "x": 170,
+          "y": 140,
+          "width": 180,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-pedal",
+        "model_ref": "ElectricBike.Action.pedalAndThrottle",
+        "display_name": "Pedal (EPAC)",
+        "layout": {
+          "x": 170,
+          "y": 220,
+          "width": 180,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-torque",
+        "model_ref": "ElectricBike.Action.deliverTorque",
+        "display_name": "Deliver Torque",
+        "layout": {
+          "x": 170,
+          "y": 300,
+          "width": 180,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "decision_node",
+        "id": "dec",
+        "model_ref": "ElectricBike.Behavior.Ride.RideOrCharge",
+        "display_name": "brake?",
+        "layout": {
+          "x": 236,
+          "y": 380,
+          "width": 48,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-brake",
+        "model_ref": "ElectricBike.Action.applyBrake",
+        "display_name": "Apply Brake",
+        "layout": {
+          "x": 170,
+          "y": 480,
+          "width": 180,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "action",
+        "id": "act-inhibit",
+        "model_ref": "ElectricBike.Action.inhibitMotor",
+        "display_name": "Inhibit Motor",
+        "layout": {
+          "x": 170,
+          "y": 560,
+          "width": 180,
+          "height": 48,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          },
+          "corner_radius": 10
+        }
+      },
+      {
+        "type": "activity_final_node",
+        "id": "final-ride",
+        "model_ref": "ElectricBike.Behavior.Ride.RideFinal",
+        "layout": {
+          "x": 249,
+          "y": 640,
+          "width": 22,
+          "height": 22,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000",
+          "border_color": "#000000"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "f1",
+        "relationship_ref": "act-ebike.f1",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 36
+          },
+          {
+            "x": 260,
+            "y": 60
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f2",
+        "relationship_ref": "act-ebike.f2",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 108
+          },
+          {
+            "x": 260,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f3",
+        "relationship_ref": "act-ebike.f3",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 188
+          },
+          {
+            "x": 260,
+            "y": 220
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f4",
+        "relationship_ref": "act-ebike.f4",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 268
+          },
+          {
+            "x": 260,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f5",
+        "relationship_ref": "act-ebike.f5",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 348
+          },
+          {
+            "x": 260,
+            "y": 380
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f6",
+        "relationship_ref": "act-ebike.f6",
+        "waypoints": [
+          {
+            "x": 284,
+            "y": 404
+          },
+          {
+            "x": 500,
+            "y": 404
+          },
+          {
+            "x": 500,
+            "y": 244
+          },
+          {
+            "x": 350,
+            "y": 244
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -16
+          }
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f7",
+        "relationship_ref": "act-ebike.f7",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 428
+          },
+          {
+            "x": 260,
+            "y": 480
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f8",
+        "relationship_ref": "act-ebike.f8",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 528
+          },
+          {
+            "x": 260,
+            "y": 560
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      },
+      {
+        "id": "f9",
+        "relationship_ref": "act-ebike.f9",
+        "waypoints": [
+          {
+            "x": 260,
+            "y": 608
+          },
+          {
+            "x": 260,
+            "y": 640
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "filled",
+          "corner_radius": 8
+        },
+        "type": "control_flow"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "act"
+      ]
+    }
+  }
+}

@@ -373,6 +373,141 @@
         "name": "lidOpening",
         "owner_ref": "Blender.Tamper",
         "direction": "inout"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.lidInterlockRequirement",
+        "name": "lid interlock",
+        "req_id": "REQ-001",
+        "text": "The motor shall not run unless the lid is fully seated and locked.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.motorControlRequirement",
+        "name": "motor control",
+        "req_id": "REQ-002",
+        "text": "The control panel shall start, pause, and stop the motor in response to user commands within 200 ms.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.smoothnessDetectionRequirement",
+        "name": "smoothness detection",
+        "req_id": "REQ-003",
+        "text": "The smoothness sensor shall detect blend completion and signal the control panel when the threshold is reached.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.powerRequirement",
+        "name": "power rating",
+        "req_id": "REQ-004",
+        "text": "The blender shall operate within its rated power envelope under all normal blending loads.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.userControlsRequirement",
+        "name": "user controls",
+        "req_id": "REQ-005",
+        "text": "The user shall be able to start, pause, and stop blending without tools.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.cleaningRequirement",
+        "name": "cleaning",
+        "req_id": "REQ-006",
+        "text": "The container, lid, and blade assembly shall be dishwasher-safe or washable under running water.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.serviceRequirement",
+        "name": "serviceability",
+        "req_id": "REQ-007",
+        "text": "The blender shall be serviceable by a qualified technician without specialized equipment.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.motorSpeedRequirement",
+        "name": "motor speed",
+        "req_id": "REQ-008",
+        "text": "The motor shall maintain set speed within ±10% across all normal blending loads.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.interlockLatencyRequirement",
+        "name": "interlock latency",
+        "req_id": "REQ-009",
+        "text": "The lid interlock shall disable the motor within 50 ms of lid removal detection.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.overcurrentProtectionRequirement",
+        "name": "overcurrent protection",
+        "req_id": "REQ-010",
+        "text": "The motor circuit shall include overcurrent protection that cuts power before motor damage occurs.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.smoothnessThresholdRequirement",
+        "name": "smoothness threshold",
+        "req_id": "REQ-011",
+        "text": "The smoothness sensor threshold shall be configurable to support at least three blend program profiles.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.noiseRequirement",
+        "name": "noise",
+        "req_id": "REQ-012",
+        "text": "The blender shall operate below 85 dB(A) at the operator position during normal use.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "Blender.containerSeatRequirement",
+        "name": "container seat",
+        "req_id": "REQ-013",
+        "text": "The container shall lock to the motor base with a positive mechanical engagement requiring deliberate user action to release.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "class",
+        "id": "Blender.Requirements",
+        "name": "Requirements"
       }
     ],
     "relationships": [
@@ -562,6 +697,188 @@
         "target": "Blender.State.SmoothieProgram.Off",
         "trigger": "off switch",
         "effect": "stop motor"
+      },
+      {
+        "id": "sat-blender.interlock",
+        "type": "satisfy",
+        "source": "Blender.ControlPanel",
+        "target": "Blender.lidInterlockRequirement"
+      },
+      {
+        "id": "allocateInterlockToControlPanel",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateInterlockToControlPanel",
+        "source": "Blender.lidInterlockRequirement",
+        "target": "Blender.ControlPanel"
+      },
+      {
+        "id": "sat-blender.motor-control",
+        "type": "satisfy",
+        "source": "Blender.Motor",
+        "target": "Blender.motorControlRequirement"
+      },
+      {
+        "id": "allocateTorqueToMotor",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateTorqueToMotor",
+        "source": "Blender.motorControlRequirement",
+        "target": "Blender.Motor"
+      },
+      {
+        "id": "sat-blender.smoothness",
+        "type": "satisfy",
+        "source": "Blender.SmoothieCompleteSensor",
+        "target": "Blender.smoothnessDetectionRequirement"
+      },
+      {
+        "id": "allocateSmoothnessToSensor",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateSmoothnessToSensor",
+        "source": "Blender.smoothnessDetectionRequirement",
+        "target": "Blender.SmoothieCompleteSensor"
+      },
+      {
+        "id": "sat-blender.power",
+        "type": "satisfy",
+        "source": "Blender.Motor",
+        "target": "Blender.powerRequirement"
+      },
+      {
+        "id": "alloc-blender.req-power",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-power",
+        "source": "Blender.powerRequirement",
+        "target": "Blender.Motor"
+      },
+      {
+        "id": "sat-blender.ui",
+        "type": "satisfy",
+        "source": "Blender.ControlPanel",
+        "target": "Blender.userControlsRequirement"
+      },
+      {
+        "id": "allocateInterfaceToControlPanel",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateInterfaceToControlPanel",
+        "source": "Blender.userControlsRequirement",
+        "target": "Blender.ControlPanel"
+      },
+      {
+        "id": "sat-blender.clean",
+        "type": "satisfy",
+        "source": "Blender.Container",
+        "target": "Blender.cleaningRequirement"
+      },
+      {
+        "id": "allocateCleaningToContainer",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateCleaningToContainer",
+        "source": "Blender.cleaningRequirement",
+        "target": "Blender.Container"
+      },
+      {
+        "id": "sat-blender.service",
+        "type": "satisfy",
+        "source": "Blender",
+        "target": "Blender.serviceRequirement"
+      },
+      {
+        "id": "alloc-blender.req-service",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-service",
+        "source": "Blender.serviceRequirement",
+        "target": "Blender"
+      },
+      {
+        "id": "sat-blender.speed",
+        "type": "satisfy",
+        "source": "Blender.Motor",
+        "target": "Blender.motorSpeedRequirement"
+      },
+      {
+        "id": "alloc-blender.req-speed",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-speed",
+        "source": "Blender.motorSpeedRequirement",
+        "target": "Blender.Motor"
+      },
+      {
+        "id": "sat-blender.interlock-latency",
+        "type": "satisfy",
+        "source": "Blender.ControlPanel",
+        "target": "Blender.interlockLatencyRequirement"
+      },
+      {
+        "id": "alloc-blender.req-interlock-latency",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-interlock-latency",
+        "source": "Blender.interlockLatencyRequirement",
+        "target": "Blender.ControlPanel"
+      },
+      {
+        "id": "sat-blender.overcurrent",
+        "type": "satisfy",
+        "source": "Blender.MotorBase",
+        "target": "Blender.overcurrentProtectionRequirement"
+      },
+      {
+        "id": "allocateProtectionToMotorBase",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateProtectionToMotorBase",
+        "source": "Blender.overcurrentProtectionRequirement",
+        "target": "Blender.MotorBase"
+      },
+      {
+        "id": "sat-blender.threshold",
+        "type": "satisfy",
+        "source": "Blender.SmoothieCompleteSensor",
+        "target": "Blender.smoothnessThresholdRequirement"
+      },
+      {
+        "id": "alloc-blender.req-threshold",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-threshold",
+        "source": "Blender.smoothnessThresholdRequirement",
+        "target": "Blender.SmoothieCompleteSensor"
+      },
+      {
+        "id": "sat-blender.noise",
+        "type": "satisfy",
+        "source": "Blender.Motor",
+        "target": "Blender.noiseRequirement"
+      },
+      {
+        "id": "alloc-blender.req-noise",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-noise",
+        "source": "Blender.noiseRequirement",
+        "target": "Blender.Motor"
+      },
+      {
+        "id": "sat-blender.seat",
+        "type": "satisfy",
+        "source": "Blender.Container",
+        "target": "Blender.containerSeatRequirement"
+      },
+      {
+        "id": "alloc-blender.req-seat",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "alloc-blender.req-seat",
+        "source": "Blender.containerSeatRequirement",
+        "target": "Blender.Container"
       }
     ]
   }

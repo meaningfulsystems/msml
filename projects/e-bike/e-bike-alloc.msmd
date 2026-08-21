@@ -1,0 +1,186 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "allocation_table",
+    "id": "alloc-ebike",
+    "name": "Electric Bike Allocation Table",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 960,
+      "height": 820,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "table": {
+      "layout": {
+        "x": 20,
+        "y": 20,
+        "width": 920,
+        "height": 780
+      },
+      "header_height": 34,
+      "row_height": 32,
+      "header_fill": "#2E4057",
+      "header_color": "#FFFFFF",
+      "alt_fill": "#F4F7FB",
+      "row_fill": "#FFFFFF",
+      "grid_color": "#5A6570",
+      "text_color": "#1A1A1A",
+      "columns": [
+        {
+          "key": "source",
+          "label": "Allocated From",
+          "width": 230
+        },
+        {
+          "key": "source_type",
+          "label": "From Type",
+          "width": 120
+        },
+        {
+          "key": "target",
+          "label": "Allocated To",
+          "width": 210
+        },
+        {
+          "key": "target_type",
+          "label": "To Type",
+          "width": 120
+        },
+        {
+          "key": "kind",
+          "label": "Kind",
+          "width": 240
+        }
+      ]
+    },
+    "elements": [],
+    "relationships": [
+      {
+        "id": "row-safety",
+        "relationship_ref": "allocateSafetyToBrakes"
+      },
+      {
+        "id": "row-range",
+        "relationship_ref": "allocateRangeToBattery"
+      },
+      {
+        "id": "row-assist",
+        "relationship_ref": "allocateAssistToController"
+      },
+      {
+        "id": "row-charge",
+        "relationship_ref": "allocateChargeToBms"
+      },
+      {
+        "id": "row-override",
+        "relationship_ref": "alloc-ebike.alloc-override-brakes"
+      },
+      {
+        "id": "row-cutoff",
+        "relationship_ref": "alloc-ebike.alloc-cutoff-battery"
+      },
+      {
+        "id": "row-display",
+        "relationship_ref": "alloc-ebike.alloc-display-hmi"
+      },
+      {
+        "id": "row-struct",
+        "relationship_ref": "alloc-ebike.alloc-struct-frame"
+      },
+      {
+        "id": "row-act-brake",
+        "relationship_ref": "alloc-ebike.alloc-action-brake"
+      },
+      {
+        "id": "row-act-inhibit",
+        "relationship_ref": "alloc-ebike.alloc-action-inhibit"
+      },
+      {
+        "id": "row-act-torque",
+        "relationship_ref": "alloc-ebike.alloc-action-torque"
+      },
+      {
+        "id": "row-act-charge",
+        "relationship_ref": "alloc-ebike.alloc-action-charge"
+      },
+      {
+        "id": "row-safety-ctl",
+        "relationship_ref": "allocateSafetyToController"
+      },
+      {
+        "id": "row-safety-bms",
+        "relationship_ref": "allocateSafetyToBms"
+      },
+      {
+        "id": "row-safety-sens",
+        "relationship_ref": "allocateSafetyToSensors"
+      },
+      {
+        "id": "row-stop",
+        "relationship_ref": "alloc-ebike.alloc-cutoff-controller"
+      },
+      {
+        "id": "row-stop-cadence",
+        "relationship_ref": "alloc-ebike.alloc-cutoff-cadence"
+      },
+      {
+        "id": "row-stop-wss",
+        "relationship_ref": "alloc-ebike.alloc-cutoff-wss"
+      },
+      {
+        "id": "row-light",
+        "relationship_ref": "alloc-ebike.alloc-light-hmi"
+      },
+      {
+        "id": "row-assist-wss",
+        "relationship_ref": "allocateAssistToWheelSpeed"
+      },
+      {
+        "id": "row-walk",
+        "relationship_ref": "allocateWalkToController"
+      },
+      {
+        "id": "row-power",
+        "relationship_ref": "allocatePowerToHub"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "alloc"
+      ]
+    }
+  }
+}

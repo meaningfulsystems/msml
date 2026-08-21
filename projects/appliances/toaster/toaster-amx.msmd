@@ -1,0 +1,182 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
+  "diagram": {
+    "type": "allocation_matrix",
+    "id": "amx-toaster",
+    "name": "Toaster Allocation Matrix",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 980,
+      "height": 460,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "matrix": {
+      "layout": {
+        "x": 20,
+        "y": 20,
+        "width": 940,
+        "height": 420
+      },
+      "row_header_width": 180,
+      "col_header_height": 68,
+      "cell_width": 120,
+      "cell_height": 36,
+      "header_fill": "#2E4057",
+      "header_color": "#FFFFFF",
+      "mark_fill": "#1B5E20",
+      "empty_fill": "#FFFFFF",
+      "alt_fill": "#F4F7FB",
+      "grid_color": "#5A6570",
+      "corner_label": "«allocate»"
+    },
+    "elements": [
+      {
+        "type": "action",
+        "id": "row-insert",
+        "model_ref": "Toaster.ToastingActivity.InsertBread",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 88, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "action",
+        "id": "row-lever",
+        "model_ref": "Toaster.ToastingActivity.PressLever",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 124, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "action",
+        "id": "row-timer",
+        "model_ref": "Toaster.ToastingActivity.StartTimer",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 160, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "action",
+        "id": "row-heat",
+        "model_ref": "Toaster.ToastingActivity.HeatElement",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 196, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "action",
+        "id": "row-pop",
+        "model_ref": "Toaster.ToastingActivity.PopCarriage",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 232, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "state",
+        "id": "row-toasting",
+        "model_ref": "Toaster.State.ToastingCycle.Toasting",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 268, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "state",
+        "id": "row-error",
+        "model_ref": "Toaster.State.ToastingCycle.Error",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 304, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "use_case",
+        "id": "row-uc-toast",
+        "model_ref": "Toaster.UC.ToastBread",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 340, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "use_case",
+        "id": "row-uc-heat",
+        "model_ref": "Toaster.UC.ActivateHeating",
+        "matrix_role": "row",
+        "layout": {"x": 20, "y": 376, "width": 180, "height": 36, "z_index": 1}
+      },
+      {
+        "type": "block",
+        "id": "col-toaster",
+        "model_ref": "Toaster",
+        "matrix_role": "column",
+        "layout": {"x": 200, "y": 20, "width": 120, "height": 68, "z_index": 1}
+      },
+      {
+        "type": "block",
+        "id": "col-element",
+        "model_ref": "Toaster.HeatingElement",
+        "matrix_role": "column",
+        "layout": {"x": 320, "y": 20, "width": 120, "height": 68, "z_index": 1}
+      },
+      {
+        "type": "block",
+        "id": "col-timer",
+        "model_ref": "Toaster.Timer",
+        "matrix_role": "column",
+        "layout": {"x": 440, "y": 20, "width": 120, "height": 68, "z_index": 1}
+      },
+      {
+        "type": "block",
+        "id": "col-carriage",
+        "model_ref": "Toaster.Carriage",
+        "matrix_role": "column",
+        "layout": {"x": 560, "y": 20, "width": 120, "height": 68, "z_index": 1}
+      },
+      {
+        "type": "block",
+        "id": "col-lever",
+        "model_ref": "Toaster.Lever",
+        "matrix_role": "column",
+        "layout": {"x": 680, "y": 20, "width": 120, "height": 68, "z_index": 1}
+      },
+      {
+        "type": "block",
+        "id": "col-cutoff",
+        "model_ref": "Toaster.ThermalCutoff",
+        "matrix_role": "column",
+        "layout": {"x": 800, "y": 20, "width": 120, "height": 68, "z_index": 1}
+      }
+    ],
+    "relationships": [
+      {"id": "cell-insert", "relationship_ref": "alloc-toaster.insert-carriage"},
+      {"id": "cell-lever", "relationship_ref": "alloc-toaster.lever-press"},
+      {"id": "cell-timer", "relationship_ref": "alloc-toaster.start-timer"},
+      {"id": "cell-heat", "relationship_ref": "alloc-toaster.heat-element"},
+      {"id": "cell-pop", "relationship_ref": "alloc-toaster.pop-carriage"},
+      {"id": "cell-toasting", "relationship_ref": "alloc-toaster.toasting-toaster"},
+      {"id": "cell-error", "relationship_ref": "alloc-toaster.error-cutoff"},
+      {"id": "cell-uc-toast", "relationship_ref": "alloc-toaster.uc-toast"},
+      {"id": "cell-uc-heat", "relationship_ref": "alloc-toaster.uc-heat"}
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": ["toaster", "allocation-matrix"]
+    }
+  }
+}

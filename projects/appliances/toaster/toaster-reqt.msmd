@@ -1,0 +1,277 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "toaster-model.msml"
+  ],
+  "diagram": {
+    "type": "requirement_table",
+    "id": "reqt-toaster",
+    "name": "Toaster Requirements Table",
+    "context": "Appliance",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1160,
+      "height": 634,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "table": {
+      "layout": {
+        "x": 20,
+        "y": 20,
+        "width": 1120,
+        "height": 594
+      },
+      "header_height": 34,
+      "row_height": 40,
+      "header_fill": "#2E4057",
+      "header_color": "#FFFFFF",
+      "alt_fill": "#F4F7FB",
+      "row_fill": "#FFFFFF",
+      "grid_color": "#5A6570",
+      "text_color": "#1A1A1A",
+      "columns": [
+        {
+          "key": "req_id",
+          "label": "Id",
+          "width": 84
+        },
+        {
+          "key": "name",
+          "label": "Name",
+          "width": 150
+        },
+        {
+          "key": "kind",
+          "label": "Kind",
+          "width": 120
+        },
+        {
+          "key": "priority",
+          "label": "Priority",
+          "width": 72
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "width": 84
+        },
+        {
+          "key": "text",
+          "label": "Text",
+          "width": 300
+        },
+        {
+          "key": "satisfied_by",
+          "label": "Satisfied By",
+          "width": 150
+        },
+        {
+          "key": "verified_by",
+          "label": "Verified By",
+          "width": 160
+        }
+      ]
+    },
+    "elements": [
+      {
+        "type": "requirement",
+        "id": "row-req-001",
+        "model_ref": "Toaster.toastSafetyRequirement",
+        "layout": {
+          "x": 20,
+          "y": 54,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-002",
+        "model_ref": "Toaster.electricalSafetyRequirement",
+        "layout": {
+          "x": 20,
+          "y": 94,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-003",
+        "model_ref": "Toaster.browningRequirement",
+        "layout": {
+          "x": 20,
+          "y": 134,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-004",
+        "model_ref": "Toaster.timingRequirement",
+        "layout": {
+          "x": 20,
+          "y": 174,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-005",
+        "model_ref": "Toaster.userInterfaceRequirement",
+        "layout": {
+          "x": 20,
+          "y": 214,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-006",
+        "model_ref": "Toaster.cleanabilityRequirement",
+        "layout": {
+          "x": 20,
+          "y": 254,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-007",
+        "model_ref": "Toaster.serviceabilityRequirement",
+        "layout": {
+          "x": 20,
+          "y": 294,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-008",
+        "model_ref": "Toaster.powerRatingRequirement",
+        "layout": {
+          "x": 20,
+          "y": 334,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-009",
+        "model_ref": "Toaster.surfaceTemperatureRequirement",
+        "layout": {
+          "x": 20,
+          "y": 374,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-010",
+        "model_ref": "Toaster.thermalCutoffRequirement",
+        "layout": {
+          "x": 20,
+          "y": 414,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-011",
+        "model_ref": "Toaster.browningLevelsRequirement",
+        "layout": {
+          "x": 20,
+          "y": 454,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-012",
+        "model_ref": "Toaster.carriageReleaseRequirement",
+        "layout": {
+          "x": 20,
+          "y": 494,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-013",
+        "model_ref": "Toaster.crumbTrayForceRequirement",
+        "layout": {
+          "x": 20,
+          "y": 534,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-req-014",
+        "model_ref": "Toaster.cycleLifeRequirement",
+        "layout": {
+          "x": 20,
+          "y": 574,
+          "width": 1120,
+          "height": 40,
+          "z_index": 1
+        }
+      }
+    ],
+    "relationships": [],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "toaster",
+        "requirement-table"
+      ]
+    }
+  }
+}

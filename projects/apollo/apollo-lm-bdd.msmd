@@ -1,0 +1,728 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "bdd",
+    "id": "bdd-apollo-lm",
+    "name": "LM \u2014 descent / ascent \u00b7 DPS / APS \u00b7 landing radar on descent \u00b7 AGC_LM + 1 DSKY \u00b7 AGS \u00b7 RR on ascent",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1260,
+      "height": 820,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "block",
+        "id": "b-lm",
+        "model_ref": "Apollo.LM",
+        "layout": {
+          "x": 500,
+          "y": 16,
+          "width": 260,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-des",
+        "model_ref": "Apollo.Descent",
+        "layout": {
+          "x": 40,
+          "y": 150,
+          "width": 240,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-asc",
+        "model_ref": "Apollo.Ascent",
+        "layout": {
+          "x": 320,
+          "y": 150,
+          "width": 200,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-dps",
+        "model_ref": "Apollo.DPS",
+        "layout": {
+          "x": 40,
+          "y": 310,
+          "width": 260,
+          "height": 140,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-lr",
+        "model_ref": "Apollo.LandingRadar",
+        "layout": {
+          "x": 40,
+          "y": 470,
+          "width": 260,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-aps",
+        "model_ref": "Apollo.APS",
+        "layout": {
+          "x": 320,
+          "y": 310,
+          "width": 260,
+          "height": 170,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-rr",
+        "model_ref": "Apollo.RendezvousRadar",
+        "layout": {
+          "x": 320,
+          "y": 500,
+          "width": 200,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-agc",
+        "model_ref": "Apollo.AGC_LM",
+        "layout": {
+          "x": 620,
+          "y": 150,
+          "width": 380,
+          "height": 300,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-dsky",
+        "model_ref": "Apollo.DSKY_LM",
+        "layout": {
+          "x": 980,
+          "y": 150,
+          "width": 220,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ags",
+        "model_ref": "Apollo.AGS",
+        "layout": {
+          "x": 620,
+          "y": 430,
+          "width": 280,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-aea",
+        "model_ref": "Apollo.AEA",
+        "layout": {
+          "x": 940,
+          "y": 430,
+          "width": 240,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-asa",
+        "model_ref": "Apollo.ASA",
+        "layout": {
+          "x": 940,
+          "y": 570,
+          "width": 240,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-rope",
+        "model_ref": "Apollo.Note.UnknownRope",
+        "layout": {
+          "x": 40,
+          "y": 580,
+          "width": 360,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-ags",
+        "model_ref": "Apollo.Note.AgsSourced",
+        "layout": {
+          "x": 40,
+          "y": 660,
+          "width": 400,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-deda",
+        "model_ref": "Apollo.DEDA",
+        "layout": {
+          "x": 940,
+          "y": 680,
+          "width": 240,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-engine",
+        "model_ref": "Apollo.Note.EngineConflict",
+        "layout": {
+          "x": 460,
+          "y": 620,
+          "width": 450,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "l1",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-lm-des",
+        "waypoints": [
+          {
+            "x": 540,
+            "y": 106
+          },
+          {
+            "x": 160,
+            "y": 150
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l2",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-lm-asc",
+        "waypoints": [
+          {
+            "x": 600,
+            "y": 106
+          },
+          {
+            "x": 420,
+            "y": 150
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l3",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-des-dps",
+        "waypoints": [
+          {
+            "x": 160,
+            "y": 260
+          },
+          {
+            "x": 160,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l4",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-asc-aps",
+        "waypoints": [
+          {
+            "x": 420,
+            "y": 240
+          },
+          {
+            "x": 450,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l5",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-lm-agc",
+        "waypoints": [
+          {
+            "x": 720,
+            "y": 106
+          },
+          {
+            "x": 790,
+            "y": 150
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l6",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-lm-dsky",
+        "waypoints": [
+          {
+            "x": 760,
+            "y": 100
+          },
+          {
+            "x": 1090,
+            "y": 100
+          },
+          {
+            "x": 1090,
+            "y": 150
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l7",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-lm-ags",
+        "waypoints": [
+          {
+            "x": 630,
+            "y": 106
+          },
+          {
+            "x": 600,
+            "y": 106
+          },
+          {
+            "x": 600,
+            "y": 505
+          },
+          {
+            "x": 620,
+            "y": 505
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l8",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-ags-aea",
+        "waypoints": [
+          {
+            "x": 900,
+            "y": 500
+          },
+          {
+            "x": 940,
+            "y": 490
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l9",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-ags-asa",
+        "waypoints": [
+          {
+            "x": 900,
+            "y": 560
+          },
+          {
+            "x": 940,
+            "y": 615
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l10",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-ags-deda",
+        "waypoints": [
+          {
+            "x": 900,
+            "y": 560
+          },
+          {
+            "x": 940,
+            "y": 735
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l-lr",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-des-lr",
+        "waypoints": [
+          {
+            "x": 50,
+            "y": 260
+          },
+          {
+            "x": 16,
+            "y": 260
+          },
+          {
+            "x": 16,
+            "y": 515
+          },
+          {
+            "x": 40,
+            "y": 515
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l-rr",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-asc-rr",
+        "waypoints": [
+          {
+            "x": 500,
+            "y": 240
+          },
+          {
+            "x": 610,
+            "y": 240
+          },
+          {
+            "x": 610,
+            "y": 545
+          },
+          {
+            "x": 520,
+            "y": 545
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    },
+    "subject_ref": "Apollo.LM"
+  }
+}

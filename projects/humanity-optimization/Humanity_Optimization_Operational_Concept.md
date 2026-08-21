@@ -1,5 +1,7 @@
 # The World as a System Optimization Problem
 
+This operational concept is a **concept sketch**, not a design baseline. Civilization-scale language here is aspiration.
+
 The longer I work in systems engineering, the harder it is for me to see the world as a set of separate problems.
 
 Energy, food, climate, biodiversity, health, housing, AI, governance, education, economic opportunity, catastrophic risk, and future generations are not isolated topics. They are coupled subsystems. Decisions in one place show up somewhere else. Sometimes the effect is obvious. Often it is delayed, hidden, or politically inconvenient.
@@ -73,11 +75,11 @@ The authority direction is intentional.
 
 HOS briefs. Humans decide.
 
-That distinction is not a side note. It is a core requirement. A system built to improve human flourishing must not reduce human agency as a side effect. It should recommend, clarify, compare, and explain. It should not dominate, deceive, coerce, or optimize a single metric at the expense of human dignity.
+That distinction is the aspiration of this sketch, not a shall on the MSML model. The sketch aims to recommend, clarify, compare, and explain — not dominate, deceive, coerce, or optimize a single metric at the expense of human dignity.
 
 ## What HOS Should Optimize For
 
-I do not think humanity should optimize for one variable.
+Humanity is not well served by optimizing for one variable.
 
 Human life is not just GDP. It is not just carbon. It is not just survival. It is not just happiness, efficiency, freedom, health, or technological progress.
 
@@ -115,7 +117,7 @@ The point is not to replace human wisdom. The point is to give human wisdom bett
 
 These diagrams are not meant to be final truth. They are a starting model.
 
-I am using MSML, the Meaningful Systems Modeling Language, to keep the HOS model and diagrams as living artifacts rather than one-off drawings. The diagrams in this operational concept are generated from model-backed MSML diagram views, so the concept can evolve as the model improves.
+The HOS model and diagrams are living MSML artifacts rather than one-off drawings. The diagrams in this operational concept are generated from model-backed MSML diagram views, so the concept can evolve as the model improves. This folder is a concept sketch, not a design baseline.
 
 The source artifacts are here:
 

@@ -1,0 +1,1431 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-ebike",
+    "subject_ref": "ElectricBike",
+    "name": "Internal Structure \u2014 charge via BMS (UL 2849)",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1400,
+      "height": 820,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "system_boundary",
+        "id": "ibd-boundary",
+        "model_ref": "ElectricBike",
+        "display_name": "ElectricBike",
+        "layout": {
+        "x": 20,
+        "y": 24,
+        "width": 1360,
+        "height": 780,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F8F8FF",
+          "border_color": "#555588",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-hmi",
+        "model_ref": "ElectricBike.HumanInterface",
+        "role_name": "humanInterface",
+        "display_name": "humanInterface : HumanInterface",
+        "layout": {
+          "x": 280,
+          "y": 50,
+          "width": 250,
+          "height": 120,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-frame",
+        "model_ref": "ElectricBike.Frame",
+        "role_name": "frame",
+        "display_name": "frame : Frame",
+        "layout": {
+          "x": 640,
+          "y": 50,
+          "width": 280,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-brakes",
+        "model_ref": "ElectricBike.BrakeSystem",
+        "role_name": "brakeSystem",
+        "display_name": "brakeSystem : BrakeSystem",
+        "layout": {
+          "x": 1040,
+          "y": 50,
+          "width": 250,
+          "height": 120,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-battery",
+        "model_ref": "ElectricBike.BatteryPack",
+        "role_name": "batteryPack",
+        "display_name": "batteryPack : BatteryPack",
+        "layout": {
+          "x": 260,
+          "y": 390,
+          "width": 280,
+          "height": 280,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-controller",
+        "model_ref": "ElectricBike.MotorController",
+        "role_name": "motorController",
+        "display_name": "motorController : MotorController",
+        "layout": {
+          "x": 620,
+          "y": 410,
+          "width": 310,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-motor",
+        "model_ref": "ElectricBike.HubMotor",
+        "role_name": "hubMotor",
+        "display_name": "hubMotor : Rear Geared Hub",
+        "layout": {
+          "x": 1020,
+          "y": 410,
+          "width": 270,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [
+            {
+              "name": "continuousAssist",
+              "type": "250 W"
+            },
+            {
+              "name": "peakTorque",
+              "type": "40 N\u00b7m"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-hmi-rider",
+        "model_ref": "ElectricBike.Port.riderInputIn",
+        "name": "rider",
+        "owner_ref": "part-hmi",
+        "layout": {
+          "x": 274,
+          "y": 80,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-hmi-mnt",
+        "model_ref": "ElectricBike.Port.interfaceMountIn",
+        "name": "mount",
+        "owner_ref": "part-hmi",
+        "layout": {
+          "x": 400,
+          "y": 44,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-hmi-cmd",
+        "model_ref": "ElectricBike.Port.interfaceCommandOut",
+        "name": "cmd",
+        "owner_ref": "part-hmi",
+        "layout": {
+          "x": 354,
+          "y": 164,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-frm-hmi",
+        "model_ref": "ElectricBike.Port.frameInterfaceMountOut",
+        "name": "mount",
+        "owner_ref": "part-frame",
+        "layout": {
+          "x": 680,
+          "y": 44,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-frm-mtr",
+        "model_ref": "ElectricBike.Port.frameMotorMountOut",
+        "name": "mount",
+        "owner_ref": "part-frame",
+        "layout": {
+          "x": 860,
+          "y": 44,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-frm-brk",
+        "model_ref": "ElectricBike.Port.frameBrakeMountOut",
+        "name": "mount",
+        "owner_ref": "part-frame",
+        "layout": {
+          "x": 914,
+          "y": 100,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-frm-bat",
+        "model_ref": "ElectricBike.Port.frameBatteryMountOut",
+        "name": "mount",
+        "owner_ref": "part-frame",
+        "layout": {
+          "x": 700,
+          "y": 174,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-brk-mnt",
+        "model_ref": "ElectricBike.Port.brakeMountIn",
+        "name": "mount",
+        "owner_ref": "part-brakes",
+        "layout": {
+          "x": 1034,
+          "y": 100,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-brk-inh",
+        "model_ref": "ElectricBike.Port.brakeInhibitOut",
+        "name": "inh",
+        "owner_ref": "part-brakes",
+        "layout": {
+          "x": 1160,
+          "y": 164,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bms-chg",
+        "model_ref": "ElectricBike.Port.bmsChargeIn",
+        "name": "chg",
+        "owner_ref": "part-bms",
+        "layout": {
+          "x": 254,
+          "y": 586,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bat-mnt",
+        "model_ref": "ElectricBike.Port.batteryMountIn",
+        "name": "mount",
+        "owner_ref": "part-battery",
+        "layout": {
+          "x": 334,
+          "y": 384,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bat-pwr",
+        "model_ref": "ElectricBike.Port.batteryPowerOut",
+        "name": "pwr",
+        "owner_ref": "part-battery",
+        "layout": {
+          "x": 534,
+          "y": 460,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#B8860B",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-cmd",
+        "model_ref": "ElectricBike.Port.controllerCommandIn",
+        "name": "cmd",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 680,
+          "y": 404,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-inh",
+        "model_ref": "ElectricBike.Port.controllerInhibitIn",
+        "name": "inh",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 860,
+          "y": 404,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-pwr",
+        "model_ref": "ElectricBike.Port.controllerPowerIn",
+        "name": "pwr",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 614,
+          "y": 460,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#B8860B",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-drv",
+        "model_ref": "ElectricBike.Port.controllerDriveOut",
+        "name": "drv",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 924,
+          "y": 480,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-mtr-mnt",
+        "model_ref": "ElectricBike.Port.motorMountIn",
+        "name": "mount",
+        "owner_ref": "part-motor",
+        "layout": {
+          "x": 1200,
+          "y": 404,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-mtr-drv",
+        "model_ref": "ElectricBike.Port.motorDriveIn",
+        "name": "drv",
+        "owner_ref": "part-motor",
+        "layout": {
+          "x": 1014,
+          "y": 480,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-mtr-road",
+        "model_ref": "ElectricBike.Port.wheelLoadIn",
+        "name": "wheel",
+        "owner_ref": "part-motor",
+        "layout": {
+          "x": 1284,
+          "y": 480,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-key",
+        "model_ref": "ElectricBike.Note.IbdKey",
+        "layout": {
+          "x": 40,
+          "y": 40,
+          "width": 220,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-bms",
+        "model_ref": "ElectricBike.BatteryPack.bms",
+        "role_name": "bms",
+        "display_name": "bms : BMS",
+        "layout": {
+          "x": 260,
+          "y": 548,
+          "width": 248,
+          "height": 110,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bat-bms",
+        "model_ref": "ElectricBike.Port.packCellsIn",
+        "name": "cells",
+        "owner_ref": "part-battery",
+        "layout": {
+          "x": 388,
+          "y": 528,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bms-in",
+        "model_ref": "ElectricBike.Port.bmsPackOut",
+        "name": "pack",
+        "owner_ref": "part-bms",
+        "layout": {
+          "x": 388,
+          "y": 534,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-cadence",
+        "model_ref": "ElectricBike.cadenceSensor",
+        "role_name": "cadenceSensor",
+        "display_name": "cadenceSensor : Cadence Sensor",
+        "layout": {
+          "x": 560,
+          "y": 710,
+          "width": 200,
+          "height": 75,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-wheelspeed",
+        "model_ref": "ElectricBike.wheelSpeedSensor",
+        "role_name": "wheelSpeedSensor",
+        "display_name": "wheelSpeedSensor : Wheel Speed Sensor",
+        "layout": {
+          "x": 780,
+          "y": 710,
+          "width": 230,
+          "height": 75,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cad-out",
+        "model_ref": "ElectricBike.Port.cadenceOut",
+        "name": "cad",
+        "owner_ref": "part-cadence",
+        "layout": {
+          "x": 654,
+          "y": 704,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-cad",
+        "model_ref": "ElectricBike.Port.controllerCadenceIn",
+        "name": "cad",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 654,
+          "y": 564,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-wss-out",
+        "model_ref": "ElectricBike.Port.speedOut",
+        "name": "spd",
+        "owner_ref": "part-wheelspeed",
+        "layout": {
+          "x": 888,
+          "y": 704,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-spd",
+        "model_ref": "ElectricBike.Port.controllerSpeedIn",
+        "name": "spd",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 888,
+          "y": 564,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bike-chg",
+        "model_ref": "ElectricBike.Port.chargerIn",
+        "name": "charge",
+        "layout": {
+          "x": 24,
+          "y": 586,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "owner_ref": "ibd-boundary"
+      },
+      {
+        "type": "comment",
+        "id": "note-callout",
+        "model_ref": "ElectricBike.Note.IbdCallout",
+        "layout": {
+          "x": 1040,
+          "y": 710,
+          "width": 270,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "frameToInterface",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.frameToInterface",
+        "name": "mount",
+        "waypoints": [
+          {
+            "x": 406,
+            "y": 44
+          },
+          {
+            "x": 406,
+            "y": 24
+          },
+          {
+            "x": 686,
+            "y": 24
+          },
+          {
+            "x": 686,
+            "y": 44
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "frameToBrakes",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.frameToBrakes",
+        "name": "mount",
+        "waypoints": [
+          {
+            "x": 926,
+            "y": 106
+          },
+          {
+            "x": 1034,
+            "y": 106
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "frameToBattery",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.frameToBattery",
+        "name": "mount",
+        "waypoints": [
+          {
+            "x": 706,
+            "y": 186
+          },
+          {
+            "x": 706,
+            "y": 220
+          },
+          {
+            "x": 340,
+            "y": 220
+          },
+          {
+            "x": 340,
+            "y": 384
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": -20,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "frameToMotor",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.frameToMotor",
+        "name": "mount",
+        "waypoints": [
+          {
+            "x": 866,
+            "y": 44
+          },
+          {
+            "x": 866,
+            "y": 12
+          },
+          {
+            "x": 1340,
+            "y": 12
+          },
+          {
+            "x": 1340,
+            "y": 390
+          },
+          {
+            "x": 1206,
+            "y": 390
+          },
+          {
+            "x": 1206,
+            "y": 404
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 40,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "interfaceToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.interfaceToController",
+        "name": "command",
+        "waypoints": [
+          {
+            "x": 360,
+            "y": 176
+          },
+          {
+            "x": 360,
+            "y": 280
+          },
+          {
+            "x": 686,
+            "y": 280
+          },
+          {
+            "x": 686,
+            "y": 404
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "brakesToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.brakesToController",
+        "name": "inhibit",
+        "waypoints": [
+          {
+            "x": 1166,
+            "y": 176
+          },
+          {
+            "x": 1166,
+            "y": 300
+          },
+          {
+            "x": 866,
+            "y": 300
+          },
+          {
+            "x": 866,
+            "y": 404
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "chargerToBattery",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.chargerToBattery",
+        "name": "charge",
+        "waypoints": [
+          {
+            "x": 36,
+            "y": 592
+          },
+          {
+            "x": 254,
+            "y": 592
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "batteryToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.batteryToController",
+        "name": "pack power",
+        "waypoints": [
+          {
+            "x": 546,
+            "y": 466
+          },
+          {
+            "x": 614,
+            "y": 466
+          }
+        ],
+        "style": {
+          "line_color": "#B8860B",
+          "line_width": 2.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "controllerToMotor",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.controllerToMotor",
+        "name": "phase drive",
+        "waypoints": [
+          {
+            "x": 936,
+            "y": 486
+          },
+          {
+            "x": 1014,
+            "y": 486
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "batteryToBms",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.batteryToBms",
+        "name": "cells",
+        "waypoints": [
+          {
+            "x": 394,
+            "y": 540
+          },
+          {
+            "x": 394,
+            "y": 534
+          }
+        ],
+        "style": {
+          "line_color": "#8B6914",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 8,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cadenceToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.cadenceToController",
+        "name": "cadence",
+        "waypoints": [
+          {
+            "x": 660,
+            "y": 576
+          },
+          {
+            "x": 660,
+            "y": 704
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -12
+          }
+        }
+      },
+      {
+        "id": "wheelSpeedToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.wheelSpeedToController",
+        "name": "wheel speed",
+        "waypoints": [
+          {
+            "x": 894,
+            "y": 576
+          },
+          {
+            "x": 894,
+            "y": 704
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 12,
+            "y": -12
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "ibd"
+      ]
+    }
+  }
+}

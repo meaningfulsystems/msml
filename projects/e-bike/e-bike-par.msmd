@@ -1,0 +1,521 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "parametric",
+    "id": "par-ebike",
+    "name": "Energy, Range, and Brake Limits — Tour 8.3 Wh/km",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1040,
+      "height": 640,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "value_property",
+        "id": "vp-pack",
+        "model_ref": "ElectricBike.PAR.packEnergy",
+        "layout": {
+          "x": 20,
+          "y": 80,
+          "width": 150,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-ekm",
+        "model_ref": "ElectricBike.PAR.energyPerKm",
+        "layout": {
+          "x": 20,
+          "y": 150,
+          "width": 150,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-assist",
+        "model_ref": "ElectricBike.PAR.assistPower",
+        "layout": {
+          "x": 20,
+          "y": 220,
+          "width": 150,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#555555",
+          "border_width": 1,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-energy",
+        "model_ref": "ElectricBike.PAR.energyBalance",
+        "layout": {
+          "x": 220,
+          "y": 90,
+          "width": 260,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-range",
+        "model_ref": "ElectricBike.PAR.rangeEstimate",
+        "layout": {
+          "x": 540,
+          "y": 90,
+          "width": 240,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-range",
+        "model_ref": "ElectricBike.PAR.rangeKm",
+        "layout": {
+          "x": 840,
+          "y": 140,
+          "width": 160,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-cut",
+        "model_ref": "ElectricBike.PAR.cutoffSpeed",
+        "layout": {
+          "x": 20,
+          "y": 400,
+          "width": 160,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-assist",
+        "model_ref": "ElectricBike.PAR.assistPowerLimit",
+        "layout": {
+          "x": 220,
+          "y": 370,
+          "width": 260,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "value_property",
+        "id": "vp-lat",
+        "model_ref": "ElectricBike.PAR.brakeLatency",
+        "layout": {
+          "x": 540,
+          "y": 400,
+          "width": 170,
+          "height": 44,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "size": 10,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "constraint_property",
+        "id": "cp-brake",
+        "model_ref": "ElectricBike.PAR.brakeLatencyLimit",
+        "layout": {
+          "x": 760,
+          "y": 360,
+          "width": 240,
+          "height": 120,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#827717",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-tour",
+        "model_ref": "ElectricBike.Note.TourRange",
+        "layout": {
+          "x": 540,
+          "y": 260,
+          "width": 460,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-brake",
+        "model_ref": "ElectricBike.Note.BrakeOrder",
+        "layout": {
+          "x": 540,
+          "y": 500,
+          "width": 460,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "b1",
+        "relationship_ref": "par-ebike.b1",
+        "waypoints": [
+          {
+            "x": 170,
+            "y": 102
+          },
+          {
+            "x": 220,
+            "y": 130
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b2",
+        "relationship_ref": "par-ebike.b2",
+        "waypoints": [
+          {
+            "x": 170,
+            "y": 172
+          },
+          {
+            "x": 220,
+            "y": 172
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b4",
+        "relationship_ref": "par-ebike.b4",
+        "waypoints": [
+          {
+            "x": 95,
+            "y": 80
+          },
+          {
+            "x": 95,
+            "y": 40
+          },
+          {
+            "x": 660,
+            "y": 40
+          },
+          {
+            "x": 660,
+            "y": 90
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b5",
+        "relationship_ref": "par-ebike.b5",
+        "waypoints": [
+          {
+            "x": 95,
+            "y": 194
+          },
+          {
+            "x": 190,
+            "y": 194
+          },
+          {
+            "x": 190,
+            "y": 250
+          },
+          {
+            "x": 660,
+            "y": 250
+          },
+          {
+            "x": 660,
+            "y": 240
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b6",
+        "relationship_ref": "par-ebike.b6",
+        "waypoints": [
+          {
+            "x": 780,
+            "y": 165
+          },
+          {
+            "x": 840,
+            "y": 162
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b7",
+        "relationship_ref": "par-ebike.b7",
+        "waypoints": [
+          {
+            "x": 95,
+            "y": 264
+          },
+          {
+            "x": 95,
+            "y": 340
+          },
+          {
+            "x": 220,
+            "y": 420
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b8",
+        "relationship_ref": "par-ebike.b8",
+        "waypoints": [
+          {
+            "x": 180,
+            "y": 422
+          },
+          {
+            "x": 220,
+            "y": 422
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      },
+      {
+        "id": "b9",
+        "relationship_ref": "par-ebike.b9",
+        "waypoints": [
+          {
+            "x": 710,
+            "y": 422
+          },
+          {
+            "x": 760,
+            "y": 422
+          }
+        ],
+        "style": {
+          "line_color": "#555555",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        },
+        "type": "binding_connector"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "par"
+      ]
+    },
+    "subject_ref": "ElectricBike"
+  }
+}

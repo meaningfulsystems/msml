@@ -1,0 +1,242 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "sequence",
+    "id": "sd-ebike",
+    "name": "startRideInteraction",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1060,
+      "height": 390,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "lifeline",
+        "id": "ll-rider",
+        "model_ref": "ElectricBike.Rider",
+        "layout": {
+          "x": 40,
+          "y": 20,
+          "width": 130,
+          "height": 360,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#E8F4FD",
+          "border_color": "#2E86AB",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "display_name": ":rider"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-hmi",
+        "model_ref": "ElectricBike.HumanInterface",
+        "layout": {
+          "x": 220,
+          "y": 20,
+          "width": 150,
+          "height": 360,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "display_name": ":humanInterface"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-ctl",
+        "model_ref": "ElectricBike.MotorController",
+        "layout": {
+          "x": 430,
+          "y": 20,
+          "width": 160,
+          "height": 360,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "display_name": ":motorController"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-mtr",
+        "model_ref": "ElectricBike.HubMotor",
+        "layout": {
+          "x": 630,
+          "y": 20,
+          "width": 170,
+          "height": 360,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "display_name": "Rear Geared Hub"
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-brk",
+        "model_ref": "ElectricBike.BrakeSystem",
+        "layout": {
+          "x": 860,
+          "y": 20,
+          "width": 140,
+          "height": 360,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        },
+        "display_name": ":brakeSystem"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "m1",
+        "relationship_ref": "sd-ebike.m1",
+        "layout": {
+          "y": 90
+        },
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "m2",
+        "relationship_ref": "sd-ebike.m2",
+        "layout": {
+          "y": 140
+        },
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "m3",
+        "relationship_ref": "sd-ebike.m3",
+        "layout": {
+          "y": 190
+        },
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "m4",
+        "relationship_ref": "sd-ebike.m4",
+        "layout": {
+          "y": 260
+        },
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "m5",
+        "relationship_ref": "sd-ebike.m5",
+        "layout": {
+          "y": 310
+        },
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "m6",
+        "relationship_ref": "sd-ebike.m6",
+        "layout": {
+          "y": 360
+        },
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "int"
+      ]
+    }
+  }
+}

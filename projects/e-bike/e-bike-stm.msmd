@@ -1,0 +1,702 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "state_machine",
+    "id": "stm-ebike",
+    "name": "Ride, Walk, Charge, and Fault",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1140,
+      "height": 540,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "initial_pseudostate",
+        "id": "init",
+        "model_ref": "ElectricBike.State.RideControl.Start",
+        "layout": {
+          "x": 570,
+          "y": 16,
+          "width": 20,
+          "height": 20,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#000000"
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-charging",
+        "model_ref": "ElectricBike.State.RideControl.charging",
+        "display_name": "charging",
+        "layout": {
+          "x": 70,
+          "y": 60,
+          "width": 230,
+          "height": 88,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-off",
+        "model_ref": "ElectricBike.State.RideControl.off",
+        "display_name": "Off",
+        "layout": {
+          "x": 480,
+          "y": 60,
+          "width": 200,
+          "height": 72,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#ECEFF1",
+          "border_color": "#546E7A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-standby",
+        "model_ref": "ElectricBike.State.RideControl.standby",
+        "display_name": "Standby",
+        "layout": {
+          "x": 480,
+          "y": 230,
+          "width": 200,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F4FD",
+          "border_color": "#2E86AB",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-assist",
+        "model_ref": "ElectricBike.State.RideControl.assist",
+        "display_name": "Assist",
+        "layout": {
+          "x": 480,
+          "y": 400,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-walk",
+        "model_ref": "ElectricBike.State.RideControl.walk",
+        "display_name": "walk",
+        "layout": {
+          "x": 760,
+          "y": 220,
+          "width": 220,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-fault",
+        "model_ref": "ElectricBike.State.RideControl.fault",
+        "display_name": "Fault",
+        "layout": {
+          "x": 880,
+          "y": 400,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-charge-off",
+        "model_ref": "ElectricBike.Note.ChargeOffOnly",
+        "layout": {
+          "x": 20,
+          "y": 340,
+          "width": 240,
+          "height": 56,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "EPAC choice: Charging from Off only.\nDo not add Standby \u2192 Charging."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "t-init-off",
+        "relationship_ref": "stm-ebike.t-init-off",
+        "waypoints": [
+          {
+            "x": 580,
+            "y": 36
+          },
+          {
+            "x": 580,
+            "y": 60
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        },
+        "type": "transition"
+      },
+      {
+        "id": "powerOn",
+        "relationship_ref": "stm-ebike.powerOn",
+        "waypoints": [
+          {
+            "x": 620,
+            "y": 132
+          },
+          {
+            "x": 620,
+            "y": 230
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "startAssist",
+        "relationship_ref": "stm-ebike.startAssist",
+        "waypoints": [
+          {
+            "x": 580,
+            "y": 310
+          },
+          {
+            "x": 580,
+            "y": 400
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "stopAssist",
+        "relationship_ref": "stm-ebike.stopAssist",
+        "waypoints": [
+          {
+            "x": 500,
+            "y": 400
+          },
+          {
+            "x": 500,
+            "y": 310
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "brakeCut",
+        "relationship_ref": "stm-ebike.brakeCut",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 430
+          },
+          {
+            "x": 740,
+            "y": 430
+          },
+          {
+            "x": 740,
+            "y": 270
+          },
+          {
+            "x": 680,
+            "y": 270
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "plugIn",
+        "relationship_ref": "stm-ebike.plugIn",
+        "waypoints": [
+          {
+            "x": 480,
+            "y": 96
+          },
+          {
+            "x": 300,
+            "y": 96
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "chargeComplete",
+        "relationship_ref": "stm-ebike.chargeComplete",
+        "waypoints": [
+          {
+            "x": 185,
+            "y": 60
+          },
+          {
+            "x": 185,
+            "y": 16
+          },
+          {
+            "x": 500,
+            "y": 16
+          },
+          {
+            "x": 500,
+            "y": 60
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 20,
+            "y": -16
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "unplug",
+        "relationship_ref": "stm-ebike.unplug",
+        "waypoints": [
+          {
+            "x": 185,
+            "y": 140
+          },
+          {
+            "x": 185,
+            "y": 190
+          },
+          {
+            "x": 480,
+            "y": 190
+          },
+          {
+            "x": 480,
+            "y": 132
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 20,
+            "y": 6
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "powerOff",
+        "relationship_ref": "stm-ebike.powerOff",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 270
+          },
+          {
+            "x": 730,
+            "y": 270
+          },
+          {
+            "x": 730,
+            "y": 96
+          },
+          {
+            "x": 680,
+            "y": 96
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 8,
+            "y": -16
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "faultFromAssist",
+        "relationship_ref": "stm-ebike.faultFromAssist",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 450
+          },
+          {
+            "x": 880,
+            "y": 450
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "resetFault",
+        "relationship_ref": "stm-ebike.resetFault",
+        "waypoints": [
+          {
+            "x": 1100,
+            "y": 400
+          },
+          {
+            "x": 1100,
+            "y": 180
+          },
+          {
+            "x": 1080,
+            "y": 180
+          },
+          {
+            "x": 1080,
+            "y": 96
+          },
+          {
+            "x": 680,
+            "y": 96
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "startWalk",
+        "relationship_ref": "stm-ebike.startWalk",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 250
+          },
+          {
+            "x": 760,
+            "y": 250
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "stopWalk",
+        "relationship_ref": "stm-ebike.stopWalk",
+        "waypoints": [
+          {
+            "x": 760,
+            "y": 235
+          },
+          {
+            "x": 680,
+            "y": 235
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": 8
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "brakeCutWalk",
+        "relationship_ref": "stm-ebike.brakeCutWalk",
+        "waypoints": [
+          {
+            "x": 800,
+            "y": 310
+          },
+          {
+            "x": 800,
+            "y": 360
+          },
+          {
+            "x": 460,
+            "y": 360
+          },
+          {
+            "x": 460,
+            "y": 270
+          },
+          {
+            "x": 480,
+            "y": 270
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 6
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "faultFromWalk",
+        "relationship_ref": "stm-ebike.faultFromWalk",
+        "waypoints": [
+          {
+            "x": 990,
+            "y": 310
+          },
+          {
+            "x": 990,
+            "y": 400
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "stm"
+      ]
+    }
+  }
+}

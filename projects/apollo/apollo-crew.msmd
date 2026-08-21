@@ -1,0 +1,1619 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-apollo-crew",
+    "name": "Crew IBD — CDR / CMP / LMP each A7L · bio · comm; PLSS+OPS on CDR/LMP EVA only",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1320,
+      "height": 760,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "cdr",
+        "model_ref": "Apollo.CDR",
+        "display_name": "cdr : CDR",
+        "layout": {
+          "x": 30,
+          "y": 40,
+          "width": 160,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-a7l",
+        "model_ref": "Apollo.A7L",
+        "display_name": "a7l : A7L  3.75±0.25 psid",
+        "layout": {
+          "x": 230,
+          "y": 40,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-bio",
+        "model_ref": "Apollo.BioSensor",
+        "display_name": "bio : bio",
+        "layout": {
+          "x": 470,
+          "y": 40,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-comm",
+        "model_ref": "Apollo.CrewComm",
+        "display_name": "comm : comm",
+        "layout": {
+          "x": 660,
+          "y": 40,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-plss",
+        "model_ref": "Apollo.PLSS",
+        "display_name": "plss : PLSS  1.04 lb / 4 h",
+        "layout": {
+          "x": 850,
+          "y": 40,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-ops",
+        "model_ref": "Apollo.OPS",
+        "display_name": "ops : OPS  EVA only",
+        "layout": {
+          "x": 1110,
+          "y": 40,
+          "width": 170,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cmp",
+        "model_ref": "Apollo.CMP",
+        "display_name": "cmp : CMP",
+        "layout": {
+          "x": 30,
+          "y": 260,
+          "width": 160,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cmp-a7l",
+        "model_ref": "Apollo.A7L",
+        "display_name": "a7l : A7L",
+        "layout": {
+          "x": 230,
+          "y": 260,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cmp-bio",
+        "model_ref": "Apollo.BioSensor",
+        "display_name": "bio : bio",
+        "layout": {
+          "x": 470,
+          "y": 260,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cmp-comm",
+        "model_ref": "Apollo.CrewComm",
+        "display_name": "comm : comm",
+        "layout": {
+          "x": 660,
+          "y": 260,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-cmp",
+        "model_ref": "Apollo.Note.CmpNoEva",
+        "layout": {
+          "x": 850,
+          "y": 260,
+          "width": 430,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp",
+        "model_ref": "Apollo.LMP",
+        "display_name": "lmp : LMP",
+        "layout": {
+          "x": 30,
+          "y": 480,
+          "width": 160,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-a7l",
+        "model_ref": "Apollo.A7L",
+        "display_name": "a7l : A7L  EV 19.69 kg",
+        "layout": {
+          "x": 230,
+          "y": 480,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-bio",
+        "model_ref": "Apollo.BioSensor",
+        "display_name": "bio : bio",
+        "layout": {
+          "x": 470,
+          "y": 480,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-comm",
+        "model_ref": "Apollo.CrewComm",
+        "display_name": "comm : comm",
+        "layout": {
+          "x": 660,
+          "y": 480,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-plss",
+        "model_ref": "Apollo.PLSS",
+        "display_name": "plss : PLSS  EVA only",
+        "layout": {
+          "x": 850,
+          "y": 480,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-ops",
+        "model_ref": "Apollo.OPS",
+        "display_name": "ops : OPS  EVA only",
+        "layout": {
+          "x": 1110,
+          "y": 480,
+          "width": 170,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-food",
+        "model_ref": "Apollo.Note.UnknownFood",
+        "layout": {
+          "x": 30,
+          "y": 620,
+          "width": 520,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-a",
+        "model_ref": "Apollo.Port.cdrA7lOut",
+        "name": "suit",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 184,
+          "y": 70,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-a7c",
+        "model_ref": "Apollo.Port.a7lCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-a7l",
+        "layout": {
+          "x": 224,
+          "y": 70,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-b",
+        "model_ref": "Apollo.Port.cdrBioOut",
+        "name": "bio",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 184,
+          "y": 100,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bc",
+        "model_ref": "Apollo.Port.bioCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-bio",
+        "layout": {
+          "x": 464,
+          "y": 80,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-c",
+        "model_ref": "Apollo.Port.cdrCommOut",
+        "name": "rf",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 100,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cc",
+        "model_ref": "Apollo.Port.commCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-comm",
+        "layout": {
+          "x": 726,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-p",
+        "model_ref": "Apollo.Port.cdrPlssOut",
+        "name": "eva",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 40,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-pc",
+        "model_ref": "Apollo.Port.plssCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-plss",
+        "layout": {
+          "x": 952,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-o",
+        "model_ref": "Apollo.Port.cdrOpsOut",
+        "name": "ops",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 70,
+          "y": 34,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-oc",
+        "model_ref": "Apollo.Port.opsCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-ops",
+        "layout": {
+          "x": 1190,
+          "y": 34,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cmp-a",
+        "model_ref": "Apollo.Port.cmpA7lOut",
+        "name": "suit",
+        "owner_ref": "cmp",
+        "layout": {
+          "x": 184,
+          "y": 290,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-a7m",
+        "model_ref": "Apollo.Port.a7lCmpIn",
+        "name": "in",
+        "owner_ref": "cmp-a7l",
+        "layout": {
+          "x": 224,
+          "y": 290,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cmp-b",
+        "model_ref": "Apollo.Port.cmpBioOut",
+        "name": "bio",
+        "owner_ref": "cmp",
+        "layout": {
+          "x": 184,
+          "y": 320,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bm",
+        "model_ref": "Apollo.Port.bioCmpIn",
+        "name": "in",
+        "owner_ref": "cmp-bio",
+        "layout": {
+          "x": 464,
+          "y": 300,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cmp-c",
+        "model_ref": "Apollo.Port.cmpCommOut",
+        "name": "rf",
+        "owner_ref": "cmp",
+        "layout": {
+          "x": 100,
+          "y": 354,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cm",
+        "model_ref": "Apollo.Port.commCmpIn",
+        "name": "in",
+        "owner_ref": "cmp-comm",
+        "layout": {
+          "x": 726,
+          "y": 354,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-a",
+        "model_ref": "Apollo.Port.lmpA7lOut",
+        "name": "suit",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 184,
+          "y": 510,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-a7l",
+        "model_ref": "Apollo.Port.a7lLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-a7l",
+        "layout": {
+          "x": 224,
+          "y": 510,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-b",
+        "model_ref": "Apollo.Port.lmpBioOut",
+        "name": "bio",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 184,
+          "y": 540,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bl",
+        "model_ref": "Apollo.Port.bioLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-bio",
+        "layout": {
+          "x": 464,
+          "y": 520,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-c",
+        "model_ref": "Apollo.Port.lmpCommOut",
+        "name": "rf",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 100,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cl",
+        "model_ref": "Apollo.Port.commLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-comm",
+        "layout": {
+          "x": 726,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-p",
+        "model_ref": "Apollo.Port.lmpPlssOut",
+        "name": "eva",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 40,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-pl",
+        "model_ref": "Apollo.Port.plssLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-plss",
+        "layout": {
+          "x": 952,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-o",
+        "model_ref": "Apollo.Port.lmpOpsOut",
+        "name": "ops",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 70,
+          "y": 474,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ol",
+        "model_ref": "Apollo.Port.opsLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-ops",
+        "layout": {
+          "x": 1190,
+          "y": 474,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-eva",
+        "model_ref": "Apollo.Note.EvaTimes",
+        "layout": {
+          "x": 1020,
+          "y": 620,
+          "width": 280,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "cdrA7l",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrA7l",
+        "name": "A7L",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 76
+          },
+          {
+            "x": 224,
+            "y": 76
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cdrBio",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrBio",
+        "name": "bio",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 106
+          },
+          {
+            "x": 210,
+            "y": 106
+          },
+          {
+            "x": 210,
+            "y": 160
+          },
+          {
+            "x": 490,
+            "y": 160
+          },
+          {
+            "x": 490,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cdrComm",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrComm",
+        "name": "comm",
+        "waypoints": [
+          {
+            "x": 106,
+            "y": 146
+          },
+          {
+            "x": 106,
+            "y": 170
+          },
+          {
+            "x": 735,
+            "y": 170
+          },
+          {
+            "x": 735,
+            "y": 146
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cdrPlss",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrPlss",
+        "name": "PLSS EVA",
+        "waypoints": [
+          {
+            "x": 46,
+            "y": 146
+          },
+          {
+            "x": 46,
+            "y": 180
+          },
+          {
+            "x": 960,
+            "y": 180
+          },
+          {
+            "x": 960,
+            "y": 146
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cdrOps",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrOps",
+        "name": "OPS EVA",
+        "waypoints": [
+          {
+            "x": 76,
+            "y": 34
+          },
+          {
+            "x": 76,
+            "y": 16
+          },
+          {
+            "x": 1196,
+            "y": 16
+          },
+          {
+            "x": 1196,
+            "y": 34
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmpA7l",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cmpA7l",
+        "name": "A7L",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 296
+          },
+          {
+            "x": 224,
+            "y": 296
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmpBio",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cmpBio",
+        "name": "bio",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 326
+          },
+          {
+            "x": 210,
+            "y": 326
+          },
+          {
+            "x": 210,
+            "y": 380
+          },
+          {
+            "x": 490,
+            "y": 380
+          },
+          {
+            "x": 490,
+            "y": 360
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmpComm",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cmpComm",
+        "name": "comm",
+        "waypoints": [
+          {
+            "x": 106,
+            "y": 366
+          },
+          {
+            "x": 106,
+            "y": 390
+          },
+          {
+            "x": 735,
+            "y": 390
+          },
+          {
+            "x": 735,
+            "y": 366
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpA7l",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpA7l",
+        "name": "A7L",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 516
+          },
+          {
+            "x": 224,
+            "y": 516
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpBio",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpBio",
+        "name": "bio",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 546
+          },
+          {
+            "x": 210,
+            "y": 546
+          },
+          {
+            "x": 210,
+            "y": 600
+          },
+          {
+            "x": 490,
+            "y": 600
+          },
+          {
+            "x": 490,
+            "y": 580
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpComm",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpComm",
+        "name": "comm",
+        "waypoints": [
+          {
+            "x": 106,
+            "y": 586
+          },
+          {
+            "x": 106,
+            "y": 610
+          },
+          {
+            "x": 735,
+            "y": 610
+          },
+          {
+            "x": 735,
+            "y": 586
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpPlss",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpPlss",
+        "name": "PLSS EVA",
+        "waypoints": [
+          {
+            "x": 46,
+            "y": 586
+          },
+          {
+            "x": 20,
+            "y": 586
+          },
+          {
+            "x": 20,
+            "y": 710
+          },
+          {
+            "x": 960,
+            "y": 710
+          },
+          {
+            "x": 960,
+            "y": 586
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpOps",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpOps",
+        "name": "OPS EVA",
+        "waypoints": [
+          {
+            "x": 76,
+            "y": 474
+          },
+          {
+            "x": 76,
+            "y": 450
+          },
+          {
+            "x": 1196,
+            "y": 450
+          },
+          {
+            "x": 1196,
+            "y": 474
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    },
+    "subject_ref": "Apollo.Crew"
+  }
+}

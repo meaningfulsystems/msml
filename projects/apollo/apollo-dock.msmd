@@ -1,0 +1,230 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "sequence",
+    "id": "sd-apollo-dock",
+    "name": "Docking \u2014 probe / drogue / 12 latches / stow / transfer",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1280,
+      "height": 560,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "lifeline",
+        "id": "ll-cm",
+        "model_ref": "Apollo.CM",
+        "display_name": ":cm (probe)",
+        "layout": {
+          "x": 40,
+          "y": 20,
+          "width": 200,
+          "height": 520,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-lm",
+        "model_ref": "Apollo.LM",
+        "display_name": ":lm (drogue)",
+        "layout": {
+          "x": 340,
+          "y": 20,
+          "width": 200,
+          "height": 520,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "lifeline",
+        "id": "ll-crew",
+        "model_ref": "Apollo.Crew",
+        "display_name": ":crew",
+        "layout": {
+          "x": 640,
+          "y": 20,
+          "width": 200,
+          "height": 520,
+          "z_index": 1,
+          "head_height": 44
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-dock",
+        "model_ref": "Apollo.Note.Docking",
+        "layout": {
+          "x": 880,
+          "y": 70,
+          "width": 380,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "sd-dock.m1",
+        "relationship_ref": "sd-dock.m1",
+        "layout": {
+          "y": 90
+        },
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "sd-dock.m2",
+        "relationship_ref": "sd-dock.m2",
+        "layout": {
+          "y": 150
+        },
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "sd-dock.m3",
+        "relationship_ref": "sd-dock.m3",
+        "layout": {
+          "y": 210
+        },
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "sd-dock.m4",
+        "relationship_ref": "sd-dock.m4",
+        "layout": {
+          "y": 270
+        },
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "sd-dock.m5",
+        "relationship_ref": "sd-dock.m5",
+        "layout": {
+          "y": 340
+        },
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "sd-dock.m6",
+        "relationship_ref": "sd-dock.m6",
+        "layout": {
+          "y": 400
+        },
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 1.5
+        }
+      },
+      {
+        "id": "sd-dock.m7",
+        "relationship_ref": "sd-dock.m7",
+        "layout": {
+          "y": 460
+        },
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 1.5
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    }
+  }
+}

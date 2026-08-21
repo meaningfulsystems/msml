@@ -6,7 +6,7 @@ The purpose of MSML is to make system models readable, versionable, reviewable, 
 
 MSML is inspired by SysML and PlantUML. SysML provides the systems-engineering vocabulary: blocks, internal structure, activities, sequences, states, requirements, parametrics, packages, and use cases. PlantUML demonstrates the value of text-based diagrams that can be regenerated reliably. MSML combines those ideas into a model-first format designed for plain-text workflows.
 
-This project is early and intentionally practical. MSML v1.0 focuses on a working core rather than complete SysML coverage.
+This project is early and intentionally practical. MSML v1.0 covers the SysML 1.6 diagram families plus the common requirement-table, allocation-table, and allocation-matrix views.
 
 ## Why MSML Exists
 
@@ -29,7 +29,7 @@ MSML uses two source file types:
 
 Rendered PNG files are generated outputs. MSML model (`.msml`) files are not rendered directly; MSML diagram (`.msmd`) files are rendered.
 
-The current renderer supports these SysML-style diagram families:
+The current renderer supports these twelve SysML 1 views:
 
 - Block Definition Diagram
 - Internal Block Diagram
@@ -40,6 +40,27 @@ The current renderer supports these SysML-style diagram families:
 - Requirements Diagram
 - Parametric Diagram
 - Package Diagram
+- Requirement Table
+- Allocation Table
+- Allocation Matrix
+
+The `allocate` relationship is first-class. Tables and the allocation matrix are compact views of the same model graph.
+
+## Figures
+
+These are the pictures we would put in a public update. Every project view also has a matching PNG next to its `.msmd`.
+
+![Electric bike internal structure](projects/e-bike/e-bike-ibd.png)
+
+![Electric bike context — rider, charger, bike, road](projects/e-bike/e-bike-ctx.png)
+
+![Toaster block definitions](projects/appliances/toaster/toaster-bdd.png)
+
+![Toaster requirements table](projects/appliances/toaster/toaster-reqt.png)
+
+![Smart blender internal structure](projects/appliances/blender/blender-ibd.png)
+
+![Humanity Optimization System context](projects/humanity-optimization/hos-context-ibd.png)
 
 ## Install
 
@@ -61,7 +82,22 @@ source .venv/bin/activate
 pip install -e .
 ```
 
-The package name is `msml`. It is not published to PyPI yet. Package version `0.1.x` implements the MSML v1.0 specification.
+The package name is `msml`. It is not published to PyPI yet. Package version `0.1.1` implements the MSML v1.0 specification.
+
+## Start your own system
+
+Copy [templates/new-project/](templates/new-project/), then follow [AGENTS.md](AGENTS.md). Cursor and Claude use four skills with the same slugs as [SysML2d](https://github.com/meaningfulsystems/sysml2d):
+
+1. [skills/bootstrap-project/SKILL.md](skills/bootstrap-project/SKILL.md) — copy the template, copy the spec, first model + one view, validate and render.
+2. [skills/author-model/SKILL.md](skills/author-model/SKILL.md) — write `.msml` (blocks, parts, ports, requirements, allocate, states, activities).
+3. [skills/compose-views/SKILL.md](skills/compose-views/SKILL.md) — write `.msmd` views. The shared slug is `compose-views`; MSML’s verb is **render**.
+4. [skills/vision-review/SKILL.md](skills/vision-review/SKILL.md) — inspect every PNG with vision before commit. Connections never pass over boxes.
+
+Do not start by copying the whole e-bike or toaster tree. Those are references; the template is the starter.
+
+## MSML and SysML2d
+
+[SysML2d](https://github.com/meaningfulsystems/sysml2d) is the paired git-native SysML v2 diagram toolchain (`.sysml` · intent JSON · `.sysmld` · SVG). MSML is the SysML 1-inspired modeling language (`.msml` · `.msmd` · PNG). The ElectricBike example uses the same names in both repos. Pick one toolchain per project; the file formats are not interchangeable. MSML does not replace commercial SysML 2 tools.
 
 ## Use MSML in Another Project
 
@@ -146,23 +182,44 @@ msml-render-all projects
 
 ```text
 .
+├── AGENTS.md
 ├── msml-specification.md
 ├── pyproject.toml
 ├── quick-start.md
+├── skills/
+│   ├── bootstrap-project/SKILL.md
+│   ├── author-model/SKILL.md
+│   ├── compose-views/SKILL.md
+│   └── vision-review/SKILL.md
+├── templates/new-project/
 ├── src/
 │   └── msml/
 ├── tests/
+├── ai-collab/          # archive — living path is AGENTS.md + skills/
 └── projects/
     ├── appliances/
     │   ├── toaster/
+    │   │   ├── architecture-summary.md
     │   │   ├── toaster-model.msml
     │   │   ├── toaster-*.msmd
     │   │   └── toaster-*.png
     │   └── blender/
+    │       ├── architecture-summary.md
     │       ├── blender-model.msml
     │       ├── blender-*.msmd
     │       └── blender-*.png
+    ├── apollo/
+    │   ├── architecture-summary.md
+    │   ├── apollo-model.msml
+    │   ├── apollo-*.msmd
+    │   └── apollo-*.png
+    ├── e-bike/
+    │   ├── architecture-summary.md
+    │   ├── e-bike-model.msml
+    │   ├── e-bike-*.msmd
+    │   └── e-bike-*.png
     └── humanity-optimization/
+        ├── architecture-summary.md
         ├── Humanity_Optimization_System_Brief.md
         ├── Humanity_Optimization_Operational_Concept.md
         ├── hos-model.msml
@@ -172,23 +229,36 @@ msml-render-all projects
 
 ## Examples
 
-### Humanity Optimization System
+Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project). For toaster, blender, e-bike, and Apollo those files are MagicGrid architecture walkthroughs: problem → requirements → structure → behavior → parametrics → allocations → unmarked, then a generated-view walkthrough. HOS is a **concept sketch**, not a design baseline.
 
-The Humanity Optimization System is a civilization-scale decision-support concept modeled with MSML.
+### Electric Bike
 
-- [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
-- [HOS MSML model (`.msml`)](projects/humanity-optimization/hos-model.msml)
-- [HOS block definition diagram (`.msmd`)](projects/humanity-optimization/hos-context.msmd)
-- [HOS context internal block diagram (`.msmd`)](projects/humanity-optimization/hos-context-ibd.msmd)
-- [HOS operating loop activity diagram (`.msmd`)](projects/humanity-optimization/hos-operating-loop.msmd)
-- [HOS decision-support sequence diagram (`.msmd`)](projects/humanity-optimization/hos-decision-support-sequence.msmd)
+A street-legal EU-class pedal-assist bike used as the publish hero. Namespace `ElectricBike`. File stem `e-bike`. Continuous assist is **250 W** (EU EPAC, not peak). Hub torque is **40 N·m** peak, not continuous.
+
+- [MagicGrid architecture walkthrough](projects/e-bike/architecture-summary.md)
+- [Electric bike project](projects/e-bike): context, BDD, IBD, activity, sequence (`e-bike-int`), STM, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
+
+### Apollo
+
+Apollo is a full lunar-orbit-rendezvous example: Saturn V, Block II CSM, LM-5, crew, and the ground network for Apollo 11 (AS-506). Read it as a system-of-systems model. Numbers are from NASA primary sources; a few values (including an official CSM lunar Δv table) are intentionally left unmarked.
+
+- [MagicGrid architecture walkthrough](projects/apollo/architecture-summary.md)
+- [Apollo project](projects/apollo/README.md)
 
 ### Appliance Models
 
-The appliance examples are compact systems used to exercise the language.
+Compact systems used to exercise the language. Toaster is the twelve-view coverage canary.
 
-- [Toaster project](projects/appliances/toaster): all nine supported diagram families.
-- [Smart blender project](projects/appliances/blender): internal block, activity, and state machine views for a high-performance smart blender concept.
+- [Toaster MagicGrid architecture walkthrough](projects/appliances/toaster/architecture-summary.md) — [toaster project](projects/appliances/toaster)
+- [Blender MagicGrid architecture walkthrough](projects/appliances/blender/architecture-summary.md) — [blender project](projects/appliances/blender)
+
+### Humanity Optimization System
+
+Concept sketch (not a design baseline). Civilization-scale language in the brief is aspiration. The MSML model has no shalls.
+
+- [Concept sketch](projects/humanity-optimization/architecture-summary.md)
+- [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
+- [HOS project](projects/humanity-optimization)
 
 ## Development Checks
 
@@ -202,9 +272,9 @@ msml-render-all projects
 
 ## Current Status
 
-MSML is an early prototype. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, and basic strict checks.
+MSML v1.0 is implemented by package version `0.1.1`. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, tabular view configuration, and basic strict checks.
 
-The root [msml-specification.md](msml-specification.md) is the canonical human-facing specification. The installed package also includes a copy for `msml-spec`.
+The root [msml-specification.md](msml-specification.md) is the canonical human-facing specification. The installed package also includes a copy for `msml-spec`. The public update notes are in [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 

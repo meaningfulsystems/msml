@@ -1,0 +1,775 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-apollo-usb",
+    "name": "USB comms — sourced RF; antennas CREW-selected; P27 ≠ CCATS",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1320,
+      "height": 560,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "crew",
+        "model_ref": "Apollo.Crew",
+        "display_name": "crew : Crew  antenna select",
+        "layout": {
+          "x": 30,
+          "y": 80,
+          "width": 200,
+          "height": 140,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "hga",
+        "model_ref": "Apollo.HGA",
+        "display_name": "hga : CSM HGA  8.0 / 18.0 / 25.7 dB",
+        "layout": {
+          "x": 320,
+          "y": 40,
+          "width": 280,
+          "height": 150,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmst",
+        "model_ref": "Apollo.LM_Steerable",
+        "display_name": "lmSteerable : 20.5 dB  amplitron 20 W",
+        "layout": {
+          "x": 320,
+          "y": 200,
+          "width": 280,
+          "height": 120,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "usb",
+        "model_ref": "Apollo.USB",
+        "display_name": "usb : USB  sourced RF",
+        "layout": {
+          "x": 680,
+          "y": 80,
+          "width": 280,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "s642",
+        "model_ref": "Apollo.Site642B",
+        "display_name": "site642B : site 642B",
+        "layout": {
+          "x": 1040,
+          "y": 40,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "ccats",
+        "model_ref": "Apollo.CCATS",
+        "display_name": "ccats : CCATS  path A",
+        "layout": {
+          "x": 1040,
+          "y": 180,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "p27",
+        "model_ref": "Apollo.P27",
+        "display_name": "p27 : P27  V70–V73 ONLY",
+        "layout": {
+          "x": 1040,
+          "y": 320,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-ant",
+        "model_ref": "Apollo.Note.AntennaSelect",
+        "layout": {
+          "x": 30,
+          "y": 360,
+          "width": 400,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-bo",
+        "model_ref": "Apollo.Note.UnknownBlackout",
+        "layout": {
+          "x": 450,
+          "y": 360,
+          "width": 420,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-cmd",
+        "model_ref": "Apollo.Note.CommandPaths",
+        "layout": {
+          "x": 30,
+          "y": 450,
+          "width": 840,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-crew",
+        "model_ref": "Apollo.Port.crewAntOut",
+        "name": "sel",
+        "owner_ref": "crew",
+        "layout": {
+          "x": 224,
+          "y": 140,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-hga-c",
+        "model_ref": "Apollo.Port.hgaCrewIn",
+        "name": "crew",
+        "owner_ref": "hga",
+        "layout": {
+          "x": 314,
+          "y": 90,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lm-c",
+        "model_ref": "Apollo.Port.lmStCrewIn",
+        "name": "crew",
+        "owner_ref": "lmst",
+        "layout": {
+          "x": 314,
+          "y": 250,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-hga-u",
+        "model_ref": "Apollo.Port.hgaUsbIn",
+        "name": "rf",
+        "owner_ref": "hga",
+        "layout": {
+          "x": 594,
+          "y": 90,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-usb-h",
+        "model_ref": "Apollo.Port.usbHgaOut",
+        "name": "csm",
+        "owner_ref": "usb",
+        "layout": {
+          "x": 674,
+          "y": 120,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lm-u",
+        "model_ref": "Apollo.Port.lmStUsbIn",
+        "name": "rf",
+        "owner_ref": "lmst",
+        "layout": {
+          "x": 594,
+          "y": 250,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-usb-l",
+        "model_ref": "Apollo.Port.usbLmOut",
+        "name": "lm",
+        "owner_ref": "usb",
+        "layout": {
+          "x": 674,
+          "y": 220,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-usb-6",
+        "model_ref": "Apollo.Port.usb642In",
+        "name": "642",
+        "owner_ref": "usb",
+        "layout": {
+          "x": 954,
+          "y": 140,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-642-u",
+        "model_ref": "Apollo.Port.site642UsbOut",
+        "name": "usb",
+        "owner_ref": "s642",
+        "layout": {
+          "x": 1040,
+          "y": 80,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-642-c",
+        "model_ref": "Apollo.Port.site642In",
+        "name": "ccats",
+        "owner_ref": "s642",
+        "layout": {
+          "x": 1144,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cc-6",
+        "model_ref": "Apollo.Port.ccats642Out",
+        "name": "642",
+        "owner_ref": "ccats",
+        "layout": {
+          "x": 1144,
+          "y": 174,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-vhf",
+        "model_ref": "Apollo.Note.Vhf",
+        "layout": {
+          "x": 890,
+          "y": 360,
+          "width": 400,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "crewHga",
+        "type": "connector",
+        "relationship_ref": "usb-apollo.crewToHga",
+        "name": "CREW select",
+        "waypoints": [
+          {
+            "x": 236,
+            "y": 146
+          },
+          {
+            "x": 260,
+            "y": 146
+          },
+          {
+            "x": 260,
+            "y": 96
+          },
+          {
+            "x": 314,
+            "y": 96
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "crewLm",
+        "type": "connector",
+        "relationship_ref": "usb-apollo.crewToLmst",
+        "name": "CREW select",
+        "waypoints": [
+          {
+            "x": 236,
+            "y": 160
+          },
+          {
+            "x": 260,
+            "y": 160
+          },
+          {
+            "x": 260,
+            "y": 256
+          },
+          {
+            "x": 314,
+            "y": 256
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "usbHga",
+        "type": "connector",
+        "relationship_ref": "usb-apollo.usbToHga",
+        "name": "CSM RF",
+        "waypoints": [
+          {
+            "x": 600,
+            "y": 96
+          },
+          {
+            "x": 674,
+            "y": 126
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "usbLm",
+        "type": "connector",
+        "relationship_ref": "usb-apollo.usbToLmst",
+        "name": "LM RF",
+        "waypoints": [
+          {
+            "x": 600,
+            "y": 256
+          },
+          {
+            "x": 674,
+            "y": 226
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "usb642",
+        "type": "connector",
+        "relationship_ref": "gnd-apollo.siteToUsb",
+        "name": "70 kHz",
+        "waypoints": [
+          {
+            "x": 1040,
+            "y": 86
+          },
+          {
+            "x": 954,
+            "y": 146
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "ccats642",
+        "type": "connector",
+        "relationship_ref": "gnd-apollo.ccatsTo642",
+        "name": "path A",
+        "waypoints": [
+          {
+            "x": 1150,
+            "y": 174
+          },
+          {
+            "x": 1150,
+            "y": 146
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    },
+    "subject_ref": "Apollo.MissionContext"
+  }
+}

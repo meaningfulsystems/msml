@@ -1,7 +1,8 @@
 # Humanity Optimization System — Concept Brief
 
-**Prepared for:** Andrew Fried / Meaningful Systems  
-**Purpose:** Summarize the Humanity Optimization System as a clear concept brief for future modeling, architecture, writing, and system design work.
+Civilization-scale language in this brief is **aspiration**. The MSML folder is a concept sketch, not a design baseline.
+
+**Purpose:** Summarize the Humanity Optimization System as a concept brief.
 
 ---
 

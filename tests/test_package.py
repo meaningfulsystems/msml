@@ -6,7 +6,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests/fixtures"
 
-from msml import render, spec_path, validate, validate_all
+from msml import spec_path, validate, validate_all
+from msml.render import render
 from msml.render_all import render_all
 
 
@@ -77,6 +78,172 @@ class PackageApiTests(unittest.TestCase):
 
     def test_render_all_examples(self):
         self.assertEqual(render_all(ROOT / "projects/appliances/toaster"), 0)
+
+    def test_render_all_projects(self):
+        self.assertEqual(render_all(ROOT / "projects"), 0)
+        diagrams = sorted((ROOT / "projects").rglob("*.msmd"))
+        self.assertGreaterEqual(len(diagrams), 19)
+        for diagram in diagrams:
+            png = diagram.with_suffix(".png")
+            self.assertTrue(png.exists(), f"missing PNG for {diagram.name}")
+            self.assertGreater(png.stat().st_size, 1000, f"empty PNG for {diagram.name}")
+
+    def test_toaster_tabular_views_validate(self):
+        for name in ("toaster-reqt.msmd", "toaster-alloc.msmd", "toaster-amx.msmd"):
+            report = validate(ROOT / "projects/appliances/toaster" / name, strict=True)
+            self.assertEqual(report.errors, 0, name)
+
+    def test_spec_documents_tabular_views(self):
+        text = (ROOT / "msml-specification.md").read_text()
+        self.assertIn("requirement_table", text)
+        self.assertIn("allocation_table", text)
+        self.assertIn("allocation_matrix", text)
+        self.assertIn("`allocate`", text)
+
+    def test_architecture_design_notes(self):
+        twin_folders = [
+            ROOT / "projects/e-bike",
+            ROOT / "projects/apollo",
+            ROOT / "projects/appliances/toaster",
+            ROOT / "projects/appliances/blender",
+        ]
+        magicgrid = (
+            "## 1. Problem / context",
+            "## 2. Requirements and use cases",
+            "## 3. Structure",
+            "## 4. Behavior",
+            "## 5. Parametrics",
+            "## 6. Allocations",
+            "## 7. Open risks / unmarked",
+            "## Generated views",
+        )
+        magicgrid_words = (
+            "Requirements",
+            "Structure",
+            "Behavior",
+            "Parametrics",
+            "Allocations",
+        )
+        for folder in twin_folders:
+            path = folder / "architecture-summary.md"
+            self.assertTrue(path.exists(), path)
+            text = path.read_text(encoding="utf-8")
+            for heading in magicgrid:
+                self.assertIn(heading, text, f"{path} missing {heading}")
+            for word in magicgrid_words:
+                self.assertIn(word, text, f"{path} missing {word}")
+            self.assertIn("MagicGrid", text)
+            lowered = text.lower()
+            self.assertNotIn("cloud agent", lowered)
+            self.assertNotIn("mrs.", lowered)
+            self.assertNotIn("mr.", lowered)
+        hos_path = ROOT / "projects/humanity-optimization/architecture-summary.md"
+        hos = hos_path.read_text(encoding="utf-8")
+        for heading in (
+            "## 1. Purpose / context",
+            "## 2. System boundary and actors",
+            "## 3. Requirements",
+            "## 4. Structure and interfaces",
+            "## 5. States and modes",
+            "## 6. Allocations (req → part)",
+            "## 7. Sourced numbers",
+            "## 8. Open risks / TBD",
+            "## 9. Views in this folder",
+        ):
+            self.assertIn(heading, hos, f"HOS missing {heading}")
+        self.assertIn("Concept Sketch", hos)
+        lowered_hos = hos.lower()
+        self.assertNotIn("cloud agent", lowered_hos)
+        self.assertNotIn("mrs.", lowered_hos)
+        self.assertNotIn("mr.", lowered_hos)
+        ebike = (ROOT / "projects/e-bike/architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("continuous", ebike)
+        self.assertIn("250 W", ebike)
+        self.assertIn("40 N·m", ebike)
+        self.assertIn("lockBike", ebike)
+        self.assertIn("Tour-scenario", ebike)
+        self.assertIn("not a pack nameplate", ebike.lower())
+        self.assertIn("packEnergy", ebike)
+        self.assertIn("expression still uses", ebike)
+        toaster = (ROOT / "projects/appliances/toaster/architecture-summary.md").read_text(encoding="utf-8")
+        blender = (ROOT / "projects/appliances/blender/architecture-summary.md").read_text(encoding="utf-8")
+        for text in (toaster, blender):
+            self.assertNotIn("900–1200", text)
+            self.assertNotIn("900-1200", text)
+            self.assertNotIn("20,000 rpm", text)
+            self.assertNotIn("85 dBA", text)
+            self.assertNotIn("100 ms", text)
+            self.assertNotIn("250 ms", text)
+            self.assertNotIn("5–15 N", text)
+            self.assertNotIn("verification covered", text.lower())
+        self.assertNotIn("30 s", toaster)
+        self.assertNotIn("30s", toaster)
+        self.assertNotIn("1–5 min", toaster)
+        self.assertNotIn("300 °C", toaster)
+        self.assertNotIn("300°C", toaster)
+        self.assertIn("≥3", toaster)
+        self.assertIn("10 N", toaster)
+        self.assertIn("10,000", toaster)
+        self.assertIn("±5%", toaster)
+        self.assertIn("heat lands on the", toaster.lower())
+        self.assertIn("carriage", toaster.lower())
+        self.assertIn("unfilled, not verified", toaster.lower())
+        self.assertIn("50 ms", blender)
+        self.assertIn("±10%", blender)
+        self.assertIn("85 dB(A)", blender)
+        self.assertIn("overcurrent", blender.lower())
+        apollo = (ROOT / "projects/apollo/architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("official CSM lunar Δv", apollo)
+        self.assertIn("CSM-107 SPS loaded", apollo)
+        self.assertIn("20,500", apollo)
+        self.assertIn("21,500", apollo)
+        self.assertIn("9,870", apollo)
+        self.assertIn("10,500", apollo)
+        self.assertIn("SA-507", apollo)
+        self.assertIn("D-7720", apollo)
+        self.assertIn("2800", apollo)
+        self.assertIn("3200", apollo)
+        self.assertNotIn("2200", apollo)
+        self.assertIn("SPS is on the SM", apollo)
+        self.assertIn("UNRECONCILED", apollo)
+        self.assertIn("Not LES-only", apollo)
+        self.assertIn("three-beam", apollo)
+        self.assertIn("apollo-stm.png", apollo)
+        self.assertIn("75:54:28", apollo)
+        self.assertIn("A11-FP planned", apollo)
+        self.assertNotIn("A11-FP / Press Kit", apollo)
+        self.assertNotIn("PK may print", apollo)
+        self.assertNotIn("same string may appear", apollo)
+        self.assertNotIn("do not cite Press Kit as the LOI-1 source", apollo)
+        self.assertIn("~075:49:50", apollo)
+        self.assertIn("PAD/MR", apollo)
+        self.assertNotIn("075:49:49.65", apollo)
+        self.assertIn("2:44:26", apollo)
+        self.assertIn("A11-FP **planned**", apollo)
+        self.assertIn("not flown", apollo)
+        self.assertIn("conn-element-carriage", toaster)
+        self.assertIn("not a `usableWh` parameter", ebike)
+        self.assertIn("02:44:16", apollo)
+        self.assertIn("MSC-00171", apollo)
+        self.assertNotIn("02:44:16.2", apollo)
+        self.assertIn("plain language", apollo)
+        self.assertIn("Names stay MagicGrid", apollo)
+        self.assertIn("not a midcourse correction", apollo)
+        self.assertIn("not S-IVB ullage", apollo)
+        self.assertIn("not operations", apollo)
+        self.assertIn("PGNCS", apollo)
+        self.assertIn("motor-assist cut-off", ebike)
+        self.assertIn("4.2.13", ebike)
+        self.assertNotIn("Stopping Distance", ebike)
+        self.assertNotIn("10×", ebike)
+        hos = (ROOT / "projects/humanity-optimization/architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("Concept Sketch", hos)
+        self.assertIn("not a design baseline", hos)
+        self.assertIn("no shall", hos.lower())
+        spec = (ROOT / "msml-specification.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("concept sketch", spec.lower())
+        self.assertIn("concept sketch", readme.lower())
 
 
 if __name__ == "__main__":

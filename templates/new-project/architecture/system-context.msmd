@@ -1,0 +1,288 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "system-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-system-context",
+    "subject_ref": "ExampleSystem.SystemContext",
+    "name": "Operator · System · Environment",
+    "context": "ExampleSystem",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 900,
+      "height": 420,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-operator",
+        "model_ref": "ExampleSystem.Operator",
+        "role_name": "operator",
+        "display_name": "operator : Operator",
+        "layout": {
+          "x": 40,
+          "y": 160,
+          "width": 200,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-system",
+        "model_ref": "ExampleSystem",
+        "role_name": "exampleSystem",
+        "display_name": "exampleSystem : ExampleSystem",
+        "layout": {
+          "x": 340,
+          "y": 140,
+          "width": 240,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-environment",
+        "model_ref": "ExampleSystem.Environment",
+        "role_name": "environment",
+        "display_name": "environment : Environment",
+        "layout": {
+          "x": 680,
+          "y": 160,
+          "width": 180,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-op",
+        "model_ref": "ExampleSystem.Port.operatorOut",
+        "name": "command",
+        "owner_ref": "part-operator",
+        "layout": {
+          "x": 234,
+          "y": 198,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sys-op",
+        "model_ref": "ExampleSystem.Port.operatorIn",
+        "name": "in",
+        "owner_ref": "part-system",
+        "layout": {
+          "x": 334,
+          "y": 198,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-env",
+        "model_ref": "ExampleSystem.Port.environmentOut",
+        "name": "load",
+        "owner_ref": "part-environment",
+        "layout": {
+          "x": 674,
+          "y": 198,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sys-env",
+        "model_ref": "ExampleSystem.Port.environmentIn",
+        "name": "loadIn",
+        "owner_ref": "part-system",
+        "layout": {
+          "x": 574,
+          "y": 198,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "operatorToSystem",
+        "type": "connector",
+        "relationship_ref": "ctx-system.operatorToSystem",
+        "name": "commands",
+        "waypoints": [
+          {
+            "x": 246,
+            "y": 204
+          },
+          {
+            "x": 334,
+            "y": 204
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "environmentToSystem",
+        "type": "connector",
+        "relationship_ref": "ctx-system.environmentToSystem",
+        "name": "load",
+        "waypoints": [
+          {
+            "x": 674,
+            "y": 204
+          },
+          {
+            "x": 586,
+            "y": 204
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "template",
+        "ctx"
+      ]
+    }
+  }
+}

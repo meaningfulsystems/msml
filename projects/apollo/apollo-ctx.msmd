@@ -1,0 +1,977 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-apollo-ctx",
+    "name": "Vehicle \u00b7 Crew \u00b7 MCC/RTCC \u00b7 MSFN \u00b7 Moon \u00b7 Earth",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1280,
+      "height": 720,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-mcc",
+        "model_ref": "Apollo.MCC",
+        "display_name": "mcc : MCC",
+        "layout": {
+          "x": 400,
+          "y": 24,
+          "width": 200,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-rtcc",
+        "model_ref": "Apollo.RTCC",
+        "display_name": "rtcc : RTCC",
+        "layout": {
+          "x": 720,
+          "y": 24,
+          "width": 210,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-msfn",
+        "model_ref": "Apollo.MSFN",
+        "display_name": "msfn : MSFN",
+        "layout": {
+          "x": 500,
+          "y": 140,
+          "width": 220,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-crew",
+        "model_ref": "Apollo.Crew",
+        "display_name": "crew : Crew",
+        "layout": {
+          "x": 40,
+          "y": 300,
+          "width": 180,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-apollo",
+        "model_ref": "Apollo",
+        "display_name": "apollo : Apollo",
+        "layout": {
+          "x": 420,
+          "y": 280,
+          "width": 280,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-moon",
+        "model_ref": "Apollo.Moon",
+        "display_name": "moon : Moon",
+        "layout": {
+          "x": 980,
+          "y": 300,
+          "width": 180,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#ECEFF1",
+          "border_color": "#455A64",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-earth",
+        "model_ref": "Apollo.Earth",
+        "display_name": "earth : Earth",
+        "layout": {
+          "x": 420,
+          "y": 560,
+          "width": 280,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-inst",
+        "model_ref": "Apollo.Note.Instance",
+        "layout": {
+          "x": 40,
+          "y": 560,
+          "width": 340,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-crew",
+        "model_ref": "Apollo.Port.crewOut",
+        "name": "cmd",
+        "owner_ref": "part-crew",
+        "layout": {
+          "x": 214,
+          "y": 339,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-vin",
+        "model_ref": "Apollo.Port.vehicleCrewIn",
+        "name": "in",
+        "owner_ref": "part-apollo",
+        "layout": {
+          "x": 414,
+          "y": 338,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-voice",
+        "model_ref": "Apollo.Port.crewVoiceOut",
+        "name": "voice",
+        "owner_ref": "part-crew",
+        "layout": {
+          "x": 124,
+          "y": 294,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-msfnv",
+        "model_ref": "Apollo.Port.msfnVoiceIn",
+        "name": "vhf",
+        "owner_ref": "part-msfn",
+        "layout": {
+          "x": 494,
+          "y": 179,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-mccu",
+        "model_ref": "Apollo.Port.mccOut",
+        "name": "up",
+        "owner_ref": "part-mcc",
+        "layout": {
+          "x": 474,
+          "y": 98,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-msfnm",
+        "model_ref": "Apollo.Port.msfnMccIn",
+        "name": "mccIn",
+        "owner_ref": "part-msfn",
+        "layout": {
+          "x": 571,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-msfnu",
+        "model_ref": "Apollo.Port.msfnOut",
+        "name": "uplink",
+        "owner_ref": "part-msfn",
+        "layout": {
+          "x": 571,
+          "y": 224,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-vusbin",
+        "model_ref": "Apollo.Port.vehicleUsbIn",
+        "name": "usbIn",
+        "owner_ref": "part-apollo",
+        "layout": {
+          "x": 512,
+          "y": 274,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-vusbout",
+        "model_ref": "Apollo.Port.vehicleUsbOut",
+        "name": "usbOut",
+        "owner_ref": "part-apollo",
+        "layout": {
+          "x": 610,
+          "y": 274,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-msfnd",
+        "model_ref": "Apollo.Port.msfnVehicleIn",
+        "name": "down",
+        "owner_ref": "part-msfn",
+        "layout": {
+          "x": 648,
+          "y": 224,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-msfnt",
+        "model_ref": "Apollo.Port.msfnDownOut",
+        "name": "tlm",
+        "owner_ref": "part-msfn",
+        "layout": {
+          "x": 714,
+          "y": 179,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-mccd",
+        "model_ref": "Apollo.Port.mccDownIn",
+        "name": "down",
+        "owner_ref": "part-mcc",
+        "layout": {
+          "x": 594,
+          "y": 58,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-mccrt",
+        "model_ref": "Apollo.Port.mccRtccOut",
+        "name": "rtcc",
+        "owner_ref": "part-mcc",
+        "layout": {
+          "x": 594,
+          "y": 78,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-rtcc",
+        "model_ref": "Apollo.Port.rtccIn",
+        "name": "mccIn",
+        "owner_ref": "part-rtcc",
+        "layout": {
+          "x": 714,
+          "y": 63,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-land",
+        "model_ref": "Apollo.Port.vehicleMoonOut",
+        "name": "land",
+        "owner_ref": "part-apollo",
+        "layout": {
+          "x": 694,
+          "y": 354,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-moon",
+        "model_ref": "Apollo.Port.moonIn",
+        "name": "site",
+        "owner_ref": "part-moon",
+        "layout": {
+          "x": 974,
+          "y": 344,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#455A64",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-launch",
+        "model_ref": "Apollo.Port.vehicleEarthOut",
+        "name": "launch",
+        "owner_ref": "part-apollo",
+        "layout": {
+          "x": 554,
+          "y": 434,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-earth",
+        "model_ref": "Apollo.Port.earthIn",
+        "name": "pad",
+        "owner_ref": "part-earth",
+        "layout": {
+          "x": 554,
+          "y": 554,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "cmd",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.crewToVehicle",
+        "name": "commands",
+        "waypoints": [
+          {
+            "x": 220,
+            "y": 345
+          },
+          {
+            "x": 420,
+            "y": 344
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "voice",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.crewBackupVoice",
+        "name": "backup voice",
+        "waypoints": [
+          {
+            "x": 130,
+            "y": 300
+          },
+          {
+            "x": 130,
+            "y": 250
+          },
+          {
+            "x": 20,
+            "y": 250
+          },
+          {
+            "x": 20,
+            "y": 185
+          },
+          {
+            "x": 500,
+            "y": 185
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 40,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "up1",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.mccToMsfn",
+        "name": "uplink",
+        "waypoints": [
+          {
+            "x": 480,
+            "y": 104
+          },
+          {
+            "x": 577,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "up2",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.msfnToVehicle",
+        "name": "USB up",
+        "waypoints": [
+          {
+            "x": 577,
+            "y": 230
+          },
+          {
+            "x": 518,
+            "y": 280
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "dn1",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.vehicleToMsfn",
+        "name": "downlink",
+        "waypoints": [
+          {
+            "x": 616,
+            "y": 280
+          },
+          {
+            "x": 654,
+            "y": 230
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "dn2",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.msfnToMcc",
+        "name": "telemetry",
+        "waypoints": [
+          {
+            "x": 720,
+            "y": 185
+          },
+          {
+            "x": 740,
+            "y": 185
+          },
+          {
+            "x": 740,
+            "y": 120
+          },
+          {
+            "x": 680,
+            "y": 120
+          },
+          {
+            "x": 680,
+            "y": 64
+          },
+          {
+            "x": 600,
+            "y": 64
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 20,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmp",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.mccToRtcc",
+        "name": "compute",
+        "waypoints": [
+          {
+            "x": 600,
+            "y": 84
+          },
+          {
+            "x": 720,
+            "y": 69
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "land",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.vehicleToMoon",
+        "name": "landing",
+        "waypoints": [
+          {
+            "x": 700,
+            "y": 360
+          },
+          {
+            "x": 980,
+            "y": 350
+          }
+        ],
+        "style": {
+          "line_color": "#455A64",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "launch",
+        "type": "connector",
+        "relationship_ref": "ctx-apollo.vehicleToEarth",
+        "name": "launch",
+        "waypoints": [
+          {
+            "x": 560,
+            "y": 440
+          },
+          {
+            "x": 560,
+            "y": 560
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    },
+    "subject_ref": "Apollo.MissionContext"
+  }
+}

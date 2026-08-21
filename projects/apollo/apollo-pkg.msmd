@@ -1,0 +1,343 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "package",
+    "id": "pkg-apollo",
+    "name": "LaunchVehicle \u00b7 Spacecraft \u00b7 Crew \u00b7 GNC \u00b7 Ground \u00b7 Comms \u00b7 Mission",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1320,
+      "height": 360,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "model",
+        "id": "pkg-root",
+        "model_ref": "Apollo.Model",
+        "layout": {
+          "x": 20,
+          "y": 16,
+          "width": 1280,
+          "height": 320,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F5F5FF",
+          "border_color": "#445588",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-lv",
+        "model_ref": "Apollo.LaunchVehicle",
+        "layout": {
+          "x": 40,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-sc",
+        "model_ref": "Apollo.Spacecraft",
+        "layout": {
+          "x": 220,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-crew",
+        "model_ref": "Apollo.CrewECLSS",
+        "layout": {
+          "x": 400,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-gnc",
+        "model_ref": "Apollo.GNC",
+        "layout": {
+          "x": 580,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-gnd",
+        "model_ref": "Apollo.Ground",
+        "layout": {
+          "x": 760,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-com",
+        "model_ref": "Apollo.Comms",
+        "layout": {
+          "x": 940,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-mis",
+        "model_ref": "Apollo.Mission",
+        "layout": {
+          "x": 1120,
+          "y": 90,
+          "width": 160,
+          "height": 200,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "d1",
+        "relationship_ref": "pkg-apollo.d-gnc-spacecraft",
+        "waypoints": [
+          {
+            "x": 660,
+            "y": 90
+          },
+          {
+            "x": 660,
+            "y": 70
+          },
+          {
+            "x": 300,
+            "y": 70
+          },
+          {
+            "x": 300,
+            "y": 90
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "d2",
+        "relationship_ref": "pkg-apollo.d-crew-spacecraft",
+        "waypoints": [
+          {
+            "x": 400,
+            "y": 150
+          },
+          {
+            "x": 380,
+            "y": 150
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "d3",
+        "relationship_ref": "pkg-apollo.d-comms-ground",
+        "waypoints": [
+          {
+            "x": 940,
+            "y": 190
+          },
+          {
+            "x": 920,
+            "y": 190
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "d4",
+        "relationship_ref": "pkg-apollo.d-mission-all",
+        "waypoints": [
+          {
+            "x": 1200,
+            "y": 290
+          },
+          {
+            "x": 1200,
+            "y": 310
+          },
+          {
+            "x": 120,
+            "y": 310
+          },
+          {
+            "x": 120,
+            "y": 290
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    }
+  }
+}

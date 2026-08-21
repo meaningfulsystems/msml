@@ -20,6 +20,8 @@ DIAGRAM_ABBREV = {
     "bdd": "bdd", "ibd": "ibd", "activity": "act", "sequence": "sd",
     "state_machine": "stm", "use_case": "uc", "requirement": "req",
     "parametric": "par", "package": "pkg",
+    "requirement_table": "reqt", "allocation_table": "alloc",
+    "allocation_matrix": "amx",
 }
 
 FONT_PATHS = [
@@ -29,6 +31,14 @@ FONT_PATHS = [
     "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
     "C:/Windows/Fonts/arial.ttf",
+]
+
+FONT_PATHS_BOLD = [
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+    "/Library/Fonts/Arial Bold.ttf",
+    "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+    "C:/Windows/Fonts/arialbd.ttf",
 ]
 
 # Per-relationship-type line defaults: dashed, source head, target head, auto label
@@ -49,10 +59,13 @@ REL_DEFAULTS = {
     "derive":            dict(dashed=True,  src="none",         tgt="open",  label="«derive»"),
     "satisfy":           dict(dashed=True,  src="none",         tgt="open",  label="«satisfy»"),
     "verify":            dict(dashed=True,  src="none",         tgt="open",  label="«verify»"),
-    "refine":            dict(dashed=True,  src="none",         tgt="open"),
+    "refine":            dict(dashed=True,  src="none",         tgt="open",  label="«refine»"),
     "containment":       dict(dashed=False, src="none",         tgt="filled"),
     "package_import":    dict(dashed=True,  src="none",         tgt="triangle"),
     "package_merge":     dict(dashed=True,  src="none",         tgt="triangle"),
+    "allocate":          dict(dashed=True,  src="none",         tgt="open",  label="«allocate»"),
+    "trace":             dict(dashed=True,  src="none",         tgt="open",  label="«trace»"),
+    "copy":              dict(dashed=True,  src="none",         tgt="open",  label="«copy»"),
 }
 
 # ---------------------------------------------------------------------------
@@ -67,12 +80,15 @@ def parse_color(hex_str: str) -> tuple:
         return (int(s[0:2],16), int(s[2:4],16), int(s[4:6],16), int(s[6:8],16))
     raise ValueError(f"bad color {hex_str!r}")
 
-def load_font(size: int) -> ImageFont.ImageFont:
-    for p in FONT_PATHS:
+def load_font(size: int, bold: bool = False) -> ImageFont.ImageFont:
+    paths = FONT_PATHS_BOLD if bold else FONT_PATHS
+    for p in paths:
         try:
             return ImageFont.truetype(p, max(8, size))
         except (IOError, OSError):
             continue
+    if bold:
+        return load_font(size, bold=False)
     return ImageFont.load_default()
 
 def tbbox(draw, text, font):
@@ -82,6 +98,38 @@ def tbbox(draw, text, font):
 def center_text(draw, x, y, w, h, text, font, color):
     tw, th = tbbox(draw, text, font)
     draw.text((x+(w-tw)/2, y+(h-th)/2), text, fill=color, font=font)
+
+def wrap_text(draw, text, font, max_width):
+    """Wrap text to fit max_width, honoring existing newlines."""
+    if not text:
+        return []
+    lines = []
+    for paragraph in str(text).split("\n"):
+        words = paragraph.split()
+        if not words:
+            lines.append("")
+            continue
+        current = words[0]
+        for word in words[1:]:
+            trial = f"{current} {word}"
+            tw, _ = tbbox(draw, trial, font)
+            if tw <= max_width:
+                current = trial
+            else:
+                lines.append(current)
+                current = word
+        lines.append(current)
+    return lines
+
+def draw_label_box(draw, x, y, text, font, color, anchor="tl"):
+    """Draw text on a light backdrop so labels stay readable over lines."""
+    tw, th = tbbox(draw, text, font)
+    if anchor == "center":
+        x, y = x - tw / 2, y - th / 2
+    pad = 2
+    draw.rectangle([x - pad, y - pad, x + tw + pad, y + th + pad], fill=(255, 255, 255, 235))
+    draw.text((x, y), text, fill=color, font=font)
+    return tw, th
 
 # ---------------------------------------------------------------------------
 # Base Renderer
@@ -252,7 +300,11 @@ class MSMLRenderer:
         font = load_font(int(st.get("font",{}).get("size",10)))
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
         text = el.get("text", el.get("name",""))
-        draw.text((x+6, y+6), text, fill=fc, font=font)
+        ty = y + 6
+        for line in wrap_text(draw, text, font, w - 12):
+            draw.text((x+6, ty), line, fill=fc, font=font)
+            _, lh = tbbox(draw, line or " ", font)
+            ty += lh + 2
 
     # --------------------------------------------------------- relationships
 
@@ -311,7 +363,7 @@ class MSMLRenderer:
             dist = math.hypot(dx, dy) or 1
             px, py = ex + dx/dist*20, ey + dy/dist*20   # 20px along line
             ux, uy = -dy/dist, dx/dist                   # perpendicular
-            draw.text((int(px + ux*6), int(py + uy*6)), mult_src, fill=fc, font=lbl_font)
+            draw_label_box(draw, int(px + ux*6), int(py + uy*6), mult_src, lbl_font, fc)
         if mult_tgt and len(smooth) >= 2:
             ex, ey = smooth[-1]
             nx, ny = smooth[-2]
@@ -319,7 +371,7 @@ class MSMLRenderer:
             dist = math.hypot(dx, dy) or 1
             px, py = ex + dx/dist*20, ey + dy/dist*20
             ux, uy = -dy/dist, dx/dist
-            draw.text((int(px + ux*6), int(py + uy*6)), mult_tgt, fill=fc, font=lbl_font)
+            draw_label_box(draw, int(px + ux*6), int(py + uy*6), mult_tgt, lbl_font, fc)
 
         # relationship label (trigger/guard/effect/name/auto_label)
         auto_label = defaults.get("label","")
@@ -333,10 +385,10 @@ class MSMLRenderer:
         if parts:
             label = " ".join(parts)
             off = style.get("label_offset",{"x":0,"y":0})
-            mid = len(pts)//2
+            mid = max(1, len(pts)//2)
             mx = (pts[mid-1][0]+pts[mid][0])/2 + off.get("x",0)
             my = (pts[mid-1][1]+pts[mid][1])/2 + off.get("y",0)
-            draw.text((int(mx)+4, int(my)-14), label, fill=fc, font=lbl_font)
+            draw_label_box(draw, int(mx)+4, int(my)-14, label, lbl_font, fc)
 
     # --------------------------------------------------------- arrowheads
 
@@ -423,7 +475,7 @@ class MSMLRenderer:
                            fill, border, bw=2, r=6, font_size=12):
         """Draw a SysML classifier box: stereotype, name, divider, compartment lines."""
         self._box(draw, x, y, w, h, fill, border, bw, r)
-        font_bold  = load_font(font_size)
+        font_bold  = load_font(font_size, bold=True)
         font_small = load_font(max(9, font_size-2))
         font_stereo= load_font(max(9, font_size-2))
         fc = (30,30,30,255)
@@ -449,6 +501,62 @@ class MSMLRenderer:
             if section and section != compartments[-1]:
                 draw.line([(x+bw, ty+2),(x+w-bw, ty+2)], fill=border, width=1)
                 ty += 6
+
+    def _draw_data_table(self, draw, table, rows):
+        """Draw a SysML-style tabular view from column specs and row dicts."""
+        layout = table.get("layout", {})
+        x, y = self.cx(layout.get("x", 16)), self.cy(layout.get("y", 16))
+        columns = table.get("columns", [])
+        if not columns:
+            return
+        header_h = int(table.get("header_height", 32))
+        min_row_h = int(table.get("row_height", 28))
+        header_fill = parse_color(table.get("header_fill", "#2E4057"))
+        header_fg = parse_color(table.get("header_color", "#FFFFFF"))
+        alt_fill = parse_color(table.get("alt_fill", "#F4F7FB"))
+        row_fill = parse_color(table.get("row_fill", "#FFFFFF"))
+        grid = parse_color(table.get("grid_color", "#5A6570"))
+        text_color = parse_color(table.get("text_color", "#1A1A1A"))
+        hf = load_font(int(table.get("header_font_size", 11)), bold=True)
+        rf = load_font(int(table.get("font_size", 10)))
+        pad = 8
+
+        wrapped_rows = []
+        row_heights = []
+        for row in rows:
+            cell_lines = []
+            tallest = min_row_h
+            for col in columns:
+                lines = wrap_text(draw, str(row.get(col["key"], "")), rf, col["width"] - 2 * pad)
+                if not lines:
+                    lines = [""]
+                cell_lines.append(lines)
+                _, lh = tbbox(draw, "Ag", rf)
+                tallest = max(tallest, len(lines) * (lh + 3) + 10)
+            wrapped_rows.append(cell_lines)
+            row_heights.append(tallest)
+
+        # header
+        cx_col = x
+        for col in columns:
+            draw.rectangle([cx_col, y, cx_col + col["width"], y + header_h], fill=header_fill, outline=grid, width=1)
+            center_text(draw, cx_col, y, col["width"], header_h, col.get("label", col["key"]), hf, header_fg)
+            cx_col += col["width"]
+
+        ty = y + header_h
+        for i, cell_lines in enumerate(wrapped_rows):
+            rh = row_heights[i]
+            fill = alt_fill if i % 2 else row_fill
+            cx_col = x
+            _, lh = tbbox(draw, "Ag", rf)
+            for col, lines in zip(columns, cell_lines):
+                draw.rectangle([cx_col, ty, cx_col + col["width"], ty + rh], fill=fill, outline=grid, width=1)
+                ly = ty + 5
+                for line in lines:
+                    draw.text((cx_col + pad, ly), line, fill=text_color, font=rf)
+                    ly += lh + 3
+                cx_col += col["width"]
+            ty += rh
 
 
 # ---------------------------------------------------------------------------
@@ -512,8 +620,19 @@ class IBDRenderer(MSMLRenderer):
         role = el.get("role_name")
         type_name = el.get("name", el.get("type_ref", ""))
         label = el.get("display_name") or (f"{role}:{type_name}" if role and type_name else self._label(el))
-        center_text(draw, x, y, w, 34, label, font, fc)
-        draw.line([(x+bw, y+34),(x+w-bw, y+34)], fill=border, width=1)
+        header_h = 28 if w < 160 else 34
+        center_text(draw, x, y, w, header_h, label, font, fc)
+        props = [f"{p.get('name','')}: {p.get('type','')}" for p in el.get("compartments",{}).get("properties",[])]
+        if props:
+            draw.line([(x+bw, y+header_h),(x+w-bw, y+header_h)], fill=border, width=1)
+            sf = load_font(max(9, int(st.get("font",{}).get("size",11))-1))
+            ty = y + header_h + 4
+            for line in props[:4]:
+                draw.text((x+8, ty), line, fill=fc, font=sf)
+                _, lh = tbbox(draw, line, sf)
+                ty += lh + 2
+                if ty > y + h - 4:
+                    break
 
     def _draw_port(self, draw, el):
         lo, st = el["layout"], el.get("style",{})
@@ -523,7 +642,22 @@ class IBDRenderer(MSMLRenderer):
         draw.rectangle([x,y,x+w,y+h], fill=fill, outline=border, width=1)
         if el.get("name"):
             font = load_font(max(9, int(st.get("font",{}).get("size",9))))
-            draw.text((x+w+3, y-1), el["name"], fill=border, font=font)
+            tw, th = tbbox(draw, el["name"], font)
+            owner = self.elements.get(el.get("owner_ref", ""))
+            lx, ly = x + w + 4, y - th - 3
+            if owner:
+                ol = owner.get("layout", {})
+                ox, oy, ow, oh = ol.get("x", 0), ol.get("y", 0), ol.get("width", 0), ol.get("height", 0)
+                pcx, pcy = lo["x"] + w / 2, lo["y"] + h / 2
+                if pcy <= oy + 8:
+                    lx, ly = x + (w - tw) / 2, y - th - 3
+                elif pcy >= oy + oh - 8:
+                    lx, ly = x + (w - tw) / 2, y + h + 2
+                elif pcx <= ox + 8:
+                    lx, ly = x - tw - 3, y - th - 3
+                else:
+                    lx, ly = x + w - 2, y - th - 3
+            draw.text((lx, ly), el["name"], fill=border, font=font)
 
     def _draw_reference(self, draw, el):
         lo, st = el["layout"], el.get("style",{})
@@ -692,12 +826,13 @@ class SequenceRenderer(MSMLRenderer):
         else:
             self._draw_head(draw, (sx,msg_y), (tx,msg_y), color, lw, head)
 
-        # label above
+        # label above, centered on the message (optional label_offset)
         if rel.get("name"):
             font = load_font(10)
-            mx = (sx+tx)/2
-            draw.text((int(mx-40), int(msg_y-14)), rel["name"],
-                      fill=color, font=font)
+            off = style.get("label_offset", {"x": 0, "y": 0})
+            mx = (sx + tx) / 2 + off.get("x", 0)
+            my = msg_y - 10 + off.get("y", 0)
+            draw_label_box(draw, mx, my, rel["name"], font, color, anchor="center")
 
 
 # ---------------------------------------------------------------------------
@@ -717,23 +852,26 @@ class StateMachineRenderer(MSMLRenderer):
         font_cfg  = st.get("font",{})
         name_font = load_font(int(font_cfg.get("size",12)))
         fc = parse_color(font_cfg.get("color","#000000"))
-        name_h = 34
+        name_h = 28
         label = self._label(el)
         nw,nh = tbbox(draw, label, name_font)
         draw.text((x+(w-nw)/2, y+(name_h-nh)/2), label, fill=fc, font=name_font)
-        div_y = int(y+name_h)
-        draw.line([(x+bw,div_y),(x+w-bw,div_y)], fill=border, width=1)
         items = []
         if el.get("entry"): items.append(f"entry / {el['entry']}")
         if el.get("do"):    items.append(f"do / {el['do']}")
         if el.get("exit"):  items.append(f"exit / {el['exit']}")
         if items:
+            div_y = int(y+name_h)
+            draw.line([(x+bw,div_y),(x+w-bw,div_y)], fill=border, width=1)
             sf = load_font(max(9,int(font_cfg.get("size",12))-2))
-            ty = div_y+6
+            ty = div_y+5
             for item in items:
-                draw.text((x+8,ty), item, fill=fc, font=sf)
-                _,lh = tbbox(draw, item, sf)
-                ty += lh+4
+                for line in wrap_text(draw, item, sf, w - 16):
+                    draw.text((x+8, ty), line, fill=fc, font=sf)
+                    _, lh = tbbox(draw, line, sf)
+                    ty += lh + 3
+                    if ty > y + h - 4:
+                        return
 
 
 # ---------------------------------------------------------------------------
@@ -775,9 +913,10 @@ class UseCaseRenderer(MSMLRenderer):
         lo, st = el["layout"], el.get("style",{})
         x,y,w,h = self.cx(lo["x"]), self.cy(lo["y"]), lo["width"], lo["height"]
         border = parse_color(st.get("border_color","#555555"))
-        draw.rectangle([x,y,x+w,y+h], outline=border, width=2)
-        font = load_font(11)
-        draw.text((x+6, y+4), self._label(el), fill=border, font=font)
+        fill = parse_color(st.get("fill_color", "#F8F8FF"))
+        draw.rectangle([x,y,x+w,y+h], fill=fill, outline=border, width=2)
+        font = load_font(11, bold=True)
+        draw.text((x+8, y+6), self._label(el), fill=border, font=font)
 
 
 # ---------------------------------------------------------------------------
@@ -808,9 +947,14 @@ class RequirementRenderer(MSMLRenderer):
         draw.text((x+(w-nw)/2, div1+4), label, fill=fc, font=bf)
         div2 = div1+nh+10
         draw.line([(x+bw,div2),(x+w-bw,div2)], fill=border, width=1)
-        # text
-        text = el.get("text","")
-        draw.text((x+6, div2+4), text, fill=fc, font=sf)
+        # text, wrapped to the compartment
+        ty = div2 + 4
+        for line in wrap_text(draw, el.get("text",""), sf, w - 12):
+            draw.text((x+6, ty), line, fill=fc, font=sf)
+            _, lh = tbbox(draw, line or " ", sf)
+            ty += lh + 2
+            if ty > y + h - 4:
+                break
 
     def _draw_test_case(self, draw, el):
         lo, st = el["layout"], el.get("style",{})
@@ -919,6 +1063,163 @@ class PackageRenderer(MSMLRenderer):
 
 
 # ---------------------------------------------------------------------------
+# Tabular views (SysML 1 Annex D requirement / allocation tables)
+# ---------------------------------------------------------------------------
+
+class RequirementTableRenderer(MSMLRenderer):
+
+    def render(self, output_path: Path):
+        iw = self.cw + 2*self.FRAME_BORDER
+        ih = self.ch + self.TAB_HEIGHT + 2*self.FRAME_BORDER
+        img = Image.new("RGBA", (iw, ih), (255,255,255,255))
+        draw = ImageDraw.Draw(img)
+        bg = parse_color(self.d["canvas"].get("background_color","#FFFFFF"))
+        draw.rectangle([self.ox, self.oy, self.ox+self.cw-1, self.oy+self.ch-1], fill=bg)
+        self._draw_frame(draw)
+        table = self.d.get("table", {})
+        rows = []
+        satisfy_by = self._index_named_targets("satisfy")
+        verify_by = self._index_named_targets("verify")
+        for el in self.d.get("elements", []):
+            resolved = self._resolve_element(el)
+            if resolved.get("type") not in ("requirement", "table_row"):
+                # view type may be requirement; model type is requirement
+                if self.definitions.get(el.get("model_ref"), {}).get("type") != "requirement":
+                    continue
+            ref = el.get("model_ref", "")
+            rows.append({
+                "req_id": resolved.get("req_id", ""),
+                "name": self._label(resolved),
+                "kind": resolved.get("kind", ""),
+                "priority": resolved.get("priority", ""),
+                "status": resolved.get("status", ""),
+                "text": " ".join(str(resolved.get("text", "")).split()),
+                "satisfied_by": ", ".join(satisfy_by.get(ref, [])),
+                "verified_by": ", ".join(verify_by.get(ref, [])),
+            })
+        self._draw_data_table(draw, table, rows)
+        img.save(str(output_path), "PNG")
+        print(f"  {output_path.name}")
+
+    def _index_named_targets(self, rel_type):
+        """Map requirement id -> names of elements that satisfy/verify it."""
+        index = {}
+        for rel in self.model.get("relationships", []):
+            if rel.get("type") != rel_type:
+                continue
+            target = rel.get("target")
+            source = self.definitions.get(rel.get("source"), {})
+            name = source.get("name") or rel.get("source", "")
+            if target:
+                index.setdefault(target, []).append(name)
+        return index
+
+
+class AllocationTableRenderer(MSMLRenderer):
+
+    def render(self, output_path: Path):
+        iw = self.cw + 2*self.FRAME_BORDER
+        ih = self.ch + self.TAB_HEIGHT + 2*self.FRAME_BORDER
+        img = Image.new("RGBA", (iw, ih), (255,255,255,255))
+        draw = ImageDraw.Draw(img)
+        bg = parse_color(self.d["canvas"].get("background_color","#FFFFFF"))
+        draw.rectangle([self.ox, self.oy, self.ox+self.cw-1, self.oy+self.ch-1], fill=bg)
+        self._draw_frame(draw)
+        table = self.d.get("table", {})
+        rows = []
+        for rel in self.relationships:
+            resolved = self._resolve_relationship(rel)
+            src = self.definitions.get(resolved.get("source"), {})
+            tgt = self.definitions.get(resolved.get("target"), {})
+            rows.append({
+                "source": src.get("name") or resolved.get("source", ""),
+                "source_type": src.get("type", ""),
+                "target": tgt.get("name") or resolved.get("target", ""),
+                "target_type": tgt.get("type", ""),
+                "kind": resolved.get("kind") or resolved.get("name") or "allocate",
+            })
+        self._draw_data_table(draw, table, rows)
+        img.save(str(output_path), "PNG")
+        print(f"  {output_path.name}")
+
+
+class AllocationMatrixRenderer(MSMLRenderer):
+
+    def render(self, output_path: Path):
+        iw = self.cw + 2*self.FRAME_BORDER
+        ih = self.ch + self.TAB_HEIGHT + 2*self.FRAME_BORDER
+        img = Image.new("RGBA", (iw, ih), (255,255,255,255))
+        draw = ImageDraw.Draw(img)
+        bg = parse_color(self.d["canvas"].get("background_color","#FFFFFF"))
+        draw.rectangle([self.ox, self.oy, self.ox+self.cw-1, self.oy+self.ch-1], fill=bg)
+        self._draw_frame(draw)
+
+        matrix = self.d.get("matrix", {})
+        layout = matrix.get("layout", {})
+        x, y = self.cx(layout.get("x", 16)), self.cy(layout.get("y", 16))
+        row_els = [e for e in self.d.get("elements", []) if e.get("matrix_role") == "row"]
+        col_els = [e for e in self.d.get("elements", []) if e.get("matrix_role") == "column"]
+        row_w = int(matrix.get("row_header_width", 200))
+        col_h = int(matrix.get("col_header_height", 72))
+        cell_w = int(matrix.get("cell_width", 88))
+        cell_h = int(matrix.get("cell_height", 32))
+        header_fill = parse_color(matrix.get("header_fill", "#2E4057"))
+        header_fg = parse_color(matrix.get("header_color", "#FFFFFF"))
+        mark_fill = parse_color(matrix.get("mark_fill", "#1B5E20"))
+        empty_fill = parse_color(matrix.get("empty_fill", "#FFFFFF"))
+        alt_fill = parse_color(matrix.get("alt_fill", "#F4F7FB"))
+        grid = parse_color(matrix.get("grid_color", "#5A6570"))
+        hf = load_font(int(matrix.get("header_font_size", 10)), bold=True)
+        mf = load_font(int(matrix.get("mark_font_size", 12)), bold=True)
+
+        allocated = set()
+        for rel in self.relationships:
+            resolved = self._resolve_relationship(rel)
+            allocated.add((resolved.get("source"), resolved.get("target")))
+
+        # corner
+        draw.rectangle([x, y, x + row_w, y + col_h], fill=header_fill, outline=grid, width=1)
+        corner = matrix.get("corner_label", "«allocate»")
+        center_text(draw, x, y, row_w, col_h, corner, hf, header_fg)
+
+        for i, col in enumerate(col_els):
+            resolved = self._resolve_element(col)
+            cx_col = x + row_w + i * cell_w
+            draw.rectangle([cx_col, y, cx_col + cell_w, y + col_h], fill=header_fill, outline=grid, width=1)
+            label = self._label(resolved)
+            lines = wrap_text(draw, label, hf, cell_w - 8)
+            _, lh = tbbox(draw, "Ag", hf)
+            ty = y + (col_h - len(lines) * (lh + 2)) / 2
+            for line in lines:
+                tw, _ = tbbox(draw, line, hf)
+                draw.text((cx_col + (cell_w - tw) / 2, ty), line, fill=header_fg, font=hf)
+                ty += lh + 2
+
+        for r, row in enumerate(row_els):
+            resolved = self._resolve_element(row)
+            ry = y + col_h + r * cell_h
+            draw.rectangle([x, ry, x + row_w, ry + cell_h], fill=header_fill, outline=grid, width=1)
+            label = self._label(resolved)
+            lines = wrap_text(draw, label, hf, row_w - 12)
+            _, lh = tbbox(draw, "Ag", hf)
+            ly = ry + (cell_h - len(lines) * (lh + 2)) / 2
+            for line in lines:
+                draw.text((x + 8, ly), line, fill=header_fg, font=hf)
+                ly += lh + 2
+            src_ref = row.get("model_ref")
+            for c, col in enumerate(col_els):
+                cx_col = x + row_w + c * cell_w
+                marked = (src_ref, col.get("model_ref")) in allocated
+                fill = mark_fill if marked else (alt_fill if r % 2 else empty_fill)
+                draw.rectangle([cx_col, ry, cx_col + cell_w, ry + cell_h], fill=fill, outline=grid, width=1)
+                if marked:
+                    center_text(draw, cx_col, ry, cell_w, cell_h, "●", mf, (255, 255, 255, 255))
+
+        img.save(str(output_path), "PNG")
+        print(f"  {output_path.name}")
+
+
+# ---------------------------------------------------------------------------
 # Dispatch table + public API
 # ---------------------------------------------------------------------------
 
@@ -932,6 +1233,9 @@ RENDERER_MAP = {
     "requirement":   RequirementRenderer,
     "parametric":    ParametricRenderer,
     "package":       PackageRenderer,
+    "requirement_table": RequirementTableRenderer,
+    "allocation_table":  AllocationTableRenderer,
+    "allocation_matrix": AllocationMatrixRenderer,
 }
 
 

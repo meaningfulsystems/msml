@@ -1,0 +1,285 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "use_case",
+    "id": "uc-ebike",
+    "name": "Rider and Charger",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 860,
+      "height": 460,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "system_boundary",
+        "id": "sys",
+        "model_ref": "ElectricBike.UC.SystemBoundary",
+        "layout": {
+          "x": 200,
+          "y": 24,
+          "width": 460,
+          "height": 400,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F8F8FF",
+          "border_color": "#555588",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "actor",
+        "id": "actor-rider",
+        "model_ref": "ElectricBike.Rider",
+        "layout": {
+          "x": 40,
+          "y": 200,
+          "width": 70,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "border_color": "#333333",
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "actor",
+        "id": "actor-charger",
+        "model_ref": "ElectricBike.Charger",
+        "layout": {
+          "x": 740,
+          "y": 280,
+          "width": 70,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "border_color": "#1565C0",
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "use_case",
+        "id": "uc-adjust",
+        "model_ref": "ElectricBike.UC.adjustAssistUseCase",
+        "layout": {
+          "x": 320,
+          "y": 70,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "adjust assist"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-ride",
+        "model_ref": "ElectricBike.UC.rideBikeUseCase",
+        "layout": {
+          "x": 320,
+          "y": 200,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEDE0",
+          "border_color": "#CC4400",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "ride bike"
+      },
+      {
+        "type": "use_case",
+        "id": "uc-charge",
+        "model_ref": "ElectricBike.UC.chargeBikeUseCase",
+        "layout": {
+          "x": 320,
+          "y": 320,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "charge bike"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "a-ride",
+        "relationship_ref": "uc-ebike.a-rider-ride",
+        "waypoints": [
+          {
+            "x": 110,
+            "y": 250
+          },
+          {
+            "x": 320,
+            "y": 230
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "a-adjust",
+        "relationship_ref": "uc-ebike.a-rider-adjust",
+        "waypoints": [
+          {
+            "x": 110,
+            "y": 250
+          },
+          {
+            "x": 320,
+            "y": 100
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "a-charger",
+        "relationship_ref": "uc-ebike.a-charger-charge",
+        "waypoints": [
+          {
+            "x": 740,
+            "y": 330
+          },
+          {
+            "x": 540,
+            "y": 350
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "i-adjust",
+        "relationship_ref": "uc-ebike.i-adjust-ride",
+        "waypoints": [
+          {
+            "x": 430,
+            "y": 200
+          },
+          {
+            "x": 430,
+            "y": 130
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 18,
+            "y": -4
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "uc"
+      ]
+    }
+  }
+}
