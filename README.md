@@ -229,28 +229,28 @@ msml-render-all projects
 
 ## Examples
 
-Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project). For toaster, blender, e-bike, and Apollo those files are architecture / system-design notes. HOS is a **concept sketch**, not a design baseline.
+Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project). For toaster, blender, e-bike, and Apollo those files are MagicGrid architecture walkthroughs: problem → requirements → structure → behavior → parametrics → allocations → unmarked, then a generated-view walkthrough. HOS is a **concept sketch**, not a design baseline.
 
 ### Electric Bike
 
 A street-legal EU-class pedal-assist bike used as the publish hero. Namespace `ElectricBike`. File stem `e-bike`. Continuous assist is **250 W** (EU EPAC, not peak). Hub torque is **40 N·m** peak, not continuous.
 
-- [Architecture / system-design note](projects/e-bike/architecture-summary.md)
+- [MagicGrid architecture walkthrough](projects/e-bike/architecture-summary.md)
 - [Electric bike project](projects/e-bike): context, BDD, IBD, activity, sequence (`e-bike-int`), STM, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
 
 ### Apollo
 
 Apollo is a full lunar-orbit-rendezvous example: Saturn V, Block II CSM, LM-5, crew, and the ground network for Apollo 11 (AS-506). Read it as a system-of-systems model. Numbers are from NASA primary sources; a few values (including an official CSM lunar Δv table) are intentionally left unmarked.
 
-- [Architecture / system-design note](projects/apollo/architecture-summary.md)
+- [MagicGrid architecture walkthrough](projects/apollo/architecture-summary.md)
 - [Apollo project](projects/apollo/README.md)
 
 ### Appliance Models
 
 Compact systems used to exercise the language. Toaster is the twelve-view coverage canary.
 
-- [Toaster architecture / system-design note](projects/appliances/toaster/architecture-summary.md) — [toaster project](projects/appliances/toaster)
-- [Blender architecture / system-design note](projects/appliances/blender/architecture-summary.md) — [blender project](projects/appliances/blender)
+- [Toaster MagicGrid architecture walkthrough](projects/appliances/toaster/architecture-summary.md) — [toaster project](projects/appliances/toaster)
+- [Blender MagicGrid architecture walkthrough](projects/appliances/blender/architecture-summary.md) — [blender project](projects/appliances/blender)
 
 ### Humanity Optimization System
 

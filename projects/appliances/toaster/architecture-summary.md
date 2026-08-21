@@ -1,80 +1,99 @@
-# Toaster — Architecture / System Design
+# Toaster — MagicGrid architecture walkthrough
 
-Two-slice pop-up toaster used as the MSML coverage canary. Namespace `Toaster`. File stem `toaster`. This note is the design argument for the model in this folder, not a catalog of pictures.
+A student can follow this note with `toaster-model.msml` open. It walks the two-slice pop-up toaster from problem to solution in simplified MagicGrid order, then explains every generated view. This is not a Department of Defense Architecture Framework (DoDAF) product set.
 
-The same appliance idea appears in SysML2d (`examples/toaster/toaster.sysml` at SHA `e0e45b2`). The files are not interchangeable. Pick one toolchain. Numbers below are only those already on `toaster-model.msml`. Unfilled types stay unfilled.
-
-## 1. Purpose / context
-
-The toaster exists to brown bread to a user-selected level and then present it. The design problem is a short, repeatable thermal cycle with a hard safety cutoff: heat the element, time the cycle, pop the carriage, and shut down if the element exceeds a safe threshold.
+Namespace `Toaster`. File stem `toaster`. The same appliance idea appears in SysML2d (`examples/toaster/toaster.sysml`). The files are not interchangeable. Pick one toolchain. Every number below is already on `toaster-model.msml`. Unfilled types stay unfilled.
 
 This is an example model for language coverage, not a certifiable appliance.
 
-## 2. System boundary and actors
+## 1. Problem / context
 
-**Inside:** BrowningControl, Timer, Lever, Carriage, HeatingElement, ThermalCutoff, CrumbTray, Chassis.
+**Who.** The user browns bread and empties crumbs. A service technician is implied by a serviceability shall but is not a modeled actor. The Power Grid supplies household mains.
 
-**Outside:** User and Power Grid. Bread, toast, crumbs, and the kitchen air are implied by the toast cycle; they are not first-class actors on the MSML use-case view.
+**Boundary.** Inside the toaster: BrowningControl, Timer, Lever, Carriage, HeatingElement, ThermalCutoff, CrumbTray, Chassis. Outside: User and Power Grid. Bread, toast, crumbs, and kitchen air are implied by the toast cycle; they are not first-class actors on the use-case view.
 
-Use cases: Toast Bread (includes Activate Heating), Adjust Browning, Cancel Toast, Reset Error. The user associates with all four user-facing cases. The power grid associates with Toast Bread.
+**Mission.** Accept bread, apply controlled heat for a selected browning level, present toast, and let the user cancel a cycle or remove the crumb tray without tools. If the element exceeds a safe threshold, heating must stop.
 
-## 3. Requirements
+The model is one two-slice baseline. Four-slice, bagel, defrost, and wide-slot variants are out of scope.
 
-Fourteen sibling shalls bound from SysML2d `toaster.sysml`. No containment or derive tree.
+## 2. Requirements and use cases
 
-| Id | Name | Text / numbers |
+Fourteen sibling shalls. There is no containment or derive tree. Only the four numbered targets below are filled; the rest stay qualitative.
+
+| Id | Name | Shall |
 | --- | --- | --- |
 | `Toaster.toastSafetyRequirement` | toast safety | No burns, electrical shock, or fire under normal operating conditions. |
-| `Toaster.electricalSafetyRequirement` | electrical safety | Comply with applicable household electrical safety standards. |
+| `Toaster.electricalSafetyRequirement` | electrical safety | Comply with applicable household electrical safety standards. No standard name is filled. |
 | `Toaster.browningRequirement` | uniform browning | Uniform browning across the full bread surface for each browning level. |
 | `Toaster.timingRequirement` | timing accuracy | Timer within **±5%** of the selected setting across all browning levels. |
 | `Toaster.userInterfaceRequirement` | user interface | Insert bread, select a browning level, and cancel without tools. |
 | `Toaster.cleanabilityRequirement` | cleanability | Crumb tray removable and washable without tools. |
 | `Toaster.serviceabilityRequirement` | serviceability | Serviceable by a qualified technician without specialized equipment. |
-| `Toaster.powerRatingRequirement` | power rating | Operate within rated power consumption. No filled watts. |
-| `Toaster.surfaceTemperatureRequirement` | surface temperature | Exterior surfaces stay within safe-touch limits. No filled °C. |
-| `Toaster.thermalCutoffRequirement` | thermal cutoff | Thermal cutoff disables heating above a safe threshold. Threshold is unfilled. |
-| `Toaster.browningLevelsRequirement` | browning levels | At least **three** distinct and repeatable browning level settings (**≥3**). |
+| `Toaster.powerRatingRequirement` | power rating | Operate within rated power consumption. Watts unmarked. |
+| `Toaster.surfaceTemperatureRequirement` | surface temperature | Exterior surfaces stay within safe-touch limits. °C unmarked. |
+| `Toaster.thermalCutoffRequirement` | thermal cutoff | A thermal cutoff disables heating above a safe threshold. Threshold unmarked. |
+| `Toaster.browningLevelsRequirement` | browning levels | At least **three** distinct and repeatable settings (**≥3**). |
 | `Toaster.carriageReleaseRequirement` | carriage release | Carriage releases automatically when the timer expires or the user cancels. |
 | `Toaster.crumbTrayForceRequirement` | crumb tray force | Crumb tray removal force **≤10 N**. |
 | `Toaster.cycleLifeRequirement` | cycle life | At least **10,000** toast cycles before maintenance. |
 
-Only the numbers in that table are bound.
+**Use cases** on the model: Toast Bread (includes Activate Heating), Adjust Browning, Cancel Toast, Reset Error. The user associates with all four user-facing cases. The power grid associates with Toast Bread.
 
-## 4. Structure and interfaces
+## 3. Structure
 
-Toaster properties on the model are typed (`voltage: V`, `maxPower: W`) without filled product values.
+Read the block definition diagram (BDD) first, then the internal block diagram (IBD).
 
-Parts:
+Toaster root properties are typed (`voltage: V`, `maxPower: W`) without filled product values.
 
-- `BrowningControl` — `level`, `targetEnergy`
-- `Timer` — `duration`, `browning`
-- `Lever` — `position`
-- `Carriage` — `position`
-- `HeatingElement` — `resistance`, `power`
-- `ThermalCutoff` — `cutoffTemp`, `tripped` (`cutoffTemp: degC` typed, unfilled)
-- `CrumbTray`
-- `Chassis`
+```
+Toaster
+├── BrowningControl     level, targetEnergy
+├── Timer               duration, browning
+├── Lever               position
+├── Carriage            position
+├── HeatingElement      resistance, power
+├── ThermalCutoff       cutoffTemp: degC (unfilled), tripped
+├── CrumbTray
+└── Chassis
+```
 
-Connectors on the IBD:
+IBD connectors (why they exist):
 
-- Lever `ctrl` → Timer `in`
-- Timer `signal` → HeatingElement `ctrl`
-- HeatingElement `heatSignal` → Carriage `heatSignal`
+- Lever `ctrl` → Timer `in` — user start latches the timed cycle
+- Timer `signal` → HeatingElement `ctrl` — timer commands heat on and off
+- HeatingElement `heatSignal` → Carriage `heatSignal` — heat reaches the bread
 
 BrowningControl configures the Timer. ThermalCutoff monitors the HeatingElement.
 
-## 5. States and modes
+## 4. Behavior
 
-ToastingCycle: Idle → Toasting (`lever_down`) → Done (`timer_expired`) → Idle (`toast_removed`).
+**State machine (STM).** ToastingCycle: Idle → Toasting (`lever_down`) → Done (`timer_expired`) → Idle (`toast_removed`). From Toasting, `lever_up` returns to Idle (cancel). `overheat_detected` goes to Error (deactivate element, release latch, alarm). Error → Idle on `reset`. Done is a normal state, not a final node: toast can sit until the user removes it.
 
-From Toasting: `lever_up` returns to Idle (cancel). `overheat_detected` goes to Error (deactivate element, release latch, alarm). Error → Idle on `reset`.
+**Activity.** Insert bread → press lever → fork to start timer and heat element → join → pop carriage.
 
-Done is a normal state, not a terminal node: toast can sit until the user removes it.
+**Sequence.** User `pressLever()` to the toaster; toaster `start()` to the Timer and `activate()` to the HeatingElement; Timer returns `timerExpired`; toaster `deactivate()` and replies `:ready`. The start message is `start()`, not a filled duration.
 
-## 6. Allocations (req → part)
+## 5. Parametrics
 
-Satisfy mappings on the model:
+Constraint properties on the model (typed, unfilled):
+
+- `PV2R`: `P = V² / R`
+- `Energy`: `Q = P × t`
+- `BreadHeat`: `Q_b = η × Q`
+- `SafetyCheck`: `T_elem < T_cutoff`
+
+Sourced numbers only:
+
+- at least three browning levels (**≥3**)
+- crumb tray **≤10 N**
+- at least **10,000** toast cycles
+- timer **±5%** of the selected setting
+
+`Energy` verifies timing accuracy. `SafetyCheck` verifies thermal cutoff without a product °C.
+
+## 6. Allocations
+
+Satisfy mappings (requirement → part):
 
 | Requirement | Satisfied by |
 | --- | --- |
@@ -93,34 +112,41 @@ Satisfy mappings on the model:
 | crumb tray force | CrumbTray |
 | cycle life | Toaster |
 
-Parametric properties on the model: `Energy` verifies timing accuracy; `SafetyCheck` (`T_elem < T_cutoff`, unfilled) verifies thermal cutoff. Activity steps (insert bread, press lever, start timer, heat, pop) allocate to the same parts.
+Activity steps allocate to the same parts: insert bread and pop → Carriage; press lever → Lever; start timer → Timer; heat → HeatingElement. The Toasting state allocates to Toaster; Error allocates to ThermalCutoff.
 
-## 7. Sourced numbers
+## 7. Open risks / unmarked
 
-Quantitative targets from SysML2d `toaster.sysml` only:
-
-- at least three distinct and repeatable browning levels (**≥3**)
-- crumb tray removal force **≤10 N**
-- at least **10,000** toast cycles before maintenance
-- timer within **±5%** of the selected setting across all browning levels
-
-Root `voltage` and `maxPower` are typed, not filled. `cutoffTemp` is typed `degC`, not filled. Do not promote view-only values into the model.
-
-## 8. Open risks / TBD
-
-- This stays an example model, not a certifiable appliance.
-- No filled mains voltage or element wattage, so electrical-load analysis cannot close.
-- Thermal cutoff threshold stays an unfilled type; `SafetyCheck` compares `T_elem` to `T_cutoff` without a product number.
-- Power is typed on Toaster / HeatingElement with no filled watts.
+- Example model, not a certifiable appliance.
+- Mains voltage, element wattage, touch-temperature limit, and cutoff threshold are unmarked. Electrical-load analysis cannot close.
 - Product-line variants are out of scope.
 
-## 9. Views in this folder
+## Generated views
 
-`toaster-bdd.png`, `toaster-ibd.png`, `toaster-act.png`, `toaster-seq.png`, `toaster-stm.png`, `toaster-uc.png`, `toaster-req.png`, `toaster-reqt.png`, `toaster-par.png`, `toaster-pkg.png`, `toaster-alloc.png`, `toaster-amx.png`.
+These figures illustrate the architecture above; they do not replace it. Open the matching `.msmd` next to the PNG.
 
-![Toaster block definitions](toaster-bdd.png)
+**`toaster-bdd.png` — block definition diagram (BDD).** Ownership tree. Composition diamonds from Toaster to the eight parts. Dashed associations: ThermalCutoff *monitors* HeatingElement; BrowningControl *configures* Timer. Types (`V`, `W`, `degC`) are unfilled.
 
-![Toaster requirements table](toaster-reqt.png)
+**`toaster-ibd.png` — internal block diagram (IBD).** Ports and connectors inside one toaster. Read left-to-right: lever command → timer → heater control → heat into the carriage. Lines stay off boxes.
+
+**`toaster-uc.png` — use cases.** User on Toast Bread, Adjust Browning, Cancel Toast, Reset Error. Power Grid on Toast Bread. Toast Bread «include» Activate Heating.
+
+**`toaster-req.png` — requirement diagram.** Fourteen sibling boxes. No containment arrows. Read the Id and the shall text; the numbered targets are ≥3, ±5%, ≤10 N, and 10,000 cycles.
+
+**`toaster-reqt.png` — requirement table.** Same fourteen shalls as rows, with Satisfied By and Verified By filled from the model.
+
+**`toaster-stm.png` — state machine (STM).** Idle / Toasting / Done / Error. Done is a waiting state. Error is the overheat path.
+
+**`toaster-act.png` — activity.** Toast-cycle control flow, including the fork after the lever press.
+
+**`toaster-seq.png` — sequence.** Lifelines User, Toaster, Timer, HeatingElement. Message names come from the model (`start()`, not a filled time).
+
+**`toaster-par.png` — parametrics.** Bindings among voltage, resistance, power, duration, heat, and the unfilled safety check.
+
+**`toaster-alloc.png` — allocation table.** Rows are «allocate» relationships: activity/state/use-case/requirement → part.
+
+**`toaster-amx.png` — allocation matrix.** Same functional and behavioral allocates as marks at action/state/use-case × part.
+
+**`toaster-pkg.png` — packages.** Structural, Behavioral, and Control packages and their dependencies.
 
 ```bash
 msml-validate-all projects/appliances/toaster --strict

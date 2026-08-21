@@ -2,7 +2,7 @@
 
 This folder is an MSML **concept sketch**, not a design baseline. Namespace `HOS`. File stem `hos`. Red Team should score it as a sketch, not as architecture.
 
-Civilization-scale language lives as aspiration in [Humanity_Optimization_System_Brief.md](Humanity_Optimization_System_Brief.md). The operational picture is [Humanity_Optimization_Operational_Concept.md](Humanity_Optimization_Operational_Concept.md). This file uses the same section headings as the other examples so the tree stays uniform. It does **not** invent biomedical or human-body claims, performance scores, population statistics, or shall-statements that are not on `hos-model.msml`.
+Civilization-scale language lives as aspiration in [Humanity_Optimization_System_Brief.md](Humanity_Optimization_System_Brief.md). The operational picture is [Humanity_Optimization_Operational_Concept.md](Humanity_Optimization_Operational_Concept.md). This file keeps the original nine section headings as a sketch frame. The twin examples (toaster, blender, e-bike, Apollo) use MagicGrid walkthrough headings. It does **not** invent biomedical or human-body claims, performance scores, population statistics, or shall-statements that are not on `hos-model.msml`.
 
 ## 1. Purpose / context
 

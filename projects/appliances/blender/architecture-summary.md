@@ -1,46 +1,63 @@
-# Smart Blender — Architecture / System Design
+# Smart Blender — MagicGrid architecture walkthrough
 
-High-performance countertop blender used to exercise IBD, activity, state-machine, and requirement views. Namespace `Blender`. File stem `blender`. This note is the design argument for the model in this folder.
+A student can follow this note with `blender-model.msml` open. It walks the countertop blender from problem to solution in simplified MagicGrid order, then explains every generated view. This is not a Department of Defense Architecture Framework (DoDAF) product set.
 
-The same appliance idea appears in SysML2d (`examples/blender/blender.sysml` at SHA `e0e45b2`). The files are not interchangeable. Pick one toolchain. Numbers below are only those already on `blender-model.msml`.
-
-## 1. Purpose / context
-
-The blender exists to run a smoothie program: the user loads ingredients, seats the container, closes the lid, starts the program, and the machine spins until a smoothness estimate says stop — or the user stops it, a timeout fires, or power goes off.
+Namespace `Blender`. File stem `blender`. The same appliance idea appears in SysML2d (`examples/blender/blender.sysml`). The files are not interchangeable. Pick one toolchain. Every number below is already on `blender-model.msml`.
 
 This is an example model for language coverage, not a certifiable appliance.
 
-## 2. System boundary and actors
+## 1. Problem / context
 
-**Inside:** MotorBase, Motor, DriveCoupling, Container, BladeAssembly, Lid, Tamper, ControlPanel, SmoothieCompleteSensor.
+**Who.** The user loads ingredients, seats the container, closes the lid, starts or stops a smoothie program, and pours. Mains power is implied by the Off / Ready switch; there is no Power Grid actor on this model.
 
-**Outside:** User. Mains power is implied by the Off / Ready switch; there is no Power Grid actor on this model.
+**Boundary.** Inside: MotorBase, Motor, DriveCoupling, Container, BladeAssembly, Lid, Tamper, ControlPanel, SmoothieCompleteSensor. Outside: User.
 
-There are no formal use-case definitions on `blender-model.msml`. The intended operator story is start / stop / power off, recovered from the activity and STM views.
+**Mission.** Blend ingredients under program control until a smoothness estimate says stop — or the user stops, a timeout fires, or power goes off. The motor must not run unless the lid is seated and locked. Overcurrent must cut power before the motor is damaged.
 
-## 3. Requirements
+The model is one baseline smart blender, not a product line.
 
-Thirteen sibling shalls bound from SysML2d `blender.sysml`. No extras.
+## 2. Requirements and use cases
 
-| Id | Name | Text / numbers |
+Thirteen sibling shalls bound from SysML2d `blender.sysml`. No extras. There are **no formal use-case definitions** on `blender-model.msml`. The operator story is recovered from the activity and the state machine (STM): load, secure lid, start, blend until smooth, stop.
+
+| Id | Name | Shall |
 | --- | --- | --- |
 | `Blender.lidInterlockRequirement` | lid interlock | Motor shall not run unless the lid is fully seated and locked. |
 | `Blender.motorControlRequirement` | motor control | Start, pause, and stop within **200 ms**. |
 | `Blender.smoothnessDetectionRequirement` | smoothness detection | Sensor detects completion and signals the control panel. |
-| `Blender.powerRequirement` | power rating | Operate within the rated power envelope. No filled watts. |
+| `Blender.powerRequirement` | power rating | Operate within the rated power envelope. Watts unmarked. |
 | `Blender.userControlsRequirement` | user controls | Start, pause, and stop without tools. |
 | `Blender.cleaningRequirement` | cleaning | Container, lid, and blade dishwasher-safe or washable. |
 | `Blender.serviceRequirement` | serviceability | Serviceable without specialized equipment. |
 | `Blender.motorSpeedRequirement` | motor speed | Set speed within **±10%**. |
 | `Blender.interlockLatencyRequirement` | interlock latency | Lid interlock disables the motor within **50 ms** of lid removal. |
-| `Blender.overcurrentProtectionRequirement` | overcurrent protection | Cuts power before motor damage. |
+| `Blender.overcurrentProtectionRequirement` | overcurrent protection | Cuts power before motor damage. Trip time unmarked. |
 | `Blender.smoothnessThresholdRequirement` | smoothness threshold | Configurable threshold; at least **three** blend program profiles. |
 | `Blender.noiseRequirement` | noise | Below **85 dB(A)** at the operator position. |
 | `Blender.containerSeatRequirement` | container seat | Positive mechanical lock to the base; deliberate release. |
 
-## 4. Structure and interfaces
+Pause is required in the motor-control and user-controls shalls. The STM has no pause state; that gap stays unmarked as a state, not filled with an invented mode.
 
-Command / drive / sense path:
+## 3. Structure
+
+There is no blender BDD in this folder. Read structure from the model parts and the IBD.
+
+```
+Blender
+├── MotorBase
+├── Motor                 speed: RPM (typed, unfilled)
+├── DriveCoupling
+├── Container
+│   └── BladeAssembly     (composition: contains)
+├── Lid
+├── Tamper
+├── ControlPanel          variableSpeed, pulse, smoothieProgram
+└── SmoothieCompleteSensor   loadProxy, vibrationProxy, textureEstimate
+```
+
+The blender block also holds `program` and `smoothnessThreshold` as typed properties without filled product values.
+
+**Command / drive / sense (IBD):**
 
 - ControlPanel `motorCommand` (out) → Motor `cmd` (in)
 - Motor `drive` (out) → DriveCoupling `driveIn` (in)
@@ -48,21 +65,37 @@ Command / drive / sense path:
 - DriveCoupling `vibrationProxy` (out) → SmoothieCompleteSensor `vibrationProxy` (in)
 - SmoothieCompleteSensor `complete` (out) → ControlPanel `complete` (in)
 
-Mechanical seats:
+**Mechanical seats:**
 
 - MotorBase `mechanical` ↔ Container `mechanical` (container on base)
 - Lid `containerSeat` ↔ Container `lidSeat`
 - Tamper `lidOpening` ↔ Lid `tamperOpening` (tamper through the lid)
 
-## 5. States and modes
+There is no separate interlock part. Lid seating is the mechanical connector plus the two interlock shalls.
 
-SmoothieProgram: Off → Ready (`on switch`) → Blending (`start command`).
+## 4. Behavior
 
-From Blending: `smoothie complete`, `stop command`, or `timeout` return to Ready. `off switch` from Ready or Blending returns to Off.
+**State machine (STM).** SmoothieProgram: Off → Ready (`on switch`) → Blending (`start command`). From Blending, `smoothie complete`, `stop command`, or `timeout` return to Ready. `off switch` from Ready or Blending returns to Off.
 
-The STM keeps Off / Ready / Blending. Lid interlock and overcurrent are requirements allocated to ControlPanel and MotorBase; they are not extra STM event names on this view.
+The STM keeps Off / Ready / Blending. Lid-open and overcurrent are requirements allocated to ControlPanel and MotorBase; they are not extra STM event names on this view.
 
-## 6. Allocations (req → part)
+**Activity.** Load ingredients → secure lid → select smoothie program → ramp motor → blend and sense → decision (loop while not smooth) → stop motor → signal complete → serve.
+
+Timeout duration is unmarked.
+
+## 5. Parametrics
+
+This folder has no parametric diagram. Sourced numbers live on the requirement texts:
+
+- motor start / pause / stop within **200 ms**
+- set speed within **±10%**
+- lid interlock disables the motor within **50 ms**
+- noise below **85 dB(A)** at the operator
+- at least three blend program profiles
+
+`speed: RPM` and `smoothnessThreshold: Real` are types, not values. Rated watts and overcurrent trip time stay unmarked.
+
+## 6. Allocations
 
 Satisfy mappings on the model:
 
@@ -84,32 +117,26 @@ Satisfy mappings on the model:
 
 SysML2d allocation names kept where they map: `allocateInterlockToControlPanel`, `allocateTorqueToMotor`, `allocateSmoothnessToSensor`, `allocateCleaningToContainer`, `allocateProtectionToMotorBase`, `allocateInterfaceToControlPanel`.
 
-## 7. Sourced numbers
+## 7. Open risks / unmarked
 
-Quantitative targets from SysML2d `blender.sysml` only:
+- Example model, not a certifiable appliance.
+- Rated power magnitude, blend timeout, and overcurrent trip time are unmarked.
+- Pause is required in two shalls and has no STM state.
+- No mains / thermal analysis. No BDD, sequence, or parametric view in this folder.
 
-- motor start / pause / stop within **200 ms**
-- set speed within **±10%**
-- lid interlock disables the motor within **50 ms**
-- noise below **85 dB(A)** at the operator
-- at least three blend program profiles
+## Generated views
 
-`speed: RPM` and `smoothnessThreshold: Real` are types, not values. Do not promote view-only watts or rpm into the model.
+These figures illustrate the architecture above; they do not replace it.
 
-## 8. Open risks / TBD
+**`blender-ibd.png` — internal block diagram (IBD).** The only structure picture. Read two paths: command/drive/sense (panel → motor → coupling → blades, with vibration back to the sensor) and mechanical seats (base ↔ container, lid ↔ container, tamper through lid). Lines stay off boxes.
 
-- This stays an example model, not a certifiable appliance.
-- No filled motor power, so electrical-load analysis cannot close.
-- Lid seating is a mechanical connector plus the interlock shalls; the STM does not yet name `lidOpened` or `overcurrent`.
-- No mains / thermal analysis.
+**`blender-act.png` — activity.** Smoothie program as a swim of actions. The decision node is “smoothness reached?”; the loop guard is `not smooth`.
 
-## 9. Views in this folder
+**`blender-stm.png` — state machine (STM).** Off, Ready, Blending. Triggers are switch, start, complete, stop, timeout. No Error box on this view.
 
-`blender-ibd.png`, `blender-act.png`, `blender-stm.png`, `blender-req.png`, `blender-reqt.png`.
+**`blender-req.png` — requirement diagram.** Thirteen sibling boxes. Read the numbered targets (200 ms, ±10%, 50 ms, 85 dB(A), three profiles) and the qualitative shalls.
 
-![Smart blender internal structure](blender-ibd.png)
-
-![Blender requirements table](blender-reqt.png)
+**`blender-reqt.png` — requirement table.** Same thirteen shalls as rows, with Satisfied By filled from the model.
 
 ```bash
 msml-validate-all projects/appliances/blender --strict

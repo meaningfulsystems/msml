@@ -101,14 +101,45 @@ class PackageApiTests(unittest.TestCase):
         self.assertIn("`allocate`", text)
 
     def test_architecture_design_notes(self):
-        folders = [
+        twin_folders = [
             ROOT / "projects/e-bike",
             ROOT / "projects/apollo",
             ROOT / "projects/appliances/toaster",
             ROOT / "projects/appliances/blender",
-            ROOT / "projects/humanity-optimization",
         ]
-        required = (
+        magicgrid = (
+            "## 1. Problem / context",
+            "## 2. Requirements and use cases",
+            "## 3. Structure",
+            "## 4. Behavior",
+            "## 5. Parametrics",
+            "## 6. Allocations",
+            "## 7. Open risks / unmarked",
+            "## Generated views",
+        )
+        magicgrid_words = (
+            "Requirements",
+            "Structure",
+            "Behavior",
+            "Parametrics",
+            "Allocations",
+        )
+        for folder in twin_folders:
+            path = folder / "architecture-summary.md"
+            self.assertTrue(path.exists(), path)
+            text = path.read_text(encoding="utf-8")
+            for heading in magicgrid:
+                self.assertIn(heading, text, f"{path} missing {heading}")
+            for word in magicgrid_words:
+                self.assertIn(word, text, f"{path} missing {word}")
+            self.assertIn("MagicGrid", text)
+            lowered = text.lower()
+            self.assertNotIn("cloud agent", lowered)
+            self.assertNotIn("mrs.", lowered)
+            self.assertNotIn("mr.", lowered)
+        hos_path = ROOT / "projects/humanity-optimization/architecture-summary.md"
+        hos = hos_path.read_text(encoding="utf-8")
+        for heading in (
             "## 1. Purpose / context",
             "## 2. System boundary and actors",
             "## 3. Requirements",
@@ -118,17 +149,13 @@ class PackageApiTests(unittest.TestCase):
             "## 7. Sourced numbers",
             "## 8. Open risks / TBD",
             "## 9. Views in this folder",
-        )
-        for folder in folders:
-            path = folder / "architecture-summary.md"
-            self.assertTrue(path.exists(), path)
-            text = path.read_text(encoding="utf-8")
-            for heading in required:
-                self.assertIn(heading, text, f"{path.name} missing {heading}")
-            lowered = text.lower()
-            self.assertNotIn("cloud agent", lowered)
-            self.assertNotIn("mrs.", lowered)
-            self.assertNotIn("mr.", lowered)
+        ):
+            self.assertIn(heading, hos, f"HOS missing {heading}")
+        self.assertIn("Concept Sketch", hos)
+        lowered_hos = hos.lower()
+        self.assertNotIn("cloud agent", lowered_hos)
+        self.assertNotIn("mrs.", lowered_hos)
+        self.assertNotIn("mr.", lowered_hos)
         ebike = (ROOT / "projects/e-bike/architecture-summary.md").read_text(encoding="utf-8")
         self.assertIn("continuous", ebike)
         self.assertIn("250 W", ebike)
