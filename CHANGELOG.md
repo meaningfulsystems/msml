@@ -14,7 +14,7 @@ Public MSML v1.0 update. Andrew can paste the section below as the announcement.
 - `allocate` as a first-class relationship, including the compact table and matrix views.
 - A street-legal EU-class electric bike example at `projects/e-bike/` (`ElectricBike` namespace, `e-bike` file stem) with rider / charger / bike / road context, color-coded IBD, start-ride activity, and sibling requirements (60 km, 25 km/h, 50 ms).
 - Visual QA across toaster, blender, HOS, and e-bike so the figures are announcement-ready.
-- Start-your-own-system adoption pack: `AGENTS.md`, four Cursor/Claude skills (`skills/bootstrap-project`, `skills/author-model`, `skills/compose-views`, `skills/vision-review`), and `template/new-project/`. Same skill slugs as SysML2d. MSML does not replace commercial SysML 2 tools.
+- Start-your-own-system adoption pack: `AGENTS.md`, four Cursor/Claude skills (`skills/bootstrap-project`, `skills/author-model`, `skills/compose-views`, `skills/vision-review`), and `templates/new-project/`. Same skill slugs as SysML2d. MSML does not replace commercial SysML 2 tools.
 
 **Install and render**
 
@@ -27,7 +27,7 @@ msml-validate-all projects --strict
 msml-render-all projects
 ```
 
-Specification: `msml-specification.md`. Examples: `projects/e-bike`, `projects/appliances/toaster`, `projects/appliances/blender`, `projects/humanity-optimization`. Start a new system from `template/new-project/` and [AGENTS.md](AGENTS.md). Sibling toolchain: [SysML2d](https://github.com/meaningfulsystems/sysml2d) (git-native SysML v2 diagrams; different files).
+Specification: `msml-specification.md`. Examples: `projects/e-bike`, `projects/appliances/toaster`, `projects/appliances/blender`, `projects/humanity-optimization`. Start a new system from `templates/new-project/` and [AGENTS.md](AGENTS.md). Sibling toolchain: [SysML2d](https://github.com/meaningfulsystems/sysml2d) (git-native SysML v2 diagrams; different files).
 
 ### Internal notes
 

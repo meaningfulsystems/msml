@@ -20,7 +20,7 @@ A first-time systems engineer picks **one** toolchain per project. Do not mix `.
 
 Run this loop. The four skill slugs are locked so they match SysML2d.
 
-1. **[bootstrap-project](skills/bootstrap-project/SKILL.md)** — copy `template/new-project/`, copy the spec, write the first model and one view, validate and render.
+1. **[bootstrap-project](skills/bootstrap-project/SKILL.md)** — copy `templates/new-project/`, copy the spec, write the first model and one view, validate and render.
 2. **[author-model](skills/author-model/SKILL.md)** — edit `.msml` (blocks, parts, ports, requirements, allocate, states, activities).
 3. **[compose-views](skills/compose-views/SKILL.md)** — write `.msmd` views. The shared slug is `compose-views`; MSML’s verb is **render** (`msml-render`, `msml-render-all`).
 4. **[vision-review](skills/vision-review/SKILL.md)** — inspect every PNG with vision before commit.
