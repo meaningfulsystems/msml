@@ -1,0 +1,1486 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "apollo-model",
+    "name": "Apollo 11-class System Model",
+    "namespace": "Apollo",
+    "imports": [],
+    "definitions": [
+      {
+        "type": "block",
+        "id": "Apollo",
+        "name": "Apollo",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "mission",
+              "type": "Apollo 11-class",
+              "multiplicity": "1"
+            },
+            {
+              "name": "crewSize",
+              "type": "3",
+              "multiplicity": "1"
+            },
+            {
+              "name": "destination",
+              "type": "Moon",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "launch",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "translunarInject",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "lunarOrbitInsert",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "land",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "ascent",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "transearthInject",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "enter",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.SaturnV",
+        "name": "SaturnV",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "stages",
+              "type": "3 + IU",
+              "multiplicity": "1"
+            },
+            {
+              "name": "payload",
+              "type": "CSM + LM",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.SIC",
+        "name": "S-IC",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "engines",
+              "type": "5 \u00d7 F-1",
+              "multiplicity": "1"
+            },
+            {
+              "name": "propellant",
+              "type": "RP-1 / LOX",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.SII",
+        "name": "S-II",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "engines",
+              "type": "5 \u00d7 J-2",
+              "multiplicity": "1"
+            },
+            {
+              "name": "propellant",
+              "type": "LH2 / LOX",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.SIVB",
+        "name": "S-IVB",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "engines",
+              "type": "1 \u00d7 J-2",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "EO / TLI",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.IU",
+        "name": "IU",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "Saturn guidance",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.LES",
+        "name": "LES",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "pad / ascent abort",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.SLA",
+        "name": "SLA",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "LM fairing",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.CSM",
+        "name": "CSM",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "modules",
+              "type": "CM + SM",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.CM",
+        "name": "CM",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "crew",
+              "type": "3",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "cabin / entry",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.SM",
+        "name": "SM",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "SPS / consumables",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.LM",
+        "name": "LM",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "stages",
+              "type": "descent + ascent",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.LMDescent",
+        "name": "LMDescent",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "engine",
+              "type": "throttleable DPS",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.LMAscent",
+        "name": "LMAscent",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "engine",
+              "type": "APS",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "actor",
+        "id": "Apollo.Crew",
+        "name": "Crew"
+      },
+      {
+        "type": "block",
+        "id": "Apollo.ECLSS",
+        "name": "ECLSS",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "cabin atmosphere",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.AGC",
+        "name": "AGC",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM Block II",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.LGC",
+        "name": "LGC",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "LM AGC",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.AGS",
+        "name": "AGS",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "LM abort backup",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.IMU",
+        "name": "IMU",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "inertial reference",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.DSKY",
+        "name": "DSKY",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "crew interface",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "actor",
+        "id": "Apollo.MCC",
+        "name": "MCC"
+      },
+      {
+        "type": "block",
+        "id": "Apollo.MSFN",
+        "name": "MSFN",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "tracking network",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.USB",
+        "name": "USB",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "band",
+              "type": "S-band",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.GroundComputer",
+        "name": "GroundComputer",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "site",
+              "type": "MCC",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Moon",
+        "name": "Moon",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "landing site",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Earth",
+        "name": "Earth",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "launch / recovery",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.MissionContext",
+        "name": "MissionContext",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "model",
+        "id": "Apollo.Model",
+        "name": "ApolloModel"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.LaunchVehicle",
+        "name": "LaunchVehicle"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.Spacecraft",
+        "name": "Spacecraft"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.CrewECLSS",
+        "name": "CrewECLSS"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.GNC",
+        "name": "GNC"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.Ground",
+        "name": "Ground"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.Comms",
+        "name": "Comms"
+      },
+      {
+        "type": "package",
+        "id": "Apollo.Mission",
+        "name": "Mission"
+      },
+      {
+        "type": "class",
+        "id": "Apollo.MissionControl",
+        "name": "MissionControl"
+      },
+      {
+        "id": "Apollo.State.Mission.Start",
+        "type": "initial_pseudostate",
+        "name": "Init"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.launch",
+        "name": "launch",
+        "do": "leaveEarth()"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.tli",
+        "name": "tli",
+        "do": "injectToMoon()"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.loi",
+        "name": "loi",
+        "do": "captureLunarOrbit()"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.landing",
+        "name": "landing",
+        "do": "descendAndLand()"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.ascent",
+        "name": "ascent",
+        "do": "leaveLunarSurface()"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.tei",
+        "name": "tei",
+        "do": "injectToEarth()"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.entry",
+        "name": "entry",
+        "do": "enterAtmosphere()"
+      },
+      {
+        "id": "Apollo.Behavior.Mission.Start",
+        "type": "initial_node",
+        "name": "Init"
+      },
+      {
+        "id": "Apollo.Behavior.Mission.Done",
+        "type": "activity_final_node",
+        "name": "Done"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.launch",
+        "name": "launch"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.tli",
+        "name": "tli"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.loi",
+        "name": "loi"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.landing",
+        "name": "landing"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.ascent",
+        "name": "ascent"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.tei",
+        "name": "tei"
+      },
+      {
+        "type": "action",
+        "id": "Apollo.Action.entry",
+        "name": "entry"
+      },
+      {
+        "type": "class",
+        "id": "Apollo.landingInteraction",
+        "name": "landingInteraction"
+      },
+      {
+        "type": "requirement",
+        "id": "Apollo.crewSafetyRequirement",
+        "name": "Crew Safety",
+        "req_id": "REQ-001",
+        "text": "An abort path shall remain available\nfrom pad through TEI for the crew.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "draft"
+      },
+      {
+        "type": "requirement",
+        "id": "Apollo.landingRequirement",
+        "name": "Landing",
+        "req_id": "REQ-002",
+        "text": "The LM shall land with remaining\ndescent \u0394v margin at the site.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "draft"
+      },
+      {
+        "type": "requirement",
+        "id": "Apollo.commsContinuityRequirement",
+        "name": "Comms Continuity",
+        "req_id": "REQ-003",
+        "text": "USB / MSFN shall carry voice and telemetry\nexcept known lunar occultation.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "draft"
+      },
+      {
+        "type": "requirement",
+        "id": "Apollo.lesAbortRequirement",
+        "name": "LES Abort",
+        "req_id": "REQ-004",
+        "text": "LES shall pull the CM clear of Saturn\non a pad or ascent abort.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "draft"
+      },
+      {
+        "type": "requirement",
+        "id": "Apollo.eclssRequirement",
+        "name": "Cabin Atmosphere",
+        "req_id": "REQ-005",
+        "text": "ECLSS shall maintain a livable cabin\natmosphere for the mission duration.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "draft"
+      },
+      {
+        "type": "requirement",
+        "id": "Apollo.guidanceRequirement",
+        "name": "Guidance",
+        "req_id": "REQ-006",
+        "text": "AGC / LGC shall provide GNC; AGS is\nthe LM abort backup. Public architecture only.",
+        "kind": "functional",
+        "priority": "high",
+        "status": "draft"
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.Public",
+        "name": "Civil / historical NASA public architecture.\nApollo 11-class stack. No classified or biomedical detail.",
+        "text": "Civil / historical NASA public architecture.\nApollo 11-class stack. No classified or biomedical detail."
+      },
+      {
+        "id": "Apollo.Port.crewOut",
+        "type": "port",
+        "name": "commandOut",
+        "owner_ref": "Apollo.Crew"
+      },
+      {
+        "id": "Apollo.Port.vehicleCrewIn",
+        "type": "port",
+        "name": "crewIn",
+        "owner_ref": "Apollo"
+      },
+      {
+        "id": "Apollo.Port.mccOut",
+        "type": "port",
+        "name": "uplinkOut",
+        "owner_ref": "Apollo.MCC"
+      },
+      {
+        "id": "Apollo.Port.msfnMccIn",
+        "type": "port",
+        "name": "mccIn",
+        "owner_ref": "Apollo.MSFN"
+      },
+      {
+        "id": "Apollo.Port.msfnOut",
+        "type": "port",
+        "name": "forwardOut",
+        "owner_ref": "Apollo.MSFN"
+      },
+      {
+        "id": "Apollo.Port.vehicleUsbIn",
+        "type": "port",
+        "name": "usbIn",
+        "owner_ref": "Apollo"
+      },
+      {
+        "id": "Apollo.Port.vehicleMoonOut",
+        "type": "port",
+        "name": "landingOut",
+        "owner_ref": "Apollo"
+      },
+      {
+        "id": "Apollo.Port.moonIn",
+        "type": "port",
+        "name": "loadIn",
+        "owner_ref": "Apollo.Moon"
+      },
+      {
+        "id": "Apollo.Port.vehicleEarthOut",
+        "type": "port",
+        "name": "launchOut",
+        "owner_ref": "Apollo"
+      },
+      {
+        "id": "Apollo.Port.earthIn",
+        "type": "port",
+        "name": "padIn",
+        "owner_ref": "Apollo.Earth"
+      },
+      {
+        "id": "Apollo.Port.lesOut",
+        "type": "port",
+        "name": "abortOut",
+        "owner_ref": "Apollo.LES"
+      },
+      {
+        "id": "Apollo.Port.cmLesIn",
+        "type": "port",
+        "name": "abortIn",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.cmSmOut",
+        "type": "port",
+        "name": "umbilicalOut",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.smCmIn",
+        "type": "port",
+        "name": "umbilicalIn",
+        "owner_ref": "Apollo.SM"
+      },
+      {
+        "id": "Apollo.Port.smSlaOut",
+        "type": "port",
+        "name": "stackOut",
+        "owner_ref": "Apollo.SM"
+      },
+      {
+        "id": "Apollo.Port.slaSmIn",
+        "type": "port",
+        "name": "stackIn",
+        "owner_ref": "Apollo.SLA"
+      },
+      {
+        "id": "Apollo.Port.slaLmOut",
+        "type": "port",
+        "name": "lmOut",
+        "owner_ref": "Apollo.SLA"
+      },
+      {
+        "id": "Apollo.Port.lmSlaIn",
+        "type": "port",
+        "name": "fairingIn",
+        "owner_ref": "Apollo.LM"
+      },
+      {
+        "id": "Apollo.Port.slaSivbOut",
+        "type": "port",
+        "name": "stageOut",
+        "owner_ref": "Apollo.SLA"
+      },
+      {
+        "id": "Apollo.Port.sivbSlaIn",
+        "type": "port",
+        "name": "payloadIn",
+        "owner_ref": "Apollo.SIVB"
+      },
+      {
+        "id": "Apollo.Port.iuOut",
+        "type": "port",
+        "name": "guideOut",
+        "owner_ref": "Apollo.IU"
+      },
+      {
+        "id": "Apollo.Port.sivbIuIn",
+        "type": "port",
+        "name": "guideIn",
+        "owner_ref": "Apollo.SIVB"
+      },
+      {
+        "id": "Apollo.Port.sivbSiiOut",
+        "type": "port",
+        "name": "interstageOut",
+        "owner_ref": "Apollo.SIVB"
+      },
+      {
+        "id": "Apollo.Port.siiSivbIn",
+        "type": "port",
+        "name": "interstageIn",
+        "owner_ref": "Apollo.SII"
+      },
+      {
+        "id": "Apollo.Port.siiSicOut",
+        "type": "port",
+        "name": "boostOut",
+        "owner_ref": "Apollo.SII"
+      },
+      {
+        "id": "Apollo.Port.sicSiiIn",
+        "type": "port",
+        "name": "boostIn",
+        "owner_ref": "Apollo.SIC"
+      },
+      {
+        "id": "Apollo.Port.cmAgcOut",
+        "type": "port",
+        "name": "gncOut",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.agcIn",
+        "type": "port",
+        "name": "cmIn",
+        "owner_ref": "Apollo.AGC"
+      },
+      {
+        "id": "Apollo.Port.lmLgcOut",
+        "type": "port",
+        "name": "gncOut",
+        "owner_ref": "Apollo.LM"
+      },
+      {
+        "id": "Apollo.Port.lgcIn",
+        "type": "port",
+        "name": "lmIn",
+        "owner_ref": "Apollo.LGC"
+      },
+      {
+        "id": "Apollo.Port.smUsbOut",
+        "type": "port",
+        "name": "rfOut",
+        "owner_ref": "Apollo.SM"
+      },
+      {
+        "id": "Apollo.Port.usbIn",
+        "type": "port",
+        "name": "smIn",
+        "owner_ref": "Apollo.USB"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "bdd-apollo.c-apollo-saturn",
+        "type": "composition",
+        "source": "Apollo",
+        "target": "Apollo.SaturnV",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-apollo-csm",
+        "type": "composition",
+        "source": "Apollo",
+        "target": "Apollo.CSM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-apollo-lm",
+        "type": "composition",
+        "source": "Apollo",
+        "target": "Apollo.LM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-apollo-les",
+        "type": "composition",
+        "source": "Apollo",
+        "target": "Apollo.LES",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-apollo-sla",
+        "type": "composition",
+        "source": "Apollo",
+        "target": "Apollo.SLA",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-saturn-sic",
+        "type": "composition",
+        "source": "Apollo.SaturnV",
+        "target": "Apollo.SIC",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-saturn-sii",
+        "type": "composition",
+        "source": "Apollo.SaturnV",
+        "target": "Apollo.SII",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-saturn-sivb",
+        "type": "composition",
+        "source": "Apollo.SaturnV",
+        "target": "Apollo.SIVB",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-saturn-iu",
+        "type": "composition",
+        "source": "Apollo.SaturnV",
+        "target": "Apollo.IU",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-csm-cm",
+        "type": "composition",
+        "source": "Apollo.CSM",
+        "target": "Apollo.CM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-csm-sm",
+        "type": "composition",
+        "source": "Apollo.CSM",
+        "target": "Apollo.SM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-lm-descent",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.LMDescent",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-lm-ascent",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.LMAscent",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-agc",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.AGC",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-dsky",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.DSKY",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-imu",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.IMU",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-eclss",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.ECLSS",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-lm-lgc",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.LGC",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-lm-ags",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.AGS",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-sm-usb",
+        "type": "composition",
+        "source": "Apollo.SM",
+        "target": "Apollo.USB",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-vehicle",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-crew",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo.Crew",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-mcc",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo.MCC",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-msfn",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo.MSFN",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-moon",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo.Moon",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-ctx-earth",
+        "type": "composition",
+        "source": "Apollo.MissionContext",
+        "target": "Apollo.Earth",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.a-csm-lm",
+        "type": "association",
+        "source": "Apollo.CSM",
+        "target": "Apollo.LM",
+        "name": "docks"
+      },
+      {
+        "id": "bdd-apollo.a-usb-msfn",
+        "type": "association",
+        "source": "Apollo.USB",
+        "target": "Apollo.MSFN",
+        "name": "tracks"
+      },
+      {
+        "id": "ctx-apollo.crewToVehicle",
+        "type": "connector",
+        "source": "Apollo.Port.crewOut",
+        "target": "Apollo.Port.vehicleCrewIn",
+        "name": "commands"
+      },
+      {
+        "id": "ctx-apollo.mccToMsfn",
+        "type": "connector",
+        "source": "Apollo.Port.mccOut",
+        "target": "Apollo.Port.msfnMccIn",
+        "name": "uplink"
+      },
+      {
+        "id": "ctx-apollo.msfnToVehicle",
+        "type": "connector",
+        "source": "Apollo.Port.msfnOut",
+        "target": "Apollo.Port.vehicleUsbIn",
+        "name": "USB"
+      },
+      {
+        "id": "ctx-apollo.vehicleToMoon",
+        "type": "connector",
+        "source": "Apollo.Port.vehicleMoonOut",
+        "target": "Apollo.Port.moonIn",
+        "name": "landing"
+      },
+      {
+        "id": "ctx-apollo.vehicleToEarth",
+        "type": "connector",
+        "source": "Apollo.Port.vehicleEarthOut",
+        "target": "Apollo.Port.earthIn",
+        "name": "launch"
+      },
+      {
+        "id": "ibd-apollo.lesToCm",
+        "type": "connector",
+        "source": "Apollo.Port.lesOut",
+        "target": "Apollo.Port.cmLesIn",
+        "name": "abort"
+      },
+      {
+        "id": "ibd-apollo.cmToSm",
+        "type": "connector",
+        "source": "Apollo.Port.cmSmOut",
+        "target": "Apollo.Port.smCmIn",
+        "name": "umbilical"
+      },
+      {
+        "id": "ibd-apollo.smToSla",
+        "type": "connector",
+        "source": "Apollo.Port.smSlaOut",
+        "target": "Apollo.Port.slaSmIn",
+        "name": "stack"
+      },
+      {
+        "id": "ibd-apollo.slaToLm",
+        "type": "connector",
+        "source": "Apollo.Port.slaLmOut",
+        "target": "Apollo.Port.lmSlaIn",
+        "name": "enclose"
+      },
+      {
+        "id": "ibd-apollo.slaToSivb",
+        "type": "connector",
+        "source": "Apollo.Port.slaSivbOut",
+        "target": "Apollo.Port.sivbSlaIn",
+        "name": "payload"
+      },
+      {
+        "id": "ibd-apollo.iuToSivb",
+        "type": "connector",
+        "source": "Apollo.Port.iuOut",
+        "target": "Apollo.Port.sivbIuIn",
+        "name": "guidance"
+      },
+      {
+        "id": "ibd-apollo.sivbToSii",
+        "type": "connector",
+        "source": "Apollo.Port.sivbSiiOut",
+        "target": "Apollo.Port.siiSivbIn",
+        "name": "interstage"
+      },
+      {
+        "id": "ibd-apollo.siiToSic",
+        "type": "connector",
+        "source": "Apollo.Port.siiSicOut",
+        "target": "Apollo.Port.sicSiiIn",
+        "name": "boost"
+      },
+      {
+        "id": "ibd-apollo.cmToAgc",
+        "type": "connector",
+        "source": "Apollo.Port.cmAgcOut",
+        "target": "Apollo.Port.agcIn",
+        "name": "gnc"
+      },
+      {
+        "id": "ibd-apollo.lmToLgc",
+        "type": "connector",
+        "source": "Apollo.Port.lmLgcOut",
+        "target": "Apollo.Port.lgcIn",
+        "name": "gnc"
+      },
+      {
+        "id": "ibd-apollo.smToUsb",
+        "type": "connector",
+        "source": "Apollo.Port.smUsbOut",
+        "target": "Apollo.Port.usbIn",
+        "name": "rf"
+      },
+      {
+        "id": "stm-apollo.t-init",
+        "type": "transition",
+        "source": "Apollo.State.Mission.Start",
+        "target": "Apollo.State.Mission.launch"
+      },
+      {
+        "id": "stm-apollo.liftoff",
+        "type": "transition",
+        "source": "Apollo.State.Mission.launch",
+        "target": "Apollo.State.Mission.tli",
+        "name": "liftoff / EO"
+      },
+      {
+        "id": "stm-apollo.tliBurn",
+        "type": "transition",
+        "source": "Apollo.State.Mission.tli",
+        "target": "Apollo.State.Mission.loi",
+        "name": "TLI"
+      },
+      {
+        "id": "stm-apollo.loiBurn",
+        "type": "transition",
+        "source": "Apollo.State.Mission.loi",
+        "target": "Apollo.State.Mission.landing",
+        "name": "LOI"
+      },
+      {
+        "id": "stm-apollo.pdi",
+        "type": "transition",
+        "source": "Apollo.State.Mission.landing",
+        "target": "Apollo.State.Mission.ascent",
+        "name": "PDI / touchdown"
+      },
+      {
+        "id": "stm-apollo.liftoffMoon",
+        "type": "transition",
+        "source": "Apollo.State.Mission.ascent",
+        "target": "Apollo.State.Mission.tei",
+        "name": "ascent / rendezvous"
+      },
+      {
+        "id": "stm-apollo.teiBurn",
+        "type": "transition",
+        "source": "Apollo.State.Mission.tei",
+        "target": "Apollo.State.Mission.entry",
+        "name": "TEI"
+      },
+      {
+        "id": "act-apollo.f0",
+        "type": "control_flow",
+        "source": "Apollo.Behavior.Mission.Start",
+        "target": "Apollo.Action.launch"
+      },
+      {
+        "id": "act-apollo.f1",
+        "type": "control_flow",
+        "source": "Apollo.Action.launch",
+        "target": "Apollo.Action.tli"
+      },
+      {
+        "id": "act-apollo.f2",
+        "type": "control_flow",
+        "source": "Apollo.Action.tli",
+        "target": "Apollo.Action.loi"
+      },
+      {
+        "id": "act-apollo.f3",
+        "type": "control_flow",
+        "source": "Apollo.Action.loi",
+        "target": "Apollo.Action.landing"
+      },
+      {
+        "id": "act-apollo.f4",
+        "type": "control_flow",
+        "source": "Apollo.Action.landing",
+        "target": "Apollo.Action.ascent"
+      },
+      {
+        "id": "act-apollo.f5",
+        "type": "control_flow",
+        "source": "Apollo.Action.ascent",
+        "target": "Apollo.Action.tei"
+      },
+      {
+        "id": "act-apollo.f6",
+        "type": "control_flow",
+        "source": "Apollo.Action.tei",
+        "target": "Apollo.Action.entry"
+      },
+      {
+        "id": "act-apollo.f7",
+        "type": "control_flow",
+        "source": "Apollo.Action.entry",
+        "target": "Apollo.Behavior.Mission.Done"
+      },
+      {
+        "type": "message",
+        "id": "sd-apollo.m1",
+        "name": "go PDI",
+        "source_lifeline": "Apollo.MCC",
+        "target_lifeline": "Apollo.MSFN",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-apollo.m2",
+        "name": "uplink",
+        "source_lifeline": "Apollo.MSFN",
+        "target_lifeline": "Apollo.USB",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-apollo.m3",
+        "name": "PDI enable",
+        "source_lifeline": "Apollo.USB",
+        "target_lifeline": "Apollo.LGC",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-apollo.m4",
+        "name": "attitude",
+        "source_lifeline": "Apollo.Crew",
+        "target_lifeline": "Apollo.LGC",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-apollo.m5",
+        "name": "throttle",
+        "source_lifeline": "Apollo.LGC",
+        "target_lifeline": "Apollo.LMDescent",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-apollo.m6",
+        "name": "engine stop",
+        "source_lifeline": "Apollo.LGC",
+        "target_lifeline": "Apollo.LMDescent",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "id": "pkg-apollo.d-gnc-spacecraft",
+        "type": "dependency",
+        "source": "Apollo.GNC",
+        "target": "Apollo.Spacecraft"
+      },
+      {
+        "id": "pkg-apollo.d-crew-spacecraft",
+        "type": "dependency",
+        "source": "Apollo.CrewECLSS",
+        "target": "Apollo.Spacecraft"
+      },
+      {
+        "id": "pkg-apollo.d-comms-ground",
+        "type": "dependency",
+        "source": "Apollo.Comms",
+        "target": "Apollo.Ground"
+      },
+      {
+        "id": "pkg-apollo.d-mission-all",
+        "type": "dependency",
+        "source": "Apollo.Mission",
+        "target": "Apollo.LaunchVehicle"
+      },
+      {
+        "id": "allocateSafetyToLes",
+        "type": "allocate",
+        "source": "Apollo.crewSafetyRequirement",
+        "target": "Apollo.LES",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateSafetyToEclss",
+        "type": "allocate",
+        "source": "Apollo.crewSafetyRequirement",
+        "target": "Apollo.ECLSS",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateLandingToDescent",
+        "type": "allocate",
+        "source": "Apollo.landingRequirement",
+        "target": "Apollo.LMDescent",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateCommsToUsb",
+        "type": "allocate",
+        "source": "Apollo.commsContinuityRequirement",
+        "target": "Apollo.USB",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateCommsToMsfn",
+        "type": "allocate",
+        "source": "Apollo.commsContinuityRequirement",
+        "target": "Apollo.MSFN",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateLesToLes",
+        "type": "allocate",
+        "source": "Apollo.lesAbortRequirement",
+        "target": "Apollo.LES",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateEclss",
+        "type": "allocate",
+        "source": "Apollo.eclssRequirement",
+        "target": "Apollo.ECLSS",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateGuidanceAgc",
+        "type": "allocate",
+        "source": "Apollo.guidanceRequirement",
+        "target": "Apollo.AGC",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateGuidanceLgc",
+        "type": "allocate",
+        "source": "Apollo.guidanceRequirement",
+        "target": "Apollo.LGC",
+        "kind": "functional"
+      },
+      {
+        "id": "allocateGuidanceAgs",
+        "type": "allocate",
+        "source": "Apollo.guidanceRequirement",
+        "target": "Apollo.AGS",
+        "kind": "functional"
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo",
+        "skeleton"
+      ],
+      "notes": "Public NASA Apollo 11-class architecture. Refine when the research brief arrives."
+    }
+  }
+}

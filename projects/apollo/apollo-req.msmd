@@ -1,0 +1,193 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "requirement",
+    "id": "req-apollo",
+    "name": "Crew Safety \u00b7 Landing \u00b7 Comms \u2014 public architecture",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1000,
+      "height": 460,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "requirement",
+        "id": "r1",
+        "model_ref": "Apollo.crewSafetyRequirement",
+        "layout": {
+          "x": 30,
+          "y": 24,
+          "width": 300,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "r2",
+        "model_ref": "Apollo.landingRequirement",
+        "layout": {
+          "x": 350,
+          "y": 24,
+          "width": 300,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#ECEFF1",
+          "border_color": "#455A64",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "r3",
+        "model_ref": "Apollo.commsContinuityRequirement",
+        "layout": {
+          "x": 670,
+          "y": 24,
+          "width": 300,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "r4",
+        "model_ref": "Apollo.lesAbortRequirement",
+        "layout": {
+          "x": 30,
+          "y": 230,
+          "width": 300,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#EF6C00",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "r5",
+        "model_ref": "Apollo.eclssRequirement",
+        "layout": {
+          "x": 350,
+          "y": 230,
+          "width": 300,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "r6",
+        "model_ref": "Apollo.guidanceRequirement",
+        "layout": {
+          "x": 670,
+          "y": 230,
+          "width": 300,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo",
+        "requirement"
+      ]
+    }
+  }
+}

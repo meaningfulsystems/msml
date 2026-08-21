@@ -1,0 +1,897 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "ibd",
+    "id": "ibd-apollo",
+    "name": "Saturn stack + CSM / LM \u2014 adjacent joints only",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1100,
+      "height": 900,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "part",
+        "id": "part-les",
+        "model_ref": "Apollo.LES",
+        "layout": {
+          "x": 420,
+          "y": 20,
+          "width": 200,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "les : LES"
+      },
+      {
+        "type": "part",
+        "id": "part-cm",
+        "model_ref": "Apollo.CM",
+        "layout": {
+          "x": 400,
+          "y": 130,
+          "width": 240,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#BBDEFB",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "cm : CM"
+      },
+      {
+        "type": "part",
+        "id": "part-sm",
+        "model_ref": "Apollo.SM",
+        "layout": {
+          "x": 400,
+          "y": 260,
+          "width": 240,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#BBDEFB",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "sm : SM"
+      },
+      {
+        "type": "part",
+        "id": "part-sla",
+        "model_ref": "Apollo.SLA",
+        "layout": {
+          "x": 400,
+          "y": 390,
+          "width": 240,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "sla : SLA"
+      },
+      {
+        "type": "part",
+        "id": "part-lm",
+        "model_ref": "Apollo.LM",
+        "layout": {
+          "x": 760,
+          "y": 380,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#C8E6C9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "lm : LM"
+      },
+      {
+        "type": "part",
+        "id": "part-sivb",
+        "model_ref": "Apollo.SIVB",
+        "layout": {
+          "x": 400,
+          "y": 520,
+          "width": 240,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFE0B2",
+          "border_color": "#EF6C00",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "sIvb : S-IVB"
+      },
+      {
+        "type": "part",
+        "id": "part-iu",
+        "model_ref": "Apollo.IU",
+        "layout": {
+          "x": 80,
+          "y": 510,
+          "width": 180,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "iu : IU"
+      },
+      {
+        "type": "part",
+        "id": "part-sii",
+        "model_ref": "Apollo.SII",
+        "layout": {
+          "x": 400,
+          "y": 640,
+          "width": 240,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFE0B2",
+          "border_color": "#EF6C00",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "sIi : S-II"
+      },
+      {
+        "type": "part",
+        "id": "part-sic",
+        "model_ref": "Apollo.SIC",
+        "layout": {
+          "x": 400,
+          "y": 760,
+          "width": 240,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFE0B2",
+          "border_color": "#EF6C00",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "sIc : S-IC"
+      },
+      {
+        "type": "port",
+        "id": "p-les",
+        "model_ref": "Apollo.Port.lesOut",
+        "name": "abort",
+        "owner_ref": "part-les",
+        "layout": {
+          "x": 514,
+          "y": 84,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cm-les",
+        "model_ref": "Apollo.Port.cmLesIn",
+        "name": "abort",
+        "owner_ref": "part-cm",
+        "layout": {
+          "x": 514,
+          "y": 124,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cm-sm",
+        "model_ref": "Apollo.Port.cmSmOut",
+        "name": "umb",
+        "owner_ref": "part-cm",
+        "layout": {
+          "x": 514,
+          "y": 214,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sm-cm",
+        "model_ref": "Apollo.Port.smCmIn",
+        "name": "umb",
+        "owner_ref": "part-sm",
+        "layout": {
+          "x": 514,
+          "y": 254,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sm-sla",
+        "model_ref": "Apollo.Port.smSlaOut",
+        "name": "stack",
+        "owner_ref": "part-sm",
+        "layout": {
+          "x": 514,
+          "y": 344,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sla-sm",
+        "model_ref": "Apollo.Port.slaSmIn",
+        "name": "stack",
+        "owner_ref": "part-sla",
+        "layout": {
+          "x": 514,
+          "y": 384,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sla-lm",
+        "model_ref": "Apollo.Port.slaLmOut",
+        "name": "lm",
+        "owner_ref": "part-sla",
+        "layout": {
+          "x": 634,
+          "y": 424,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lm-sla",
+        "model_ref": "Apollo.Port.lmSlaIn",
+        "name": "fairing",
+        "owner_ref": "part-lm",
+        "layout": {
+          "x": 754,
+          "y": 424,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sla-sivb",
+        "model_ref": "Apollo.Port.slaSivbOut",
+        "name": "stage",
+        "owner_ref": "part-sla",
+        "layout": {
+          "x": 514,
+          "y": 464,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sivb-sla",
+        "model_ref": "Apollo.Port.sivbSlaIn",
+        "name": "payload",
+        "owner_ref": "part-sivb",
+        "layout": {
+          "x": 514,
+          "y": 514,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-iu",
+        "model_ref": "Apollo.Port.iuOut",
+        "name": "guide",
+        "owner_ref": "part-iu",
+        "layout": {
+          "x": 254,
+          "y": 550,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#F9A825",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sivb-iu",
+        "model_ref": "Apollo.Port.sivbIuIn",
+        "name": "guide",
+        "owner_ref": "part-sivb",
+        "layout": {
+          "x": 394,
+          "y": 550,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sivb-sii",
+        "model_ref": "Apollo.Port.sivbSiiOut",
+        "name": "is",
+        "owner_ref": "part-sivb",
+        "layout": {
+          "x": 514,
+          "y": 594,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sii-sivb",
+        "model_ref": "Apollo.Port.siiSivbIn",
+        "name": "is",
+        "owner_ref": "part-sii",
+        "layout": {
+          "x": 514,
+          "y": 634,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sii-sic",
+        "model_ref": "Apollo.Port.siiSicOut",
+        "name": "boost",
+        "owner_ref": "part-sii",
+        "layout": {
+          "x": 514,
+          "y": 714,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-sic",
+        "model_ref": "Apollo.Port.sicSiiIn",
+        "name": "boost",
+        "owner_ref": "part-sic",
+        "layout": {
+          "x": 514,
+          "y": 754,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#EF6C00",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "c-les",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.lesToCm",
+        "name": "abort",
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 96
+          },
+          {
+            "x": 520,
+            "y": 124
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 28,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "c-umb",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.cmToSm",
+        "name": "umbilical",
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 226
+          },
+          {
+            "x": 520,
+            "y": 254
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 40,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "c-stack",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.smToSla",
+        "name": "stack",
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 356
+          },
+          {
+            "x": 520,
+            "y": 384
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 28,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "c-lm",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.slaToLm",
+        "name": "enclose",
+        "waypoints": [
+          {
+            "x": 646,
+            "y": 430
+          },
+          {
+            "x": 754,
+            "y": 430
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "c-pay",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.slaToSivb",
+        "name": "payload",
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 476
+          },
+          {
+            "x": 520,
+            "y": 514
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 36,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "c-iu",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.iuToSivb",
+        "name": "guidance",
+        "waypoints": [
+          {
+            "x": 266,
+            "y": 556
+          },
+          {
+            "x": 394,
+            "y": 556
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "c-is",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.sivbToSii",
+        "name": "interstage",
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 606
+          },
+          {
+            "x": 520,
+            "y": 634
+          }
+        ],
+        "style": {
+          "line_color": "#EF6C00",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 44,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "c-boost",
+        "type": "connector",
+        "relationship_ref": "ibd-apollo.siiToSic",
+        "name": "boost",
+        "waypoints": [
+          {
+            "x": 520,
+            "y": 726
+          },
+          {
+            "x": 520,
+            "y": 754
+          }
+        ],
+        "style": {
+          "line_color": "#EF6C00",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 28,
+            "y": 0
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo",
+        "ibd"
+      ]
+    },
+    "subject_ref": "Apollo"
+  }
+}

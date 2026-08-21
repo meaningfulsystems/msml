@@ -206,6 +206,10 @@ msml-render-all projects
     │       ├── blender-model.msml
     │       ├── blender-*.msmd
     │       └── blender-*.png
+    ├── apollo/
+    │   ├── apollo-model.msml
+    │   ├── apollo-*.msmd
+    │   └── apollo-*.png
     ├── e-bike/
     │   ├── e-bike-model.msml
     │   ├── e-bike-*.msmd
@@ -231,9 +235,15 @@ The Humanity Optimization System is a civilization-scale decision-support concep
 - [HOS operating loop activity diagram (`.msmd`)](projects/humanity-optimization/hos-operating-loop.msmd)
 - [HOS decision-support sequence diagram (`.msmd`)](projects/humanity-optimization/hos-decision-support-sequence.msmd)
 
+### Apollo (in progress)
+
+A public NASA Apollo 11-class stack used as a second full-system example. Namespace `Apollo`. Views use the `apollo` file stem. Civil / historical architecture only.
+
+- [Apollo project](projects/apollo): packages, stack BDD, vehicle/crew/MCC/MSFN/Moon/Earth context, Saturn IBD, mission-phase STM and activity, landing sequence, crew-safety / landing / comms requirements.
+
 ### Electric Bike
 
-A street-legal EU-class pedal-assist bike used as a second full-coverage example. The model namespace is `ElectricBike`. Views use the `e-bike` file stem.
+A street-legal EU-class pedal-assist bike used as the Friday publish hero. The model namespace is `ElectricBike`. Views use the `e-bike` file stem.
 
 - [Electric bike project](projects/e-bike): block definition, internal block, context, activity, sequence (`e-bike-int`), state machine, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
 

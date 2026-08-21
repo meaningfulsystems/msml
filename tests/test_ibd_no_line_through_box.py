@@ -15,6 +15,7 @@ from msml.io import read_json_file
 
 REPO = Path(__file__).resolve().parents[1]
 EBIKE = REPO / "projects/e-bike"
+APOLLO = REPO / "projects/apollo"
 
 # Shrink each part so a port sitting on the box edge is not a hit.
 EDGE_SHRINK_PX = 6
@@ -158,4 +159,18 @@ class IbdNoLineThroughBoxTests(unittest.TestCase):
             _box_hits(EBIKE / "e-bike-ctx.msmd"),
             [],
             "Context IBD connectors must not pass through boxes",
+        )
+
+    def test_apollo_ibd_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-ibd.msmd"),
+            [],
+            "Apollo IBD connectors must not pass through boxes",
+        )
+
+    def test_apollo_context_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-ctx.msmd"),
+            [],
+            "Apollo context connectors must not pass through boxes",
         )

@@ -21,6 +21,7 @@ Read [msml-specification.md](../../msml-specification.md) before inventing field
 | Example | Why it exists |
 | --- | --- |
 | [projects/e-bike/e-bike-model.msml](../../projects/e-bike/e-bike-model.msml) | Publish hero. Frozen `ElectricBike::` names. |
+| [projects/apollo/apollo-model.msml](../../projects/apollo/apollo-model.msml) | In-progress full system. Public Apollo 11-class architecture. |
 | [projects/appliances/toaster/toaster-model.msml](../../projects/appliances/toaster/toaster-model.msml) | Coverage canary for all twelve views. |
 
 Copy *patterns* from those files. Do not remap ElectricBike ids.

@@ -11,7 +11,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from msml import render, validate
+from msml import validate
+from msml.render import render
 from msml.spec import spec_path
 
 

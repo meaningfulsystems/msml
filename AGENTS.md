@@ -39,6 +39,14 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 - Ride «include» Adjust Assist.
 - STM `resetFault` is Fault→Off. Off↔Standby is two readable paths.
 
+## Apollo (in progress)
+
+`projects/apollo/` is a second full-system example. Namespace `Apollo`. File stem `apollo`. Public NASA Apollo 11-class architecture only. Do not invent classified or biomedical detail. Refine when the research brief arrives.
+
+- Context is vehicle / crew / MCC / MSFN / Moon / Earth.
+- IBD connectors never pass through boxes. Saturn joints are adjacent only.
+- Mission phases: Launch → TLI → LOI → Landing → Ascent → TEI → Entry.
+
 ## Checks
 
 ```bash
@@ -47,6 +55,6 @@ msml-validate-all projects --strict
 msml-render-all projects
 ```
 
-Canonical spec: [msml-specification.md](msml-specification.md). Working examples: [projects/e-bike](projects/e-bike) (publish hero), [projects/appliances/toaster](projects/appliances/toaster) (coverage canary).
+Canonical spec: [msml-specification.md](msml-specification.md). Working examples: [projects/e-bike](projects/e-bike) (publish hero), [projects/apollo](projects/apollo) (in-progress full system), [projects/appliances/toaster](projects/appliances/toaster) (coverage canary).
 
 Historical design notes from 2026-05 live under [ai-collab/](ai-collab/). They are archive. The living agent path is this file plus `skills/`.
