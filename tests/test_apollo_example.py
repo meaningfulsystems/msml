@@ -554,9 +554,11 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertIn("MSC-00171", tli_do)
         get_note = defs["Apollo.Note.GetPlannedFlown"]["text"]
         self.assertIn("75:54:28 GET is A11-FP planned", get_note)
-        self.assertIn("do not cite Press Kit as the LOI-1 source", get_note)
         self.assertIn("~075:49:50 GET (PAD/MR)", get_note)
         self.assertNotIn("075:49:49.65", get_note)
+        self.assertNotIn("PK may print", get_note)
+        self.assertNotIn("same string may appear", get_note)
+        self.assertNotIn("do not cite Press Kit as the LOI-1 source", get_note)
         self.assertIn("PK planned 02:44:15", get_note)
         self.assertIn("A11-FP planned 2:44:26", get_note)
         self.assertIn("flown 02:44:16 (MSC-00171)", get_note)
