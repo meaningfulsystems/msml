@@ -48,7 +48,8 @@ class AdoptionPackTests(unittest.TestCase):
         self.assertIn("skills/compose-views/SKILL.md", text)
         self.assertIn("skills/vision-review/SKILL.md", text)
         self.assertIn("https://github.com/meaningfulsystems/sysml2d", text)
-        self.assertIn("templates/new-project/", text)
+        self.assertIn("template/new-project/", text)
+        self.assertNotIn("templates/new-project/", text)
         self.assertIn("msml-validate", text)
         self.assertIn("msml-render", text)
 
@@ -73,12 +74,9 @@ class AdoptionPackTests(unittest.TestCase):
         self.assertIn("overlapping labels", body.lower())
         self.assertIn("leftover canvas", body.lower())
 
-    def test_plural_templates_directory_only(self) -> None:
-        self.assertTrue((REPO / "templates/new-project").is_dir())
-        self.assertFalse(
-            (REPO / "template").exists(),
-            "SysML2d path lock is templates/ (plural); do not keep template/",
-        )
+    def test_template_directory_only(self) -> None:
+        self.assertTrue((REPO / "template/new-project").is_dir())
+        self.assertFalse((REPO / "templates").exists())
 
     def test_no_second_skills_tree(self) -> None:
         extras = [
@@ -97,12 +95,13 @@ class AdoptionPackTests(unittest.TestCase):
         self.assertIn("Start your own system", text)
         self.assertIn("AGENTS.md", text)
         self.assertIn("skills/bootstrap-project/SKILL.md", text)
-        self.assertIn("templates/new-project/", text)
+        self.assertIn("template/new-project/", text)
+        self.assertNotIn("templates/new-project/", text)
         self.assertIn("https://github.com/meaningfulsystems/sysml2d", text)
 
     def test_template_validates_and_renders(self) -> None:
-        model = REPO / "templates/new-project/architecture/system-model.msml"
-        view = REPO / "templates/new-project/architecture/system-context.msmd"
+        model = REPO / "template/new-project/architecture/system-model.msml"
+        view = REPO / "template/new-project/architecture/system-context.msmd"
         model_report = validate(model, strict=True)
         view_report = validate(view, strict=True)
         self.assertEqual(model_report.errors, 0)
@@ -115,7 +114,7 @@ class AdoptionPackTests(unittest.TestCase):
 
     def test_template_is_not_a_copy_of_electric_bike(self) -> None:
         model = (
-            REPO / "templates/new-project/architecture/system-model.msml"
+            REPO / "template/new-project/architecture/system-model.msml"
         ).read_text(encoding="utf-8")
         self.assertNotIn("ElectricBike", model)
         self.assertIn("ExampleSystem", model)
