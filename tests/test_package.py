@@ -100,6 +100,49 @@ class PackageApiTests(unittest.TestCase):
         self.assertIn("allocation_matrix", text)
         self.assertIn("`allocate`", text)
 
+    def test_architecture_design_notes(self):
+        folders = [
+            ROOT / "projects/e-bike",
+            ROOT / "projects/apollo",
+            ROOT / "projects/appliances/toaster",
+            ROOT / "projects/appliances/blender",
+            ROOT / "projects/humanity-optimization",
+        ]
+        required = (
+            "## 1. Purpose / context",
+            "## 2. System boundary and actors",
+            "## 3. Requirements",
+            "## 4. Structure and interfaces",
+            "## 5. States and modes",
+            "## 6. Allocations (req → part)",
+            "## 7. Sourced numbers",
+            "## 8. Open risks / TBD",
+            "## 9. Views in this folder",
+        )
+        for folder in folders:
+            path = folder / "architecture-summary.md"
+            self.assertTrue(path.exists(), path)
+            text = path.read_text(encoding="utf-8")
+            for heading in required:
+                self.assertIn(heading, text, f"{path.name} missing {heading}")
+            lowered = text.lower()
+            self.assertNotIn("cloud agent", lowered)
+            self.assertNotIn("mrs.", lowered)
+            self.assertNotIn("mr.", lowered)
+        ebike = (ROOT / "projects/e-bike/architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("continuous", ebike)
+        self.assertIn("250 W", ebike)
+        self.assertIn("40 N·m", ebike)
+        self.assertIn("lockBike", ebike)
+        apollo = (ROOT / "projects/apollo/architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("official CSM lunar Δv", apollo)
+        self.assertIn("CSM-107 SPS loaded", apollo)
+        self.assertIn("20,500", apollo)
+        self.assertIn("21,500", apollo)
+        self.assertIn("9,870", apollo)
+        self.assertIn("10,500", apollo)
+        self.assertIn("apollo-stm.png", apollo)
+
 
 if __name__ == "__main__":
     unittest.main()

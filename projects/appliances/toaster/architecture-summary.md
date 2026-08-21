@@ -1,42 +1,112 @@
-# Toaster Architecture Summary
+# Toaster — Architecture / System Design
 
-Two-slice pop-up toaster used as the **coverage canary** for all twelve MSML views. Namespace `Toaster`. File stem `toaster`.
+Two-slice pop-up toaster used as the MSML coverage canary. Namespace `Toaster`. File stem `toaster`. This note is the design argument for the model in this folder, not a catalog of pictures.
 
-## Parts
+The same appliance idea appears in SysML2d. The files are not interchangeable, and this MSML toaster does **not** adopt the SysML2d quantitative set (900–1200 W, 60 °C surface, 10,000 cycles, and so on). Numbers below are only those already on `toaster-model.msml`.
 
-Toaster composed of BrowningControl, Timer, Lever, Carriage, HeatingElement, and ThermalCutoff. Context actors are the user and the power grid.
+## 1. Purpose / context
 
-## Key numbers (from this model)
+The toaster exists to brown bread to a user-selected level and then present it. The design problem is a short, repeatable thermal cycle with a hard safety cutoff: heat the element, time the cycle, pop the carriage, and shut down if the surface is heading for overheat.
 
-| Quantity | Value |
+This example is one 2-slice baseline. It is here to exercise all twelve MSML views on a small real appliance, not to certify a product line.
+
+## 2. System boundary and actors
+
+**Inside:** BrowningControl, Timer, Lever, Carriage, HeatingElement, ThermalCutoff.
+
+**Outside:** User and Power Grid. Bread, toast, crumbs, and the kitchen air are implied by the toast cycle; they are not first-class actors on the MSML use-case view.
+
+Use cases: Toast Bread (includes Activate Heating), Adjust Browning, Cancel Toast, Reset Error. The user associates with all four user-facing cases. The power grid associates with Toast Bread.
+
+## 3. Requirements
+
+| Id | Name | Text / numbers |
+| --- | --- | --- |
+| `Toaster.REQ-001` | Toasting Capability | Toast bread to the user-selected browning. |
+| `Toaster.REQ-001.1` | Heat Control | Heating element shall reach target temperature within **30 s**. |
+| `Toaster.REQ-001.2` | Timer Function | Timer shall support **1–5 min** browning settings. |
+| `Toaster.REQ-001.3` | Carriage Mechanism | Carriage shall pop toast when the timer completes. |
+| `Toaster.REQ-001.4` | Browning Repeatability | Same browning level shall produce **±5%** energy variance. |
+| `Toaster.REQ-002` | Safety | Detect overheat and shut down automatically. |
+| `Toaster.REQ-002.1` | Overheat Detection | ThermalCutoff shall trip **below 300 °C** surface temperature. |
+| `Toaster.REQ-002.2` | Auto Shutoff | On trip: deactivate the element and release the carriage latch. |
+| `Toaster.REQ-003` | User Controls | User shall control browning level and cancel toasting. |
+| `Toaster.REQ-003.1` | Cancel / Eject | Lever-up during toasting shall cancel and eject. |
+
+REQ-002 and REQ-003 derive from REQ-001. Do not import foreign wattage or touch-temperature numbers that are not on this model.
+
+## 4. Structure and interfaces
+
+Toaster properties on the model are typed (`voltage: V`, `maxPower: W`) without filled product values.
+
+Parts:
+
+- `BrowningControl` — `level`, `targetEnergy`
+- `Timer` — `duration`, `browning`
+- `Lever` — `position`
+- `Carriage` — `position`
+- `HeatingElement` — `resistance`, `power`
+- `ThermalCutoff` — `cutoffTemp`, `tripped`
+
+Connectors on the IBD:
+
+- Lever `ctrl` → Timer `in`
+- Timer `signal` → HeatingElement `ctrl`
+- HeatingElement `heatSignal` → Carriage `heatSignal`
+
+BrowningControl configures the Timer. ThermalCutoff monitors the HeatingElement.
+
+## 5. States and modes
+
+ToastingCycle: Idle → Toasting (`lever_down`) → Done (`timer_expired`) → Idle (`toast_removed`).
+
+From Toasting: `lever_up` returns to Idle (cancel). `overheat_detected` goes to Error (deactivate element, release latch, alarm). Error → Idle on `reset`.
+
+Done is a normal state, not a terminal node: toast can sit until the user removes it.
+
+## 6. Allocations (req → part)
+
+Satisfy mappings on the model:
+
+| Requirement | Satisfied by |
 | --- | --- |
-| Heat-up | Target temperature within 30 s |
-| Browning timer | 1–5 min settings |
-| Repeatability | ±5% energy variance at the same browning level |
-| Thermal cutoff | Trip below 300 °C surface temperature |
+| REQ-001 Toasting Capability | Toaster |
+| REQ-001.1 Heat Control | HeatingElement |
+| REQ-001.2 Timer Function | Timer |
+| REQ-001.3 Carriage Mechanism | Carriage |
+| REQ-001.4 Browning Repeatability | BrowningControl |
+| REQ-002 Safety | ThermalCutoff |
+| REQ-002.1 Overheat Detection | ThermalCutoff |
+| REQ-002.2 Auto Shutoff | ThermalCutoff |
+| REQ-003 User Controls | Toaster |
+| REQ-003.1 Cancel / Eject | Lever |
 
-This MSML toaster is the language canary. It does not copy every quantitative target from the SysML2d toaster example.
+Parametric checks verify Heat Control (`PV2R`), Browning Repeatability (`Energy`), and Overheat Detection (`SafetyCheck`). Activity steps (insert bread, press lever, start timer, heat, pop) allocate to the same parts.
 
-## Views
+## 7. Sourced numbers
 
-| View | File |
-| --- | --- |
-| BDD | `toaster-bdd` |
-| IBD | `toaster-ibd` |
-| Activity | `toaster-act` |
-| Sequence | `toaster-seq` |
-| STM | `toaster-stm` |
-| Use case | `toaster-uc` |
-| Requirements | `toaster-req` · `toaster-reqt` |
-| Parametric | `toaster-par` |
-| Package | `toaster-pkg` |
-| Allocation | `toaster-alloc` · `toaster-amx` |
+All quantitative targets are model-local:
+
+- 30 s to target temperature
+- 1–5 min browning settings
+- ±5% energy variance at the same level
+- Thermal cutoff below 300 °C surface temperature
+
+Root `voltage` and `maxPower` are typed, not filled. Do not invent watts, surface-touch limits, crumb-tray force, or cycle life.
+
+## 8. Open risks / TBD
+
+- No filled mains voltage or element wattage, so electrical-load analysis cannot close.
+- No crumb-tray or chassis part, so tray-removal and enclosure safety are out of this model.
+- Product-line variants (4-slice, bagel, defrost, wide-slot) are out of scope.
+
+## 9. Views in this folder
+
+`toaster-bdd.png`, `toaster-ibd.png`, `toaster-act.png`, `toaster-seq.png`, `toaster-stm.png`, `toaster-uc.png`, `toaster-req.png`, `toaster-reqt.png`, `toaster-par.png`, `toaster-pkg.png`, `toaster-alloc.png`, `toaster-amx.png`.
 
 ![Toaster block definitions](toaster-bdd.png)
 
 ![Toaster requirements table](toaster-reqt.png)
-
-## Validate and render
 
 ```bash
 msml-validate-all projects/appliances/toaster --strict

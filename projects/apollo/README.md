@@ -2,7 +2,7 @@
 
 Public NASA **Apollo 11 / Block II** instance, vehicle **AS-506**, on the generic Saturn V + CSM + LM stack. Civil / historical architecture only — no classified or biomedical detail.
 
-Namespace `Apollo`. File stem `apollo`. Layout is `projects/apollo/`. Short overview: [architecture-summary.md](architecture-summary.md).
+Namespace `Apollo`. File stem `apollo`. Layout is `projects/apollo/`. Architecture / system-design note: [architecture-summary.md](architecture-summary.md).
 
 **Where 11 is atypical (notes only — not full examples):** Apollo 7 had no LM; 8 and 10 did not land; 13 aborted. Those missions are not separate projects.
 

@@ -229,34 +229,34 @@ msml-render-all projects
 
 ## Examples
 
-Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project).
+Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project). Those files are architecture / system-design notes — purpose, boundary, requirements, structure, states, allocations, sourced numbers, open risks, and the PNGs in that folder — not a view catalog.
 
 ### Electric Bike
 
 A street-legal EU-class pedal-assist bike used as the publish hero. Namespace `ElectricBike`. File stem `e-bike`. Continuous assist is **250 W** (EU EPAC, not peak). Hub torque is **40 N·m** peak, not continuous.
 
-- [Architecture summary](projects/e-bike/architecture-summary.md)
+- [Architecture / system-design note](projects/e-bike/architecture-summary.md)
 - [Electric bike project](projects/e-bike): context, BDD, IBD, activity, sequence (`e-bike-int`), STM, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
 
 ### Apollo
 
 Apollo is a full lunar-orbit-rendezvous example: Saturn V, Block II CSM, LM-5, crew, and the ground network for Apollo 11 (AS-506). Read it as a system-of-systems model. Numbers are from NASA primary sources; a few values (including an official CSM lunar Δv table) are intentionally left unmarked.
 
-- [Architecture summary](projects/apollo/architecture-summary.md)
+- [Architecture / system-design note](projects/apollo/architecture-summary.md)
 - [Apollo project](projects/apollo/README.md)
 
 ### Appliance Models
 
 Compact systems used to exercise the language. Toaster is the twelve-view coverage canary.
 
-- [Toaster architecture summary](projects/appliances/toaster/architecture-summary.md) — [toaster project](projects/appliances/toaster)
-- [Blender architecture summary](projects/appliances/blender/architecture-summary.md) — [blender project](projects/appliances/blender)
+- [Toaster architecture / system-design note](projects/appliances/toaster/architecture-summary.md) — [toaster project](projects/appliances/toaster)
+- [Blender architecture / system-design note](projects/appliances/blender/architecture-summary.md) — [blender project](projects/appliances/blender)
 
 ### Humanity Optimization System
 
 Civilization-scale decision-support concept modeled with MSML.
 
-- [Architecture summary](projects/humanity-optimization/architecture-summary.md)
+- [Architecture / system-design note](projects/humanity-optimization/architecture-summary.md)
 - [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
 - [HOS project](projects/humanity-optimization)
 
