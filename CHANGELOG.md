@@ -16,7 +16,7 @@ Public MSML v1.0 update. Andrew can paste the section below as the announcement.
 - Visual QA across toaster, blender, HOS, and e-bike so the figures are announcement-ready.
 - Start-your-own-system adoption pack: `AGENTS.md`, four Cursor/Claude skills (`skills/bootstrap-project`, `skills/author-model`, `skills/compose-views`, `skills/vision-review`), and `templates/new-project/`. Same skill slugs as SysML2d. MSML does not replace commercial SysML 2 tools.
 - Full Apollo 11 / Block II system + subsystem example at `projects/apollo/` (AS-506; generic Saturn V + CSM + LM stack; public NASA architecture; 7 / 8 / 10 / 13 called out in notes only). Ground/crew/USB, vehicles/AGC, and the last electrical/AGS/docking/RCS slice are on the model. Sourced: three SM fuel cells, CM AgZn + pyro, LM 4+2 AgZn with ECA, AEA 4096×18-bit, probe/drogue/12 latches, CM RCS 93 lbf. UNKNOWN remains: tank loads, Δv, A11 rope IDs, SM RCS thrust — do not invent those.
-- ElectricBike architecture corrections: Tour-mode range, EPAC / EN 15194 (no throttle), nested `bms : BMS` usage inside BatteryPack (`allocateChargeToBms` → `ElectricBike::BatteryPack::bms`), no `lockBikeUseCase`, EN 15194 stopping distance, StVZO/ISO 6742 lighting, fail-silent ride safety.
+- ElectricBike architecture corrections: Tour-mode range, EPAC / EN 15194 (no throttle), nested `bms : BMS` usage inside BatteryPack (`allocateChargeToBms` → `ElectricBike::BatteryPack::bms`), no `lockBikeUseCase`, EN 15194 stopping distance, StVZO/ISO 6742 lighting, fail-silent ride safety, RideControl `walk` ≤ 6 km/h, `energyBalance` bound to usable pack Wh + `energyPerKm` (not rider watts).
 
 **Install and render**
 

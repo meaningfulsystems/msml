@@ -101,6 +101,10 @@ REQUIRED_REL_IDS = (
     "stm-ebike.powerOff",
     "stm-ebike.faultFromAssist",
     "stm-ebike.resetFault",
+    "stm-ebike.startWalk",
+    "stm-ebike.stopWalk",
+    "stm-ebike.brakeCutWalk",
+    "stm-ebike.faultFromWalk",
 )
 
 REQUIRED_ACTIONS = (
@@ -159,6 +163,36 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertEqual(include["source"], "ElectricBike.UC.rideBikeUseCase")
         self.assertEqual(include["target"], "ElectricBike.UC.adjustAssistUseCase")
         self.assertEqual(rels["stm-ebike.resetFault"]["target"], "ElectricBike.State.RideControl.off")
+        self.assertEqual(defs["ElectricBike.State.RideControl.walk"]["name"], "walk")
+        self.assertIn("6 km/h", defs["ElectricBike.State.RideControl.walk"].get("do", ""))
+        self.assertEqual(rels["stm-ebike.startWalk"]["source"], "ElectricBike.State.RideControl.standby")
+        self.assertEqual(rels["stm-ebike.startWalk"]["target"], "ElectricBike.State.RideControl.walk")
+        self.assertEqual(rels["stm-ebike.stopWalk"]["target"], "ElectricBike.State.RideControl.standby")
+        energy = defs["ElectricBike.PAR.energyBalance"]
+        self.assertIn("energyPerKm", energy["expression"])
+        self.assertIn("packEnergy", energy["expression"])
+        self.assertNotIn("riderPower", energy["expression"])
+        self.assertNotIn("riderPower", {p["name"] for p in energy["parameters"]})
+        energy_bindings = [
+            (rel["source"], rel["target"])
+            for rel in rels.values()
+            if rel.get("type") == "binding_connector"
+            and "ElectricBike.PAR.energyBalance" in (rel.get("source"), rel.get("target"))
+        ]
+        self.assertIn(("ElectricBike.PAR.packEnergy", "ElectricBike.PAR.energyBalance"), energy_bindings)
+        self.assertIn(("ElectricBike.PAR.energyPerKm", "ElectricBike.PAR.energyBalance"), energy_bindings)
+        self.assertFalse(any("riderPower" in edge for pair in energy_bindings for edge in pair))
+        ibd_connectors = [
+            rel for rel in rels.values() if rel.get("id", "").startswith("ibd-ebike.") and rel.get("type") == "connector"
+        ]
+        for conn in ibd_connectors:
+            for end in ("source", "target"):
+                port = defs[conn[end]]
+                self.assertNotEqual(
+                    port.get("owner_ref"),
+                    "ElectricBike",
+                    f"{conn['id']} {end} parked on ElectricBike",
+                )
         self.assertEqual(rels["ibd-ebike.riderToInterface"]["target"], "ElectricBike.Port.riderInputIn")
         self.assertEqual(rels["ibd-ebike.chargerToBattery"]["target"], "ElectricBike.Port.chargeInputIn")
         self.assertEqual(rels["ibd-ebike.roadToMotor"]["source"], "ElectricBike.Port.wheelLoadIn")

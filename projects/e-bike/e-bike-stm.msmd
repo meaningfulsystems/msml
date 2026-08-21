@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-ebike",
-    "name": "Ride, Charge, and Fault",
+    "name": "Ride, Walk, Charge, and Fault",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -145,6 +145,31 @@
         "style": {
           "fill_color": "#FFF3E0",
           "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 13,
+            "bold": true,
+            "color": "#1A1A2E"
+          },
+          "corner_radius": 8
+        }
+      },
+      {
+        "type": "state",
+        "id": "state-walk",
+        "model_ref": "ElectricBike.State.RideControl.walk",
+        "display_name": "Walk ≤ 6 km/h",
+        "layout": {
+          "x": 760,
+          "y": 220,
+          "width": 220,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -513,6 +538,126 @@
           "line_color": "#C62828",
           "line_width": 1.5,
           "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "startWalk",
+        "relationship_ref": "stm-ebike.startWalk",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 250
+          },
+          {
+            "x": 760,
+            "y": 250
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -18
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "stopWalk",
+        "relationship_ref": "stm-ebike.stopWalk",
+        "waypoints": [
+          {
+            "x": 760,
+            "y": 235
+          },
+          {
+            "x": 680,
+            "y": 235
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": 8
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "brakeCutWalk",
+        "relationship_ref": "stm-ebike.brakeCutWalk",
+        "waypoints": [
+          {
+            "x": 800,
+            "y": 310
+          },
+          {
+            "x": 800,
+            "y": 360
+          },
+          {
+            "x": 460,
+            "y": 360
+          },
+          {
+            "x": 460,
+            "y": 270
+          },
+          {
+            "x": 480,
+            "y": 270
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 6
+          }
+        },
+        "type": "transition"
+      },
+      {
+        "id": "faultFromWalk",
+        "relationship_ref": "stm-ebike.faultFromWalk",
+        "waypoints": [
+          {
+            "x": 990,
+            "y": 310
+          },
+          {
+            "x": 990,
+            "y": 400
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,

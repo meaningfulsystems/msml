@@ -554,6 +554,13 @@
         "entry": "inhibitMotor();\nopenContactor()"
       },
       {
+        "type": "state",
+        "id": "ElectricBike.State.RideControl.walk",
+        "name": "walk",
+        "do": "limitSpeed(<= 6 km/h)",
+        "exit": "zeroAssist()"
+      },
+      {
         "type": "class",
         "id": "ElectricBike.RideActivity",
         "name": "RideActivity"
@@ -761,20 +768,16 @@
       {
         "id": "ElectricBike.PAR.energyBalance",
         "type": "constraint_property",
-        "name": "E_pack ≥ ∫(P_rider + P_assist) dt",
-        "expression": "packEnergy >= integral(riderPower + assistPower)",
+        "name": "E_usable ≥ e_km × 60 km Tour",
+        "expression": "packEnergy >= energyPerKm * 60",
         "parameters": [
           {
             "name": "packEnergy",
             "type": "Wh"
           },
           {
-            "name": "riderPower",
-            "type": "W"
-          },
-          {
-            "name": "assistPower",
-            "type": "W"
+            "name": "energyPerKm",
+            "type": "Wh/km"
           }
         ]
       },
@@ -1397,6 +1400,34 @@
         "name": "resetFault"
       },
       {
+        "id": "stm-ebike.startWalk",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.standby",
+        "target": "ElectricBike.State.RideControl.walk",
+        "name": "startWalk"
+      },
+      {
+        "id": "stm-ebike.stopWalk",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.walk",
+        "target": "ElectricBike.State.RideControl.standby",
+        "name": "stopWalk"
+      },
+      {
+        "id": "stm-ebike.brakeCutWalk",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.walk",
+        "target": "ElectricBike.State.RideControl.standby",
+        "name": "brakeCutWalk"
+      },
+      {
+        "id": "stm-ebike.faultFromWalk",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.walk",
+        "target": "ElectricBike.State.RideControl.fault",
+        "name": "faultFromWalk"
+      },
+      {
         "id": "act-ebike.f1",
         "type": "control_flow",
         "source": "ElectricBike.Behavior.Ride.Start",
@@ -1618,13 +1649,7 @@
       {
         "id": "par-ebike.b2",
         "type": "binding_connector",
-        "source": "ElectricBike.PAR.riderPower",
-        "target": "ElectricBike.PAR.energyBalance"
-      },
-      {
-        "id": "par-ebike.b3",
-        "type": "binding_connector",
-        "source": "ElectricBike.PAR.assistPower",
+        "source": "ElectricBike.PAR.energyPerKm",
         "target": "ElectricBike.PAR.energyBalance"
       },
       {

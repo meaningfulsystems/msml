@@ -36,7 +36,8 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 - Context is rider / charger / ElectricBike / road only.
 - IBD connectors never pass through boxes.
 - Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety. Stopping Distance (EN 15194 5 m / 2 m) and Lighting (StVZO / ISO 6742) are additional siblings.
-- Range 500 Wh / 60 km is a **Tour-mode** scenario (~8.3 Wh/km), not Eco / PAS-1.
+- Range 500 Wh / 60 km is a **Tour-mode** scenario (~8.3 Wh/km), not Eco / PAS-1. `energyBalance` binds usable pack Wh + `energyPerKm`; do **not** add rider watts into pack energy.
+- RideControl includes EPAC **walk** (≤ 6 km/h). IBD ports stay on child parts (`owner_ref` on children); do not park every port on `ElectricBike`.
 - Classification is **EPAC / EN 15194** (cadence only, 25 km/h, no throttle). Hub is a rear geared hub; regen omitted.
 - Nested usage `bms : BMS` lives inside BatteryPack (`ElectricBike::BatteryPack::bms`). `allocateChargeToBms` targets that usage, not the pack.
 - Do **not** keep `lockBikeUseCase`. Empty use cases are not allowed.

@@ -50,13 +50,13 @@ Definition ids are stable strings. Prefer `Namespace.Name` (e.g. `ElectricBike.B
 
 **Actors and context.** Context members are usually an operator, the system, and the environment. For the e-bike, context is **rider / charger / ElectricBike / road only**. Do not promote a flow item (for example Wheel Torque) to a context actor.
 
-**Ports and connectors.** Ports are definitions with `type: "port"` and `owner_ref` on the owning block. Connectors (`type: "connector"`) join two ports. Keep energy, control, and structure on **distinct** connectors. Do not merge command and charge onto one inbound line.
+**Ports and connectors.** Ports are definitions with `type: "port"` and `owner_ref` on the owning block. Connectors (`type: "connector"`) join two ports. Keep energy, control, and structure on **distinct** connectors. Do not merge command and charge onto one inbound line. On the e-bike IBD, keep ports on the child parts. Do not park every port on `ElectricBike` to copy SysML2d; context may keep the three system-boundary ports.
 
 **Requirements.** Keep them **siblings** under the system unless the user asks for a real refine. Ids in the e-bike are frozen: `rideSafetyRequirement`, `rangeRequirement`, `assistLimitRequirement`, `chargeSafetyRequirement`, `brakeOverrideRequirement`, `batteryCutoffRequirement`, `displayRequirement`, `structuralRequirement`, plus siblings `stoppingDistanceRequirement` (EN 15194 5 m / 2 m) and `lightingRequirement` (StVZO / ISO 6742). Display and Structural are not children of Range or Assist Limit. Brake Override may refine Ride Safety. Range 500 Wh / 60 km is Tour-mode (~8.3 Wh/km), not Eco / PAS-1. `allocateChargeToBms` targets the nested usage `ElectricBike.BatteryPack.bms` (`ElectricBike::BatteryPack::bms`).
 
 **Allocate.** `type: "allocate"` maps a requirement or action onto a block (`kind`: `functional`, `behavioral`, or `structural`). Tables and the matrix are views of the same relationships.
 
-**States.** State definitions plus `transition` relationships. E-bike `RideControl` states: `off`, `standby`, `assist`, `charging`, `fault`. `resetFault` is **Fault→Off**, not Fault→Standby.
+**States.** State definitions plus `transition` relationships. E-bike `RideControl` states: `off`, `standby`, `assist`, `walk` (≤ 6 km/h), `charging`, `fault`. `resetFault` is **Fault→Off**, not Fault→Standby.
 
 **Activities.** Actions, initial/final/decision/fork/join nodes, and `control_flow` relationships. Guards live on the flow (`"guard": "yes"`).
 
