@@ -159,7 +159,7 @@
         "type": "state",
         "id": "state-walk",
         "model_ref": "ElectricBike.State.RideControl.walk",
-        "display_name": "Walk \u2264 6 km/h",
+        "display_name": "walk",
         "layout": {
           "x": 760,
           "y": 220,
