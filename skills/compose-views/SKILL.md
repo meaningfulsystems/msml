@@ -79,8 +79,8 @@ SysML2d-only kinds (**flow**, **acase**, **vcase**, **intf**, **general**) are n
 
 ## Examples to copy from
 
-- Context IBD: [projects/e-bike/e-bike-ctx.msmd](../../projects/e-bike/e-bike-ctx.msmd) — rider / charger / bike / road only.
-- Internal IBD: [projects/e-bike/e-bike-ibd.msmd](../../projects/e-bike/e-bike-ibd.msmd).
+- Context IBD: [projects/e-bike/e-bike-ctx.msmd](../../projects/e-bike/e-bike-ctx.msmd) — rider / charger / bike / road only. No Wheel Torque actor.
+- Internal IBD: [projects/e-bike/e-bike-ibd.msmd](../../projects/e-bike/e-bike-ibd.msmd) — child-owned ports, Rear Geared Hub, mount / command / inhibit / pack power / phase drive. Cadence and wheel-speed when the layout stays clean.
 - Full twelve-view set: [projects/appliances/toaster/](../../projects/appliances/toaster/).
 - Full system + subsystem: [projects/apollo/](../../projects/apollo/) (vehicle IBD `apollo-ibd`, electrical IBD `apollo-eps`).
 

@@ -177,7 +177,8 @@
             }
           ],
           "operations": []
-        }
+        },
+        "display_name": "Rear Geared Hub"
       },
       {
         "type": "block",
@@ -609,7 +610,7 @@
         "type": "action",
         "id": "ElectricBike.Action.pedalAndThrottle",
         "name": "pedalAndThrottle",
-        "display_name": "Pedal (cadence)"
+        "display_name": "Pedal (EPAC)"
       },
       {
         "type": "action",
@@ -700,7 +701,7 @@
         "id": "ElectricBike.rangeRequirement",
         "name": "Range (≥ 60 km Tour)",
         "req_id": "REQ-002",
-        "text": "≥ 60 km on a 500 Wh pack in Tour mode\n(~8.3 Wh/km). Not Eco / PAS-1.",
+        "text": "Tour 60 km via usableWh 500 Wh / energyPerKm\n~8.3 Wh/km. Not Eco / PAS-1.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"
@@ -710,7 +711,7 @@
         "id": "ElectricBike.assistLimitRequirement",
         "name": "Assist Limit (25 km/h)",
         "req_id": "REQ-003",
-        "text": "EPAC / EN 15194: cadence-only assist,\ncut off at 25 km/h. No throttle.",
+        "text": "EPAC / EN 15194: cadence-only assist,\ncut off at 25 km/h (wheel speed). No throttle.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
@@ -720,7 +721,7 @@
         "id": "ElectricBike.chargeSafetyRequirement",
         "name": "Charge Safety",
         "req_id": "REQ-004",
-        "text": "Charging shall stop on over-temp,\nover-voltage, or charger disconnect.",
+        "text": "Charging shall stop on over-temp,\nover-voltage, or charger disconnect.\nBMS inside the pack opens the contactor.",
         "kind": "safety",
         "priority": "high",
         "status": "approved"
@@ -740,7 +741,7 @@
         "id": "ElectricBike.batteryCutoffRequirement",
         "name": "Battery Cutoff",
         "req_id": "REQ-006",
-        "text": "BMS shall open the pack contactor\nbefore any cell exceeds its V/T limit.",
+        "text": "BMS inside the pack shall open the\ncontactor before any cell exceeds its V/T limit.",
         "kind": "safety",
         "priority": "high",
         "status": "approved"
@@ -768,7 +769,7 @@
       {
         "id": "ElectricBike.PAR.energyBalance",
         "type": "constraint_property",
-        "name": "E_usable ≥ e_km × 60 km Tour",
+        "name": "usableWh ≥ energyPerKm × 60 km Tour",
         "expression": "packEnergy >= energyPerKm * 60",
         "parameters": [
           {
@@ -832,7 +833,7 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.packEnergy",
-        "name": "packEnergy: 500 Wh",
+        "name": "usableWh: 500 Wh Tour",
         "value_type": "Real",
         "unit": "Wh"
       },
@@ -1121,6 +1122,71 @@
         "type": "port",
         "name": "packIn",
         "owner_ref": "ElectricBike.BMS"
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.WheelSpeedSensor",
+        "name": "WheelSpeedSensor",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "wheel speed",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cutoff",
+              "type": "25 km/h",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.walkAssistRequirement",
+        "name": "Walk Assist (≤ 6 km/h)",
+        "req_id": "REQ-011",
+        "text": "EPAC walk assist shall not exceed 6 km/h.\nWalk assist is not a throttle.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.continuousPowerRequirement",
+        "name": "Continuous Power (250 W)",
+        "req_id": "REQ-012",
+        "text": "Continuous assist shall not exceed 250 W.\nEN 15194 EPAC continuous rating.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "id": "ElectricBike.Port.cadenceOut",
+        "type": "port",
+        "name": "cadenceOut",
+        "owner_ref": "ElectricBike.CadenceSensor"
+      },
+      {
+        "id": "ElectricBike.Port.controllerCadenceIn",
+        "type": "port",
+        "name": "cadenceIn",
+        "owner_ref": "ElectricBike.MotorController"
+      },
+      {
+        "id": "ElectricBike.Port.speedOut",
+        "type": "port",
+        "name": "speedOut",
+        "owner_ref": "ElectricBike.WheelSpeedSensor"
+      },
+      {
+        "id": "ElectricBike.Port.controllerSpeedIn",
+        "type": "port",
+        "name": "speedIn",
+        "owner_ref": "ElectricBike.MotorController"
       }
     ],
     "relationships": [
@@ -1341,7 +1407,7 @@
         "type": "transition",
         "source": "ElectricBike.State.RideControl.standby",
         "target": "ElectricBike.State.RideControl.assist",
-        "name": "startAssist"
+        "name": "cadence (EPAC)"
       },
       {
         "id": "stm-ebike.stopAssist",
@@ -1936,6 +2002,77 @@
         "type": "satisfy",
         "source": "ElectricBike.CadenceSensor",
         "target": "ElectricBike.rideSafetyRequirement"
+      },
+      {
+        "id": "bdd-ebike.c-bike-wheelspeed",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.WheelSpeedSensor",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "ibd-ebike.cadenceToController",
+        "type": "connector",
+        "source": "ElectricBike.Port.cadenceOut",
+        "target": "ElectricBike.Port.controllerCadenceIn",
+        "name": "cadence"
+      },
+      {
+        "id": "ibd-ebike.wheelSpeedToController",
+        "type": "connector",
+        "source": "ElectricBike.Port.speedOut",
+        "target": "ElectricBike.Port.controllerSpeedIn",
+        "name": "wheel speed"
+      },
+      {
+        "id": "stm-ebike.plugInStandby",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.standby",
+        "target": "ElectricBike.State.RideControl.charging",
+        "name": "plugInStandby"
+      },
+      {
+        "id": "allocateAssistToWheelSpeed",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateAssistToWheelSpeed",
+        "source": "ElectricBike.assistLimitRequirement",
+        "target": "ElectricBike.WheelSpeedSensor"
+      },
+      {
+        "id": "allocateWalkToController",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateWalkToController",
+        "source": "ElectricBike.walkAssistRequirement",
+        "target": "ElectricBike.MotorController"
+      },
+      {
+        "id": "allocatePowerToHub",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocatePowerToHub",
+        "source": "ElectricBike.continuousPowerRequirement",
+        "target": "ElectricBike.HubMotor"
+      },
+      {
+        "id": "sat-ebike.12",
+        "type": "satisfy",
+        "source": "ElectricBike.WheelSpeedSensor",
+        "target": "ElectricBike.assistLimitRequirement"
+      },
+      {
+        "id": "sat-ebike.13",
+        "type": "satisfy",
+        "source": "ElectricBike.MotorController",
+        "target": "ElectricBike.walkAssistRequirement"
+      },
+      {
+        "id": "sat-ebike.14",
+        "type": "satisfy",
+        "source": "ElectricBike.HubMotor",
+        "target": "ElectricBike.continuousPowerRequirement"
       }
     ],
     "metadata": {

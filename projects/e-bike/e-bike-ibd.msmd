@@ -7,7 +7,7 @@
     "type": "ibd",
     "id": "ibd-ebike",
     "subject_ref": "ElectricBike",
-    "name": "Internal Structure — EPAC, rear hub, BMS in pack",
+    "name": "Internal Structure — EPAC, rear hub, child ports, sensors",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -32,7 +32,7 @@
     },
     "canvas": {
       "width": 1540,
-      "height": 820,
+      "height": 860,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -221,7 +221,7 @@
         "id": "part-motor",
         "model_ref": "ElectricBike.HubMotor",
         "role_name": "hubMotor",
-        "display_name": "hubMotor : HubMotor",
+        "display_name": "hubMotor : Rear Geared Hub",
         "layout": {
           "x": 1020,
           "y": 410,
@@ -913,6 +913,156 @@
             "color": "#000000"
           }
         }
+      },
+      {
+        "type": "part",
+        "id": "part-cadence",
+        "model_ref": "ElectricBike.CadenceSensor",
+        "role_name": "cadenceSensor",
+        "display_name": "cadenceSensor : Cadence Sensor",
+        "layout": {
+          "x": 620,
+          "y": 600,
+          "width": 145,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-wheelspeed",
+        "model_ref": "ElectricBike.WheelSpeedSensor",
+        "role_name": "wheelSpeedSensor",
+        "display_name": "wheelSpeedSensor : Wheel Speed Sensor",
+        "layout": {
+          "x": 785,
+          "y": 600,
+          "width": 145,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cad-out",
+        "model_ref": "ElectricBike.Port.cadenceOut",
+        "name": "cad",
+        "owner_ref": "part-cadence",
+        "layout": {
+          "x": 682,
+          "y": 594,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-cad",
+        "model_ref": "ElectricBike.Port.controllerCadenceIn",
+        "name": "cad",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 682,
+          "y": 564,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#6A1B9A",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-wss-out",
+        "model_ref": "ElectricBike.Port.speedOut",
+        "name": "spd",
+        "owner_ref": "part-wheelspeed",
+        "layout": {
+          "x": 850,
+          "y": 594,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ctl-spd",
+        "model_ref": "ElectricBike.Port.controllerSpeedIn",
+        "name": "spd",
+        "owner_ref": "part-controller",
+        "layout": {
+          "x": 850,
+          "y": 564,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
       }
     ],
     "relationships": [
@@ -1092,7 +1242,7 @@
         "id": "interfaceToController",
         "type": "connector",
         "relationship_ref": "ibd-ebike.interfaceToController",
-        "name": "assist",
+        "name": "command",
         "waypoints": [
           {
             "x": 360,
@@ -1192,7 +1342,7 @@
         "id": "batteryToController",
         "type": "connector",
         "relationship_ref": "ibd-ebike.batteryToController",
-        "name": "power",
+        "name": "pack power",
         "waypoints": [
           {
             "x": 536,
@@ -1220,7 +1370,7 @@
         "id": "controllerToMotor",
         "type": "connector",
         "relationship_ref": "ibd-ebike.controllerToMotor",
-        "name": "phase",
+        "name": "phase drive",
         "waypoints": [
           {
             "x": 936,
@@ -1297,6 +1447,62 @@
           "label_offset": {
             "x": 8,
             "y": -14
+          }
+        }
+      },
+      {
+        "id": "cadenceToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.cadenceToController",
+        "name": "cadence",
+        "waypoints": [
+          {
+            "x": 688,
+            "y": 576
+          },
+          {
+            "x": 688,
+            "y": 594
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -12
+          }
+        }
+      },
+      {
+        "id": "wheelSpeedToController",
+        "type": "connector",
+        "relationship_ref": "ibd-ebike.wheelSpeedToController",
+        "name": "wheel speed",
+        "waypoints": [
+          {
+            "x": 856,
+            "y": 576
+          },
+          {
+            "x": 856,
+            "y": 594
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 12,
+            "y": -12
           }
         }
       }

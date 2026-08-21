@@ -30,7 +30,7 @@
       }
     },
     "canvas": {
-      "width": 1000,
+      "width": 1140,
       "height": 430,
       "background_color": "#FAFAFA",
       "grid": {
@@ -43,7 +43,7 @@
       "layout": {
         "x": 20,
         "y": 20,
-        "width": 960,
+        "width": 1100,
         "height": 390
       },
       "row_header_width": 220,
@@ -228,6 +228,20 @@
         },
         "matrix_role": "column",
         "display_name": "bms"
+      },
+      {
+        "type": "block",
+        "id": "col-wss",
+        "model_ref": "ElectricBike.WheelSpeedSensor",
+        "layout": {
+          "x": 940,
+          "y": 20,
+          "width": 140,
+          "height": 68,
+          "z_index": 1
+        },
+        "matrix_role": "column",
+        "display_name": "wheelSpeed"
       }
     ],
     "relationships": [
@@ -270,6 +284,10 @@
       {
         "id": "cell-safety-bms",
         "relationship_ref": "allocateSafetyToBms"
+      },
+      {
+        "id": "cell-assist-wss",
+        "relationship_ref": "allocateAssistToWheelSpeed"
       }
     ],
     "metadata": {

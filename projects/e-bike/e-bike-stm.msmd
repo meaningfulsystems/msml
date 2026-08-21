@@ -667,6 +667,41 @@
           }
         },
         "type": "transition"
+      },
+      {
+        "id": "plugInStandby",
+        "relationship_ref": "stm-ebike.plugInStandby",
+        "waypoints": [
+          {
+            "x": 480,
+            "y": 270
+          },
+          {
+            "x": 330,
+            "y": 270
+          },
+          {
+            "x": 330,
+            "y": 100
+          },
+          {
+            "x": 300,
+            "y": 100
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 8,
+            "y": -16
+          }
+        },
+        "type": "transition"
       }
     ],
     "metadata": {

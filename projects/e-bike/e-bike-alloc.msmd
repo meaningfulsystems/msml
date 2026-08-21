@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 960,
-      "height": 680,
+      "height": 780,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -44,7 +44,7 @@
         "x": 20,
         "y": 20,
         "width": 920,
-        "height": 640
+        "height": 740
       },
       "header_height": 34,
       "row_height": 32,
@@ -151,6 +151,18 @@
       {
         "id": "row-light",
         "relationship_ref": "alloc-ebike.alloc-light-hmi"
+      },
+      {
+        "id": "row-assist-wss",
+        "relationship_ref": "allocateAssistToWheelSpeed"
+      },
+      {
+        "id": "row-walk",
+        "relationship_ref": "allocateWalkToController"
+      },
+      {
+        "id": "row-power",
+        "relationship_ref": "allocatePowerToHub"
       }
     ],
     "metadata": {

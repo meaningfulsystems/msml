@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1320,
-      "height": 720,
+      "width": 1400,
+      "height": 740,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -153,7 +153,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Rear Geared Hub"
       },
       {
         "type": "block",
@@ -239,6 +240,31 @@
         "style": {
           "fill_color": "#F3E5F5",
           "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "Cadence Sensor"
+      },
+      {
+        "type": "block",
+        "id": "block-wheelspeed",
+        "model_ref": "ElectricBike.WheelSpeedSensor",
+        "display_name": "Wheel Speed Sensor",
+        "layout": {
+          "x": 1110,
+          "y": 520,
+          "width": 190,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -553,6 +579,40 @@
         ],
         "style": {
           "line_color": "#6A1B9A",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-wheelspeed",
+        "relationship_ref": "bdd-ebike.c-bike-wheelspeed",
+        "waypoints": [
+          {
+            "x": 500,
+            "y": 100
+          },
+          {
+            "x": 10,
+            "y": 100
+          },
+          {
+            "x": 10,
+            "y": 500
+          },
+          {
+            "x": 1205,
+            "y": 500
+          },
+          {
+            "x": 1205,
+            "y": 520
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "composition",

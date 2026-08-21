@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1280,
-      "height": 680,
+      "height": 780,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -44,7 +44,7 @@
         "x": 20,
         "y": 20,
         "width": 1240,
-        "height": 640
+        "height": 740
       },
       "header_height": 34,
       "row_height": 48,
@@ -213,6 +213,30 @@
         "layout": {
           "x": 20,
           "y": 558,
+          "width": 1240,
+          "height": 56,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-10",
+        "model_ref": "ElectricBike.walkAssistRequirement",
+        "layout": {
+          "x": 20,
+          "y": 614,
+          "width": 1240,
+          "height": 56,
+          "z_index": 1
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "row-11",
+        "model_ref": "ElectricBike.continuousPowerRequirement",
+        "layout": {
+          "x": 20,
+          "y": 670,
           "width": 1240,
           "height": 56,
           "z_index": 1
