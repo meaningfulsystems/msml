@@ -6,7 +6,7 @@
   "diagram": {
     "type": "requirement",
     "id": "req-apollo",
-    "name": "Crew Safety \u00b7 Landing \u00b7 Comms \u2014 public architecture",
+    "name": "Crew safety \u00b7 landing \u00b7 comms \u00b7 LES \u00b7 ECLSS \u00b7 guidance",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1000,
-      "height": 460,
+      "height": 430,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -48,7 +48,7 @@
           "x": 30,
           "y": 24,
           "width": 300,
-          "height": 160,
+          "height": 170,
           "z_index": 1
         },
         "style": {
@@ -71,7 +71,7 @@
           "x": 350,
           "y": 24,
           "width": 300,
-          "height": 160,
+          "height": 170,
           "z_index": 1
         },
         "style": {
@@ -94,7 +94,7 @@
           "x": 670,
           "y": 24,
           "width": 300,
-          "height": 160,
+          "height": 170,
           "z_index": 1
         },
         "style": {
@@ -115,14 +115,14 @@
         "model_ref": "Apollo.lesAbortRequirement",
         "layout": {
           "x": 30,
-          "y": 230,
+          "y": 220,
           "width": 300,
-          "height": 160,
+          "height": 170,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#EF6C00",
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -138,9 +138,9 @@
         "model_ref": "Apollo.eclssRequirement",
         "layout": {
           "x": 350,
-          "y": 230,
+          "y": 220,
           "width": 300,
-          "height": 160,
+          "height": 170,
           "z_index": 1
         },
         "style": {
@@ -161,9 +161,9 @@
         "model_ref": "Apollo.guidanceRequirement",
         "layout": {
           "x": 670,
-          "y": 230,
+          "y": 220,
           "width": 300,
-          "height": 160,
+          "height": 170,
           "z_index": 1
         },
         "style": {
@@ -185,8 +185,7 @@
       "created": "2026-08-21",
       "modified": "2026-08-21",
       "tags": [
-        "apollo",
-        "requirement"
+        "apollo"
       ]
     }
   }

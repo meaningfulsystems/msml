@@ -1,30 +1,37 @@
-# Apollo (in progress)
+# Apollo (system + subsystem)
 
 Public NASA **Apollo 11 / Block II** instance on the generic Saturn V + CSM + LM stack. Civil / historical architecture only — no classified or biomedical detail.
 
-Namespace `Apollo`. File stem `apollo`. Layout is `projects/apollo/` (not `examples/`).
+Namespace `Apollo`. File stem `apollo`. Layout is `projects/apollo/`.
 
-The research brief is still incoming. This is a defensible skeleton so the stack, context, mission phases, GNC, CSM flows, and landing sequence can be refined when more detail arrives.
+**Where 11 is atypical (notes only — not full examples):** Apollo 7 had no LM; 8 and 10 did not land; 13 aborted. Those missions are not separate projects.
 
-**Where 11 is atypical (notes only — not full examples):**
+Kept distinct: `AGC_CM`, `AGC_LM`, `DSKY`, `AGS`, IU `LVDC`, `USB`. Collapsed: engine hydraulics; MSFN ships (stations only).
 
-- Apollo 7 — no LM
-- Apollo 8 / 10 — no lunar landing
-- Apollo 13 — abort, not a completed landing
-
-Do not stand up those missions as separate projects.
+## System views
 
 | View | File | Story |
 | --- | --- | --- |
-| Packages | `apollo-pkg` | LaunchVehicle, Spacecraft, CrewECLSS, GNC, Ground, Comms, Mission |
-| BDD | `apollo-bdd` | Saturn V + CSM + LM + LES + SLA; instance and atypical notes |
-| Context IBD | `apollo-ctx` | Vehicle / crew / MCC / RTCC / MSFN / Moon / Earth; uplink, downlink, backup voice |
-| Internal IBD | `apollo-ibd` | Saturn stack joints (adjacent only; lines never through boxes) |
-| STM | `apollo-stm` | Launch → TLI → LOI → Landing → Ascent → TEI → Entry + abort |
-| Activity | `apollo-act` | Same phases as a start-to-entry flow |
-| Sequence | `apollo-seq` | Landing: MCC → MSFN → USB → LGC / crew → descent |
-| Requirements | `apollo-req` | Crew safety, landing, comms continuity, LES, ECLSS, guidance |
-| GNC IBD | `apollo-gnc` | Crew–DSKY–AGC–IMU–Optics + LGC–AGS (P00–P67-class) |
-| CSM IBD | `apollo-csm` | Electrical, propellant, RF, cabin atmosphere, telemetry |
+| Packages | `apollo-pkg` | LaunchVehicle, Spacecraft, Crew, GNC, Ground, Comms, Mission |
+| BDD | `apollo-bdd` | Saturn V + CSM + LM + LES + SLA |
+| Context IBD | `apollo-ctx` | Vehicle / crew / MCC / RTCC / MSFN / Moon / Earth |
+| Stack IBD | `apollo-ibd` | CSM–LM–Saturn interfaces (adjacent joints only) |
+| STM | `apollo-stm` | countdown → … → recovery, plus abort machine |
+| Activity | `apollo-act` | Same mission phases as a start-to-recovery flow |
+| Sequence | `apollo-seq` | Landing: MCC → MSFN → USB → AGC_LM / CDR / radar / DPS |
+| Requirements | `apollo-req` | Crew safety, landing, comms, LES, ECLSS, guidance |
 
-Parts in the model include S-IC, S-II, S-IVB, IU, CSM (CM, SM), LM (descent, ascent), LES, SLA, crew, ECLSS, AGC, LGC, AGS, IMU, DSKY, optics, MCC, RTCC, MSFN, USB, backup voice, fuel cells, and ground computers.
+## Subsystem views
+
+| View | File | Story |
+| --- | --- | --- |
+| SaturnV BDD | `apollo-sat-bdd` | S-IC, S-II, S-IVB, IU, LVDC |
+| SaturnV IBD | `apollo-sat-ibd` | Stack joints + IU LVDC |
+| CSM IBD | `apollo-csm` | AGC_CM, IMU, DSKY, SCS, SPS, RCS, ECLSS |
+| LM IBD | `apollo-lm` | PNGS, AGC_LM, AGS, DPS, APS, radars |
+| Ground IBD | `apollo-gnd` | KSC_LCC, MCC, RTCC, NASCOM, MSFN Goldstone / Madrid / Honeysuckle |
+| ECLSS activity | `apollo-eclss` | Cabin atmosphere loop (vehicle, not biomedical) |
+
+Mission STM: countdown → boost → earthOrbit → TLI → translunar → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery.
+
+Abort machine (parallel): pad, I–IV, contingency TLI, lunar, SPS.

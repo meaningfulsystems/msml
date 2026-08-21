@@ -175,16 +175,30 @@ class IbdNoLineThroughBoxTests(unittest.TestCase):
             "Apollo context connectors must not pass through boxes",
         )
 
-    def test_apollo_gnc_connectors_miss_foreign_boxes(self) -> None:
-        self.assertEqual(
-            _box_hits(APOLLO / "apollo-gnc.msmd"),
-            [],
-            "Apollo GNC connectors must not pass through boxes",
-        )
-
     def test_apollo_csm_connectors_miss_foreign_boxes(self) -> None:
         self.assertEqual(
             _box_hits(APOLLO / "apollo-csm.msmd"),
             [],
             "Apollo CSM connectors must not pass through boxes",
+        )
+
+    def test_apollo_saturn_ibd_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-sat-ibd.msmd"),
+            [],
+            "Apollo Saturn IBD connectors must not pass through boxes",
+        )
+
+    def test_apollo_lm_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-lm.msmd"),
+            [],
+            "Apollo LM connectors must not pass through boxes",
+        )
+
+    def test_apollo_ground_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-gnd.msmd"),
+            [],
+            "Apollo ground connectors must not pass through boxes",
         )

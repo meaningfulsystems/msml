@@ -4,9 +4,9 @@
     "apollo-model.msml"
   ],
   "diagram": {
-    "type": "package",
-    "id": "pkg-apollo",
-    "name": "LaunchVehicle \u00b7 Spacecraft \u00b7 Crew \u00b7 GNC \u00b7 Ground \u00b7 Comms \u00b7 Mission",
+    "type": "bdd",
+    "id": "bdd-apollo-sat",
+    "name": "SaturnV \u2014 S-IC \u00b7 S-II \u00b7 S-IVB \u00b7 IU \u00b7 LVDC",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1320,
-      "height": 360,
+      "width": 1280,
+      "height": 540,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -41,37 +41,14 @@
     },
     "elements": [
       {
-        "type": "model",
-        "id": "pkg-root",
-        "model_ref": "Apollo.Model",
+        "type": "block",
+        "id": "b-sat",
+        "model_ref": "Apollo.SaturnV",
         "layout": {
-          "x": 20,
-          "y": 16,
-          "width": 1280,
-          "height": 320,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#F5F5FF",
-          "border_color": "#445588",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "package",
-        "id": "pkg-lv",
-        "model_ref": "Apollo.LaunchVehicle",
-        "layout": {
-          "x": 40,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "x": 500,
+          "y": 20,
+          "width": 240,
+          "height": 110,
           "z_index": 1
         },
         "style": {
@@ -87,19 +64,19 @@
         }
       },
       {
-        "type": "package",
-        "id": "pkg-sc",
-        "model_ref": "Apollo.Spacecraft",
+        "type": "block",
+        "id": "b-sic",
+        "model_ref": "Apollo.SIC",
         "layout": {
-          "x": 220,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "x": 40,
+          "y": 220,
+          "width": 200,
+          "height": 110,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -110,19 +87,19 @@
         }
       },
       {
-        "type": "package",
-        "id": "pkg-crew",
-        "model_ref": "Apollo.CrewECLSS",
+        "type": "block",
+        "id": "b-sii",
+        "model_ref": "Apollo.SII",
         "layout": {
-          "x": 400,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "x": 280,
+          "y": 220,
+          "width": 200,
+          "height": 110,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -133,19 +110,19 @@
         }
       },
       {
-        "type": "package",
-        "id": "pkg-gnc",
-        "model_ref": "Apollo.GNC",
+        "type": "block",
+        "id": "b-sivb",
+        "model_ref": "Apollo.SIVB",
         "layout": {
-          "x": 580,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "x": 520,
+          "y": 220,
+          "width": 200,
+          "height": 110,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#F3E5F5",
-          "border_color": "#6A1B9A",
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -156,14 +133,14 @@
         }
       },
       {
-        "type": "package",
-        "id": "pkg-gnd",
-        "model_ref": "Apollo.Ground",
+        "type": "block",
+        "id": "b-iu",
+        "model_ref": "Apollo.IU",
         "layout": {
           "x": 760,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "y": 220,
+          "width": 200,
+          "height": 110,
           "z_index": 1
         },
         "style": {
@@ -179,19 +156,19 @@
         }
       },
       {
-        "type": "package",
-        "id": "pkg-com",
-        "model_ref": "Apollo.Comms",
+        "type": "block",
+        "id": "b-lvdc",
+        "model_ref": "Apollo.LVDC",
         "layout": {
-          "x": 940,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "x": 1000,
+          "y": 220,
+          "width": 220,
+          "height": 110,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#E0F7FA",
-          "border_color": "#00838F",
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -202,23 +179,23 @@
         }
       },
       {
-        "type": "package",
-        "id": "pkg-mis",
-        "model_ref": "Apollo.Mission",
+        "type": "comment",
+        "id": "n-col",
+        "model_ref": "Apollo.Note.Collapse",
         "layout": {
-          "x": 1120,
-          "y": 90,
-          "width": 160,
-          "height": 200,
+          "x": 40,
+          "y": 380,
+          "width": 520,
+          "height": 120,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 1,
           "font": {
             "family": "Arial",
-            "size": 11,
+            "size": 10,
             "bold": false,
             "color": "#000000"
           }
@@ -227,106 +204,117 @@
     ],
     "relationships": [
       {
-        "id": "d1",
-        "relationship_ref": "pkg-apollo.d-gnc-spacecraft",
+        "id": "s1",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-saturn-sic",
         "waypoints": [
           {
-            "x": 660,
-            "y": 90
+            "x": 540,
+            "y": 130
           },
           {
-            "x": 660,
-            "y": 70
-          },
-          {
-            "x": 300,
-            "y": 70
-          },
-          {
-            "x": 300,
-            "y": 90
+            "x": 140,
+            "y": 220
           }
         ],
         "style": {
-          "line_color": "#333333",
+          "line_color": "#E65100",
           "line_width": 1.5,
-          "line_style": "dashed",
+          "line_style": "solid",
           "source_arrowhead": "none",
-          "target_arrowhead": "open",
+          "target_arrowhead": "diamond_fill",
           "corner_radius": 8
         }
       },
       {
-        "id": "d2",
-        "relationship_ref": "pkg-apollo.d-crew-spacecraft",
+        "id": "s2",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-saturn-sii",
         "waypoints": [
           {
-            "x": 400,
-            "y": 150
+            "x": 580,
+            "y": 130
           },
           {
             "x": 380,
-            "y": 150
+            "y": 220
           }
         ],
         "style": {
-          "line_color": "#333333",
+          "line_color": "#E65100",
           "line_width": 1.5,
-          "line_style": "dashed",
+          "line_style": "solid",
           "source_arrowhead": "none",
-          "target_arrowhead": "open",
+          "target_arrowhead": "diamond_fill",
           "corner_radius": 8
         }
       },
       {
-        "id": "d3",
-        "relationship_ref": "pkg-apollo.d-comms-ground",
+        "id": "s3",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-saturn-sivb",
         "waypoints": [
           {
-            "x": 940,
-            "y": 190
+            "x": 640,
+            "y": 130
           },
           {
-            "x": 920,
-            "y": 190
+            "x": 620,
+            "y": 220
           }
         ],
         "style": {
-          "line_color": "#333333",
+          "line_color": "#E65100",
           "line_width": 1.5,
-          "line_style": "dashed",
+          "line_style": "solid",
           "source_arrowhead": "none",
-          "target_arrowhead": "open",
+          "target_arrowhead": "diamond_fill",
           "corner_radius": 8
         }
       },
       {
-        "id": "d4",
-        "relationship_ref": "pkg-apollo.d-mission-all",
+        "id": "s4",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-saturn-iu",
         "waypoints": [
           {
-            "x": 1200,
-            "y": 290
+            "x": 700,
+            "y": 130
           },
           {
-            "x": 1200,
-            "y": 310
-          },
-          {
-            "x": 120,
-            "y": 310
-          },
-          {
-            "x": 120,
-            "y": 290
+            "x": 860,
+            "y": 220
           }
         ],
         "style": {
-          "line_color": "#333333",
+          "line_color": "#F9A825",
           "line_width": 1.5,
-          "line_style": "dashed",
+          "line_style": "solid",
           "source_arrowhead": "none",
-          "target_arrowhead": "open",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "s5",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-iu-lvdc",
+        "waypoints": [
+          {
+            "x": 960,
+            "y": 275
+          },
+          {
+            "x": 1000,
+            "y": 275
+          }
+        ],
+        "style": {
+          "line_color": "#F9A825",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
           "corner_radius": 8
         }
       }

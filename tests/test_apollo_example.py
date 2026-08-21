@@ -1,4 +1,4 @@
-"""Apollo 11 / Block II skeleton: public NASA architecture, in progress."""
+"""Apollo 11 / Block II full system + subsystem model."""
 
 from __future__ import annotations
 
@@ -22,8 +22,12 @@ REQUIRED_VIEW_STEMS = (
     "apollo-seq",
     "apollo-req",
     "apollo-pkg",
-    "apollo-gnc",
     "apollo-csm",
+    "apollo-sat-bdd",
+    "apollo-sat-ibd",
+    "apollo-lm",
+    "apollo-gnd",
+    "apollo-eclss",
 )
 
 REQUIRED_DEF_IDS = (
@@ -33,29 +37,45 @@ REQUIRED_DEF_IDS = (
     "Apollo.SII",
     "Apollo.SIVB",
     "Apollo.IU",
+    "Apollo.LVDC",
     "Apollo.LES",
     "Apollo.SLA",
     "Apollo.CSM",
     "Apollo.CM",
     "Apollo.SM",
-    "Apollo.LM",
-    "Apollo.LMDescent",
-    "Apollo.LMAscent",
-    "Apollo.Crew",
-    "Apollo.ECLSS",
-    "Apollo.AGC",
-    "Apollo.LGC",
-    "Apollo.AGS",
+    "Apollo.SCS",
+    "Apollo.AGC_CM",
     "Apollo.IMU",
     "Apollo.DSKY",
-    "Apollo.Optics",
+    "Apollo.SPS",
+    "Apollo.RCS_CM",
+    "Apollo.ECLSS",
+    "Apollo.LM",
+    "Apollo.Descent",
+    "Apollo.Ascent",
+    "Apollo.PNGS",
+    "Apollo.AGC_LM",
+    "Apollo.AGS",
+    "Apollo.DPS",
+    "Apollo.APS",
+    "Apollo.RCS_LM",
+    "Apollo.LandingRadar",
+    "Apollo.RendezvousRadar",
+    "Apollo.Crew",
+    "Apollo.CDR",
+    "Apollo.CMP",
+    "Apollo.LMP",
+    "Apollo.A7L",
+    "Apollo.PLSS",
+    "Apollo.KSC_LCC",
     "Apollo.MCC",
     "Apollo.RTCC",
     "Apollo.MSFN",
+    "Apollo.Goldstone",
+    "Apollo.Madrid",
+    "Apollo.Honeysuckle",
+    "Apollo.NASCOM",
     "Apollo.USB",
-    "Apollo.BackupVoice",
-    "Apollo.FuelCell",
-    "Apollo.GroundComputer",
     "Apollo.Moon",
     "Apollo.Earth",
     "Apollo.LaunchVehicle",
@@ -71,14 +91,41 @@ REQUIRED_DEF_IDS = (
 )
 
 REQUIRED_PHASES = (
-    "Apollo.State.Mission.launch",
-    "Apollo.State.Mission.tli",
-    "Apollo.State.Mission.loi",
-    "Apollo.State.Mission.landing",
+    "Apollo.State.Mission.countdown",
+    "Apollo.State.Mission.boost",
+    "Apollo.State.Mission.earthOrbit",
+    "Apollo.State.Mission.TLI",
+    "Apollo.State.Mission.translunar",
+    "Apollo.State.Mission.LOI",
+    "Apollo.State.Mission.undock",
+    "Apollo.State.Mission.DOI",
+    "Apollo.State.Mission.descent",
+    "Apollo.State.Mission.surfaceEVA",
     "Apollo.State.Mission.ascent",
-    "Apollo.State.Mission.tei",
+    "Apollo.State.Mission.rendezvous",
+    "Apollo.State.Mission.TEI",
     "Apollo.State.Mission.entry",
-    "Apollo.State.Mission.abort",
+    "Apollo.State.Mission.recovery",
+)
+
+REQUIRED_ABORTS = (
+    "Apollo.State.Abort.pad",
+    "Apollo.State.Abort.I",
+    "Apollo.State.Abort.II",
+    "Apollo.State.Abort.III",
+    "Apollo.State.Abort.IV",
+    "Apollo.State.Abort.contingencyTLI",
+    "Apollo.State.Abort.lunar",
+    "Apollo.State.Abort.SPS",
+)
+
+FORBIDDEN_COLLAPSE = (
+    "Apollo.AGC_CM",
+    "Apollo.AGC_LM",
+    "Apollo.DSKY",
+    "Apollo.AGS",
+    "Apollo.LVDC",
+    "Apollo.USB",
 )
 
 
@@ -87,13 +134,24 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertTrue((APOLLO / "apollo-model.msml").exists())
         for stem in REQUIRED_VIEW_STEMS:
             self.assertTrue((APOLLO / f"{stem}.msmd").exists(), stem)
+        self.assertFalse((APOLLO / "apollo-gnc.msmd").exists())
 
-    def test_public_architecture_skeleton(self) -> None:
+    def test_public_architecture_full_model(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
         self.assertEqual(model["namespace"], "Apollo")
         defs = {item["id"]: item for item in model["definitions"]}
-        for did in REQUIRED_DEF_IDS + REQUIRED_PHASES:
+        for did in REQUIRED_DEF_IDS + REQUIRED_PHASES + REQUIRED_ABORTS:
             self.assertIn(did, defs, did)
+        self.assertEqual(defs["Apollo.SIC"]["name"], "S-IC")
+        self.assertEqual(defs["Apollo.SII"]["name"], "S-II")
+        self.assertEqual(defs["Apollo.SIVB"]["name"], "S-IVB")
+        self.assertEqual(defs["Apollo.AGC_CM"]["name"], "AGC_CM")
+        self.assertEqual(defs["Apollo.AGC_LM"]["name"], "AGC_LM")
+        self.assertEqual(defs["Apollo.Descent"]["name"], "descent")
+        self.assertEqual(defs["Apollo.Ascent"]["name"], "ascent")
+        self.assertEqual(defs["Apollo.LandingRadar"]["name"], "landingRadar")
+        self.assertEqual(defs["Apollo.RendezvousRadar"]["name"], "rendezvousRadar")
+        self.assertEqual(defs["Apollo.KSC_LCC"]["name"], "KSC_LCC")
         self.assertEqual(defs["Apollo.crewSafetyRequirement"]["req_id"], "REQ-001")
         self.assertEqual(defs["Apollo.landingRequirement"]["req_id"], "REQ-002")
         self.assertEqual(defs["Apollo.commsContinuityRequirement"]["req_id"], "REQ-003")
@@ -104,6 +162,16 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(props["instance"], "Apollo 11 / Block II")
         self.assertEqual(props["stack"], "generic Saturn V + CSM + LM")
 
+    def test_does_not_collapse_required_computers(self) -> None:
+        model = read_json_file(APOLLO / "apollo-model.msml")["model"]
+        defs = {item["id"]: item for item in model["definitions"]}
+        for did in FORBIDDEN_COLLAPSE:
+            self.assertIn(did, defs, did)
+        self.assertNotEqual(defs["Apollo.AGC_CM"]["id"], defs["Apollo.AGC_LM"]["id"])
+        names = {item["name"].lower() for item in model["definitions"]}
+        for ship in ("redstone", "vangard", "mercury", "arco", "watertown"):
+            self.assertNotIn(ship, names)
+
     def test_instance_is_apollo_11_block_ii(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
         defs = {item["id"]: item for item in model["definitions"]}
@@ -113,18 +181,8 @@ class ApolloExampleTests(unittest.TestCase):
         atypical = defs["Apollo.Note.Atypical"]["text"]
         for mission in ("Apollo 7", "Apollo 8", "Apollo 10", "Apollo 13"):
             self.assertIn(mission, atypical)
-        self.assertIn("no LM", atypical)
-        self.assertIn("no lunar landing", atypical)
-        self.assertIn("abort", atypical)
         for extra in ("apollo-7", "apollo-8", "apollo-10", "apollo-13"):
             self.assertFalse((ROOT / "projects" / extra).exists(), extra)
-
-    def test_context_includes_rtcc_and_split_comms(self) -> None:
-        text = (APOLLO / "apollo-ctx.msmd").read_text(encoding="utf-8")
-        self.assertIn("Apollo.RTCC", text)
-        self.assertIn("uplink", text)
-        self.assertIn("downlink", text)
-        self.assertIn("backup voice", text)
 
     def test_context_is_vehicle_crew_mcc_msfn_moon_earth(self) -> None:
         text = (APOLLO / "apollo-ctx.msmd").read_text(encoding="utf-8")
@@ -138,6 +196,9 @@ class ApolloExampleTests(unittest.TestCase):
             "Apollo.RTCC",
         ):
             self.assertIn(ref, text)
+        self.assertIn("uplink", text)
+        self.assertIn("downlink", text)
+        self.assertIn("backup voice", text)
         self.assertNotIn("ElectricBike", text)
 
     def test_views_validate_strict(self) -> None:

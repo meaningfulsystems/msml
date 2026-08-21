@@ -237,9 +237,9 @@ The Humanity Optimization System is a civilization-scale decision-support concep
 
 ### Apollo (in progress)
 
-A public NASA Apollo 11 / Block II instance on the generic Saturn V + CSM + LM stack. Namespace `Apollo`. Views use the `apollo` file stem. Civil / historical architecture only. Apollo 7 / 8 / 10 / 13 are notes, not separate examples.
+A public NASA Apollo 11 / Block II instance on the generic Saturn V + CSM + LM stack — full system and subsystem model. Namespace `Apollo`. Views use the `apollo` file stem. Civil / historical architecture only. Apollo 7 / 8 / 10 / 13 are notes, not separate examples.
 
-- [Apollo project](projects/apollo): packages, stack BDD, vehicle/crew/MCC/RTCC/MSFN/Moon/Earth context, Saturn IBD, GNC and CSM flow IBDs, mission-phase STM (with abort) and activity, landing sequence, crew-safety / landing / comms requirements.
+- [Apollo project](projects/apollo): system context / stack BDD / CSM–LM–Saturn IBD / mission STM + abort machine / landing sequence / requirements, plus SaturnV, CSM, LM, Ground, and ECLSS subsystem views.
 
 ### Electric Bike
 
