@@ -320,8 +320,11 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertIn("peakTorque", ibd_text)
         self.assertIn("250 W", ibd_text)
         self.assertIn("40 N", ibd_text)
-        self.assertIn("continuous assist", ibd_text)
-        self.assertIn("peak torque", ibd_text)
+        callout = defs["ElectricBike.Note.IbdCallout"]["text"]
+        self.assertIn("continuous assist", callout)
+        self.assertIn("peak torque", callout)
+        self.assertIn("not peak", callout)
+        self.assertIn("not continuous", callout)
         self.assertIn("usableWh: 500 Wh Tour", defs["ElectricBike.PAR.packEnergy"]["name"])
         self.assertIn("usableWh", defs["ElectricBike.rangeRequirement"]["text"])
         self.assertIn("6 km/h", defs["ElectricBike.walkAssistRequirement"]["text"])
