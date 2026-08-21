@@ -1125,10 +1125,10 @@
         "id": "n-eva",
         "model_ref": "Apollo.Note.EvaTimes",
         "layout": {
-          "x": 570,
+          "x": 1020,
           "y": 620,
-          "width": 420,
-          "height": 70,
+          "width": 280,
+          "height": 80,
           "z_index": 1
         },
         "style": {
