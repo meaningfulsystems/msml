@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo-cmc",
-    "name": "CMC ENTRY — P61–P67 · not LGC landing",
+    "name": "CMC ENTRY \u2014 P61\u2013P67 \u00b7 not LGC landing",
     "context": "Apollo",
     "subject_ref": "Apollo.AGC_CM",
     "frame": {
@@ -308,7 +308,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -331,7 +335,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -354,7 +362,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -377,7 +389,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -400,7 +416,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -423,7 +443,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -458,7 +482,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -481,7 +509,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -504,7 +536,11 @@
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
-          "line_color": "#1565C0"
+          "line_color": "#1565C0",
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       }
     ],

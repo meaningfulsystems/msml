@@ -330,7 +330,11 @@
           "line_style": "dashed",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 8
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -353,7 +357,11 @@
           "line_style": "dashed",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 8
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -376,7 +384,11 @@
           "line_style": "dashed",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 8
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -399,7 +411,11 @@
           "line_style": "dashed",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 8
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -422,7 +438,11 @@
           "line_style": "dashed",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 8
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       },
       {
@@ -453,7 +473,11 @@
           "line_style": "dashed",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 8
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
         }
       }
     ],

@@ -774,8 +774,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 36,
+            "y": 10
           }
         }
       },
@@ -802,8 +802,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": -40,
+            "y": -22
           }
         }
       },
@@ -887,11 +887,19 @@
         "waypoints": [
           {
             "x": 600,
-            "y": 84
+            "y": 50
+          },
+          {
+            "x": 660,
+            "y": 50
+          },
+          {
+            "x": 660,
+            "y": 30
           },
           {
             "x": 720,
-            "y": 69
+            "y": 30
           }
         ],
         "style": {
@@ -903,7 +911,7 @@
           "corner_radius": 8,
           "label_offset": {
             "x": 0,
-            "y": -16
+            "y": -18
           }
         }
       },

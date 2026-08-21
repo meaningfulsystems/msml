@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1540,
-      "height": 720,
+      "width": 2981,
+      "height": 1590,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -45,10 +45,10 @@
         "id": "b-apollo",
         "model_ref": "Apollo",
         "layout": {
-          "x": 620,
-          "y": 16,
-          "width": 300,
-          "height": 140,
+          "x": 1208,
+          "y": 20,
+          "width": 549,
+          "height": 597,
           "z_index": 1
         },
         "style": {
@@ -68,10 +68,10 @@
         "id": "b-saturn",
         "model_ref": "Apollo.SaturnV",
         "layout": {
-          "x": 40,
-          "y": 200,
-          "width": 200,
-          "height": 110,
+          "x": 361,
+          "y": 509,
+          "width": 581,
+          "height": 442,
           "z_index": 1
         },
         "style": {
@@ -91,10 +91,10 @@
         "id": "b-csm",
         "model_ref": "Apollo.CSM",
         "layout": {
-          "x": 420,
-          "y": 200,
+          "x": 1584,
+          "y": 509,
           "width": 200,
-          "height": 110,
+          "height": 200,
           "z_index": 1
         },
         "style": {
@@ -114,10 +114,10 @@
         "id": "b-lm",
         "model_ref": "Apollo.LM",
         "layout": {
-          "x": 800,
-          "y": 200,
-          "width": 200,
-          "height": 110,
+          "x": 2108,
+          "y": 509,
+          "width": 298,
+          "height": 251,
           "z_index": 1
         },
         "style": {
@@ -137,10 +137,10 @@
         "id": "b-les",
         "model_ref": "Apollo.LES",
         "layout": {
-          "x": 1100,
-          "y": 200,
-          "width": 180,
-          "height": 110,
+          "x": 2461,
+          "y": 509,
+          "width": 199,
+          "height": 145,
           "z_index": 1
         },
         "style": {
@@ -160,10 +160,10 @@
         "id": "b-sla",
         "model_ref": "Apollo.SLA",
         "layout": {
-          "x": 1300,
-          "y": 200,
-          "width": 180,
-          "height": 110,
+          "x": 2696,
+          "y": 509,
+          "width": 245,
+          "height": 145,
           "z_index": 1
         },
         "style": {
@@ -183,10 +183,10 @@
         "id": "b-sic",
         "model_ref": "Apollo.SIC",
         "layout": {
-          "x": 20,
-          "y": 380,
-          "width": 150,
-          "height": 90,
+          "x": 24,
+          "y": 879,
+          "width": 305,
+          "height": 264,
           "z_index": 1
         },
         "style": {
@@ -206,10 +206,10 @@
         "id": "b-sii",
         "model_ref": "Apollo.SII",
         "layout": {
-          "x": 180,
-          "y": 380,
-          "width": 150,
-          "height": 90,
+          "x": 365,
+          "y": 879,
+          "width": 278,
+          "height": 264,
           "z_index": 1
         },
         "style": {
@@ -229,10 +229,10 @@
         "id": "b-sivb",
         "model_ref": "Apollo.SIVB",
         "layout": {
-          "x": 340,
-          "y": 380,
-          "width": 150,
-          "height": 90,
+          "x": 679,
+          "y": 879,
+          "width": 325,
+          "height": 281,
           "z_index": 1
         },
         "style": {
@@ -252,10 +252,10 @@
         "id": "b-iu",
         "model_ref": "Apollo.IU",
         "layout": {
-          "x": 500,
-          "y": 380,
-          "width": 140,
-          "height": 90,
+          "x": 1040,
+          "y": 879,
+          "width": 239,
+          "height": 230,
           "z_index": 1
         },
         "style": {
@@ -275,10 +275,10 @@
         "id": "b-cm",
         "model_ref": "Apollo.CM",
         "layout": {
-          "x": 680,
-          "y": 380,
-          "width": 140,
-          "height": 90,
+          "x": 1315,
+          "y": 709,
+          "width": 245,
+          "height": 196,
           "z_index": 1
         },
         "style": {
@@ -298,10 +298,10 @@
         "id": "b-sm",
         "model_ref": "Apollo.SM",
         "layout": {
-          "x": 840,
-          "y": 380,
-          "width": 140,
-          "height": 90,
+          "x": 1596,
+          "y": 709,
+          "width": 457,
+          "height": 196,
           "z_index": 1
         },
         "style": {
@@ -321,10 +321,10 @@
         "id": "b-des",
         "model_ref": "Apollo.Descent",
         "layout": {
-          "x": 1020,
-          "y": 380,
+          "x": 2089,
+          "y": 760,
           "width": 150,
-          "height": 90,
+          "height": 145,
           "z_index": 1
         },
         "style": {
@@ -344,10 +344,10 @@
         "id": "b-asc",
         "model_ref": "Apollo.Ascent",
         "layout": {
-          "x": 1190,
-          "y": 380,
+          "x": 2275,
+          "y": 760,
           "width": 150,
-          "height": 90,
+          "height": 111,
           "z_index": 1
         },
         "style": {
@@ -367,8 +367,8 @@
         "id": "n-atyp",
         "model_ref": "Apollo.Note.Atypical",
         "layout": {
-          "x": 40,
-          "y": 520,
+          "x": 24,
+          "y": 1200,
           "width": 520,
           "height": 160,
           "z_index": 1
@@ -390,8 +390,8 @@
         "id": "n-inst",
         "model_ref": "Apollo.Note.Instance",
         "layout": {
-          "x": 580,
-          "y": 520,
+          "x": 564,
+          "y": 1200,
           "width": 420,
           "height": 160,
           "z_index": 1
@@ -413,8 +413,8 @@
         "id": "n-col",
         "model_ref": "Apollo.Note.Collapse",
         "layout": {
-          "x": 1020,
-          "y": 520,
+          "x": 1004,
+          "y": 1200,
           "width": 460,
           "height": 160,
           "z_index": 1
@@ -439,12 +439,20 @@
         "relationship_ref": "bdd-apollo.c-apollo-saturn",
         "waypoints": [
           {
-            "x": 770,
-            "y": 156
+            "x": 1482,
+            "y": 473
           },
           {
-            "x": 140,
-            "y": 200
+            "x": 1482,
+            "y": 491
+          },
+          {
+            "x": 651,
+            "y": 491
+          },
+          {
+            "x": 651,
+            "y": 509
           }
         ],
         "style": {
@@ -462,12 +470,20 @@
         "relationship_ref": "bdd-apollo.c-apollo-csm",
         "waypoints": [
           {
-            "x": 770,
-            "y": 156
+            "x": 1482,
+            "y": 437
           },
           {
-            "x": 520,
-            "y": 200
+            "x": 1482,
+            "y": 473
+          },
+          {
+            "x": 1684,
+            "y": 473
+          },
+          {
+            "x": 1684,
+            "y": 509
           }
         ],
         "style": {
@@ -485,12 +501,20 @@
         "relationship_ref": "bdd-apollo.c-apollo-lm",
         "waypoints": [
           {
-            "x": 770,
-            "y": 156
+            "x": 1482,
+            "y": 437
           },
           {
-            "x": 900,
-            "y": 200
+            "x": 1482,
+            "y": 473
+          },
+          {
+            "x": 2257,
+            "y": 473
+          },
+          {
+            "x": 2257,
+            "y": 509
           }
         ],
         "style": {
@@ -508,12 +532,20 @@
         "relationship_ref": "bdd-apollo.c-apollo-les",
         "waypoints": [
           {
-            "x": 920,
-            "y": 86
+            "x": 1482,
+            "y": 437
           },
           {
-            "x": 1190,
-            "y": 200
+            "x": 1482,
+            "y": 473
+          },
+          {
+            "x": 2560,
+            "y": 473
+          },
+          {
+            "x": 2560,
+            "y": 509
           }
         ],
         "style": {
@@ -531,12 +563,20 @@
         "relationship_ref": "bdd-apollo.c-apollo-sla",
         "waypoints": [
           {
-            "x": 920,
-            "y": 86
+            "x": 1482,
+            "y": 437
           },
           {
-            "x": 1390,
-            "y": 200
+            "x": 1482,
+            "y": 473
+          },
+          {
+            "x": 2818,
+            "y": 473
+          },
+          {
+            "x": 2818,
+            "y": 509
           }
         ],
         "style": {
@@ -554,12 +594,20 @@
         "relationship_ref": "bdd-apollo.c-saturn-sic",
         "waypoints": [
           {
-            "x": 90,
-            "y": 310
+            "x": 651,
+            "y": 843
           },
           {
-            "x": 95,
-            "y": 380
+            "x": 651,
+            "y": 861
+          },
+          {
+            "x": 176,
+            "y": 861
+          },
+          {
+            "x": 176,
+            "y": 879
           }
         ],
         "style": {
@@ -577,12 +625,20 @@
         "relationship_ref": "bdd-apollo.c-saturn-sii",
         "waypoints": [
           {
-            "x": 160,
-            "y": 310
+            "x": 651,
+            "y": 807
           },
           {
-            "x": 255,
-            "y": 380
+            "x": 651,
+            "y": 843
+          },
+          {
+            "x": 504,
+            "y": 843
+          },
+          {
+            "x": 504,
+            "y": 879
           }
         ],
         "style": {
@@ -600,12 +656,20 @@
         "relationship_ref": "bdd-apollo.c-saturn-sivb",
         "waypoints": [
           {
-            "x": 200,
-            "y": 310
+            "x": 651,
+            "y": 807
           },
           {
-            "x": 415,
-            "y": 380
+            "x": 651,
+            "y": 843
+          },
+          {
+            "x": 841,
+            "y": 843
+          },
+          {
+            "x": 841,
+            "y": 879
           }
         ],
         "style": {
@@ -623,12 +687,20 @@
         "relationship_ref": "bdd-apollo.c-saturn-iu",
         "waypoints": [
           {
-            "x": 240,
-            "y": 310
+            "x": 651,
+            "y": 807
           },
           {
-            "x": 570,
-            "y": 380
+            "x": 651,
+            "y": 843
+          },
+          {
+            "x": 1159,
+            "y": 843
+          },
+          {
+            "x": 1159,
+            "y": 879
           }
         ],
         "style": {
@@ -646,12 +718,20 @@
         "relationship_ref": "bdd-apollo.c-csm-cm",
         "waypoints": [
           {
-            "x": 520,
-            "y": 310
+            "x": 1684,
+            "y": 673
           },
           {
-            "x": 750,
-            "y": 380
+            "x": 1684,
+            "y": 691
+          },
+          {
+            "x": 1437,
+            "y": 691
+          },
+          {
+            "x": 1437,
+            "y": 709
           }
         ],
         "style": {
@@ -669,12 +749,20 @@
         "relationship_ref": "bdd-apollo.c-csm-sm",
         "waypoints": [
           {
-            "x": 580,
-            "y": 310
+            "x": 1684,
+            "y": 637
           },
           {
-            "x": 910,
-            "y": 380
+            "x": 1684,
+            "y": 673
+          },
+          {
+            "x": 1824,
+            "y": 673
+          },
+          {
+            "x": 1824,
+            "y": 709
           }
         ],
         "style": {
@@ -692,12 +780,20 @@
         "relationship_ref": "bdd-apollo.c-lm-des",
         "waypoints": [
           {
-            "x": 850,
-            "y": 310
+            "x": 2257,
+            "y": 724
           },
           {
-            "x": 1095,
-            "y": 380
+            "x": 2257,
+            "y": 742
+          },
+          {
+            "x": 2164,
+            "y": 742
+          },
+          {
+            "x": 2164,
+            "y": 760
           }
         ],
         "style": {
@@ -715,12 +811,20 @@
         "relationship_ref": "bdd-apollo.c-lm-asc",
         "waypoints": [
           {
-            "x": 950,
-            "y": 310
+            "x": 2257,
+            "y": 688
           },
           {
-            "x": 1265,
-            "y": 380
+            "x": 2257,
+            "y": 724
+          },
+          {
+            "x": 2350,
+            "y": 724
+          },
+          {
+            "x": 2350,
+            "y": 760
           }
         ],
         "style": {
