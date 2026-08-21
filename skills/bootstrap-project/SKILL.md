@@ -24,15 +24,15 @@ Do not use this skill to edit an existing `.msml` (author-model) or to add more 
    pip install git+https://github.com/meaningfulsystems/msml.git
    ```
 
-2. **Copy the template.** The locked path is `templates/new-project/` (plural `templates/`).
+2. **Copy the template.** The locked path is `template/new-project/` (singular `template/`, shared with SysML2d).
 
    ```bash
    mkdir -p architecture
-   cp templates/new-project/architecture/system-model.msml architecture/
-   cp templates/new-project/architecture/system-context.msmd architecture/
+   cp template/new-project/architecture/system-model.msml architecture/
+   cp template/new-project/architecture/system-context.msmd architecture/
    ```
 
-   If you are already inside this repository, copy from the repo root. If the user is in another repo, copy those two files (or the whole `templates/new-project/` tree) into their project.
+   If you are already inside this repository, copy from the repo root. If the user is in another repo, copy those two files (or the whole `template/new-project/` tree) into their project.
 
 3. **Copy the specification** next to the model so humans and agents share the rules:
 
@@ -61,9 +61,9 @@ Do not use this skill to edit an existing `.msml` (author-model) or to add more 
 
 | Path | Role |
 | --- | --- |
-| `templates/new-project/README.md` | What the user copies and runs |
-| `templates/new-project/architecture/system-model.msml` | Stub system, operator, environment, context |
-| `templates/new-project/architecture/system-context.msmd` | One context IBD |
+| `template/new-project/README.md` | What the user copies and runs |
+| `template/new-project/architecture/system-model.msml` | Stub system, operator, environment, context |
+| `template/new-project/architecture/system-context.msmd` | One context IBD |
 
 ## Pitfalls
 
