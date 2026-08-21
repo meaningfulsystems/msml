@@ -61,7 +61,7 @@ IBD connectors (why they exist):
 
 - Lever `ctrl` → Timer `in` — user start latches the timed cycle
 - Timer `signal` → HeatingElement `ctrl` — timer commands heat on and off
-- HeatingElement `heatSignal` → Carriage `heatSignal` — heat lands on the **carriage**, not on bread. Bread is not a part on this model. The carriage is the thermal sink the IBD actually connects.
+- HeatingElement `heatSignal` → Carriage `heatSignal` (`ibd-toaster.conn-element-carriage`, the heater-to-carriage connector) — heat lands on the **carriage**, not on bread. Bread is not a part and has no heat port. The connector is not renamed to pretend bread is the sink.
 
 BrowningControl configures the Timer. ThermalCutoff monitors the HeatingElement.
 

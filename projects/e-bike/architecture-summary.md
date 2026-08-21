@@ -101,7 +101,7 @@ The activity is power on → select assist → pedal → apply brake → inhibit
 | Assist cut-off | 2 m / 5 m | EN 15194:2017 4.2.13 after pedaling stops. Lever switches relax 2 m → 5 m. Not vehicle brake distance. |
 | Lighting | StVZO / ISO 6742 | Not UN ECE R113. |
 
-Parametric `energyBalance` is pack-only and still binds `packEnergy`, not a `usableWh` parameter. Do not add rider pedal watts into that expression. Do not read 500 Wh as a nameplate.
+Parametric `energyBalance` is pack-only and **still binds `packEnergy`**, not a `usableWh` parameter. The requirement and display name say usableWh; the expression was not rewritten to `usableWh`. Teach that mismatch — do not silently bind a usableWh parameter that the model does not have. Do not add rider pedal watts into that expression. Do not read 500 Wh as a nameplate.
 
 The unsourced frame `yieldMargin: ≥ 1.5` figure is **dropped** from the model. The structural shall stays qualitative: carry rider, cargo, and battery loads without yielding.
 
