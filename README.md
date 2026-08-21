@@ -199,10 +199,12 @@ msml-render-all projects
 └── projects/
     ├── appliances/
     │   ├── toaster/
+    │   │   ├── architecture-summary.md
     │   │   ├── toaster-model.msml
     │   │   ├── toaster-*.msmd
     │   │   └── toaster-*.png
     │   └── blender/
+    │       ├── architecture-summary.md
     │       ├── blender-model.msml
     │       ├── blender-*.msmd
     │       └── blender-*.png
@@ -217,6 +219,7 @@ msml-render-all projects
     │   ├── e-bike-*.msmd
     │   └── e-bike-*.png
     └── humanity-optimization/
+        ├── architecture-summary.md
         ├── Humanity_Optimization_System_Brief.md
         ├── Humanity_Optimization_Operational_Concept.md
         ├── hos-model.msml
@@ -237,7 +240,7 @@ A street-legal EU-class pedal-assist bike used as the publish hero. Namespace `E
 
 ### Apollo
 
-Apollo 11 / Block II is the full-system example: generic Saturn V + CSM + LM (vehicle AS-506) with system and subsystem views — context, stack, mission STM and abort machine, CMC entry / LGC landing, ground, crew, USB, electrical, ECLSS, AGS, docking, and RCS. Namespace `Apollo`. File stem `apollo`. Public NASA architecture only; do not invent official CSM lunar Δv.
+Apollo is a full lunar-orbit-rendezvous example: Saturn V, Block II CSM, LM-5, crew, and the ground network for Apollo 11 (AS-506). Read it as a system-of-systems model. Numbers are from NASA primary sources; a few values (including an official CSM lunar Δv table) are intentionally left unmarked.
 
 - [Architecture summary](projects/apollo/architecture-summary.md)
 - [Apollo project](projects/apollo/README.md)

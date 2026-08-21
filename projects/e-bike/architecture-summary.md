@@ -1,6 +1,6 @@
 # Electric Bike Architecture Summary
 
-EU-class pedal-assist bicycle (EPAC / EN 15194). Namespace `ElectricBike`. File stem `e-bike`. Context is rider / charger / bike / road only.
+EU-class pedal-assist bicycle (EPAC / EN 15194) with a rear geared hub. Namespace `ElectricBike`. File stem `e-bike`. Context is rider / charger / bike / road only. There is no `lockBike` use case.
 
 This is the publish hero. The same ElectricBike names appear in [SysML2d](https://github.com/meaningfulsystems/sysml2d); the files are not interchangeable.
 
@@ -8,7 +8,7 @@ This is the publish hero. The same ElectricBike names appear in [SysML2d](https:
 
 Frame, BatteryPack with nested `bms : BMS`, MotorController, Rear Geared Hub (id `HubMotor`), HumanInterface, BrakeSystem, `cadenceSensor`, `wheelSpeedSensor`.
 
-Charge path (UL 2849): bike boundary `chargerIn` → nested BMS → pack cells. Rider, charger, and road stay on the context view, not the IBD.
+Charge path (UL 2849): bike boundary `chargerIn` → nested BMS → pack cells. Rider, charger, and road stay on the context view, not the IBD. No throttle.
 
 ## Key numbers
 
@@ -18,8 +18,8 @@ Charge path (UL 2849): bike boundary `chargerIn` → nested BMS → pack cells. 
 | Hub torque | **40 N·m** | Hub **peak** torque (`peakTorque`). Not continuous. |
 | Assist cutoff | 25 km/h | Cadence-only; no throttle. |
 | Walk assist | ≤ 6 km/h | EPAC walk; not a throttle. |
-| Pack energy | 500 Wh usable | Tour-mode range scenario (~8.3 Wh/km, 60 km). Not Eco / PAS-1. |
-| Brake inhibit | 50 ms | Electronic cutoff order. EN 15194 stop is 5 m / 2 m. |
+| Pack energy | 500 Wh usable | Tour-mode range ≥ 60 km (~8.3 Wh/km). Not Eco / PAS-1. |
+| Brake | 50 ms electronic + EN 15194 2 m / 5 m | Inhibit first; stopping-distance requirement is separate. |
 | Lighting | StVZO / ISO 6742 | Not UN ECE R113. |
 
 ## Views
@@ -28,12 +28,12 @@ Charge path (UL 2849): bike boundary `chargerIn` → nested BMS → pack cells. 
 | --- | --- | --- |
 | Context | `e-bike-ctx` | Rider · charger · bike · road |
 | BDD | `e-bike-bdd` | Parts, nested BMS, sensors |
-| IBD | `e-bike-ibd` | Internal structure; charge via BMS |
+| IBD | `e-bike-ibd` | Internal structure; charger → BMS → pack |
 | STM | `e-bike-stm` | Off / Standby / walk / Assist / charging / Fault |
 | Activity | `e-bike-act` | Start ride; Pedal (EPAC) |
 | Sequence | `e-bike-int` | Rear Geared Hub lifeline |
 | Use case | `e-bike-uc` | Rider on Ride + Adjust; Charger on Charge only |
-| Requirements | `e-bike-req` · `e-bike-reqt` | Sibling requirements |
+| Requirements | `e-bike-req` · `e-bike-reqt` | Sibling requirements; no lockBike |
 | Parametric | `e-bike-par` | Tour energy / range / brake limits |
 | Package | `e-bike-pkg` | Model packages |
 | Allocation | `e-bike-alloc` · `e-bike-amx` | Assist Limit → `wheelSpeedSensor` |
