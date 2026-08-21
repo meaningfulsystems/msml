@@ -502,7 +502,17 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(rels["bdd-apollo.c-des-lr"]["source"], "Apollo.Descent")
         self.assertEqual(rels["bdd-apollo.c-des-lr"]["target"], "Apollo.LandingRadar")
         self.assertNotIn("bdd-apollo.c-lm-lr", rels)
+        self.assertNotIn("bdd-apollo.c-lm-rr", rels)
         self.assertNotIn("bdd-apollo.c-pngs-lr", rels)
+        self.assertNotIn("bdd-apollo.c-pngs-rr", rels)
+        pngs_children = {
+            r["target"]
+            for r in rels.values()
+            if r.get("type") == "composition" and r.get("source") == "Apollo.PNGS"
+        }
+        self.assertEqual(pngs_children, {"Apollo.AGC_LM"})
+        radar_defs = {d for d in defs if "Radar" in d}
+        self.assertEqual(radar_defs, {"Apollo.LandingRadar", "Apollo.RendezvousRadar"})
         rr = {p["name"]: p.get("type") for p in defs["Apollo.RendezvousRadar"]["compartments"]["properties"]}
         self.assertIn("ascent", rr["host"])
         self.assertEqual(rels["bdd-apollo.c-asc-rr"]["source"], "Apollo.Ascent")
