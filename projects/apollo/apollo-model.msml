@@ -2136,7 +2136,7 @@
             },
             {
               "name": "sourceC",
-              "type": "LMA790 9,870 / 10:1\u20136,800 \u2014 Source C",
+              "type": "LMA790 9,870 / 1,050\u20136,800 \u2014 Source C",
               "multiplicity": "1"
             },
             {
@@ -5412,8 +5412,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.EngineConflict",
-        "name": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375).\nDPS three cites, no shall: PK 9,870 / 1,050\u20136,300; D-7143 10,500 / 10:1; LMA790 9,870 / 10:1\u20136,800 (Source C).",
-        "text": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375).\nDPS three cites, no shall: PK 9,870 / 1,050\u20136,300; D-7143 10,500 / 10:1; LMA790 9,870 / 10:1\u20136,800 (Source C)."
+        "name": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375).\nDPS three cites, no shall: PK 9,870 / 1,050\u20136,300; D-7143 10,500 / 10:1; LMA790 9,870 / 1,050\u20136,800 (Source C).",
+        "text": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375).\nDPS three cites, no shall: PK 9,870 / 1,050\u20136,300; D-7143 10,500 / 10:1; LMA790 9,870 / 1,050\u20136,800 (Source C)."
       },
       {
         "type": "comment",
