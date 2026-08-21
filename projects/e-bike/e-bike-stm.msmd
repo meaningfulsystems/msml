@@ -59,6 +59,7 @@
         "type": "state",
         "id": "state-charging",
         "model_ref": "ElectricBike.State.RideControl.charging",
+        "display_name": "Charging",
         "layout": {
           "x": 70,
           "y": 60,
@@ -83,6 +84,7 @@
         "type": "state",
         "id": "state-off",
         "model_ref": "ElectricBike.State.RideControl.off",
+        "display_name": "Off",
         "layout": {
           "x": 480,
           "y": 60,
@@ -107,6 +109,7 @@
         "type": "state",
         "id": "state-standby",
         "model_ref": "ElectricBike.State.RideControl.standby",
+        "display_name": "Standby",
         "layout": {
           "x": 480,
           "y": 230,
@@ -131,6 +134,7 @@
         "type": "state",
         "id": "state-assist",
         "model_ref": "ElectricBike.State.RideControl.assist",
+        "display_name": "Assist",
         "layout": {
           "x": 480,
           "y": 400,
@@ -155,6 +159,7 @@
         "type": "state",
         "id": "state-fault",
         "model_ref": "ElectricBike.State.RideControl.fault",
+        "display_name": "Fault",
         "layout": {
           "x": 880,
           "y": 400,
@@ -205,11 +210,11 @@
         "relationship_ref": "stm-ebike.powerOn",
         "waypoints": [
           {
-            "x": 580,
+            "x": 620,
             "y": 132
           },
           {
-            "x": 580,
+            "x": 620,
             "y": 230
           }
         ],
@@ -422,16 +427,20 @@
             "y": 250
           },
           {
-            "x": 400,
+            "x": 40,
             "y": 250
           },
           {
-            "x": 400,
-            "y": 72
+            "x": 40,
+            "y": 36
           },
           {
-            "x": 480,
-            "y": 72
+            "x": 520,
+            "y": 36
+          },
+          {
+            "x": 520,
+            "y": 60
           }
         ],
         "style": {
@@ -480,11 +489,19 @@
         "relationship_ref": "stm-ebike.resetFault",
         "waypoints": [
           {
-            "x": 990,
+            "x": 1100,
             "y": 400
           },
           {
-            "x": 990,
+            "x": 1100,
+            "y": 180
+          },
+          {
+            "x": 1080,
+            "y": 180
+          },
+          {
+            "x": 1080,
             "y": 96
           },
           {

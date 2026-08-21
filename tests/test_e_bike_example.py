@@ -145,6 +145,19 @@ class EBikeExampleTests(unittest.TestCase):
             )
         self.assertIn("BatteryPack", usages)
         self.assertIn("HubMotor", usages)
+        include = rels["uc-ebike.i-adjust-ride"]
+        self.assertEqual(include["source"], "ElectricBike.UC.rideBikeUseCase")
+        self.assertEqual(include["target"], "ElectricBike.UC.adjustAssistUseCase")
+        self.assertEqual(rels["stm-ebike.resetFault"]["target"], "ElectricBike.State.RideControl.off")
+        self.assertEqual(rels["ibd-ebike.riderToInterface"]["target"], "ElectricBike.Port.riderInputIn")
+        self.assertEqual(rels["ibd-ebike.chargerToBattery"]["target"], "ElectricBike.Port.chargeInputIn")
+        self.assertEqual(rels["ibd-ebike.roadToMotor"]["source"], "ElectricBike.Port.wheelLoadIn")
+        self.assertEqual(rels["sd-ebike.m1"]["name"], "powerOn")
+        self.assertEqual(rels["sd-ebike.m3"]["name"], "phase")
+        self.assertEqual(rels["sd-ebike.m4"]["name"], "lever")
+        self.assertEqual(rels["req-ebike.d-override-safety"]["type"], "refine")
+        self.assertNotIn("req-ebike.d-assist-range", rels)
+        self.assertNotIn("req-ebike.d-display-range", rels)
 
     def test_views_validate_strict(self):
         report = validate_all(EBIKE, strict=True)

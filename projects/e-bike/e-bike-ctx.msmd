@@ -296,7 +296,7 @@
       {
         "id": "riderToInterface",
         "type": "connector",
-        "relationship_ref": "ibd-ebike.riderToInterface",
+        "relationship_ref": "ctx-ebike.riderToInterface",
         "name": "commands",
         "waypoints": [
           {
@@ -324,8 +324,8 @@
       {
         "id": "chargerToBattery",
         "type": "connector",
-        "relationship_ref": "ibd-ebike.chargerToBattery",
-        "name": "",
+        "relationship_ref": "ctx-ebike.chargerToBattery",
+        "name": "charge",
         "waypoints": [
           {
             "x": 560,
@@ -352,8 +352,8 @@
       {
         "id": "roadToMotor",
         "type": "connector",
-        "relationship_ref": "ibd-ebike.roadToMotor",
-        "name": "",
+        "relationship_ref": "ctx-ebike.roadToMotor",
+        "name": "road",
         "waypoints": [
           {
             "x": 560,

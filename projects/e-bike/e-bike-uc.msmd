@@ -6,7 +6,7 @@
   "diagram": {
     "type": "use_case",
     "id": "uc-ebike",
-    "name": "Rider, Charger, and Road",
+    "name": "Rider and Charger",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -30,7 +30,7 @@
       }
     },
     "canvas": {
-      "width": 880,
+      "width": 860,
       "height": 560,
       "background_color": "#FAFAFA",
       "grid": {
@@ -47,7 +47,7 @@
         "layout": {
           "x": 200,
           "y": 24,
-          "width": 520,
+          "width": 460,
           "height": 500,
           "z_index": 0
         },
@@ -89,8 +89,8 @@
         "id": "actor-charger",
         "model_ref": "ElectricBike.Charger",
         "layout": {
-          "x": 760,
-          "y": 80,
+          "x": 740,
+          "y": 280,
           "width": 70,
           "height": 110,
           "z_index": 1
@@ -106,32 +106,11 @@
         }
       },
       {
-        "type": "actor",
-        "id": "actor-road",
-        "model_ref": "ElectricBike.Road",
-        "layout": {
-          "x": 760,
-          "y": 340,
-          "width": 70,
-          "height": 110,
-          "z_index": 1
-        },
-        "style": {
-          "border_color": "#2E7D32",
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
         "type": "use_case",
         "id": "uc-adjust",
         "model_ref": "ElectricBike.UC.adjustAssistUseCase",
         "layout": {
-          "x": 280,
+          "x": 320,
           "y": 70,
           "width": 220,
           "height": 60,
@@ -155,7 +134,7 @@
         "id": "uc-ride",
         "model_ref": "ElectricBike.UC.rideBikeUseCase",
         "layout": {
-          "x": 280,
+          "x": 320,
           "y": 200,
           "width": 220,
           "height": 60,
@@ -179,7 +158,7 @@
         "id": "uc-charge",
         "model_ref": "ElectricBike.UC.chargeBikeUseCase",
         "layout": {
-          "x": 280,
+          "x": 320,
           "y": 320,
           "width": 220,
           "height": 60,
@@ -203,7 +182,7 @@
         "id": "uc-lock",
         "model_ref": "ElectricBike.UC.lockBikeUseCase",
         "layout": {
-          "x": 280,
+          "x": 320,
           "y": 430,
           "width": 220,
           "height": 60,
@@ -233,7 +212,7 @@
             "y": 250
           },
           {
-            "x": 280,
+            "x": 320,
             "y": 230
           }
         ],
@@ -255,7 +234,7 @@
             "y": 250
           },
           {
-            "x": 280,
+            "x": 320,
             "y": 100
           }
         ],
@@ -277,30 +256,8 @@
             "y": 250
           },
           {
-            "x": 280,
+            "x": 320,
             "y": 460
-          }
-        ],
-        "style": {
-          "line_color": "#333333",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "a-rider-charge",
-        "relationship_ref": "uc-ebike.a-rider-charge",
-        "waypoints": [
-          {
-            "x": 110,
-            "y": 250
-          },
-          {
-            "x": 280,
-            "y": 350
           }
         ],
         "style": {
@@ -317,11 +274,11 @@
         "relationship_ref": "uc-ebike.a-charger-charge",
         "waypoints": [
           {
-            "x": 760,
-            "y": 130
+            "x": 740,
+            "y": 330
           },
           {
-            "x": 500,
+            "x": 540,
             "y": 350
           }
         ],
@@ -335,38 +292,16 @@
         }
       },
       {
-        "id": "a-road",
-        "relationship_ref": "uc-ebike.a-road-ride",
-        "waypoints": [
-          {
-            "x": 760,
-            "y": 390
-          },
-          {
-            "x": 500,
-            "y": 230
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8
-        }
-      },
-      {
         "id": "i-adjust",
         "relationship_ref": "uc-ebike.i-adjust-ride",
         "waypoints": [
           {
-            "x": 390,
-            "y": 130
+            "x": 430,
+            "y": 200
           },
           {
-            "x": 390,
-            "y": 200
+            "x": 430,
+            "y": 130
           }
         ],
         "style": {

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "requirement",
     "id": "req-ebike",
-    "name": "Safety, Range, Charge \u2014 50 ms, 60 km, 25 km/h",
+    "name": "Safety, Range, Charge — 50 ms, 60 km, 25 km/h",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -88,8 +88,8 @@
       },
       {
         "type": "requirement",
-        "id": "req-charge",
-        "model_ref": "ElectricBike.chargeSafetyRequirement",
+        "id": "req-assist",
+        "model_ref": "ElectricBike.assistLimitRequirement",
         "layout": {
           "x": 670,
           "y": 24,
@@ -98,8 +98,8 @@
           "z_index": 1
         },
         "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -111,8 +111,8 @@
       },
       {
         "type": "requirement",
-        "id": "req-struct",
-        "model_ref": "ElectricBike.structuralRequirement",
+        "id": "req-charge",
+        "model_ref": "ElectricBike.chargeSafetyRequirement",
         "layout": {
           "x": 990,
           "y": 24,
@@ -121,8 +121,8 @@
           "z_index": 1
         },
         "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -157,8 +157,8 @@
       },
       {
         "type": "requirement",
-        "id": "req-assist",
-        "model_ref": "ElectricBike.assistLimitRequirement",
+        "id": "req-display",
+        "model_ref": "ElectricBike.displayRequirement",
         "layout": {
           "x": 350,
           "y": 300,
@@ -167,8 +167,31 @@
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF8DC",
-          "border_color": "#8B6914",
+          "fill_color": "#EEF2FF",
+          "border_color": "#3949AB",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-struct",
+        "model_ref": "ElectricBike.structuralRequirement",
+        "layout": {
+          "x": 670,
+          "y": 300,
+          "width": 280,
+          "height": 145,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -183,7 +206,7 @@
         "id": "req-cutoff",
         "model_ref": "ElectricBike.batteryCutoffRequirement",
         "layout": {
-          "x": 670,
+          "x": 990,
           "y": 300,
           "width": 280,
           "height": 145,
@@ -192,29 +215,6 @@
         "style": {
           "fill_color": "#E3F2FD",
           "border_color": "#1565C0",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "requirement",
-        "id": "req-display",
-        "model_ref": "ElectricBike.displayRequirement",
-        "layout": {
-          "x": 990,
-          "y": 300,
-          "width": 280,
-          "height": 145,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#EEF2FF",
-          "border_color": "#3949AB",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -253,80 +253,20 @@
         }
       },
       {
-        "id": "d-assist",
-        "relationship_ref": "req-ebike.d-assist-range",
-        "waypoints": [
-          {
-            "x": 490,
-            "y": 300
-          },
-          {
-            "x": 490,
-            "y": 169
-          }
-        ],
-        "style": {
-          "line_color": "#8B6914",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 8,
-            "y": -4
-          }
-        }
-      },
-      {
         "id": "d-cutoff",
         "relationship_ref": "req-ebike.d-cutoff-charge",
         "waypoints": [
           {
-            "x": 810,
+            "x": 1130,
             "y": 300
           },
           {
-            "x": 810,
+            "x": 1130,
             "y": 169
           }
         ],
         "style": {
           "line_color": "#1565C0",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 8,
-            "y": -4
-          }
-        }
-      },
-      {
-        "id": "d-display",
-        "relationship_ref": "req-ebike.d-display-range",
-        "waypoints": [
-          {
-            "x": 1130,
-            "y": 300
-          },
-          {
-            "x": 1130,
-            "y": 210
-          },
-          {
-            "x": 560,
-            "y": 210
-          },
-          {
-            "x": 560,
-            "y": 169
-          }
-        ],
-        "style": {
-          "line_color": "#3949AB",
           "line_width": 1.5,
           "line_style": "dashed",
           "source_arrowhead": "none",

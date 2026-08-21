@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1060,
-      "height": 480,
+      "height": 460,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -48,7 +48,7 @@
           "x": 40,
           "y": 20,
           "width": 130,
-          "height": 430,
+          "height": 410,
           "z_index": 1,
           "head_height": 44
         },
@@ -71,8 +71,8 @@
         "layout": {
           "x": 220,
           "y": 20,
-          "width": 130,
-          "height": 430,
+          "width": 150,
+          "height": 410,
           "z_index": 1,
           "head_height": 44
         },
@@ -95,8 +95,8 @@
         "layout": {
           "x": 430,
           "y": 20,
-          "width": 130,
-          "height": 430,
+          "width": 160,
+          "height": 410,
           "z_index": 1,
           "head_height": 44
         },
@@ -120,7 +120,7 @@
           "x": 650,
           "y": 20,
           "width": 130,
-          "height": 430,
+          "height": 410,
           "z_index": 1,
           "head_height": 44
         },
@@ -143,8 +143,8 @@
         "layout": {
           "x": 860,
           "y": 20,
-          "width": 130,
-          "height": 430,
+          "width": 140,
+          "height": 410,
           "z_index": 1,
           "head_height": 44
         },
@@ -191,7 +191,7 @@
           "y": 190
         },
         "style": {
-          "line_color": "#CC4400",
+          "line_color": "#1565C0",
           "line_width": 1.5
         }
       },
@@ -225,11 +225,7 @@
         },
         "style": {
           "line_color": "#C62828",
-          "line_width": 1.5,
-          "label_offset": {
-            "x": 0,
-            "y": 0
-          }
+          "line_width": 1.5
         }
       }
     ],
