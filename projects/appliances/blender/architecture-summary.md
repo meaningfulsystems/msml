@@ -40,12 +40,12 @@ Pause is required in the motor-control and user-controls shalls. The STM has no 
 
 ## 3. Structure
 
-There is no blender BDD in this folder. Read structure from the model parts and the IBD.
+There is no blender block definition diagram (BDD) in this folder. Read structure from the model parts and the internal block diagram (IBD).
 
 ```
 Blender
 ├── MotorBase
-├── Motor                 speed: RPM (typed, unfilled)
+├── Motor                 speed: RPM (revolutions per minute; typed, unfilled)
 ├── DriveCoupling
 ├── Container
 │   └── BladeAssembly     (composition: contains)
