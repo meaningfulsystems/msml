@@ -103,7 +103,7 @@ The activity is power on → select assist → pedal → apply brake → inhibit
 
 Parametric `energyBalance` is pack-only and still binds `packEnergy`, not a `usableWh` parameter. Do not add rider pedal watts into that expression. Do not read 500 Wh as a nameplate.
 
-Frame `yieldMargin: ≥ 1.5` is a typed property with **no cited source**. It is not a shall. The structural shall is qualitative: carry rider, cargo, and battery loads without yielding.
+The unsourced frame `yieldMargin: ≥ 1.5` figure is **dropped** from the model. The structural shall stays qualitative: carry rider, cargo, and battery loads without yielding.
 
 Cell V/T chemistry numbers are unmarked. F-E06 stays unmarked.
 
@@ -132,7 +132,7 @@ Ride Safety is fail-silent across brakes + controller + cadence + BMS, not brake
 - Cell V/T limits are named (`Vmax`, `Tmax`) without filled chemistry numbers.
 - Lighting is allocated to HMI; lamp hardware is not a separate part.
 - Regen is explicitly none; do not add it.
-- Frame `yieldMargin: ≥ 1.5` is unsourced — not a shall.
+- The unsourced frame `≥ 1.5` yield figure is dropped; the structural shall stays qualitative.
 - F-E06 stays unmarked.
 
 ## Generated views

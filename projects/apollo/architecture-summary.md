@@ -4,16 +4,16 @@ A student can follow this note with `apollo-model.msml` open. It walks Apollo 11
 
 This is **not** a Department of Defense Architecture Framework (DoDAF) product set. There are no All Viewpoint (AV), Operational Viewpoint (OV), Systems Viewpoint (SV), Data and Information Viewpoint (DIV), or Technical Viewpoint (TV) products here.
 
-NASA NPR 7123.1 (NASA Procedural Requirements 7123.1, NASA Systems Engineering Processes and Requirements) is taught **inside** these MagicGrid headings. The walkthrough names the NPR layers so a student can see them. The outline stays MagicGrid — do not switch the section order.
+NASA NPR 7123.1 (NASA Procedural Requirements 7123.1, NASA Systems Engineering Processes and Requirements) is the civil systems-engineering process this walkthrough teaches in **plain language**. Names stay MagicGrid, not NPR product titles. Do not treat MagicGrid section titles as NPR 7123.1 layer names.
 
-| MagicGrid heading | NPR 7123.1 layer named here |
+| MagicGrid heading | NPR idea in plain language |
 | --- | --- |
-| 1. Problem / context | **Stakeholder** |
-| 2. Requirements and use cases | **Requirements** then **Use Cases** |
-| 3. Structure | **Logical** then **Physical-subsystem** |
-| 4. Behavior | **Functional** |
-| 5. Parametrics | **Parametrics** |
-| 6. Allocations | **Verification** |
+| 1. Problem / context | Who needs what from the mission |
+| 2. Requirements and use cases | The shalls that implement those expectations, and the stories that use them |
+| 3. Structure | How the stack is built — parts that realize the functions |
+| 4. Behavior | How the design solution operates in time |
+| 5. Parametrics | Sourced numbers and analyses that support the design |
+| 6. Allocations | Which part satisfies which shall |
 | 7. Open risks / unmarked | What the sources do not close — do not invent |
 
 Namespace `Apollo`. File stem `apollo`. Civil / historical architecture only — no classified or biomedical detail. Numbers are from NASA primary sources; a few values (including an official Command/Service Module (CSM) lunar Δv table) are intentionally left unmarked.
@@ -22,9 +22,7 @@ The instance is Apollo 11 / Block II on vehicle AS-506: SA-506 = S-IC-6 / S-II-6
 
 ## 1. Problem / context
 
-**Stakeholder.** Who needs what from the mission.
-
-**Who.** Flight crew: Commander (CDR), Command Module Pilot (CMP), Lunar Module Pilot (LMP). Launch commit at Kennedy Space Center (KSC) Launch Complex 39 (LC-39). Flight control after tower clear at Mission Control Center Houston (MCC-H). MCC is Mission Control Center Houston, not a midcourse correction burn. Apollo 11 used Mission Operations Control Room 2 (MOCR 2). Trajectory and uplink compute at the Real-Time Computer Complex (RTCC). Ground network: Goddard Space Flight Center (GSFC) / NASA Communications Network (NASCOM) and the Manned Space Flight Network (MSFN). Range Safety Officer (RSO) / Air Force Eastern Test Range (AFETR) owns destruct **outside** MCC. Recovery is Task Force 130 (TF-130) / USS *Hornet*. Earth and Moon are landing / launch-recovery context.
+**Who (stakeholders).** Flight crew: Commander (CDR), Command Module Pilot (CMP), Lunar Module Pilot (LMP). Launch commit at Kennedy Space Center (KSC) Launch Complex 39 (LC-39). Flight control after tower clear at Mission Control Center Houston (MCC-H). MCC is Mission Control Center Houston, not a midcourse correction burn. Apollo 11 used Mission Operations Control Room 2 (MOCR 2). Trajectory and uplink compute at the Real-Time Computer Complex (RTCC). Ground network: Goddard Space Flight Center (GSFC) / NASA Communications Network (NASCOM) and the Manned Space Flight Network (MSFN). Range Safety Officer (RSO) / Air Force Eastern Test Range (AFETR) owns destruct **outside** MCC. Recovery is Task Force 130 (TF-130) / USS *Hornet*. Earth and Moon are landing / launch-recovery context.
 
 Handoff is KSC → MCC at tower clear — Mission Rule 1-21. RSO is not MCC.
 
@@ -40,7 +38,7 @@ Sources used on the model include Apollo 11 Press Kit (PK) 69-83K, Saturn V Flig
 
 ## 2. Requirements and use cases
 
-**Requirements.** The technical shalls that implement those stakeholder expectations.
+The technical shalls that implement those stakeholder expectations:
 
 | Id | Name | Text / numbers |
 | --- | --- | --- |
@@ -55,17 +53,17 @@ Sources used on the model include Apollo 11 Press Kit (PK) 69-83K, Saturn V Flig
 | `Apollo.foodRequirement` (REQ-009) | Food plan (D-7720) | **D-7720 April 1967** plan baseline: **2800 kcal/man/day CM**, **3200 kcal/man/day LM**. Mass **2.26 lb/man/day** planned. 1967 plan, not A11 flown intake. A11 actual kcal still UNKNOWN. |
 | `Apollo.lmEcsRequirement` (REQ-010) | LM-5 ECS (sourced) | Descent O2 ~48 lb @ **2800 vs 3000 psi** (TN D-6724 — cite both); ascent O2 ~2.4 lb ×2; descent water 332 lb; ascent water 42 lb ×2; Liquid Cooling Garment (LCG) 1200 Btu/man-h steady. |
 
-**Use Cases.** There is no formal use-case package on this MSML model the way the appliances have `Toaster.UC.*`. The stakeholder stories are recovered from the mission state machine (STM), abort STM, activity, and sequences: fly the mission, abort, land, recover.
+There is no formal use-case package on this MSML model the way the appliances have `Toaster.UC.*`. The stakeholder stories are recovered from the mission state machine (STM), abort STM, activity, and sequences: fly the mission, abort, land, recover.
 
 ## 3. Structure
 
-**Logical.** Decomposition of the stack into the parts that realize those functions, before reading a physical-subsystem diagram.
+Decomposition of the stack into the parts that realize those functions, before reading a physical-subsystem diagram.
 
 Pad stack: S-IC-6, S-II-6, S-IVB-6N, IU-6, SLA-14 (**8 panels: 4 jettison / 4 stay**; LM-5), SM (owns **SPS**), CM, LES.
 
 Two AGCs stay separate from AGS. AGS ≠ DSKY. IU = LVDC + ST-124 + FCC; no digital AGC↔LVDC.
 
-**Physical-subsystem.** The design solution on the model.
+The design solution on the model:
 
 **SPS is on the SM, not the CM.** Service Propulsion System (SPS) composition is `Apollo.SM` → `Apollo.SPS`. The CSM internal block diagram (IBD) nests `sps` inside `sm`. Do not hang SPS on the command module.
 
@@ -88,7 +86,7 @@ Docking hardware: CM probe, LM drogue, twelve ring latches. Soft dock then hard 
 
 ## 4. Behavior
 
-**Functional.** How the design solution operates in time — mission, abort, and computer modes.
+How the design solution operates in time — mission, abort, and computer modes.
 
 Mission STM (locked):
 
@@ -96,7 +94,7 @@ countdown → boost → earthOrbit → TLI → dockEject → translunar → LOI 
 
 `dockEject` is its own state (CMP-owned, SM RCS, probe-drogue). Do not draw TLI → translunar or dockEject → LOI, and do not put translunar before dockEject. The locked path is TLI → dockEject → translunar → LOI.
 
-Ground Elapsed Time (GET): distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. TLI has **three labeled numbers**: Press Kit **planned** `02:44:15`; A11-FP `2:44:26`; **flown** `02:44:16` (no `02:44:16.2`). TDE `~03:20–04:09` GET is **planned**. LOI-1 has **two strings only**: `75:54:28` GET is **A11-FP planned** (do not cite Press Kit as the LOI-1 source — the same string may appear in the Press Kit); **flown** LOI-1 is `~075:49:50` GET. Splash `195:18:35` Mission Elapsed Time (MET) / 13 nmi sits on Recovery as a sourced MET; that block is not labeled flown. P66 Rate of Descent (ROD) as the A11 landing program is a separate flown-program mark, not a GET clock.
+Ground Elapsed Time (GET): distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. TLI has **three labeled numbers**: Press Kit **planned** `02:44:15`; A11-FP `2:44:26`; **flown** `02:44:16` (MSC-00171). TDE `~03:20–04:09` GET is **planned**. LOI-1 has **two strings only**: `75:54:28` GET is **A11-FP planned** (A11-FP is the control source; do not cite Press Kit as the LOI-1 source — the same string may appear in the Press Kit); **flown** LOI-1 TIG is `075:49:49.65` GET. Splash `195:18:35` Mission Elapsed Time (MET) / 13 nmi sits on Recovery as a sourced MET; that block is not labeled flown. P66 Rate of Descent (ROD) as the A11 landing program is a separate flown-program mark, not a GET clock.
 
 Abort machine (parallel): pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS). Crew Safety ≠ LES-only.
 
@@ -106,7 +104,7 @@ The mission activity is the same phase list as a start-to-recovery flow. The lan
 
 ## 5. Parametrics
 
-**Parametrics.** Analyses and sourced numbers that support the design. Conflicts stay **UNRECONCILED** — cite both, no silent winner.
+Analyses and sourced numbers that support the design. Conflicts stay **UNRECONCILED** — cite both, no silent winner.
 
 A11 Press Kit p.109 tank loads and launch masses unless noted. **UNRECONCILED** — same flag as Δv. These are sourced stage loads, **not a closed mass budget**.
 
@@ -139,7 +137,7 @@ Fuel-cell wattage is not in the press kit; a secondary National Air and Space Mu
 
 ## 6. Allocations
 
-**Verification.** Product verification / validation trace — which part satisfies which shall.
+Which part satisfies which shall:
 
 | Requirement | Allocated to |
 | --- | --- |
@@ -177,7 +175,7 @@ Descent O2 tank pressure is cited both ways (2800 vs 3000 psi, TN D-6724). Tank 
 
 ## Generated views
 
-These figures illustrate the architecture above; they do not replace it. Every rendered figure in this folder is listed. Read them as the MagicGrid / NPR layers: context is Stakeholder; `apollo-req` is Requirements; activity and STMs are Functional; BDDs are Logical; IBDs are Physical-subsystem; `apollo-eclss-par` is Parametrics; allocations on the model are Verification.
+These figures illustrate the architecture above; they do not replace it. Every rendered figure in this folder is listed. Read them in MagicGrid order: context, requirements, structure, behavior, sourced numbers, then which part satisfies which shall. Do not treat those figure roles as NPR 7123.1 layer names.
 
 **`apollo-pkg.png` — packages.** LaunchVehicle, Spacecraft, Crew, GNC, Ground, Comms, Mission. Read this first to see how the model is filed.
 

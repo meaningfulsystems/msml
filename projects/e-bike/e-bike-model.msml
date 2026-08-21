@@ -69,11 +69,6 @@
               "name": "material",
               "type": "Aluminum",
               "multiplicity": "1"
-            },
-            {
-              "name": "yieldMargin",
-              "type": "\u2265 1.5",
-              "multiplicity": "1"
             }
           ],
           "operations": []
