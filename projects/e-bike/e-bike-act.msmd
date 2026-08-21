@@ -30,7 +30,7 @@
       }
     },
     "canvas": {
-      "width": 720,
+      "width": 560,
       "height": 690,
       "background_color": "#FAFAFA",
       "grid": {

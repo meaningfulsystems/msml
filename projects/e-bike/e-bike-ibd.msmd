@@ -32,7 +32,7 @@
     },
     "canvas": {
       "width": 1540,
-      "height": 860,
+      "height": 820,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -921,10 +921,10 @@
         "role_name": "cadenceSensor",
         "display_name": "cadenceSensor : Cadence Sensor",
         "layout": {
-          "x": 620,
+          "x": 560,
           "y": 600,
-          "width": 145,
-          "height": 70,
+          "width": 200,
+          "height": 75,
           "z_index": 1
         },
         "style": {
@@ -946,10 +946,10 @@
         "role_name": "wheelSpeedSensor",
         "display_name": "wheelSpeedSensor : Wheel Speed Sensor",
         "layout": {
-          "x": 785,
+          "x": 780,
           "y": 600,
-          "width": 145,
-          "height": 70,
+          "width": 230,
+          "height": 75,
           "z_index": 1
         },
         "style": {
@@ -971,7 +971,7 @@
         "name": "cad",
         "owner_ref": "part-cadence",
         "layout": {
-          "x": 682,
+          "x": 654,
           "y": 594,
           "width": 12,
           "height": 12,
@@ -996,7 +996,7 @@
         "name": "cad",
         "owner_ref": "part-controller",
         "layout": {
-          "x": 682,
+          "x": 654,
           "y": 564,
           "width": 12,
           "height": 12,
@@ -1021,7 +1021,7 @@
         "name": "spd",
         "owner_ref": "part-wheelspeed",
         "layout": {
-          "x": 850,
+          "x": 888,
           "y": 594,
           "width": 12,
           "height": 12,
@@ -1046,7 +1046,7 @@
         "name": "spd",
         "owner_ref": "part-controller",
         "layout": {
-          "x": 850,
+          "x": 888,
           "y": 564,
           "width": 12,
           "height": 12,
@@ -1457,11 +1457,11 @@
         "name": "cadence",
         "waypoints": [
           {
-            "x": 688,
+            "x": 660,
             "y": 576
           },
           {
-            "x": 688,
+            "x": 660,
             "y": 594
           }
         ],
@@ -1485,11 +1485,11 @@
         "name": "wheel speed",
         "waypoints": [
           {
-            "x": 856,
+            "x": 894,
             "y": 576
           },
           {
-            "x": 856,
+            "x": 894,
             "y": 594
           }
         ],
