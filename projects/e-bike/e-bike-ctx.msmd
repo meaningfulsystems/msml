@@ -6,7 +6,8 @@
   "diagram": {
     "type": "ibd",
     "id": "ibd-ebike-ctx",
-    "name": "Electric Bike Context",
+    "subject_ref": "ElectricBike.RideContext",
+            "name": "Rider · Charger · Bike · Road",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -30,8 +31,8 @@
       }
     },
     "canvas": {
-      "width": 1080,
-      "height": 500,
+      "width": 1120,
+      "height": 620,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -42,18 +43,20 @@
     "elements": [
       {
         "type": "part",
-        "id": "part-rider",
-        "model_ref": "ElectricBike.Rider",
+        "id": "part-charger",
+        "model_ref": "ElectricBike.Charger",
+        "role_name": "charger",
+        "display_name": "charger : Charger",
         "layout": {
-          "x": 40,
-          "y": 200,
-          "width": 160,
+          "x": 460,
+          "y": 30,
+          "width": 200,
           "height": 90,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#E8F4FD",
-          "border_color": "#2E86AB",
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -61,44 +64,44 @@
             "bold": false,
             "color": "#000000"
           }
-        },
+        }
+      },
+      {
+        "type": "part",
+        "id": "part-rider",
+        "model_ref": "ElectricBike.Rider",
         "role_name": "rider",
-        "display_name": "rider:Rider"
+        "display_name": "rider : Rider",
+        "layout": {
+          "x": 40,
+          "y": 250,
+          "width": 190,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
       },
       {
         "type": "part",
         "id": "part-bike",
         "model_ref": "ElectricBike",
+        "role_name": "electricBike",
+        "display_name": "electricBike : ElectricBike",
         "layout": {
           "x": 360,
-          "y": 170,
-          "width": 320,
-          "height": 150,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#DDEEFF",
-          "border_color": "#336699",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 12,
-            "bold": true,
-            "color": "#000000"
-          }
-        },
-        "role_name": "electricBike",
-        "display_name": "electricBike:ElectricBike"
-      },
-      {
-        "type": "part",
-        "id": "part-charger",
-        "model_ref": "ElectricBike.Charger",
-        "layout": {
-          "x": 860,
-          "y": 80,
-          "width": 170,
-          "height": 90,
+          "y": 210,
+          "width": 400,
+          "height": 190,
           "z_index": 1
         },
         "style": {
@@ -107,22 +110,22 @@
           "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 11,
-            "bold": false,
+            "size": 12,
+            "bold": true,
             "color": "#000000"
           }
-        },
-        "role_name": "charger",
-        "display_name": "charger:Charger"
+        }
       },
       {
         "type": "part",
         "id": "part-road",
         "model_ref": "ElectricBike.Road",
+        "role_name": "road",
+        "display_name": "road : Road",
         "layout": {
-          "x": 860,
-          "y": 360,
-          "width": 170,
+          "x": 460,
+          "y": 490,
+          "width": 200,
           "height": 90,
           "z_index": 1
         },
@@ -136,63 +139,42 @@
             "bold": false,
             "color": "#000000"
           }
-        },
-        "role_name": "road",
-        "display_name": "road:Road"
+        }
       },
       {
         "type": "port",
         "id": "p-rider",
         "model_ref": "ElectricBike.Port.riderOut",
+        "name": "command",
+        "owner_ref": "part-rider",
         "layout": {
-          "x": 194,
-          "y": 236,
+          "x": 224,
+          "y": 294,
           "width": 12,
           "height": 12,
           "z_index": 2
         },
         "style": {
           "fill_color": "#FFFFFF",
-          "border_color": "#2E86AB",
+          "border_color": "#6A1B9A",
           "border_width": 1,
           "font": {
+            "family": "Arial",
             "size": 9,
-            "color": "#2E86AB"
+            "bold": false,
+            "color": "#000000"
           }
-        },
-        "name": "commandOut",
-        "owner_ref": "part-rider"
+        }
       },
       {
         "type": "port",
         "id": "p-bike-rider",
         "model_ref": "ElectricBike.Port.riderCommandIn",
+        "name": "in",
+        "owner_ref": "part-bike",
         "layout": {
           "x": 354,
-          "y": 220,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#336699",
-          "border_width": 1,
-          "font": {
-            "size": 9,
-            "color": "#336699"
-          }
-        },
-        "name": "riderCommandIn",
-        "owner_ref": "part-bike"
-      },
-      {
-        "type": "port",
-        "id": "p-chg",
-        "model_ref": "ElectricBike.Port.chargerOut",
-        "layout": {
-          "x": 854,
-          "y": 116,
+          "y": 294,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -202,43 +184,72 @@
           "border_color": "#1565C0",
           "border_width": 1,
           "font": {
+            "family": "Arial",
             "size": 9,
-            "color": "#1565C0"
+            "bold": false,
+            "color": "#000000"
           }
-        },
-        "name": "chargeOut",
-        "owner_ref": "part-charger"
+        }
       },
       {
         "type": "port",
-        "id": "p-bike-chg",
-        "model_ref": "ElectricBike.Port.chargerIn",
+        "id": "p-chg",
+        "model_ref": "ElectricBike.Port.chargerOut",
+        "name": "charge",
+        "owner_ref": "part-charger",
         "layout": {
-          "x": 674,
-          "y": 176,
+          "x": 554,
+          "y": 114,
           "width": 12,
           "height": 12,
           "z_index": 2
         },
         "style": {
           "fill_color": "#FFFFFF",
-          "border_color": "#336699",
+          "border_color": "#F9A825",
           "border_width": 1,
           "font": {
+            "family": "Arial",
             "size": 9,
-            "color": "#336699"
+            "bold": false,
+            "color": "#000000"
           }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bike-chg",
+        "model_ref": "ElectricBike.Port.chargerIn",
+        "name": "chargeIn",
+        "owner_ref": "part-bike",
+        "layout": {
+          "x": 554,
+          "y": 204,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
         },
-        "name": "chargerIn",
-        "owner_ref": "part-bike"
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
       },
       {
         "type": "port",
         "id": "p-road",
         "model_ref": "ElectricBike.Port.roadOut",
+        "name": "load",
+        "owner_ref": "part-road",
         "layout": {
-          "x": 854,
-          "y": 396,
+          "x": 554,
+          "y": 484,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -248,128 +259,123 @@
           "border_color": "#2E7D32",
           "border_width": 1,
           "font": {
+            "family": "Arial",
             "size": 9,
-            "color": "#2E7D32"
+            "bold": false,
+            "color": "#000000"
           }
-        },
-        "name": "loadOut",
-        "owner_ref": "part-road"
+        }
       },
       {
         "type": "port",
         "id": "p-bike-road",
         "model_ref": "ElectricBike.Port.roadLoadIn",
+        "name": "roadIn",
+        "owner_ref": "part-bike",
         "layout": {
-          "x": 674,
-          "y": 300,
+          "x": 554,
+          "y": 394,
           "width": 12,
           "height": 12,
           "z_index": 2
         },
         "style": {
           "fill_color": "#FFFFFF",
-          "border_color": "#336699",
+          "border_color": "#1565C0",
           "border_width": 1,
           "font": {
+            "family": "Arial",
             "size": 9,
-            "color": "#336699"
+            "bold": false,
+            "color": "#000000"
           }
-        },
-        "name": "roadLoadIn",
-        "owner_ref": "part-bike"
+        }
       }
     ],
     "relationships": [
       {
         "id": "riderToInterface",
+        "type": "connector",
         "relationship_ref": "ibd-ebike.riderToInterface",
+        "name": "commands",
         "waypoints": [
           {
-            "x": 206,
-            "y": 242
+            "x": 236,
+            "y": 300
           },
           {
             "x": 354,
-            "y": 226
+            "y": 300
           }
         ],
         "style": {
-          "line_color": "#444444",
-          "line_width": 1.5,
+          "line_color": "#6A1B9A",
+          "line_width": 2.0,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 10
-        },
-        "type": "connector",
-        "source": "p-rider",
-        "target": "p-bike-rider"
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -20
+          }
+        }
       },
       {
         "id": "chargerToBattery",
+        "type": "connector",
         "relationship_ref": "ibd-ebike.chargerToBattery",
+        "name": "",
         "waypoints": [
           {
-            "x": 854,
-            "y": 122
+            "x": 560,
+            "y": 126
           },
           {
-            "x": 760,
-            "y": 122
-          },
-          {
-            "x": 760,
-            "y": 176
-          },
-          {
-            "x": 686,
-            "y": 176
+            "x": 560,
+            "y": 204
           }
         ],
         "style": {
-          "line_color": "#444444",
-          "line_width": 1.5,
+          "line_color": "#F9A825",
+          "line_width": 2.0,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 10
-        },
-        "type": "connector",
-        "source": "p-chg",
-        "target": "p-bike-chg"
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 36,
+            "y": 0
+          }
+        }
       },
       {
         "id": "roadToMotor",
+        "type": "connector",
         "relationship_ref": "ibd-ebike.roadToMotor",
+        "name": "",
         "waypoints": [
           {
-            "x": 854,
-            "y": 402
+            "x": 560,
+            "y": 484
           },
           {
-            "x": 760,
-            "y": 402
-          },
-          {
-            "x": 760,
-            "y": 306
-          },
-          {
-            "x": 686,
-            "y": 306
+            "x": 560,
+            "y": 406
           }
         ],
         "style": {
-          "line_color": "#444444",
-          "line_width": 1.5,
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
-          "corner_radius": 10
-        },
-        "type": "connector",
-        "source": "p-road",
-        "target": "p-bike-road"
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 36,
+            "y": 0
+          }
+        }
       }
     ],
     "metadata": {
@@ -380,7 +386,6 @@
         "e-bike",
         "ctx"
       ]
-    },
-    "subject_ref": "ElectricBike.RideContext"
+    }
   }
 }

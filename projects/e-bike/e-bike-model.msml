@@ -25,12 +25,12 @@
             },
             {
               "name": "rangeKm",
-              "type": "\u2265 60 km",
+              "type": "≥ 60 km",
               "multiplicity": "1"
             },
             {
               "name": "brakeLatency",
-              "type": "\u2264 50 ms",
+              "type": "≤ 50 ms",
               "multiplicity": "1"
             }
           ],
@@ -67,7 +67,7 @@
             },
             {
               "name": "yieldMargin",
-              "type": "\u2265 1.5",
+              "type": "≥ 1.5",
               "multiplicity": "1"
             }
           ],
@@ -147,12 +147,12 @@
           "properties": [
             {
               "name": "peakPower",
-              "type": "W",
+              "type": "250 W",
               "multiplicity": "1"
             },
             {
               "name": "wheelTorque",
-              "type": "N\u00b7m",
+              "type": "40 N·m",
               "multiplicity": "1"
             }
           ],
@@ -189,7 +189,7 @@
           "properties": [
             {
               "name": "brakeLatency",
-              "type": "\u2264 50 ms",
+              "type": "≤ 50 ms",
               "multiplicity": "1"
             }
           ],
@@ -660,9 +660,9 @@
       {
         "type": "requirement",
         "id": "ElectricBike.rangeRequirement",
-        "name": "Range",
+        "name": "Range (≥ 60 km)",
         "req_id": "REQ-002",
-        "text": "The bike shall provide \u2265 60 km PAS-1\nrange on a 500 Wh pack.",
+        "text": "The bike shall provide ≥ 60 km PAS-1\nrange on a 500 Wh pack.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"
@@ -670,7 +670,7 @@
       {
         "type": "requirement",
         "id": "ElectricBike.assistLimitRequirement",
-        "name": "Assist Limit",
+        "name": "Assist Limit (25 km/h)",
         "req_id": "REQ-003",
         "text": "Assist shall cut off at 25 km/h\nfor the EU class being certified.",
         "kind": "design_constraint",
@@ -690,7 +690,7 @@
       {
         "type": "requirement",
         "id": "ElectricBike.brakeOverrideRequirement",
-        "name": "Brake Override",
+        "name": "Brake Override (50 ms)",
         "req_id": "REQ-005",
         "text": "Motor inhibit shall assert within\n50 ms of either brake lever.",
         "kind": "performance",
@@ -730,7 +730,7 @@
       {
         "id": "ElectricBike.PAR.energyBalance",
         "type": "constraint_property",
-        "name": "E_pack \u2265 \u222b(P_rider + P_assist) dt",
+        "name": "E_pack ≥ ∫(P_rider + P_assist) dt",
         "expression": "packEnergy >= integral(riderPower + assistPower)",
         "parameters": [
           {
@@ -770,7 +770,7 @@
       {
         "id": "ElectricBike.PAR.assistPowerLimit",
         "type": "constraint_property",
-        "name": "P_assist = 0 if v \u2265 25 km/h",
+        "name": "P_assist = 0 if v ≥ 25 km/h",
         "expression": "assistPower = 0 if speed >= cutoffSpeed",
         "parameters": [
           {
@@ -786,7 +786,7 @@
       {
         "id": "ElectricBike.PAR.brakeLatencyLimit",
         "type": "constraint_property",
-        "name": "t_brake \u2264 50 ms",
+        "name": "t_brake ≤ 50 ms",
         "expression": "brakeLatency <= 50 ms",
         "parameters": [
           {
@@ -819,7 +819,7 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.rangeKm",
-        "name": "rangeKm: \u2265 60 km",
+        "name": "rangeKm: ≥ 60 km",
         "value_type": "Real",
         "unit": "km"
       },
@@ -833,7 +833,7 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.brakeLatency",
-        "name": "brakeLatency: \u2264 50 ms",
+        "name": "brakeLatency: ≤ 50 ms",
         "value_type": "Real",
         "unit": "ms"
       },
@@ -987,6 +987,12 @@
           "properties": [],
           "operations": []
         }
+      },
+      {
+        "type": "comment",
+        "id": "ElectricBike.Note.IbdKey",
+        "name": "mount = mechanical\npower / drive = energy\ncommand / inhibit = control",
+        "text": "mount = mechanical\npower / drive = energy\ncommand / inhibit = control"
       }
     ],
     "relationships": [
@@ -1172,21 +1178,21 @@
         "id": "ibd-ebike.riderToInterface",
         "type": "connector",
         "source": "ElectricBike.Port.riderOut",
-        "target": "ElectricBike.Port.riderInputIn",
+        "target": "ElectricBike.Port.riderCommandIn",
         "name": "riderToInterface"
       },
       {
         "id": "ibd-ebike.chargerToBattery",
         "type": "connector",
         "source": "ElectricBike.Port.chargerOut",
-        "target": "ElectricBike.Port.chargeInputIn",
+        "target": "ElectricBike.Port.chargerIn",
         "name": "chargerToBattery"
       },
       {
         "id": "ibd-ebike.roadToMotor",
         "type": "connector",
         "source": "ElectricBike.Port.roadOut",
-        "target": "ElectricBike.Port.wheelLoadIn",
+        "target": "ElectricBike.Port.roadLoadIn",
         "name": "roadToMotor"
       },
       {

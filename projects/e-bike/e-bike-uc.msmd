@@ -6,7 +6,7 @@
   "diagram": {
     "type": "use_case",
     "id": "uc-ebike",
-    "name": "Electric Bike Use Cases",
+    "name": "Rider, Charger, and Road",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -147,7 +147,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "adjust assist"
       },
       {
         "type": "use_case",
@@ -170,7 +171,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "ride bike"
       },
       {
         "type": "use_case",
@@ -193,7 +195,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "charge bike"
       },
       {
         "type": "use_case",
@@ -216,7 +219,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "lock bike"
       }
     ],
     "relationships": [

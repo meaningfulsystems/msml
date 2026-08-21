@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-ebike",
-    "name": "RideControl",
+    "name": "Ride, Charge, and Fault",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
