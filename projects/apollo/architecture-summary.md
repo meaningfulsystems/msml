@@ -216,9 +216,9 @@ msml-render-all projects/apollo
 
 ## References
 
-Kurten, P. M. (1975, July). *AGS* (NASA TN D-7990). National Aeronautics and Space Administration.
+Kurten, P. M. (1975, July). *Abort Guidance System* (NASA TN D-7990). National Aeronautics and Space Administration.
 
-Lutz, C. C., et al. (1975, November). *EMU* (NASA TN D-8093). National Aeronautics and Space Administration.
+Lutz, C. C., et al. (1975, November). *Development of the Extravehicular Mobility Unit* (NASA TN D-8093). National Aeronautics and Space Administration.
 
 National Aeronautics and Space Administration. (1969). *Apollo 11 press kit* (Release No. 69-83K).
 
@@ -226,13 +226,13 @@ National Aeronautics and Space Administration. (1969, May 20). Photograph 69-HC-
 
 National Aeronautics and Space Administration. (1969, November). *Apollo 11 mission report* (MSC-00171).
 
-National Aeronautics and Space Administration. (1972). NASA technical note D-6724.
+National Aeronautics and Space Administration. (1972). *Apollo Experience Report: Lunar Module Environmental Control Subsystem* (NASA TN D-6724).
 
-National Aeronautics and Space Administration. (1973, March). NASA technical note D-7082.
+National Aeronautics and Space Administration. (1973, March). *Apollo Experience Report: Ascent Propulsion System* (NASA TN D-7082).
 
-National Aeronautics and Space Administration. (1973, March). NASA technical note D-7143.
+National Aeronautics and Space Administration. (1973, March). *Apollo Experience Report: Descent Propulsion System* (NASA TN D-7143).
 
-National Aeronautics and Space Administration. (1973, August). NASA technical note D-7375.
+National Aeronautics and Space Administration. (1973, August). *Apollo Experience Report: Service Propulsion Subsystem* (NASA TN D-7375).
 
 NASA Manned Spacecraft Center, Flight Planning Branch. (1969, July 1). *Apollo 11 flight plan* (Final).
 
