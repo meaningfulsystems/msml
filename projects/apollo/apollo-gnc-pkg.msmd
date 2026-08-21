@@ -5,8 +5,8 @@
   ],
   "diagram": {
     "type": "bdd",
-    "id": "bdd-apollo-sat",
-    "name": "SaturnV \u2014 engines / thrusts \u00b7 AS-506",
+    "id": "bdd-apollo-gnc",
+    "name": "GNC \u2014 AGC_CM (2 DSKY) \u00b7 AGC_LM (1 DSKY) \u00b7 AGS \u00b7 IU LVDC \u00b7 EMS",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1280,
-      "height": 680,
+      "width": 1420,
+      "height": 640,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -42,18 +42,156 @@
     "elements": [
       {
         "type": "block",
-        "id": "b-sat",
-        "model_ref": "Apollo.SaturnV",
+        "id": "b-gnc",
+        "model_ref": "Apollo.GNC",
         "layout": {
-          "x": 500,
-          "y": 16,
+          "x": 540,
+          "y": 12,
+          "width": 220,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-agccm",
+        "model_ref": "Apollo.AGC_CM",
+        "layout": {
+          "x": 20,
+          "y": 110,
+          "width": 280,
+          "height": 250,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-d1",
+        "model_ref": "Apollo.DSKY",
+        "layout": {
+          "x": 20,
+          "y": 390,
+          "width": 130,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-d2",
+        "model_ref": "Apollo.DSKY2",
+        "layout": {
+          "x": 170,
+          "y": 390,
+          "width": 130,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-agclm",
+        "model_ref": "Apollo.AGC_LM",
+        "layout": {
+          "x": 330,
+          "y": 110,
           "width": 300,
+          "height": 250,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-dlm",
+        "model_ref": "Apollo.DSKY_LM",
+        "layout": {
+          "x": 380,
+          "y": 390,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ags",
+        "model_ref": "Apollo.AGS",
+        "layout": {
+          "x": 660,
+          "y": 110,
+          "width": 240,
           "height": 150,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -65,18 +203,18 @@
       },
       {
         "type": "block",
-        "id": "b-sic",
-        "model_ref": "Apollo.SIC",
+        "id": "b-aea",
+        "model_ref": "Apollo.AEA",
         "layout": {
-          "x": 20,
-          "y": 210,
-          "width": 220,
-          "height": 140,
+          "x": 660,
+          "y": 290,
+          "width": 110,
+          "height": 110,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -88,41 +226,18 @@
       },
       {
         "type": "block",
-        "id": "b-sii",
-        "model_ref": "Apollo.SII",
+        "id": "b-asa",
+        "model_ref": "Apollo.ASA",
         "layout": {
-          "x": 280,
-          "y": 210,
-          "width": 220,
-          "height": 140,
+          "x": 790,
+          "y": 290,
+          "width": 110,
+          "height": 110,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-sivb",
-        "model_ref": "Apollo.SIVB",
-        "layout": {
-          "x": 540,
-          "y": 210,
-          "width": 220,
-          "height": 140,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -137,10 +252,10 @@
         "id": "b-iu",
         "model_ref": "Apollo.IU",
         "layout": {
-          "x": 800,
-          "y": 210,
-          "width": 220,
-          "height": 140,
+          "x": 930,
+          "y": 110,
+          "width": 200,
+          "height": 110,
           "z_index": 1
         },
         "style": {
@@ -157,82 +272,13 @@
       },
       {
         "type": "block",
-        "id": "b-f1",
-        "model_ref": "Apollo.F1",
-        "layout": {
-          "x": 20,
-          "y": 400,
-          "width": 220,
-          "height": 130,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-j2s",
-        "model_ref": "Apollo.J2_SII",
-        "layout": {
-          "x": 280,
-          "y": 400,
-          "width": 220,
-          "height": 130,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-j2b",
-        "model_ref": "Apollo.J2_SIVB",
-        "layout": {
-          "x": 540,
-          "y": 400,
-          "width": 220,
-          "height": 130,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
         "id": "b-lvdc",
         "model_ref": "Apollo.LVDC",
         "layout": {
-          "x": 800,
-          "y": 400,
+          "x": 930,
+          "y": 250,
           "width": 200,
-          "height": 120,
+          "height": 110,
           "z_index": 1
         },
         "style": {
@@ -252,10 +298,10 @@
         "id": "b-st",
         "model_ref": "Apollo.ST124",
         "layout": {
-          "x": 1030,
-          "y": 210,
-          "width": 200,
-          "height": 120,
+          "x": 930,
+          "y": 390,
+          "width": 95,
+          "height": 100,
           "z_index": 1
         },
         "style": {
@@ -275,10 +321,10 @@
         "id": "b-fcc",
         "model_ref": "Apollo.FCC",
         "layout": {
-          "x": 1030,
-          "y": 400,
-          "width": 200,
-          "height": 120,
+          "x": 1035,
+          "y": 390,
+          "width": 95,
+          "height": 100,
           "z_index": 1
         },
         "style": {
@@ -294,12 +340,35 @@
         }
       },
       {
+        "type": "block",
+        "id": "b-ems",
+        "model_ref": "Apollo.EMS",
+        "layout": {
+          "x": 1160,
+          "y": 110,
+          "width": 220,
+          "height": 140,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
         "type": "comment",
-        "id": "n-tank",
-        "model_ref": "Apollo.Note.UnknownTanks",
+        "id": "n-rope",
+        "model_ref": "Apollo.Note.UnknownRope",
         "layout": {
           "x": 20,
-          "y": 560,
+          "y": 520,
           "width": 400,
           "height": 80,
           "z_index": 1
@@ -318,11 +387,11 @@
       },
       {
         "type": "comment",
-        "id": "n-dv",
-        "model_ref": "Apollo.Note.UnknownDv",
+        "id": "n-ags",
+        "model_ref": "Apollo.Note.UnknownAgsMem",
         "layout": {
           "x": 440,
-          "y": 560,
+          "y": 520,
           "width": 400,
           "height": 80,
           "z_index": 1
@@ -341,12 +410,12 @@
       },
       {
         "type": "comment",
-        "id": "n-iu",
-        "model_ref": "Apollo.Note.IuOwns",
+        "id": "n-col",
+        "model_ref": "Apollo.Note.Collapse",
         "layout": {
           "x": 860,
-          "y": 560,
-          "width": 370,
+          "y": 520,
+          "width": 520,
           "height": 80,
           "z_index": 1
         },
@@ -365,21 +434,21 @@
     ],
     "relationships": [
       {
-        "id": "s1",
+        "id": "g1",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-sic",
+        "relationship_ref": "bdd-apollo.c-pkg-gnc-agc",
         "waypoints": [
           {
-            "x": 540,
-            "y": 166
+            "x": 560,
+            "y": 82
           },
           {
-            "x": 130,
-            "y": 210
+            "x": 160,
+            "y": 110
           }
         ],
         "style": {
-          "line_color": "#E65100",
+          "line_color": "#1565C0",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
@@ -388,21 +457,21 @@
         }
       },
       {
-        "id": "s2",
+        "id": "g2",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-sii",
+        "relationship_ref": "bdd-apollo.c-pkg-gnc-agclm",
         "waypoints": [
           {
-            "x": 600,
-            "y": 166
+            "x": 620,
+            "y": 82
           },
           {
-            "x": 390,
-            "y": 210
+            "x": 480,
+            "y": 110
           }
         ],
         "style": {
-          "line_color": "#E65100",
+          "line_color": "#1565C0",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
@@ -411,21 +480,21 @@
         }
       },
       {
-        "id": "s3",
+        "id": "g3",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-sivb",
+        "relationship_ref": "bdd-apollo.c-pkg-gnc-ags",
         "waypoints": [
           {
-            "x": 660,
-            "y": 166
+            "x": 700,
+            "y": 82
           },
           {
-            "x": 650,
-            "y": 210
+            "x": 780,
+            "y": 110
           }
         ],
         "style": {
-          "line_color": "#E65100",
+          "line_color": "#C62828",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
@@ -434,17 +503,21 @@
         }
       },
       {
-        "id": "s4",
+        "id": "g4",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-iu",
+        "relationship_ref": "bdd-apollo.c-pkg-gnc-iu",
         "waypoints": [
           {
-            "x": 740,
-            "y": 166
+            "x": 760,
+            "y": 47
           },
           {
-            "x": 910,
-            "y": 210
+            "x": 1030,
+            "y": 47
+          },
+          {
+            "x": 1030,
+            "y": 110
           }
         ],
         "style": {
@@ -457,21 +530,25 @@
         }
       },
       {
-        "id": "e1",
+        "id": "g5",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-sic-f1",
+        "relationship_ref": "bdd-apollo.c-pkg-gnc-ems",
         "waypoints": [
           {
-            "x": 130,
-            "y": 350
+            "x": 760,
+            "y": 47
           },
           {
-            "x": 130,
-            "y": 400
+            "x": 1270,
+            "y": 47
+          },
+          {
+            "x": 1270,
+            "y": 110
           }
         ],
         "style": {
-          "line_color": "#E65100",
+          "line_color": "#00838F",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
@@ -480,21 +557,21 @@
         }
       },
       {
-        "id": "e2",
+        "id": "a1",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-sii-j2",
+        "relationship_ref": "bdd-apollo.c-ags-aea",
         "waypoints": [
           {
-            "x": 390,
-            "y": 350
+            "x": 720,
+            "y": 260
           },
           {
-            "x": 390,
-            "y": 400
+            "x": 715,
+            "y": 290
           }
         ],
         "style": {
-          "line_color": "#E65100",
+          "line_color": "#C62828",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
@@ -503,21 +580,21 @@
         }
       },
       {
-        "id": "e3",
+        "id": "a2",
         "type": "composition",
-        "relationship_ref": "bdd-apollo.c-sivb-j2",
+        "relationship_ref": "bdd-apollo.c-ags-asa",
         "waypoints": [
           {
-            "x": 650,
-            "y": 350
+            "x": 850,
+            "y": 260
           },
           {
-            "x": 650,
-            "y": 400
+            "x": 845,
+            "y": 290
           }
         ],
         "style": {
-          "line_color": "#E65100",
+          "line_color": "#C62828",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",
@@ -526,17 +603,17 @@
         }
       },
       {
-        "id": "u1",
+        "id": "i1",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-iu-lvdc",
         "waypoints": [
           {
-            "x": 910,
-            "y": 350
+            "x": 1030,
+            "y": 220
           },
           {
-            "x": 900,
-            "y": 400
+            "x": 1030,
+            "y": 250
           }
         ],
         "style": {
@@ -549,17 +626,25 @@
         }
       },
       {
-        "id": "u2",
+        "id": "i2",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-iu-st124",
         "waypoints": [
           {
-            "x": 1020,
-            "y": 280
+            "x": 930,
+            "y": 220
           },
           {
-            "x": 1030,
-            "y": 270
+            "x": 920,
+            "y": 220
+          },
+          {
+            "x": 920,
+            "y": 440
+          },
+          {
+            "x": 930,
+            "y": 440
           }
         ],
         "style": {
@@ -572,17 +657,25 @@
         }
       },
       {
-        "id": "u3",
+        "id": "i3",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-iu-fcc",
         "waypoints": [
           {
-            "x": 1020,
-            "y": 330
+            "x": 1130,
+            "y": 220
+          },
+          {
+            "x": 1145,
+            "y": 220
+          },
+          {
+            "x": 1145,
+            "y": 440
           },
           {
             "x": 1130,
-            "y": 400
+            "y": 440
           }
         ],
         "style": {

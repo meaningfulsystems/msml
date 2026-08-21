@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo",
-    "name": "countdown \u2192 \u2026 \u2192 recovery  +  abort machine (pad \u00b7 I\u2013IV \u00b7 TLI \u00b7 lunar \u00b7 SPS)",
+    "name": "countdown \u2192 earthOrbit (100 nmi) \u2192 dock/eject \u2192 \u2026 \u2192 recovery",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1680,
-      "height": 400,
+      "width": 1440,
+      "height": 420,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -46,7 +46,7 @@
         "model_ref": "Apollo.State.Mission.Start",
         "layout": {
           "x": 8,
-          "y": 50,
+          "y": 56,
           "width": 16,
           "height": 16,
           "z_index": 1
@@ -62,8 +62,8 @@
         "layout": {
           "x": 20,
           "y": 30,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -83,10 +83,10 @@
         "id": "s-boost",
         "model_ref": "Apollo.State.Mission.boost",
         "layout": {
-          "x": 220,
+          "x": 250,
           "y": 30,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -106,10 +106,10 @@
         "id": "s-earthOrbit",
         "model_ref": "Apollo.State.Mission.earthOrbit",
         "layout": {
-          "x": 420,
+          "x": 480,
           "y": 30,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -129,10 +129,10 @@
         "id": "s-TLI",
         "model_ref": "Apollo.State.Mission.TLI",
         "layout": {
-          "x": 640,
+          "x": 710,
           "y": 30,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -152,10 +152,33 @@
         "id": "s-translunar",
         "model_ref": "Apollo.State.Mission.translunar",
         "layout": {
-          "x": 840,
+          "x": 940,
           "y": 30,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-dockEject",
+        "model_ref": "Apollo.State.Mission.dockEject",
+        "layout": {
+          "x": 1170,
+          "y": 30,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -175,10 +198,10 @@
         "id": "s-LOI",
         "model_ref": "Apollo.State.Mission.LOI",
         "layout": {
-          "x": 1060,
-          "y": 30,
-          "width": 180,
-          "height": 70,
+          "x": 20,
+          "y": 160,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -198,10 +221,10 @@
         "id": "s-undock",
         "model_ref": "Apollo.State.Mission.undock",
         "layout": {
-          "x": 1260,
-          "y": 30,
-          "width": 180,
-          "height": 70,
+          "x": 250,
+          "y": 160,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -221,10 +244,10 @@
         "id": "s-DOI",
         "model_ref": "Apollo.State.Mission.DOI",
         "layout": {
-          "x": 1460,
-          "y": 30,
-          "width": 180,
-          "height": 70,
+          "x": 480,
+          "y": 160,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -244,10 +267,10 @@
         "id": "s-descent",
         "model_ref": "Apollo.State.Mission.descent",
         "layout": {
-          "x": 20,
+          "x": 710,
           "y": 160,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -267,10 +290,10 @@
         "id": "s-surfaceEVA",
         "model_ref": "Apollo.State.Mission.surfaceEVA",
         "layout": {
-          "x": 240,
+          "x": 940,
           "y": 160,
-          "width": 200,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -290,10 +313,10 @@
         "id": "s-ascent",
         "model_ref": "Apollo.State.Mission.ascent",
         "layout": {
-          "x": 500,
+          "x": 1170,
           "y": 160,
-          "width": 180,
-          "height": 70,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -313,10 +336,10 @@
         "id": "s-rendezvous",
         "model_ref": "Apollo.State.Mission.rendezvous",
         "layout": {
-          "x": 720,
-          "y": 160,
-          "width": 180,
-          "height": 70,
+          "x": 20,
+          "y": 290,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -336,10 +359,10 @@
         "id": "s-TEI",
         "model_ref": "Apollo.State.Mission.TEI",
         "layout": {
-          "x": 960,
-          "y": 160,
-          "width": 180,
-          "height": 70,
+          "x": 250,
+          "y": 290,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -359,10 +382,10 @@
         "id": "s-entry",
         "model_ref": "Apollo.State.Mission.entry",
         "layout": {
-          "x": 1160,
-          "y": 160,
-          "width": 180,
-          "height": 70,
+          "x": 480,
+          "y": 290,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -382,10 +405,10 @@
         "id": "s-recovery",
         "model_ref": "Apollo.State.Mission.recovery",
         "layout": {
-          "x": 1360,
-          "y": 160,
-          "width": 180,
-          "height": 70,
+          "x": 710,
+          "y": 290,
+          "width": 210,
+          "height": 86,
           "z_index": 1
         },
         "style": {
@@ -401,195 +424,19 @@
         }
       },
       {
-        "type": "initial_pseudostate",
-        "id": "init-a",
-        "model_ref": "Apollo.State.Abort.Start",
+        "type": "comment",
+        "id": "n-abort",
+        "model_ref": "Apollo.Note.IuOwns",
         "layout": {
-          "x": 8,
-          "y": 310,
-          "width": 16,
-          "height": 16,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#C62828"
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-pad",
-        "model_ref": "Apollo.State.Abort.pad",
-        "layout": {
-          "x": 20,
+          "x": 960,
           "y": 290,
-          "width": 140,
-          "height": 70,
+          "width": 420,
+          "height": 86,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-I",
-        "model_ref": "Apollo.State.Abort.I",
-        "layout": {
-          "x": 200,
-          "y": 290,
-          "width": 140,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-II",
-        "model_ref": "Apollo.State.Abort.II",
-        "layout": {
-          "x": 360,
-          "y": 290,
-          "width": 140,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-III",
-        "model_ref": "Apollo.State.Abort.III",
-        "layout": {
-          "x": 520,
-          "y": 290,
-          "width": 140,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-IV",
-        "model_ref": "Apollo.State.Abort.IV",
-        "layout": {
-          "x": 680,
-          "y": 290,
-          "width": 140,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-contingencyTLI",
-        "model_ref": "Apollo.State.Abort.contingencyTLI",
-        "layout": {
-          "x": 840,
-          "y": 290,
-          "width": 220,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-lunar",
-        "model_ref": "Apollo.State.Abort.lunar",
-        "layout": {
-          "x": 1100,
-          "y": 290,
-          "width": 140,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "a-SPS",
-        "model_ref": "Apollo.State.Abort.SPS",
-        "layout": {
-          "x": 1320,
-          "y": 290,
-          "width": 140,
-          "height": 70,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -608,11 +455,11 @@
         "waypoints": [
           {
             "x": 24,
-            "y": 58
+            "y": 64
           },
           {
             "x": 20,
-            "y": 65
+            "y": 73
           }
         ],
         "style": {
@@ -621,7 +468,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
@@ -630,12 +477,12 @@
         "relationship_ref": "stm-apollo.countdown-boost",
         "waypoints": [
           {
-            "x": 200,
-            "y": 65
+            "x": 230,
+            "y": 73
           },
           {
-            "x": 220,
-            "y": 65
+            "x": 250,
+            "y": 73
           }
         ],
         "style": {
@@ -644,7 +491,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
@@ -653,12 +500,12 @@
         "relationship_ref": "stm-apollo.boost-earthOrbit",
         "waypoints": [
           {
-            "x": 400,
-            "y": 65
+            "x": 460,
+            "y": 73
           },
           {
-            "x": 420,
-            "y": 65
+            "x": 480,
+            "y": 73
           }
         ],
         "style": {
@@ -667,7 +514,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
@@ -676,12 +523,12 @@
         "relationship_ref": "stm-apollo.earthOrbit-TLI",
         "waypoints": [
           {
-            "x": 600,
-            "y": 65
+            "x": 690,
+            "y": 73
           },
           {
-            "x": 640,
-            "y": 65
+            "x": 710,
+            "y": 73
           }
         ],
         "style": {
@@ -690,7 +537,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
@@ -699,12 +546,12 @@
         "relationship_ref": "stm-apollo.TLI-translunar",
         "waypoints": [
           {
-            "x": 820,
-            "y": 65
+            "x": 920,
+            "y": 73
           },
           {
-            "x": 840,
-            "y": 65
+            "x": 940,
+            "y": 73
           }
         ],
         "style": {
@@ -713,21 +560,21 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-translunar-LOI",
+        "id": "t-translunar-dock",
         "type": "transition",
-        "relationship_ref": "stm-apollo.translunar-LOI",
+        "relationship_ref": "stm-apollo.translunar-dockEject",
         "waypoints": [
           {
-            "x": 1020,
-            "y": 65
+            "x": 1150,
+            "y": 73
           },
           {
-            "x": 1060,
-            "y": 65
+            "x": 1170,
+            "y": 73
           }
         ],
         "style": {
@@ -736,7 +583,42 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "t-dock-LOI",
+        "type": "transition",
+        "relationship_ref": "stm-apollo.dockEject-LOI",
+        "waypoints": [
+          {
+            "x": 1380,
+            "y": 73
+          },
+          {
+            "x": 1400,
+            "y": 73
+          },
+          {
+            "x": 1400,
+            "y": 140
+          },
+          {
+            "x": 20,
+            "y": 140
+          },
+          {
+            "x": 20,
+            "y": 203
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
         }
       },
       {
@@ -745,12 +627,12 @@
         "relationship_ref": "stm-apollo.LOI-undock",
         "waypoints": [
           {
-            "x": 1240,
-            "y": 65
+            "x": 230,
+            "y": 203
           },
           {
-            "x": 1260,
-            "y": 65
+            "x": 250,
+            "y": 203
           }
         ],
         "style": {
@@ -759,7 +641,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
@@ -768,12 +650,12 @@
         "relationship_ref": "stm-apollo.undock-DOI",
         "waypoints": [
           {
-            "x": 1440,
-            "y": 65
+            "x": 460,
+            "y": 203
           },
           {
-            "x": 1460,
-            "y": 65
+            "x": 480,
+            "y": 203
           }
         ],
         "style": {
@@ -782,29 +664,21 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-doi-des",
+        "id": "t-DOI-descent",
         "type": "transition",
         "relationship_ref": "stm-apollo.DOI-descent",
         "waypoints": [
           {
-            "x": 1550.0,
-            "y": 100
+            "x": 690,
+            "y": 203
           },
           {
-            "x": 1550,
-            "y": 130
-          },
-          {
-            "x": 110,
-            "y": 130
-          },
-          {
-            "x": 20,
-            "y": 195
+            "x": 710,
+            "y": 203
           }
         ],
         "style": {
@@ -813,21 +687,21 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-descent-surfaceEVA",
+        "id": "t-descent-eva",
         "type": "transition",
         "relationship_ref": "stm-apollo.descent-surfaceEVA",
         "waypoints": [
           {
-            "x": 200,
-            "y": 195
+            "x": 920,
+            "y": 203
           },
           {
-            "x": 240,
-            "y": 195
+            "x": 940,
+            "y": 203
           }
         ],
         "style": {
@@ -836,21 +710,21 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-surfaceEVA-ascent",
+        "id": "t-eva-ascent",
         "type": "transition",
         "relationship_ref": "stm-apollo.surfaceEVA-ascent",
         "waypoints": [
           {
-            "x": 440,
-            "y": 195
+            "x": 1150,
+            "y": 203
           },
           {
-            "x": 500,
-            "y": 195
+            "x": 1170,
+            "y": 203
           }
         ],
         "style": {
@@ -859,21 +733,33 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-ascent-rendezvous",
+        "id": "t-ascent-rnd",
         "type": "transition",
         "relationship_ref": "stm-apollo.ascent-rendezvous",
         "waypoints": [
           {
-            "x": 680,
-            "y": 195
+            "x": 1380,
+            "y": 203
           },
           {
-            "x": 720,
-            "y": 195
+            "x": 1400,
+            "y": 203
+          },
+          {
+            "x": 1400,
+            "y": 270
+          },
+          {
+            "x": 20,
+            "y": 270
+          },
+          {
+            "x": 20,
+            "y": 333
           }
         ],
         "style": {
@@ -882,21 +768,21 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-rendezvous-TEI",
+        "id": "t-rnd-TEI",
         "type": "transition",
         "relationship_ref": "stm-apollo.rendezvous-TEI",
         "waypoints": [
           {
-            "x": 900,
-            "y": 195
+            "x": 230,
+            "y": 333
           },
           {
-            "x": 960,
-            "y": 195
+            "x": 250,
+            "y": 333
           }
         ],
         "style": {
@@ -905,7 +791,7 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
@@ -914,12 +800,12 @@
         "relationship_ref": "stm-apollo.TEI-entry",
         "waypoints": [
           {
-            "x": 1140,
-            "y": 195
+            "x": 460,
+            "y": 333
           },
           {
-            "x": 1160,
-            "y": 195
+            "x": 480,
+            "y": 333
           }
         ],
         "style": {
@@ -928,21 +814,21 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
       },
       {
-        "id": "t-entry-recovery",
+        "id": "t-entry-rec",
         "type": "transition",
         "relationship_ref": "stm-apollo.entry-recovery",
         "waypoints": [
           {
-            "x": 1340,
-            "y": 195
+            "x": 690,
+            "y": 333
           },
           {
-            "x": 1360,
-            "y": 195
+            "x": 710,
+            "y": 333
           }
         ],
         "style": {
@@ -951,370 +837,8 @@
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
-          "corner_radius": 6
+          "corner_radius": 8
         }
-      },
-      {
-        "id": "ta-init",
-        "type": "transition",
-        "relationship_ref": "stm-abort.t-init",
-        "waypoints": [
-          {
-            "x": 24,
-            "y": 318
-          },
-          {
-            "x": 20,
-            "y": 325
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "ta-I-II",
-        "type": "transition",
-        "relationship_ref": "stm-abort.I-II",
-        "waypoints": [
-          {
-            "x": 340,
-            "y": 325
-          },
-          {
-            "x": 360,
-            "y": 325
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "ta-II-III",
-        "type": "transition",
-        "relationship_ref": "stm-abort.II-III",
-        "waypoints": [
-          {
-            "x": 500,
-            "y": 325
-          },
-          {
-            "x": 520,
-            "y": 325
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "ta-III-IV",
-        "type": "transition",
-        "relationship_ref": "stm-abort.III-IV",
-        "waypoints": [
-          {
-            "x": 660,
-            "y": 325
-          },
-          {
-            "x": 680,
-            "y": 325
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tap",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.abortPad",
-        "waypoints": [
-          {
-            "x": 110.0,
-            "y": 100
-          },
-          {
-            "x": 90.0,
-            "y": 290
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tai",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.abortI",
-        "waypoints": [
-          {
-            "x": 310.0,
-            "y": 100
-          },
-          {
-            "x": 270.0,
-            "y": 290
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tat",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.abortTLI",
-        "waypoints": [
-          {
-            "x": 730.0,
-            "y": 100
-          },
-          {
-            "x": 950.0,
-            "y": 290
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tal",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.abortLunar",
-        "waypoints": [
-          {
-            "x": 110.0,
-            "y": 230
-          },
-          {
-            "x": 110,
-            "y": 270
-          },
-          {
-            "x": 1170.0,
-            "y": 290
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tas",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.abortSPS",
-        "waypoints": [
-          {
-            "x": 930.0,
-            "y": 100
-          },
-          {
-            "x": 1390.0,
-            "y": 290
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tpr",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.padToRecovery",
-        "waypoints": [
-          {
-            "x": 160,
-            "y": 325
-          },
-          {
-            "x": 170,
-            "y": 380
-          },
-          {
-            "x": 1540,
-            "y": 380
-          },
-          {
-            "x": 1540,
-            "y": 195
-          },
-          {
-            "x": 1540,
-            "y": 195
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        }
-      },
-      {
-        "id": "tiv",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.ivToRecovery",
-        "waypoints": [
-          {
-            "x": 820,
-            "y": 325
-          },
-          {
-            "x": 830,
-            "y": 380
-          },
-          {
-            "x": 1540,
-            "y": 380
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        },
-        "name": ""
-      },
-      {
-        "id": "ttr",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.tliToRecovery",
-        "waypoints": [
-          {
-            "x": 1060,
-            "y": 325
-          },
-          {
-            "x": 1070,
-            "y": 380
-          },
-          {
-            "x": 1540,
-            "y": 380
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        },
-        "name": ""
-      },
-      {
-        "id": "tlr",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.lunarToRecovery",
-        "waypoints": [
-          {
-            "x": 1240,
-            "y": 325
-          },
-          {
-            "x": 1260,
-            "y": 380
-          },
-          {
-            "x": 1540,
-            "y": 380
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        },
-        "name": ""
-      },
-      {
-        "id": "tsr",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.spsToRecovery",
-        "waypoints": [
-          {
-            "x": 1460,
-            "y": 325
-          },
-          {
-            "x": 1540,
-            "y": 325
-          },
-          {
-            "x": 1540,
-            "y": 195
-          },
-          {
-            "x": 1540,
-            "y": 195
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 1.5,
-          "line_style": "dashed",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 6
-        },
-        "name": "return"
       }
     ],
     "metadata": {

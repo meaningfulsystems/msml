@@ -33,6 +33,10 @@ REQUIRED_VIEW_STEMS = (
     "apollo-crew",
     "apollo-usb",
     "apollo-cmd",
+    "apollo-csm-bdd",
+    "apollo-lm-bdd",
+    "apollo-gnc-pkg",
+    "apollo-abort",
 )
 
 REQUIRED_DEF_IDS = (
@@ -52,6 +56,16 @@ REQUIRED_DEF_IDS = (
     "Apollo.AGC_CM",
     "Apollo.IMU",
     "Apollo.DSKY",
+    "Apollo.DSKY2",
+    "Apollo.DSKY_LM",
+    "Apollo.EMS",
+    "Apollo.F1",
+    "Apollo.J2_SII",
+    "Apollo.J2_SIVB",
+    "Apollo.ST124",
+    "Apollo.FCC",
+    "Apollo.AEA",
+    "Apollo.ASA",
     "Apollo.SPS",
     "Apollo.RCS_CM",
     "Apollo.ECLSS",
@@ -129,6 +143,7 @@ REQUIRED_PHASES = (
     "Apollo.State.Mission.earthOrbit",
     "Apollo.State.Mission.TLI",
     "Apollo.State.Mission.translunar",
+    "Apollo.State.Mission.dockEject",
     "Apollo.State.Mission.LOI",
     "Apollo.State.Mission.undock",
     "Apollo.State.Mission.DOI",
@@ -149,6 +164,8 @@ REQUIRED_ABORTS = (
     "Apollo.State.Abort.IV",
     "Apollo.State.Abort.contingencyTLI",
     "Apollo.State.Abort.lunar",
+    "Apollo.State.Abort.P70",
+    "Apollo.State.Abort.P71",
     "Apollo.State.Abort.SPS",
 )
 
@@ -168,6 +185,7 @@ class ApolloExampleTests(unittest.TestCase):
         for stem in REQUIRED_VIEW_STEMS:
             self.assertTrue((APOLLO / f"{stem}.msmd").exists(), stem)
         self.assertFalse((APOLLO / "apollo-gnc.msmd").exists())
+        self.assertTrue((APOLLO / "apollo-gnc-pkg.msmd").exists())
 
     def test_public_architecture_full_model(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
@@ -194,6 +212,16 @@ class ApolloExampleTests(unittest.TestCase):
         }
         self.assertEqual(props["instance"], "Apollo 11 / Block II")
         self.assertEqual(props["stack"], "generic Saturn V + CSM + LM")
+        self.assertEqual(props["vehicle"], "AS-506")
+        self.assertEqual(defs["Apollo.F1"]["name"], "F-1")
+        self.assertEqual(defs["Apollo.J2_SII"]["name"], "J-2")
+        self.assertEqual(defs["Apollo.J2_SIVB"]["name"], "J-2")
+        self.assertEqual(defs["Apollo.DSKY2"]["name"], "DSKY")
+        self.assertEqual(defs["Apollo.DSKY_LM"]["name"], "DSKY")
+        self.assertEqual(defs["Apollo.State.Mission.dockEject"]["name"], "dock/eject")
+        self.assertEqual(defs["Apollo.State.Abort.pad"]["name"], "pad/LES")
+        self.assertEqual(defs["Apollo.State.Abort.P70"]["name"], "P70 DPS")
+        self.assertEqual(defs["Apollo.State.Abort.P71"]["name"], "P71 APS")
 
     def test_does_not_collapse_required_computers(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
@@ -226,10 +254,50 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(usb["lmUplink"], "2101.802 MHz")
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownFood"]["text"])
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownBlackout"]["text"])
-        # Vehicles + AGC research still incoming — do not invent AGC numbers.
         agc_cm = {p["name"]: p.get("type") for p in defs["Apollo.AGC_CM"]["compartments"]["properties"]}
-        self.assertNotIn("memory", agc_cm)
-        self.assertNotIn("cycleTime", agc_cm)
+        self.assertEqual(agc_cm["word"], "16-bit")
+        self.assertEqual(agc_cm["erasable"], "2048 E")
+        self.assertEqual(agc_cm["fixed"], "36864 F")
+        self.assertEqual(agc_cm["clock"], "1.024 MHz")
+        self.assertEqual(agc_cm["mct"], "11.7 μs")
+        self.assertEqual(agc_cm["software"], "Colossus")
+        self.assertEqual(agc_cm["rope"], "UNKNOWN")
+        self.assertEqual(agc_cm["dsky"], "2")
+        agc_lm = {p["name"]: p.get("type") for p in defs["Apollo.AGC_LM"]["compartments"]["properties"]}
+        self.assertEqual(agc_lm["software"], "Luminary")
+        self.assertEqual(agc_lm["rope"], "UNKNOWN")
+        self.assertEqual(agc_lm["dsky"], "1")
+        self.assertIn("P66 ROD", agc_lm["descent"])
+        ags = {p["name"]: p.get("type") for p in defs["Apollo.AGS"]["compartments"]["properties"]}
+        self.assertEqual(ags["memory"], "UNKNOWN")
+        self.assertIn("AEA + ASA", ags["parts"])
+        self.assertIn("R47", ags["init"])
+        f1 = {p["name"]: p.get("type") for p in defs["Apollo.F1"]["compartments"]["properties"]}
+        self.assertEqual(f1["thrust"], "1,530,000 lbf each")
+        sps = {p["name"]: p.get("type") for p in defs["Apollo.SPS"]["compartments"]["properties"]}
+        self.assertEqual(sps["thrust"], "20,500 lbf")
+        dps = {p["name"]: p.get("type") for p in defs["Apollo.DPS"]["compartments"]["properties"]}
+        self.assertEqual(dps["thrust"], "10,500 lbf")
+        self.assertEqual(dps["throttle"], "10:1")
+        aps = {p["name"]: p.get("type") for p in defs["Apollo.APS"]["compartments"]["properties"]}
+        self.assertEqual(aps["thrust"], "3,500 lbf")
+        sat = {p["name"]: p.get("type") for p in defs["Apollo.SaturnV"]["compartments"]["properties"]}
+        self.assertEqual(sat["vehicle"], "AS-506")
+        self.assertEqual(sat["ignition"], "6,484,280 lb")
+        self.assertEqual(sat["firstMotion"], "6,398,535 lb")
+        self.assertEqual(sat["tankLoads"], "UNKNOWN")
+        self.assertEqual(sat["deltaV"], "UNKNOWN")
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownTanks"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownDv"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownRope"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownAgsMem"]["text"])
+        self.assertEqual(defs["Apollo.State.Mission.earthOrbit"]["do"], "100 nmi planned")
+        self.assertNotEqual(defs["Apollo.AGC_CM"]["id"], defs["Apollo.AGC_LM"]["id"])
+        self.assertNotEqual(defs["Apollo.AGS"]["id"], defs["Apollo.AGC_LM"]["id"])
+        self.assertNotEqual(defs["Apollo.EMS"]["id"], defs["Apollo.AGC_CM"]["id"])
+        self.assertNotEqual(defs["Apollo.LVDC"]["id"], defs["Apollo.AGC_CM"]["id"])
+        self.assertNotEqual(defs["Apollo.DSKY"]["id"], defs["Apollo.DSKY2"]["id"])
+        self.assertNotEqual(defs["Apollo.DSKY"]["id"], defs["Apollo.DSKY_LM"]["id"])
 
     def test_instance_is_apollo_11_block_ii(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]

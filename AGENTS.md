@@ -48,14 +48,15 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 
 `projects/apollo/` is a full system + subsystem example (morning deliverable with e-bike). Namespace `Apollo`. File stem `apollo`. Public NASA architecture only. Do not invent classified or biomedical detail.
 
-- **Instance lock:** Apollo 11 / Block II. The modeled stack is the generic Saturn V + CSM + LM used by lunar-landing missions.
+- **Instance lock:** Apollo 11 / Block II, vehicle AS-506. The modeled stack is the generic Saturn V + CSM + LM used by lunar-landing missions.
 - Where 11 is atypical, call it out in comments only. Do **not** stand up Apollo 7 / 8 / 10 / 13 as separate projects: 7 had no LM, 8 and 10 did not land, 13 aborted.
-- **Names (exact):** SaturnV S-IC / S-II / S-IVB / IU; CSM CM / SM / SCS / AGC_CM / IMU / DSKY / SPS / RCS / ECLSS; LM descent / ascent / PNGS / AGC_LM / AGS / DPS / APS / RCS / landingRadar / rendezvousRadar; Crew CDR / CMP / LMP each with A7L / bio / comm (PLSS+OPS on CDR/LMP EVA only); Ground as first-class parts: MCC-H (MOCR consoles, SSR, RTCC, CCATS), GSFC (NASCOM, NTTF, NST), MSFN (3×85-ft USB + named 30-ft only + 4 AIS + 8 ARIA + Goldstone 210-ft + Parkes), KSC LC-39, Recovery, RSO/AFETR outside MCC; plus SLA and LES.
-- Do **not** collapse AGC_CM vs AGC_LM, DSKY, AGS, IU LVDC, USB, RSO vs FLIGHT, crew as three parts, or P27 vs CCATS. Do collapse other MSFN ships/aircraft, full loop directory, engine hydraulics, umbilical pinout. Do **not** merge GSFC-1968 and TN D-6723 into “the 14”.
-- Sourced numbers only (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan). Mark UNKNOWN where the researcher did: RTCC MOC vs DSC on A11, 4th AIS ship, A11 food intake, entry blackout duration. Do not invent AGC or vehicle numbers — those packages stay ready to fill.
+- **Names (exact):** SaturnV S-IC / S-II / S-IVB / IU; engines F-1 / J-2 (keep S-II and S-IVB J-2 separate); CSM CM / SM / SCS / AGC_CM / IMU / DSKY / DSKY2 / EMS / SPS / RCS / ECLSS; LM descent / ascent / PNGS / AGC_LM / DSKY_LM / AGS (AEA+ASA) / DPS / APS / RCS / landingRadar / rendezvousRadar; IU LVDC + ST-124 + FCC; Crew CDR / CMP / LMP each with A7L / bio / comm (PLSS+OPS on CDR/LMP EVA only); Ground as first-class parts: MCC-H (MOCR consoles, SSR, RTCC, CCATS), GSFC (NASCOM, NTTF, NST), MSFN (3×85-ft USB + named 30-ft only + 4 AIS + 8 ARIA + Goldstone 210-ft + Parkes), KSC LC-39, Recovery, RSO/AFETR outside MCC; plus SLA and LES.
+- Do **not** collapse two AGCs, AGS, IU LVDC, descent vs ascent, LES, CM 2 DSKY vs LM 1 DSKY, or EMS. Do collapse ullage/retro as sets, every verb/noun, F-1 hydraulics, other MSFN ships/aircraft, full loop directory, umbilical pinout. Do **not** merge GSFC-1968 and TN D-6723 into “the 14”.
+- Sourced numbers only (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan, A11 PK masses, engine thrusts, Block II AGC AGCIS 30). Mark UNKNOWN: RTCC MOC vs DSC on A11, 4th AIS ship, A11 food intake, entry blackout duration, stage tank loads, Δv table, A11 rope IDs, AGS memory. Do not invent those.
 - Context is vehicle / crew / MCC / MSFN / Moon / Earth (RTCC sits with MCC). Uplink and downlink are distinct. Two command paths: (A) FC→CCC→RTCC→CCATS→site 642B→USB 70 kHz; (B) P27 V70–V73. Block II antennas are crew-selected.
 - IBD connectors never pass through boxes. Saturn joints are adjacent only.
-- Mission STM: countdown → boost → earthOrbit → TLI → translunar → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. Abort machine in parallel: pad, I–IV, contingency TLI, lunar, SPS.
+- Mission STM: countdown → boost → earthOrbit (100 nmi planned) → TLI → translunar → dock/eject → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. IU owns boost+TLI. RSO owns destruct until orbital safing. Abort machine in parallel: pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS).
+- Vehicle lock: Apollo 11 / Block II, AS-506. Two AGCs (CM Colossus + 2 DSKY; LM Luminary + 1 DSKY). AGS is a separate computer. P27 verbs remain V70–V73 only.
 
 ## Checks
 
