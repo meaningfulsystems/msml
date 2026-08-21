@@ -2,13 +2,13 @@
 
 Two-slice pop-up toaster used as the MSML coverage canary. Namespace `Toaster`. File stem `toaster`. This note is the design argument for the model in this folder, not a catalog of pictures.
 
-The same appliance idea appears in SysML2d. The files are not interchangeable, and this MSML toaster does **not** adopt the SysML2d quantitative set (900–1200 W, 60 °C surface, 10,000 cycles, and so on). Numbers below are only those already on `toaster-model.msml`.
+The same appliance idea appears in SysML2d. The files are not interchangeable. Numbers below are only those already on `toaster-model.msml`. Unfilled types stay unfilled.
 
 ## 1. Purpose / context
 
 The toaster exists to brown bread to a user-selected level and then present it. The design problem is a short, repeatable thermal cycle with a hard safety cutoff: heat the element, time the cycle, pop the carriage, and shut down if the surface is heading for overheat.
 
-This example is one 2-slice baseline. It is here to exercise all twelve MSML views on a small real appliance, not to certify a product line.
+This is an example model for language coverage, not a certifiable appliance.
 
 ## 2. System boundary and actors
 
@@ -33,7 +33,7 @@ Use cases: Toast Bread (includes Activate Heating), Adjust Browning, Cancel Toas
 | `Toaster.REQ-003` | User Controls | User shall control browning level and cancel toasting. |
 | `Toaster.REQ-003.1` | Cancel / Eject | Lever-up during toasting shall cancel and eject. |
 
-REQ-002 and REQ-003 derive from REQ-001. Do not import foreign wattage or touch-temperature numbers that are not on this model.
+REQ-002 and REQ-003 derive from REQ-001. Only the numbers in that table are bound.
 
 ## 4. Structure and interfaces
 
@@ -81,7 +81,7 @@ Satisfy mappings on the model:
 | REQ-003 User Controls | Toaster |
 | REQ-003.1 Cancel / Eject | Lever |
 
-Parametric checks verify Heat Control (`PV2R`), Browning Repeatability (`Energy`), and Overheat Detection (`SafetyCheck`). Activity steps (insert bread, press lever, start timer, heat, pop) allocate to the same parts.
+Parametric properties on the model: `PV2R` (Heat Control), `Energy` (Browning Repeatability), `SafetyCheck` (Overheat Detection). Activity steps (insert bread, press lever, start timer, heat, pop) allocate to the same parts. There are no empty verification names.
 
 ## 7. Sourced numbers
 
@@ -92,13 +92,15 @@ All quantitative targets are model-local:
 - ±5% energy variance at the same level
 - Thermal cutoff below 300 °C surface temperature
 
-Root `voltage` and `maxPower` are typed, not filled. Do not invent watts, surface-touch limits, crumb-tray force, or cycle life.
+Root `voltage` and `maxPower` are typed, not filled. Do not promote view-only values into the model.
 
 ## 8. Open risks / TBD
 
+- This stays an example model, not a certifiable appliance.
 - No filled mains voltage or element wattage, so electrical-load analysis cannot close.
-- No crumb-tray or chassis part, so tray-removal and enclosure safety are out of this model.
-- Product-line variants (4-slice, bagel, defrost, wide-slot) are out of scope.
+- No crumb-tray or chassis part.
+- Safety is the ThermalCutoff trip (`overheat_detected` → Error) and Auto Shutoff on that part. Power is typed on Toaster / HeatingElement with no filled watts.
+- Product-line variants are out of scope.
 
 ## 9. Views in this folder
 

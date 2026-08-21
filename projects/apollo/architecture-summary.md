@@ -95,7 +95,8 @@ A11 Press Kit p.109 tank loads and launch masses unless noted:
 
 | Item | Value |
 | --- | --- |
-| S-IC | 7,653,854 lbf / 5,022,674 lb fueled (S-IC-6) |
+| S-IC (AS-506 / S-IC-6) | 7,653,854 lbf liftoff / 5,022,674 lb fueled (A11 PK p.109) |
+| F-1 per engine | 1,530,000 lbf — **SA-507 citation** on the F-1 block. Not an AS-506 requirement. |
 | S-II | 1,059,171 lb (S-II-6) |
 | S-IVB | 260,523 lb (S-IVB-6N) |
 | IU | 4,306 lb (IU-6) |
@@ -128,6 +129,8 @@ Left unmarked on purpose. Do **not** invent:
 - RTCC MOC vs DSC assignment on A11
 - 4th AIS ship identity
 - Entry blackout duration
+
+F-1 1,530,000 lbf stays the SA-507 per-engine citation. Do not promote it into an AS-506 requirement. AS-506 S-IC liftoff remains 7,653,854 lbf (PK p.109).
 
 Descent O2 tank pressure is cited both ways (2800 vs 3000 psi, TN D-6724). Fuel-cell wattage is not in the press kit; a secondary NASM band is noted on the fuel-cell block and is not promoted to a requirement.
 

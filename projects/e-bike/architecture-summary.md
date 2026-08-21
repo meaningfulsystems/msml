@@ -25,7 +25,7 @@ Requirements are **siblings** under the bike. Brake Override refines Ride Safety
 | Id | Name | Text / numbers |
 | --- | --- | --- |
 | `ElectricBike.rideSafetyRequirement` | Ride Safety | Motor shall fail silent: brake inhibit, controller, cadence sensor, and BMS. Not brakes-only. |
-| `ElectricBike.rangeRequirement` | Range (≥ 60 km Tour) | Tour 60 km via usableWh **500 Wh** / energyPerKm **~8.3 Wh/km**. Not Eco / PAS-1. |
+| `ElectricBike.rangeRequirement` | Range (≥ 60 km Tour) | Tour-scenario binding: `usableWh` **500 Wh** / `energyPerKm` **~8.3 Wh/km** for 60 km. Not Eco / PAS-1. **500 Wh is not a pack nameplate.** |
 | `ElectricBike.assistLimitRequirement` | Assist Limit (25 km/h) | EPAC / EN 15194: cadence-only assist, cut off at **25 km/h** (wheel speed). No throttle. |
 | `ElectricBike.chargeSafetyRequirement` | Charge Safety | Stop on over-temp, over-voltage, or charger disconnect. BMS inside the pack opens the contactor. |
 | `ElectricBike.brakeOverrideRequirement` | Brake Override (50 ms) | Motor inhibit within **50 ms** of either brake lever. Electronic order; ~10× tighter than EN 15194. |
@@ -97,13 +97,13 @@ Ride Safety is fail-silent across brakes + controller + cadence + BMS, not brake
 | Hub torque | 40 N·m | Hub **peak** (`peakTorque`). Not continuous. |
 | Assist cutoff | 25 km/h | Wheel-speed cut; cadence PAS; no throttle. |
 | Walk assist | ≤ 6 km/h | On the walk-state do-behavior. |
-| Pack energy | 500 Wh usable | Tour-mode range ≥ 60 km (~8.3 Wh/km). Not Eco / PAS-1. |
+| Tour-scenario energy | 500 Wh | Binding on `usableWh` for the Tour range case. Not pack nameplate energy. |
 | Brake inhibit | ≤ 50 ms | Electronic order. |
 | Stopping distance | 5 m / 2 m | EN 15194; separate from 50 ms. |
 | Lighting | StVZO / ISO 6742 | Not UN ECE R113. |
 | Frame yield margin | ≥ 1.5 | Aluminum frame. |
 
-Parametric `energyBalance` is pack-only. Tour range binds `usableWh` and `energyPerKm`.
+Parametric `energyBalance` is pack-only. Tour range binds `usableWh` and `energyPerKm` for that scenario. Do not read 500 Wh as a nameplate.
 
 ## 8. Open risks / TBD
 

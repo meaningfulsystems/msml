@@ -229,7 +229,7 @@ msml-render-all projects
 
 ## Examples
 
-Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project). Those files are architecture / system-design notes — purpose, boundary, requirements, structure, states, allocations, sourced numbers, open risks, and the PNGs in that folder — not a view catalog.
+Each example folder has an [architecture-summary.md](projects/e-bike/architecture-summary.md) (same filename in every project). For toaster, blender, e-bike, and Apollo those files are architecture / system-design notes. HOS is a **concept sketch**, not a design baseline.
 
 ### Electric Bike
 
@@ -254,9 +254,9 @@ Compact systems used to exercise the language. Toaster is the twelve-view covera
 
 ### Humanity Optimization System
 
-Civilization-scale decision-support concept modeled with MSML.
+Concept sketch (not a design baseline). Civilization-scale language in the brief is aspiration. The MSML model has no shalls.
 
-- [Architecture / system-design note](projects/humanity-optimization/architecture-summary.md)
+- [Concept sketch](projects/humanity-optimization/architecture-summary.md)
 - [Operational concept](projects/humanity-optimization/Humanity_Optimization_Operational_Concept.md)
 - [HOS project](projects/humanity-optimization)
 
