@@ -21,7 +21,7 @@ Read [msml-specification.md](../../msml-specification.md) before inventing field
 | Example | Why it exists |
 | --- | --- |
 | [projects/e-bike/e-bike-model.msml](../../projects/e-bike/e-bike-model.msml) | Publish hero. Frozen `ElectricBike::` names. |
-| [projects/apollo/apollo-model.msml](../../projects/apollo/apollo-model.msml) | Full system + subsystem. Apollo 11 / Block II, AS-506. Sourced vehicle/AGC/electrical/AGS/docking/RCS. UNKNOWN: tank loads, Δv, rope IDs, SM RCS thrust. |
+| [projects/apollo/apollo-model.msml](../../projects/apollo/apollo-model.msml) | Full system + subsystem. Apollo 11 / Block II, AS-506. Sourced vehicle/AGC/electrical/AGS/docking/RCS (SM/LM 100 lbf, CM 93 lbf). UNKNOWN: official CSM lunar Δv, SPS loaded lb, AGS program name, loaded SM/CM RCS propellant. |
 | [projects/appliances/toaster/toaster-model.msml](../../projects/appliances/toaster/toaster-model.msml) | Coverage canary for all twelve views. |
 
 Copy *patterns* from those files. Do not remap ElectricBike ids.

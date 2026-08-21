@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-apollo-rcs",
-    "name": "RCS \u2014 SM four quads (thrust UNKNOWN) \u00b7 CM dual 6-engine 93 lbf sets",
+    "name": "RCS — SM / LM 100 lbf (A11 PK p.93 / p.106) · CM 93 lbf",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1020,
-      "height": 520,
+      "width": 1100,
+      "height": 640,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -48,7 +48,7 @@
           "x": 80,
           "y": 16,
           "width": 320,
-          "height": 150,
+          "height": 170,
           "z_index": 1
         },
         "style": {
@@ -69,7 +69,7 @@
         "model_ref": "Apollo.Quad",
         "layout": {
           "x": 80,
-          "y": 220,
+          "y": 230,
           "width": 320,
           "height": 140,
           "z_index": 1
@@ -94,7 +94,7 @@
           "x": 480,
           "y": 16,
           "width": 400,
-          "height": 170,
+          "height": 190,
           "z_index": 1
         },
         "style": {
@@ -156,14 +156,37 @@
         }
       },
       {
+        "type": "block",
+        "id": "b-lm",
+        "model_ref": "Apollo.RCS_LM",
+        "layout": {
+          "x": 80,
+          "y": 400,
+          "width": 320,
+          "height": 160,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
         "type": "comment",
         "id": "n-sm",
         "model_ref": "Apollo.Note.UnknownSmRcs",
         "layout": {
           "x": 460,
-          "y": 400,
-          "width": 480,
-          "height": 80,
+          "y": 500,
+          "width": 560,
+          "height": 100,
           "z_index": 1
         },
         "style": {
@@ -187,11 +210,11 @@
         "waypoints": [
           {
             "x": 240,
-            "y": 166
+            "y": 186
           },
           {
             "x": 240,
-            "y": 220
+            "y": 230
           }
         ],
         "style": {
@@ -210,7 +233,7 @@
         "waypoints": [
           {
             "x": 600,
-            "y": 186
+            "y": 206
           },
           {
             "x": 570,
@@ -233,7 +256,7 @@
         "waypoints": [
           {
             "x": 780,
-            "y": 186
+            "y": 206
           },
           {
             "x": 830,

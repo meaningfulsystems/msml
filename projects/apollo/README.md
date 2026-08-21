@@ -8,7 +8,7 @@ Namespace `Apollo`. File stem `apollo`. Layout is `projects/apollo/`.
 
 Kept distinct: two AGCs (`AGC_CM` Colossus + 2 DSKY, `AGC_LM` Luminary + 1 DSKY), `AGS` (AEA+ASA+DEDA, not a DSKY), IU `LVDC` + ST-124 + FCC, `EMS`, descent vs ascent, `LES`, SM fuel cells vs CM AgZn vs LM batteries, SM RCS quads vs CM dual 6-engine sets, `USB`, RSO vs FLIGHT, crew as three parts, P27 vs CCATS. Collapsed: ullage/retro as sets, every verb/noun, F-1 hydraulics, other MSFN ships/aircraft beyond the named 4 AIS + 8 ARIA, full loop directory, umbilical pinout. Named 30-ft only — do not merge GSFC-1968 and TN D-6723 into “the 14”.
 
-Sourced numbers are on the model (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan, A11 PK p.109 tank loads and launch masses, F-1 / J-2, SPS and DPS cited from both PK and TNs, Block II AGC AGCIS 30, A11 ropes Comanche 055 / LMY99 rev 001, AEA 4096×18-bit, CM RCS 93 lbf, electrical topology). **UNKNOWN** (visible on the diagrams): RTCC MOC vs DSC on A11; 4th AIS ship; A11 actual food intake; entry blackout duration; official CSM lunar Δv table; CSM-107 SPS loaded lb; A11 AGS flight-program name; SM RCS per-engine thrust (do not use 100 lbf unless cited). Do not invent those.
+Sourced numbers are on the model (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan, A11 PK p.109 tank loads and launch masses, F-1 / J-2, SPS and DPS cited from both PK and TNs, Block II AGC AGCIS 30, A11 ropes Comanche 055 / LMY99 rev 001, AEA 4096×18-bit, SM/LM RCS 100 lbf and CM RCS 93 lbf from A11 PK p.93 / p.106, electrical topology). **UNKNOWN** (visible on the diagrams): RTCC MOC vs DSC on A11; 4th AIS ship; A11 actual food intake; entry blackout duration; official CSM lunar Δv table; CSM-107 SPS loaded lb; A11 AGS flight-program name; loaded SM/CM RCS propellant mass. Do not invent those.
 
 ## System views
 
@@ -47,7 +47,7 @@ Sourced numbers are on the model (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/P
 | Electrical IBD | `apollo-eps` | SM 3× fuel cells · CM 3× AgZn + LEB charger + pyro · LM 4+2 AgZn + ECA · 28 V / 117 V 400 Hz |
 | AGS BDD | `apollo-ags-bdd` | AEA + ASA (strapdown) + DEDA (not a DSKY); sourced AEA memory |
 | Docking sequence | `apollo-dock` | Probe / drogue / soft capture / 12 latches / stow / transfer |
-| RCS package | `apollo-rcs` | SM four quads (thrust UNKNOWN) · CM dual 6-engine 93 lbf sets |
+| RCS package | `apollo-rcs` | SM / LM 100 lbf (A11 PK p.93 / p.106) · CM dual 6-engine 93 lbf · loaded mass UNKNOWN |
 
 Mission STM: countdown → boost → earthOrbit (100 nmi planned) → TLI → translunar → dock/eject → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. IU owns boost+TLI; RSO owns destruct until orbital safing.
 

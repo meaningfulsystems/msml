@@ -311,10 +311,13 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(fc["watts"], "press kit does not state")
         self.assertIn("0.77", fc["water"])
         sm_rcs = {p["name"]: p.get("type") for p in defs["Apollo.RCS_SM"]["compartments"]["properties"]}
-        self.assertEqual(sm_rcs["thrust"], "UNKNOWN")
-        self.assertNotIn("100 lbf", sm_rcs["thrust"])
+        self.assertEqual(sm_rcs["thrust"], "100 lbf each engine")
+        self.assertIn("UNKNOWN", sm_rcs["loaded"])
         cm_rcs = {p["name"]: p.get("type") for p in defs["Apollo.RCS_CM"]["compartments"]["properties"]}
         self.assertEqual(cm_rcs["thrust"], "93 lbf each engine")
+        self.assertIn("UNKNOWN", cm_rcs["loaded"])
+        lm_rcs = {p["name"]: p.get("type") for p in defs["Apollo.RCS_LM"]["compartments"]["properties"]}
+        self.assertEqual(lm_rcs["thrust"], "100 lbf each engine")
         self.assertIn("no auto translation", cm_rcs["role"])
         self.assertEqual(defs["Apollo.Probe"]["name"], "probe")
         self.assertEqual(defs["Apollo.Drogue"]["name"], "drogue")
@@ -381,8 +384,10 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertNotIn("Apollo.State.CMC", (APOLLO / "apollo-lgc-stm.msmd").read_text(encoding="utf-8"))
         self.assertIn("4096", defs["Apollo.Note.AgsSourced"]["text"])
         self.assertNotIn("UNKNOWN", defs["Apollo.Note.AgsSourced"]["text"])
-        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownSmRcs"]["text"])
         self.assertIn("100 lbf", defs["Apollo.Note.UnknownSmRcs"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownSmRcs"]["text"])
+        self.assertIn("loaded", defs["Apollo.Note.UnknownSmRcs"]["text"])
+        self.assertIn("p.93", defs["Apollo.Note.UnknownSmRcs"]["text"])
         self.assertEqual(defs["Apollo.State.Mission.earthOrbit"]["do"], "100 nmi planned")
         self.assertNotEqual(defs["Apollo.AGC_CM"]["id"], defs["Apollo.AGC_LM"]["id"])
         self.assertNotEqual(defs["Apollo.AGS"]["id"], defs["Apollo.AGC_LM"]["id"])

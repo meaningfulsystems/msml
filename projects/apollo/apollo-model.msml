@@ -1093,8 +1093,13 @@
               "multiplicity": "1"
             },
             {
+              "name": "loaded",
+              "type": "UNKNOWN — CM RCS loaded lb",
+              "multiplicity": "1"
+            },
+            {
               "name": "source",
-              "type": "Press Kit + AOH",
+              "type": "A11 PK p.93 / p.106 + AOH",
               "multiplicity": "1"
             }
           ],
@@ -1172,17 +1177,17 @@
             },
             {
               "name": "thrust",
-              "type": "UNKNOWN",
+              "type": "100 lbf each engine",
               "multiplicity": "1"
             },
             {
-              "name": "doNot",
-              "type": "do not use 100 lbf unless cited",
+              "name": "loaded",
+              "type": "UNKNOWN — SM RCS loaded lb",
               "multiplicity": "1"
             },
             {
               "name": "source",
-              "type": "Press Kit + AOH",
+              "type": "A11 PK p.93 / p.106",
               "multiplicity": "1"
             }
           ],
@@ -1213,7 +1218,7 @@
             },
             {
               "name": "thrust",
-              "type": "UNKNOWN",
+              "type": "100 lbf each engine",
               "multiplicity": "1"
             }
           ],
@@ -2127,8 +2132,13 @@
               "multiplicity": "1"
             },
             {
+              "name": "thrust",
+              "type": "100 lbf each engine",
+              "multiplicity": "1"
+            },
+            {
               "name": "source",
-              "type": "A11 PK",
+              "type": "A11 PK p.93 / p.106",
               "multiplicity": "1"
             }
           ],
@@ -3021,8 +3031,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.UnknownSmRcs",
-        "name": "UNKNOWN — SM RCS per-engine thrust.\nDo not use 100 lbf unless cited.",
-        "text": "UNKNOWN — SM RCS per-engine thrust.\nDo not use 100 lbf unless cited."
+        "name": "SM / LM RCS 100 lbf each (A11 PK p.93 / p.106). CM 93 lbf.\nUNKNOWN — loaded SM/CM RCS propellant mass. Do not invent.",
+        "text": "SM / LM RCS 100 lbf each (A11 PK p.93 / p.106). CM 93 lbf.\nUNKNOWN — loaded SM/CM RCS propellant mass. Do not invent."
       },
       {
         "type": "comment",
