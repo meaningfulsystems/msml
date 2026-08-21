@@ -43,7 +43,7 @@ IBD is the highest visual priority. Ports must not sit under connectors.
 
 - Ride «include» Adjust Assist (ride includes adjust). Rider on Ride + Adjust; Charger on Charge only — never Charger on Adjust Assist.
 - Requirements are siblings under the bike. Walk and 250 W stay siblings; do not hang them under Assist Limit.
-- STM `resetFault` is Fault→Off. Prefer a readable Standby→Charging path.
+- STM `resetFault` is Fault→Off. Charging from Off only (EPAC choice — labeled; no Standby→Charging).
 - INT/BDD call the motor Rear Geared Hub, not Hub Motor.
 
 ## Sibling note

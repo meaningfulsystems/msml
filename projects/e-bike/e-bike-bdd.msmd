@@ -229,7 +229,7 @@
       {
         "type": "block",
         "id": "block-cadence",
-        "model_ref": "ElectricBike.CadenceSensor",
+        "model_ref": "ElectricBike.cadenceSensor",
         "layout": {
           "x": 890,
           "y": 520,
@@ -253,7 +253,7 @@
       {
         "type": "block",
         "id": "block-wheelspeed",
-        "model_ref": "ElectricBike.WheelSpeedSensor",
+        "model_ref": "ElectricBike.wheelSpeedSensor",
         "display_name": "Wheel Speed Sensor",
         "layout": {
           "x": 1110,

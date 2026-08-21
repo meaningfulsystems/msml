@@ -37,11 +37,11 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 - IBD connectors never pass through boxes. Ports stay on child parts (`owner_ref` on children). Connect mount / command / inhibit / pack power / phase drive as distinct lines. Cadence and wheel-speed sensors may appear when the layout stays clean.
 - Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety. Additional siblings: Stopping Distance (EN 15194 5 m / 2 m), Lighting (StVZO / ISO 6742), Walk Assist (≤ 6 km/h), Continuous Power (250 W). Do **not** hang walk or 250 W under Assist Limit.
 - Range 500 Wh / 60 km is a **Tour-mode** scenario via `usableWh` / `energyPerKm` (~8.3 Wh/km), not Eco / PAS-1. `energyBalance` binds usable pack Wh + `energyPerKm`; do **not** add rider watts into pack energy.
-- RideControl: off / standby / assist / walk (≤ 6 km/h, EPAC, not throttle) / charging / fault. `resetFault` is Fault→Off. Prefer Standby→Charging in addition to Off→Charging.
+- RideControl: off / standby / assist / walk (≤ 6 km/h, EPAC, not throttle) / charging / fault. `resetFault` is Fault→Off (not Standby). Charging from Off only — an EPAC choice, labeled on the Charging state; do **not** add Standby→Charging.
 - Classification is **EPAC / EN 15194** (cadence only, 25 km/h, no throttle). Display the motor as **Rear Geared Hub** (id stays `ElectricBike.HubMotor`); regen omitted.
 - Nested usage `bms : BMS` lives inside BatteryPack (`ElectricBike::BatteryPack::bms`). `allocateChargeToBms` targets that usage, not the pack.
 - Do **not** keep `lockBikeUseCase`. Empty use cases are not allowed.
-- Ride safety is not brakes-only: allocate to BrakeSystem, MotorController, CadenceSensor, and `bms`. Also allocate Assist Limit to WheelSpeedSensor (cadence-only cannot enforce 25 km/h).
+- Ride safety is not brakes-only: allocate to BrakeSystem, MotorController, `cadenceSensor`, and `bms`. Allocate Assist Limit to `wheelSpeedSensor` (cadence-only cannot enforce 25 km/h). Usages: `cadenceSensor`, `wheelSpeedSensor`. Nested `bms : BMS` is on the IBD charge path when the layout stays readable.
 - Ride «include» Adjust Assist. Rider on Ride + Adjust; Charger on Charge only. Do **not** put Charger on Adjust Assist.
 - Activity action display is **Pedal (EPAC)**, not throttle.
 

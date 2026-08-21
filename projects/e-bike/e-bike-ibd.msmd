@@ -543,13 +543,13 @@
       },
       {
         "type": "port",
-        "id": "p-bat-chg",
-        "model_ref": "ElectricBike.Port.chargeInputIn",
+        "id": "p-bms-chg",
+        "model_ref": "ElectricBike.Port.bmsChargeIn",
         "name": "chg",
-        "owner_ref": "part-battery",
+        "owner_ref": "part-bms",
         "layout": {
           "x": 254,
-          "y": 480,
+          "y": 624,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -917,7 +917,7 @@
       {
         "type": "part",
         "id": "part-cadence",
-        "model_ref": "ElectricBike.CadenceSensor",
+        "model_ref": "ElectricBike.cadenceSensor",
         "role_name": "cadenceSensor",
         "display_name": "cadenceSensor : Cadence Sensor",
         "layout": {
@@ -942,7 +942,7 @@
       {
         "type": "part",
         "id": "part-wheelspeed",
-        "model_ref": "ElectricBike.WheelSpeedSensor",
+        "model_ref": "ElectricBike.wheelSpeedSensor",
         "role_name": "wheelSpeedSensor",
         "display_name": "wheelSpeedSensor : Wheel Speed Sensor",
         "layout": {
@@ -1321,8 +1321,12 @@
             "y": 490
           },
           {
+            "x": 216,
+            "y": 630
+          },
+          {
             "x": 254,
-            "y": 486
+            "y": 630
           }
         ],
         "style": {

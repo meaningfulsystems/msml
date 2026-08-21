@@ -36,6 +36,8 @@ REQUIRED_DEF_IDS = (
     "ElectricBike.BatteryPack.bms",
     "ElectricBike.CadenceSensor",
     "ElectricBike.WheelSpeedSensor",
+    "ElectricBike.cadenceSensor",
+    "ElectricBike.wheelSpeedSensor",
     "ElectricBike.walkAssistRequirement",
     "ElectricBike.continuousPowerRequirement",
     "ElectricBike.Rider",
@@ -113,7 +115,6 @@ REQUIRED_REL_IDS = (
     "stm-ebike.stopWalk",
     "stm-ebike.brakeCutWalk",
     "stm-ebike.faultFromWalk",
-    "stm-ebike.plugInStandby",
 )
 
 REQUIRED_ACTIONS = (
@@ -163,11 +164,21 @@ class EBikeExampleTests(unittest.TestCase):
         for did, req_id in REQUIRED_REQ_IDS.items():
             self.assertEqual(defs[did]["req_id"], req_id)
         usages = {item["name"] for item in defs.values() if item.get("name")}
-        for usage in ("batteryPack", "hubMotor", "humanInterface", "motorController", "brakeSystem"):
+        for usage in (
+            "batteryPack",
+            "hubMotor",
+            "humanInterface",
+            "motorController",
+            "brakeSystem",
+            "cadenceSensor",
+            "wheelSpeedSensor",
+        ):
             self.assertTrue(
                 any(usage in (EBIKE / f"{stem}.msmd").read_text() for stem in REQUIRED_VIEW_STEMS),
                 usage,
             )
+        self.assertEqual(defs["ElectricBike.cadenceSensor"]["type_ref"], "ElectricBike.CadenceSensor")
+        self.assertEqual(defs["ElectricBike.wheelSpeedSensor"]["type_ref"], "ElectricBike.WheelSpeedSensor")
         self.assertIn("BatteryPack", usages)
         self.assertIn("HubMotor", usages)
         include = rels["uc-ebike.i-adjust-ride"]
@@ -188,9 +199,15 @@ class EBikeExampleTests(unittest.TestCase):
         ctx_text = (EBIKE / "e-bike-ctx.msmd").read_text(encoding="utf-8")
         self.assertNotIn("Wheel Torque", ctx_text)
         self.assertNotIn("WheelTorque", ctx_text)
+        self.assertEqual(rels["stm-ebike.resetFault"]["source"], "ElectricBike.State.RideControl.fault")
         self.assertEqual(rels["stm-ebike.resetFault"]["target"], "ElectricBike.State.RideControl.off")
-        self.assertEqual(rels["stm-ebike.plugInStandby"]["source"], "ElectricBike.State.RideControl.standby")
-        self.assertEqual(rels["stm-ebike.plugInStandby"]["target"], "ElectricBike.State.RideControl.charging")
+        self.assertEqual(rels["stm-ebike.plugIn"]["source"], "ElectricBike.State.RideControl.off")
+        self.assertEqual(rels["stm-ebike.plugIn"]["target"], "ElectricBike.State.RideControl.charging")
+        self.assertNotIn("stm-ebike.plugInStandby", rels)
+        self.assertIn("from Off only", defs["ElectricBike.State.RideControl.charging"].get("do", ""))
+        stm_text = (EBIKE / "e-bike-stm.msmd").read_text(encoding="utf-8")
+        self.assertIn("from Off only", stm_text)
+        self.assertNotIn("plugInStandby", stm_text)
         self.assertEqual(defs["ElectricBike.State.RideControl.walk"]["name"], "walk")
         self.assertIn("6 km/h", defs["ElectricBike.State.RideControl.walk"].get("do", ""))
         self.assertEqual(rels["stm-ebike.startWalk"]["source"], "ElectricBike.State.RideControl.standby")
@@ -222,7 +239,8 @@ class EBikeExampleTests(unittest.TestCase):
                     f"{conn['id']} {end} parked on ElectricBike",
                 )
         self.assertEqual(rels["ibd-ebike.riderToInterface"]["target"], "ElectricBike.Port.riderInputIn")
-        self.assertEqual(rels["ibd-ebike.chargerToBattery"]["target"], "ElectricBike.Port.chargeInputIn")
+        self.assertEqual(rels["ibd-ebike.chargerToBattery"]["target"], "ElectricBike.Port.bmsChargeIn")
+        self.assertEqual(defs["ElectricBike.Port.bmsChargeIn"]["owner_ref"], "ElectricBike.BMS")
         self.assertEqual(rels["ibd-ebike.roadToMotor"]["source"], "ElectricBike.Port.wheelLoadIn")
         self.assertEqual(rels["sd-ebike.m1"]["name"], "powerOn")
         self.assertEqual(rels["sd-ebike.m3"]["name"], "phase")
@@ -241,9 +259,9 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertEqual(rels["allocateChargeToBms"]["target"], "ElectricBike.BatteryPack.bms")
         self.assertEqual(rels["allocateSafetyToController"]["target"], "ElectricBike.MotorController")
         self.assertEqual(rels["allocateSafetyToBms"]["target"], "ElectricBike.BatteryPack.bms")
-        self.assertEqual(rels["allocateSafetyToSensors"]["target"], "ElectricBike.CadenceSensor")
+        self.assertEqual(rels["allocateSafetyToSensors"]["target"], "ElectricBike.cadenceSensor")
         self.assertEqual(rels["allocateAssistToWheelSpeed"]["source"], "ElectricBike.assistLimitRequirement")
-        self.assertEqual(rels["allocateAssistToWheelSpeed"]["target"], "ElectricBike.WheelSpeedSensor")
+        self.assertEqual(rels["allocateAssistToWheelSpeed"]["target"], "ElectricBike.wheelSpeedSensor")
         self.assertEqual(rels["allocateWalkToController"]["target"], "ElectricBike.MotorController")
         self.assertEqual(rels["allocatePowerToHub"]["target"], "ElectricBike.HubMotor")
         self.assertNotIn("req-ebike.d-assist-walk", rels)

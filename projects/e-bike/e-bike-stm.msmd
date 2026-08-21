@@ -59,12 +59,12 @@
         "type": "state",
         "id": "state-charging",
         "model_ref": "ElectricBike.State.RideControl.charging",
-        "display_name": "Charging",
+        "display_name": "Charging\nfrom Off only",
         "layout": {
           "x": 70,
           "y": 60,
           "width": 230,
-          "height": 80,
+          "height": 88,
           "z_index": 1
         },
         "style": {
@@ -664,41 +664,6 @@
           "label_offset": {
             "x": 10,
             "y": -18
-          }
-        },
-        "type": "transition"
-      },
-      {
-        "id": "plugInStandby",
-        "relationship_ref": "stm-ebike.plugInStandby",
-        "waypoints": [
-          {
-            "x": 480,
-            "y": 270
-          },
-          {
-            "x": 330,
-            "y": 270
-          },
-          {
-            "x": 330,
-            "y": 100
-          },
-          {
-            "x": 300,
-            "y": 100
-          }
-        ],
-        "style": {
-          "line_color": "#1565C0",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 8,
-            "y": -16
           }
         },
         "type": "transition"

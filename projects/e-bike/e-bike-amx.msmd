@@ -232,7 +232,7 @@
       {
         "type": "block",
         "id": "col-wss",
-        "model_ref": "ElectricBike.WheelSpeedSensor",
+        "model_ref": "ElectricBike.wheelSpeedSensor",
         "layout": {
           "x": 940,
           "y": 20,

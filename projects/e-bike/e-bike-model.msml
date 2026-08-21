@@ -546,7 +546,7 @@
         "type": "state",
         "id": "ElectricBike.State.RideControl.charging",
         "name": "charging",
-        "do": "acceptCharge()"
+        "do": "acceptCharge()  // EPAC: from Off only"
       },
       {
         "type": "state",
@@ -1187,6 +1187,28 @@
         "type": "port",
         "name": "speedIn",
         "owner_ref": "ElectricBike.MotorController"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.cadenceSensor",
+        "name": "cadenceSensor",
+        "stereotype": "part",
+        "type_ref": "ElectricBike.CadenceSensor",
+        "qualified_name": "ElectricBike::cadenceSensor"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.wheelSpeedSensor",
+        "name": "wheelSpeedSensor",
+        "stereotype": "part",
+        "type_ref": "ElectricBike.WheelSpeedSensor",
+        "qualified_name": "ElectricBike::wheelSpeedSensor"
+      },
+      {
+        "id": "ElectricBike.Port.bmsChargeIn",
+        "type": "port",
+        "name": "chargerIn",
+        "owner_ref": "ElectricBike.BMS"
       }
     ],
     "relationships": [
@@ -1379,8 +1401,8 @@
         "id": "ibd-ebike.chargerToBattery",
         "type": "connector",
         "source": "ElectricBike.Port.chargerOut",
-        "target": "ElectricBike.Port.chargeInputIn",
-        "name": "chargerToBattery"
+        "target": "ElectricBike.Port.bmsChargeIn",
+        "name": "chargerToBms"
       },
       {
         "id": "ibd-ebike.roadToMotor",
@@ -1428,7 +1450,7 @@
         "type": "transition",
         "source": "ElectricBike.State.RideControl.off",
         "target": "ElectricBike.State.RideControl.charging",
-        "name": "plugIn"
+        "name": "charger in (Off only)"
       },
       {
         "id": "stm-ebike.chargeComplete",
@@ -1934,7 +1956,7 @@
         "id": "bdd-ebike.c-hmi-cadence",
         "type": "composition",
         "source": "ElectricBike.HumanInterface",
-        "target": "ElectricBike.CadenceSensor",
+        "target": "ElectricBike.cadenceSensor",
         "multiplicity_source": "1",
         "multiplicity_target": "1"
       },
@@ -1967,7 +1989,7 @@
         "kind": "functional",
         "name": "allocateSafetyToSensors",
         "source": "ElectricBike.rideSafetyRequirement",
-        "target": "ElectricBike.CadenceSensor"
+        "target": "ElectricBike.cadenceSensor"
       },
       {
         "id": "alloc-ebike.alloc-stop-brakes",
@@ -2000,14 +2022,14 @@
       {
         "id": "sat-ebike.11",
         "type": "satisfy",
-        "source": "ElectricBike.CadenceSensor",
+        "source": "ElectricBike.cadenceSensor",
         "target": "ElectricBike.rideSafetyRequirement"
       },
       {
         "id": "bdd-ebike.c-bike-wheelspeed",
         "type": "composition",
         "source": "ElectricBike",
-        "target": "ElectricBike.WheelSpeedSensor",
+        "target": "ElectricBike.wheelSpeedSensor",
         "multiplicity_source": "1",
         "multiplicity_target": "1"
       },
@@ -2026,19 +2048,12 @@
         "name": "wheel speed"
       },
       {
-        "id": "stm-ebike.plugInStandby",
-        "type": "transition",
-        "source": "ElectricBike.State.RideControl.standby",
-        "target": "ElectricBike.State.RideControl.charging",
-        "name": "plugInStandby"
-      },
-      {
         "id": "allocateAssistToWheelSpeed",
         "type": "allocate",
         "kind": "functional",
         "name": "allocateAssistToWheelSpeed",
         "source": "ElectricBike.assistLimitRequirement",
-        "target": "ElectricBike.WheelSpeedSensor"
+        "target": "ElectricBike.wheelSpeedSensor"
       },
       {
         "id": "allocateWalkToController",
@@ -2059,7 +2074,7 @@
       {
         "id": "sat-ebike.12",
         "type": "satisfy",
-        "source": "ElectricBike.WheelSpeedSensor",
+        "source": "ElectricBike.wheelSpeedSensor",
         "target": "ElectricBike.assistLimitRequirement"
       },
       {
