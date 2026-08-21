@@ -401,6 +401,9 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(dps["thrustTn"], "10,500 lbf (TN D-7143)")
         self.assertIn("cite both", dps["thrust"])
         self.assertIn("cite both", dps["throttle"])
+        self.assertIn("LMA790", dps["sourceC"])
+        self.assertIn("10:1", dps["sourceC"])
+        self.assertIn("6,800", dps["sourceC"])
         aps = {p["name"]: p.get("type") for p in defs["Apollo.APS"]["compartments"]["properties"]}
         self.assertEqual(aps["thrust"], "3,500 lbf")
         sat = {p["name"]: p.get("type") for p in defs["Apollo.SaturnV"]["compartments"]["properties"]}
@@ -569,7 +572,8 @@ class ApolloExampleTests(unittest.TestCase):
         ecs = {p["name"]: p["type"] for p in defs["Apollo.LM_ECS"]["compartments"]["properties"]}
         self.assertIn("2800", ecs["descentO2"])
         self.assertIn("3000", ecs["descentO2"])
-        self.assertIn("cite both", ecs["descentO2"])
+        self.assertIn("teaching", ecs["descentO2"])
+        self.assertNotIn("cite both", ecs["descentO2"])
         self.assertEqual(agc_cm["rope"], "Comanche 055")
         self.assertEqual(agc_lm["rope"], "LMY99 rev 001")
         self.assertEqual(sic["fueled"], "5,022,674 lb")

@@ -2131,7 +2131,12 @@
             },
             {
               "name": "source",
-              "type": "PK and TN D-7143 \u2014 do not pick a winner",
+              "type": "PK, TN D-7143, LMA790 \u2014 three cites, no shall, do not pick a winner",
+              "multiplicity": "1"
+            },
+            {
+              "name": "sourceC",
+              "type": "LMA790 9,870 / 10:1\u20136,800 \u2014 Source C",
               "multiplicity": "1"
             },
             {
@@ -4678,7 +4683,7 @@
           "properties": [
             {
               "name": "descentO2",
-              "type": "~48 lb @ 2800 vs 3000 psi \u2014 cite both (TN D-6724)",
+              "type": "~48 lb @ 2800 psi teaching figure (less conservative / schematic). TN D-6724 also prints 3000 psi. No required pressure. Not an equal dual-cite.",
               "multiplicity": "1"
             },
             {
@@ -4794,7 +4799,7 @@
         "id": "Apollo.lmEcsRequirement",
         "name": "LM-5 ECS (sourced)",
         "req_id": "REQ-010",
-        "text": "LM-5: descent O2 ~48 lb @ 2800 vs 3000 psi (TN D-6724 \u2014 cite both);\nascent O2 ~2.4 lb \u00d72; descent water 332 lb; ascent water 42 lb \u00d72;\nLCG 1200 Btu/man-h steady.",
+        "text": "LM-5: descent O2 ~48 lb @ 2800 psi teaching figure (less conservative / schematic). TN D-6724 also prints 3000 psi. No required pressure. Not an equal dual-cite.\nascent O2 ~2.4 lb \u00d72; descent water 332 lb; ascent water 42 lb \u00d72;\nLCG 1200 Btu/man-h steady.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
@@ -5407,8 +5412,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.EngineConflict",
-        "name": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375);\nDPS 9,870 / 1,050\u20136,300 (PK) vs 10,500 and 10:1 (TN D-7143).",
-        "text": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375);\nDPS 9,870 / 1,050\u20136,300 (PK) vs 10,500 and 10:1 (TN D-7143)."
+        "name": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375).\nDPS three cites, no shall: PK 9,870 / 1,050\u20136,300; D-7143 10,500 / 10:1; LMA790 9,870 / 10:1\u20136,800 (Source C).",
+        "text": "Cite both: SPS 20,500 (PK) vs 21,500 vac (TN D-7375).\nDPS three cites, no shall: PK 9,870 / 1,050\u20136,300; D-7143 10,500 / 10:1; LMA790 9,870 / 10:1\u20136,800 (Source C)."
       },
       {
         "type": "comment",
@@ -5553,8 +5558,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.DescentO2Psi",
-        "name": "TN D-6724 conflicts 2800 vs 3000 psi on descent O2 \u2014 cite both.",
-        "text": "TN D-6724 conflicts 2800 vs 3000 psi on descent O2 \u2014 cite both."
+        "name": "Descent O2 teaching figure is 2,800 psi (less conservative / schematic). TN D-6724 also prints 3,000 psi. No required pressure. Not an equal dual-cite.",
+        "text": "Descent O2 teaching figure is 2,800 psi (less conservative / schematic). TN D-6724 also prints 3,000 psi. No required pressure. Not an equal dual-cite."
       },
       {
         "type": "value_property",

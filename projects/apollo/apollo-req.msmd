@@ -253,9 +253,9 @@
         "model_ref": "Apollo.lmEcsRequirement",
         "layout": {
           "x": 990,
-          "y": 460,
-          "width": 300,
-          "height": 160,
+          "y": 430,
+          "width": 310,
+          "height": 220,
           "z_index": 1
         },
         "style": {
