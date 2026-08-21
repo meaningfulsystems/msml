@@ -51,7 +51,7 @@ The technical shalls that implement those stakeholder expectations:
 | `Apollo.usbRfRequirement` (REQ-007) | USB Radio Frequency (RF) (sourced) | CSM **2106.40625** ↑ / **2287.5** Phase Modulation (PM) ↓ / **2272.5** Frequency Modulation (FM); LM **2101.802** ↑ / **2282.5**. Pulse-Code Modulation (PCM) 51.2 or 1.6 kbps. Uplink digital ~2 kbps. Pseudo-Random Noise (PRN) range 992 kbps, ±15 m, ~540,000 mi unambiguous. |
 | `Apollo.p27Requirement` (REQ-008) | P27 uplink verbs | P27 uplink verbs **only V70–V73** into Command Module Computer (CMC) / LM Guidance Computer (LGC). Separate from the Command, Communications, and Telemetry System (CCATS) command-load path. Path A is the CCATS load. Path B is P27. |
 | `Apollo.foodRequirement` (REQ-009) | Food plan (D-7720) | **D-7720 April 1967** plan baseline: **2800 kcal/man/day CM**, **3200 kcal/man/day LM**. Mass **2.26 lb/man/day** planned. 1967 plan, not A11 flown intake. A11 actual kcal still UNKNOWN. |
-| `Apollo.lmEcsRequirement` (REQ-010) | LM-5 ECS (sourced) | Descent O2 ~48 lb @ **2800 vs 3000 psi** (TN D-6724 — cite both); ascent O2 ~2.4 lb ×2; descent water 332 lb; ascent water 42 lb ×2; Liquid Cooling Garment (LCG) 1200 Btu/man-h steady. |
+| `Apollo.lmEcsRequirement` (REQ-010) | LM-5 ECS (sourced) | Descent O2 ~48 lb @ **2,800 psi** teaching figure (less conservative / schematic). TN D-6724 also prints **3,000 psi**. No required pressure. Ascent O2 ~2.4 lb ×2; descent water 332 lb; ascent water 42 lb ×2; Liquid Cooling Garment (LCG) 1200 Btu/man-h steady. |
 
 There is no formal use-case package on this MSML model the way the appliances have `Toaster.UC.*`. The stakeholder stories are recovered from the mission state machine (STM), abort STM, activity, and sequences: fly the mission, abort, land, recover.
 
@@ -129,7 +129,7 @@ A11 Press Kit p.109 tank loads and launch masses unless noted. **UNRECONCILED** 
 | APS thrust | 3,500 lbf, 1.5° cant, not gimbaled (TN D-7082) |
 | Portable Life Support System (PLSS) | 4 h / 1.04 lb O2 (CDR EVA 2:48, LMP 2:40) |
 
-Cite **both** SPS figures: 20,500 lbf (PK) vs 21,500 lbf vac (TN D-7375). Cite **both** DPS figures: 9,870 / 1,050–6,300 lbf (PK) vs 10,500 lbf and 10:1 (TN D-7143). Descent O2 **2800 vs 3000 psi** (TN D-6724 — cite both). USB and VHF stay as already on the model (section 2 and 3).
+SPS vacuum thrust is **minutiae**, not a required thrust: cite both Press Kit **20,500 lbf** and TN D-7375 **21,500 lbf vac**. DPS has **three** sourced figures and no shall — do not pick a winner: Press Kit **9,870 / 1,050–6,300** lbf; TN D-7143 **10,500** lbf and **10:1**; LMA790 **9,870 / 1,050–6,800** lbf. A simulation under `projects/apollo/simulations/` may estimate required DPS thrust; this note does not copy that estimate and does not invent a required-thrust number. Descent O2 teaching figure is **2,800 psi** (less conservative / schematic). TN D-6724 also prints **3,000 psi**. No required pressure — not an equal dual-cite. USB and VHF stay as already on the model (section 2 and 3).
 
 The ECLSS parametric view binds the sourced CM / LM-5 / A7L (Apollo A7L pressure suit) numbers and the D-7720 food plan. A11 actual kcal and entry blackout stay UNKNOWN.
 
@@ -171,7 +171,7 @@ Left unmarked on purpose. Do **not** invent:
 
 F-1 1,530,000 lbf stays the SA-507 per-engine citation. Do not promote it into an AS-506 requirement. AS-506 S-IC liftoff remains 7,653,854 lbf (PK p.109).
 
-Descent O2 tank pressure is cited both ways (2800 vs 3000 psi, TN D-6724). Tank loads stay **UNRECONCILED**, same flag as Δv. SPS 20,500 vs 21,500 vac and DPS PK vs TN D-7143 stay cited both ways, no silent winner.
+Descent O2 teaching figure is **2,800 psi** (less conservative / schematic). TN D-6724 also prints **3,000 psi**. No required pressure. Tank loads stay **UNRECONCILED**, same flag as Δv. SPS vacuum thrust is minutiae: 20,500 lbf (PK) and 21,500 lbf vac (TN D-7375) — no required thrust. DPS cites all three (PK 9,870 / 1,050–6,300; D-7143 10,500 / 10:1; LMA790 9,870 / 1,050–6,800) — no shall, no winner.
 
 ## Generated views
 
