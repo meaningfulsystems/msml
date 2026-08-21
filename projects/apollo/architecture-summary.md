@@ -1,7 +1,5 @@
 # Apollo 11 / Block II on vehicle AS-506
 
-Andrew Fried, Meaningful Systems — technical authority; AI team under his coaching.
-
 On 20 May 1969, Saturn V serial SA-506 rolled out of the Vehicle Assembly Building (VAB) at the National Aeronautics and Space Administration (NASA) Kennedy Space Center (KSC) toward Launch Complex 39A (LC-39A). Two months later that same stack lifted three men toward the Moon (NASA, 1969, May 20). Read the flown system the way a design class reads a system: who needed it, what it had to do, which parts did the work, and how the flight ran in time.
 
 The launch vehicle is Saturn V SA-506, built as first stage S-IC-6, second stage S-II-6, third stage S-IVB-6N, and Instrument Unit IU-6. The spacecraft-lunar module adapter is SLA-14. The command and service module is CSM-107. The lunar module is LM-5. Apollo 7, 8, 10, and 13 are notes, not separate projects (7 had no Lunar Module (LM); 8 and 10 did not land; 13 aborted). Namespace `Apollo`. File stem `apollo`. A few values, including an official Command/Service Module (CSM) lunar Δv table, stay unmarked on purpose.
