@@ -854,8 +854,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": -48,
+            "y": -18
           }
         }
       },
@@ -950,27 +950,27 @@
         "name": "throttle",
         "waypoints": [
           {
-            "x": 624,
+            "x": 690,
             "y": 140
           },
           {
-            "x": 624,
-            "y": 160
+            "x": 690,
+            "y": 156
           },
           {
-            "x": 540,
-            "y": 160
+            "x": 410,
+            "y": 156
           },
           {
-            "x": 540,
-            "y": 330
+            "x": 410,
+            "y": 258
           },
           {
-            "x": 454,
-            "y": 330
+            "x": 410,
+            "y": 259
           },
           {
-            "x": 454,
+            "x": 410,
             "y": 360
           }
         ],
@@ -982,8 +982,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 8,
+            "y": -10
           }
         }
       },
@@ -1018,8 +1018,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": -56,
+            "y": -18
           }
         }
       },
