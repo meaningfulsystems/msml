@@ -4,8 +4,8 @@ Copy this folder into your repository, then rename the system.
 
 ```bash
 mkdir -p architecture
-cp template/new-project/architecture/system-model.msml architecture/
-cp template/new-project/architecture/system-context.msmd architecture/
+cp templates/new-project/architecture/system-model.msml architecture/
+cp templates/new-project/architecture/system-context.msmd architecture/
 msml-spec --copy architecture/
 msml-validate architecture/system-context.msmd --strict
 msml-render architecture/system-context.msmd

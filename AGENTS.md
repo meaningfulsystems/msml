@@ -20,12 +20,24 @@ A first-time systems engineer picks **one** toolchain per project. Do not mix `.
 
 Run this loop. The four skill slugs are locked so they match SysML2d.
 
-1. **[bootstrap-project](skills/bootstrap-project/SKILL.md)** — copy `template/new-project/`, copy the spec, write the first model and one view, validate and render.
+1. **[bootstrap-project](skills/bootstrap-project/SKILL.md)** — copy `templates/new-project/`, copy the spec, write the first model and one view, validate and render.
 2. **[author-model](skills/author-model/SKILL.md)** — edit `.msml` (blocks, parts, ports, requirements, allocate, states, activities).
 3. **[compose-views](skills/compose-views/SKILL.md)** — write `.msmd` views. The shared slug is `compose-views`; MSML’s verb is **render** (`msml-render`, `msml-render-all`).
 4. **[vision-review](skills/vision-review/SKILL.md)** — inspect every PNG with vision before commit.
 
 Hard visual rule (Andrew, via SysML2d): **connections never pass over boxes.** Hop-overs are only for line-on-line crossings. IBD is the highest visual priority.
+
+Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specification.md](msml-specification.md).
+
+## ElectricBike locks
+
+`projects/e-bike/` is the Friday hero. Namespace `ElectricBike`. File stem `e-bike`. Do not remap ids.
+
+- Context is rider / charger / ElectricBike / road only.
+- IBD connectors never pass through boxes.
+- Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety.
+- Ride «include» Adjust Assist.
+- STM `resetFault` is Fault→Off. Off↔Standby is two readable paths.
 
 ## Checks
 

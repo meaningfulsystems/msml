@@ -7,7 +7,7 @@
     "type": "ibd",
     "id": "ibd-ebike-ctx",
     "subject_ref": "ElectricBike.RideContext",
-            "name": "Rider · Charger · Bike · Road",
+    "name": "Rider · Charger · Bike · Road",
     "context": "ElectricBike",
     "frame": {
       "visible": true,

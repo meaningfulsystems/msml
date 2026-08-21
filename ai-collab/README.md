@@ -9,6 +9,6 @@ The living agent path is:
 - [skills/author-model](../skills/author-model/SKILL.md)
 - [skills/compose-views](../skills/compose-views/SKILL.md)
 - [skills/vision-review](../skills/vision-review/SKILL.md)
-- [template/new-project](../template/new-project/)
+- [templates/new-project](../templates/new-project/)
 
 Do not add new agent instructions here. One skills story, not two.

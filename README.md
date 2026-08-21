@@ -86,7 +86,7 @@ The package name is `msml`. It is not published to PyPI yet. Package version `0.
 
 ## Start your own system
 
-Copy [template/new-project/](template/new-project/), then follow [AGENTS.md](AGENTS.md). Cursor and Claude use four skills with the same slugs as [SysML2d](https://github.com/meaningfulsystems/sysml2d):
+Copy [templates/new-project/](templates/new-project/), then follow [AGENTS.md](AGENTS.md). Cursor and Claude use four skills with the same slugs as [SysML2d](https://github.com/meaningfulsystems/sysml2d):
 
 1. [skills/bootstrap-project/SKILL.md](skills/bootstrap-project/SKILL.md) — copy the template, copy the spec, first model + one view, validate and render.
 2. [skills/author-model/SKILL.md](skills/author-model/SKILL.md) — write `.msml` (blocks, parts, ports, requirements, allocate, states, activities).
@@ -191,7 +191,7 @@ msml-render-all projects
 │   ├── author-model/SKILL.md
 │   ├── compose-views/SKILL.md
 │   └── vision-review/SKILL.md
-├── template/new-project/
+├── templates/new-project/
 ├── src/
 │   └── msml/
 ├── tests/

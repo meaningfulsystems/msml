@@ -996,4 +996,4 @@ Agent adoption uses the same four skill slugs as the sibling SysML v2 toolchain 
 - `skills/author-model/SKILL.md`
 - `skills/compose-views/SKILL.md`
 - `skills/vision-review/SKILL.md`
-- `template/new-project/` — copyable starter (`architecture/system-model.msml` and one context `.msmd`)
+- `templates/new-project/` — copyable starter (`architecture/system-model.msml` and one context `.msmd`)
