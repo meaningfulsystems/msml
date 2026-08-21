@@ -25,12 +25,12 @@
             },
             {
               "name": "rangeKm",
-              "type": "≥ 60 km Tour",
+              "type": "\u2265 60 km Tour",
               "multiplicity": "1"
             },
             {
               "name": "brakeLatency",
-              "type": "≤ 50 ms",
+              "type": "\u2264 50 ms",
               "multiplicity": "1"
             },
             {
@@ -72,7 +72,7 @@
             },
             {
               "name": "yieldMargin",
-              "type": "≥ 1.5",
+              "type": "\u2265 1.5",
               "multiplicity": "1"
             }
           ],
@@ -162,7 +162,7 @@
             },
             {
               "name": "wheelTorque",
-              "type": "40 N·m",
+              "type": "40 N\u00b7m",
               "multiplicity": "1"
             },
             {
@@ -220,7 +220,7 @@
           "properties": [
             {
               "name": "brakeLatency",
-              "type": "≤ 50 ms",
+              "type": "\u2264 50 ms",
               "multiplicity": "1"
             },
             {
@@ -485,12 +485,6 @@
         "owner_ref": "ElectricBike.HumanInterface"
       },
       {
-        "id": "ElectricBike.Port.chargeInputIn",
-        "type": "port",
-        "name": "chargeInputIn",
-        "owner_ref": "ElectricBike.BatteryPack"
-      },
-      {
         "id": "ElectricBike.Port.wheelLoadIn",
         "type": "port",
         "name": "wheelLoadIn",
@@ -699,7 +693,7 @@
       {
         "type": "requirement",
         "id": "ElectricBike.rangeRequirement",
-        "name": "Range (≥ 60 km Tour)",
+        "name": "Range (\u2265 60 km Tour)",
         "req_id": "REQ-002",
         "text": "Tour 60 km via usableWh 500 Wh / energyPerKm\n~8.3 Wh/km. Not Eco / PAS-1.",
         "kind": "performance",
@@ -731,7 +725,7 @@
         "id": "ElectricBike.brakeOverrideRequirement",
         "name": "Brake Override (50 ms)",
         "req_id": "REQ-005",
-        "text": "Motor inhibit shall assert within 50 ms of either\nbrake lever. Electronic order; ~10× tighter than EN 15194.",
+        "text": "Motor inhibit shall assert within 50 ms of either\nbrake lever. Electronic order; ~10\u00d7 tighter than EN 15194.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"
@@ -769,7 +763,7 @@
       {
         "id": "ElectricBike.PAR.energyBalance",
         "type": "constraint_property",
-        "name": "usableWh ≥ energyPerKm × 60 km Tour",
+        "name": "usableWh \u2265 energyPerKm \u00d7 60 km Tour",
         "expression": "packEnergy >= energyPerKm * 60",
         "parameters": [
           {
@@ -805,7 +799,7 @@
       {
         "id": "ElectricBike.PAR.assistPowerLimit",
         "type": "constraint_property",
-        "name": "P_assist = 0 if v ≥ 25 km/h",
+        "name": "P_assist = 0 if v \u2265 25 km/h",
         "expression": "assistPower = 0 if speed >= cutoffSpeed",
         "parameters": [
           {
@@ -821,7 +815,7 @@
       {
         "id": "ElectricBike.PAR.brakeLatencyLimit",
         "type": "constraint_property",
-        "name": "t_brake ≤ 50 ms",
+        "name": "t_brake \u2264 50 ms",
         "expression": "brakeLatency <= 50 ms",
         "parameters": [
           {
@@ -854,7 +848,7 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.rangeKm",
-        "name": "rangeKm: ≥ 60 km",
+        "name": "rangeKm: \u2265 60 km",
         "value_type": "Real",
         "unit": "km"
       },
@@ -868,7 +862,7 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.brakeLatency",
-        "name": "brakeLatency: ≤ 50 ms",
+        "name": "brakeLatency: \u2264 50 ms",
         "value_type": "Real",
         "unit": "ms"
       },
@@ -1026,8 +1020,8 @@
       {
         "type": "comment",
         "id": "ElectricBike.Note.IbdKey",
-        "name": "structure = mount (green)\nenergy = charge / pack power (gold)\ncontrol = assist / inhibit (purple / red)\nactuation = phase drive / road (blue)",
-        "text": "structure = mount (green)\nenergy = charge / pack power (gold)\ncontrol = assist / inhibit (purple / red)\nactuation = phase drive / road (blue)"
+        "name": "structure = mount (green)\nenergy = charge \u2192 bms \u2192 pack / pack power (gold)\ncontrol = assist / inhibit (purple / red)\nactuation = phase drive (blue)\nUL 2849: no parallel pack+BMS charge",
+        "text": "structure = mount (green)\nenergy = charge \u2192 bms \u2192 pack / pack power (gold)\ncontrol = assist / inhibit (purple / red)\nactuation = phase drive (blue)\nUL 2849: no parallel pack+BMS charge"
       },
       {
         "type": "block",
@@ -1072,7 +1066,7 @@
             },
             {
               "name": "throttle",
-              "type": "none — EPAC",
+              "type": "none \u2014 EPAC",
               "multiplicity": "1"
             }
           ],
@@ -1108,20 +1102,8 @@
       {
         "type": "comment",
         "id": "ElectricBike.Note.BrakeOrder",
-        "name": "≤50 ms is the electronic inhibit order.\nEN 15194 stopping distance is 5 m / 2 m (~10× looser).",
-        "text": "≤50 ms is the electronic inhibit order.\nEN 15194 stopping distance is 5 m / 2 m (~10× looser)."
-      },
-      {
-        "id": "ElectricBike.Port.batteryBmsOut",
-        "type": "port",
-        "name": "bmsOut",
-        "owner_ref": "ElectricBike.BatteryPack"
-      },
-      {
-        "id": "ElectricBike.Port.bmsIn",
-        "type": "port",
-        "name": "packIn",
-        "owner_ref": "ElectricBike.BMS"
+        "name": "\u226450 ms is the electronic inhibit order.\nEN 15194 stopping distance is 5 m / 2 m (~10\u00d7 looser).",
+        "text": "\u226450 ms is the electronic inhibit order.\nEN 15194 stopping distance is 5 m / 2 m (~10\u00d7 looser)."
       },
       {
         "type": "block",
@@ -1147,7 +1129,7 @@
       {
         "type": "requirement",
         "id": "ElectricBike.walkAssistRequirement",
-        "name": "Walk Assist (≤ 6 km/h)",
+        "name": "Walk Assist (\u2264 6 km/h)",
         "req_id": "REQ-011",
         "text": "EPAC walk assist shall not exceed 6 km/h.\nWalk assist is not a throttle.",
         "kind": "design_constraint",
@@ -1209,6 +1191,30 @@
         "type": "port",
         "name": "chargerIn",
         "owner_ref": "ElectricBike.BMS"
+      },
+      {
+        "id": "ElectricBike.Port.bmsPackOut",
+        "type": "port",
+        "name": "packOut",
+        "owner_ref": "ElectricBike.BMS"
+      },
+      {
+        "id": "ElectricBike.Port.packCellsIn",
+        "type": "port",
+        "name": "cellsIn",
+        "owner_ref": "ElectricBike.BatteryPack"
+      },
+      {
+        "type": "comment",
+        "id": "ElectricBike.Note.ChargeOffOnly",
+        "name": "EPAC choice: Charging from Off only.\nDo not add Standby \u2192 Charging.",
+        "text": "EPAC choice: Charging from Off only.\nDo not add Standby \u2192 Charging."
+      },
+      {
+        "type": "comment",
+        "id": "ElectricBike.Note.IbdCallout",
+        "name": "Tour 500 Wh \u00b7 25 km/h cutoff \u00b7 EN 15194\nDense values live on the parametric view.\nhubMotor keeps peakPower 250 W and wheelTorque 40 N\u00b7m.",
+        "text": "Tour 500 Wh \u00b7 25 km/h cutoff \u00b7 EN 15194\nDense values live on the parametric view.\nhubMotor keeps peakPower 250 W and wheelTorque 40 N\u00b7m."
       }
     ],
     "relationships": [
@@ -1391,25 +1397,11 @@
         "name": "brakesToController"
       },
       {
-        "id": "ibd-ebike.riderToInterface",
-        "type": "connector",
-        "source": "ElectricBike.Port.riderOut",
-        "target": "ElectricBike.Port.riderInputIn",
-        "name": "riderToInterface"
-      },
-      {
         "id": "ibd-ebike.chargerToBattery",
         "type": "connector",
-        "source": "ElectricBike.Port.chargerOut",
+        "source": "ElectricBike.Port.chargerIn",
         "target": "ElectricBike.Port.bmsChargeIn",
         "name": "chargerToBms"
-      },
-      {
-        "id": "ibd-ebike.roadToMotor",
-        "type": "connector",
-        "source": "ElectricBike.Port.wheelLoadIn",
-        "target": "ElectricBike.Port.roadOut",
-        "name": "roadToMotor"
       },
       {
         "id": "stm-ebike.t-init-off",
@@ -1963,9 +1955,9 @@
       {
         "id": "ibd-ebike.batteryToBms",
         "type": "connector",
-        "source": "ElectricBike.Port.batteryBmsOut",
-        "target": "ElectricBike.Port.bmsIn",
-        "name": "batteryToBms"
+        "source": "ElectricBike.Port.bmsPackOut",
+        "target": "ElectricBike.Port.packCellsIn",
+        "name": "bmsToPack"
       },
       {
         "id": "allocateSafetyToController",

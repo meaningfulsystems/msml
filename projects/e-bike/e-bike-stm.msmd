@@ -59,7 +59,7 @@
         "type": "state",
         "id": "state-charging",
         "model_ref": "ElectricBike.State.RideControl.charging",
-        "display_name": "Charging\nfrom Off only",
+        "display_name": "charging",
         "layout": {
           "x": 70,
           "y": 60,
@@ -159,7 +159,7 @@
         "type": "state",
         "id": "state-walk",
         "model_ref": "ElectricBike.State.RideControl.walk",
-        "display_name": "Walk ≤ 6 km/h",
+        "display_name": "Walk \u2264 6 km/h",
         "layout": {
           "x": 760,
           "y": 220,
@@ -203,6 +203,29 @@
             "color": "#1A1A2E"
           },
           "corner_radius": 8
+        }
+      },
+      {
+        "type": "comment",
+      "id": "note-charge-off",
+      "model_ref": "ElectricBike.Note.ChargeOffOnly",
+      "layout": {
+        "x": 20,
+        "y": 340,
+        "width": 240,
+        "height": 56,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
         }
       }
     ],
@@ -448,36 +471,32 @@
         "relationship_ref": "stm-ebike.powerOff",
         "waypoints": [
           {
-            "x": 480,
-            "y": 250
+            "x": 680,
+            "y": 270
           },
           {
-            "x": 40,
-            "y": 250
+            "x": 730,
+            "y": 270
           },
           {
-            "x": 40,
-            "y": 36
+            "x": 730,
+            "y": 96
           },
           {
-            "x": 520,
-            "y": 36
-          },
-          {
-            "x": 520,
-            "y": 60
+            "x": 680,
+            "y": 96
           }
         ],
         "style": {
           "line_color": "#333333",
           "line_width": 1.5,
-          "line_style": "dashed",
+          "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "open",
           "corner_radius": 8,
           "label_offset": {
-            "x": 10,
-            "y": -18
+            "x": 8,
+            "y": -16
           }
         },
         "type": "transition"

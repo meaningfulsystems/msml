@@ -98,9 +98,7 @@ REQUIRED_REL_IDS = (
     "ibd-ebike.controllerToMotor",
     "ibd-ebike.interfaceToController",
     "ibd-ebike.brakesToController",
-    "ibd-ebike.riderToInterface",
     "ibd-ebike.chargerToBattery",
-    "ibd-ebike.roadToMotor",
     "stm-ebike.powerOn",
     "stm-ebike.startAssist",
     "stm-ebike.stopAssist",
@@ -208,6 +206,14 @@ class EBikeExampleTests(unittest.TestCase):
         stm_text = (EBIKE / "e-bike-stm.msmd").read_text(encoding="utf-8")
         self.assertIn("from Off only", stm_text)
         self.assertNotIn("plugInStandby", stm_text)
+        charging_view = next(
+            el
+            for el in read_json_file(EBIKE / "e-bike-stm.msmd")["diagram"]["elements"]
+            if el.get("id") == "state-charging"
+        )
+        self.assertEqual(charging_view.get("display_name"), "charging")
+        self.assertEqual(rels["stm-ebike.powerOff"]["source"], "ElectricBike.State.RideControl.standby")
+        self.assertEqual(rels["stm-ebike.powerOff"]["target"], "ElectricBike.State.RideControl.off")
         self.assertEqual(defs["ElectricBike.State.RideControl.walk"]["name"], "walk")
         self.assertIn("6 km/h", defs["ElectricBike.State.RideControl.walk"].get("do", ""))
         self.assertEqual(rels["stm-ebike.startWalk"]["source"], "ElectricBike.State.RideControl.standby")
@@ -231,17 +237,23 @@ class EBikeExampleTests(unittest.TestCase):
             rel for rel in rels.values() if rel.get("id", "").startswith("ibd-ebike.") and rel.get("type") == "connector"
         ]
         for conn in ibd_connectors:
-            for end in ("source", "target"):
-                port = defs[conn[end]]
-                self.assertNotEqual(
-                    port.get("owner_ref"),
-                    "ElectricBike",
-                    f"{conn['id']} {end} parked on ElectricBike",
-                )
-        self.assertEqual(rels["ibd-ebike.riderToInterface"]["target"], "ElectricBike.Port.riderInputIn")
+            owners = {defs[conn[end]].get("owner_ref") for end in ("source", "target")}
+            if conn["id"] == "ibd-ebike.chargerToBattery":
+                self.assertEqual(owners, {"ElectricBike", "ElectricBike.BMS"})
+                continue
+            self.assertNotIn(
+                "ElectricBike",
+                owners,
+                f"{conn['id']} parked on ElectricBike",
+            )
+        self.assertNotIn("ibd-ebike.riderToInterface", rels)
+        self.assertNotIn("ibd-ebike.roadToMotor", rels)
+        self.assertEqual(rels["ibd-ebike.chargerToBattery"]["source"], "ElectricBike.Port.chargerIn")
         self.assertEqual(rels["ibd-ebike.chargerToBattery"]["target"], "ElectricBike.Port.bmsChargeIn")
         self.assertEqual(defs["ElectricBike.Port.bmsChargeIn"]["owner_ref"], "ElectricBike.BMS")
-        self.assertEqual(rels["ibd-ebike.roadToMotor"]["source"], "ElectricBike.Port.wheelLoadIn")
+        self.assertEqual(rels["ibd-ebike.batteryToBms"]["source"], "ElectricBike.Port.bmsPackOut")
+        self.assertEqual(rels["ibd-ebike.batteryToBms"]["target"], "ElectricBike.Port.packCellsIn")
+        self.assertNotIn("ElectricBike.Port.chargeInputIn", defs)
         self.assertEqual(rels["sd-ebike.m1"]["name"], "powerOn")
         self.assertEqual(rels["sd-ebike.m3"]["name"], "phase")
         self.assertEqual(rels["sd-ebike.m4"]["name"], "lever")
@@ -274,6 +286,8 @@ class EBikeExampleTests(unittest.TestCase):
         root_props = {p["name"]: p["type"] for p in defs["ElectricBike"]["compartments"]["properties"]}
         self.assertEqual(root_props["classification"], "EPAC / EN 15194")
         hub_props = {p["name"]: p["type"] for p in defs["ElectricBike.HubMotor"]["compartments"]["properties"]}
+        self.assertEqual(hub_props["peakPower"], "250 W")
+        self.assertEqual(hub_props["wheelTorque"], "40 N·m")
         self.assertEqual(hub_props["location"], "rear geared hub")
         self.assertEqual(hub_props["regen"], "none")
         self.assertIn("StVZO / ISO 6742", defs["ElectricBike.lightingRequirement"]["text"])
@@ -295,6 +309,12 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertIn("pack power", ibd_text)
         self.assertIn("phase drive", ibd_text)
         self.assertIn("wheelSpeedSensor", ibd_text)
+        self.assertNotIn("rider : Rider", ibd_text)
+        self.assertNotIn("charger : Charger", ibd_text)
+        self.assertNotIn("road : Road", ibd_text)
+        self.assertIn("ElectricBike.Port.chargerIn", ibd_text)
+        self.assertIn("250 W", ibd_text)
+        self.assertIn("40 N", ibd_text)
         self.assertIn("usableWh: 500 Wh Tour", defs["ElectricBike.PAR.packEnergy"]["name"])
         self.assertIn("usableWh", defs["ElectricBike.rangeRequirement"]["text"])
         self.assertIn("6 km/h", defs["ElectricBike.walkAssistRequirement"]["text"])
