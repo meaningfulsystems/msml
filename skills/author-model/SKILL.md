@@ -21,7 +21,7 @@ Read [msml-specification.md](../../msml-specification.md) before inventing field
 | Example | Why it exists |
 | --- | --- |
 | [projects/e-bike/e-bike-model.msml](../../projects/e-bike/e-bike-model.msml) | Publish hero. Frozen `ElectricBike::` names. |
-| [projects/apollo/apollo-model.msml](../../projects/apollo/apollo-model.msml) | Full system + subsystem. Apollo 11 / Block II, AS-506. Sourced vehicle/AGC/electrical/AGS/docking/RCS (SM/LM 100 lbf, CM 93 lbf). Mission STM keeps `dockEject` (CMP-owned, SM RCS, probe-drogue) and translunar → LOI (A11 PK times). UNKNOWN: official CSM lunar Δv, SPS loaded lb, AGS program name, loaded SM/CM RCS propellant. |
+| [projects/apollo/apollo-model.msml](../../projects/apollo/apollo-model.msml) | Full system + subsystem. Apollo 11 / Block II, AS-506. Sourced vehicle/AGC/electrical/AGS/docking/RCS (SM/LM 100 lbf, CM 93 lbf). Mission STM: TLI → dockEject → translunar → LOI (not translunar then dockEject). A11 TDE ~03:20–04:09, then translunar coast until LOI-1 75:54:28. UNKNOWN: official CSM lunar Δv, SPS loaded lb, AGS program name, loaded SM/CM RCS propellant. |
 | [projects/appliances/toaster/toaster-model.msml](../../projects/appliances/toaster/toaster-model.msml) | Coverage canary for all twelve views. |
 
 Copy *patterns* from those files. Do not remap ElectricBike ids.

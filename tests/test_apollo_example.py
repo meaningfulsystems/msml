@@ -162,8 +162,8 @@ REQUIRED_PHASES = (
     "Apollo.State.Mission.boost",
     "Apollo.State.Mission.earthOrbit",
     "Apollo.State.Mission.TLI",
-    "Apollo.State.Mission.translunar",
     "Apollo.State.Mission.dockEject",
+    "Apollo.State.Mission.translunar",
     "Apollo.State.Mission.LOI",
     "Apollo.State.Mission.undock",
     "Apollo.State.Mission.DOI",
@@ -246,19 +246,45 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertIn("04:09", defs["Apollo.State.Mission.dockEject"].get("entry", ""))
         self.assertIn("02:44:15", defs["Apollo.State.Mission.TLI"].get("do", ""))
         self.assertIn("75:54:28", defs["Apollo.State.Mission.LOI"].get("do", ""))
+        self.assertIn("long coast", defs["Apollo.State.Mission.translunar"].get("do", ""))
+        self.assertIn("LOI-1", defs["Apollo.State.Mission.translunar"].get("do", ""))
         rels = {item["id"]: item for item in model["relationships"]}
-        self.assertEqual(rels["stm-apollo.TLI-dockEject"]["source"], "Apollo.State.Mission.TLI")
-        self.assertEqual(rels["stm-apollo.TLI-dockEject"]["target"], "Apollo.State.Mission.dockEject")
-        self.assertEqual(rels["stm-apollo.dockEject-translunar"]["source"], "Apollo.State.Mission.dockEject")
-        self.assertEqual(rels["stm-apollo.dockEject-translunar"]["target"], "Apollo.State.Mission.translunar")
-        self.assertEqual(rels["stm-apollo.translunar-LOI"]["source"], "Apollo.State.Mission.translunar")
-        self.assertEqual(rels["stm-apollo.translunar-LOI"]["target"], "Apollo.State.Mission.LOI")
+        mission_edges = (
+            ("stm-apollo.countdown-boost", "Apollo.State.Mission.countdown", "Apollo.State.Mission.boost"),
+            ("stm-apollo.boost-earthOrbit", "Apollo.State.Mission.boost", "Apollo.State.Mission.earthOrbit"),
+            ("stm-apollo.earthOrbit-TLI", "Apollo.State.Mission.earthOrbit", "Apollo.State.Mission.TLI"),
+            ("stm-apollo.TLI-dockEject", "Apollo.State.Mission.TLI", "Apollo.State.Mission.dockEject"),
+            ("stm-apollo.dockEject-translunar", "Apollo.State.Mission.dockEject", "Apollo.State.Mission.translunar"),
+            ("stm-apollo.translunar-LOI", "Apollo.State.Mission.translunar", "Apollo.State.Mission.LOI"),
+            ("stm-apollo.LOI-undock", "Apollo.State.Mission.LOI", "Apollo.State.Mission.undock"),
+            ("stm-apollo.undock-DOI", "Apollo.State.Mission.undock", "Apollo.State.Mission.DOI"),
+            ("stm-apollo.DOI-descent", "Apollo.State.Mission.DOI", "Apollo.State.Mission.descent"),
+            ("stm-apollo.descent-surfaceEVA", "Apollo.State.Mission.descent", "Apollo.State.Mission.surfaceEVA"),
+            ("stm-apollo.surfaceEVA-ascent", "Apollo.State.Mission.surfaceEVA", "Apollo.State.Mission.ascent"),
+            ("stm-apollo.ascent-rendezvous", "Apollo.State.Mission.ascent", "Apollo.State.Mission.rendezvous"),
+            ("stm-apollo.rendezvous-TEI", "Apollo.State.Mission.rendezvous", "Apollo.State.Mission.TEI"),
+            ("stm-apollo.TEI-entry", "Apollo.State.Mission.TEI", "Apollo.State.Mission.entry"),
+            ("stm-apollo.entry-recovery", "Apollo.State.Mission.entry", "Apollo.State.Mission.recovery"),
+        )
+        for rid, source, target in mission_edges:
+            self.assertEqual(rels[rid]["source"], source, rid)
+            self.assertEqual(rels[rid]["target"], target, rid)
         self.assertNotIn("stm-apollo.dockEject-LOI", rels)
         self.assertNotIn("stm-apollo.TLI-translunar", rels)
+        self.assertNotIn("stm-apollo.translunar-dockEject", rels)
         self.assertEqual(rels["act-apollo.f4"]["target"], "Apollo.Action.dockEject")
         self.assertEqual(rels["act-apollo.f5a"]["source"], "Apollo.Action.dockEject")
+        self.assertEqual(rels["act-apollo.f5a"]["target"], "Apollo.Action.translunar")
         self.assertEqual(rels["act-apollo.f5b"]["source"], "Apollo.Action.translunar")
         self.assertEqual(rels["act-apollo.f5b"]["target"], "Apollo.Action.loi")
+        stm = read_json_file(APOLLO / "apollo-stm.msmd")["diagram"]
+        act = read_json_file(APOLLO / "apollo-act.msmd")["diagram"]
+        stm_x = {el["id"]: el["layout"]["x"] for el in stm["elements"] if el.get("id") in {"s-TLI", "s-dockEject", "s-translunar"}}
+        act_x = {el["id"]: el["layout"]["x"] for el in act["elements"] if el.get("id") in {"ma-tli", "ma-dockEject", "ma-translunar"}}
+        self.assertLess(stm_x["s-TLI"], stm_x["s-dockEject"])
+        self.assertLess(stm_x["s-dockEject"], stm_x["s-translunar"])
+        self.assertLess(act_x["ma-tli"], act_x["ma-dockEject"])
+        self.assertLess(act_x["ma-dockEject"], act_x["ma-translunar"])
         self.assertEqual(defs["Apollo.State.Abort.pad"]["name"], "pad/LES")
         self.assertEqual(defs["Apollo.State.Abort.P70"]["name"], "P70 DPS")
         self.assertEqual(defs["Apollo.State.Abort.P71"]["name"], "P71 APS")

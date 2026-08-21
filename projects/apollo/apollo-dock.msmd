@@ -121,9 +121,9 @@
         "model_ref": "Apollo.Note.Docking",
         "layout": {
           "x": 880,
-          "y": 80,
-          "width": 360,
-          "height": 110,
+          "y": 70,
+          "width": 380,
+          "height": 130,
           "z_index": 1
         },
         "style": {

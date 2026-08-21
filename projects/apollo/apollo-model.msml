@@ -2744,16 +2744,16 @@
       },
       {
         "type": "state",
-        "id": "Apollo.State.Mission.translunar",
-        "name": "translunar",
-        "do": "coast after extract; no skip to LOI"
-      },
-      {
-        "type": "state",
         "id": "Apollo.State.Mission.dockEject",
         "name": "dock/eject",
         "do": "CMP-owned; SM RCS; probe-drogue",
         "entry": "dock ~03:20 / extract ~04:09 GET"
+      },
+      {
+        "type": "state",
+        "id": "Apollo.State.Mission.translunar",
+        "name": "translunar",
+        "do": "long coast after extract until LOI-1"
       },
       {
         "type": "state",
@@ -3149,8 +3149,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Docking",
-        "name": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 PK: TLI 02:44:15 → dock ~03:20 → extract ~04:09 → LOI-1 75:54:28.\nDo not jump TLI→translunar or dockEject→LOI.",
-        "text": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 PK: TLI 02:44:15 → dock ~03:20 → extract ~04:09 → LOI-1 75:54:28.\nDo not jump TLI→translunar or dockEject→LOI."
+        "name": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 TDE ~03:20–04:09, then translunar coast until LOI-1 75:54:28.\nTLI → dockEject → translunar → LOI (not translunar then dockEject).",
+        "text": "TD&E is its own GO/NO-GO: CMP-owned, SM RCS, probe-drogue.\nA11 TDE ~03:20–04:09, then translunar coast until LOI-1 75:54:28.\nTLI → dockEject → translunar → LOI (not translunar then dockEject)."
       },
       {
         "id": "Apollo.Port.vehicleUsbOut",
@@ -5536,8 +5536,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.TdeTimes",
-        "name": "A11 PK: TLI 02:44:15 GET → dock ~03:20 → extract ~04:09 → translunar coast → LOI-1 75:54:28. CMP-owned, SM RCS, probe-drogue. Do not skip translunar → LOI.",
-        "text": "A11 PK: TLI 02:44:15 GET → dock ~03:20 → extract ~04:09 → translunar coast → LOI-1 75:54:28. CMP-owned, SM RCS, probe-drogue. Do not skip translunar → LOI."
+        "name": "A11 PK: TLI 02:44:15 GET → TDE ~03:20–04:09 → translunar coast until LOI-1 75:54:28. TLI → dockEject → translunar → LOI (not translunar then dockEject).",
+        "text": "A11 PK: TLI 02:44:15 GET → TDE ~03:20–04:09 → translunar coast until LOI-1 75:54:28. TLI → dockEject → translunar → LOI (not translunar then dockEject)."
       }
     ],
     "relationships": [

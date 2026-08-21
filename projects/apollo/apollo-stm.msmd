@@ -454,8 +454,8 @@
         "layout": {
           "x": 960,
           "y": 390,
-          "width": 420,
-          "height": 90,
+          "width": 460,
+          "height": 100,
           "z_index": 1
         },
         "style": {
