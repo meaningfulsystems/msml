@@ -58,7 +58,7 @@ REQUIRED_DEF_IDS = (
     "ElectricBike.batteryCutoffRequirement",
     "ElectricBike.displayRequirement",
     "ElectricBike.structuralRequirement",
-    "ElectricBike.stoppingDistanceRequirement",
+    "ElectricBike.motorAssistCutoffRequirement",
     "ElectricBike.lightingRequirement",
     "ElectricBike.PAR.energyBalance",
     "ElectricBike.PAR.rangeEstimate",
@@ -135,7 +135,7 @@ REQUIRED_REQ_IDS = {
     "ElectricBike.batteryCutoffRequirement": "REQ-006",
     "ElectricBike.displayRequirement": "REQ-007",
     "ElectricBike.structuralRequirement": "REQ-008",
-    "ElectricBike.stoppingDistanceRequirement": "REQ-009",
+    "ElectricBike.motorAssistCutoffRequirement": "REQ-009",
     "ElectricBike.lightingRequirement": "REQ-010",
     "ElectricBike.walkAssistRequirement": "REQ-011",
     "ElectricBike.continuousPowerRequirement": "REQ-012",
@@ -294,7 +294,28 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertEqual(hub_props["location"], "rear geared hub")
         self.assertEqual(hub_props["regen"], "none")
         self.assertIn("StVZO / ISO 6742", defs["ElectricBike.lightingRequirement"]["text"])
-        self.assertIn("5 m / 2 m", defs["ElectricBike.stoppingDistanceRequirement"]["text"])
+        cutoff = defs["ElectricBike.motorAssistCutoffRequirement"]
+        self.assertEqual(cutoff["name"], "motor-assist cut-off")
+        self.assertIn("4.2.13", cutoff["text"])
+        self.assertIn("Power management", cutoff["text"])
+        self.assertIn("2 m", cutoff["text"])
+        self.assertIn("5 m", cutoff["text"])
+        self.assertIn("NOT vehicle brake distance", cutoff["text"])
+        self.assertNotIn("Stopping Distance", cutoff["name"])
+        self.assertNotIn("10×", cutoff["text"])
+        self.assertNotIn("10x tighter", cutoff["text"])
+        self.assertNotIn("ElectricBike.stoppingDistanceRequirement", defs)
+        cutoff_targets = {
+            r["target"]
+            for r in rels.values()
+            if r.get("type") == "allocate" and r.get("source") == "ElectricBike.motorAssistCutoffRequirement"
+        }
+        self.assertIn("ElectricBike.MotorController", cutoff_targets)
+        self.assertIn("ElectricBike.cadenceSensor", cutoff_targets)
+        self.assertIn("ElectricBike.wheelSpeedSensor", cutoff_targets)
+        self.assertNotIn("ElectricBike.BrakeSystem", cutoff_targets)
+        self.assertIn("electronic inhibit budget", defs["ElectricBike.brakeOverrideRequirement"]["text"])
+        self.assertNotIn("10×", defs["ElectricBike.brakeOverrideRequirement"]["text"])
         self.assertNotIn("ECE R113", defs["ElectricBike.lightingRequirement"]["text"].replace("Not UN ECE R113", ""))
         act = (EBIKE / "e-bike-act.msmd").read_text(encoding="utf-8")
         self.assertIn("Pedal (EPAC)", act)

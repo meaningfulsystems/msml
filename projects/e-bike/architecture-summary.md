@@ -28,11 +28,11 @@ Requirements are **siblings** under the bike. Brake Override refines Ride Safety
 | `ElectricBike.rangeRequirement` | Range (≥ 60 km Tour) | Tour-scenario binding: `usableWh` **500 Wh** / `energyPerKm` **~8.3 Wh/km** for 60 km. Not Eco / PAS-1. **500 Wh is not a pack nameplate.** |
 | `ElectricBike.assistLimitRequirement` | Assist Limit (25 km/h) | EPAC / EN 15194: cadence-only assist, cut off at **25 km/h** (wheel speed). No throttle. |
 | `ElectricBike.chargeSafetyRequirement` | Charge Safety | Stop on over-temp, over-voltage, or charger disconnect. BMS inside the pack opens the contactor. |
-| `ElectricBike.brakeOverrideRequirement` | Brake Override (50 ms) | Motor inhibit within **50 ms** of either brake lever. Electronic order; ~10× tighter than EN 15194. |
+| `ElectricBike.brakeOverrideRequirement` | Brake Override (50 ms) | Motor inhibit within **50 ms** of either brake lever. **50 ms is an electronic inhibit budget.** Do not compare it to the EN 15194 distance test. |
 | `ElectricBike.batteryCutoffRequirement` | Battery Cutoff | BMS inside the pack opens the contactor before any cell exceeds its V/T limit. |
 | `ElectricBike.displayRequirement` | Display | Rider shall see speed, assist level, and remaining range hands-on-bars. |
 | `ElectricBike.structuralRequirement` | Structural | Frame shall carry rider, cargo, and battery loads without yielding. |
-| `ElectricBike.stoppingDistanceRequirement` | Stopping Distance (EN 15194) | EN 15194 stopping distance: **5 m / 2 m**. 50 ms inhibit is a separate electronic order. |
+| `ElectricBike.motorAssistCutoffRequirement` | motor-assist cut-off | EN 15194:**2017** **4.2.13 Power management**: motor-assist cut-off after pedaling stops is **2 m**, or **5 m** if brake-lever switches relax it. **Not vehicle brake distance.** Do not compare to the 50 ms inhibit budget. Do not allocate this shall to BrakeSystem. |
 | `ElectricBike.lightingRequirement` | Lighting (StVZO / ISO 6742) | Lighting shall meet StVZO / ISO 6742. Not UN ECE R113. |
 | `ElectricBike.walkAssistRequirement` | Walk Assist (≤ 6 km/h) | EPAC walk assist shall not exceed **6 km/h**. Walk assist is not a throttle. |
 | `ElectricBike.continuousPowerRequirement` | Continuous Power (250 W) | Continuous assist shall not exceed **250 W**. EN 15194 EPAC continuous rating. |
@@ -82,7 +82,7 @@ Brake cut and stop-assist return assist or walk to standby.
 | Battery Cutoff | `BatteryPack.bms` |
 | Display | HumanInterface |
 | Structural | Frame |
-| Stopping Distance (EN 15194) | BrakeSystem |
+| motor-assist cut-off | MotorController, `cadenceSensor`, `wheelSpeedSensor` (power management — not BrakeSystem) |
 | Lighting (StVZO / ISO 6742) | HumanInterface |
 | Walk Assist (≤ 6 km/h) | MotorController |
 | Continuous Power (250 W) | HubMotor |
@@ -98,8 +98,8 @@ Ride Safety is fail-silent across brakes + controller + cadence + BMS, not brake
 | Assist cutoff | 25 km/h | Wheel-speed cut; cadence PAS; no throttle. |
 | Walk assist | ≤ 6 km/h | On the walk-state do-behavior. |
 | Tour-scenario energy | 500 Wh | Binding on `usableWh` for the Tour range case. Not pack nameplate energy. |
-| Brake inhibit | ≤ 50 ms | Electronic order. |
-| Stopping distance | 5 m / 2 m | EN 15194; separate from 50 ms. |
+| Brake inhibit | ≤ 50 ms | Electronic inhibit **budget**. Not a distance test. |
+| Assist cut-off | 2 m / 5 m | EN 15194:2017 4.2.13 after pedaling stops. Lever switches relax 2 m → 5 m. Not vehicle brake distance. |
 | Lighting | StVZO / ISO 6742 | Not UN ECE R113. |
 | Frame yield margin | ≥ 1.5 | Aluminum frame. |
 

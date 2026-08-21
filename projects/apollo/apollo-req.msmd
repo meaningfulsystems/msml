@@ -6,7 +6,7 @@
   "diagram": {
     "type": "requirement",
     "id": "req-apollo",
-    "name": "Crew safety · landing · comms · ECLSS sourced · P27 · food UNKNOWN",
+    "name": "Crew safety (not LES-only) \u00b7 landing \u00b7 comms \u00b7 ECLSS \u00b7 P27 \u00b7 D-7720 food",
     "context": "Apollo",
     "frame": {
       "visible": true,

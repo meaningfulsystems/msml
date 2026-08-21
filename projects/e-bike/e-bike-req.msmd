@@ -6,7 +6,7 @@
   "diagram": {
     "type": "requirement",
     "id": "req-ebike",
-    "name": "Safety, Range, Charge — Tour 8.3 Wh/km, EPAC, EN 15194",
+    "name": "Safety, Range, Charge \u2014 Tour 8.3 Wh/km, EPAC, EN 15194 4.2.13 cut-off",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -227,12 +227,12 @@
       {
         "type": "requirement",
         "id": "req-stop",
-        "model_ref": "ElectricBike.stoppingDistanceRequirement",
+        "model_ref": "ElectricBike.motorAssistCutoffRequirement",
         "layout": {
           "x": 30,
           "y": 470,
           "width": 280,
-          "height": 145,
+          "height": 170,
           "z_index": 1
         },
         "style": {

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "ibd",
     "id": "ibd-apollo-csm",
-    "name": "CSM \u2014 AGC_CM \u00b7 IMU \u00b7 DSKY \u00b7 SCS \u00b7 SPS \u00b7 RCS \u00b7 ECLSS",
+    "name": "CSM \u2014 CM GNC \u00b7 SM owns SPS \u00b7 RCS \u00b7 ECLSS",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -191,9 +191,9 @@
         "display_name": "sm : SM",
         "layout": {
           "x": 620,
-          "y": 360,
-          "width": 230,
-          "height": 140,
+          "y": 340,
+          "width": 500,
+          "height": 190,
           "z_index": 1
         },
         "style": {
@@ -214,11 +214,11 @@
         "model_ref": "Apollo.SPS",
         "display_name": "sps : SPS",
         "layout": {
-          "x": 940,
-          "y": 380,
-          "width": 180,
-          "height": 110,
-          "z_index": 1
+          "x": 860,
+          "y": 365,
+          "width": 230,
+          "height": 130,
+          "z_index": 2
         },
         "style": {
           "fill_color": "#FFF3E0",
@@ -561,8 +561,8 @@
         "name": "sps",
         "owner_ref": "part-sm",
         "layout": {
-          "x": 844,
-          "y": 417,
+          "x": 850,
+          "y": 420,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -586,8 +586,8 @@
         "name": "thrust",
         "owner_ref": "part-sps",
         "layout": {
-          "x": 934,
-          "y": 423,
+          "x": 860,
+          "y": 420,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -661,8 +661,8 @@
         "name": "rf",
         "owner_ref": "part-sm",
         "layout": {
-          "x": 844,
-          "y": 382,
+          "x": 790,
+          "y": 334,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -953,12 +953,12 @@
         "name": "propellant",
         "waypoints": [
           {
-            "x": 850,
-            "y": 423
+            "x": 856,
+            "y": 426
           },
           {
-            "x": 940,
-            "y": 429
+            "x": 860,
+            "y": 426
           }
         ],
         "style": {
@@ -1009,15 +1009,11 @@
         "name": "RF",
         "waypoints": [
           {
-            "x": 850,
-            "y": 388
+            "x": 796,
+            "y": 340
           },
           {
-            "x": 890,
-            "y": 388
-          },
-          {
-            "x": 890,
+            "x": 796,
             "y": 249
           },
           {

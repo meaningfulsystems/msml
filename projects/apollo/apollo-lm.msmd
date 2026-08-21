@@ -6,7 +6,7 @@
   "diagram": {
     "type": "ibd",
     "id": "ibd-apollo-lm",
-    "name": "LM \u2014 PNGS \u00b7 AGC_LM \u00b7 AGS \u00b7 DPS \u00b7 APS \u00b7 radars",
+    "name": "LM \u2014 PNGS \u00b7 AGC_LM \u00b7 AGS \u00b7 descent + landing radar \u00b7 ascent + rendezvous radar \u00b7 DPS \u00b7 APS",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -47,9 +47,9 @@
         "display_name": "landingRadar : landingRadar",
         "layout": {
           "x": 40,
-          "y": 40,
+          "y": 220,
           "width": 200,
-          "height": 100,
+          "height": 110,
           "z_index": 1
         },
         "style": {
@@ -119,9 +119,9 @@
         "display_name": "rendezvousRadar : rendezvousRadar",
         "layout": {
           "x": 860,
-          "y": 40,
+          "y": 520,
           "width": 200,
-          "height": 100,
+          "height": 110,
           "z_index": 1
         },
         "style": {
@@ -286,9 +286,9 @@
         "model_ref": "Apollo.Note.Atypical",
         "layout": {
           "x": 860,
-          "y": 360,
+          "y": 200,
           "width": 300,
-          "height": 200,
+          "height": 150,
           "z_index": 1
         },
         "style": {
@@ -311,7 +311,7 @@
         "owner_ref": "part-lr",
         "layout": {
           "x": 234,
-          "y": 84,
+          "y": 264,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -411,7 +411,7 @@
         "owner_ref": "part-rr",
         "layout": {
           "x": 854,
-          "y": 84,
+          "y": 564,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -763,14 +763,10 @@
         "waypoints": [
           {
             "x": 240,
-            "y": 90
+            "y": 270
           },
           {
-            "x": 260,
-            "y": 90
-          },
-          {
-            "x": 260,
+            "x": 280,
             "y": 160
           },
           {
@@ -835,7 +831,15 @@
         "waypoints": [
           {
             "x": 860,
-            "y": 90
+            "y": 570
+          },
+          {
+            "x": 850,
+            "y": 570
+          },
+          {
+            "x": 850,
+            "y": 85
           },
           {
             "x": 800,

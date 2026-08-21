@@ -28,7 +28,7 @@ There is no stage-to-stage electrical power on Saturn, and no CSM–LM propellan
 
 | Id | Name | Text / numbers |
 | --- | --- | --- |
-| `Apollo.crewSafetyRequirement` (REQ-001) | Crew Safety | An abort path shall remain available from pad through TEI for the crew. |
+| `Apollo.crewSafetyRequirement` (REQ-001) | Crew Safety | An abort path shall remain available from pad through TEI for the crew. **Not LES-only.** |
 | `Apollo.landingRequirement` (REQ-002) | Landing | The LM shall land with remaining descent Δv margin at the site. (Margin is required; an official CSM lunar Δv table is **not** filled.) |
 | `Apollo.commsContinuityRequirement` (REQ-003) | Comms Continuity | USB / MSFN shall carry voice and telemetry except known lunar occultation. |
 | `Apollo.lesAbortRequirement` (REQ-004) | LES Abort | LES shall pull the CM clear of Saturn on a pad or Mode I abort. |
@@ -36,12 +36,16 @@ There is no stage-to-stage electrical power on Saturn, and no CSM–LM propellan
 | `Apollo.guidanceRequirement` (REQ-006) | Guidance | AGC_CM and AGC_LM shall provide GNC; AGS is the LM abort backup. |
 | `Apollo.usbRfRequirement` (REQ-007) | USB RF (sourced) | CSM **2106.40625** ↑ / **2287.5** PM ↓ / **2272.5** FM; LM **2101.802** ↑ / **2282.5**. PCM 51.2 or 1.6 kbps. Uplink digital ~2 kbps. PRN range 992 kbps, ±15 m, ~540,000 mi unambiguous. |
 | `Apollo.p27Requirement` (REQ-008) | P27 uplink verbs | P27 uplink verbs **only V70–V73** into CMC/LGC. Separate from the CCATS command-load path. |
-| `Apollo.foodRequirement` (REQ-009) | Food plan | Food **2.26 lb/man/day** planned; 2200±300 kcal/d plan. A11 actual kcal still UNKNOWN. |
+| `Apollo.foodRequirement` (REQ-009) | Food plan (D-7720) | **D-7720 April 1967** plan baseline: **2800 kcal/man/day CM**, **3200 kcal/man/day LM**. Mass **2.26 lb/man/day** planned. 1967 plan, not A11 flown intake. A11 actual kcal still UNKNOWN. |
 | `Apollo.lmEcsRequirement` (REQ-010) | LM-5 ECS (sourced) | Descent O2 ~48 lb @ **2800 vs 3000 psi** (TN D-6724 — cite both); ascent O2 ~2.4 lb ×2; descent water 332 lb; ascent water 42 lb ×2; LCG 1200 Btu/man-h steady. |
 
 ## 4. Structure and interfaces
 
-Pad stack: S-IC-6, S-II-6, S-IVB-6N, IU-6, SLA-14 (LM-5), SM, CM, LES.
+Pad stack: S-IC-6, S-II-6, S-IVB-6N, IU-6, SLA-14 (8 panels: 4 jettison / 4 stay; LM-5), SM (owns **SPS**), CM, LES.
+
+**SPS is on the SM, not the CM.** Composition is `Apollo.SM` → `Apollo.SPS`. The CSM IBD nests `sps` inside `sm`. Do not hang SPS on the command module.
+
+**Landing radar is on the LM descent stage** (three-beam, P63–P64), not ascent PNGS. Composition is `Apollo.Descent` → `Apollo.LandingRadar`. **Rendezvous radar is on the ascent stage.** Composition is `Apollo.Ascent` → `Apollo.RendezvousRadar`. PNGS stays on the LM; AGC_LM stays under PNGS. Do not park landing radar under PNGS on the ascent tree.
 
 Guidance computers stay separate:
 
@@ -66,7 +70,7 @@ countdown → boost → earthOrbit → TLI → dockEject → translunar → LOI 
 
 `dockEject` is its own state (CMP-owned, SM RCS, probe-drogue). Do not draw TLI → translunar or dockEject → LOI, and do not put translunar before dockEject.
 
-A11 GET on the model: TLI 02:44:15; TDE ~03:20–04:09; LOI-1 75:54:28; splash 195:18:35 MET / 13 nmi (Hornet / TF-130).
+GET: distinguish **planned** vs **flown**. Earth orbit **100 nmi is planned**. A11 **flown**: TLI 02:44:15 GET; TDE ~03:20–04:09 GET; LOI-1 75:54:28 GET; splash 195:18:35 MET / 13 nmi (Hornet / TF-130).
 
 Abort machine (parallel): pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS).
 
@@ -76,7 +80,7 @@ CMC P61–P67 is entry only. LGC P63–P68 is landing only (A11 flew P66 ROD). D
 
 | Requirement | Allocated to |
 | --- | --- |
-| Crew Safety | LES |
+| Crew Safety | LES (pad / Mode I only), SPS (SPS abort), DPS (P70), APS (P71), AGS (lunar abort backup), ECLSS, CM RCS |
 | Landing | Descent (DPS stage) |
 | Comms Continuity | USB, MSFN |
 | LES Abort | LES |
@@ -91,7 +95,7 @@ Design bindings that the structure already states (not extra req ids): boost/TLI
 
 ## 7. Sourced numbers
 
-A11 Press Kit p.109 tank loads and launch masses unless noted:
+A11 Press Kit p.109 tank loads and launch masses unless noted. **UNRECONCILED** — same flag as Δv. These are sourced stage loads, **not a closed mass budget**.
 
 | Item | Value |
 | --- | --- |

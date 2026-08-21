@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-apollo-csm",
-    "name": "CSM — Comanche 055 / Colossus 2A · SPS cite both thrusts",
+    "name": "CSM \u2014 Comanche 055 / Colossus 2A \u00b7 SPS on SM \u00b7 cite both thrusts",
     "context": "Apollo",
     "frame": {
       "visible": true,

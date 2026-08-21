@@ -197,7 +197,7 @@
       {
         "type": "requirement",
         "id": "row-8",
-        "model_ref": "ElectricBike.stoppingDistanceRequirement",
+        "model_ref": "ElectricBike.motorAssistCutoffRequirement",
         "layout": {
           "x": 20,
           "y": 502,

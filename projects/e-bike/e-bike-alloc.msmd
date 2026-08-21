@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 960,
-      "height": 720,
+      "height": 820,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -44,7 +44,7 @@
         "x": 20,
         "y": 20,
         "width": 920,
-        "height": 680
+        "height": 780
       },
       "header_height": 34,
       "row_height": 32,
@@ -146,7 +146,15 @@
       },
       {
         "id": "row-stop",
-        "relationship_ref": "alloc-ebike.alloc-stop-brakes"
+        "relationship_ref": "alloc-ebike.alloc-cutoff-controller"
+      },
+      {
+        "id": "row-stop-cadence",
+        "relationship_ref": "alloc-ebike.alloc-cutoff-cadence"
+      },
+      {
+        "id": "row-stop-wss",
+        "relationship_ref": "alloc-ebike.alloc-cutoff-wss"
       },
       {
         "id": "row-light",

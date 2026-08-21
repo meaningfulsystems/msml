@@ -480,6 +480,50 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertIn("2:31:37", defs["Apollo.Note.EvaTimes"]["text"])
         self.assertIn("2.26", defs["Apollo.Note.UnknownFood"]["text"])
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertIn("D-7720", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertIn("2800", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertIn("3200", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertNotIn("2200", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertNotIn("2200", defs["Apollo.foodRequirement"]["text"])
+        self.assertIn("D-7720", defs["Apollo.foodRequirement"]["text"])
+        self.assertIn("1967", defs["Apollo.foodRequirement"]["text"])
+        self.assertIn("not A11 flown", defs["Apollo.foodRequirement"]["text"])
+        sps_host = {p["name"]: p.get("type") for p in defs["Apollo.SPS"]["compartments"]["properties"]}
+        self.assertEqual(sps_host["host"], "SM")
+        self.assertEqual(rels["bdd-apollo.c-sm-sps"]["source"], "Apollo.SM")
+        self.assertEqual(rels["bdd-apollo.c-sm-sps"]["target"], "Apollo.SPS")
+        self.assertNotIn("bdd-apollo.c-cm-sps", rels)
+        lr = {p["name"]: p.get("type") for p in defs["Apollo.LandingRadar"]["compartments"]["properties"]}
+        self.assertIn("descent", lr["host"])
+        self.assertNotIn("PNGS", lr["host"].split("not")[0])
+        self.assertEqual(lr["beams"], "three-beam")
+        self.assertEqual(lr["usedIn"], "P63–P64")
+        self.assertEqual(rels["bdd-apollo.c-des-lr"]["source"], "Apollo.Descent")
+        self.assertEqual(rels["bdd-apollo.c-des-lr"]["target"], "Apollo.LandingRadar")
+        self.assertNotIn("bdd-apollo.c-lm-lr", rels)
+        self.assertNotIn("bdd-apollo.c-pngs-lr", rels)
+        rr = {p["name"]: p.get("type") for p in defs["Apollo.RendezvousRadar"]["compartments"]["properties"]}
+        self.assertIn("ascent", rr["host"])
+        self.assertEqual(rels["bdd-apollo.c-asc-rr"]["source"], "Apollo.Ascent")
+        self.assertEqual(rels["bdd-apollo.c-asc-rr"]["target"], "Apollo.RendezvousRadar")
+        sla = {p["name"]: p.get("type") for p in defs["Apollo.SLA"]["compartments"]["properties"]}
+        self.assertEqual(sla["panels"], "8 (4 jettison / 4 stay)")
+        iu = {p["name"]: p.get("type") for p in defs["Apollo.IU"]["compartments"]["properties"]}
+        self.assertIn("LVDC", iu["computers"])
+        self.assertIn("ST-124", iu["computers"])
+        self.assertIn("FCC", iu["computers"])
+        self.assertIn("UNRECONCILED", defs["Apollo.Note.TanksSourced"]["text"])
+        self.assertIn("not a closed mass budget", defs["Apollo.Note.TanksSourced"]["text"])
+        crew_targets = {
+            r["target"]
+            for r in rels.values()
+            if r.get("type") == "allocate" and r.get("source") == "Apollo.crewSafetyRequirement"
+        }
+        for needed in ("Apollo.LES", "Apollo.SPS", "Apollo.DPS", "Apollo.APS", "Apollo.ECLSS"):
+            self.assertIn(needed, crew_targets)
+        self.assertIn("Not LES-only", defs["Apollo.crewSafetyRequirement"]["text"])
+        self.assertIn("A11 flown", defs["Apollo.State.Mission.TLI"].get("do", ""))
+        self.assertEqual(defs["Apollo.State.Mission.earthOrbit"].get("do"), "100 nmi planned")
         ecs = {p["name"]: p["type"] for p in defs["Apollo.LM_ECS"]["compartments"]["properties"]}
         self.assertIn("2800", ecs["descentO2"])
         self.assertIn("3000", ecs["descentO2"])
