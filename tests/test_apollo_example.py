@@ -350,7 +350,7 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(sic["lox"], "3,307,855 lb")
         self.assertEqual(sic["rp1"], "1,426,069 lb")
         self.assertEqual(sic["liftoffThrust"], "7,653,854 lbf")
-        self.assertIn("A11 PK p.109", defs["Apollo.Note.TanksSourced"]["text"])
+        self.assertIn("A11 Press Kit p.109", defs["Apollo.Note.TanksSourced"]["text"])
         self.assertNotIn("Apollo.Note.UnknownTanks", defs)
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownDv"]["text"])
         self.assertIn("lunar", defs["Apollo.Note.UnknownDv"]["text"])
