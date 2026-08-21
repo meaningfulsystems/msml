@@ -32,6 +32,9 @@ REQUIRED_DEF_IDS = (
     "ElectricBike.HubMotor",
     "ElectricBike.HumanInterface",
     "ElectricBike.BrakeSystem",
+    "ElectricBike.BMS",
+    "ElectricBike.LockEcu",
+    "ElectricBike.CadenceSensor",
     "ElectricBike.Rider",
     "ElectricBike.Charger",
     "ElectricBike.Road",
@@ -50,6 +53,8 @@ REQUIRED_DEF_IDS = (
     "ElectricBike.batteryCutoffRequirement",
     "ElectricBike.displayRequirement",
     "ElectricBike.structuralRequirement",
+    "ElectricBike.stoppingDistanceRequirement",
+    "ElectricBike.lightingRequirement",
     "ElectricBike.PAR.energyBalance",
     "ElectricBike.PAR.rangeEstimate",
     "ElectricBike.PAR.assistPowerLimit",
@@ -72,6 +77,12 @@ REQUIRED_REL_IDS = (
     "allocateRangeToBattery",
     "allocateAssistToController",
     "allocateChargeToBms",
+    "allocateSafetyToController",
+    "allocateSafetyToBms",
+    "allocateSafetyToSensors",
+    "allocateLockToEcu",
+    "ibd-ebike.batteryToBms",
+    "ibd-ebike.frameToLock",
     "ibd-ebike.frameToBattery",
     "ibd-ebike.frameToMotor",
     "ibd-ebike.frameToInterface",
@@ -115,6 +126,8 @@ REQUIRED_REQ_IDS = {
     "ElectricBike.batteryCutoffRequirement": "REQ-006",
     "ElectricBike.displayRequirement": "REQ-007",
     "ElectricBike.structuralRequirement": "REQ-008",
+    "ElectricBike.stoppingDistanceRequirement": "REQ-009",
+    "ElectricBike.lightingRequirement": "REQ-010",
 }
 
 
@@ -158,6 +171,26 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertEqual(rels["req-ebike.d-override-safety"]["type"], "refine")
         self.assertNotIn("req-ebike.d-assist-range", rels)
         self.assertNotIn("req-ebike.d-display-range", rels)
+        self.assertEqual(rels["allocateChargeToBms"]["target"], "ElectricBike.BMS")
+        self.assertEqual(rels["allocateLockToEcu"]["target"], "ElectricBike.LockEcu")
+        self.assertEqual(rels["allocateSafetyToController"]["target"], "ElectricBike.MotorController")
+        self.assertEqual(rels["allocateSafetyToBms"]["target"], "ElectricBike.BMS")
+        self.assertEqual(rels["allocateSafetyToSensors"]["target"], "ElectricBike.CadenceSensor")
+        range_text = defs["ElectricBike.rangeRequirement"]["text"]
+        self.assertIn("Tour", range_text)
+        self.assertNotIn("PAS-1", range_text)
+        self.assertIn("8.3 Wh/km Tour", defs["ElectricBike.PAR.energyPerKm"]["name"])
+        root_props = {p["name"]: p["type"] for p in defs["ElectricBike"]["compartments"]["properties"]}
+        self.assertEqual(root_props["classification"], "EPAC / EN 15194")
+        hub_props = {p["name"]: p["type"] for p in defs["ElectricBike.HubMotor"]["compartments"]["properties"]}
+        self.assertEqual(hub_props["location"], "rear geared hub")
+        self.assertEqual(hub_props["regen"], "none")
+        self.assertIn("StVZO / ISO 6742", defs["ElectricBike.lightingRequirement"]["text"])
+        self.assertIn("5 m / 2 m", defs["ElectricBike.stoppingDistanceRequirement"]["text"])
+        self.assertNotIn("ECE R113", defs["ElectricBike.lightingRequirement"]["text"].replace("Not UN ECE R113", ""))
+        act = (EBIKE / "e-bike-act.msmd").read_text(encoding="utf-8")
+        self.assertIn("Pedal (cadence)", act)
+        self.assertNotIn("Pedal / Throttle", act)
 
     def test_views_validate_strict(self):
         report = validate_all(EBIKE, strict=True)

@@ -6,7 +6,7 @@
   "diagram": {
     "type": "requirement",
     "id": "req-ebike",
-    "name": "Safety, Range, Charge — 50 ms, 60 km, 25 km/h",
+    "name": "Safety, Range, Charge — Tour 8.3 Wh/km, EPAC, EN 15194",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1320,
-      "height": 500,
+      "height": 680,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -215,6 +215,52 @@
         "style": {
           "fill_color": "#E3F2FD",
           "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-stop",
+        "model_ref": "ElectricBike.stoppingDistanceRequirement",
+        "layout": {
+          "x": 30,
+          "y": 470,
+          "width": 280,
+          "height": 145,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-light",
+        "model_ref": "ElectricBike.lightingRequirement",
+        "layout": {
+          "x": 350,
+          "y": 470,
+          "width": 280,
+          "height": 145,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",

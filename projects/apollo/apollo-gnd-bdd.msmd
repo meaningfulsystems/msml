@@ -1,0 +1,2145 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "apollo-model.msml"
+  ],
+  "diagram": {
+    "type": "bdd",
+    "id": "bdd-apollo-gnd",
+    "name": "Ground — MCC-H / GSFC / MSFN / KSC LC-39 / Recovery",
+    "context": "Apollo",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1500,
+      "height": 920,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "block",
+        "id": "b-gseg",
+        "model_ref": "Apollo.GroundSegment",
+        "layout": {
+          "x": 700,
+          "y": 16,
+          "width": 260,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#DDEEFF",
+          "border_color": "#336699",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-mcch",
+        "model_ref": "Apollo.MCC_H",
+        "layout": {
+          "x": 40,
+          "y": 140,
+          "width": 300,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-gsfc",
+        "model_ref": "Apollo.GSFC",
+        "layout": {
+          "x": 380,
+          "y": 140,
+          "width": 220,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-msfn",
+        "model_ref": "Apollo.MSFN",
+        "layout": {
+          "x": 640,
+          "y": 140,
+          "width": 260,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-lc39",
+        "model_ref": "Apollo.LC39",
+        "layout": {
+          "x": 940,
+          "y": 140,
+          "width": 240,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-rec",
+        "model_ref": "Apollo.Recovery",
+        "layout": {
+          "x": 1220,
+          "y": 140,
+          "width": 220,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-mocr",
+        "model_ref": "Apollo.MOCR",
+        "layout": {
+          "x": 40,
+          "y": 300,
+          "width": 300,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ssr",
+        "model_ref": "Apollo.SSR",
+        "layout": {
+          "x": 40,
+          "y": 440,
+          "width": 140,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-rtcc",
+        "model_ref": "Apollo.RTCC",
+        "layout": {
+          "x": 200,
+          "y": 440,
+          "width": 200,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ccats",
+        "model_ref": "Apollo.CCATS",
+        "layout": {
+          "x": 40,
+          "y": 560,
+          "width": 160,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-disp",
+        "model_ref": "Apollo.DisplayControl",
+        "layout": {
+          "x": 220,
+          "y": 560,
+          "width": 180,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8E1",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ibm",
+        "model_ref": "Apollo.IBM360",
+        "layout": {
+          "x": 200,
+          "y": 660,
+          "width": 200,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-moc",
+        "model_ref": "Apollo.MOC_role",
+        "layout": {
+          "x": 40,
+          "y": 660,
+          "width": 140,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-dsc",
+        "model_ref": "Apollo.DSC_role",
+        "layout": {
+          "x": 420,
+          "y": 660,
+          "width": 140,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-nas",
+        "model_ref": "Apollo.NASCOM",
+        "layout": {
+          "x": 380,
+          "y": 300,
+          "width": 220,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-nttf",
+        "model_ref": "Apollo.NTTF",
+        "layout": {
+          "x": 380,
+          "y": 390,
+          "width": 220,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-nst",
+        "model_ref": "Apollo.NetworkSupportTeam",
+        "layout": {
+          "x": 380,
+          "y": 480,
+          "width": 220,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-g85",
+        "model_ref": "Apollo.Goldstone",
+        "layout": {
+          "x": 640,
+          "y": 300,
+          "width": 120,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-mad",
+        "model_ref": "Apollo.Madrid",
+        "layout": {
+          "x": 780,
+          "y": 300,
+          "width": 120,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-hon",
+        "model_ref": "Apollo.Honeysuckle",
+        "layout": {
+          "x": 640,
+          "y": 390,
+          "width": 260,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-g210",
+        "model_ref": "Apollo.Goldstone210",
+        "layout": {
+          "x": 640,
+          "y": 480,
+          "width": 126,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-par",
+        "model_ref": "Apollo.Parkes",
+        "layout": {
+          "x": 780,
+          "y": 480,
+          "width": 120,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-van",
+        "model_ref": "Apollo.AIS_Vanguard",
+        "layout": {
+          "x": 640,
+          "y": 570,
+          "width": 126,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-hun",
+        "model_ref": "Apollo.AIS_Huntsville",
+        "layout": {
+          "x": 780,
+          "y": 570,
+          "width": 126,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-red",
+        "model_ref": "Apollo.AIS_Redstone",
+        "layout": {
+          "x": 640,
+          "y": 650,
+          "width": 126,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ais4",
+        "model_ref": "Apollo.AIS_4th",
+        "layout": {
+          "x": 780,
+          "y": 650,
+          "width": 126,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-aria",
+        "model_ref": "Apollo.ARIA",
+        "layout": {
+          "x": 640,
+          "y": 730,
+          "width": 260,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-30",
+        "model_ref": "Apollo.MSFN_30ft",
+        "layout": {
+          "x": 640,
+          "y": 810,
+          "width": 260,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-fr1",
+        "model_ref": "Apollo.FiringRoom1",
+        "layout": {
+          "x": 940,
+          "y": 300,
+          "width": 240,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-rca1",
+        "model_ref": "Apollo.RCA110A_LCC",
+        "layout": {
+          "x": 940,
+          "y": 380,
+          "width": 115,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-rca2",
+        "model_ref": "Apollo.RCA110A_ML",
+        "layout": {
+          "x": 1065,
+          "y": 380,
+          "width": 115,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-ace",
+        "model_ref": "Apollo.ACE",
+        "layout": {
+          "x": 940,
+          "y": 460,
+          "width": 240,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-umb",
+        "model_ref": "Apollo.Umbilicals",
+        "layout": {
+          "x": 940,
+          "y": 540,
+          "width": 115,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-cryo",
+        "model_ref": "Apollo.PadCryo",
+        "layout": {
+          "x": 1065,
+          "y": 540,
+          "width": 115,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-rso",
+        "model_ref": "Apollo.RSO",
+        "layout": {
+          "x": 940,
+          "y": 620,
+          "width": 115,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-afet",
+        "model_ref": "Apollo.AFETR",
+        "layout": {
+          "x": 1065,
+          "y": 620,
+          "width": 115,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-tf",
+        "model_ref": "Apollo.TF130",
+        "layout": {
+          "x": 1220,
+          "y": 300,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-hor",
+        "model_ref": "Apollo.Hornet",
+        "layout": {
+          "x": 1220,
+          "y": 380,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-udt",
+        "model_ref": "Apollo.UDT",
+        "layout": {
+          "x": 1220,
+          "y": 460,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-hel",
+        "model_ref": "Apollo.Helos",
+        "layout": {
+          "x": 1220,
+          "y": 540,
+          "width": 220,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-rtcc",
+        "model_ref": "Apollo.Note.UnknownRtcc",
+        "layout": {
+          "x": 40,
+          "y": 750,
+          "width": 360,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-ais",
+        "model_ref": "Apollo.Note.UnknownAis",
+        "layout": {
+          "x": 40,
+          "y": 830,
+          "width": 360,
+          "height": 50,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-30",
+        "model_ref": "Apollo.Note.Ft30",
+        "layout": {
+          "x": 940,
+          "y": 730,
+          "width": 500,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-rso",
+        "model_ref": "Apollo.Note.RsoOutside",
+        "layout": {
+          "x": 1220,
+          "y": 620,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "c-mcch",
+        "relationship_ref": "bdd-apollo.c-gseg-mcch",
+        "waypoints": [
+          {
+            "x": 700,
+            "y": 86
+          },
+          {
+            "x": 700,
+            "y": 120
+          },
+          {
+            "x": 190,
+            "y": 120
+          },
+          {
+            "x": 190,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-gsfc",
+        "relationship_ref": "bdd-apollo.c-gseg-gsfc",
+        "waypoints": [
+          {
+            "x": 780,
+            "y": 86
+          },
+          {
+            "x": 780,
+            "y": 120
+          },
+          {
+            "x": 490,
+            "y": 120
+          },
+          {
+            "x": 490,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-msfn",
+        "relationship_ref": "bdd-apollo.c-gseg-msfn",
+        "waypoints": [
+          {
+            "x": 830,
+            "y": 86
+          },
+          {
+            "x": 830,
+            "y": 120
+          },
+          {
+            "x": 770,
+            "y": 120
+          },
+          {
+            "x": 770,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-lc39",
+        "relationship_ref": "bdd-apollo.c-gseg-lc39",
+        "waypoints": [
+          {
+            "x": 900,
+            "y": 86
+          },
+          {
+            "x": 900,
+            "y": 120
+          },
+          {
+            "x": 1060,
+            "y": 120
+          },
+          {
+            "x": 1060,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-rec",
+        "relationship_ref": "bdd-apollo.c-gseg-rec",
+        "waypoints": [
+          {
+            "x": 960,
+            "y": 86
+          },
+          {
+            "x": 960,
+            "y": 120
+          },
+          {
+            "x": 1330,
+            "y": 120
+          },
+          {
+            "x": 1330,
+            "y": 140
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-mocr",
+        "relationship_ref": "bdd-apollo.c-mcch-mocr",
+        "waypoints": [
+          {
+            "x": 190,
+            "y": 230
+          },
+          {
+            "x": 190,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-ssr",
+        "relationship_ref": "bdd-apollo.c-mcch-ssr",
+        "waypoints": [
+          {
+            "x": 80,
+            "y": 230
+          },
+          {
+            "x": 80,
+            "y": 270
+          },
+          {
+            "x": 80,
+            "y": 440
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-rtcc",
+        "relationship_ref": "bdd-apollo.c-mcch-rtcc",
+        "waypoints": [
+          {
+            "x": 280,
+            "y": 230
+          },
+          {
+            "x": 300,
+            "y": 230
+          },
+          {
+            "x": 300,
+            "y": 440
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-ccats",
+        "relationship_ref": "bdd-apollo.c-mcch-ccats",
+        "waypoints": [
+          {
+            "x": 70,
+            "y": 230
+          },
+          {
+            "x": 20,
+            "y": 230
+          },
+          {
+            "x": 20,
+            "y": 600
+          },
+          {
+            "x": 40,
+            "y": 600
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-disp",
+        "relationship_ref": "bdd-apollo.c-mcch-disp",
+        "waypoints": [
+          {
+            "x": 310,
+            "y": 230
+          },
+          {
+            "x": 360,
+            "y": 230
+          },
+          {
+            "x": 360,
+            "y": 600
+          },
+          {
+            "x": 310,
+            "y": 600
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-ibm",
+        "relationship_ref": "bdd-apollo.c-rtcc-ibm",
+        "waypoints": [
+          {
+            "x": 300,
+            "y": 530
+          },
+          {
+            "x": 300,
+            "y": 660
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-moc",
+        "relationship_ref": "bdd-apollo.c-rtcc-moc",
+        "waypoints": [
+          {
+            "x": 200,
+            "y": 530
+          },
+          {
+            "x": 110,
+            "y": 530
+          },
+          {
+            "x": 110,
+            "y": 660
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-dsc",
+        "relationship_ref": "bdd-apollo.c-rtcc-dsc",
+        "waypoints": [
+          {
+            "x": 400,
+            "y": 530
+          },
+          {
+            "x": 490,
+            "y": 530
+          },
+          {
+            "x": 490,
+            "y": 660
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-nas",
+        "relationship_ref": "bdd-apollo.c-gsfc-nas",
+        "waypoints": [
+          {
+            "x": 490,
+            "y": 230
+          },
+          {
+            "x": 490,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-nttf",
+        "relationship_ref": "bdd-apollo.c-gsfc-nttf",
+        "waypoints": [
+          {
+            "x": 420,
+            "y": 230
+          },
+          {
+            "x": 420,
+            "y": 270
+          },
+          {
+            "x": 420,
+            "y": 390
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-nst",
+        "relationship_ref": "bdd-apollo.c-gsfc-nst",
+        "waypoints": [
+          {
+            "x": 560,
+            "y": 230
+          },
+          {
+            "x": 560,
+            "y": 270
+          },
+          {
+            "x": 560,
+            "y": 480
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-g85",
+        "relationship_ref": "bdd-apollo.c-msfn-gold",
+        "waypoints": [
+          {
+            "x": 700,
+            "y": 230
+          },
+          {
+            "x": 700,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-mad",
+        "relationship_ref": "bdd-apollo.c-msfn-mad",
+        "waypoints": [
+          {
+            "x": 840,
+            "y": 230
+          },
+          {
+            "x": 840,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-hon",
+        "relationship_ref": "bdd-apollo.c-msfn-hon",
+        "waypoints": [
+          {
+            "x": 770,
+            "y": 230
+          },
+          {
+            "x": 770,
+            "y": 270
+          },
+          {
+            "x": 770,
+            "y": 390
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-g210",
+        "relationship_ref": "bdd-apollo.c-msfn-g210",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 230
+          },
+          {
+            "x": 620,
+            "y": 230
+          },
+          {
+            "x": 620,
+            "y": 515
+          },
+          {
+            "x": 640,
+            "y": 515
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-par",
+        "relationship_ref": "bdd-apollo.c-msfn-par",
+        "waypoints": [
+          {
+            "x": 860,
+            "y": 230
+          },
+          {
+            "x": 920,
+            "y": 230
+          },
+          {
+            "x": 920,
+            "y": 515
+          },
+          {
+            "x": 900,
+            "y": 515
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-van",
+        "relationship_ref": "bdd-apollo.c-msfn-van",
+        "waypoints": [
+          {
+            "x": 700,
+            "y": 230
+          },
+          {
+            "x": 600,
+            "y": 230
+          },
+          {
+            "x": 600,
+            "y": 600
+          },
+          {
+            "x": 640,
+            "y": 600
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-hun",
+        "relationship_ref": "bdd-apollo.c-msfn-hun",
+        "waypoints": [
+          {
+            "x": 840,
+            "y": 230
+          },
+          {
+            "x": 920,
+            "y": 230
+          },
+          {
+            "x": 920,
+            "y": 600
+          },
+          {
+            "x": 906,
+            "y": 600
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-red",
+        "relationship_ref": "bdd-apollo.c-msfn-red",
+        "waypoints": [
+          {
+            "x": 700,
+            "y": 230
+          },
+          {
+            "x": 600,
+            "y": 230
+          },
+          {
+            "x": 600,
+            "y": 680
+          },
+          {
+            "x": 640,
+            "y": 680
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-ais4",
+        "relationship_ref": "bdd-apollo.c-msfn-ais4",
+        "waypoints": [
+          {
+            "x": 840,
+            "y": 230
+          },
+          {
+            "x": 920,
+            "y": 230
+          },
+          {
+            "x": 920,
+            "y": 680
+          },
+          {
+            "x": 906,
+            "y": 680
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-aria",
+        "relationship_ref": "bdd-apollo.c-msfn-aria",
+        "waypoints": [
+          {
+            "x": 770,
+            "y": 230
+          },
+          {
+            "x": 770,
+            "y": 270
+          },
+          {
+            "x": 610,
+            "y": 270
+          },
+          {
+            "x": 610,
+            "y": 760
+          },
+          {
+            "x": 640,
+            "y": 760
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-30",
+        "relationship_ref": "bdd-apollo.c-msfn-30",
+        "waypoints": [
+          {
+            "x": 900,
+            "y": 185
+          },
+          {
+            "x": 920,
+            "y": 185
+          },
+          {
+            "x": 920,
+            "y": 845
+          },
+          {
+            "x": 900,
+            "y": 845
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-fr1",
+        "relationship_ref": "bdd-apollo.c-lc39-fr1",
+        "waypoints": [
+          {
+            "x": 1060,
+            "y": 230
+          },
+          {
+            "x": 1060,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-rca1",
+        "relationship_ref": "bdd-apollo.c-lc39-rca1",
+        "waypoints": [
+          {
+            "x": 980,
+            "y": 230
+          },
+          {
+            "x": 980,
+            "y": 270
+          },
+          {
+            "x": 980,
+            "y": 380
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-rca2",
+        "relationship_ref": "bdd-apollo.c-lc39-rca2",
+        "waypoints": [
+          {
+            "x": 1140,
+            "y": 230
+          },
+          {
+            "x": 1140,
+            "y": 270
+          },
+          {
+            "x": 1120,
+            "y": 270
+          },
+          {
+            "x": 1120,
+            "y": 380
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-ace",
+        "relationship_ref": "bdd-apollo.c-lc39-ace",
+        "waypoints": [
+          {
+            "x": 1060,
+            "y": 230
+          },
+          {
+            "x": 1200,
+            "y": 230
+          },
+          {
+            "x": 1200,
+            "y": 490
+          },
+          {
+            "x": 1180,
+            "y": 490
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-umb",
+        "relationship_ref": "bdd-apollo.c-lc39-umb",
+        "waypoints": [
+          {
+            "x": 980,
+            "y": 230
+          },
+          {
+            "x": 930,
+            "y": 230
+          },
+          {
+            "x": 930,
+            "y": 570
+          },
+          {
+            "x": 940,
+            "y": 570
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-cryo",
+        "relationship_ref": "bdd-apollo.c-lc39-cryo",
+        "waypoints": [
+          {
+            "x": 1140,
+            "y": 230
+          },
+          {
+            "x": 1190,
+            "y": 230
+          },
+          {
+            "x": 1190,
+            "y": 570
+          },
+          {
+            "x": 1180,
+            "y": 570
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-rso",
+        "relationship_ref": "bdd-apollo.c-gseg-rso",
+        "waypoints": [
+          {
+            "x": 700,
+            "y": 86
+          },
+          {
+            "x": 16,
+            "y": 86
+          },
+          {
+            "x": 16,
+            "y": 660
+          },
+          {
+            "x": 940,
+            "y": 660
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-afet",
+        "relationship_ref": "bdd-apollo.c-gseg-afet",
+        "waypoints": [
+          {
+            "x": 960,
+            "y": 86
+          },
+          {
+            "x": 1484,
+            "y": 86
+          },
+          {
+            "x": 1484,
+            "y": 660
+          },
+          {
+            "x": 1180,
+            "y": 660
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-tf",
+        "relationship_ref": "bdd-apollo.c-rec-tf",
+        "waypoints": [
+          {
+            "x": 1330,
+            "y": 230
+          },
+          {
+            "x": 1330,
+            "y": 300
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-hor",
+        "relationship_ref": "bdd-apollo.c-rec-hor",
+        "waypoints": [
+          {
+            "x": 1260,
+            "y": 230
+          },
+          {
+            "x": 1260,
+            "y": 270
+          },
+          {
+            "x": 1260,
+            "y": 380
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-udt",
+        "relationship_ref": "bdd-apollo.c-rec-udt",
+        "waypoints": [
+          {
+            "x": 1400,
+            "y": 230
+          },
+          {
+            "x": 1400,
+            "y": 270
+          },
+          {
+            "x": 1400,
+            "y": 460
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-hel",
+        "relationship_ref": "bdd-apollo.c-rec-hel",
+        "waypoints": [
+          {
+            "x": 1330,
+            "y": 230
+          },
+          {
+            "x": 1460,
+            "y": 230
+          },
+          {
+            "x": 1460,
+            "y": 570
+          },
+          {
+            "x": 1440,
+            "y": 570
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Meaningful Systems",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "apollo"
+      ]
+    }
+  }
+}

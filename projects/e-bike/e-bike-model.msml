@@ -25,12 +25,17 @@
             },
             {
               "name": "rangeKm",
-              "type": "\u2265 60 km",
+              "type": "≥ 60 km Tour",
               "multiplicity": "1"
             },
             {
               "name": "brakeLatency",
-              "type": "\u2264 50 ms",
+              "type": "≤ 50 ms",
+              "multiplicity": "1"
+            },
+            {
+              "name": "classification",
+              "type": "EPAC / EN 15194",
               "multiplicity": "1"
             }
           ],
@@ -67,7 +72,7 @@
             },
             {
               "name": "yieldMargin",
-              "type": "\u2265 1.5",
+              "type": "≥ 1.5",
               "multiplicity": "1"
             }
           ],
@@ -94,6 +99,11 @@
             {
               "name": "cellLimitT",
               "type": "Tmax",
+              "multiplicity": "1"
+            },
+            {
+              "name": "contains",
+              "type": "BMS",
               "multiplicity": "1"
             }
           ],
@@ -152,7 +162,17 @@
             },
             {
               "name": "wheelTorque",
-              "type": "40 N\u00b7m",
+              "type": "40 N·m",
+              "multiplicity": "1"
+            },
+            {
+              "name": "location",
+              "type": "rear geared hub",
+              "multiplicity": "1"
+            },
+            {
+              "name": "regen",
+              "type": "none",
               "multiplicity": "1"
             }
           ],
@@ -175,6 +195,16 @@
               "name": "display",
               "type": "speed / assist / range",
               "multiplicity": "1"
+            },
+            {
+              "name": "input",
+              "type": "cadence (no throttle)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "lighting",
+              "type": "StVZO / ISO 6742",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -189,7 +219,12 @@
           "properties": [
             {
               "name": "brakeLatency",
-              "type": "\u2264 50 ms",
+              "type": "≤ 50 ms",
+              "multiplicity": "1"
+            },
+            {
+              "name": "en15194Stop",
+              "type": "5 m / 2 m",
               "multiplicity": "1"
             }
           ],
@@ -566,7 +601,8 @@
       {
         "type": "action",
         "id": "ElectricBike.Action.pedalAndThrottle",
-        "name": "pedalAndThrottle"
+        "name": "pedalAndThrottle",
+        "display_name": "Pedal (cadence)"
       },
       {
         "type": "action",
@@ -652,7 +688,7 @@
         "id": "ElectricBike.rideSafetyRequirement",
         "name": "Ride Safety",
         "req_id": "REQ-001",
-        "text": "Brake input shall cut motor torque\nbefore the wheel keeps driving the rider.",
+        "text": "Motor shall fail silent: brake inhibit, controller,\ncadence sensor, and BMS. Not brakes-only.",
         "kind": "safety",
         "priority": "high",
         "status": "approved"
@@ -660,9 +696,9 @@
       {
         "type": "requirement",
         "id": "ElectricBike.rangeRequirement",
-        "name": "Range (\u2265 60 km)",
+        "name": "Range (≥ 60 km Tour)",
         "req_id": "REQ-002",
-        "text": "The bike shall provide \u2265 60 km PAS-1\nrange on a 500 Wh pack.",
+        "text": "≥ 60 km on a 500 Wh pack in Tour mode\n(~8.3 Wh/km). Not Eco / PAS-1.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"
@@ -672,7 +708,7 @@
         "id": "ElectricBike.assistLimitRequirement",
         "name": "Assist Limit (25 km/h)",
         "req_id": "REQ-003",
-        "text": "Assist shall cut off at 25 km/h\nfor the EU class being certified.",
+        "text": "EPAC / EN 15194: cadence-only assist,\ncut off at 25 km/h. No throttle.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
@@ -692,7 +728,7 @@
         "id": "ElectricBike.brakeOverrideRequirement",
         "name": "Brake Override (50 ms)",
         "req_id": "REQ-005",
-        "text": "Motor inhibit shall assert within\n50 ms of either brake lever.",
+        "text": "Motor inhibit shall assert within 50 ms of either\nbrake lever. Electronic order; ~10× tighter than EN 15194.",
         "kind": "performance",
         "priority": "high",
         "status": "approved"
@@ -730,7 +766,7 @@
       {
         "id": "ElectricBike.PAR.energyBalance",
         "type": "constraint_property",
-        "name": "E_pack \u2265 \u222b(P_rider + P_assist) dt",
+        "name": "E_pack ≥ ∫(P_rider + P_assist) dt",
         "expression": "packEnergy >= integral(riderPower + assistPower)",
         "parameters": [
           {
@@ -770,7 +806,7 @@
       {
         "id": "ElectricBike.PAR.assistPowerLimit",
         "type": "constraint_property",
-        "name": "P_assist = 0 if v \u2265 25 km/h",
+        "name": "P_assist = 0 if v ≥ 25 km/h",
         "expression": "assistPower = 0 if speed >= cutoffSpeed",
         "parameters": [
           {
@@ -786,7 +822,7 @@
       {
         "id": "ElectricBike.PAR.brakeLatencyLimit",
         "type": "constraint_property",
-        "name": "t_brake \u2264 50 ms",
+        "name": "t_brake ≤ 50 ms",
         "expression": "brakeLatency <= 50 ms",
         "parameters": [
           {
@@ -819,7 +855,7 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.rangeKm",
-        "name": "rangeKm: \u2265 60 km",
+        "name": "rangeKm: ≥ 60 km",
         "value_type": "Real",
         "unit": "km"
       },
@@ -833,14 +869,14 @@
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.brakeLatency",
-        "name": "brakeLatency: \u2264 50 ms",
+        "name": "brakeLatency: ≤ 50 ms",
         "value_type": "Real",
         "unit": "ms"
       },
       {
         "type": "value_property",
         "id": "ElectricBike.PAR.energyPerKm",
-        "name": "energyPerKm: Wh/km",
+        "name": "8.3 Wh/km Tour",
         "value_type": "Real",
         "unit": "Wh/km"
       },
@@ -993,6 +1029,120 @@
         "id": "ElectricBike.Note.IbdKey",
         "name": "structure = mount (green)\nenergy = charge / pack power (gold)\ncontrol = assist / inhibit (purple / red)\nactuation = phase drive / road (blue)",
         "text": "structure = mount (green)\nenergy = charge / pack power (gold)\ncontrol = assist / inhibit (purple / red)\nactuation = phase drive / road (blue)"
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.BMS",
+        "name": "BMS",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "pack protection",
+              "multiplicity": "1"
+            },
+            {
+              "name": "contactor",
+              "type": "open on V/T limit",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.LockEcu",
+        "name": "LockEcu",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "frame lock",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.CadenceSensor",
+        "name": "CadenceSensor",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "pedal cadence",
+              "multiplicity": "1"
+            },
+            {
+              "name": "throttle",
+              "type": "none — EPAC",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.stoppingDistanceRequirement",
+        "name": "Stopping Distance (EN 15194)",
+        "req_id": "REQ-009",
+        "text": "EN 15194 stopping distance: 5 m / 2 m.\n50 ms inhibit is a separate electronic order.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.lightingRequirement",
+        "name": "Lighting (StVZO / ISO 6742)",
+        "req_id": "REQ-010",
+        "text": "Lighting shall meet StVZO / ISO 6742.\nNot UN ECE R113.",
+        "kind": "design_constraint",
+        "priority": "medium",
+        "status": "approved"
+      },
+      {
+        "type": "comment",
+        "id": "ElectricBike.Note.TourRange",
+        "name": "Range 500 Wh / 60 km is Tour-mode (~8.3 Wh/km),\nnot Eco / PAS-1.",
+        "text": "Range 500 Wh / 60 km is Tour-mode (~8.3 Wh/km),\nnot Eco / PAS-1."
+      },
+      {
+        "type": "comment",
+        "id": "ElectricBike.Note.BrakeOrder",
+        "name": "≤50 ms is the electronic inhibit order.\nEN 15194 stopping distance is 5 m / 2 m (~10× looser).",
+        "text": "≤50 ms is the electronic inhibit order.\nEN 15194 stopping distance is 5 m / 2 m (~10× looser)."
+      },
+      {
+        "id": "ElectricBike.Port.batteryBmsOut",
+        "type": "port",
+        "name": "bmsOut",
+        "owner_ref": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "ElectricBike.Port.bmsIn",
+        "type": "port",
+        "name": "packIn",
+        "owner_ref": "ElectricBike.BMS"
+      },
+      {
+        "id": "ElectricBike.Port.frameLockMountOut",
+        "type": "port",
+        "name": "frameLockMountOut",
+        "owner_ref": "ElectricBike.Frame"
+      },
+      {
+        "id": "ElectricBike.Port.lockMountIn",
+        "type": "port",
+        "name": "lockMountIn",
+        "owner_ref": "ElectricBike.LockEcu"
       }
     ],
     "relationships": [
@@ -1574,7 +1724,7 @@
         "kind": "functional",
         "name": "allocateChargeToBms",
         "source": "ElectricBike.chargeSafetyRequirement",
-        "target": "ElectricBike.BatteryPack"
+        "target": "ElectricBike.BMS"
       },
       {
         "id": "alloc-ebike.alloc-override-brakes",
@@ -1590,7 +1740,7 @@
         "kind": "functional",
         "name": "allocation",
         "source": "ElectricBike.batteryCutoffRequirement",
-        "target": "ElectricBike.BatteryPack"
+        "target": "ElectricBike.BMS"
       },
       {
         "id": "alloc-ebike.alloc-display-hmi",
@@ -1661,13 +1811,13 @@
       {
         "id": "sat-ebike.4",
         "type": "satisfy",
-        "source": "ElectricBike.BatteryPack",
+        "source": "ElectricBike.BMS",
         "target": "ElectricBike.chargeSafetyRequirement"
       },
       {
         "id": "sat-ebike.5",
         "type": "satisfy",
-        "source": "ElectricBike.BatteryPack",
+        "source": "ElectricBike.BMS",
         "target": "ElectricBike.batteryCutoffRequirement"
       },
       {
@@ -1711,6 +1861,116 @@
         "type": "verify",
         "source": "ElectricBike.verifyAssistLimit",
         "target": "ElectricBike.assistLimitRequirement"
+      },
+      {
+        "id": "bdd-ebike.c-pack-bms",
+        "type": "composition",
+        "source": "ElectricBike.BatteryPack",
+        "target": "ElectricBike.BMS",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-bike-lock",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.LockEcu",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-hmi-cadence",
+        "type": "composition",
+        "source": "ElectricBike.HumanInterface",
+        "target": "ElectricBike.CadenceSensor",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "ibd-ebike.batteryToBms",
+        "type": "connector",
+        "source": "ElectricBike.Port.batteryBmsOut",
+        "target": "ElectricBike.Port.bmsIn",
+        "name": "batteryToBms"
+      },
+      {
+        "id": "ibd-ebike.frameToLock",
+        "type": "connector",
+        "source": "ElectricBike.Port.frameLockMountOut",
+        "target": "ElectricBike.Port.lockMountIn",
+        "name": "frameToLock"
+      },
+      {
+        "id": "allocateSafetyToController",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateSafetyToController",
+        "source": "ElectricBike.rideSafetyRequirement",
+        "target": "ElectricBike.MotorController"
+      },
+      {
+        "id": "allocateSafetyToBms",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateSafetyToBms",
+        "source": "ElectricBike.rideSafetyRequirement",
+        "target": "ElectricBike.BMS"
+      },
+      {
+        "id": "allocateSafetyToSensors",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateSafetyToSensors",
+        "source": "ElectricBike.rideSafetyRequirement",
+        "target": "ElectricBike.CadenceSensor"
+      },
+      {
+        "id": "allocateLockToEcu",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateLockToEcu",
+        "source": "ElectricBike.UC.lockBikeUseCase",
+        "target": "ElectricBike.LockEcu"
+      },
+      {
+        "id": "alloc-ebike.alloc-stop-brakes",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocation",
+        "source": "ElectricBike.stoppingDistanceRequirement",
+        "target": "ElectricBike.BrakeSystem"
+      },
+      {
+        "id": "alloc-ebike.alloc-light-hmi",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.lightingRequirement",
+        "target": "ElectricBike.HumanInterface"
+      },
+      {
+        "id": "sat-ebike.9",
+        "type": "satisfy",
+        "source": "ElectricBike.MotorController",
+        "target": "ElectricBike.rideSafetyRequirement"
+      },
+      {
+        "id": "sat-ebike.10",
+        "type": "satisfy",
+        "source": "ElectricBike.BMS",
+        "target": "ElectricBike.rideSafetyRequirement"
+      },
+      {
+        "id": "sat-ebike.11",
+        "type": "satisfy",
+        "source": "ElectricBike.CadenceSensor",
+        "target": "ElectricBike.rideSafetyRequirement"
+      },
+      {
+        "id": "sat-ebike.12",
+        "type": "satisfy",
+        "source": "ElectricBike.LockEcu",
+        "target": "ElectricBike.UC.lockBikeUseCase"
       }
     ],
     "metadata": {
@@ -1720,8 +1980,8 @@
       "tags": [
         "e-bike",
         "model",
-        "eu-class",
-        "pas"
+        "epac",
+        "en-15194"
       ]
     }
   }

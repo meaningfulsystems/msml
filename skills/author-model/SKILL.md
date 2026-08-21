@@ -52,7 +52,7 @@ Definition ids are stable strings. Prefer `Namespace.Name` (e.g. `ElectricBike.B
 
 **Ports and connectors.** Ports are definitions with `type: "port"` and `owner_ref` on the owning block. Connectors (`type: "connector"`) join two ports. Keep energy, control, and structure on **distinct** connectors. Do not merge command and charge onto one inbound line.
 
-**Requirements.** Keep them **siblings** under the system unless the user asks for a real refine. Ids in the e-bike are frozen: `rideSafetyRequirement`, `rangeRequirement`, `assistLimitRequirement`, `chargeSafetyRequirement`, `brakeOverrideRequirement`, `batteryCutoffRequirement`, `displayRequirement`, `structuralRequirement`. Display and Structural are not children of Range or Assist Limit. Brake Override may refine Ride Safety.
+**Requirements.** Keep them **siblings** under the system unless the user asks for a real refine. Ids in the e-bike are frozen: `rideSafetyRequirement`, `rangeRequirement`, `assistLimitRequirement`, `chargeSafetyRequirement`, `brakeOverrideRequirement`, `batteryCutoffRequirement`, `displayRequirement`, `structuralRequirement`, plus siblings `stoppingDistanceRequirement` (EN 15194 5 m / 2 m) and `lightingRequirement` (StVZO / ISO 6742). Display and Structural are not children of Range or Assist Limit. Brake Override may refine Ride Safety. Range 500 Wh / 60 km is Tour-mode (~8.3 Wh/km), not Eco / PAS-1. `allocateChargeToBms` targets the BMS part inside BatteryPack.
 
 **Allocate.** `type: "allocate"` maps a requirement or action onto a block (`kind`: `functional`, `behavioral`, or `structural`). Tables and the matrix are views of the same relationships.
 

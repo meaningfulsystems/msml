@@ -6,7 +6,7 @@
   "diagram": {
     "type": "parametric",
     "id": "par-ebike",
-    "name": "Energy, Range, and Brake Limits",
+    "name": "Energy, Range, and Brake Limits — Tour 8.3 Wh/km",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1040,
-      "height": 540,
+      "height": 640,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -267,6 +267,52 @@
           "border_width": 2,
           "font": {
             "size": 11,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-tour",
+        "model_ref": "ElectricBike.Note.TourRange",
+        "layout": {
+          "x": 540,
+          "y": 260,
+          "width": 460,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "note-brake",
+        "model_ref": "ElectricBike.Note.BrakeOrder",
+        "layout": {
+          "x": 540,
+          "y": 500,
+          "width": 460,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
             "color": "#000000"
           }
         }

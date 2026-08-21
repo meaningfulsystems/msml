@@ -1,14 +1,13 @@
 {
   "msml_version": "1.0",
   "model_files": [
-    "e-bike-model.msml"
+    "apollo-model.msml"
   ],
   "diagram": {
     "type": "ibd",
-    "id": "ibd-ebike",
-    "subject_ref": "ElectricBike",
-    "name": "Internal Structure — EPAC, rear hub, BMS in pack",
-    "context": "ElectricBike",
+    "id": "ibd-apollo-crew",
+    "name": "Crew IBD — CDR / CMP / LMP each A7L · bio · comm; PLSS+OPS on CDR/LMP EVA only",
+    "context": "Apollo",
     "frame": {
       "visible": true,
       "style": {
@@ -31,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1540,
-      "height": 820,
+      "width": 1320,
+      "height": 760,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -43,14 +42,13 @@
     "elements": [
       {
         "type": "part",
-        "id": "part-rider",
-        "model_ref": "ElectricBike.Rider",
-        "role_name": "rider",
-        "display_name": "rider : Rider",
+        "id": "cdr",
+        "model_ref": "Apollo.CDR",
+        "display_name": "cdr : CDR",
         "layout": {
           "x": 30,
-          "y": 70,
-          "width": 180,
+          "y": 40,
+          "width": 160,
           "height": 100,
           "z_index": 1
         },
@@ -68,40 +66,14 @@
       },
       {
         "type": "part",
-        "id": "part-hmi",
-        "model_ref": "ElectricBike.HumanInterface",
-        "role_name": "humanInterface",
-        "display_name": "humanInterface : HumanInterface",
+        "id": "cdr-a7l",
+        "model_ref": "Apollo.A7L",
+        "display_name": "a7l : A7L  3.75±0.25 psid",
         "layout": {
-          "x": 280,
-          "y": 50,
-          "width": 250,
-          "height": 120,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#F3E5F5",
-          "border_color": "#6A1B9A",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "part",
-        "id": "part-frame",
-        "model_ref": "ElectricBike.Frame",
-        "role_name": "frame",
-        "display_name": "frame : Frame",
-        "layout": {
-          "x": 640,
-          "y": 50,
-          "width": 280,
-          "height": 130,
+          "x": 230,
+          "y": 40,
+          "width": 200,
+          "height": 100,
           "z_index": 1
         },
         "style": {
@@ -118,115 +90,14 @@
       },
       {
         "type": "part",
-        "id": "part-brakes",
-        "model_ref": "ElectricBike.BrakeSystem",
-        "role_name": "brakeSystem",
-        "display_name": "brakeSystem : BrakeSystem",
+        "id": "cdr-bio",
+        "model_ref": "Apollo.BioSensor",
+        "display_name": "bio : bio",
         "layout": {
-          "x": 1040,
-          "y": 50,
-          "width": 250,
-          "height": 120,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEBEE",
-          "border_color": "#C62828",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "part",
-        "id": "part-charger",
-        "model_ref": "ElectricBike.Charger",
-        "role_name": "charger",
-        "display_name": "charger : Charger",
-        "layout": {
-          "x": 30,
-          "y": 440,
-          "width": 180,
+          "x": 470,
+          "y": 40,
+          "width": 150,
           "height": 100,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF8E1",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "part",
-        "id": "part-battery",
-        "model_ref": "ElectricBike.BatteryPack",
-        "role_name": "batteryPack",
-        "display_name": "batteryPack : BatteryPack",
-        "layout": {
-          "x": 260,
-          "y": 410,
-          "width": 270,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF8DC",
-          "border_color": "#8B6914",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "part",
-        "id": "part-controller",
-        "model_ref": "ElectricBike.MotorController",
-        "role_name": "motorController",
-        "display_name": "motorController : MotorController",
-        "layout": {
-          "x": 620,
-          "y": 410,
-          "width": 310,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFEDE0",
-          "border_color": "#CC4400",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "part",
-        "id": "part-motor",
-        "model_ref": "ElectricBike.HubMotor",
-        "role_name": "hubMotor",
-        "display_name": "hubMotor : HubMotor",
-        "layout": {
-          "x": 1020,
-          "y": 410,
-          "width": 270,
-          "height": 150,
           "z_index": 1
         },
         "style": {
@@ -243,14 +114,109 @@
       },
       {
         "type": "part",
-        "id": "part-road",
-        "model_ref": "ElectricBike.Road",
-        "role_name": "road",
-        "display_name": "road : Road",
+        "id": "cdr-comm",
+        "model_ref": "Apollo.CrewComm",
+        "display_name": "comm : comm",
         "layout": {
-          "x": 1350,
-          "y": 440,
+          "x": 660,
+          "y": 40,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-plss",
+        "model_ref": "Apollo.PLSS",
+        "display_name": "plss : PLSS  1.04 lb / 4 h",
+        "layout": {
+          "x": 850,
+          "y": 40,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cdr-ops",
+        "model_ref": "Apollo.OPS",
+        "display_name": "ops : OPS  EVA only",
+        "layout": {
+          "x": 1110,
+          "y": 40,
+          "width": 170,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cmp",
+        "model_ref": "Apollo.CMP",
+        "display_name": "cmp : CMP",
+        "layout": {
+          "x": 30,
+          "y": 260,
           "width": 160,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "cmp-a7l",
+        "model_ref": "Apollo.A7L",
+        "display_name": "a7l : A7L",
+        "layout": {
+          "x": 230,
+          "y": 260,
+          "width": 200,
           "height": 100,
           "z_index": 1
         },
@@ -267,550 +233,48 @@
         }
       },
       {
-        "type": "port",
-        "id": "p-rider-cmd",
-        "model_ref": "ElectricBike.Port.riderOut",
-        "name": "cmd",
-        "owner_ref": "part-rider",
+        "type": "part",
+        "id": "cmp-bio",
+        "model_ref": "Apollo.BioSensor",
+        "display_name": "bio : bio",
         "layout": {
-          "x": 204,
-          "y": 114,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
+          "x": 470,
+          "y": 260,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
         },
         "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#6A1B9A",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-hmi-rider",
-        "model_ref": "ElectricBike.Port.riderInputIn",
-        "name": "rider",
-        "owner_ref": "part-hmi",
-        "layout": {
-          "x": 274,
-          "y": 80,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#6A1B9A",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-hmi-mnt",
-        "model_ref": "ElectricBike.Port.interfaceMountIn",
-        "name": "mount",
-        "owner_ref": "part-hmi",
-        "layout": {
-          "x": 400,
-          "y": 44,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-hmi-cmd",
-        "model_ref": "ElectricBike.Port.interfaceCommandOut",
-        "name": "cmd",
-        "owner_ref": "part-hmi",
-        "layout": {
-          "x": 354,
-          "y": 164,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#6A1B9A",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-frm-hmi",
-        "model_ref": "ElectricBike.Port.frameInterfaceMountOut",
-        "name": "mount",
-        "owner_ref": "part-frame",
-        "layout": {
-          "x": 680,
-          "y": 44,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-frm-mtr",
-        "model_ref": "ElectricBike.Port.frameMotorMountOut",
-        "name": "mount",
-        "owner_ref": "part-frame",
-        "layout": {
-          "x": 860,
-          "y": 44,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-frm-brk",
-        "model_ref": "ElectricBike.Port.frameBrakeMountOut",
-        "name": "mount",
-        "owner_ref": "part-frame",
-        "layout": {
-          "x": 914,
-          "y": 100,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-frm-bat",
-        "model_ref": "ElectricBike.Port.frameBatteryMountOut",
-        "name": "mount",
-        "owner_ref": "part-frame",
-        "layout": {
-          "x": 700,
-          "y": 174,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-brk-mnt",
-        "model_ref": "ElectricBike.Port.brakeMountIn",
-        "name": "mount",
-        "owner_ref": "part-brakes",
-        "layout": {
-          "x": 1034,
-          "y": 100,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-brk-inh",
-        "model_ref": "ElectricBike.Port.brakeInhibitOut",
-        "name": "inh",
-        "owner_ref": "part-brakes",
-        "layout": {
-          "x": 1160,
-          "y": 164,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#C62828",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-chg",
-        "model_ref": "ElectricBike.Port.chargerOut",
-        "name": "charge",
-        "owner_ref": "part-charger",
-        "layout": {
-          "x": 204,
-          "y": 484,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#F9A825",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-bat-chg",
-        "model_ref": "ElectricBike.Port.chargeInputIn",
-        "name": "chg",
-        "owner_ref": "part-battery",
-        "layout": {
-          "x": 254,
-          "y": 480,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#F9A825",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-bat-mnt",
-        "model_ref": "ElectricBike.Port.batteryMountIn",
-        "name": "mount",
-        "owner_ref": "part-battery",
-        "layout": {
-          "x": 334,
-          "y": 404,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-bat-pwr",
-        "model_ref": "ElectricBike.Port.batteryPowerOut",
-        "name": "pwr",
-        "owner_ref": "part-battery",
-        "layout": {
-          "x": 524,
-          "y": 480,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#B8860B",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-ctl-cmd",
-        "model_ref": "ElectricBike.Port.controllerCommandIn",
-        "name": "cmd",
-        "owner_ref": "part-controller",
-        "layout": {
-          "x": 680,
-          "y": 404,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#6A1B9A",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-ctl-inh",
-        "model_ref": "ElectricBike.Port.controllerInhibitIn",
-        "name": "inh",
-        "owner_ref": "part-controller",
-        "layout": {
-          "x": 860,
-          "y": 404,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#C62828",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-ctl-pwr",
-        "model_ref": "ElectricBike.Port.controllerPowerIn",
-        "name": "pwr",
-        "owner_ref": "part-controller",
-        "layout": {
-          "x": 614,
-          "y": 480,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#B8860B",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-ctl-drv",
-        "model_ref": "ElectricBike.Port.controllerDriveOut",
-        "name": "drv",
-        "owner_ref": "part-controller",
-        "layout": {
-          "x": 924,
-          "y": 480,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
+          "fill_color": "#E3F2FD",
           "border_color": "#1565C0",
-          "border_width": 1,
+          "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 9,
+            "size": 11,
             "bold": false,
             "color": "#000000"
           }
         }
       },
       {
-        "type": "port",
-        "id": "p-mtr-mnt",
-        "model_ref": "ElectricBike.Port.motorMountIn",
-        "name": "mount",
-        "owner_ref": "part-motor",
+        "type": "part",
+        "id": "cmp-comm",
+        "model_ref": "Apollo.CrewComm",
+        "display_name": "comm : comm",
         "layout": {
-          "x": 1200,
-          "y": 404,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
+          "x": 660,
+          "y": 260,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
         },
         "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-mtr-drv",
-        "model_ref": "ElectricBike.Port.motorDriveIn",
-        "name": "drv",
-        "owner_ref": "part-motor",
-        "layout": {
-          "x": 1014,
-          "y": 480,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#1565C0",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-mtr-road",
-        "model_ref": "ElectricBike.Port.wheelLoadIn",
-        "name": "road",
-        "owner_ref": "part-motor",
-        "layout": {
-          "x": 1284,
-          "y": 480,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#1565C0",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-road",
-        "model_ref": "ElectricBike.Port.roadOut",
-        "name": "load",
-        "owner_ref": "part-road",
-        "layout": {
-          "x": 1344,
-          "y": 484,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#2E7D32",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
+            "size": 11,
             "bold": false,
             "color": "#000000"
           }
@@ -818,19 +282,19 @@
       },
       {
         "type": "comment",
-        "id": "note-key",
-        "model_ref": "ElectricBike.Note.IbdKey",
+        "id": "n-cmp",
+        "model_ref": "Apollo.Note.Public",
         "layout": {
-          "x": 30,
-          "y": 700,
-          "width": 500,
+          "x": 850,
+          "y": 260,
+          "width": 430,
           "height": 100,
           "z_index": 1
         },
         "style": {
           "fill_color": "#FFFDE7",
           "border_color": "#8B8000",
-          "border_width": 1,
+          "border_width": 2,
           "font": {
             "family": "Arial",
             "size": 10,
@@ -841,20 +305,19 @@
       },
       {
         "type": "part",
-        "id": "part-bms",
-        "model_ref": "ElectricBike.BMS",
-        "role_name": "bms",
-        "display_name": "bms : BMS",
+        "id": "lmp",
+        "model_ref": "Apollo.LMP",
+        "display_name": "lmp : LMP",
         "layout": {
-          "x": 260,
-          "y": 590,
-          "width": 270,
-          "height": 80,
+          "x": 30,
+          "y": 480,
+          "width": 160,
+          "height": 100,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF8DC",
-          "border_color": "#8B6914",
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -866,15 +329,14 @@
       },
       {
         "type": "part",
-        "id": "part-lock",
-        "model_ref": "ElectricBike.LockEcu",
-        "role_name": "lockEcu",
-        "display_name": "lockEcu : LockEcu",
+        "id": "lmp-a7l",
+        "model_ref": "Apollo.A7L",
+        "display_name": "a7l : A7L  EV 19.69 kg",
         "layout": {
-          "x": 1310,
-          "y": 200,
-          "width": 170,
-          "height": 90,
+          "x": 230,
+          "y": 480,
+          "width": 200,
+          "height": 100,
           "z_index": 1
         },
         "style": {
@@ -890,25 +352,119 @@
         }
       },
       {
-        "type": "port",
-        "id": "p-bat-bms",
-        "model_ref": "ElectricBike.Port.batteryBmsOut",
-        "name": "bms",
-        "owner_ref": "part-battery",
+        "type": "part",
+        "id": "lmp-bio",
+        "model_ref": "Apollo.BioSensor",
+        "display_name": "bio : bio",
         "layout": {
-          "x": 388,
-          "y": 564,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
+          "x": 470,
+          "y": 480,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
         },
         "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#8B6914",
-          "border_width": 1,
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 9,
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-comm",
+        "model_ref": "Apollo.CrewComm",
+        "display_name": "comm : comm",
+        "layout": {
+          "x": 660,
+          "y": 480,
+          "width": 150,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-plss",
+        "model_ref": "Apollo.PLSS",
+        "display_name": "plss : PLSS  EVA only",
+        "layout": {
+          "x": 850,
+          "y": 480,
+          "width": 220,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "part",
+        "id": "lmp-ops",
+        "model_ref": "Apollo.OPS",
+        "display_name": "ops : OPS  EVA only",
+        "layout": {
+          "x": 1110,
+          "y": 480,
+          "width": 170,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E0F7FA",
+          "border_color": "#00838F",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-food",
+        "model_ref": "Apollo.Note.UnknownFood",
+        "layout": {
+          "x": 30,
+          "y": 620,
+          "width": 520,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF9C4",
+          "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
             "bold": false,
             "color": "#000000"
           }
@@ -916,38 +472,13 @@
       },
       {
         "type": "port",
-        "id": "p-bms-in",
-        "model_ref": "ElectricBike.Port.bmsIn",
-        "name": "pack",
-        "owner_ref": "part-bms",
+        "id": "p-cdr-a",
+        "model_ref": "Apollo.Port.cdrA7lOut",
+        "name": "suit",
+        "owner_ref": "cdr",
         "layout": {
-          "x": 388,
-          "y": 584,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#8B6914",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 9,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "port",
-        "id": "p-frm-lock",
-        "model_ref": "ElectricBike.Port.frameLockMountOut",
-        "name": "lock",
-        "owner_ref": "part-frame",
-        "layout": {
-          "x": 908,
-          "y": 174,
+          "x": 184,
+          "y": 70,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -966,13 +497,13 @@
       },
       {
         "type": "port",
-        "id": "p-lock-mnt",
-        "model_ref": "ElectricBike.Port.lockMountIn",
-        "name": "mount",
-        "owner_ref": "part-lock",
+        "id": "p-a7c",
+        "model_ref": "Apollo.Port.a7lCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-a7l",
         "layout": {
-          "x": 1304,
-          "y": 240,
+          "x": 224,
+          "y": 70,
           "width": 12,
           "height": 12,
           "z_index": 2
@@ -980,6 +511,606 @@
         "style": {
           "fill_color": "#FFFFFF",
           "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-b",
+        "model_ref": "Apollo.Port.cdrBioOut",
+        "name": "bio",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 184,
+          "y": 100,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bc",
+        "model_ref": "Apollo.Port.bioCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-bio",
+        "layout": {
+          "x": 464,
+          "y": 80,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-c",
+        "model_ref": "Apollo.Port.cdrCommOut",
+        "name": "rf",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 100,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cc",
+        "model_ref": "Apollo.Port.commCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-comm",
+        "layout": {
+          "x": 726,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-p",
+        "model_ref": "Apollo.Port.cdrPlssOut",
+        "name": "eva",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 40,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-pc",
+        "model_ref": "Apollo.Port.plssCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-plss",
+        "layout": {
+          "x": 952,
+          "y": 134,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cdr-o",
+        "model_ref": "Apollo.Port.cdrOpsOut",
+        "name": "ops",
+        "owner_ref": "cdr",
+        "layout": {
+          "x": 70,
+          "y": 34,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-oc",
+        "model_ref": "Apollo.Port.opsCdrIn",
+        "name": "in",
+        "owner_ref": "cdr-ops",
+        "layout": {
+          "x": 1190,
+          "y": 34,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cmp-a",
+        "model_ref": "Apollo.Port.cmpA7lOut",
+        "name": "suit",
+        "owner_ref": "cmp",
+        "layout": {
+          "x": 184,
+          "y": 290,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-a7m",
+        "model_ref": "Apollo.Port.a7lCmpIn",
+        "name": "in",
+        "owner_ref": "cmp-a7l",
+        "layout": {
+          "x": 224,
+          "y": 290,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cmp-b",
+        "model_ref": "Apollo.Port.cmpBioOut",
+        "name": "bio",
+        "owner_ref": "cmp",
+        "layout": {
+          "x": 184,
+          "y": 320,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bm",
+        "model_ref": "Apollo.Port.bioCmpIn",
+        "name": "in",
+        "owner_ref": "cmp-bio",
+        "layout": {
+          "x": 464,
+          "y": 300,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cmp-c",
+        "model_ref": "Apollo.Port.cmpCommOut",
+        "name": "rf",
+        "owner_ref": "cmp",
+        "layout": {
+          "x": 100,
+          "y": 354,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cm",
+        "model_ref": "Apollo.Port.commCmpIn",
+        "name": "in",
+        "owner_ref": "cmp-comm",
+        "layout": {
+          "x": 726,
+          "y": 354,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-a",
+        "model_ref": "Apollo.Port.lmpA7lOut",
+        "name": "suit",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 184,
+          "y": 510,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-a7l",
+        "model_ref": "Apollo.Port.a7lLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-a7l",
+        "layout": {
+          "x": 224,
+          "y": 510,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#2E7D32",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-b",
+        "model_ref": "Apollo.Port.lmpBioOut",
+        "name": "bio",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 184,
+          "y": 540,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-bl",
+        "model_ref": "Apollo.Port.bioLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-bio",
+        "layout": {
+          "x": 464,
+          "y": 520,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#1565C0",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-c",
+        "model_ref": "Apollo.Port.lmpCommOut",
+        "name": "rf",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 100,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-cl",
+        "model_ref": "Apollo.Port.commLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-comm",
+        "layout": {
+          "x": 726,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#E65100",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-p",
+        "model_ref": "Apollo.Port.lmpPlssOut",
+        "name": "eva",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 40,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-pl",
+        "model_ref": "Apollo.Port.plssLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-plss",
+        "layout": {
+          "x": 952,
+          "y": 574,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-lmp-o",
+        "model_ref": "Apollo.Port.lmpOpsOut",
+        "name": "ops",
+        "owner_ref": "lmp",
+        "layout": {
+          "x": 70,
+          "y": 474,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
+          "border_width": 1,
+          "font": {
+            "family": "Arial",
+            "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "port",
+        "id": "p-ol",
+        "model_ref": "Apollo.Port.opsLmpIn",
+        "name": "in",
+        "owner_ref": "lmp-ops",
+        "layout": {
+          "x": 1190,
+          "y": 474,
+          "width": 12,
+          "height": 12,
+          "z_index": 2
+        },
+        "style": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#00838F",
           "border_width": 1,
           "font": {
             "family": "Arial",
@@ -992,430 +1123,474 @@
     ],
     "relationships": [
       {
-        "id": "riderToInterface",
+        "id": "cdrA7l",
         "type": "connector",
-        "relationship_ref": "ibd-ebike.riderToInterface",
-        "name": "command",
+        "relationship_ref": "crew-apollo.cdrA7l",
+        "name": "A7L",
         "waypoints": [
           {
-            "x": 216,
-            "y": 120
+            "x": 196,
+            "y": 76
           },
           {
-            "x": 274,
-            "y": 86
+            "x": 224,
+            "y": 76
           }
         ],
         "style": {
-          "line_color": "#6A1B9A",
+          "line_color": "#2E7D32",
           "line_width": 2.0,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 6,
+            "y": -14
           }
         }
       },
       {
-        "id": "frameToInterface",
+        "id": "cdrBio",
         "type": "connector",
-        "relationship_ref": "ibd-ebike.frameToInterface",
-        "name": "mount",
+        "relationship_ref": "crew-apollo.cdrBio",
+        "name": "bio",
         "waypoints": [
           {
-            "x": 406,
-            "y": 44
-          },
-          {
-            "x": 406,
-            "y": 24
-          },
-          {
-            "x": 686,
-            "y": 24
-          },
-          {
-            "x": 686,
-            "y": 44
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -16
-          }
-        }
-      },
-      {
-        "id": "frameToBrakes",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.frameToBrakes",
-        "name": "mount",
-        "waypoints": [
-          {
-            "x": 926,
+            "x": 196,
             "y": 106
           },
           {
-            "x": 1034,
+            "x": 210,
             "y": 106
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "frameToBattery",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.frameToBattery",
-        "name": "mount",
-        "waypoints": [
-          {
-            "x": 706,
-            "y": 186
           },
           {
-            "x": 706,
-            "y": 220
+            "x": 210,
+            "y": 160
           },
           {
-            "x": 340,
-            "y": 220
+            "x": 490,
+            "y": 160
           },
           {
-            "x": 340,
-            "y": 404
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": -20,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "frameToMotor",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.frameToMotor",
-        "name": "mount",
-        "waypoints": [
-          {
-            "x": 866,
-            "y": 44
-          },
-          {
-            "x": 866,
-            "y": 8
-          },
-          {
-            "x": 1500,
-            "y": 8
-          },
-          {
-            "x": 1500,
-            "y": 390
-          },
-          {
-            "x": 1206,
-            "y": 390
-          },
-          {
-            "x": 1206,
-            "y": 404
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 40,
-            "y": -16
-          }
-        }
-      },
-      {
-        "id": "interfaceToController",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.interfaceToController",
-        "name": "assist",
-        "waypoints": [
-          {
-            "x": 360,
-            "y": 176
-          },
-          {
-            "x": 360,
-            "y": 280
-          },
-          {
-            "x": 686,
-            "y": 280
-          },
-          {
-            "x": 686,
-            "y": 404
-          }
-        ],
-        "style": {
-          "line_color": "#6A1B9A",
-          "line_width": 2.0,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 10,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "brakesToController",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.brakesToController",
-        "name": "inhibit",
-        "waypoints": [
-          {
-            "x": 1166,
-            "y": 176
-          },
-          {
-            "x": 1166,
-            "y": 300
-          },
-          {
-            "x": 866,
-            "y": 300
-          },
-          {
-            "x": 866,
-            "y": 404
-          }
-        ],
-        "style": {
-          "line_color": "#C62828",
-          "line_width": 2.0,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "chargerToBattery",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.chargerToBattery",
-        "name": "charge",
-        "waypoints": [
-          {
-            "x": 216,
-            "y": 490
-          },
-          {
-            "x": 254,
-            "y": 486
-          }
-        ],
-        "style": {
-          "line_color": "#F9A825",
-          "line_width": 2.0,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -16
-          }
-        }
-      },
-      {
-        "id": "batteryToController",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.batteryToController",
-        "name": "power",
-        "waypoints": [
-          {
-            "x": 536,
-            "y": 486
-          },
-          {
-            "x": 614,
-            "y": 486
-          }
-        ],
-        "style": {
-          "line_color": "#B8860B",
-          "line_width": 2.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "controllerToMotor",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.controllerToMotor",
-        "name": "phase",
-        "waypoints": [
-          {
-            "x": 936,
-            "y": 486
-          },
-          {
-            "x": 1014,
-            "y": 486
+            "x": 490,
+            "y": 140
           }
         ],
         "style": {
           "line_color": "#1565C0",
-          "line_width": 2.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -14
-          }
-        }
-      },
-      {
-        "id": "roadToMotor",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.roadToMotor",
-        "name": "actuation",
-        "waypoints": [
-          {
-            "x": 1296,
-            "y": 486
-          },
-          {
-            "x": 1344,
-            "y": 490
-          }
-        ],
-        "style": {
-          "line_color": "#1565C0",
-          "line_width": 2.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "none",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -16
-          }
-        }
-      },
-      {
-        "id": "batteryToBms",
-        "type": "connector",
-        "relationship_ref": "ibd-ebike.batteryToBms",
-        "name": "BMS",
-        "waypoints": [
-          {
-            "x": 394,
-            "y": 576
-          },
-          {
-            "x": 394,
-            "y": 584
-          }
-        ],
-        "style": {
-          "line_color": "#8B6914",
           "line_width": 2.0,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 8,
+            "x": 6,
             "y": -14
           }
         }
       },
       {
-        "id": "frameToLock",
+        "id": "cdrComm",
         "type": "connector",
-        "relationship_ref": "ibd-ebike.frameToLock",
-        "name": "mount",
+        "relationship_ref": "crew-apollo.cdrComm",
+        "name": "comm",
         "waypoints": [
           {
-            "x": 914,
-            "y": 186
+            "x": 106,
+            "y": 146
           },
           {
-            "x": 914,
-            "y": 245
+            "x": 106,
+            "y": 170
           },
           {
-            "x": 1310,
-            "y": 245
+            "x": 735,
+            "y": 170
+          },
+          {
+            "x": 735,
+            "y": 146
           }
         ],
         "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
+          "line_color": "#E65100",
+          "line_width": 2.0,
           "line_style": "solid",
           "source_arrowhead": "none",
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 8,
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cdrPlss",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrPlss",
+        "name": "PLSS EVA",
+        "waypoints": [
+          {
+            "x": 46,
+            "y": 146
+          },
+          {
+            "x": 46,
+            "y": 180
+          },
+          {
+            "x": 960,
+            "y": 180
+          },
+          {
+            "x": 960,
+            "y": 146
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cdrOps",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cdrOps",
+        "name": "OPS EVA",
+        "waypoints": [
+          {
+            "x": 76,
+            "y": 34
+          },
+          {
+            "x": 76,
+            "y": 16
+          },
+          {
+            "x": 1196,
+            "y": 16
+          },
+          {
+            "x": 1196,
+            "y": 34
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmpA7l",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cmpA7l",
+        "name": "A7L",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 296
+          },
+          {
+            "x": 224,
+            "y": 296
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmpBio",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cmpBio",
+        "name": "bio",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 326
+          },
+          {
+            "x": 210,
+            "y": 326
+          },
+          {
+            "x": 210,
+            "y": 380
+          },
+          {
+            "x": 490,
+            "y": 380
+          },
+          {
+            "x": 490,
+            "y": 360
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "cmpComm",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.cmpComm",
+        "name": "comm",
+        "waypoints": [
+          {
+            "x": 106,
+            "y": 366
+          },
+          {
+            "x": 106,
+            "y": 390
+          },
+          {
+            "x": 735,
+            "y": 390
+          },
+          {
+            "x": 735,
+            "y": 366
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpA7l",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpA7l",
+        "name": "A7L",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 516
+          },
+          {
+            "x": 224,
+            "y": 516
+          }
+        ],
+        "style": {
+          "line_color": "#2E7D32",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpBio",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpBio",
+        "name": "bio",
+        "waypoints": [
+          {
+            "x": 196,
+            "y": 546
+          },
+          {
+            "x": 210,
+            "y": 546
+          },
+          {
+            "x": 210,
+            "y": 600
+          },
+          {
+            "x": 490,
+            "y": 600
+          },
+          {
+            "x": 490,
+            "y": 580
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpComm",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpComm",
+        "name": "comm",
+        "waypoints": [
+          {
+            "x": 106,
+            "y": 586
+          },
+          {
+            "x": 106,
+            "y": 610
+          },
+          {
+            "x": 735,
+            "y": 610
+          },
+          {
+            "x": 735,
+            "y": 586
+          }
+        ],
+        "style": {
+          "line_color": "#E65100",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpPlss",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpPlss",
+        "name": "PLSS EVA",
+        "waypoints": [
+          {
+            "x": 46,
+            "y": 586
+          },
+          {
+            "x": 20,
+            "y": 586
+          },
+          {
+            "x": 20,
+            "y": 710
+          },
+          {
+            "x": 960,
+            "y": 710
+          },
+          {
+            "x": 960,
+            "y": 586
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
+            "y": -14
+          }
+        }
+      },
+      {
+        "id": "lmpOps",
+        "type": "connector",
+        "relationship_ref": "crew-apollo.lmpOps",
+        "name": "OPS EVA",
+        "waypoints": [
+          {
+            "x": 76,
+            "y": 474
+          },
+          {
+            "x": 76,
+            "y": 450
+          },
+          {
+            "x": 1196,
+            "y": 450
+          },
+          {
+            "x": 1196,
+            "y": 474
+          }
+        ],
+        "style": {
+          "line_color": "#00838F",
+          "line_width": 2.0,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "none",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 6,
             "y": -14
           }
         }
       }
     ],
     "metadata": {
-      "author": "Andrew Fried",
+      "author": "Meaningful Systems",
       "created": "2026-08-21",
       "modified": "2026-08-21",
       "tags": [
-        "e-bike",
-        "ibd"
+        "apollo"
       ]
-    }
+    },
+    "subject_ref": "Apollo.Crew"
   }
 }

@@ -15,7 +15,8 @@ Public MSML v1.0 update. Andrew can paste the section below as the announcement.
 - A street-legal EU-class electric bike example at `projects/e-bike/` (`ElectricBike` namespace, `e-bike` file stem) with rider / charger / bike / road context, color-coded IBD, start-ride activity, and sibling requirements (60 km, 25 km/h, 50 ms).
 - Visual QA across toaster, blender, HOS, and e-bike so the figures are announcement-ready.
 - Start-your-own-system adoption pack: `AGENTS.md`, four Cursor/Claude skills (`skills/bootstrap-project`, `skills/author-model`, `skills/compose-views`, `skills/vision-review`), and `templates/new-project/`. Same skill slugs as SysML2d. MSML does not replace commercial SysML 2 tools.
-- Full Apollo 11 / Block II system + subsystem example at `projects/apollo/` (generic Saturn V + CSM + LM stack; public NASA architecture; 7 / 8 / 10 / 13 called out in notes only).
+- Full Apollo 11 / Block II system + subsystem example at `projects/apollo/` (generic Saturn V + CSM + LM stack; public NASA architecture; 7 / 8 / 10 / 13 called out in notes only), including the ground/crew/USB slice (MCC-H, GSFC, MSFN, KSC LC-39, Recovery, three crew parts, sourced RF/ECLSS numbers, UNKNOWN marked).
+- ElectricBike architecture corrections: Tour-mode range, EPAC / EN 15194 (no throttle), BMS inside BatteryPack, LockEcu, EN 15194 stopping distance, StVZO/ISO 6742 lighting, fail-silent ride safety.
 
 **Install and render**
 

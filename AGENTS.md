@@ -35,7 +35,12 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 
 - Context is rider / charger / ElectricBike / road only.
 - IBD connectors never pass through boxes.
-- Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety.
+- Requirements are siblings. Brake Override refines Ride Safety; Battery Cutoff refines Charge Safety. Stopping Distance (EN 15194 5 m / 2 m) and Lighting (StVZO / ISO 6742) are additional siblings.
+- Range 500 Wh / 60 km is a **Tour-mode** scenario (~8.3 Wh/km), not Eco / PAS-1.
+- Classification is **EPAC / EN 15194** (cadence only, 25 km/h, no throttle). Hub is a rear geared hub; regen omitted.
+- BMS is a part **inside** BatteryPack. `allocateChargeToBms` targets `ElectricBike.BMS`.
+- `lockBikeUseCase` is allocated to `LockEcu`. Empty use cases are not allowed.
+- Ride safety is not brakes-only: allocate to BrakeSystem, MotorController, CadenceSensor, and BMS.
 - Ride «include» Adjust Assist.
 - STM `resetFault` is Fault→Off. Off↔Standby is two readable paths.
 
@@ -45,9 +50,10 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 
 - **Instance lock:** Apollo 11 / Block II. The modeled stack is the generic Saturn V + CSM + LM used by lunar-landing missions.
 - Where 11 is atypical, call it out in comments only. Do **not** stand up Apollo 7 / 8 / 10 / 13 as separate projects: 7 had no LM, 8 and 10 did not land, 13 aborted.
-- **Names (exact):** SaturnV S-IC / S-II / S-IVB / IU; CSM CM / SM / SCS / AGC_CM / IMU / DSKY / SPS / RCS / ECLSS; LM descent / ascent / PNGS / AGC_LM / AGS / DPS / APS / RCS / landingRadar / rendezvousRadar; Crew CDR / CMP / LMP / A7L / PLSS; Ground KSC_LCC / MCC / RTCC / MSFN Goldstone / Madrid / Honeysuckle / NASCOM; plus SLA and LES.
-- Do **not** collapse AGC_CM vs AGC_LM, DSKY, AGS, IU LVDC, or USB. Do collapse engine hydraulics and every MSFN ship (stations only).
-- Context is vehicle / crew / MCC / MSFN / Moon / Earth (RTCC sits with MCC). Uplink and downlink are distinct.
+- **Names (exact):** SaturnV S-IC / S-II / S-IVB / IU; CSM CM / SM / SCS / AGC_CM / IMU / DSKY / SPS / RCS / ECLSS; LM descent / ascent / PNGS / AGC_LM / AGS / DPS / APS / RCS / landingRadar / rendezvousRadar; Crew CDR / CMP / LMP each with A7L / bio / comm (PLSS+OPS on CDR/LMP EVA only); Ground as first-class parts: MCC-H (MOCR consoles, SSR, RTCC, CCATS), GSFC (NASCOM, NTTF, NST), MSFN (3×85-ft USB + named 30-ft only + 4 AIS + 8 ARIA + Goldstone 210-ft + Parkes), KSC LC-39, Recovery, RSO/AFETR outside MCC; plus SLA and LES.
+- Do **not** collapse AGC_CM vs AGC_LM, DSKY, AGS, IU LVDC, USB, RSO vs FLIGHT, crew as three parts, or P27 vs CCATS. Do collapse other MSFN ships/aircraft, full loop directory, engine hydraulics, umbilical pinout. Do **not** merge GSFC-1968 and TN D-6723 into “the 14”.
+- Sourced numbers only (USB RF, HGA, LM steerable, CM ECS, LM-5, A7L/PLSS, food plan). Mark UNKNOWN where the researcher did: RTCC MOC vs DSC on A11, 4th AIS ship, A11 food intake, entry blackout duration. Do not invent AGC or vehicle numbers — those packages stay ready to fill.
+- Context is vehicle / crew / MCC / MSFN / Moon / Earth (RTCC sits with MCC). Uplink and downlink are distinct. Two command paths: (A) FC→CCC→RTCC→CCATS→site 642B→USB 70 kHz; (B) P27 V70–V73. Block II antennas are crew-selected.
 - IBD connectors never pass through boxes. Saturn joints are adjacent only.
 - Mission STM: countdown → boost → earthOrbit → TLI → translunar → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. Abort machine in parallel: pad, I–IV, contingency TLI, lunar, SPS.
 

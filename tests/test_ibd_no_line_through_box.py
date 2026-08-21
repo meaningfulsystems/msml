@@ -202,3 +202,17 @@ class IbdNoLineThroughBoxTests(unittest.TestCase):
             [],
             "Apollo ground connectors must not pass through boxes",
         )
+
+    def test_apollo_crew_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-crew.msmd"),
+            [],
+            "Apollo crew connectors must not pass through boxes",
+        )
+
+    def test_apollo_usb_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-usb.msmd"),
+            [],
+            "Apollo USB connectors must not pass through boxes",
+        )

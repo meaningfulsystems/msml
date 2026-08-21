@@ -27,7 +27,12 @@ REQUIRED_VIEW_STEMS = (
     "apollo-sat-ibd",
     "apollo-lm",
     "apollo-gnd",
+    "apollo-gnd-bdd",
     "apollo-eclss",
+    "apollo-eclss-par",
+    "apollo-crew",
+    "apollo-usb",
+    "apollo-cmd",
 )
 
 REQUIRED_DEF_IDS = (
@@ -69,6 +74,34 @@ REQUIRED_DEF_IDS = (
     "Apollo.PLSS",
     "Apollo.KSC_LCC",
     "Apollo.MCC",
+    "Apollo.MCC_H",
+    "Apollo.MOCR",
+    "Apollo.FLIGHT",
+    "Apollo.CAPCOM",
+    "Apollo.EECOM",
+    "Apollo.CCC",
+    "Apollo.CCATS",
+    "Apollo.P27",
+    "Apollo.GSFC",
+    "Apollo.NTTF",
+    "Apollo.LC39",
+    "Apollo.RSO",
+    "Apollo.AFETR",
+    "Apollo.Recovery",
+    "Apollo.Hornet",
+    "Apollo.AIS_Vanguard",
+    "Apollo.AIS_Huntsville",
+    "Apollo.AIS_Redstone",
+    "Apollo.AIS_4th",
+    "Apollo.ARIA",
+    "Apollo.Goldstone210",
+    "Apollo.Parkes",
+    "Apollo.MSFN_30ft",
+    "Apollo.HGA",
+    "Apollo.Site642B",
+    "Apollo.OPS",
+    "Apollo.BioSensor",
+    "Apollo.CrewComm",
     "Apollo.RTCC",
     "Apollo.MSFN",
     "Apollo.Goldstone",
@@ -169,8 +202,34 @@ class ApolloExampleTests(unittest.TestCase):
             self.assertIn(did, defs, did)
         self.assertNotEqual(defs["Apollo.AGC_CM"]["id"], defs["Apollo.AGC_LM"]["id"])
         names = {item["name"].lower() for item in model["definitions"]}
-        for ship in ("redstone", "vangard", "mercury", "arco", "watertown"):
+        self.assertIn("vanguard", names)
+        self.assertIn("huntsville", names)
+        self.assertIn("redstone", names)
+        self.assertIn("UNKNOWN", defs["Apollo.AIS_4th"]["name"])
+        for ship in ("mercury", "arco", "watertown"):
             self.assertNotIn(ship, names)
+        thirty = {
+            p["name"]: p["type"]
+            for p in defs["Apollo.MSFN_30ft"]["compartments"]["properties"]
+        }
+        self.assertIn("do not merge", thirty["doNot"].lower())
+        self.assertIn("the 14", thirty["doNot"])
+        self.assertNotEqual(defs["Apollo.RSO"]["id"], defs["Apollo.FLIGHT"]["id"])
+        self.assertNotEqual(defs["Apollo.P27"]["id"], defs["Apollo.CCATS"]["id"])
+        p27 = {p["name"]: p["type"] for p in defs["Apollo.P27"]["compartments"]["properties"]}
+        self.assertIn("V70–V73", p27["verbs"])
+        rtcc = {p["name"]: p["type"] for p in defs["Apollo.RTCC"]["compartments"]["properties"]}
+        self.assertEqual(rtcc["a11WhichIsWhich"], "UNKNOWN")
+        usb = {p["name"]: p["type"] for p in defs["Apollo.USB"]["compartments"]["properties"]}
+        self.assertEqual(usb["csmUplink"], "2106.40625 MHz")
+        self.assertEqual(usb["csmPmDown"], "2287.5 MHz PM")
+        self.assertEqual(usb["lmUplink"], "2101.802 MHz")
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownBlackout"]["text"])
+        # Vehicles + AGC research still incoming — do not invent AGC numbers.
+        agc_cm = {p["name"]: p.get("type") for p in defs["Apollo.AGC_CM"]["compartments"]["properties"]}
+        self.assertNotIn("memory", agc_cm)
+        self.assertNotIn("cycleTime", agc_cm)
 
     def test_instance_is_apollo_11_block_ii(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]

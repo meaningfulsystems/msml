@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-ebike",
-    "name": "Electric Bike Block Definitions",
+    "name": "Electric Bike Block Definitions — EPAC / EN 15194",
     "context": "ElectricBike",
     "frame": {
       "visible": true,
@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1320,
-        "height": 530,
+      "height": 720,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -192,6 +192,75 @@
         "style": {
           "fill_color": "#FFEBEE",
           "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "block-bms",
+        "model_ref": "ElectricBike.BMS",
+        "layout": {
+          "x": 230,
+          "y": 520,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "block-cadence",
+        "model_ref": "ElectricBike.CadenceSensor",
+        "layout": {
+          "x": 890,
+          "y": 520,
+          "width": 200,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#F3E5F5",
+          "border_color": "#6A1B9A",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "block-lock",
+        "model_ref": "ElectricBike.LockEcu",
+        "layout": {
+          "x": 1110,
+          "y": 520,
+          "width": 190,
+          "height": 100,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -467,6 +536,84 @@
             "x": 40,
             "y": 10
           }
+        }
+      },
+      {
+        "id": "c-bms",
+        "relationship_ref": "bdd-ebike.c-pack-bms",
+        "waypoints": [
+          {
+            "x": 330,
+            "y": 400
+          },
+          {
+            "x": 330,
+            "y": 520
+          }
+        ],
+        "style": {
+          "line_color": "#8B6914",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-cadence",
+        "relationship_ref": "bdd-ebike.c-hmi-cadence",
+        "waypoints": [
+          {
+            "x": 990,
+            "y": 390
+          },
+          {
+            "x": 990,
+            "y": 520
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "c-lock",
+        "relationship_ref": "bdd-ebike.c-bike-lock",
+        "waypoints": [
+          {
+            "x": 500,
+            "y": 99
+          },
+          {
+            "x": 16,
+            "y": 99
+          },
+          {
+            "x": 16,
+            "y": 650
+          },
+          {
+            "x": 1205,
+            "y": 650
+          },
+          {
+            "x": 1205,
+            "y": 620
+          }
+        ],
+        "style": {
+          "line_color": "#336699",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "composition",
+          "target_arrowhead": "none",
+          "corner_radius": 8
         }
       }
     ],

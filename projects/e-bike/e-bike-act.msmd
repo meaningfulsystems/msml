@@ -109,7 +109,7 @@
         "type": "action",
         "id": "act-pedal",
         "model_ref": "ElectricBike.Action.pedalAndThrottle",
-        "display_name": "Pedal / Throttle",
+        "display_name": "Pedal (cadence)",
         "layout": {
           "x": 170,
           "y": 220,
