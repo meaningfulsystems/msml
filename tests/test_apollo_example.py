@@ -399,13 +399,16 @@ class ApolloExampleTests(unittest.TestCase):
         dps = {p["name"]: p.get("type") for p in defs["Apollo.DPS"]["compartments"]["properties"]}
         self.assertEqual(dps["thrustPk"], "9,870 lbf (PK)")
         self.assertEqual(dps["thrustTn"], "10,500 lbf (TN D-7143)")
-        self.assertIn("cite both", dps["thrust"])
-        self.assertIn("cite both", dps["throttle"])
+        self.assertNotIn("thrust", dps)
+        self.assertNotIn("throttle", dps)
         self.assertIn("LMA790", dps["sourceC"])
         self.assertIn("1,050", dps["sourceC"])
         self.assertIn("6,800", dps["sourceC"])
         self.assertNotIn("10:1", dps["sourceC"])
+        self.assertEqual(dps["throttlePk"], "1,050–6,300 lbf (PK)")
         self.assertEqual(dps["throttleTn"], "10:1 (TN D-7143)")
+        self.assertIn("three cites", dps["source"])
+        self.assertIn("no shall", dps["source"])
         aps = {p["name"]: p.get("type") for p in defs["Apollo.APS"]["compartments"]["properties"]}
         self.assertEqual(aps["thrust"], "3,500 lbf")
         sat = {p["name"]: p.get("type") for p in defs["Apollo.SaturnV"]["compartments"]["properties"]}
