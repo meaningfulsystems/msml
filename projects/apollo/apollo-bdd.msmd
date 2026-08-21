@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 3009,
-      "height": 2073,
+      "width": 1200,
+      "height": 360,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -44,11 +44,15 @@
         "type": "block",
         "id": "b-apollo",
         "model_ref": "Apollo",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        },
         "layout": {
-          "x": 1208,
-          "y": 20,
-          "width": 549,
-          "height": 597,
+          "x": 460,
+          "y": 30,
+          "width": 280,
+          "height": 80,
           "z_index": 1
         },
         "style": {
@@ -61,17 +65,22 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Apollo 11"
       },
       {
         "type": "block",
         "id": "b-saturn",
         "model_ref": "Apollo.SaturnV",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        },
         "layout": {
-          "x": 361,
-          "y": 729,
-          "width": 581,
-          "height": 442,
+          "x": 40,
+          "y": 220,
+          "width": 200,
+          "height": 70,
           "z_index": 1
         },
         "style": {
@@ -84,17 +93,22 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Saturn V"
       },
       {
         "type": "block",
         "id": "b-csm",
         "model_ref": "Apollo.CSM",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        },
         "layout": {
-          "x": 1584,
-          "y": 729,
+          "x": 270,
+          "y": 220,
           "width": 200,
-          "height": 200,
+          "height": 70,
           "z_index": 1
         },
         "style": {
@@ -107,17 +121,22 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "command and service module"
       },
       {
         "type": "block",
         "id": "b-lm",
         "model_ref": "Apollo.LM",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        },
         "layout": {
-          "x": 2108,
-          "y": 729,
-          "width": 298,
-          "height": 251,
+          "x": 500,
+          "y": 220,
+          "width": 200,
+          "height": 70,
           "z_index": 1
         },
         "style": {
@@ -130,17 +149,22 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "lunar module"
       },
       {
         "type": "block",
         "id": "b-les",
         "model_ref": "Apollo.LES",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        },
         "layout": {
-          "x": 2461,
-          "y": 729,
-          "width": 199,
-          "height": 145,
+          "x": 730,
+          "y": 220,
+          "width": 200,
+          "height": 70,
           "z_index": 1
         },
         "style": {
@@ -153,17 +177,22 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "launch escape system"
       },
       {
         "type": "block",
         "id": "b-sla",
         "model_ref": "Apollo.SLA",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        },
         "layout": {
-          "x": 2696,
-          "y": 729,
-          "width": 245,
-          "height": 145,
+          "x": 960,
+          "y": 220,
+          "width": 200,
+          "height": 70,
           "z_index": 1
         },
         "style": {
@@ -176,283 +205,31 @@
             "bold": false,
             "color": "#000000"
           }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-sic",
-        "model_ref": "Apollo.SIC",
-        "layout": {
-          "x": 52,
-          "y": 1283,
-          "width": 305,
-          "height": 264,
-          "z_index": 1
         },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-sii",
-        "model_ref": "Apollo.SII",
-        "layout": {
-          "x": 365,
-          "y": 1283,
-          "width": 278,
-          "height": 264,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-sivb",
-        "model_ref": "Apollo.SIVB",
-        "layout": {
-          "x": 679,
-          "y": 1283,
-          "width": 325,
-          "height": 281,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-iu",
-        "model_ref": "Apollo.IU",
-        "layout": {
-          "x": 52,
-          "y": 1603,
-          "width": 239,
-          "height": 230,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF8E1",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-cm",
-        "model_ref": "Apollo.CM",
-        "layout": {
-          "x": 1315,
-          "y": 1041,
-          "width": 245,
-          "height": 196,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-sm",
-        "model_ref": "Apollo.SM",
-        "layout": {
-          "x": 1596,
-          "y": 1041,
-          "width": 457,
-          "height": 196,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-des",
-        "model_ref": "Apollo.Descent",
-        "layout": {
-          "x": 2089,
-          "y": 1092,
-          "width": 150,
-          "height": 145,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "block",
-        "id": "b-asc",
-        "model_ref": "Apollo.Ascent",
-        "layout": {
-          "x": 2275,
-          "y": 1092,
-          "width": 150,
-          "height": 111,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-atyp",
-        "model_ref": "Apollo.Note.Atypical",
-        "layout": {
-          "x": 24,
-          "y": 1873,
-          "width": 520,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-inst",
-        "model_ref": "Apollo.Note.Instance",
-        "layout": {
-          "x": 564,
-          "y": 1873,
-          "width": 420,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-col",
-        "model_ref": "Apollo.Note.Collapse",
-        "layout": {
-          "x": 1004,
-          "y": 1873,
-          "width": 460,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
+        "display_name": "spacecraft-LM adapter"
       }
     ],
     "relationships": [
       {
-        "id": "c1",
+        "id": "c-saturn",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-apollo-saturn",
         "waypoints": [
           {
-            "x": 1482,
-            "y": 617
+            "x": 600,
+            "y": 110
           },
           {
-            "x": 1482,
-            "y": 673
+            "x": 600,
+            "y": 170
           },
           {
-            "x": 651,
-            "y": 673
+            "x": 140.0,
+            "y": 170
           },
           {
-            "x": 651,
-            "y": 729
+            "x": 140.0,
+            "y": 220
           }
         ],
         "style": {
@@ -465,25 +242,25 @@
         }
       },
       {
-        "id": "c2",
+        "id": "c-csm",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-apollo-csm",
         "waypoints": [
           {
-            "x": 1482,
-            "y": 617
+            "x": 600,
+            "y": 110
           },
           {
-            "x": 1482,
-            "y": 673
+            "x": 600,
+            "y": 170
           },
           {
-            "x": 1684,
-            "y": 673
+            "x": 370.0,
+            "y": 170
           },
           {
-            "x": 1684,
-            "y": 729
+            "x": 370.0,
+            "y": 220
           }
         ],
         "style": {
@@ -496,25 +273,25 @@
         }
       },
       {
-        "id": "c3",
+        "id": "c-lm",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-apollo-lm",
         "waypoints": [
           {
-            "x": 1482,
-            "y": 617
+            "x": 600,
+            "y": 110
           },
           {
-            "x": 1482,
-            "y": 673
+            "x": 600,
+            "y": 170
           },
           {
-            "x": 2257,
-            "y": 673
+            "x": 600.0,
+            "y": 170
           },
           {
-            "x": 2257,
-            "y": 729
+            "x": 600.0,
+            "y": 220
           }
         ],
         "style": {
@@ -527,25 +304,25 @@
         }
       },
       {
-        "id": "c4",
+        "id": "c-les",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-apollo-les",
         "waypoints": [
           {
-            "x": 1482,
-            "y": 617
+            "x": 600,
+            "y": 110
           },
           {
-            "x": 1482,
-            "y": 673
+            "x": 600,
+            "y": 170
           },
           {
-            "x": 2560,
-            "y": 673
+            "x": 830.0,
+            "y": 170
           },
           {
-            "x": 2560,
-            "y": 729
+            "x": 830.0,
+            "y": 220
           }
         ],
         "style": {
@@ -558,293 +335,29 @@
         }
       },
       {
-        "id": "c5",
+        "id": "c-sla",
         "type": "composition",
         "relationship_ref": "bdd-apollo.c-apollo-sla",
         "waypoints": [
           {
-            "x": 1482,
-            "y": 617
+            "x": 600,
+            "y": 110
           },
           {
-            "x": 1482,
-            "y": 645
+            "x": 600,
+            "y": 170
           },
           {
-            "x": 2969,
-            "y": 645
+            "x": 1060.0,
+            "y": 170
           },
           {
-            "x": 2969,
-            "y": 709
-          },
-          {
-            "x": 2818,
-            "y": 709
-          },
-          {
-            "x": 2818,
-            "y": 729
+            "x": 1060.0,
+            "y": 220
           }
         ],
         "style": {
           "line_color": "#F9A825",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c6",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-sic",
-        "waypoints": [
-          {
-            "x": 651,
-            "y": 1171
-          },
-          {
-            "x": 651,
-            "y": 1195
-          },
-          {
-            "x": 16,
-            "y": 1195
-          },
-          {
-            "x": 16,
-            "y": 1415
-          },
-          {
-            "x": 52,
-            "y": 1415
-          }
-        ],
-        "style": {
-          "line_color": "#E65100",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c7",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-sii",
-        "waypoints": [
-          {
-            "x": 651,
-            "y": 1171
-          },
-          {
-            "x": 651,
-            "y": 1227
-          },
-          {
-            "x": 504,
-            "y": 1227
-          },
-          {
-            "x": 504,
-            "y": 1283
-          }
-        ],
-        "style": {
-          "line_color": "#E65100",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c8",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-sivb",
-        "waypoints": [
-          {
-            "x": 651,
-            "y": 1171
-          },
-          {
-            "x": 651,
-            "y": 1227
-          },
-          {
-            "x": 841,
-            "y": 1227
-          },
-          {
-            "x": 841,
-            "y": 1283
-          }
-        ],
-        "style": {
-          "line_color": "#E65100",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c9",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-saturn-iu",
-        "waypoints": [
-          {
-            "x": 651,
-            "y": 1171
-          },
-          {
-            "x": 651,
-            "y": 1195
-          },
-          {
-            "x": 16,
-            "y": 1195
-          },
-          {
-            "x": 16,
-            "y": 1718
-          },
-          {
-            "x": 52,
-            "y": 1718
-          }
-        ],
-        "style": {
-          "line_color": "#F9A825",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c10",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-csm-cm",
-        "waypoints": [
-          {
-            "x": 1684,
-            "y": 929
-          },
-          {
-            "x": 1684,
-            "y": 985
-          },
-          {
-            "x": 1437,
-            "y": 985
-          },
-          {
-            "x": 1437,
-            "y": 1041
-          }
-        ],
-        "style": {
-          "line_color": "#1565C0",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c11",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-csm-sm",
-        "waypoints": [
-          {
-            "x": 1684,
-            "y": 929
-          },
-          {
-            "x": 1684,
-            "y": 985
-          },
-          {
-            "x": 1824,
-            "y": 985
-          },
-          {
-            "x": 1824,
-            "y": 1041
-          }
-        ],
-        "style": {
-          "line_color": "#1565C0",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c12",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-lm-des",
-        "waypoints": [
-          {
-            "x": 2257,
-            "y": 980
-          },
-          {
-            "x": 2257,
-            "y": 1036
-          },
-          {
-            "x": 2164,
-            "y": 1036
-          },
-          {
-            "x": 2164,
-            "y": 1092
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "diamond_fill",
-          "corner_radius": 8
-        }
-      },
-      {
-        "id": "c13",
-        "type": "composition",
-        "relationship_ref": "bdd-apollo.c-lm-asc",
-        "waypoints": [
-          {
-            "x": 2257,
-            "y": 980
-          },
-          {
-            "x": 2257,
-            "y": 1036
-          },
-          {
-            "x": 2350,
-            "y": 1036
-          },
-          {
-            "x": 2350,
-            "y": 1092
-          }
-        ],
-        "style": {
-          "line_color": "#2E7D32",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",

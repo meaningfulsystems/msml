@@ -44,7 +44,7 @@
         "type": "part",
         "id": "part-sic",
         "model_ref": "Apollo.SIC",
-        "display_name": "sIc : S-IC",
+        "display_name": "first stage",
         "layout": {
           "x": 400,
           "y": 420,
@@ -62,13 +62,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-sii",
         "model_ref": "Apollo.SII",
-        "display_name": "sIi : S-II",
+        "display_name": "second stage",
         "layout": {
           "x": 400,
           "y": 280,
@@ -86,13 +90,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-sivb",
         "model_ref": "Apollo.SIVB",
-        "display_name": "sIvb : S-IVB",
+        "display_name": "third stage",
         "layout": {
           "x": 400,
           "y": 140,
@@ -110,13 +118,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-iu",
         "model_ref": "Apollo.IU",
-        "display_name": "iu : IU",
+        "display_name": "Instrument Unit",
         "layout": {
           "x": 80,
           "y": 130,
@@ -134,13 +146,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-lvdc",
         "model_ref": "Apollo.LVDC",
-        "display_name": "lvdc : LVDC",
+        "display_name": "launch-vehicle computer",
         "layout": {
           "x": 80,
           "y": 280,
@@ -158,6 +174,10 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {

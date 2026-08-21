@@ -6,7 +6,7 @@
   "diagram": {
     "type": "bdd",
     "id": "bdd-apollo-rcs",
-    "name": "RCS — SM / LM 100 lbf (A11 PK p.93 / p.106) · CM 93 lbf",
+    "name": "RCS \u2014 SM / LM 100 lbf (A11 PK p.93 / p.106) \u00b7 CM 93 lbf",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -61,6 +61,11 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "display_name": "service-module RCS",
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
@@ -84,6 +89,11 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "display_name": "quad",
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
@@ -107,6 +117,11 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "display_name": "command-module RCS",
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
@@ -130,6 +145,11 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "display_name": "set A",
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
@@ -153,6 +173,11 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "display_name": "set B",
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
@@ -176,6 +201,11 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "display_name": "lunar-module RCS",
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {

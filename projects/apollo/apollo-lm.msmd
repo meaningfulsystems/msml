@@ -44,7 +44,7 @@
         "type": "part",
         "id": "part-lr",
         "model_ref": "Apollo.LandingRadar",
-        "display_name": "landingRadar : landingRadar",
+        "display_name": "landing radar",
         "layout": {
           "x": 40,
           "y": 220,
@@ -68,7 +68,7 @@
         "type": "part",
         "id": "part-pngs",
         "model_ref": "Apollo.PNGS",
-        "display_name": "pngs : PNGS",
+        "display_name": "primary guidance",
         "layout": {
           "x": 300,
           "y": 40,
@@ -92,7 +92,7 @@
         "type": "part",
         "id": "part-agc",
         "model_ref": "Apollo.AGC_LM",
-        "display_name": "agcLm : AGC_LM",
+        "display_name": "lunar module computer",
         "layout": {
           "x": 580,
           "y": 40,
@@ -116,7 +116,7 @@
         "type": "part",
         "id": "part-rr",
         "model_ref": "Apollo.RendezvousRadar",
-        "display_name": "rendezvousRadar : rendezvousRadar",
+        "display_name": "rendezvous radar",
         "layout": {
           "x": 860,
           "y": 520,
@@ -140,7 +140,7 @@
         "type": "part",
         "id": "part-ags",
         "model_ref": "Apollo.AGS",
-        "display_name": "ags : AGS",
+        "display_name": "abort guidance",
         "layout": {
           "x": 580,
           "y": 200,
@@ -164,7 +164,7 @@
         "type": "part",
         "id": "part-des",
         "model_ref": "Apollo.Descent",
-        "display_name": "descent : descent",
+        "display_name": "descent stage",
         "layout": {
           "x": 40,
           "y": 360,
@@ -188,7 +188,7 @@
         "type": "part",
         "id": "part-dps",
         "model_ref": "Apollo.DPS",
-        "display_name": "dps : DPS",
+        "display_name": "descent propulsion",
         "layout": {
           "x": 300,
           "y": 360,
@@ -212,7 +212,7 @@
         "type": "part",
         "id": "part-asc",
         "model_ref": "Apollo.Ascent",
-        "display_name": "ascent : ascent",
+        "display_name": "ascent stage",
         "layout": {
           "x": 40,
           "y": 520,
@@ -236,7 +236,7 @@
         "type": "part",
         "id": "part-aps",
         "model_ref": "Apollo.APS",
-        "display_name": "aps : APS",
+        "display_name": "ascent propulsion",
         "layout": {
           "x": 300,
           "y": 520,
@@ -260,7 +260,7 @@
         "type": "part",
         "id": "part-rcs",
         "model_ref": "Apollo.RCS_LM",
-        "display_name": "rcs : RCS",
+        "display_name": "reaction control",
         "layout": {
           "x": 580,
           "y": 440,

@@ -936,8 +936,10 @@ class RequirementRenderer(MSMLRenderer):
         fc   = parse_color(st.get("font",{}).get("color","#000000"))
         sf   = load_font(fs-1)
         bf   = load_font(fs)
-        # «requirement» + id row
-        stereo = f"«requirement»  {el.get('req_id','')}"
+        # «requirement» + id row. Views may hide the REQ code so the box
+        # can speak the shall in words.
+        req_id = "" if el.get("hide_req_id") else el.get("req_id", "")
+        stereo = f"«requirement»  {req_id}".rstrip()
         draw.text((x+6, y+5), stereo, fill=border, font=sf)
         div1 = y+20
         draw.line([(x+bw,div1),(x+w-bw,div1)], fill=border, width=1)

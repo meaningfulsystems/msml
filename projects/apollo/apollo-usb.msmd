@@ -6,7 +6,7 @@
   "diagram": {
     "type": "ibd",
     "id": "ibd-apollo-usb",
-    "name": "USB comms — sourced RF; antennas CREW-selected; P27 ≠ CCATS",
+    "name": "USB comms \u2014 sourced RF; antennas CREW-selected; P27 \u2260 CCATS",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -44,7 +44,7 @@
         "type": "part",
         "id": "crew",
         "model_ref": "Apollo.Crew",
-        "display_name": "crew : Crew  antenna select",
+        "display_name": "crew",
         "layout": {
           "x": 30,
           "y": 80,
@@ -62,13 +62,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "hga",
         "model_ref": "Apollo.HGA",
-        "display_name": "hga : CSM HGA  8.0 / 18.0 / 25.7 dB",
+        "display_name": "high-gain antenna",
         "layout": {
           "x": 320,
           "y": 40,
@@ -86,13 +90,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "lmst",
         "model_ref": "Apollo.LM_Steerable",
-        "display_name": "lmSteerable : 20.5 dB  amplitron 20 W",
+        "display_name": "lunar-module steerable",
         "layout": {
           "x": 320,
           "y": 200,
@@ -110,13 +118,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "usb",
         "model_ref": "Apollo.USB",
-        "display_name": "usb : USB  sourced RF",
+        "display_name": "unified S-band",
         "layout": {
           "x": 680,
           "y": 80,
@@ -134,13 +146,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "s642",
         "model_ref": "Apollo.Site642B",
-        "display_name": "site642B : site 642B",
+        "display_name": "site 642B",
         "layout": {
           "x": 1040,
           "y": 40,
@@ -158,13 +174,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "ccats",
         "model_ref": "Apollo.CCATS",
-        "display_name": "ccats : CCATS  path A",
+        "display_name": "command load",
         "layout": {
           "x": 1040,
           "y": 180,
@@ -182,13 +202,17 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "p27",
         "model_ref": "Apollo.P27",
-        "display_name": "p27 : P27  V70–V73 ONLY",
+        "display_name": "P27 uplink",
         "layout": {
           "x": 1040,
           "y": 320,
@@ -206,6 +230,10 @@
             "bold": false,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
