@@ -6,7 +6,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests/fixtures"
 
-from msml import render, spec_path, validate, validate_all
+from msml import spec_path, validate, validate_all
+from msml.render import render
 from msml.render_all import render_all
 
 

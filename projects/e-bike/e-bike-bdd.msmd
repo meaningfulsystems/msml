@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1320,
-      "height": 500,
+        "height": 530,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -389,11 +389,11 @@
         "waypoints": [
           {
             "x": 430,
-            "y": 330
+            "y": 420
           },
           {
             "x": 450,
-            "y": 330
+            "y": 420
           }
         ],
         "style": {
@@ -405,7 +405,7 @@
           "corner_radius": 8,
           "label_offset": {
             "x": 0,
-            "y": -16
+            "y": -18
           }
         }
       },
@@ -415,11 +415,11 @@
         "waypoints": [
           {
             "x": 660,
-            "y": 330
+            "y": 400
           },
           {
             "x": 680,
-            "y": 330
+            "y": 400
           }
         ],
         "style": {
@@ -431,7 +431,7 @@
           "corner_radius": 8,
           "label_offset": {
             "x": 0,
-            "y": -16
+            "y": -18
           }
         }
       },
@@ -440,12 +440,16 @@
         "relationship_ref": "bdd-ebike.a-brakes-controller",
         "waypoints": [
           {
-            "x": 1110,
-            "y": 400
+            "x": 1205,
+            "y": 380
+          },
+          {
+            "x": 1205,
+            "y": 460
           },
           {
             "x": 555,
-            "y": 400
+            "y": 460
           },
           {
             "x": 555,
@@ -461,7 +465,7 @@
           "corner_radius": 8,
           "label_offset": {
             "x": 40,
-            "y": 8
+            "y": 10
           }
         }
       }

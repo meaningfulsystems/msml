@@ -188,29 +188,6 @@
       },
       {
         "type": "port",
-        "id": "p-hmi-in",
-        "model_ref": "ElectricBike.Port.riderInputIn",
-        "layout": {
-          "x": 354,
-          "y": 260,
-          "width": 12,
-          "height": 12,
-          "z_index": 2
-        },
-        "style": {
-          "fill_color": "#FFFFFF",
-          "border_color": "#6A1B9A",
-          "border_width": 1,
-          "font": {
-            "size": 9,
-            "color": "#6A1B9A"
-          }
-        },
-        "name": "riderInputIn",
-        "owner_ref": "part-bike"
-      },
-      {
-        "type": "port",
         "id": "p-chg",
         "model_ref": "ElectricBike.Port.chargerOut",
         "layout": {
