@@ -783,8 +783,10 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(by_id["s-TLI"]["display_name"], "Translunar Injection")
         self.assertEqual(by_id["s-LOI"]["display_name"], "Lunar Orbit Insertion")
         self.assertEqual(by_id["s-rso"]["display_name"], "Range Safety Officer")
+        self.assertEqual(by_id["s-earthOrbit"]["display_name"], "Earth orbit")
         self.assertIn("Ground Elapsed Time", stm["name"])
         stm_rels = {rel["id"]: rel for rel in stm["relationships"]}
+        self.assertEqual(stm_rels["t-boost-earthOrbit"]["name"], "second-stage cutoff")
         self.assertEqual(stm_rels["t-earthOrbit-TLI"].get("name"), "")
         self.assertEqual(stm_rels["t-translunar-LOI"].get("name"), "")
         abort = read_json_file(APOLLO / "apollo-abort.msmd")["diagram"]
@@ -814,3 +816,52 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertIn("orange = engine", lm["name"])
         self.assertIn("cyan = radar", lm["name"])
         self.assertIn("red = abort", lm["name"])
+
+    def test_clock_views_spell_names_and_drop_code_do(self) -> None:
+        stm = read_json_file(APOLLO / "apollo-stm.msmd")["diagram"]
+        lunar = read_json_file(APOLLO / "apollo-stm-lunar.msmd")["diagram"]
+        stm_els = {el["id"]: el for el in stm["elements"]}
+        lunar_els = {el["id"]: el for el in lunar["elements"]}
+        self.assertEqual(stm_els["s-earthOrbit"]["display_name"], "Earth orbit")
+        self.assertEqual(lunar_els["s-DOI"]["display_name"], "Descent Orbit Insertion")
+        self.assertEqual(lunar_els["s-TEI"]["display_name"], "Trans-Earth Injection")
+        stm_rels = {rel["id"]: rel for rel in stm["relationships"]}
+        self.assertEqual(stm_rels["t-boost-earthOrbit"]["name"], "second-stage cutoff")
+        self.assertIn("Descent Orbit Insertion", lunar["name"])
+        self.assertIn("Trans-Earth Injection", lunar["name"])
+        self.assertNotIn("DOI", lunar["name"])
+        self.assertNotIn("TEI", lunar["name"])
+        for diagram in (stm, lunar):
+            for el in diagram["elements"]:
+                self.assertNotIn("do", el, el["id"])
+                self.assertNotIn("entry", el, el["id"])
+                self.assertNotIn("exit", el, el["id"])
+                self.assertNotEqual(el.get("display_name"), "earthOrbit", el["id"])
+                self.assertNotEqual(el.get("display_name"), "DOI", el["id"])
+                self.assertNotEqual(el.get("display_name"), "TEI", el["id"])
+            for rel in diagram.get("relationships") or []:
+                self.assertNotEqual(rel.get("name"), "SECO", rel["id"])
+                self.assertNotEqual(rel.get("name"), "earthOrbit", rel["id"])
+                self.assertNotEqual(rel.get("name"), "DOI", rel["id"])
+                self.assertNotEqual(rel.get("name"), "TEI", rel["id"])
+        for stem in ("apollo-stm", "apollo-stm-lunar"):
+            text = (APOLLO / f"{stem}.msmd").read_text(encoding="utf-8")
+            self.assertNotIn("SECO", text)
+            self.assertNotIn("separateLM", text)
+            self.assertNotIn('"do"', text)
+            self.assertNotIn('"entry"', text)
+        note = (APOLLO / "architecture-summary.md").read_text(encoding="utf-8")
+        self.assertIn("Earth orbit", note)
+        self.assertIn("Descent Orbit Insertion", note)
+        self.assertIn("Trans-Earth Injection", note)
+        self.assertEqual(
+            {el["id"]: el.get("display_name") for el in read_json_file(APOLLO / "apollo-lgc-stm.msmd")["diagram"]["elements"] if el.get("display_name")},
+            {
+                "l-p63": "braking",
+                "l-p64": "approach",
+                "l-p65": "auto land",
+                "l-p66": "rate of descent",
+                "l-p67": "manual",
+                "l-p68": "landing confirmation",
+            },
+        )

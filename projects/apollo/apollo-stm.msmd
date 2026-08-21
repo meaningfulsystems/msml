@@ -70,8 +70,7 @@
             "bold": true,
             "color": "#4A148C"
           }
-        },
-        "do": ""
+        }
       },
       {
         "type": "initial_pseudostate",
@@ -109,8 +108,7 @@
             "bold": false,
             "color": "#000000"
           }
-        },
-        "do": ""
+        }
       },
       {
         "type": "state",
@@ -133,8 +131,7 @@
             "bold": false,
             "color": "#000000"
           }
-        },
-        "do": ""
+        }
       },
       {
         "type": "state",
@@ -143,7 +140,7 @@
         "layout": {
           "x": 400,
           "y": 40,
-          "width": 170,
+          "width": 180,
           "height": 80,
           "z_index": 1
         },
@@ -158,7 +155,7 @@
             "color": "#000000"
           }
         },
-        "do": ""
+        "display_name": "Earth orbit"
       },
       {
         "type": "state",
@@ -182,8 +179,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "Translunar Injection",
-        "do": ""
+        "display_name": "Translunar Injection"
       },
       {
         "type": "state",
@@ -207,9 +203,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "dock/eject",
-        "do": "",
-        "entry": ""
+        "display_name": "dock/eject"
       },
       {
         "type": "state",
@@ -232,8 +226,7 @@
             "bold": false,
             "color": "#000000"
           }
-        },
-        "do": ""
+        }
       },
       {
         "type": "state",
@@ -257,8 +250,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "Lunar Orbit Insertion",
-        "do": ""
+        "display_name": "Lunar Orbit Insertion"
       },
       {
         "type": "state",
@@ -281,8 +273,7 @@
             "bold": false,
             "color": "#000000"
           }
-        },
-        "do": ""
+        }
       },
       {
         "type": "state",
@@ -306,8 +297,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "Range Safety Officer",
-        "do": ""
+        "display_name": "Range Safety Officer"
       }
     ],
     "relationships": [
@@ -388,9 +378,10 @@
           "corner_radius": 8,
           "label_offset": {
             "x": 0,
-            "y": -24
+            "y": -22
           }
-        }
+        },
+        "name": "second-stage cutoff"
       },
       {
         "id": "t-earthOrbit-TLI",

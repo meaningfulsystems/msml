@@ -132,11 +132,11 @@ The mission clock cannot skip a beat. Confirm `dockEject` sits between TLI and t
 
 ![Outbound mission states from countdown through lunar orbit insertion.](apollo-stm.png)
 
-**Figure. `apollo-stm.png`.** The outbound composite holds countdown → boost → earth orbit → Translunar Injection → dockEject → translunar → Lunar Orbit Insertion. The dashed region is abort plus the Range Safety Officer, concurrent with the nominal clock until destruct is safed after Earth orbit. Locked Ground Elapsed Time numbers stay in the GET paragraph below. The locked path is Translunar Injection → dockEject → translunar → Lunar Orbit Insertion.
+**Figure. `apollo-stm.png`.** The outbound composite holds countdown → boost → Earth orbit → Translunar Injection → dock/eject → translunar → Lunar Orbit Insertion. The dashed region is abort plus the Range Safety Officer, concurrent with the nominal clock until destruct is safed after Earth orbit. Locked Ground Elapsed Time numbers stay in the GET paragraph below. The locked path is Translunar Injection → dockEject → translunar → Lunar Orbit Insertion.
 
 ![Lunar and return mission states from undock through entry.](apollo-stm-lunar.png)
 
-**Figure. `apollo-stm-lunar.png`.** After undock the page splits: CSM / CMP in lunar orbit runs concurrent with the LM from DOI through ascent. Descent, surface/EVA, and ascent still nest under the surface composite in the model. Splash and recovery live in the GET paragraph below, not on the Land box.
+**Figure. `apollo-stm-lunar.png`.** After undock the page splits: CSM / CMP in lunar orbit runs concurrent with the LM from Descent Orbit Insertion through ascent. Descent, surface/EVA, and ascent still nest under the surface composite in the model. Splash and recovery live in the GET paragraph below, not on the Land box.
 
 `dockEject` is its own state (CMP-owned, SM RCS, probe-drogue).
 

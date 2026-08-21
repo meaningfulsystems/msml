@@ -216,7 +216,15 @@ class MSMLRenderer:
     # ------------------------------------------------------------ elements
 
     def _draw_element(self, draw, el):
+        view_activity = {key: el[key] for key in ("do", "entry", "exit") if key in el}
+        view_type = el.get("type")
         el = self._resolve_element(el)
+        if view_type == "state" or el.get("type") == "state":
+            for key in ("do", "entry", "exit"):
+                if key in view_activity:
+                    el[key] = view_activity[key]
+                else:
+                    el.pop(key, None)
         handler = getattr(self, f"_draw_{el['type']}", None)
         if handler:
             handler(draw, el)

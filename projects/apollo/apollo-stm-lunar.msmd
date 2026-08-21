@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo-lunar",
-    "name": "undock \u2192 DOI \u2192 descent \u2192 EVA \u2192 ascent \u2192 TEI \u2192 entry",
+    "name": "undock \u2192 Descent Orbit Insertion \u2192 descent \u2192 EVA \u2192 ascent \u2192 Trans-Earth Injection \u2192 entry",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,7 +30,7 @@
       }
     },
     "canvas": {
-      "width": 1000,
+      "width": 1180,
       "height": 400,
       "background_color": "#FAFAFA",
       "grid": {
@@ -47,7 +47,7 @@
         "layout": {
           "x": 8,
           "y": 8,
-          "width": 984,
+          "width": 1164,
           "height": 376,
           "z_index": 0
         },
@@ -125,7 +125,7 @@
         "layout": {
           "x": 230,
           "y": 160,
-          "width": 170,
+          "width": 250,
           "height": 80,
           "z_index": 1
         },
@@ -139,14 +139,15 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Descent Orbit Insertion"
       },
       {
         "type": "state",
         "id": "s-descent",
         "model_ref": "Apollo.State.Mission.descent",
         "layout": {
-          "x": 420,
+          "x": 500,
           "y": 160,
           "width": 170,
           "height": 80,
@@ -169,7 +170,7 @@
         "id": "s-surfaceEVA",
         "model_ref": "Apollo.State.Mission.surfaceEVA",
         "layout": {
-          "x": 610,
+          "x": 690,
           "y": 160,
           "width": 170,
           "height": 80,
@@ -192,7 +193,7 @@
         "id": "s-ascent",
         "model_ref": "Apollo.State.Mission.ascent",
         "layout": {
-          "x": 800,
+          "x": 880,
           "y": 160,
           "width": 170,
           "height": 80,
@@ -238,9 +239,9 @@
         "id": "s-TEI",
         "model_ref": "Apollo.State.Mission.TEI",
         "layout": {
-          "x": 420,
+          "x": 430,
           "y": 280,
-          "width": 170,
+          "width": 250,
           "height": 80,
           "z_index": 1
         },
@@ -254,14 +255,15 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "Trans-Earth Injection"
       },
       {
         "type": "state",
         "id": "s-entry",
         "model_ref": "Apollo.State.Mission.entry",
         "layout": {
-          "x": 610,
+          "x": 700,
           "y": 280,
           "width": 170,
           "height": 80,
@@ -310,7 +312,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       },
       {
         "id": "t-DOI-descent",
@@ -318,11 +321,11 @@
         "relationship_ref": "stm-apollo.DOI-descent",
         "waypoints": [
           {
-            "x": 400,
+            "x": 480,
             "y": 200
           },
           {
-            "x": 420,
+            "x": 500,
             "y": 200
           }
         ],
@@ -337,7 +340,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       },
       {
         "id": "t-descent-eva",
@@ -345,11 +349,11 @@
         "relationship_ref": "stm-apollo.descent-surfaceEVA",
         "waypoints": [
           {
-            "x": 590,
+            "x": 670,
             "y": 200
           },
           {
-            "x": 610,
+            "x": 690,
             "y": 200
           }
         ],
@@ -372,11 +376,11 @@
         "relationship_ref": "stm-apollo.surfaceEVA-ascent",
         "waypoints": [
           {
-            "x": 780,
+            "x": 860,
             "y": 200
           },
           {
-            "x": 800,
+            "x": 880,
             "y": 200
           }
         ],
@@ -399,11 +403,11 @@
         "relationship_ref": "stm-apollo.ascent-rendezvous",
         "waypoints": [
           {
-            "x": 885,
+            "x": 965,
             "y": 240
           },
           {
-            "x": 885,
+            "x": 965,
             "y": 260
           },
           {
@@ -438,7 +442,7 @@
             "y": 320
           },
           {
-            "x": 420,
+            "x": 430,
             "y": 320
           }
         ],
@@ -453,7 +457,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       },
       {
         "id": "t-TEI-entry",
@@ -461,11 +466,11 @@
         "relationship_ref": "stm-apollo.TEI-entry",
         "waypoints": [
           {
-            "x": 590,
+            "x": 680,
             "y": 320
           },
           {
-            "x": 610,
+            "x": 700,
             "y": 320
           }
         ],
@@ -480,7 +485,8 @@
             "x": 0,
             "y": -24
           }
-        }
+        },
+        "name": ""
       }
     ],
     "metadata": {
