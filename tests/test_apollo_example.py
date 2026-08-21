@@ -293,6 +293,7 @@ class ApolloExampleTests(unittest.TestCase):
     def test_does_not_collapse_required_computers(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]
         defs = {item["id"]: item for item in model["definitions"]}
+        rels = {item["id"]: item for item in model["relationships"]}
         for did in FORBIDDEN_COLLAPSE:
             self.assertIn(did, defs, did)
         self.assertNotEqual(defs["Apollo.AGC_CM"]["id"], defs["Apollo.AGC_LM"]["id"])
