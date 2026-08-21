@@ -82,5 +82,6 @@ SysML2d-only kinds (**flow**, **acase**, **vcase**, **intf**, **general**) are n
 - Context IBD: [projects/e-bike/e-bike-ctx.msmd](../../projects/e-bike/e-bike-ctx.msmd) — rider / charger / bike / road only.
 - Internal IBD: [projects/e-bike/e-bike-ibd.msmd](../../projects/e-bike/e-bike-ibd.msmd).
 - Full twelve-view set: [projects/appliances/toaster/](../../projects/appliances/toaster/).
+- Full system + subsystem: [projects/apollo/](../../projects/apollo/) (vehicle IBD `apollo-ibd`, electrical IBD `apollo-eps`).
 
 After render, run [vision-review](../vision-review/SKILL.md) on every PNG before commit.

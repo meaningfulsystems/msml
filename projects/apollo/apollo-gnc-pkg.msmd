@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1420,
-      "height": 640,
+      "height": 700,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -368,7 +368,7 @@
         "model_ref": "Apollo.Note.UnknownRope",
         "layout": {
           "x": 20,
-          "y": 520,
+          "y": 530,
           "width": 400,
           "height": 80,
           "z_index": 1
@@ -388,10 +388,10 @@
       {
         "type": "comment",
         "id": "n-ags",
-        "model_ref": "Apollo.Note.UnknownAgsMem",
+        "model_ref": "Apollo.Note.AgsSourced",
         "layout": {
           "x": 440,
-          "y": 520,
+          "y": 530,
           "width": 400,
           "height": 80,
           "z_index": 1
@@ -414,7 +414,7 @@
         "model_ref": "Apollo.Note.Collapse",
         "layout": {
           "x": 860,
-          "y": 520,
+          "y": 530,
           "width": 520,
           "height": 80,
           "z_index": 1
@@ -422,6 +422,29 @@
         "style": {
           "fill_color": "#FFFDE7",
           "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-deda",
+        "model_ref": "Apollo.DEDA",
+        "layout": {
+          "x": 660,
+          "y": 420,
+          "width": 240,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -680,6 +703,29 @@
         ],
         "style": {
           "line_color": "#F9A825",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "a3",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-ags-deda",
+        "waypoints": [
+          {
+            "x": 780,
+            "y": 400
+          },
+          {
+            "x": 780,
+            "y": 420
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",

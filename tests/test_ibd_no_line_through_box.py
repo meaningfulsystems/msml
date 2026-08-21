@@ -216,3 +216,10 @@ class IbdNoLineThroughBoxTests(unittest.TestCase):
             [],
             "Apollo USB connectors must not pass through boxes",
         )
+
+    def test_apollo_eps_connectors_miss_foreign_boxes(self) -> None:
+        self.assertEqual(
+            _box_hits(APOLLO / "apollo-eps.msmd"),
+            [],
+            "Apollo electrical IBD connectors must not pass through boxes",
+        )

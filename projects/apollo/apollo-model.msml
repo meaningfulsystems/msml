@@ -525,6 +525,79 @@
       },
       {
         "type": "block",
+        "id": "Apollo.Probe",
+        "name": "probe",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "docking probe",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "AER + AOH Block II",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Drogue",
+        "name": "drogue",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "LM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "docking drogue",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Latch",
+        "name": "latch",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM ring",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "12",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "hard dock",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
         "id": "Apollo.SM",
         "name": "SM",
         "stereotype": "block",
@@ -786,12 +859,156 @@
           "properties": [
             {
               "name": "host",
-              "type": "CM / SM",
+              "type": "CM",
               "multiplicity": "1"
             },
             {
               "name": "role",
-              "type": "attitude / translation",
+              "type": "attitude \u2014 no auto translation",
+              "multiplicity": "1"
+            },
+            {
+              "name": "sets",
+              "type": "two independent 6-engine sets",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrust",
+              "type": "93 lbf each engine",
+              "multiplicity": "1"
+            },
+            {
+              "name": "entry",
+              "type": "one active, one standby",
+              "multiplicity": "1"
+            },
+            {
+              "name": "propellant",
+              "type": "MMH / NTO, helium",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "Press Kit + AOH",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.RCS_SetA",
+        "name": "set",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM RCS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "which",
+              "type": "A \u2014 active in entry",
+              "multiplicity": "1"
+            },
+            {
+              "name": "engines",
+              "type": "6 \u00d7 93 lbf",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.RCS_SetB",
+        "name": "set",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM RCS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "which",
+              "type": "B \u2014 standby in entry",
+              "multiplicity": "1"
+            },
+            {
+              "name": "engines",
+              "type": "6 \u00d7 93 lbf",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.RCS_SM",
+        "name": "RCS",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "SM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "quads",
+              "type": "four independent, 90\u00b0 apart",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrust",
+              "type": "UNKNOWN",
+              "multiplicity": "1"
+            },
+            {
+              "name": "doNot",
+              "type": "do not use 100 lbf unless cited",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "Press Kit + AOH",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Quad",
+        "name": "quad",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "SM RCS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "4",
+              "multiplicity": "1"
+            },
+            {
+              "name": "spacing",
+              "type": "90\u00b0",
+              "multiplicity": "1"
+            },
+            {
+              "name": "thrust",
+              "type": "UNKNOWN",
               "multiplicity": "1"
             }
           ],
@@ -853,6 +1070,11 @@
             {
               "name": "a11Duration",
               "type": "196 h vs 336 h spec",
+              "multiplicity": "1"
+            },
+            {
+              "name": "fcWater",
+              "type": "~0.77 lb/kWh from fuel cells",
               "multiplicity": "1"
             }
           ],
@@ -939,7 +1161,250 @@
             },
             {
               "name": "role",
-              "type": "electrical power",
+              "type": "primary power",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "3",
+              "multiplicity": "1"
+            },
+            {
+              "name": "reactants",
+              "type": "H2 / O2",
+              "multiplicity": "1"
+            },
+            {
+              "name": "water",
+              "type": "~0.77 lb/kWh \u2014 already in ECLSS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "watts",
+              "type": "press kit does not state",
+              "multiplicity": "1"
+            },
+            {
+              "name": "nasm",
+              "type": "563\u20131420 W normal / 2300 W max at 27\u201331 V \u2014 secondary",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.AgZn_CM",
+        "name": "AgZn",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "3",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "entry / post-landing + peak assist",
+              "multiplicity": "1"
+            },
+            {
+              "name": "charger",
+              "type": "LEB",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 Press Kit",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Charger",
+        "name": "charger",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "LEB",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "CM AgZn charger",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.PyroBatt",
+        "name": "pyro",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "CM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "separate pyro batteries",
+              "multiplicity": "1"
+            },
+            {
+              "name": "doNot",
+              "type": "not the entry AgZn set",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.AgZn_Des",
+        "name": "AgZn",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "descent",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "4",
+              "multiplicity": "1"
+            },
+            {
+              "name": "eca",
+              "type": "1 per battery",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 Press Kit",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.AgZn_Asc",
+        "name": "AgZn",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "ascent",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "2",
+              "multiplicity": "1"
+            },
+            {
+              "name": "eca",
+              "type": "1 per battery",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "A11 Press Kit",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.ECA",
+        "name": "ECA",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "role",
+              "type": "electrical control assembly",
+              "multiplicity": "1"
+            },
+            {
+              "name": "with",
+              "type": "each LM AgZn primary",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.DCBus_LM",
+        "name": "28 V DC",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "LM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "voltage",
+              "type": "28 V DC",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.Inverter",
+        "name": "inverter",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "LM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "count",
+              "type": "2",
+              "multiplicity": "1"
+            },
+            {
+              "name": "output",
+              "type": "117 V 400 Hz",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "either can carry the load",
               "multiplicity": "1"
             }
           ],
@@ -1147,17 +1612,17 @@
           "properties": [
             {
               "name": "role",
-              "type": "LM abort backup",
+              "type": "abort-to-orbit / rendezvous only",
               "multiplicity": "1"
             },
             {
               "name": "parts",
-              "type": "AEA + ASA",
+              "type": "AEA + ASA + DEDA",
               "multiplicity": "1"
             },
             {
-              "name": "memory",
-              "type": "UNKNOWN",
+              "name": "not",
+              "type": "not a landing computer",
               "multiplicity": "1"
             },
             {
@@ -1168,6 +1633,11 @@
             {
               "name": "doNot",
               "type": "do not fold into AGC_LM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "TN-7990 / NTRS 19750018954",
               "multiplicity": "1"
             }
           ],
@@ -1193,7 +1663,32 @@
             },
             {
               "name": "memory",
-              "type": "UNKNOWN",
+              "type": "4096 \u00d7 18-bit words",
+              "multiplicity": "1"
+            },
+            {
+              "name": "split",
+              "type": "half hardwired / half erasable",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cycle",
+              "type": "5 \u03bcs",
+              "multiplicity": "1"
+            },
+            {
+              "name": "loops",
+              "type": "20 ms / 40 ms / 2 s",
+              "multiplicity": "1"
+            },
+            {
+              "name": "mass",
+              "type": "14.8 kg (32.7 lb)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "source",
+              "type": "TN-7990 + AEA programming ref",
               "multiplicity": "1"
             }
           ],
@@ -1214,7 +1709,33 @@
             },
             {
               "name": "role",
-              "type": "abort sensor assembly",
+              "type": "abort sensor assembly \u2014 strapdown",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "Apollo.DEDA",
+        "name": "DEDA",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "host",
+              "type": "AGS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "data entry \u2014 not a DSKY",
+              "multiplicity": "1"
+            },
+            {
+              "name": "doNot",
+              "type": "do not fold into DSKY",
               "multiplicity": "1"
             }
           ],
@@ -2189,8 +2710,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.Collapse",
-        "name": "Do not collapse: two AGCs, AGS (AEA+ASA), IU LVDC,\ndescent vs ascent, LES, DSKY counts (CM 2 / LM 1), EMS.\nOK to collapse: ullage/retro as sets, every verb/noun,\nF-1 hydraulics.",
-        "text": "Do not collapse: two AGCs, AGS (AEA+ASA), IU LVDC,\ndescent vs ascent, LES, DSKY counts (CM 2 / LM 1), EMS.\nOK to collapse: ullage/retro as sets, every verb/noun,\nF-1 hydraulics."
+        "name": "Do not collapse: two AGCs, AGS (AEA+ASA+DEDA), IU LVDC,\ndescent vs ascent, LES, DSKY counts (CM 2 / LM 1), EMS,\nSM fuel cells vs CM AgZn vs LM descent/ascent batteries.\nOK to collapse: ullage/retro as sets, every verb/noun,\nF-1 hydraulics.",
+        "text": "Do not collapse: two AGCs, AGS (AEA+ASA+DEDA), IU LVDC,\ndescent vs ascent, LES, DSKY counts (CM 2 / LM 1), EMS,\nSM fuel cells vs CM AgZn vs LM descent/ascent batteries.\nOK to collapse: ullage/retro as sets, every verb/noun,\nF-1 hydraulics."
       },
       {
         "type": "comment",
@@ -2200,9 +2721,9 @@
       },
       {
         "type": "comment",
-        "id": "Apollo.Note.UnknownAgsMem",
-        "name": "UNKNOWN \u2014 AGS (AEA) memory size.\nAGS is a separate computer. R47 inits it from PNGS.",
-        "text": "UNKNOWN \u2014 AGS (AEA) memory size.\nAGS is a separate computer. R47 inits it from PNGS."
+        "id": "Apollo.Note.AgsSourced",
+        "name": "AGS memory is sourced (TN-7990 / NTRS 19750018954).\nAEA: 4096 \u00d7 18-bit, half hardwired / half erasable, 5 \u03bcs.\nDEDA is not a DSKY. Abort-to-orbit / rendezvous only.",
+        "text": "AGS memory is sourced (TN-7990 / NTRS 19750018954).\nAEA: 4096 \u00d7 18-bit, half hardwired / half erasable, 5 \u03bcs.\nDEDA is not a DSKY. Abort-to-orbit / rendezvous only."
       },
       {
         "type": "comment",
@@ -2221,6 +2742,24 @@
         "id": "Apollo.Note.UnknownTanks",
         "name": "UNKNOWN \u2014 stage tank loads are not on this model.\nDo not invent S-IC / S-II / S-IVB load figures.",
         "text": "UNKNOWN \u2014 stage tank loads are not on this model.\nDo not invent S-IC / S-II / S-IVB load figures."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.UnknownSmRcs",
+        "name": "UNKNOWN \u2014 SM RCS per-engine thrust.\nDo not use 100 lbf unless cited.",
+        "text": "UNKNOWN \u2014 SM RCS per-engine thrust.\nDo not use 100 lbf unless cited."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.NasmWatts",
+        "name": "Fuel-cell watts are NASM secondary (563\u20131420 W normal /\n2300 W max at 27\u201331 V). Press kit does not state watts.",
+        "text": "Fuel-cell watts are NASM secondary (563\u20131420 W normal /\n2300 W max at 27\u201331 V). Press kit does not state watts."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.Docking",
+        "name": "Probe on CM, drogue on LM. Soft capture, retract to hard dock.\n12 CM ring latches. Probe+drogue removed and stowed for transfer.",
+        "text": "Probe on CM, drogue on LM. Soft capture, retract to hard dock.\n12 CM ring latches. Probe+drogue removed and stowed for transfer."
       },
       {
         "id": "Apollo.Port.vehicleUsbOut",
@@ -4279,6 +4818,114 @@
         "type": "port",
         "name": "crew",
         "owner_ref": "Apollo.LM_Steerable"
+      },
+      {
+        "id": "Apollo.Port.smFcIn",
+        "type": "port",
+        "name": "fc",
+        "owner_ref": "Apollo.SM"
+      },
+      {
+        "id": "Apollo.Port.smPwrOut",
+        "type": "port",
+        "name": "umbPwr",
+        "owner_ref": "Apollo.SM"
+      },
+      {
+        "id": "Apollo.Port.agznCmOut",
+        "type": "port",
+        "name": "dc",
+        "owner_ref": "Apollo.AgZn_CM"
+      },
+      {
+        "id": "Apollo.Port.cmAgznIn",
+        "type": "port",
+        "name": "batt",
+        "owner_ref": "Apollo.CM"
+      },
+      {
+        "id": "Apollo.Port.chargerOut",
+        "type": "port",
+        "name": "chg",
+        "owner_ref": "Apollo.Charger"
+      },
+      {
+        "id": "Apollo.Port.agznChgIn",
+        "type": "port",
+        "name": "chg",
+        "owner_ref": "Apollo.AgZn_CM"
+      },
+      {
+        "id": "Apollo.Port.agznDesOut",
+        "type": "port",
+        "name": "dc",
+        "owner_ref": "Apollo.AgZn_Des"
+      },
+      {
+        "id": "Apollo.Port.agznAscOut",
+        "type": "port",
+        "name": "dc",
+        "owner_ref": "Apollo.AgZn_Asc"
+      },
+      {
+        "id": "Apollo.Port.ecaDesIn",
+        "type": "port",
+        "name": "batt",
+        "owner_ref": "Apollo.ECA"
+      },
+      {
+        "id": "Apollo.Port.ecaAscIn",
+        "type": "port",
+        "name": "asc",
+        "owner_ref": "Apollo.ECA"
+      },
+      {
+        "id": "Apollo.Port.ecaOut",
+        "type": "port",
+        "name": "bus",
+        "owner_ref": "Apollo.ECA"
+      },
+      {
+        "id": "Apollo.Port.lmDcIn",
+        "type": "port",
+        "name": "eca",
+        "owner_ref": "Apollo.DCBus_LM"
+      },
+      {
+        "id": "Apollo.Port.lmDcOut",
+        "type": "port",
+        "name": "ac",
+        "owner_ref": "Apollo.DCBus_LM"
+      },
+      {
+        "id": "Apollo.Port.invIn",
+        "type": "port",
+        "name": "dc",
+        "owner_ref": "Apollo.Inverter"
+      },
+      {
+        "id": "Apollo.Port.probeOut",
+        "type": "port",
+        "name": "soft",
+        "owner_ref": "Apollo.Probe"
+      },
+      {
+        "id": "Apollo.Port.drogueIn",
+        "type": "port",
+        "name": "soft",
+        "owner_ref": "Apollo.Drogue"
+      },
+      {
+        "id": "Apollo.Port.latchOut",
+        "type": "port",
+        "name": "ring",
+        "owner_ref": "Apollo.Latch"
+      },
+      {
+        "id": "Apollo.Port.probeLatchIn",
+        "type": "port",
+        "name": "ring",
+        "owner_ref": "Apollo.Probe"
       }
     ],
     "relationships": [
@@ -4456,7 +5103,7 @@
         "source": "Apollo.SM",
         "target": "Apollo.FuelCell",
         "multiplicity_source": "1",
-        "multiplicity_target": "1"
+        "multiplicity_target": "3"
       },
       {
         "id": "bdd-apollo.c-sm-backup",
@@ -6521,6 +7168,268 @@
         "type": "control_flow",
         "source": "Apollo.Action.dockEject",
         "target": "Apollo.Action.loi"
+      },
+      {
+        "id": "bdd-apollo.c-cm-agzn",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.AgZn_CM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "3"
+      },
+      {
+        "id": "bdd-apollo.c-cm-chg",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.Charger",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-pyro",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.PyroBatt",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-des-agzn",
+        "type": "composition",
+        "source": "Apollo.Descent",
+        "target": "Apollo.AgZn_Des",
+        "multiplicity_source": "1",
+        "multiplicity_target": "4"
+      },
+      {
+        "id": "bdd-apollo.c-asc-agzn",
+        "type": "composition",
+        "source": "Apollo.Ascent",
+        "target": "Apollo.AgZn_Asc",
+        "multiplicity_source": "1",
+        "multiplicity_target": "2"
+      },
+      {
+        "id": "bdd-apollo.c-des-eca",
+        "type": "composition",
+        "source": "Apollo.AgZn_Des",
+        "target": "Apollo.ECA",
+        "multiplicity_source": "1",
+        "multiplicity_target": "4"
+      },
+      {
+        "id": "bdd-apollo.c-asc-eca",
+        "type": "composition",
+        "source": "Apollo.AgZn_Asc",
+        "target": "Apollo.ECA",
+        "multiplicity_source": "1",
+        "multiplicity_target": "2"
+      },
+      {
+        "id": "bdd-apollo.c-lm-dc",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.DCBus_LM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-lm-inv",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.Inverter",
+        "multiplicity_source": "1",
+        "multiplicity_target": "2"
+      },
+      {
+        "id": "bdd-apollo.c-ags-deda",
+        "type": "composition",
+        "source": "Apollo.AGS",
+        "target": "Apollo.DEDA",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-sm-rcs",
+        "type": "composition",
+        "source": "Apollo.SM",
+        "target": "Apollo.RCS_SM",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-rcs-quad",
+        "type": "composition",
+        "source": "Apollo.RCS_SM",
+        "target": "Apollo.Quad",
+        "multiplicity_source": "1",
+        "multiplicity_target": "4"
+      },
+      {
+        "id": "bdd-apollo.c-cm-seta",
+        "type": "composition",
+        "source": "Apollo.RCS_CM",
+        "target": "Apollo.RCS_SetA",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-setb",
+        "type": "composition",
+        "source": "Apollo.RCS_CM",
+        "target": "Apollo.RCS_SetB",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-probe",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.Probe",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-lm-drogue",
+        "type": "composition",
+        "source": "Apollo.LM",
+        "target": "Apollo.Drogue",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-apollo.c-cm-latch",
+        "type": "composition",
+        "source": "Apollo.CM",
+        "target": "Apollo.Latch",
+        "multiplicity_source": "1",
+        "multiplicity_target": "12"
+      },
+      {
+        "id": "eps-apollo.fcToSm",
+        "type": "connector",
+        "source": "Apollo.Port.fuelOut",
+        "target": "Apollo.Port.smFcIn",
+        "name": "primary DC"
+      },
+      {
+        "id": "eps-apollo.smToCm",
+        "type": "connector",
+        "source": "Apollo.Port.smPwrOut",
+        "target": "Apollo.Port.cmPowerIn",
+        "name": "umbilical power"
+      },
+      {
+        "id": "eps-apollo.agznToCm",
+        "type": "connector",
+        "source": "Apollo.Port.agznCmOut",
+        "target": "Apollo.Port.cmAgznIn",
+        "name": "entry DC"
+      },
+      {
+        "id": "eps-apollo.chgToAgzn",
+        "type": "connector",
+        "source": "Apollo.Port.chargerOut",
+        "target": "Apollo.Port.agznChgIn",
+        "name": "charge"
+      },
+      {
+        "id": "eps-apollo.desToEca",
+        "type": "connector",
+        "source": "Apollo.Port.agznDesOut",
+        "target": "Apollo.Port.ecaDesIn",
+        "name": "descent DC"
+      },
+      {
+        "id": "eps-apollo.ascToEca",
+        "type": "connector",
+        "source": "Apollo.Port.agznAscOut",
+        "target": "Apollo.Port.ecaAscIn",
+        "name": "ascent DC"
+      },
+      {
+        "id": "eps-apollo.ecaToBus",
+        "type": "connector",
+        "source": "Apollo.Port.ecaOut",
+        "target": "Apollo.Port.lmDcIn",
+        "name": "28 V"
+      },
+      {
+        "id": "eps-apollo.busToInv",
+        "type": "connector",
+        "source": "Apollo.Port.lmDcOut",
+        "target": "Apollo.Port.invIn",
+        "name": "AC feed"
+      },
+      {
+        "id": "dock-apollo.probeToDrogue",
+        "type": "connector",
+        "source": "Apollo.Port.probeOut",
+        "target": "Apollo.Port.drogueIn",
+        "name": "soft / hard"
+      },
+      {
+        "id": "dock-apollo.latchToProbe",
+        "type": "connector",
+        "source": "Apollo.Port.latchOut",
+        "target": "Apollo.Port.probeLatchIn",
+        "name": "12 latches"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m1",
+        "name": "probe to drogue",
+        "source_lifeline": "Apollo.CM",
+        "target_lifeline": "Apollo.LM",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m2",
+        "name": "soft capture",
+        "source_lifeline": "Apollo.LM",
+        "target_lifeline": "Apollo.CM",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m3",
+        "name": "retract",
+        "source_lifeline": "Apollo.CM",
+        "target_lifeline": "Apollo.LM",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m4",
+        "name": "hard dock \u2014 12 latches",
+        "source_lifeline": "Apollo.CM",
+        "target_lifeline": "Apollo.LM",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m5",
+        "name": "remove probe+drogue",
+        "source_lifeline": "Apollo.Crew",
+        "target_lifeline": "Apollo.CM",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m6",
+        "name": "stow",
+        "source_lifeline": "Apollo.Crew",
+        "target_lifeline": "Apollo.CM",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-dock.m7",
+        "name": "crew transfer",
+        "source_lifeline": "Apollo.Crew",
+        "target_lifeline": "Apollo.LM",
+        "message_sort": "asynch_signal"
       }
     ],
     "metadata": {

@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1260,
-      "height": 740,
+      "height": 820,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -232,7 +232,7 @@
           "x": 940,
           "y": 430,
           "width": 240,
-          "height": 120,
+          "height": 160,
           "z_index": 1
         },
         "style": {
@@ -296,7 +296,7 @@
       {
         "type": "comment",
         "id": "n-ags",
-        "model_ref": "Apollo.Note.UnknownAgsMem",
+        "model_ref": "Apollo.Note.AgsSourced",
         "layout": {
           "x": 40,
           "y": 620,
@@ -307,6 +307,29 @@
         "style": {
           "fill_color": "#FFFDE7",
           "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "block",
+        "id": "b-deda",
+        "model_ref": "Apollo.DEDA",
+        "layout": {
+          "x": 940,
+          "y": 680,
+          "width": 240,
+          "height": 110,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EDE7F6",
+          "border_color": "#6A1B9A",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -530,6 +553,29 @@
         ],
         "style": {
           "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "diamond_fill",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "l10",
+        "type": "composition",
+        "relationship_ref": "bdd-apollo.c-ags-deda",
+        "waypoints": [
+          {
+            "x": 900,
+            "y": 560
+          },
+          {
+            "x": 940,
+            "y": 735
+          }
+        ],
+        "style": {
+          "line_color": "#6A1B9A",
           "line_width": 1.5,
           "line_style": "solid",
           "source_arrowhead": "none",

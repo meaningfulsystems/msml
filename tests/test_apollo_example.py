@@ -37,6 +37,10 @@ REQUIRED_VIEW_STEMS = (
     "apollo-lm-bdd",
     "apollo-gnc-pkg",
     "apollo-abort",
+    "apollo-eps",
+    "apollo-ags-bdd",
+    "apollo-dock",
+    "apollo-rcs",
 )
 
 REQUIRED_DEF_IDS = (
@@ -66,6 +70,20 @@ REQUIRED_DEF_IDS = (
     "Apollo.FCC",
     "Apollo.AEA",
     "Apollo.ASA",
+    "Apollo.DEDA",
+    "Apollo.AgZn_CM",
+    "Apollo.Charger",
+    "Apollo.PyroBatt",
+    "Apollo.AgZn_Des",
+    "Apollo.AgZn_Asc",
+    "Apollo.ECA",
+    "Apollo.DCBus_LM",
+    "Apollo.Inverter",
+    "Apollo.RCS_SM",
+    "Apollo.Quad",
+    "Apollo.Probe",
+    "Apollo.Drogue",
+    "Apollo.Latch",
     "Apollo.SPS",
     "Apollo.RCS_CM",
     "Apollo.ECLSS",
@@ -269,9 +287,35 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(agc_lm["dsky"], "1")
         self.assertIn("P66 ROD", agc_lm["descent"])
         ags = {p["name"]: p.get("type") for p in defs["Apollo.AGS"]["compartments"]["properties"]}
-        self.assertEqual(ags["memory"], "UNKNOWN")
-        self.assertIn("AEA + ASA", ags["parts"])
+        self.assertIn("AEA + ASA + DEDA", ags["parts"])
         self.assertIn("R47", ags["init"])
+        self.assertIn("not a landing computer", ags["not"])
+        aea = {p["name"]: p.get("type") for p in defs["Apollo.AEA"]["compartments"]["properties"]}
+        self.assertEqual(aea["memory"], "4096 × 18-bit words")
+        self.assertEqual(aea["cycle"], "5 μs")
+        self.assertEqual(aea["mass"], "14.8 kg (32.7 lb)")
+        self.assertEqual(defs["Apollo.DEDA"]["name"], "DEDA")
+        self.assertNotEqual(defs["Apollo.DEDA"]["id"], defs["Apollo.DSKY"]["id"])
+        self.assertNotEqual(defs["Apollo.DEDA"]["id"], defs["Apollo.DSKY_LM"]["id"])
+        fc = {p["name"]: p.get("type") for p in defs["Apollo.FuelCell"]["compartments"]["properties"]}
+        self.assertEqual(fc["count"], "3")
+        self.assertEqual(fc["reactants"], "H2 / O2")
+        self.assertEqual(fc["watts"], "press kit does not state")
+        self.assertIn("0.77", fc["water"])
+        sm_rcs = {p["name"]: p.get("type") for p in defs["Apollo.RCS_SM"]["compartments"]["properties"]}
+        self.assertEqual(sm_rcs["thrust"], "UNKNOWN")
+        self.assertNotIn("100 lbf", sm_rcs["thrust"])
+        cm_rcs = {p["name"]: p.get("type") for p in defs["Apollo.RCS_CM"]["compartments"]["properties"]}
+        self.assertEqual(cm_rcs["thrust"], "93 lbf each engine")
+        self.assertIn("no auto translation", cm_rcs["role"])
+        self.assertEqual(defs["Apollo.Probe"]["name"], "probe")
+        self.assertEqual(defs["Apollo.Drogue"]["name"], "drogue")
+        latch = {p["name"]: p.get("type") for p in defs["Apollo.Latch"]["compartments"]["properties"]}
+        self.assertEqual(latch["count"], "12")
+        inv = {p["name"]: p.get("type") for p in defs["Apollo.Inverter"]["compartments"]["properties"]}
+        self.assertEqual(inv["output"], "117 V 400 Hz")
+        self.assertEqual(defs["Apollo.AgZn_Des"]["compartments"]["properties"][1]["type"], "4")
+        self.assertEqual(defs["Apollo.AgZn_Asc"]["compartments"]["properties"][1]["type"], "2")
         f1 = {p["name"]: p.get("type") for p in defs["Apollo.F1"]["compartments"]["properties"]}
         self.assertEqual(f1["thrust"], "1,530,000 lbf each")
         sps = {p["name"]: p.get("type") for p in defs["Apollo.SPS"]["compartments"]["properties"]}
@@ -290,7 +334,10 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownTanks"]["text"])
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownDv"]["text"])
         self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownRope"]["text"])
-        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownAgsMem"]["text"])
+        self.assertIn("4096", defs["Apollo.Note.AgsSourced"]["text"])
+        self.assertNotIn("UNKNOWN", defs["Apollo.Note.AgsSourced"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownSmRcs"]["text"])
+        self.assertIn("100 lbf", defs["Apollo.Note.UnknownSmRcs"]["text"])
         self.assertEqual(defs["Apollo.State.Mission.earthOrbit"]["do"], "100 nmi planned")
         self.assertNotEqual(defs["Apollo.AGC_CM"]["id"], defs["Apollo.AGC_LM"]["id"])
         self.assertNotEqual(defs["Apollo.AGS"]["id"], defs["Apollo.AGC_LM"]["id"])
