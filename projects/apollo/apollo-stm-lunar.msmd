@@ -401,6 +401,7 @@
         "id": "t-ascent-rnd",
         "type": "transition",
         "relationship_ref": "stm-apollo.ascent-rendezvous",
+        "name": "",
         "waypoints": [
           {
             "x": 965,

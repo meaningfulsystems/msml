@@ -827,6 +827,10 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertEqual(lunar_els["s-TEI"]["display_name"], "Trans-Earth Injection")
         stm_rels = {rel["id"]: rel for rel in stm["relationships"]}
         self.assertEqual(stm_rels["t-boost-earthOrbit"]["name"], "second-stage cutoff")
+        self.assertLess(stm_rels["t-boost-earthOrbit"]["style"]["label_offset"]["x"], 0)
+        self.assertLess(stm_rels["t-boost-earthOrbit"]["style"]["label_offset"]["y"], -40)
+        lunar_rels = {rel["id"]: rel for rel in lunar["relationships"]}
+        self.assertEqual(lunar_rels["t-ascent-rnd"].get("name"), "")
         self.assertIn("Descent Orbit Insertion", lunar["name"])
         self.assertIn("Trans-Earth Injection", lunar["name"])
         self.assertNotIn("DOI", lunar["name"])
