@@ -3081,6 +3081,12 @@
       },
       {
         "type": "comment",
+        "id": "Apollo.Note.CmpNoEva",
+        "name": "CMP: no PLSS + OPS. EVA equipment is CDR / LMP only.",
+        "text": "CMP: no PLSS + OPS. EVA equipment is CDR / LMP only."
+      },
+      {
+        "type": "comment",
         "id": "Apollo.Note.UnknownFood",
         "name": "Food plan 2200±300 kcal/d. A11 actual intake UNKNOWN.",
         "text": "Food plan 2200±300 kcal/d. A11 actual intake UNKNOWN."

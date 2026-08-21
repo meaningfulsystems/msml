@@ -178,7 +178,7 @@ class EBikeExampleTests(unittest.TestCase):
         self.assertEqual(rels["allocateSafetyToSensors"]["target"], "ElectricBike.CadenceSensor")
         range_text = defs["ElectricBike.rangeRequirement"]["text"]
         self.assertIn("Tour", range_text)
-        self.assertNotIn("PAS-1", range_text)
+        self.assertIn("Not Eco / PAS-1", range_text)
         self.assertIn("8.3 Wh/km Tour", defs["ElectricBike.PAR.energyPerKm"]["name"])
         root_props = {p["name"]: p["type"] for p in defs["ElectricBike"]["compartments"]["properties"]}
         self.assertEqual(root_props["classification"], "EPAC / EN 15194")

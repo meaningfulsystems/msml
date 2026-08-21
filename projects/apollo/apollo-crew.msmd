@@ -283,7 +283,7 @@
       {
         "type": "comment",
         "id": "n-cmp",
-        "model_ref": "Apollo.Note.Public",
+        "model_ref": "Apollo.Note.CmpNoEva",
         "layout": {
           "x": 850,
           "y": 260,
