@@ -46,7 +46,7 @@
         "model_ref": "Apollo.crewSafetyRequirement",
         "hide_req_id": true,
         "display_name": "safety",
-        "text": "The stack shall keep an abort path available from pad through TEI.",
+        "text": "The stack shall keep an abort path available under every phase from pad through TEI.",
         "layout": {
           "x": 30,
           "y": 24,
