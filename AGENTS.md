@@ -58,7 +58,7 @@ Starter: [templates/new-project/](templates/new-project/). Spec: [msml-specifica
 - Context is vehicle / crew / MCC / MSFN / Moon / Earth (RTCC sits with MCC). Uplink and downlink are distinct. Two command paths: (A) FC→CCC→RTCC→CCATS→site 642B→USB 70 kHz; (B) P27 V70–V73. Block II antennas are crew-selected.
 - IBD connectors never pass through boxes. Saturn joints are adjacent only.
 - Mission STM: countdown → boost → earthOrbit (100 nmi planned) → TLI → translunar → dock/eject → LOI → undock → DOI → descent → surface/EVA → ascent → rendezvous → TEI → entry → recovery. IU owns boost+TLI. RSO owns destruct until orbital safing. Abort machine in parallel: pad/LES, Modes I–IV, contingency TLI, SPS abort, lunar abort (P70 DPS / P71 APS).
-- Vehicle lock: Apollo 11 / Block II, AS-506. Two AGCs (CM Colossus + 2 DSKY; LM Luminary + 1 DSKY). AGS is a separate computer (AEA+ASA+DEDA; abort-to-orbit / rendezvous only). P27 verbs remain V70–V73 only.
+- Vehicle lock: Apollo 11 / Block II, AS-506 = S-IC-6 / S-II-6 / S-IVB-6N / IU-6 / SLA-14 / CSM-107 / LM-5. Two AGCs (CM Colossus + 2 DSKY; LM Luminary + 1 DSKY). AGS is a separate computer (AEA+ASA+DEDA; abort-to-orbit / rendezvous only). P27 verbs remain V70–V73 only. A11 MCC is MOCR 2 (3rd floor); handoff Mission Rule 1-21 at umbilical-tower clear; Petrone commits launch; AFETR stays parallel destruct. A11 SM cryo is 2 H2 + 2 O2 (not J-mission). No electrical power between Saturn stages; no CSM–LM propellant crossfeed.
 
 ## Checks
 

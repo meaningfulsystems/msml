@@ -116,7 +116,7 @@
         "type": "part",
         "id": "p-mcch",
         "model_ref": "Apollo.MCC_H",
-        "display_name": "mccH : MCC-H  MOCR · SSR · CCC",
+        "display_name": "mccH : MCC-H  MOCR 2 (3rd) · SSR · CCC",
         "layout": {
           "x": 660,
           "y": 30,

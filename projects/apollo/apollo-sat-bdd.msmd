@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 1280,
-      "height": 860,
+      "height": 890,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -357,6 +357,29 @@
           "font": {
             "family": "Arial",
             "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-serial",
+        "model_ref": "Apollo.Note.Serials",
+        "layout": {
+          "x": 20,
+          "y": 800,
+          "width": 1240,
+          "height": 60,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
             "bold": false,
             "color": "#000000"
           }

@@ -395,6 +395,51 @@ class ApolloExampleTests(unittest.TestCase):
         self.assertNotEqual(defs["Apollo.LVDC"]["id"], defs["Apollo.AGC_CM"]["id"])
         self.assertNotEqual(defs["Apollo.DSKY"]["id"], defs["Apollo.DSKY2"]["id"])
         self.assertNotEqual(defs["Apollo.DSKY"]["id"], defs["Apollo.DSKY_LM"]["id"])
+        root = {p["name"]: p["type"] for p in defs["Apollo"]["compartments"]["properties"]}
+        self.assertIn("S-IC-6", root["serials"])
+        self.assertIn("CSM-107", root["serials"])
+        self.assertIn("LM-5", root["serials"])
+        sat = {p["name"]: p.get("type") for p in defs["Apollo.SaturnV"]["compartments"]["properties"]}
+        self.assertIn("no electrical power", sat["stagePower"])
+        self.assertIn("no CSM–LM propellant crossfeed", sat["crossfeed"])
+        self.assertEqual({p["name"]: p["type"] for p in defs["Apollo.SIC"]["compartments"]["properties"]}["serial"], "S-IC-6")
+        mocr = {p["name"]: p["type"] for p in defs["Apollo.MOCR"]["compartments"]["properties"]}
+        self.assertEqual(mocr["which"], "MOCR 2 (3rd floor)")
+        ksc = {p["name"]: p["type"] for p in defs["Apollo.KSC_LCC"]["compartments"]["properties"]}
+        self.assertIn("1-21", ksc["handoff"])
+        self.assertIn("Petrone", ksc["commit"])
+        afet = {p["name"]: p["type"] for p in defs["Apollo.AFETR"]["compartments"]["properties"]}
+        self.assertEqual(afet["role"], "parallel destruct")
+        vhf = {p["name"]: p["type"] for p in defs["Apollo.BackupVoice"]["compartments"]["properties"]}
+        self.assertIn("296.8", vhf["vhf"])
+        self.assertIn("243.0", vhf["beacon"])
+        usb = {p["name"]: p["type"] for p in defs["Apollo.USB"]["compartments"]["properties"]}
+        self.assertEqual(usb["csmUplink"], "2106.40625 MHz")
+        self.assertEqual(usb["lmUplink"], "2101.802 MHz")
+        sm = {p["name"]: p["type"] for p in defs["Apollo.SM"]["compartments"]["properties"]}
+        self.assertIn("2 H2 + 2 O2", sm["cryo"])
+        self.assertIn("not J-mission", sm["notJ"])
+        aps = {p["name"]: p.get("type") for p in defs["Apollo.APS"]["compartments"]["properties"]}
+        self.assertEqual(aps["thrust"], "3,500 lbf")
+        self.assertEqual(aps["cant"], "1.5°")
+        self.assertEqual(aps["gimbal"], "not gimbaled")
+        hornet = {p["name"]: p["type"] for p in defs["Apollo.Hornet"]["compartments"]["properties"]}
+        self.assertIn("195:18:35", hornet["splash"])
+        self.assertIn("13 nmi", hornet["splash"])
+        cdr = {p["name"]: p["type"] for p in defs["Apollo.CDR"]["compartments"]["properties"]}
+        lmp = {p["name"]: p["type"] for p in defs["Apollo.LMP"]["compartments"]["properties"]}
+        self.assertEqual(cdr["evaTime"], "2:48")
+        self.assertEqual(lmp["evaTime"], "2:40")
+        self.assertIn("2:31:37", defs["Apollo.Note.EvaTimes"]["text"])
+        self.assertIn("2.26", defs["Apollo.Note.UnknownFood"]["text"])
+        self.assertIn("UNKNOWN", defs["Apollo.Note.UnknownFood"]["text"])
+        ecs = {p["name"]: p["type"] for p in defs["Apollo.LM_ECS"]["compartments"]["properties"]}
+        self.assertIn("2800", ecs["descentO2"])
+        self.assertIn("3000", ecs["descentO2"])
+        self.assertIn("cite both", ecs["descentO2"])
+        self.assertEqual(agc_cm["rope"], "Comanche 055")
+        self.assertEqual(agc_lm["rope"], "LMY99 rev 001")
+        self.assertEqual(sic["fueled"], "5,022,674 lb")
 
     def test_instance_is_apollo_11_block_ii(self) -> None:
         model = read_json_file(APOLLO / "apollo-model.msml")["model"]

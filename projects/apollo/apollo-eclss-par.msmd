@@ -462,7 +462,7 @@
           "x": 760,
           "y": 320,
           "width": 360,
-          "height": 70,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -491,6 +491,29 @@
         "style": {
           "fill_color": "#FFF9C4",
           "border_color": "#F9A825",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-o2psi",
+        "model_ref": "Apollo.Note.DescentO2Psi",
+        "layout": {
+          "x": 600,
+          "y": 520,
+          "width": 520,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
           "border_width": 2,
           "font": {
             "family": "Arial",

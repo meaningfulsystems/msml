@@ -6,7 +6,7 @@
   "diagram": {
     "type": "ibd",
     "id": "ibd-apollo-eps",
-    "name": "Electrical \u2014 SM fuel cells \u00b7 CM AgZn \u00b7 LM descent/ascent + ECA",
+    "name": "Electrical — SM fuel cells · CM AgZn · LM descent/ascent + ECA",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -62,7 +62,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "fuelCell : FuelCell \u00d73"
+        "display_name": "fuelCell : FuelCell ×3"
       },
       {
         "type": "part",
@@ -134,7 +134,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "agzn : AgZn \u00d73"
+        "display_name": "agzn : AgZn ×3"
       },
       {
         "type": "part",
@@ -230,7 +230,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "agznDes : AgZn \u00d74"
+        "display_name": "agznDes : AgZn ×4"
       },
       {
         "type": "part",
@@ -254,7 +254,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "agznAsc : AgZn \u00d72"
+        "display_name": "agznAsc : AgZn ×2"
       },
       {
         "type": "part",
@@ -326,7 +326,7 @@
             "color": "#000000"
           }
         },
-        "display_name": "inverter : inverter \u00d72"
+        "display_name": "inverter : inverter ×2"
       },
       {
         "type": "comment",
@@ -769,6 +769,29 @@
           "font": {
             "family": "Arial",
             "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-cryo",
+        "model_ref": "Apollo.Note.CryoA11",
+        "layout": {
+          "x": 340,
+          "y": 400,
+          "width": 420,
+          "height": 90,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
             "bold": false,
             "color": "#000000"
           }

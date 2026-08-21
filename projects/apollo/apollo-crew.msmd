@@ -455,7 +455,7 @@
           "x": 30,
           "y": 620,
           "width": 520,
-          "height": 70,
+          "height": 90,
           "z_index": 1
         },
         "style": {
@@ -1115,6 +1115,29 @@
           "font": {
             "family": "Arial",
             "size": 9,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "comment",
+        "id": "n-eva",
+        "model_ref": "Apollo.Note.EvaTimes",
+        "layout": {
+          "x": 570,
+          "y": 620,
+          "width": 420,
+          "height": 70,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFFDE7",
+          "border_color": "#8B8000",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 10,
             "bold": false,
             "color": "#000000"
           }

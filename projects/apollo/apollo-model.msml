@@ -37,6 +37,11 @@
               "name": "destination",
               "type": "Moon",
               "multiplicity": "1"
+            },
+            {
+              "name": "serials",
+              "type": "SA-506 = S-IC-6 / S-II-6 / S-IVB-6N / IU-6 / SLA-14 / CSM-107 / LM-5",
+              "multiplicity": "1"
             }
           ],
           "operations": [
@@ -154,6 +159,21 @@
               "name": "lvMeas",
               "type": "1,348 (S-IC 330 / S-II 514 / S-IVB 283 / IU 221)",
               "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "SA-506",
+              "multiplicity": "1"
+            },
+            {
+              "name": "stagePower",
+              "type": "no electrical power between Saturn stages",
+              "multiplicity": "1"
+            },
+            {
+              "name": "crossfeed",
+              "type": "no CSM–LM propellant crossfeed",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -210,6 +230,11 @@
               "name": "liftoffThrust",
               "type": "7,653,854 lbf",
               "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "S-IC-6",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -265,6 +290,11 @@
             {
               "name": "source",
               "type": "A11 PK p.109",
+              "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "S-II-6",
               "multiplicity": "1"
             }
           ],
@@ -327,6 +357,11 @@
               "name": "source",
               "type": "A11 PK p.109 — cite table and prose",
               "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "S-IVB-6N",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -372,6 +407,11 @@
             {
               "name": "source",
               "type": "A11 PK p.109",
+              "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "IU-6",
               "multiplicity": "1"
             }
           ],
@@ -596,6 +636,11 @@
               "name": "role",
               "type": "LM fairing",
               "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "SLA-14",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -611,6 +656,11 @@
             {
               "name": "modules",
               "type": "CM + SM",
+              "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "CSM-107",
               "multiplicity": "1"
             }
           ],
@@ -756,6 +806,16 @@
             {
               "name": "source",
               "type": "A11 PK p.109",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cryo",
+              "type": "2 H2 + 2 O2 (A11)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "notJ",
+              "type": "not J-mission third O2 / SM aux battery / SIM bay / rover",
               "multiplicity": "1"
             }
           ],
@@ -1403,6 +1463,11 @@
               "name": "nasm",
               "type": "563–1420 W normal / 2300 W max at 27–31 V — secondary",
               "multiplicity": "1"
+            },
+            {
+              "name": "cryoTanks",
+              "type": "2 H2 + 2 O2 — A11, not J-mission",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -1637,6 +1702,16 @@
               "name": "path",
               "type": "VHF / HF via MSFN",
               "multiplicity": "1"
+            },
+            {
+              "name": "vhf",
+              "type": "296.8 / 259.7 MHz CSM–LM–EVA",
+              "multiplicity": "1"
+            },
+            {
+              "name": "beacon",
+              "type": "243.0 MHz recovery · 3 W · 2 s on / 3 s off",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -1688,6 +1763,11 @@
             {
               "name": "source",
               "type": "A11 PK",
+              "multiplicity": "1"
+            },
+            {
+              "name": "serial",
+              "type": "LM-5",
               "multiplicity": "1"
             }
           ],
@@ -2104,6 +2184,16 @@
               "name": "source",
               "type": "TN D-7082",
               "multiplicity": "1"
+            },
+            {
+              "name": "cant",
+              "type": "1.5°",
+              "multiplicity": "1"
+            },
+            {
+              "name": "gimbal",
+              "type": "not gimbaled",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -2214,6 +2304,11 @@
               "name": "eva",
               "type": "PLSS + OPS",
               "multiplicity": "1"
+            },
+            {
+              "name": "evaTime",
+              "type": "2:48",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -2265,6 +2360,11 @@
             {
               "name": "eva",
               "type": "PLSS + OPS",
+              "multiplicity": "1"
+            },
+            {
+              "name": "evaTime",
+              "type": "2:40",
               "multiplicity": "1"
             }
           ],
@@ -2352,7 +2452,12 @@
             },
             {
               "name": "handoff",
-              "type": "MCC at tower clear",
+              "type": "Mission Rule 1-21 at umbilical-tower clear",
+              "multiplicity": "1"
+            },
+            {
+              "name": "commit",
+              "type": "Petrone Launch Operations commits launch",
               "multiplicity": "1"
             }
           ],
@@ -3001,8 +3106,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.IuOwns",
-        "name": "IU owns boost + TLI (LVDC + ST-124 + FCC).\nRSO owns destruct until orbital safing.",
-        "text": "IU owns boost + TLI (LVDC + ST-124 + FCC).\nRSO owns destruct until orbital safing."
+        "name": "Petrone Launch Operations commits launch.\nHandoff Mission Rule 1-21 at umbilical-tower clear.\nAFETR remains parallel destruct. IU owns boost + TLI.",
+        "text": "Petrone Launch Operations commits launch.\nHandoff Mission Rule 1-21 at umbilical-tower clear.\nAFETR remains parallel destruct. IU owns boost + TLI."
       },
       {
         "type": "comment",
@@ -3578,6 +3683,11 @@
               "name": "contains",
               "type": "MOCR, SSRs, RTCC, CCATS, display/control",
               "multiplicity": "1"
+            },
+            {
+              "name": "mocr",
+              "type": "MOCR 2 (3rd floor)",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -3593,6 +3703,16 @@
             {
               "name": "consoles",
               "type": "FLIGHT, CAPCOM, EECOM-function, GNC/prop, FDO/RETRO/GUIDO, SURGEON, NETWORK, CCC",
+              "multiplicity": "1"
+            },
+            {
+              "name": "which",
+              "type": "MOCR 2 (3rd floor)",
+              "multiplicity": "1"
+            },
+            {
+              "name": "a11",
+              "type": "A11 MCC",
               "multiplicity": "1"
             }
           ],
@@ -4070,7 +4190,7 @@
             },
             {
               "name": "handoff",
-              "type": "MCC at tower clear",
+              "type": "Mission Rule 1-21 at umbilical-tower clear",
               "multiplicity": "1"
             }
           ],
@@ -4087,6 +4207,11 @@
             {
               "name": "host",
               "type": "LC-39",
+              "multiplicity": "1"
+            },
+            {
+              "name": "commit",
+              "type": "Petrone Launch Operations commits launch",
               "multiplicity": "1"
             }
           ],
@@ -4220,6 +4345,11 @@
               "name": "with",
               "type": "RSO",
               "multiplicity": "1"
+            },
+            {
+              "name": "role",
+              "type": "parallel destruct",
+              "multiplicity": "1"
             }
           ],
           "operations": []
@@ -4235,6 +4365,21 @@
             {
               "name": "force",
               "type": "TF-130",
+              "multiplicity": "1"
+            },
+            {
+              "name": "beacon",
+              "type": "243.0 MHz · 3 W · 2 s on / 3 s off",
+              "multiplicity": "1"
+            },
+            {
+              "name": "splash",
+              "type": "195:18:35 MET",
+              "multiplicity": "1"
+            },
+            {
+              "name": "range",
+              "type": "13 nmi",
               "multiplicity": "1"
             }
           ],
@@ -4267,6 +4412,16 @@
             {
               "name": "role",
               "type": "prime recovery ship",
+              "multiplicity": "1"
+            },
+            {
+              "name": "force",
+              "type": "TF-130",
+              "multiplicity": "1"
+            },
+            {
+              "name": "splash",
+              "type": "195:18:35 MET · 13 nmi",
               "multiplicity": "1"
             }
           ],
@@ -4492,7 +4647,7 @@
           "properties": [
             {
               "name": "descentO2",
-              "type": "~48 lb @ 3000 psi",
+              "type": "~48 lb @ 2800 vs 3000 psi — cite both (TN D-6724)",
               "multiplicity": "1"
             },
             {
@@ -4540,8 +4695,8 @@
       {
         "type": "comment",
         "id": "Apollo.Note.UnknownFood",
-        "name": "Food plan 2200±300 kcal/d. A11 actual intake UNKNOWN.",
-        "text": "Food plan 2200±300 kcal/d. A11 actual intake UNKNOWN."
+        "name": "Food 2.26 lb/man/day planned. Plan also 2200±300 kcal/d.\nA11 actual kcal still UNKNOWN.",
+        "text": "Food 2.26 lb/man/day planned. Plan also 2200±300 kcal/d.\nA11 actual kcal still UNKNOWN."
       },
       {
         "type": "comment",
@@ -4598,7 +4753,7 @@
         "id": "Apollo.foodRequirement",
         "name": "Food plan",
         "req_id": "REQ-009",
-        "text": "Food plan 2200±300 kcal/d.\nA11 actual intake UNKNOWN.",
+        "text": "Food 2.26 lb/man/day planned; 2200±300 kcal/d plan.\nA11 actual kcal still UNKNOWN.",
         "kind": "design_constraint",
         "priority": "medium",
         "status": "approved"
@@ -4608,7 +4763,7 @@
         "id": "Apollo.lmEcsRequirement",
         "name": "LM-5 ECS (sourced)",
         "req_id": "REQ-010",
-        "text": "LM-5: descent O2 ~48 lb @ 3000 psi; ascent O2 ~2.4 lb ×2;\ndescent water 332 lb; ascent water 42 lb ×2;\nLCG 1200 Btu/man-h steady.",
+        "text": "LM-5: descent O2 ~48 lb @ 2800 vs 3000 psi (TN D-6724 — cite both);\nascent O2 ~2.4 lb ×2; descent water 332 lb; ascent water 42 lb ×2;\nLCG 1200 Btu/man-h steady.",
         "kind": "design_constraint",
         "priority": "high",
         "status": "approved"
@@ -5339,6 +5494,43 @@
         "id": "Apollo.State.LGC.P68",
         "name": "P68",
         "do": "landing confirmation"
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.Serials",
+        "name": "SA-506 = S-IC-6 / S-II-6 / S-IVB-6N / IU-6 / SLA-14 / CSM-107 / LM-5.\nNo electrical power between Saturn stages. No CSM–LM propellant crossfeed.",
+        "text": "SA-506 = S-IC-6 / S-II-6 / S-IVB-6N / IU-6 / SLA-14 / CSM-107 / LM-5.\nNo electrical power between Saturn stages. No CSM–LM propellant crossfeed."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.Vhf",
+        "name": "VHF 296.8 / 259.7 MHz (CSM–LM–EVA).\n243.0 MHz recovery beacon (3 W, 2 s on / 3 s off). USB numbers unchanged.",
+        "text": "VHF 296.8 / 259.7 MHz (CSM–LM–EVA).\n243.0 MHz recovery beacon (3 W, 2 s on / 3 s off). USB numbers unchanged."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.CryoA11",
+        "name": "A11 SM cryo is 2 H2 + 2 O2.\nNot J-mission third O2 / SM aux battery / SIM bay / rover.",
+        "text": "A11 SM cryo is 2 H2 + 2 O2.\nNot J-mission third O2 / SM aux battery / SIM bay / rover."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.EvaTimes",
+        "name": "A11 EVA: CDR 2:48, LMP 2:40 (PAO walk 2:31:37).",
+        "text": "A11 EVA: CDR 2:48, LMP 2:40 (PAO walk 2:31:37)."
+      },
+      {
+        "type": "comment",
+        "id": "Apollo.Note.DescentO2Psi",
+        "name": "TN D-6724 conflicts 2800 vs 3000 psi on descent O2 — cite both.",
+        "text": "TN D-6724 conflicts 2800 vs 3000 psi on descent O2 — cite both."
+      },
+      {
+        "type": "value_property",
+        "id": "Apollo.PAR.foodMass",
+        "name": "2.26 lb/man/day planned",
+        "value_type": "Real",
+        "unit": "lb/man/day"
       }
     ],
     "relationships": [
