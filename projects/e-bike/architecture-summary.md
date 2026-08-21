@@ -1,26 +1,27 @@
 # Electric Bike Architecture Summary
 
-EU-class pedal-assist bicycle (EPAC / EN 15194) with a rear geared hub. Namespace `ElectricBike`. File stem `e-bike`. Context is rider / charger / bike / road only. There is no `lockBike` use case.
+EU EPAC rear-geared hub bicycle. Namespace `ElectricBike`. File stem `e-bike`. Context is rider / charger / bike / road only. There is no `lockBike` use case and no throttle.
 
 This is the publish hero. The same ElectricBike names appear in [SysML2d](https://github.com/meaningfulsystems/sysml2d); the files are not interchangeable.
 
 ## Parts
 
-Frame, BatteryPack with nested `bms : BMS`, MotorController, Rear Geared Hub (id `HubMotor`), HumanInterface, BrakeSystem, `cadenceSensor`, `wheelSpeedSensor`.
+Frame, BatteryPack with nested `bms : BMS`, MotorController, Rear Geared Hub (id `HubMotor`), HumanInterface, BrakeSystem, `cadenceSensor`, and `wheelSpeedSensor`.
 
-Charge path (UL 2849): bike boundary `chargerIn` → nested BMS → pack cells. Rider, charger, and road stay on the context view, not the IBD. No throttle.
+Charge path: charger → BMS → pack cells. The BMS sits inside the pack. Rider, charger, and road stay on the context view, not the IBD.
 
 ## Key numbers
 
 | Quantity | Value | Meaning |
 | --- | --- | --- |
-| Continuous assist | **250 W** | EU EPAC continuous rating (`continuousAssist`). Not peak power. |
+| Pack energy | 500 Wh | Usable Tour-mode energy. |
+| Range | ≥ 60 km | Tour-mode, not Eco / PAS-1. |
+| Assist cutoff | 25 km/h | Cadence-only EPAC. |
+| Continuous assist | **250 W** | EU continuous rating (`continuousAssist`). Not peak. |
 | Hub torque | **40 N·m** | Hub **peak** torque (`peakTorque`). Not continuous. |
-| Assist cutoff | 25 km/h | Cadence-only; no throttle. |
 | Walk assist | ≤ 6 km/h | EPAC walk; not a throttle. |
-| Pack energy | 500 Wh usable | Tour-mode range ≥ 60 km (~8.3 Wh/km). Not Eco / PAS-1. |
-| Brake | 50 ms electronic + EN 15194 2 m / 5 m | Inhibit first; stopping-distance requirement is separate. |
-| Lighting | StVZO / ISO 6742 | Not UN ECE R113. |
+| Brake | EN 15194 2 m / 5 m plus 50 ms electronic | Stopping distance plus inhibit latency. |
+| Lighting | ISO 6742 / StVZO | Not UN ECE R113. |
 
 ## Views
 
@@ -33,7 +34,7 @@ Charge path (UL 2849): bike boundary `chargerIn` → nested BMS → pack cells. 
 | Activity | `e-bike-act` | Start ride; Pedal (EPAC) |
 | Sequence | `e-bike-int` | Rear Geared Hub lifeline |
 | Use case | `e-bike-uc` | Rider on Ride + Adjust; Charger on Charge only |
-| Requirements | `e-bike-req` · `e-bike-reqt` | Sibling requirements; no lockBike |
+| Requirements | `e-bike-req` · `e-bike-reqt` | Sibling requirements; lockBike omitted |
 | Parametric | `e-bike-par` | Tour energy / range / brake limits |
 | Package | `e-bike-pkg` | Model packages |
 | Allocation | `e-bike-alloc` · `e-bike-amx` | Assist Limit → `wheelSpeedSensor` |
