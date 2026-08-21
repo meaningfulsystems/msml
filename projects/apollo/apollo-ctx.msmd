@@ -32,7 +32,7 @@
     },
     "canvas": {
       "width": 1280,
-      "height": 720,
+      "height": 600,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -235,29 +235,6 @@
         "compartments": {
           "properties": [],
           "operations": []
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-inst",
-        "model_ref": "Apollo.Note.Instance",
-        "layout": {
-          "x": 40,
-          "y": 600,
-          "width": 360,
-          "height": 90,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
         }
       },
       {

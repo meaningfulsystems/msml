@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 import unittest
 from pathlib import Path
 
@@ -727,16 +728,20 @@ class ApolloExampleTests(unittest.TestCase):
             "Apollo.Note.ProgramAlarm",
             "Apollo.Note.UnknownRope",
         }
-        for stem in ("apollo-usb", "apollo-lgc-stm", "apollo-sat-ibd"):
+        for stem in ("apollo-usb", "apollo-lgc-stm", "apollo-sat-ibd", "apollo-ctx"):
             diagram = read_json_file(APOLLO / f"{stem}.msmd")["diagram"]
             for el in diagram["elements"]:
+                fill = el.get("style", {}).get("fill_color", "").upper()
+                self.assertNotIn(fill, yellow, f"{stem} {el['id']}")
                 if el.get("type") in {"comment", "note"}:
-                    fill = el.get("style", {}).get("fill_color", "").upper()
-                    self.assertNotIn(fill, yellow, f"{stem} {el['id']}")
                     self.assertNotIn(el.get("model_ref"), shop, f"{stem} {el['id']}")
+                    self.assertNotEqual(stem, "apollo-ctx", f"{stem} {el['id']}")
         note = (APOLLO / "architecture-summary.md").read_text(encoding="utf-8")
         self.assertIn("Do not collapse the Instrument Unit", note)
         self.assertIn("Path A, Path B, and crew-selected antennas stay in the sentences here", note)
+        self.assertNotIn("design class", note)
+        self.assertNotIn("lecture", note.lower())
+        self.assertIsNone(re.search(r"\bclass\b", note, flags=re.IGNORECASE))
 
     def test_figure_must_closes_abort_boxes_separate(self) -> None:
         diagram = read_json_file(APOLLO / "apollo-abort.msmd")["diagram"]
