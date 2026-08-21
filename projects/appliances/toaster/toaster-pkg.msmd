@@ -31,7 +31,7 @@
     },
     "canvas": {
       "width": 800,
-      "height": 480,
+      "height": 320,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -45,9 +45,9 @@
         "id": "pkg-root",
         "layout": {
           "x": 20,
-          "y": 20,
+          "y": 16,
           "width": 760,
-          "height": 440,
+          "height": 288,
           "z_index": 0
         },
         "style": {
@@ -110,9 +110,9 @@
         "id": "cls-element",
         "layout": {
           "x": 70,
-          "y": 195,
+          "y": 188,
           "width": 160,
-          "height": 35,
+          "height": 40,
           "z_index": 2
         },
         "style": {
@@ -175,9 +175,9 @@
         "id": "cls-act",
         "layout": {
           "x": 320,
-          "y": 195,
+          "y": 188,
           "width": 160,
-          "height": 35,
+          "height": 40,
           "z_index": 2
         },
         "style": {
@@ -240,9 +240,9 @@
         "id": "cls-par",
         "layout": {
           "x": 570,
-          "y": 195,
+          "y": 188,
           "width": 160,
-          "height": 35,
+          "height": 40,
           "z_index": 2
         },
         "style": {

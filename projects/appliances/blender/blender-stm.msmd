@@ -197,8 +197,8 @@
           "line_width": 1.5,
           "target_arrowhead": "open",
           "label_offset": {
-            "x": 10,
-            "y": 58
+            "x": 12,
+            "y": -8
           }
         },
         "trigger": "start command"

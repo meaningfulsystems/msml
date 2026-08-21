@@ -6,7 +6,7 @@ The purpose of MSML is to make system models readable, versionable, reviewable, 
 
 MSML is inspired by SysML and PlantUML. SysML provides the systems-engineering vocabulary: blocks, internal structure, activities, sequences, states, requirements, parametrics, packages, and use cases. PlantUML demonstrates the value of text-based diagrams that can be regenerated reliably. MSML combines those ideas into a model-first format designed for plain-text workflows.
 
-This project is early and intentionally practical. MSML v1.0 focuses on a working core rather than complete SysML coverage.
+This project is early and intentionally practical. MSML v1.0 covers the SysML 1.6 diagram families plus the common requirement-table, allocation-table, and allocation-matrix views.
 
 ## Why MSML Exists
 
@@ -29,7 +29,7 @@ MSML uses two source file types:
 
 Rendered PNG files are generated outputs. MSML model (`.msml`) files are not rendered directly; MSML diagram (`.msmd`) files are rendered.
 
-The current renderer supports these SysML-style diagram families:
+The current renderer supports these SysML 1 views:
 
 - Block Definition Diagram
 - Internal Block Diagram
@@ -40,6 +40,9 @@ The current renderer supports these SysML-style diagram families:
 - Requirements Diagram
 - Parametric Diagram
 - Package Diagram
+- Requirement Table
+- Allocation Table
+- Allocation Matrix
 
 ## Install
 
@@ -187,7 +190,7 @@ The Humanity Optimization System is a civilization-scale decision-support concep
 
 The appliance examples are compact systems used to exercise the language.
 
-- [Toaster project](projects/appliances/toaster): all nine supported diagram families.
+- [Toaster project](projects/appliances/toaster): all nine SysML 1.6 diagram families plus requirement table (`toaster-reqt`), allocation table (`toaster-alloc`), and allocation matrix (`toaster-amx`) views.
 - [Smart blender project](projects/appliances/blender): internal block, activity, and state machine views for a high-performance smart blender concept.
 
 ## Development Checks
@@ -202,7 +205,7 @@ msml-render-all projects
 
 ## Current Status
 
-MSML is an early prototype. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, and basic strict checks.
+MSML is an early prototype. The renderer targets PNG output through Pillow. The validator checks MSML model (`.msml`) and MSML diagram (`.msmd`) consistency, including model references, relationship references, imports, tabular view configuration, and basic strict checks.
 
 The root [msml-specification.md](msml-specification.md) is the canonical human-facing specification. The installed package also includes a copy for `msml-spec`.
 

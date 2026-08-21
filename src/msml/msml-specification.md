@@ -2,8 +2,8 @@
 
 **Meaningful Systems Modeling Language**  
 **Version:** 1.0  
-**Date:** 2026-05-17  
-**Status:** Initial public specification
+**Date:** 2026-08-21  
+**Status:** Public specification
 
 MSML is a scriptable graphical systems modeling language inspired by SysML 1.x and PlantUML. SysML provides the systems-engineering vocabulary. PlantUML demonstrates the value of diagrams that are generated, reviewed, versioned, and rendered from text. MSML combines those ideas into JSON files that can be produced by humans or AI and rendered into graphical diagrams.
 
@@ -25,7 +25,7 @@ MSML v1.0 is designed for:
 1. **AI and human authoring** - JSON, explicit fields, stable IDs, and no indentation-sensitive syntax.
 2. **Scriptable graphical modeling** - diagrams are generated from text and rendered to PNG.
 3. **Model/view separation** - model definitions and relationships live in `.msml`; diagram layout lives in `.msmd`.
-4. **SysML 1.x coverage** - the core SysML 1.x diagram families are supported as diagram views.
+4. **SysML 1.x coverage** - the nine SysML 1.x diagram families plus the common requirement-table, allocation-table, and allocation-matrix views.
 5. **Deterministic rendering** - diagram files carry explicit coordinates and styles.
 6. **Small implementation surface** - v1.0 stays practical enough to build and inspect in one repository.
 
@@ -387,6 +387,10 @@ Requirements:
 - `trace`
 - `copy`
 
+Allocation:
+
+- `allocate`
+
 Activity:
 
 - `control_flow`
@@ -510,6 +514,36 @@ Canonical diagram type values:
 | Requirements Diagram | `requirement` | `req` | `*-req.msmd` |
 | Parametric Diagram | `parametric` | `par` | `*-par.msmd` |
 | Package Diagram | `package` | `pkg` | `*-pkg.msmd` |
+| Requirement Table | `requirement_table` | `reqt` | `*-reqt.msmd` |
+| Allocation Table | `allocation_table` | `alloc` | `*-alloc.msmd` |
+| Allocation Matrix | `allocation_matrix` | `amx` | `*-amx.msmd` |
+
+The first nine types are the official OMG SysML 1.6 diagram families. Requirement tables, allocation tables, and allocation matrices are the common SysML 1 tabular views shown in Annex D. They are first-class `.msmd` views in MSML: the model still owns requirements and `allocate` relationships; the diagram file owns columns, row order, and layout.
+
+### 6.2.1 Allocate Relationships
+
+`allocate` is a SysML 1 mapping from a source element (often a behavior or use case) to a target element (often a block or part). Use it for functional, behavioral, or structural allocation:
+
+```json
+{
+  "id": "alloc-toaster.heat-element",
+  "type": "allocate",
+  "kind": "functional",
+  "name": "functional allocation",
+  "source": "Toaster.ToastingActivity.HeatElement",
+  "target": "Toaster.HeatingElement"
+}
+```
+
+Allowed `kind` values are informational: `functional`, `behavioral`, and `structural`. Diagrams render `allocate` as a dashed open arrow labeled `«allocate»`. Allocation tables and matrices are compact views of the same relationships.
+
+### 6.2.2 Tabular Views
+
+Requirement tables declare `diagram.table.columns` and one view element per shown requirement. The renderer reads `req_id`, `name`, `kind`, `priority`, `status`, and `text` from the model. If the loaded model contains `satisfy` or `verify` relationships, the table may also show `satisfied_by` and `verified_by`.
+
+Allocation tables declare `diagram.table.columns` and one diagram relationship per shown `allocate` relationship. Rows are derived from those relationships.
+
+Allocation matrices declare `diagram.matrix` plus elements with `matrix_role` of `row` or `column`. A marked cell means an `allocate` relationship exists from the row `model_ref` to the column `model_ref`.
 
 ### 6.3 Subject Reference
 
@@ -812,6 +846,8 @@ The validator provides three levels:
 - Message lifelines reference `block` or `actor` definitions.
 - `subject_ref` on IBD and parametric diagrams resolves to a `block`.
 - Ports with `owner_ref` reference model definitions.
+- `requirement_table` and `allocation_table` diagrams declare `diagram.table.columns`.
+- `allocation_matrix` diagrams declare `diagram.matrix` and include both row and column elements.
 
 ### 11.3 Lint
 

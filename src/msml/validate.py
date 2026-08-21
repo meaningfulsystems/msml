@@ -42,6 +42,9 @@ POSITIONED_TYPES = {
     "class",
     "comment",
     "annotation",
+    "table_row",
+    "matrix_row",
+    "matrix_column",
 }
 
 
@@ -290,6 +293,36 @@ def validate_diagram_file(path: Path, data, reporter: Reporter, strict=False, li
                     "diagram",
                     "MSML-STRICT-005",
                     "subject_ref missing or not a block definition",
+                )
+        if diagram.get("type") == "requirement_table" and not diagram.get("table", {}).get("columns"):
+            reporter.error(
+                relpath(path),
+                "diagram",
+                "MSML-STRICT-006",
+                "requirement_table requires diagram.table.columns",
+            )
+        if diagram.get("type") == "allocation_table" and not diagram.get("table", {}).get("columns"):
+            reporter.error(
+                relpath(path),
+                "diagram",
+                "MSML-STRICT-006",
+                "allocation_table requires diagram.table.columns",
+            )
+        if diagram.get("type") == "allocation_matrix":
+            if not diagram.get("matrix"):
+                reporter.error(
+                    relpath(path),
+                    "diagram",
+                    "MSML-STRICT-006",
+                    "allocation_matrix requires diagram.matrix",
+                )
+            roles = {el.get("matrix_role") for el in diagram.get("elements", [])}
+            if "row" not in roles or "column" not in roles:
+                reporter.error(
+                    relpath(path),
+                    "diagram",
+                    "MSML-STRICT-006",
+                    "allocation_matrix requires elements with matrix_role row and column",
                 )
 
     if lint and not model_load_errors:

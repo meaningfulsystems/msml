@@ -30,7 +30,7 @@
       }
     },
     "canvas": {
-      "width": 1200,
+      "width": 1220,
       "height": 760,
       "background_color": "#FAFAFA",
       "grid": {
@@ -470,16 +470,16 @@
             "y": 475
           },
           {
-            "x": 400,
+            "x": 10,
             "y": 475
           },
           {
-            "x": 400,
-            "y": 100
+            "x": 10,
+            "y": 85
           },
           {
             "x": 460,
-            "y": 100
+            "y": 85
           }
         ],
         "style": {
@@ -490,8 +490,8 @@
           "target_arrowhead": "open",
           "corner_radius": 8,
           "label_offset": {
-            "x": -60,
-            "y": 0
+            "x": 16,
+            "y": -16
           }
         },
         "relationship_ref": "req-toaster.d1"
@@ -500,20 +500,20 @@
         "id": "d2",
         "waypoints": [
           {
-            "x": 900,
-            "y": 475
+            "x": 1030,
+            "y": 420
           },
           {
-            "x": 850,
-            "y": 475
-          },
-          {
-            "x": 850,
-            "y": 100
+            "x": 1030,
+            "y": 162
           },
           {
             "x": 720,
-            "y": 100
+            "y": 162
+          },
+          {
+            "x": 720,
+            "y": 140
           }
         ],
         "style": {
@@ -524,8 +524,8 @@
           "target_arrowhead": "open",
           "corner_radius": 8,
           "label_offset": {
-            "x": 5,
-            "y": 0
+            "x": 14,
+            "y": -16
           }
         },
         "relationship_ref": "req-toaster.d2"

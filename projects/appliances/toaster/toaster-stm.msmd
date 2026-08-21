@@ -31,8 +31,8 @@
       }
     },
     "canvas": {
-      "width": 900,
-      "height": 360,
+      "width": 920,
+      "height": 400,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -136,10 +136,10 @@
         "type": "state",
         "id": "state-error",
         "layout": {
-          "x": 70,
-          "y": 220,
-          "width": 200,
-          "height": 80,
+          "x": 16,
+          "y": 200,
+          "width": 250,
+          "height": 130,
           "z_index": 1
         },
         "style": {
@@ -263,11 +263,11 @@
         "waypoints": [
           {
             "x": 320,
-            "y": 260
+            "y": 255
           },
           {
-            "x": 270,
-            "y": 260
+            "x": 266,
+            "y": 255
           }
         ],
         "style": {
@@ -276,8 +276,8 @@
           "line_style": "solid",
           "arrowhead": "open",
           "label_offset": {
-            "x": 0,
-            "y": -18
+            "x": -8,
+            "y": -22
           }
         },
         "relationship_ref": "stm-toaster.t-toasting-error"
@@ -286,20 +286,20 @@
         "id": "t-error-idle",
         "waypoints": [
           {
-            "x": 170,
-            "y": 220
+            "x": 80,
+            "y": 200
           },
           {
-            "x": 170,
-            "y": 50
-          },
-          {
-            "x": 320,
-            "y": 50
+            "x": 80,
+            "y": 40
           },
           {
             "x": 320,
-            "y": 71
+            "y": 40
+          },
+          {
+            "x": 320,
+            "y": 65
           }
         ],
         "style": {
@@ -308,8 +308,8 @@
           "line_style": "dashed",
           "arrowhead": "open",
           "label_offset": {
-            "x": 0,
-            "y": 0
+            "x": 10,
+            "y": -18
           }
         },
         "relationship_ref": "stm-toaster.t-error-idle"

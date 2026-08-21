@@ -78,6 +78,27 @@ class PackageApiTests(unittest.TestCase):
     def test_render_all_examples(self):
         self.assertEqual(render_all(ROOT / "projects/appliances/toaster"), 0)
 
+    def test_render_all_projects(self):
+        self.assertEqual(render_all(ROOT / "projects"), 0)
+        diagrams = sorted((ROOT / "projects").rglob("*.msmd"))
+        self.assertGreaterEqual(len(diagrams), 19)
+        for diagram in diagrams:
+            png = diagram.with_suffix(".png")
+            self.assertTrue(png.exists(), f"missing PNG for {diagram.name}")
+            self.assertGreater(png.stat().st_size, 1000, f"empty PNG for {diagram.name}")
+
+    def test_toaster_tabular_views_validate(self):
+        for name in ("toaster-reqt.msmd", "toaster-alloc.msmd", "toaster-amx.msmd"):
+            report = validate(ROOT / "projects/appliances/toaster" / name, strict=True)
+            self.assertEqual(report.errors, 0, name)
+
+    def test_spec_documents_tabular_views(self):
+        text = (ROOT / "msml-specification.md").read_text()
+        self.assertIn("requirement_table", text)
+        self.assertIn("allocation_table", text)
+        self.assertIn("allocation_matrix", text)
+        self.assertIn("`allocate`", text)
+
 
 if __name__ == "__main__":
     unittest.main()
