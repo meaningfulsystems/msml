@@ -1,0 +1,348 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "requirement",
+    "id": "req-ebike",
+    "name": "Electric Bike Requirements",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1300,
+      "height": 450,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "requirement",
+        "id": "req-safety",
+        "model_ref": "ElectricBike.rideSafetyRequirement",
+        "layout": {
+          "x": 40,
+          "y": 24,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-range",
+        "model_ref": "ElectricBike.rangeRequirement",
+        "layout": {
+          "x": 360,
+          "y": 24,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF8DC",
+          "border_color": "#8B6914",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-assist",
+        "model_ref": "ElectricBike.assistLimitRequirement",
+        "layout": {
+          "x": 680,
+          "y": 24,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EEF2FF",
+          "border_color": "#3949AB",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-charge",
+        "model_ref": "ElectricBike.chargeSafetyRequirement",
+        "layout": {
+          "x": 1000,
+          "y": 24,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-override",
+        "model_ref": "ElectricBike.brakeOverrideRequirement",
+        "layout": {
+          "x": 40,
+          "y": 280,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-struct",
+        "model_ref": "ElectricBike.structuralRequirement",
+        "layout": {
+          "x": 360,
+          "y": 280,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-display",
+        "model_ref": "ElectricBike.displayRequirement",
+        "layout": {
+          "x": 680,
+          "y": 280,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EEF2FF",
+          "border_color": "#3949AB",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "requirement",
+        "id": "req-cutoff",
+        "model_ref": "ElectricBike.batteryCutoffRequirement",
+        "layout": {
+          "x": 1000,
+          "y": 280,
+          "width": 270,
+          "height": 130,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "d-override",
+        "relationship_ref": "req-ebike.d-override-safety",
+        "waypoints": [
+          {
+            "x": 175,
+            "y": 280
+          },
+          {
+            "x": 175,
+            "y": 154
+          }
+        ],
+        "style": {
+          "line_color": "#C62828",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        }
+      },
+      {
+        "id": "d-assist",
+        "relationship_ref": "req-ebike.d-assist-range",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 90
+          },
+          {
+            "x": 630,
+            "y": 90
+          }
+        ],
+        "style": {
+          "line_color": "#3949AB",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "d-display",
+        "relationship_ref": "req-ebike.d-display-range",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 320
+          },
+          {
+            "x": 540,
+            "y": 320
+          },
+          {
+            "x": 540,
+            "y": 154
+          }
+        ],
+        "style": {
+          "line_color": "#3949AB",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": -16
+          }
+        }
+      },
+      {
+        "id": "d-cutoff",
+        "relationship_ref": "req-ebike.d-cutoff-charge",
+        "waypoints": [
+          {
+            "x": 1135,
+            "y": 280
+          },
+          {
+            "x": 1135,
+            "y": 154
+          }
+        ],
+        "style": {
+          "line_color": "#1565C0",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 0
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "req"
+      ]
+    }
+  }
+}

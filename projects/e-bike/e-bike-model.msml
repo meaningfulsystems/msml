@@ -1,0 +1,1733 @@
+{
+  "msml_version": "1.0",
+  "model": {
+    "id": "e-bike-model",
+    "name": "Electric Bike Model",
+    "namespace": "ElectricBike",
+    "imports": [],
+    "definitions": [
+      {
+        "type": "block",
+        "id": "ElectricBike",
+        "name": "ElectricBike",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "packEnergy",
+              "type": "500 Wh",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cutoffSpeed",
+              "type": "25 km/h",
+              "multiplicity": "1"
+            },
+            {
+              "name": "rangeKm",
+              "type": "\u2265 60 km",
+              "multiplicity": "1"
+            },
+            {
+              "name": "brakeLatency",
+              "type": "\u2264 50 ms",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "powerOn",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "startAssist",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "inhibitMotor",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.Frame",
+        "name": "Frame",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "material",
+              "type": "Aluminum",
+              "multiplicity": "1"
+            },
+            {
+              "name": "yieldMargin",
+              "type": "\u2265 1.5",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.BatteryPack",
+        "name": "BatteryPack",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "packEnergy",
+              "type": "500 Wh",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cellLimitV",
+              "type": "Vmax",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cellLimitT",
+              "type": "Tmax",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "openContactor",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.MotorController",
+        "name": "MotorController",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "assistLevel",
+              "type": "Integer",
+              "multiplicity": "1"
+            },
+            {
+              "name": "cutoffSpeed",
+              "type": "25 km/h",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "deliverTorque",
+              "parameters": [],
+              "return_type": "void"
+            },
+            {
+              "name": "inhibit",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.HubMotor",
+        "name": "HubMotor",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "peakPower",
+              "type": "W",
+              "multiplicity": "1"
+            },
+            {
+              "name": "wheelTorque",
+              "type": "N\u00b7m",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.HumanInterface",
+        "name": "HumanInterface",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "assistLevel",
+              "type": "Integer",
+              "multiplicity": "1"
+            },
+            {
+              "name": "display",
+              "type": "speed / assist / range",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.BrakeSystem",
+        "name": "BrakeSystem",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "brakeLatency",
+              "type": "\u2264 50 ms",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": [
+            {
+              "name": "assertInhibit",
+              "parameters": [],
+              "return_type": "void"
+            }
+          ]
+        }
+      },
+      {
+        "type": "actor",
+        "id": "ElectricBike.Rider",
+        "name": "Rider"
+      },
+      {
+        "type": "actor",
+        "id": "ElectricBike.Charger",
+        "name": "Charger"
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.Road",
+        "name": "Road",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [
+            {
+              "name": "load",
+              "type": "N",
+              "multiplicity": "1"
+            }
+          ],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.RideContext",
+        "name": "RideContext",
+        "stereotype": "block",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "model",
+        "id": "ElectricBike.BikeModel",
+        "name": "BikeModel"
+      },
+      {
+        "type": "package",
+        "id": "ElectricBike.BikeStructure",
+        "name": "BikeStructure"
+      },
+      {
+        "type": "package",
+        "id": "ElectricBike.BikeBehavior",
+        "name": "BikeBehavior"
+      },
+      {
+        "type": "package",
+        "id": "ElectricBike.BikeRequirements",
+        "name": "BikeRequirements"
+      },
+      {
+        "type": "package",
+        "id": "ElectricBike.BikeAnalysis",
+        "name": "BikeAnalysis"
+      },
+      {
+        "type": "package",
+        "id": "ElectricBike.BikeVerification",
+        "name": "BikeVerification"
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.RiderPort",
+        "name": "RiderPort",
+        "stereotype": "port",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.ChargePort",
+        "name": "ChargePort",
+        "stereotype": "port",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.MechanicalPort",
+        "name": "MechanicalPort",
+        "stereotype": "port",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.PowerPort",
+        "name": "PowerPort",
+        "stereotype": "port",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.DrivePort",
+        "name": "DrivePort",
+        "stereotype": "port",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.ControlPort",
+        "name": "ControlPort",
+        "stereotype": "port",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "id": "ElectricBike.Port.riderCommandIn",
+        "type": "port",
+        "name": "riderCommandIn",
+        "owner_ref": "ElectricBike"
+      },
+      {
+        "id": "ElectricBike.Port.chargerIn",
+        "type": "port",
+        "name": "chargerIn",
+        "owner_ref": "ElectricBike"
+      },
+      {
+        "id": "ElectricBike.Port.roadLoadIn",
+        "type": "port",
+        "name": "roadLoadIn",
+        "owner_ref": "ElectricBike"
+      },
+      {
+        "id": "ElectricBike.Port.frameBatteryMountOut",
+        "type": "port",
+        "name": "frameBatteryMountOut",
+        "owner_ref": "ElectricBike.Frame"
+      },
+      {
+        "id": "ElectricBike.Port.batteryMountIn",
+        "type": "port",
+        "name": "batteryMountIn",
+        "owner_ref": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "ElectricBike.Port.frameMotorMountOut",
+        "type": "port",
+        "name": "frameMotorMountOut",
+        "owner_ref": "ElectricBike.Frame"
+      },
+      {
+        "id": "ElectricBike.Port.motorMountIn",
+        "type": "port",
+        "name": "motorMountIn",
+        "owner_ref": "ElectricBike.HubMotor"
+      },
+      {
+        "id": "ElectricBike.Port.frameInterfaceMountOut",
+        "type": "port",
+        "name": "frameInterfaceMountOut",
+        "owner_ref": "ElectricBike.Frame"
+      },
+      {
+        "id": "ElectricBike.Port.interfaceMountIn",
+        "type": "port",
+        "name": "interfaceMountIn",
+        "owner_ref": "ElectricBike.HumanInterface"
+      },
+      {
+        "id": "ElectricBike.Port.frameBrakeMountOut",
+        "type": "port",
+        "name": "frameBrakeMountOut",
+        "owner_ref": "ElectricBike.Frame"
+      },
+      {
+        "id": "ElectricBike.Port.brakeMountIn",
+        "type": "port",
+        "name": "brakeMountIn",
+        "owner_ref": "ElectricBike.BrakeSystem"
+      },
+      {
+        "id": "ElectricBike.Port.batteryPowerOut",
+        "type": "port",
+        "name": "batteryPowerOut",
+        "owner_ref": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "ElectricBike.Port.controllerPowerIn",
+        "type": "port",
+        "name": "controllerPowerIn",
+        "owner_ref": "ElectricBike.MotorController"
+      },
+      {
+        "id": "ElectricBike.Port.controllerDriveOut",
+        "type": "port",
+        "name": "controllerDriveOut",
+        "owner_ref": "ElectricBike.MotorController"
+      },
+      {
+        "id": "ElectricBike.Port.motorDriveIn",
+        "type": "port",
+        "name": "motorDriveIn",
+        "owner_ref": "ElectricBike.HubMotor"
+      },
+      {
+        "id": "ElectricBike.Port.interfaceCommandOut",
+        "type": "port",
+        "name": "interfaceCommandOut",
+        "owner_ref": "ElectricBike.HumanInterface"
+      },
+      {
+        "id": "ElectricBike.Port.controllerCommandIn",
+        "type": "port",
+        "name": "controllerCommandIn",
+        "owner_ref": "ElectricBike.MotorController"
+      },
+      {
+        "id": "ElectricBike.Port.brakeInhibitOut",
+        "type": "port",
+        "name": "brakeInhibitOut",
+        "owner_ref": "ElectricBike.BrakeSystem"
+      },
+      {
+        "id": "ElectricBike.Port.controllerInhibitIn",
+        "type": "port",
+        "name": "controllerInhibitIn",
+        "owner_ref": "ElectricBike.MotorController"
+      },
+      {
+        "id": "ElectricBike.Port.riderInputIn",
+        "type": "port",
+        "name": "riderInputIn",
+        "owner_ref": "ElectricBike.HumanInterface"
+      },
+      {
+        "id": "ElectricBike.Port.chargeInputIn",
+        "type": "port",
+        "name": "chargeInputIn",
+        "owner_ref": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "ElectricBike.Port.wheelLoadIn",
+        "type": "port",
+        "name": "wheelLoadIn",
+        "owner_ref": "ElectricBike.HubMotor"
+      },
+      {
+        "id": "ElectricBike.Port.riderOut",
+        "type": "port",
+        "name": "commandOut",
+        "owner_ref": "ElectricBike.Rider"
+      },
+      {
+        "id": "ElectricBike.Port.chargerOut",
+        "type": "port",
+        "name": "chargeOut",
+        "owner_ref": "ElectricBike.Charger"
+      },
+      {
+        "id": "ElectricBike.Port.roadOut",
+        "type": "port",
+        "name": "loadOut",
+        "owner_ref": "ElectricBike.Road"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.RideControl",
+        "name": "RideControl"
+      },
+      {
+        "id": "ElectricBike.State.RideControl.Start",
+        "type": "initial_pseudostate",
+        "name": "Init"
+      },
+      {
+        "type": "state",
+        "id": "ElectricBike.State.RideControl.off",
+        "name": "off"
+      },
+      {
+        "type": "state",
+        "id": "ElectricBike.State.RideControl.standby",
+        "name": "standby",
+        "entry": "enableSensors()"
+      },
+      {
+        "type": "state",
+        "id": "ElectricBike.State.RideControl.assist",
+        "name": "assist",
+        "do": "modulateTorque()",
+        "exit": "zeroAssist()"
+      },
+      {
+        "type": "state",
+        "id": "ElectricBike.State.RideControl.charging",
+        "name": "charging",
+        "do": "acceptCharge()"
+      },
+      {
+        "type": "state",
+        "id": "ElectricBike.State.RideControl.fault",
+        "name": "fault",
+        "entry": "inhibitMotor();\nopenContactor()"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.RideActivity",
+        "name": "RideActivity"
+      },
+      {
+        "id": "ElectricBike.Behavior.Ride.Start",
+        "type": "initial_node",
+        "name": "Init"
+      },
+      {
+        "id": "ElectricBike.Behavior.Ride.RideOrCharge",
+        "type": "decision_node",
+        "name": "rideOrCharge"
+      },
+      {
+        "id": "ElectricBike.Behavior.Ride.ForkAssist",
+        "type": "fork_node",
+        "name": "Fork1"
+      },
+      {
+        "id": "ElectricBike.Behavior.Ride.JoinAssist",
+        "type": "join_node",
+        "name": "Join1"
+      },
+      {
+        "id": "ElectricBike.Behavior.Ride.RideFinal",
+        "type": "activity_final_node",
+        "name": "RideDone"
+      },
+      {
+        "id": "ElectricBike.Behavior.Ride.ChargeFinal",
+        "type": "activity_final_node",
+        "name": "ChargeDone"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.powerOnBike",
+        "name": "powerOnBike"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.selectAssist",
+        "name": "selectAssist"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.pedalAndThrottle",
+        "name": "pedalAndThrottle"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.applyBrake",
+        "name": "applyBrake"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.inhibitMotor",
+        "name": "inhibitMotor"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.deliverTorque",
+        "name": "deliverTorque"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.plugInCharger",
+        "name": "plugInCharger"
+      },
+      {
+        "type": "action",
+        "id": "ElectricBike.Action.stopCharge",
+        "name": "stopCharge"
+      },
+      {
+        "id": "ElectricBike.UC.SystemBoundary",
+        "type": "system_boundary",
+        "name": "ElectricBike"
+      },
+      {
+        "type": "use_case",
+        "id": "ElectricBike.UC.rideBikeUseCase",
+        "name": "rideBikeUseCase"
+      },
+      {
+        "type": "use_case",
+        "id": "ElectricBike.UC.chargeBikeUseCase",
+        "name": "chargeBikeUseCase"
+      },
+      {
+        "type": "use_case",
+        "id": "ElectricBike.UC.lockBikeUseCase",
+        "name": "lockBikeUseCase"
+      },
+      {
+        "type": "use_case",
+        "id": "ElectricBike.UC.adjustAssistUseCase",
+        "name": "adjustAssistUseCase"
+      },
+      {
+        "id": "ElectricBike.Sequence.Execution.ExecInterface",
+        "type": "execution_occurrence",
+        "name": "ExecInterface",
+        "lifeline_ref": "ElectricBike.HumanInterface"
+      },
+      {
+        "id": "ElectricBike.Sequence.Execution.ExecController",
+        "type": "execution_occurrence",
+        "name": "ExecController",
+        "lifeline_ref": "ElectricBike.MotorController"
+      },
+      {
+        "id": "ElectricBike.Sequence.Execution.ExecMotor",
+        "type": "execution_occurrence",
+        "name": "ExecMotor",
+        "lifeline_ref": "ElectricBike.HubMotor"
+      },
+      {
+        "id": "ElectricBike.Sequence.Execution.ExecBrakes",
+        "type": "execution_occurrence",
+        "name": "ExecBrakes",
+        "lifeline_ref": "ElectricBike.BrakeSystem"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.startRideInteraction",
+        "name": "startRideInteraction"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.rideSafetyRequirement",
+        "name": "Ride Safety",
+        "req_id": "REQ-001",
+        "text": "Brake input shall cut motor torque\nbefore the wheel keeps driving the rider.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.rangeRequirement",
+        "name": "Range",
+        "req_id": "REQ-002",
+        "text": "The bike shall provide \u2265 60 km PAS-1\nrange on a 500 Wh pack.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.assistLimitRequirement",
+        "name": "Assist Limit",
+        "req_id": "REQ-003",
+        "text": "Assist shall cut off at 25 km/h\nfor the EU class being certified.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.chargeSafetyRequirement",
+        "name": "Charge Safety",
+        "req_id": "REQ-004",
+        "text": "Charging shall stop on over-temp,\nover-voltage, or charger disconnect.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.brakeOverrideRequirement",
+        "name": "Brake Override",
+        "req_id": "REQ-005",
+        "text": "Motor inhibit shall assert within\n50 ms of either brake lever.",
+        "kind": "performance",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.batteryCutoffRequirement",
+        "name": "Battery Cutoff",
+        "req_id": "REQ-006",
+        "text": "BMS shall open the pack contactor\nbefore any cell exceeds its V/T limit.",
+        "kind": "safety",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.displayRequirement",
+        "name": "Display",
+        "req_id": "REQ-007",
+        "text": "Rider shall see speed, assist level,\nand remaining range hands-on-bars.",
+        "kind": "functional",
+        "priority": "medium",
+        "status": "approved"
+      },
+      {
+        "type": "requirement",
+        "id": "ElectricBike.structuralRequirement",
+        "name": "Structural",
+        "req_id": "REQ-008",
+        "text": "Frame shall carry rider, cargo, and\nbattery loads without yielding.",
+        "kind": "design_constraint",
+        "priority": "high",
+        "status": "approved"
+      },
+      {
+        "id": "ElectricBike.PAR.energyBalance",
+        "type": "constraint_property",
+        "name": "E_pack \u2265 \u222b(P_rider + P_assist) dt",
+        "expression": "packEnergy >= integral(riderPower + assistPower)",
+        "parameters": [
+          {
+            "name": "packEnergy",
+            "type": "Wh"
+          },
+          {
+            "name": "riderPower",
+            "type": "W"
+          },
+          {
+            "name": "assistPower",
+            "type": "W"
+          }
+        ]
+      },
+      {
+        "id": "ElectricBike.PAR.rangeEstimate",
+        "type": "constraint_property",
+        "name": "rangeKm = E_pack / e_km",
+        "expression": "rangeKm = packEnergy / energyPerKm",
+        "parameters": [
+          {
+            "name": "packEnergy",
+            "type": "Wh"
+          },
+          {
+            "name": "energyPerKm",
+            "type": "Wh/km"
+          },
+          {
+            "name": "rangeKm",
+            "type": "km"
+          }
+        ]
+      },
+      {
+        "id": "ElectricBike.PAR.assistPowerLimit",
+        "type": "constraint_property",
+        "name": "P_assist = 0 if v \u2265 25 km/h",
+        "expression": "assistPower = 0 if speed >= cutoffSpeed",
+        "parameters": [
+          {
+            "name": "assistPower",
+            "type": "W"
+          },
+          {
+            "name": "cutoffSpeed",
+            "type": "km/h"
+          }
+        ]
+      },
+      {
+        "id": "ElectricBike.PAR.brakeLatencyLimit",
+        "type": "constraint_property",
+        "name": "t_brake \u2264 50 ms",
+        "expression": "brakeLatency <= 50 ms",
+        "parameters": [
+          {
+            "name": "brakeLatency",
+            "type": "ms"
+          }
+        ]
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.packEnergy",
+        "name": "packEnergy: 500 Wh",
+        "value_type": "Real",
+        "unit": "Wh"
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.riderPower",
+        "name": "riderPower: W",
+        "value_type": "Real",
+        "unit": "W"
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.assistPower",
+        "name": "assistPower: W",
+        "value_type": "Real",
+        "unit": "W"
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.rangeKm",
+        "name": "rangeKm: \u2265 60 km",
+        "value_type": "Real",
+        "unit": "km"
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.cutoffSpeed",
+        "name": "cutoffSpeed: 25 km/h",
+        "value_type": "Real",
+        "unit": "km/h"
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.brakeLatency",
+        "name": "brakeLatency: \u2264 50 ms",
+        "value_type": "Real",
+        "unit": "ms"
+      },
+      {
+        "type": "value_property",
+        "id": "ElectricBike.PAR.energyPerKm",
+        "name": "energyPerKm: Wh/km",
+        "value_type": "Real",
+        "unit": "Wh/km"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.rangeAnalysis",
+        "name": "rangeAnalysis",
+        "stereotype": "analysis"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.brakeLatencyAnalysis",
+        "name": "brakeLatencyAnalysis",
+        "stereotype": "analysis"
+      },
+      {
+        "type": "test_case",
+        "id": "ElectricBike.verifyRange",
+        "name": "verifyRange"
+      },
+      {
+        "type": "test_case",
+        "id": "ElectricBike.verifyBrakeCutoff",
+        "name": "verifyBrakeCutoff"
+      },
+      {
+        "type": "test_case",
+        "id": "ElectricBike.verifyChargeSafety",
+        "name": "verifyChargeSafety"
+      },
+      {
+        "type": "test_case",
+        "id": "ElectricBike.verifyAssistLimit",
+        "name": "verifyAssistLimit"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Item.PedalCadence",
+        "name": "PedalCadence",
+        "stereotype": "item"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Item.ThrottleCommand",
+        "name": "ThrottleCommand",
+        "stereotype": "item"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Item.ElectricalEnergy",
+        "name": "ElectricalEnergy",
+        "stereotype": "item"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Item.WheelTorque",
+        "name": "WheelTorque",
+        "stereotype": "item"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Item.BrakeInhibit",
+        "name": "BrakeInhibit",
+        "stereotype": "item"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Item.ChargeEnergy",
+        "name": "ChargeEnergy",
+        "stereotype": "item"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Flow.riderCommandFlow",
+        "name": "riderCommandFlow",
+        "stereotype": "flow"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Flow.chargeEnergyFlow",
+        "name": "chargeEnergyFlow",
+        "stereotype": "flow"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Flow.batteryPowerFlow",
+        "name": "batteryPowerFlow",
+        "stereotype": "flow"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Flow.motorTorqueFlow",
+        "name": "motorTorqueFlow",
+        "stereotype": "flow"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Flow.brakeInhibitFlow",
+        "name": "brakeInhibitFlow",
+        "stereotype": "flow"
+      },
+      {
+        "type": "class",
+        "id": "ElectricBike.Flow.roadLoadFlow",
+        "name": "roadLoadFlow",
+        "stereotype": "flow"
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.RiderInterface",
+        "name": "RiderInterface",
+        "stereotype": "interfaceBlock",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.ChargeInterface",
+        "name": "ChargeInterface",
+        "stereotype": "interfaceBlock",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.DriveInterface",
+        "name": "DriveInterface",
+        "stereotype": "interfaceBlock",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      },
+      {
+        "type": "block",
+        "id": "ElectricBike.BrakeInterface",
+        "name": "BrakeInterface",
+        "stereotype": "interfaceBlock",
+        "compartments": {
+          "properties": [],
+          "operations": []
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "bdd-ebike.c-bike-frame",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.Frame",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-bike-battery",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.BatteryPack",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-bike-controller",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.MotorController",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-bike-motor",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.HubMotor",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-bike-interface",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.HumanInterface",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-bike-brakes",
+        "type": "composition",
+        "source": "ElectricBike",
+        "target": "ElectricBike.BrakeSystem",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.a-battery-controller",
+        "type": "association",
+        "source": "ElectricBike.BatteryPack",
+        "target": "ElectricBike.MotorController",
+        "name": "powers"
+      },
+      {
+        "id": "bdd-ebike.a-controller-motor",
+        "type": "association",
+        "source": "ElectricBike.MotorController",
+        "target": "ElectricBike.HubMotor",
+        "name": "drives"
+      },
+      {
+        "id": "bdd-ebike.a-brakes-controller",
+        "type": "association",
+        "source": "ElectricBike.BrakeSystem",
+        "target": "ElectricBike.MotorController",
+        "name": "inhibits"
+      },
+      {
+        "id": "ctx-ebike.riderToInterface",
+        "type": "association",
+        "source": "ElectricBike.Rider",
+        "target": "ElectricBike",
+        "name": "riderToInterface"
+      },
+      {
+        "id": "ctx-ebike.chargerToBattery",
+        "type": "association",
+        "source": "ElectricBike.Charger",
+        "target": "ElectricBike",
+        "name": "chargerToBattery"
+      },
+      {
+        "id": "ctx-ebike.roadToMotor",
+        "type": "association",
+        "source": "ElectricBike.Road",
+        "target": "ElectricBike",
+        "name": "roadToMotor"
+      },
+      {
+        "id": "bdd-ebike.c-context-bike",
+        "type": "composition",
+        "source": "ElectricBike.RideContext",
+        "target": "ElectricBike",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-context-rider",
+        "type": "composition",
+        "source": "ElectricBike.RideContext",
+        "target": "ElectricBike.Rider",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-context-charger",
+        "type": "composition",
+        "source": "ElectricBike.RideContext",
+        "target": "ElectricBike.Charger",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "bdd-ebike.c-context-road",
+        "type": "composition",
+        "source": "ElectricBike.RideContext",
+        "target": "ElectricBike.Road",
+        "multiplicity_source": "1",
+        "multiplicity_target": "1"
+      },
+      {
+        "id": "ibd-ebike.frameToBattery",
+        "type": "connector",
+        "source": "ElectricBike.Port.frameBatteryMountOut",
+        "target": "ElectricBike.Port.batteryMountIn",
+        "name": "frameToBattery"
+      },
+      {
+        "id": "ibd-ebike.frameToMotor",
+        "type": "connector",
+        "source": "ElectricBike.Port.frameMotorMountOut",
+        "target": "ElectricBike.Port.motorMountIn",
+        "name": "frameToMotor"
+      },
+      {
+        "id": "ibd-ebike.frameToInterface",
+        "type": "connector",
+        "source": "ElectricBike.Port.frameInterfaceMountOut",
+        "target": "ElectricBike.Port.interfaceMountIn",
+        "name": "frameToInterface"
+      },
+      {
+        "id": "ibd-ebike.frameToBrakes",
+        "type": "connector",
+        "source": "ElectricBike.Port.frameBrakeMountOut",
+        "target": "ElectricBike.Port.brakeMountIn",
+        "name": "frameToBrakes"
+      },
+      {
+        "id": "ibd-ebike.batteryToController",
+        "type": "connector",
+        "source": "ElectricBike.Port.batteryPowerOut",
+        "target": "ElectricBike.Port.controllerPowerIn",
+        "name": "batteryToController"
+      },
+      {
+        "id": "ibd-ebike.controllerToMotor",
+        "type": "connector",
+        "source": "ElectricBike.Port.controllerDriveOut",
+        "target": "ElectricBike.Port.motorDriveIn",
+        "name": "controllerToMotor"
+      },
+      {
+        "id": "ibd-ebike.interfaceToController",
+        "type": "connector",
+        "source": "ElectricBike.Port.interfaceCommandOut",
+        "target": "ElectricBike.Port.controllerCommandIn",
+        "name": "interfaceToController"
+      },
+      {
+        "id": "ibd-ebike.brakesToController",
+        "type": "connector",
+        "source": "ElectricBike.Port.brakeInhibitOut",
+        "target": "ElectricBike.Port.controllerInhibitIn",
+        "name": "brakesToController"
+      },
+      {
+        "id": "ibd-ebike.riderToInterface",
+        "type": "connector",
+        "source": "ElectricBike.Port.riderOut",
+        "target": "ElectricBike.Port.riderInputIn",
+        "name": "riderToInterface"
+      },
+      {
+        "id": "ibd-ebike.chargerToBattery",
+        "type": "connector",
+        "source": "ElectricBike.Port.chargerOut",
+        "target": "ElectricBike.Port.chargeInputIn",
+        "name": "chargerToBattery"
+      },
+      {
+        "id": "ibd-ebike.roadToMotor",
+        "type": "connector",
+        "source": "ElectricBike.Port.roadOut",
+        "target": "ElectricBike.Port.wheelLoadIn",
+        "name": "roadToMotor"
+      },
+      {
+        "id": "stm-ebike.t-init-off",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.Start",
+        "target": "ElectricBike.State.RideControl.off"
+      },
+      {
+        "id": "stm-ebike.powerOn",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.off",
+        "target": "ElectricBike.State.RideControl.standby",
+        "name": "powerOn"
+      },
+      {
+        "id": "stm-ebike.startAssist",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.standby",
+        "target": "ElectricBike.State.RideControl.assist",
+        "name": "startAssist"
+      },
+      {
+        "id": "stm-ebike.stopAssist",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.assist",
+        "target": "ElectricBike.State.RideControl.standby",
+        "name": "stopAssist"
+      },
+      {
+        "id": "stm-ebike.brakeCut",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.assist",
+        "target": "ElectricBike.State.RideControl.standby",
+        "name": "brakeCut"
+      },
+      {
+        "id": "stm-ebike.plugIn",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.off",
+        "target": "ElectricBike.State.RideControl.charging",
+        "name": "plugIn"
+      },
+      {
+        "id": "stm-ebike.chargeComplete",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.charging",
+        "target": "ElectricBike.State.RideControl.off",
+        "name": "chargeComplete"
+      },
+      {
+        "id": "stm-ebike.unplug",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.charging",
+        "target": "ElectricBike.State.RideControl.off",
+        "name": "unplug"
+      },
+      {
+        "id": "stm-ebike.powerOff",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.standby",
+        "target": "ElectricBike.State.RideControl.off",
+        "name": "powerOff"
+      },
+      {
+        "id": "stm-ebike.faultFromAssist",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.assist",
+        "target": "ElectricBike.State.RideControl.fault",
+        "name": "faultFromAssist"
+      },
+      {
+        "id": "stm-ebike.resetFault",
+        "type": "transition",
+        "source": "ElectricBike.State.RideControl.fault",
+        "target": "ElectricBike.State.RideControl.off",
+        "name": "resetFault"
+      },
+      {
+        "id": "act-ebike.f1",
+        "type": "control_flow",
+        "source": "ElectricBike.Behavior.Ride.Start",
+        "target": "ElectricBike.Behavior.Ride.RideOrCharge"
+      },
+      {
+        "id": "act-ebike.f2",
+        "type": "control_flow",
+        "source": "ElectricBike.Behavior.Ride.RideOrCharge",
+        "target": "ElectricBike.Action.powerOnBike",
+        "guard": "ride"
+      },
+      {
+        "id": "act-ebike.f3",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.powerOnBike",
+        "target": "ElectricBike.Action.selectAssist"
+      },
+      {
+        "id": "act-ebike.f4",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.selectAssist",
+        "target": "ElectricBike.Action.pedalAndThrottle"
+      },
+      {
+        "id": "act-ebike.f5",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.pedalAndThrottle",
+        "target": "ElectricBike.Behavior.Ride.ForkAssist"
+      },
+      {
+        "id": "act-ebike.f6",
+        "type": "control_flow",
+        "source": "ElectricBike.Behavior.Ride.ForkAssist",
+        "target": "ElectricBike.Action.deliverTorque"
+      },
+      {
+        "id": "act-ebike.f7",
+        "type": "control_flow",
+        "source": "ElectricBike.Behavior.Ride.ForkAssist",
+        "target": "ElectricBike.Action.applyBrake"
+      },
+      {
+        "id": "act-ebike.f8",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.applyBrake",
+        "target": "ElectricBike.Action.inhibitMotor"
+      },
+      {
+        "id": "act-ebike.f9",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.deliverTorque",
+        "target": "ElectricBike.Behavior.Ride.JoinAssist"
+      },
+      {
+        "id": "act-ebike.f10",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.inhibitMotor",
+        "target": "ElectricBike.Behavior.Ride.JoinAssist"
+      },
+      {
+        "id": "act-ebike.f11",
+        "type": "control_flow",
+        "source": "ElectricBike.Behavior.Ride.JoinAssist",
+        "target": "ElectricBike.Behavior.Ride.RideFinal"
+      },
+      {
+        "id": "act-ebike.f12",
+        "type": "control_flow",
+        "source": "ElectricBike.Behavior.Ride.RideOrCharge",
+        "target": "ElectricBike.Action.plugInCharger",
+        "guard": "charge"
+      },
+      {
+        "id": "act-ebike.f13",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.plugInCharger",
+        "target": "ElectricBike.Action.stopCharge"
+      },
+      {
+        "id": "act-ebike.f14",
+        "type": "control_flow",
+        "source": "ElectricBike.Action.stopCharge",
+        "target": "ElectricBike.Behavior.Ride.ChargeFinal"
+      },
+      {
+        "type": "message",
+        "id": "sd-ebike.m1",
+        "name": "selectAssist()",
+        "source_lifeline": "ElectricBike.Rider",
+        "target_lifeline": "ElectricBike.HumanInterface",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-ebike.m2",
+        "name": "assistCommand",
+        "source_lifeline": "ElectricBike.HumanInterface",
+        "target_lifeline": "ElectricBike.MotorController",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-ebike.m3",
+        "name": "deliverTorque()",
+        "source_lifeline": "ElectricBike.MotorController",
+        "target_lifeline": "ElectricBike.HubMotor",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-ebike.m4",
+        "name": "applyBrake()",
+        "source_lifeline": "ElectricBike.Rider",
+        "target_lifeline": "ElectricBike.BrakeSystem",
+        "message_sort": "synch_call"
+      },
+      {
+        "type": "message",
+        "id": "sd-ebike.m5",
+        "name": "inhibitMotor",
+        "source_lifeline": "ElectricBike.BrakeSystem",
+        "target_lifeline": "ElectricBike.MotorController",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "type": "message",
+        "id": "sd-ebike.m6",
+        "name": "zeroTorque",
+        "source_lifeline": "ElectricBike.MotorController",
+        "target_lifeline": "ElectricBike.HubMotor",
+        "message_sort": "asynch_signal"
+      },
+      {
+        "id": "uc-ebike.a-rider-ride",
+        "type": "association",
+        "source": "ElectricBike.Rider",
+        "target": "ElectricBike.UC.rideBikeUseCase"
+      },
+      {
+        "id": "uc-ebike.a-rider-adjust",
+        "type": "association",
+        "source": "ElectricBike.Rider",
+        "target": "ElectricBike.UC.adjustAssistUseCase"
+      },
+      {
+        "id": "uc-ebike.a-rider-lock",
+        "type": "association",
+        "source": "ElectricBike.Rider",
+        "target": "ElectricBike.UC.lockBikeUseCase"
+      },
+      {
+        "id": "uc-ebike.a-rider-charge",
+        "type": "association",
+        "source": "ElectricBike.Rider",
+        "target": "ElectricBike.UC.chargeBikeUseCase"
+      },
+      {
+        "id": "uc-ebike.a-charger-charge",
+        "type": "association",
+        "source": "ElectricBike.Charger",
+        "target": "ElectricBike.UC.chargeBikeUseCase"
+      },
+      {
+        "id": "uc-ebike.a-road-ride",
+        "type": "association",
+        "source": "ElectricBike.Road",
+        "target": "ElectricBike.UC.rideBikeUseCase"
+      },
+      {
+        "id": "uc-ebike.i-adjust-ride",
+        "type": "include",
+        "source": "ElectricBike.UC.adjustAssistUseCase",
+        "target": "ElectricBike.UC.rideBikeUseCase"
+      },
+      {
+        "id": "pkg-ebike.d-behavior-structure",
+        "type": "dependency",
+        "source": "ElectricBike.BikeBehavior",
+        "target": "ElectricBike.BikeStructure"
+      },
+      {
+        "id": "pkg-ebike.d-req-structure",
+        "type": "dependency",
+        "source": "ElectricBike.BikeRequirements",
+        "target": "ElectricBike.BikeStructure"
+      },
+      {
+        "id": "pkg-ebike.d-analysis-req",
+        "type": "dependency",
+        "source": "ElectricBike.BikeAnalysis",
+        "target": "ElectricBike.BikeRequirements"
+      },
+      {
+        "id": "pkg-ebike.d-ver-analysis",
+        "type": "dependency",
+        "source": "ElectricBike.BikeVerification",
+        "target": "ElectricBike.BikeAnalysis"
+      },
+      {
+        "id": "pkg-ebike.d-ver-req",
+        "type": "dependency",
+        "source": "ElectricBike.BikeVerification",
+        "target": "ElectricBike.BikeRequirements"
+      },
+      {
+        "id": "req-ebike.d-override-safety",
+        "type": "derive",
+        "source": "ElectricBike.brakeOverrideRequirement",
+        "target": "ElectricBike.rideSafetyRequirement"
+      },
+      {
+        "id": "req-ebike.d-cutoff-charge",
+        "type": "derive",
+        "source": "ElectricBike.batteryCutoffRequirement",
+        "target": "ElectricBike.chargeSafetyRequirement"
+      },
+      {
+        "id": "req-ebike.d-assist-range",
+        "type": "derive",
+        "source": "ElectricBike.assistLimitRequirement",
+        "target": "ElectricBike.rangeRequirement"
+      },
+      {
+        "id": "req-ebike.d-display-range",
+        "type": "derive",
+        "source": "ElectricBike.displayRequirement",
+        "target": "ElectricBike.rangeRequirement"
+      },
+      {
+        "id": "par-ebike.b1",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.packEnergy",
+        "target": "ElectricBike.PAR.energyBalance"
+      },
+      {
+        "id": "par-ebike.b2",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.riderPower",
+        "target": "ElectricBike.PAR.energyBalance"
+      },
+      {
+        "id": "par-ebike.b3",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.assistPower",
+        "target": "ElectricBike.PAR.energyBalance"
+      },
+      {
+        "id": "par-ebike.b4",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.packEnergy",
+        "target": "ElectricBike.PAR.rangeEstimate"
+      },
+      {
+        "id": "par-ebike.b5",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.energyPerKm",
+        "target": "ElectricBike.PAR.rangeEstimate"
+      },
+      {
+        "id": "par-ebike.b6",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.rangeEstimate",
+        "target": "ElectricBike.PAR.rangeKm"
+      },
+      {
+        "id": "par-ebike.b7",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.assistPower",
+        "target": "ElectricBike.PAR.assistPowerLimit"
+      },
+      {
+        "id": "par-ebike.b8",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.cutoffSpeed",
+        "target": "ElectricBike.PAR.assistPowerLimit"
+      },
+      {
+        "id": "par-ebike.b9",
+        "type": "binding_connector",
+        "source": "ElectricBike.PAR.brakeLatency",
+        "target": "ElectricBike.PAR.brakeLatencyLimit"
+      },
+      {
+        "id": "allocateSafetyToBrakes",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateSafetyToBrakes",
+        "source": "ElectricBike.rideSafetyRequirement",
+        "target": "ElectricBike.BrakeSystem"
+      },
+      {
+        "id": "allocateRangeToBattery",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocateRangeToBattery",
+        "source": "ElectricBike.rangeRequirement",
+        "target": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "allocateAssistToController",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateAssistToController",
+        "source": "ElectricBike.assistLimitRequirement",
+        "target": "ElectricBike.MotorController"
+      },
+      {
+        "id": "allocateChargeToBms",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocateChargeToBms",
+        "source": "ElectricBike.chargeSafetyRequirement",
+        "target": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "alloc-ebike.alloc-override-brakes",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.brakeOverrideRequirement",
+        "target": "ElectricBike.BrakeSystem"
+      },
+      {
+        "id": "alloc-ebike.alloc-cutoff-battery",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.batteryCutoffRequirement",
+        "target": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "alloc-ebike.alloc-display-hmi",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.displayRequirement",
+        "target": "ElectricBike.HumanInterface"
+      },
+      {
+        "id": "alloc-ebike.alloc-struct-frame",
+        "type": "allocate",
+        "kind": "structural",
+        "name": "allocation",
+        "source": "ElectricBike.structuralRequirement",
+        "target": "ElectricBike.Frame"
+      },
+      {
+        "id": "alloc-ebike.alloc-action-brake",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.Action.applyBrake",
+        "target": "ElectricBike.BrakeSystem"
+      },
+      {
+        "id": "alloc-ebike.alloc-action-inhibit",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.Action.inhibitMotor",
+        "target": "ElectricBike.MotorController"
+      },
+      {
+        "id": "alloc-ebike.alloc-action-torque",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.Action.deliverTorque",
+        "target": "ElectricBike.HubMotor"
+      },
+      {
+        "id": "alloc-ebike.alloc-action-charge",
+        "type": "allocate",
+        "kind": "functional",
+        "name": "allocation",
+        "source": "ElectricBike.Action.plugInCharger",
+        "target": "ElectricBike.BatteryPack"
+      },
+      {
+        "id": "sat-ebike.1",
+        "type": "satisfy",
+        "source": "ElectricBike.BrakeSystem",
+        "target": "ElectricBike.rideSafetyRequirement"
+      },
+      {
+        "id": "sat-ebike.2",
+        "type": "satisfy",
+        "source": "ElectricBike.BrakeSystem",
+        "target": "ElectricBike.brakeOverrideRequirement"
+      },
+      {
+        "id": "sat-ebike.3",
+        "type": "satisfy",
+        "source": "ElectricBike.BatteryPack",
+        "target": "ElectricBike.rangeRequirement"
+      },
+      {
+        "id": "sat-ebike.4",
+        "type": "satisfy",
+        "source": "ElectricBike.BatteryPack",
+        "target": "ElectricBike.chargeSafetyRequirement"
+      },
+      {
+        "id": "sat-ebike.5",
+        "type": "satisfy",
+        "source": "ElectricBike.BatteryPack",
+        "target": "ElectricBike.batteryCutoffRequirement"
+      },
+      {
+        "id": "sat-ebike.6",
+        "type": "satisfy",
+        "source": "ElectricBike.MotorController",
+        "target": "ElectricBike.assistLimitRequirement"
+      },
+      {
+        "id": "sat-ebike.7",
+        "type": "satisfy",
+        "source": "ElectricBike.HumanInterface",
+        "target": "ElectricBike.displayRequirement"
+      },
+      {
+        "id": "sat-ebike.8",
+        "type": "satisfy",
+        "source": "ElectricBike.Frame",
+        "target": "ElectricBike.structuralRequirement"
+      },
+      {
+        "id": "ver-ebike.verifyRange",
+        "type": "verify",
+        "source": "ElectricBike.verifyRange",
+        "target": "ElectricBike.rangeRequirement"
+      },
+      {
+        "id": "ver-ebike.verifyBrakeCutoff",
+        "type": "verify",
+        "source": "ElectricBike.verifyBrakeCutoff",
+        "target": "ElectricBike.brakeOverrideRequirement"
+      },
+      {
+        "id": "ver-ebike.verifyChargeSafety",
+        "type": "verify",
+        "source": "ElectricBike.verifyChargeSafety",
+        "target": "ElectricBike.chargeSafetyRequirement"
+      },
+      {
+        "id": "ver-ebike.verifyAssistLimit",
+        "type": "verify",
+        "source": "ElectricBike.verifyAssistLimit",
+        "target": "ElectricBike.assistLimitRequirement"
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "model",
+        "eu-class",
+        "pas"
+      ]
+    }
+  }
+}

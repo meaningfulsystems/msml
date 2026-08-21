@@ -1,0 +1,314 @@
+{
+  "msml_version": "1.0",
+  "model_files": [
+    "e-bike-model.msml"
+  ],
+  "diagram": {
+    "type": "package",
+    "id": "pkg-ebike",
+    "name": "Electric Bike Packages",
+    "context": "ElectricBike",
+    "frame": {
+      "visible": true,
+      "style": {
+        "border_color": "#333333",
+        "border_width": 1.5,
+        "border_style": "solid",
+        "fill_color": "#FFFFFF",
+        "tab": {
+          "fill_color": "#FFFFFF",
+          "border_color": "#333333",
+          "padding_x": 8,
+          "padding_y": 4,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      }
+    },
+    "canvas": {
+      "width": 1140,
+      "height": 340,
+      "background_color": "#FAFAFA",
+      "grid": {
+        "enabled": true,
+        "size": 10,
+        "snap": true
+      }
+    },
+    "elements": [
+      {
+        "type": "model",
+        "id": "pkg-root",
+        "model_ref": "ElectricBike.BikeModel",
+        "layout": {
+          "x": 20,
+          "y": 16,
+          "width": 1100,
+          "height": 300,
+          "z_index": 0
+        },
+        "style": {
+          "fill_color": "#F5F5FF",
+          "border_color": "#445588",
+          "border_width": 2,
+          "font": {
+            "size": 13,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-struct",
+        "model_ref": "ElectricBike.BikeStructure",
+        "layout": {
+          "x": 50,
+          "y": 90,
+          "width": 180,
+          "height": 180,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#DDEEFF",
+          "border_color": "#336699",
+          "border_width": 2,
+          "font": {
+            "size": 12,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-beh",
+        "model_ref": "ElectricBike.BikeBehavior",
+        "layout": {
+          "x": 270,
+          "y": 90,
+          "width": 180,
+          "height": 180,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
+          "border_width": 2,
+          "font": {
+            "size": 12,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-req",
+        "model_ref": "ElectricBike.BikeRequirements",
+        "layout": {
+          "x": 490,
+          "y": 90,
+          "width": 190,
+          "height": 180,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#EEF2FF",
+          "border_color": "#3949AB",
+          "border_width": 2,
+          "font": {
+            "size": 12,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-an",
+        "model_ref": "ElectricBike.BikeAnalysis",
+        "layout": {
+          "x": 720,
+          "y": 90,
+          "width": 170,
+          "height": 180,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "size": 12,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "package",
+        "id": "pkg-ver",
+        "model_ref": "ElectricBike.BikeVerification",
+        "layout": {
+          "x": 930,
+          "y": 90,
+          "width": 170,
+          "height": 180,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#FFEBEE",
+          "border_color": "#C62828",
+          "border_width": 2,
+          "font": {
+            "size": 12,
+            "bold": true,
+            "color": "#000000"
+          }
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "d1",
+        "relationship_ref": "pkg-ebike.d-behavior-structure",
+        "waypoints": [
+          {
+            "x": 270,
+            "y": 180
+          },
+          {
+            "x": 230,
+            "y": 180
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "d2",
+        "relationship_ref": "pkg-ebike.d-req-structure",
+        "waypoints": [
+          {
+            "x": 490,
+            "y": 220
+          },
+          {
+            "x": 360,
+            "y": 280
+          },
+          {
+            "x": 230,
+            "y": 220
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": 8
+          }
+        }
+      },
+      {
+        "id": "d3",
+        "relationship_ref": "pkg-ebike.d-analysis-req",
+        "waypoints": [
+          {
+            "x": 720,
+            "y": 180
+          },
+          {
+            "x": 680,
+            "y": 180
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "d4",
+        "relationship_ref": "pkg-ebike.d-ver-analysis",
+        "waypoints": [
+          {
+            "x": 930,
+            "y": 160
+          },
+          {
+            "x": 890,
+            "y": 160
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8
+        }
+      },
+      {
+        "id": "d5",
+        "relationship_ref": "pkg-ebike.d-ver-req",
+        "waypoints": [
+          {
+            "x": 930,
+            "y": 240
+          },
+          {
+            "x": 860,
+            "y": 280
+          },
+          {
+            "x": 680,
+            "y": 240
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "dashed",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 10,
+            "y": 8
+          }
+        }
+      }
+    ],
+    "metadata": {
+      "author": "Andrew Fried",
+      "created": "2026-08-21",
+      "modified": "2026-08-21",
+      "tags": [
+        "e-bike",
+        "pkg"
+      ]
+    }
+  }
+}

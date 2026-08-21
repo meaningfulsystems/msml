@@ -165,6 +165,10 @@ msml-render-all projects
     │       ├── blender-model.msml
     │       ├── blender-*.msmd
     │       └── blender-*.png
+    ├── e-bike/
+    │   ├── e-bike-model.msml
+    │   ├── e-bike-*.msmd
+    │   └── e-bike-*.png
     └── humanity-optimization/
         ├── Humanity_Optimization_System_Brief.md
         ├── Humanity_Optimization_Operational_Concept.md
@@ -185,6 +189,12 @@ The Humanity Optimization System is a civilization-scale decision-support concep
 - [HOS context internal block diagram (`.msmd`)](projects/humanity-optimization/hos-context-ibd.msmd)
 - [HOS operating loop activity diagram (`.msmd`)](projects/humanity-optimization/hos-operating-loop.msmd)
 - [HOS decision-support sequence diagram (`.msmd`)](projects/humanity-optimization/hos-decision-support-sequence.msmd)
+
+### Electric Bike
+
+A street-legal EU-class pedal-assist bike used as a second full-coverage example. The model namespace is `ElectricBike`. Views use the `e-bike` file stem.
+
+- [Electric bike project](projects/e-bike): block definition, internal block, context, activity, sequence (`e-bike-int`), state machine, use case, requirements, parametric, package, plus requirement table, allocation table, and allocation matrix.
 
 ### Appliance Models
 
