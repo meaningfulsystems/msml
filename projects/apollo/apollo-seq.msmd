@@ -44,7 +44,7 @@
         "type": "lifeline",
         "id": "ll-mcc",
         "model_ref": "Apollo.MCC",
-        "display_name": ":mcc",
+        "display_name": "Mission Control",
         "layout": {
           "x": 16,
           "y": 20,
@@ -69,7 +69,7 @@
         "type": "lifeline",
         "id": "ll-msfn",
         "model_ref": "Apollo.MSFN",
-        "display_name": ":msfn",
+        "display_name": "tracking net",
         "layout": {
           "x": 176,
           "y": 20,
@@ -94,7 +94,7 @@
         "type": "lifeline",
         "id": "ll-usb",
         "model_ref": "Apollo.USB",
-        "display_name": ":usb",
+        "display_name": "unified S-band",
         "layout": {
           "x": 336,
           "y": 20,
@@ -119,7 +119,7 @@
         "type": "lifeline",
         "id": "ll-agc",
         "model_ref": "Apollo.AGC_LM",
-        "display_name": ":agcLm",
+        "display_name": "lunar module computer",
         "layout": {
           "x": 496,
           "y": 20,
@@ -144,7 +144,7 @@
         "type": "lifeline",
         "id": "ll-lr",
         "model_ref": "Apollo.LandingRadar",
-        "display_name": ":landingRadar",
+        "display_name": "landing radar",
         "layout": {
           "x": 656,
           "y": 20,
@@ -169,7 +169,7 @@
         "type": "lifeline",
         "id": "ll-cdr",
         "model_ref": "Apollo.CDR",
-        "display_name": ":cdr",
+        "display_name": "Commander",
         "layout": {
           "x": 816,
           "y": 20,
@@ -194,7 +194,7 @@
         "type": "lifeline",
         "id": "ll-dps",
         "model_ref": "Apollo.DPS",
-        "display_name": ":dps",
+        "display_name": "descent propulsion",
         "layout": {
           "x": 976,
           "y": 20,
@@ -219,7 +219,7 @@
         "type": "lifeline",
         "id": "ll-des",
         "model_ref": "Apollo.Descent",
-        "display_name": ":descent",
+        "display_name": "descent stage",
         "layout": {
           "x": 1136,
           "y": 20,

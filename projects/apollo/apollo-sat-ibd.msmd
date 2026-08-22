@@ -44,7 +44,7 @@
         "type": "part",
         "id": "part-sic",
         "model_ref": "Apollo.SIC",
-        "display_name": "sIc : S-IC",
+        "display_name": "first stage",
         "layout": {
           "x": 400,
           "y": 420,
@@ -58,17 +58,21 @@
           "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 11,
-            "bold": false,
+            "size": 14,
+            "bold": true,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-sii",
         "model_ref": "Apollo.SII",
-        "display_name": "sIi : S-II",
+        "display_name": "second stage",
         "layout": {
           "x": 400,
           "y": 280,
@@ -82,17 +86,21 @@
           "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 11,
-            "bold": false,
+            "size": 14,
+            "bold": true,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-sivb",
         "model_ref": "Apollo.SIVB",
-        "display_name": "sIvb : S-IVB",
+        "display_name": "third stage",
         "layout": {
           "x": 400,
           "y": 140,
@@ -106,17 +114,21 @@
           "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 11,
-            "bold": false,
+            "size": 14,
+            "bold": true,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-iu",
         "model_ref": "Apollo.IU",
-        "display_name": "iu : IU",
+        "display_name": "Instrument Unit",
         "layout": {
           "x": 80,
           "y": 130,
@@ -130,17 +142,21 @@
           "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 11,
-            "bold": false,
+            "size": 14,
+            "bold": true,
             "color": "#000000"
           }
+        },
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "part",
         "id": "part-lvdc",
         "model_ref": "Apollo.LVDC",
-        "display_name": "lvdc : LVDC",
+        "display_name": "launch-vehicle computer",
         "layout": {
           "x": 80,
           "y": 280,
@@ -154,40 +170,21 @@
           "border_width": 2,
           "font": {
             "family": "Arial",
-            "size": 11,
-            "bold": false,
+            "size": 14,
+            "bold": true,
             "color": "#000000"
           }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-col",
-        "model_ref": "Apollo.Note.Collapse",
-        "layout": {
-          "x": 80,
-          "y": 460,
-          "width": 260,
-          "height": 140,
-          "z_index": 1
         },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 1,
-          "font": {
-            "family": "Arial",
-            "size": 10,
-            "bold": false,
-            "color": "#000000"
-          }
+        "compartments": {
+          "properties": [],
+          "operations": []
         }
       },
       {
         "type": "port",
         "id": "p-sivbsii",
         "model_ref": "Apollo.Port.sivbSiiOut",
-        "name": "stg",
+        "name": "",
         "owner_ref": "part-sivb",
         "layout": {
           "x": 514,
@@ -212,7 +209,7 @@
         "type": "port",
         "id": "p-siisivb",
         "model_ref": "Apollo.Port.siiSivbIn",
-        "name": "stg",
+        "name": "",
         "owner_ref": "part-sii",
         "layout": {
           "x": 514,
@@ -237,7 +234,7 @@
         "type": "port",
         "id": "p-siisic",
         "model_ref": "Apollo.Port.siiSicOut",
-        "name": "bst",
+        "name": "",
         "owner_ref": "part-sii",
         "layout": {
           "x": 514,
@@ -262,7 +259,7 @@
         "type": "port",
         "id": "p-sicsii",
         "model_ref": "Apollo.Port.sicSiiIn",
-        "name": "bst",
+        "name": "",
         "owner_ref": "part-sic",
         "layout": {
           "x": 514,
@@ -287,7 +284,7 @@
         "type": "port",
         "id": "p-iu",
         "model_ref": "Apollo.Port.iuOut",
-        "name": "guid",
+        "name": "",
         "owner_ref": "part-iu",
         "layout": {
           "x": 274,
@@ -312,7 +309,7 @@
         "type": "port",
         "id": "p-sivbiu",
         "model_ref": "Apollo.Port.sivbIuIn",
-        "name": "guid",
+        "name": "",
         "owner_ref": "part-sivb",
         "layout": {
           "x": 394,
@@ -337,7 +334,7 @@
         "type": "port",
         "id": "p-lvdc",
         "model_ref": "Apollo.Port.lvdcOut",
-        "name": "comp",
+        "name": "",
         "owner_ref": "part-lvdc",
         "layout": {
           "x": 174,
@@ -362,7 +359,7 @@
         "type": "port",
         "id": "p-iulvdc",
         "model_ref": "Apollo.Port.iuLvdcIn",
-        "name": "comp",
+        "name": "",
         "owner_ref": "part-iu",
         "layout": {
           "x": 174,
@@ -408,8 +405,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 40,
+            "y": 4
           }
         }
       },
@@ -436,8 +433,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 36,
+            "y": 4
           }
         }
       },
@@ -465,7 +462,7 @@
           "corner_radius": 8,
           "label_offset": {
             "x": 0,
-            "y": -16
+            "y": -20
           }
         }
       },
@@ -492,8 +489,8 @@
           "target_arrowhead": "none",
           "corner_radius": 8,
           "label_offset": {
-            "x": 0,
-            "y": -16
+            "x": 36,
+            "y": 4
           }
         }
       }

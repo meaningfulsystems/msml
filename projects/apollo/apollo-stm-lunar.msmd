@@ -5,8 +5,8 @@
   ],
   "diagram": {
     "type": "state_machine",
-    "id": "stm-apollo",
-    "name": "Ground Elapsed Time \u00b7 countdown \u2192 Translunar Injection \u2192 dock/eject \u2192 translunar \u2192 Lunar Orbit Insertion",
+    "id": "stm-apollo-lunar",
+    "name": "undock \u2192 Descent Orbit Insertion \u2192 descent \u2192 EVA \u2192 ascent \u2192 Trans-Earth Injection \u2192 entry",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1540,
-      "height": 280,
+      "width": 1180,
+      "height": 400,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -42,26 +42,17 @@
     "elements": [
       {
         "type": "state",
-        "id": "s-outbound",
-        "model_ref": "Apollo.State.Mission.outbound",
-        "orthogonal_split": {
-          "axis": "horizontal",
-          "at": 138,
-          "labels": [
-            "nominal",
-            "abort \u00b7 Range Safety Officer"
-          ],
-          "color": "#6A1B9A"
-        },
+        "id": "s-lunarReturn",
+        "model_ref": "Apollo.State.Mission.lunarReturn",
         "layout": {
-          "x": 16,
+          "x": 8,
           "y": 8,
-          "width": 1508,
-          "height": 256,
+          "width": 1164,
+          "height": 376,
           "z_index": 0
         },
         "style": {
-          "fill_color": "#F7F2FF",
+          "fill_color": "#F3E5F5",
           "border_color": "#6A1B9A",
           "border_width": 1,
           "font": {
@@ -70,27 +61,21 @@
             "bold": true,
             "color": "#4A148C"
           }
-        }
-      },
-      {
-        "type": "initial_pseudostate",
-        "id": "init-m",
-        "model_ref": "Apollo.State.Mission.Start",
-        "layout": {
-          "x": 8,
-          "y": 72,
-          "width": 16,
-          "height": 16,
-          "z_index": 1
         },
-        "style": {
-          "fill_color": "#000000"
+        "orthogonal_split": {
+          "axis": "vertical",
+          "at": 198,
+          "labels": [
+            "CSM \u00b7 CMP in lunar orbit",
+            "LM"
+          ],
+          "color": "#6A1B9A"
         }
       },
       {
         "type": "state",
-        "id": "s-countdown",
-        "model_ref": "Apollo.State.Mission.countdown",
+        "id": "s-undock",
+        "model_ref": "Apollo.State.Mission.undock",
         "layout": {
           "x": 20,
           "y": 40,
@@ -99,8 +84,8 @@
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -112,106 +97,11 @@
       },
       {
         "type": "state",
-        "id": "s-boost",
-        "model_ref": "Apollo.State.Mission.boost",
+        "id": "s-csm",
+        "model_ref": "Apollo.State.Mission.csmLunarOrbit",
         "layout": {
-          "x": 210,
-          "y": 40,
-          "width": 170,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF3E0",
-          "border_color": "#E65100",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "state",
-        "id": "s-earthOrbit",
-        "model_ref": "Apollo.State.Mission.earthOrbit",
-        "layout": {
-          "x": 400,
-          "y": 40,
-          "width": 180,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E0F7FA",
-          "border_color": "#00838F",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        },
-        "display_name": "Earth orbit"
-      },
-      {
-        "type": "state",
-        "id": "s-TLI",
-        "model_ref": "Apollo.State.Mission.TLI",
-        "layout": {
-          "x": 590,
-          "y": 40,
-          "width": 210,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        },
-        "display_name": "Translunar Injection"
-      },
-      {
-        "type": "state",
-        "id": "s-dockEject",
-        "model_ref": "Apollo.State.Mission.dockEject",
-        "layout": {
-          "x": 820,
-          "y": 40,
-          "width": 170,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        },
-        "display_name": "dock/eject"
-      },
-      {
-        "type": "state",
-        "id": "s-translunar",
-        "model_ref": "Apollo.State.Mission.translunar",
-        "layout": {
-          "x": 1010,
-          "y": 40,
+          "x": 20,
+          "y": 160,
           "width": 170,
           "height": 80,
           "z_index": 1
@@ -230,12 +120,12 @@
       },
       {
         "type": "state",
-        "id": "s-LOI",
-        "model_ref": "Apollo.State.Mission.LOI",
+        "id": "s-DOI",
+        "model_ref": "Apollo.State.Mission.DOI",
         "layout": {
-          "x": 1200,
-          "y": 40,
-          "width": 210,
+          "x": 230,
+          "y": 160,
+          "width": 250,
           "height": 80,
           "z_index": 1
         },
@@ -250,16 +140,132 @@
             "color": "#000000"
           }
         },
-        "display_name": "Lunar Orbit Insertion"
+        "display_name": "Descent Orbit Insertion"
       },
       {
         "type": "state",
-        "id": "s-abort",
-        "model_ref": "Apollo.State.Abort",
+        "id": "s-descent",
+        "model_ref": "Apollo.State.Mission.descent",
         "layout": {
-          "x": 36,
-          "y": 168,
-          "width": 360,
+          "x": 500,
+          "y": 160,
+          "width": 170,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-surfaceEVA",
+        "model_ref": "Apollo.State.Mission.surfaceEVA",
+        "layout": {
+          "x": 690,
+          "y": 160,
+          "width": 170,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-ascent",
+        "model_ref": "Apollo.State.Mission.ascent",
+        "layout": {
+          "x": 880,
+          "y": 160,
+          "width": 170,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E8F5E9",
+          "border_color": "#2E7D32",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-rendezvous",
+        "model_ref": "Apollo.State.Mission.rendezvous",
+        "layout": {
+          "x": 230,
+          "y": 280,
+          "width": 170,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        }
+      },
+      {
+        "type": "state",
+        "id": "s-TEI",
+        "model_ref": "Apollo.State.Mission.TEI",
+        "layout": {
+          "x": 430,
+          "y": 280,
+          "width": 250,
+          "height": 80,
+          "z_index": 1
+        },
+        "style": {
+          "fill_color": "#E3F2FD",
+          "border_color": "#1565C0",
+          "border_width": 2,
+          "font": {
+            "family": "Arial",
+            "size": 11,
+            "bold": false,
+            "color": "#000000"
+          }
+        },
+        "display_name": "Trans-Earth Injection"
+      },
+      {
+        "type": "state",
+        "id": "s-entry",
+        "model_ref": "Apollo.State.Mission.entry",
+        "layout": {
+          "x": 700,
+          "y": 280,
+          "width": 170,
           "height": 80,
           "z_index": 1
         },
@@ -274,127 +280,25 @@
             "color": "#000000"
           }
         }
-      },
-      {
-        "type": "state",
-        "id": "s-rso",
-        "model_ref": "Apollo.State.RangeSafety.destruct",
-        "layout": {
-          "x": 420,
-          "y": 168,
-          "width": 400,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF8E1",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        },
-        "display_name": "Range Safety Officer"
       }
     ],
     "relationships": [
       {
-        "id": "t-init",
+        "id": "t-undock-DOI",
         "type": "transition",
-        "relationship_ref": "stm-apollo.t-init",
-        "waypoints": [
-          {
-            "x": 24,
-            "y": 80
-          },
-          {
-            "x": 20,
-            "y": 80
-          }
-        ],
-        "style": {
-          "line_color": "#333333",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -24
-          }
-        }
-      },
-      {
-        "id": "t-countdown-boost",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.countdown-boost",
+        "relationship_ref": "stm-apollo.undock-DOI",
         "waypoints": [
           {
             "x": 190,
             "y": 80
           },
           {
-            "x": 210,
-            "y": 80
-          }
-        ],
-        "style": {
-          "line_color": "#333333",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": 0,
-            "y": -24
-          }
-        }
-      },
-      {
-        "id": "t-boost-earthOrbit",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.boost-earthOrbit",
-        "waypoints": [
-          {
-            "x": 380,
-            "y": 80
+            "x": 190,
+            "y": 200
           },
           {
-            "x": 400,
-            "y": 80
-          }
-        ],
-        "style": {
-          "line_color": "#333333",
-          "line_width": 1.5,
-          "line_style": "solid",
-          "source_arrowhead": "none",
-          "target_arrowhead": "open",
-          "corner_radius": 8,
-          "label_offset": {
-            "x": -130,
-            "y": -52
-          }
-        },
-        "name": "second-stage cutoff"
-      },
-      {
-        "id": "t-earthOrbit-TLI",
-        "type": "transition",
-        "relationship_ref": "stm-apollo.earthOrbit-TLI",
-        "waypoints": [
-          {
-            "x": 570,
-            "y": 80
-          },
-          {
-            "x": 590,
-            "y": 80
+            "x": 230,
+            "y": 200
           }
         ],
         "style": {
@@ -412,17 +316,45 @@
         "name": ""
       },
       {
-        "id": "t-TLI-dock",
+        "id": "t-DOI-descent",
         "type": "transition",
-        "relationship_ref": "stm-apollo.TLI-dockEject",
+        "relationship_ref": "stm-apollo.DOI-descent",
         "waypoints": [
           {
-            "x": 800,
-            "y": 80
+            "x": 480,
+            "y": 200
           },
           {
-            "x": 820,
-            "y": 80
+            "x": 500,
+            "y": 200
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
+        },
+        "name": ""
+      },
+      {
+        "id": "t-descent-eva",
+        "type": "transition",
+        "relationship_ref": "stm-apollo.descent-surfaceEVA",
+        "waypoints": [
+          {
+            "x": 670,
+            "y": 200
+          },
+          {
+            "x": 690,
+            "y": 200
           }
         ],
         "style": {
@@ -439,17 +371,17 @@
         }
       },
       {
-        "id": "t-dock-translunar",
+        "id": "t-eva-ascent",
         "type": "transition",
-        "relationship_ref": "stm-apollo.dockEject-translunar",
+        "relationship_ref": "stm-apollo.surfaceEVA-ascent",
         "waypoints": [
           {
-            "x": 990,
-            "y": 80
+            "x": 860,
+            "y": 200
           },
           {
-            "x": 1010,
-            "y": 80
+            "x": 880,
+            "y": 200
           }
         ],
         "style": {
@@ -466,17 +398,81 @@
         }
       },
       {
-        "id": "t-translunar-LOI",
+        "id": "t-ascent-rnd",
         "type": "transition",
-        "relationship_ref": "stm-apollo.translunar-LOI",
+        "relationship_ref": "stm-apollo.ascent-rendezvous",
+        "name": "",
         "waypoints": [
           {
-            "x": 1180,
-            "y": 80
+            "x": 965,
+            "y": 240
           },
           {
-            "x": 1200,
-            "y": 80
+            "x": 965,
+            "y": 260
+          },
+          {
+            "x": 230,
+            "y": 260
+          },
+          {
+            "x": 230,
+            "y": 280
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
+        }
+      },
+      {
+        "id": "t-rnd-TEI",
+        "type": "transition",
+        "relationship_ref": "stm-apollo.rendezvous-TEI",
+        "waypoints": [
+          {
+            "x": 400,
+            "y": 320
+          },
+          {
+            "x": 430,
+            "y": 320
+          }
+        ],
+        "style": {
+          "line_color": "#333333",
+          "line_width": 1.5,
+          "line_style": "solid",
+          "source_arrowhead": "none",
+          "target_arrowhead": "open",
+          "corner_radius": 8,
+          "label_offset": {
+            "x": 0,
+            "y": -24
+          }
+        },
+        "name": ""
+      },
+      {
+        "id": "t-TEI-entry",
+        "type": "transition",
+        "relationship_ref": "stm-apollo.TEI-entry",
+        "waypoints": [
+          {
+            "x": 680,
+            "y": 320
+          },
+          {
+            "x": 700,
+            "y": 320
           }
         ],
         "style": {

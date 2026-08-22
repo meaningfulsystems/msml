@@ -6,7 +6,7 @@
   "diagram": {
     "type": "requirement",
     "id": "req-apollo",
-    "name": "Crew safety (not LES-only) \u00b7 landing \u00b7 comms \u00b7 ECLSS \u00b7 P27 \u00b7 D-7720 food",
+    "name": "safety \u00b7 land \u00b7 talk \u00b7 abort \u00b7 air \u00b7 guide",
     "context": "Apollo",
     "frame": {
       "visible": true,
@@ -30,8 +30,8 @@
       }
     },
     "canvas": {
-      "width": 1320,
-      "height": 720,
+      "width": 1000,
+      "height": 440,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -44,6 +44,9 @@
         "type": "requirement",
         "id": "r1",
         "model_ref": "Apollo.crewSafetyRequirement",
+        "hide_req_id": true,
+        "display_name": "safety",
+        "text": "An abort path shall remain available from pad through TEI. Not LES-only.",
         "layout": {
           "x": 30,
           "y": 24,
@@ -67,6 +70,9 @@
         "type": "requirement",
         "id": "r2",
         "model_ref": "Apollo.landingRequirement",
+        "hide_req_id": true,
+        "display_name": "land",
+        "text": "The Lunar Module shall land two crew on the Moon with remaining descent margin at the site.",
         "layout": {
           "x": 350,
           "y": 24,
@@ -90,6 +96,9 @@
         "type": "requirement",
         "id": "r3",
         "model_ref": "Apollo.commsContinuityRequirement",
+        "hide_req_id": true,
+        "display_name": "talk",
+        "text": "The tracking net shall carry voice and telemetry except during known lunar occultation.",
         "layout": {
           "x": 670,
           "y": 24,
@@ -113,6 +122,9 @@
         "type": "requirement",
         "id": "r4",
         "model_ref": "Apollo.lesAbortRequirement",
+        "hide_req_id": true,
+        "display_name": "abort",
+        "text": "The launch escape system shall pull the Command Module clear of Saturn on a pad or Mode I abort.",
         "layout": {
           "x": 30,
           "y": 220,
@@ -136,6 +148,9 @@
         "type": "requirement",
         "id": "r5",
         "model_ref": "Apollo.eclssRequirement",
+        "hide_req_id": true,
+        "display_name": "air",
+        "text": "The Command Module shall keep a livable cabin atmosphere for the crew.",
         "layout": {
           "x": 350,
           "y": 220,
@@ -159,6 +174,9 @@
         "type": "requirement",
         "id": "r6",
         "model_ref": "Apollo.guidanceRequirement",
+        "hide_req_id": true,
+        "display_name": "guide",
+        "text": "The command and lunar-module computers shall provide guidance. Abort guidance is the lunar-module backup.",
         "layout": {
           "x": 670,
           "y": 220,
@@ -169,98 +187,6 @@
         "style": {
           "fill_color": "#F3E5F5",
           "border_color": "#6A1B9A",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "requirement",
-        "id": "req-usb",
-        "model_ref": "Apollo.usbRfRequirement",
-        "layout": {
-          "x": 30,
-          "y": 460,
-          "width": 300,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E3F2FD",
-          "border_color": "#1565C0",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "requirement",
-        "id": "req-p27",
-        "model_ref": "Apollo.p27Requirement",
-        "layout": {
-          "x": 350,
-          "y": 460,
-          "width": 300,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#EDE7F6",
-          "border_color": "#6A1B9A",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "requirement",
-        "id": "req-food",
-        "model_ref": "Apollo.foodRequirement",
-        "layout": {
-          "x": 670,
-          "y": 460,
-          "width": 300,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFF9C4",
-          "border_color": "#F9A825",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "requirement",
-        "id": "req-lmecs",
-        "model_ref": "Apollo.lmEcsRequirement",
-        "layout": {
-          "x": 990,
-          "y": 460,
-          "width": 300,
-          "height": 160,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#E8F5E9",
-          "border_color": "#2E7D32",
           "border_width": 2,
           "font": {
             "family": "Arial",

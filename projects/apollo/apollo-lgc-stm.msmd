@@ -6,7 +6,7 @@
   "diagram": {
     "type": "state_machine",
     "id": "stm-apollo-lgc",
-    "name": "LGC LANDING — P63–P68 · A11 P66 ROD · not CMC entry",
+    "name": "LANDING \u2014 braking \u00b7 approach \u00b7 rate of descent \u00b7 auto land \u00b7 manual \u00b7 landing confirmation",
     "context": "Apollo",
     "subject_ref": "Apollo.AGC_LM",
     "frame": {
@@ -32,7 +32,7 @@
     },
     "canvas": {
       "width": 1440,
-      "height": 460,
+      "height": 360,
       "background_color": "#FAFAFA",
       "grid": {
         "enabled": true,
@@ -77,7 +77,9 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "braking",
+        "do": ""
       },
       {
         "type": "state",
@@ -100,7 +102,9 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "approach",
+        "do": ""
       },
       {
         "type": "state",
@@ -123,7 +127,9 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "auto land",
+        "do": ""
       },
       {
         "type": "state",
@@ -132,7 +138,7 @@
         "layout": {
           "x": 560,
           "y": 140,
-          "width": 190,
+          "width": 220,
           "height": 90,
           "z_index": 1
         },
@@ -146,7 +152,9 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "rate of descent",
+        "do": ""
       },
       {
         "type": "state",
@@ -169,7 +177,9 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "manual",
+        "do": ""
       },
       {
         "type": "state",
@@ -178,7 +188,7 @@
         "layout": {
           "x": 900,
           "y": 140,
-          "width": 170,
+          "width": 230,
           "height": 90,
           "z_index": 1
         },
@@ -192,22 +202,24 @@
             "bold": false,
             "color": "#000000"
           }
-        }
+        },
+        "display_name": "landing confirmation",
+        "do": ""
       },
       {
-        "type": "comment",
-        "id": "n-pnum",
-        "model_ref": "Apollo.Note.PNumbers",
+        "type": "state",
+        "id": "l-ags",
+        "model_ref": "Apollo.State.Guidance.AGS",
         "layout": {
           "x": 50,
-          "y": 360,
-          "width": 420,
+          "y": 260,
+          "width": 320,
           "height": 80,
           "z_index": 1
         },
         "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
+          "fill_color": "#FFF3E0",
+          "border_color": "#E65100",
           "border_width": 2,
           "font": {
             "family": "Arial",
@@ -215,53 +227,8 @@
             "bold": false,
             "color": "#000000"
           }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-alarm",
-        "model_ref": "Apollo.Note.ProgramAlarm",
-        "layout": {
-          "x": 490,
-          "y": 360,
-          "width": 460,
-          "height": 80,
-          "z_index": 1
         },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
-      },
-      {
-        "type": "comment",
-        "id": "n-rope",
-        "model_ref": "Apollo.Note.UnknownRope",
-        "layout": {
-          "x": 970,
-          "y": 360,
-          "width": 430,
-          "height": 80,
-          "z_index": 1
-        },
-        "style": {
-          "fill_color": "#FFFDE7",
-          "border_color": "#8B8000",
-          "border_width": 2,
-          "font": {
-            "family": "Arial",
-            "size": 11,
-            "bold": false,
-            "color": "#000000"
-          }
-        }
+        "do": ""
       }
     ],
     "relationships": [
@@ -359,7 +326,8 @@
           "target_arrowhead": "open",
           "corner_radius": 8,
           "line_color": "#1B5E20"
-        }
+        },
+        "name": ""
       },
       {
         "id": "tl-47",
